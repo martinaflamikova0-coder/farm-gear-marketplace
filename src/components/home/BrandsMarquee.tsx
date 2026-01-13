@@ -1,0 +1,60 @@
+import johnDeere from '@/assets/brands/john-deere.png';
+import fendt from '@/assets/brands/fendt.png';
+import masseyFerguson from '@/assets/brands/massey-ferguson.png';
+import newHolland from '@/assets/brands/new-holland.jpeg';
+import claas from '@/assets/brands/claas.png';
+import caseIh from '@/assets/brands/case-ih.png';
+import deutzFahr from '@/assets/brands/deutz-fahr.png';
+import kubota from '@/assets/brands/kubota.png';
+import mccormick from '@/assets/brands/mccormick.jpeg';
+import sonalika from '@/assets/brands/sonalika.jpeg';
+
+const brands = [
+  { name: 'John Deere', logo: johnDeere },
+  { name: 'Fendt', logo: fendt },
+  { name: 'Massey Ferguson', logo: masseyFerguson },
+  { name: 'New Holland', logo: newHolland },
+  { name: 'Claas', logo: claas },
+  { name: 'Case IH', logo: caseIh },
+  { name: 'Deutz-Fahr', logo: deutzFahr },
+  { name: 'Kubota', logo: kubota },
+  { name: 'McCormick', logo: mccormick },
+  { name: 'Sonalika', logo: sonalika },
+];
+
+const BrandsMarquee = () => {
+  return (
+    <div className="bg-card border-y border-border overflow-hidden py-4">
+      <div className="flex animate-marquee whitespace-nowrap">
+        {/* First set of logos */}
+        {brands.map((brand, index) => (
+          <div
+            key={`first-${index}`}
+            className="flex items-center justify-center mx-8 flex-shrink-0"
+          >
+            <img
+              src={brand.logo}
+              alt={brand.name}
+              className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
+            />
+          </div>
+        ))}
+        {/* Duplicate set for seamless loop */}
+        {brands.map((brand, index) => (
+          <div
+            key={`second-${index}`}
+            className="flex items-center justify-center mx-8 flex-shrink-0"
+          >
+            <img
+              src={brand.logo}
+              alt={brand.name}
+              className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default BrandsMarquee;
