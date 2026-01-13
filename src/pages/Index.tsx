@@ -1,22 +1,53 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import HeroSection from '@/components/home/HeroSection';
-import CategoriesSection from '@/components/home/CategoriesSection';
-import FeaturedProducts from '@/components/home/FeaturedProducts';
-import RecentProducts from '@/components/home/RecentProducts';
-import CTASection from '@/components/home/CTASection';
+import SearchBar from '@/components/home/SearchBar';
+import QuickCategories from '@/components/home/QuickCategories';
+import StatsBar from '@/components/home/StatsBar';
+import ProductsGrid from '@/components/home/ProductsGrid';
+import { products } from '@/data/products';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-secondary/30">
       <Header />
+      <StatsBar />
+      <SearchBar />
+      <QuickCategories />
+      
       <main className="flex-1">
-        <HeroSection />
-        <CategoriesSection />
-        <FeaturedProducts />
-        <RecentProducts />
-        <CTASection />
+        <ProductsGrid 
+          title="⭐ Annonces en vedette"
+          subtitle="Nos meilleures opportunités du moment"
+          filterFn={(p) => p.filter(product => product.featured)}
+          limit={4}
+        />
+        
+        <div className="bg-card">
+          <ProductsGrid 
+            title="🕐 Dernières annonces"
+            subtitle="Les plus récentes"
+            filterFn={(p) => [...p].sort((a, b) => 
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+            )}
+            limit={8}
+          />
+        </div>
+
+        <ProductsGrid 
+          title="🚜 Tracteurs"
+          filterFn={(p) => p.filter(product => product.category === 'Tracteurs')}
+          limit={4}
+        />
+
+        <div className="bg-card">
+          <ProductsGrid 
+            title="🌾 Matériel de récolte"
+            filterFn={(p) => p.filter(product => product.category === 'Matériel de récolte')}
+            limit={4}
+          />
+        </div>
       </main>
+      
       <Footer />
     </div>
   );
