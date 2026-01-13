@@ -11,7 +11,8 @@
     "loading": "Chargement...",
     "noResults": "Aucun résultat trouvé",
     "showMore": "Voir plus",
-    "showLess": "Voir moins"
+    "showLess": "Voir moins",
+    "listings": "annonces"
   },
   "nav": {
     "home": "Accueil",
@@ -26,7 +27,9 @@
     "recentListings": "🕐 Dernières annonces",
     "recentSubtitle": "Les plus récentes",
     "tractors": "🚜 Tracteurs",
-    "harvestEquipment": "🌾 Matériel de récolte"
+    "harvestEquipment": "🌾 Matériel de récolte",
+    "browseByCategory": "Parcourir par catégorie",
+    "categoryDescription": "Trouvez rapidement le matériel dont vous avez besoin parmi nos différentes catégories"
   },
   "stats": {
     "listings": "annonces",
@@ -46,9 +49,12 @@
   "filters": {
     "title": "Filtres",
     "category": "Catégorie",
+    "allCategories": "Toutes les catégories",
     "brand": "Marque",
+    "brands": "Marques",
     "allBrands": "Toutes les marques",
     "priceRange": "Fourchette de prix",
+    "priceTTC": "Prix TTC (€)",
     "priceMin": "Prix min",
     "priceMax": "Prix max",
     "year": "Année",
@@ -60,7 +66,21 @@
     "allLocations": "Toutes les localisations",
     "reset": "Réinitialiser",
     "apply": "Appliquer",
-    "advancedFilters": "Filtres avancés"
+    "advancedFilters": "Filtres avancés",
+    "clearFilters": "Effacer les filtres",
+    "search": "Recherche",
+    "sortBy": "Trier par",
+    "mostRecent": "Plus récentes",
+    "priceAsc": "Prix croissant",
+    "priceDesc": "Prix décroissant",
+    "yearDesc": "Année décroissante"
+  },
+  "listings": {
+    "allListings": "Toutes les annonces",
+    "resultsFor": "Résultats pour",
+    "found": "{{count}} annonce(s) trouvée(s)",
+    "noResults": "Aucun résultat trouvé",
+    "tryDifferentFilters": "Essayez de modifier vos critères de recherche"
   },
   "conditions": {
     "excellent": "Excellent",

@@ -11,7 +11,8 @@
     "loading": "Loading...",
     "noResults": "No results found",
     "showMore": "Show more",
-    "showLess": "Show less"
+    "showLess": "Show less",
+    "listings": "listings"
   },
   "nav": {
     "home": "Home",
@@ -26,7 +27,9 @@
     "recentListings": "🕐 Latest listings",
     "recentSubtitle": "Most recent",
     "tractors": "🚜 Tractors",
-    "harvestEquipment": "🌾 Harvest equipment"
+    "harvestEquipment": "🌾 Harvest equipment",
+    "browseByCategory": "Browse by category",
+    "categoryDescription": "Quickly find the equipment you need among our different categories"
   },
   "stats": {
     "listings": "listings",
@@ -46,9 +49,12 @@
   "filters": {
     "title": "Filters",
     "category": "Category",
+    "allCategories": "All categories",
     "brand": "Brand",
+    "brands": "Brands",
     "allBrands": "All brands",
     "priceRange": "Price range",
+    "priceTTC": "Price incl. VAT (€)",
     "priceMin": "Min price",
     "priceMax": "Max price",
     "year": "Year",
@@ -60,7 +66,21 @@
     "allLocations": "All locations",
     "reset": "Reset filters",
     "apply": "Apply",
-    "advancedFilters": "Advanced filters"
+    "advancedFilters": "Advanced filters",
+    "clearFilters": "Clear filters",
+    "search": "Search",
+    "sortBy": "Sort by",
+    "mostRecent": "Most recent",
+    "priceAsc": "Price: low to high",
+    "priceDesc": "Price: high to low",
+    "yearDesc": "Year: newest first"
+  },
+  "listings": {
+    "allListings": "All listings",
+    "resultsFor": "Results for",
+    "found": "{{count}} listing(s) found",
+    "noResults": "No results found",
+    "tryDifferentFilters": "Try modifying your search criteria"
   },
   "conditions": {
     "excellent": "Excellent",
