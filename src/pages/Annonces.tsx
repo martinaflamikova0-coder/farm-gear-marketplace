@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Filter, Grid, List, X } from 'lucide-react';
 import Header from '@/components/layout/Header';
@@ -13,8 +13,9 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
-import { products, brands } from '@/data/products';
+import { brands } from '@/data/products';
 import { useCategoriesWithCounts, type CategoryWithCount } from '@/hooks/useCategories';
+import { useProducts } from '@/hooks/useProducts';
 
 const Annonces = () => {
   const { t } = useTranslation();
@@ -34,7 +35,22 @@ const Annonces = () => {
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
   const searchQuery = searchParams.get('search') || '';
 
-  const conditions = ['Excellent', 'Très bon', 'Bon', 'Correct'];
+  // Fetch products from database
+  const { data: allProducts = [], isLoading: productsLoading } = useProducts({
+    category: selectedCategory || undefined,
+    search: searchQuery || undefined,
+  });
+
+  const conditions = ['new', 'used', 'refurbished'];
+
+  const getConditionLabel = (condition: string) => {
+    const labels: Record<string, string> = {
+      'new': t('conditions.new'),
+      'used': t('conditions.used'),
+      'refurbished': t('conditions.refurbished'),
+    };
+    return labels[condition] || condition;
+  };
 
   const getCategoryName = (category: CategoryWithCount) => {
     const categoryMap: Record<string, string> = {
@@ -86,71 +102,52 @@ const Annonces = () => {
 
   // Filter and sort products
   const filteredProducts = useMemo(() => {
-    let result = [...products];
-
-    // Search query filter
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      result = result.filter(p =>
-        p.title.toLowerCase().includes(query) ||
-        p.brand.toLowerCase().includes(query) ||
-        p.model.toLowerCase().includes(query) ||
-        p.description.toLowerCase().includes(query)
-      );
-    }
-
-    // Category filter
-    if (selectedCategory) {
-      const category = categories.find(c => c.slug === selectedCategory);
-      if (category) {
-        result = result.filter(p => p.category === category.name);
-      }
-    }
+    let result = [...allProducts];
 
     // Brand filter
     if (selectedBrands.length > 0) {
-      result = result.filter(p => selectedBrands.includes(p.brand));
+      result = result.filter(p => p.brand && selectedBrands.includes(p.brand));
     }
 
     // Price filter
     if (priceMin) {
-      result = result.filter(p => p.priceTTC >= parseInt(priceMin));
+      result = result.filter(p => Number(p.price) >= parseInt(priceMin));
     }
     if (priceMax) {
-      result = result.filter(p => p.priceTTC <= parseInt(priceMax));
+      result = result.filter(p => Number(p.price) <= parseInt(priceMax));
     }
 
     // Year filter
     if (yearMin) {
-      result = result.filter(p => p.year >= parseInt(yearMin));
+      result = result.filter(p => p.year && p.year >= parseInt(yearMin));
     }
     if (yearMax) {
-      result = result.filter(p => p.year <= parseInt(yearMax));
+      result = result.filter(p => p.year && p.year <= parseInt(yearMax));
     }
 
     // Condition filter
     if (selectedConditions.length > 0) {
-      result = result.filter(p => selectedConditions.includes(p.condition));
+      result = result.filter(p => p.condition && selectedConditions.includes(p.condition));
     }
 
     // Sort
     switch (sortBy) {
       case 'price-asc':
-        result.sort((a, b) => a.priceTTC - b.priceTTC);
+        result.sort((a, b) => Number(a.price) - Number(b.price));
         break;
       case 'price-desc':
-        result.sort((a, b) => b.priceTTC - a.priceTTC);
+        result.sort((a, b) => Number(b.price) - Number(a.price));
         break;
       case 'year-desc':
-        result.sort((a, b) => b.year - a.year);
+        result.sort((a, b) => (b.year || 0) - (a.year || 0));
         break;
       case 'date-desc':
       default:
-        result.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+        result.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
     }
 
     return result;
-  }, [searchQuery, selectedCategory, selectedBrands, priceMin, priceMax, yearMin, yearMax, selectedConditions, sortBy, categories]);
+  }, [allProducts, selectedBrands, priceMin, priceMax, yearMin, yearMax, selectedConditions, sortBy]);
 
   const FiltersContent = () => (
     <div className="space-y-6">
@@ -245,7 +242,7 @@ const Annonces = () => {
                 onCheckedChange={() => toggleCondition(condition)}
               />
               <label htmlFor={`condition-${condition}`} className="text-sm cursor-pointer">
-                {condition}
+                {getConditionLabel(condition)}
               </label>
             </div>
           ))}
@@ -262,6 +259,7 @@ const Annonces = () => {
   );
 
   const selectedCategoryData = categories.find(c => c.slug === selectedCategory);
+  const isLoading = productsLoading || categoriesLoading;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -384,7 +382,13 @@ const Annonces = () => {
               </div>
 
               {/* Products grid/list */}
-              {filteredProducts.length > 0 ? (
+              {isLoading ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {Array.from({ length: 6 }).map((_, i) => (
+                    <Skeleton key={i} className="h-80 rounded-lg" />
+                  ))}
+                </div>
+              ) : filteredProducts.length > 0 ? (
                 <div className={
                   viewMode === 'grid'
                     ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6'

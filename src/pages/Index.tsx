@@ -3,6 +3,8 @@ import Footer from '@/components/layout/Footer';
 import SearchBar from '@/components/home/SearchBar';
 import QuickCategories from '@/components/home/QuickCategories';
 import BrandsMarquee from '@/components/home/BrandsMarquee';
+import FeaturedProducts from '@/components/home/FeaturedProducts';
+import RecentProducts from '@/components/home/RecentProducts';
 import ProductsGrid from '@/components/home/ProductsGrid';
 
 const Index = () => {
@@ -14,34 +16,22 @@ const Index = () => {
       <QuickCategories />
       
       <main className="flex-1">
-        <ProductsGrid 
-          titleKey="home.featuredListings"
-          subtitleKey="home.featuredSubtitle"
-          filterFn={(p) => p.filter(product => product.featured)}
-          limit={4}
-        />
+        <FeaturedProducts />
         
         <div className="bg-card">
-          <ProductsGrid 
-            titleKey="home.recentListings"
-            subtitleKey="home.recentSubtitle"
-            filterFn={(p) => [...p].sort((a, b) => 
-              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-            )}
-            limit={8}
-          />
+          <RecentProducts />
         </div>
 
         <ProductsGrid 
           titleKey="home.tractors"
-          filterFn={(p) => p.filter(product => product.category === 'Tracteurs')}
+          category="tracteurs"
           limit={4}
         />
 
         <div className="bg-card">
           <ProductsGrid 
             titleKey="home.harvestEquipment"
-            filterFn={(p) => p.filter(product => product.category === 'Matériel de récolte')}
+            category="recolte"
             limit={4}
           />
         </div>
