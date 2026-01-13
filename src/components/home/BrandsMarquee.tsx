@@ -9,7 +9,12 @@ import kubota from '@/assets/brands/kubota.png';
 import mccormick from '@/assets/brands/mccormick.jpeg';
 import sonalika from '@/assets/brands/sonalika.jpeg';
 
-const brands = [
+interface Brand {
+  name: string;
+  logo: string;
+}
+
+const brands: Brand[] = [
   { name: 'John Deere', logo: johnDeere },
   { name: 'Fendt', logo: fendt },
   { name: 'Massey Ferguson', logo: masseyFerguson },
@@ -23,26 +28,15 @@ const brands = [
 ];
 
 const BrandsMarquee = () => {
+  // Double the brands array for seamless infinite scroll
+  const allBrands = [...brands, ...brands];
+
   return (
     <div className="bg-card border-y border-border overflow-hidden py-4">
-      <div className="flex animate-marquee whitespace-nowrap">
-        {/* First set of logos */}
-        {brands.map((brand, index) => (
+      <div className="flex animate-marquee">
+        {allBrands.map((brand, index) => (
           <div
-            key={`first-${index}`}
-            className="flex items-center justify-center mx-8 flex-shrink-0"
-          >
-            <img
-              src={brand.logo}
-              alt={brand.name}
-              className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-            />
-          </div>
-        ))}
-        {/* Duplicate set for seamless loop */}
-        {brands.map((brand, index) => (
-          <div
-            key={`second-${index}`}
+            key={`brand-${index}`}
             className="flex items-center justify-center mx-8 flex-shrink-0"
           >
             <img
