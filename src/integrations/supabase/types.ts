@@ -67,6 +67,7 @@ export type Database = {
           created_by: string | null
           department: string | null
           description: string | null
+          description_translations: Json | null
           featured: boolean | null
           hours: number | null
           id: string
@@ -82,6 +83,7 @@ export type Database = {
           status: string | null
           subcategory: string | null
           title: string
+          title_translations: Json | null
           updated_at: string
           year: number | null
         }
@@ -93,6 +95,7 @@ export type Database = {
           created_by?: string | null
           department?: string | null
           description?: string | null
+          description_translations?: Json | null
           featured?: boolean | null
           hours?: number | null
           id?: string
@@ -108,6 +111,7 @@ export type Database = {
           status?: string | null
           subcategory?: string | null
           title: string
+          title_translations?: Json | null
           updated_at?: string
           year?: number | null
         }
@@ -119,6 +123,7 @@ export type Database = {
           created_by?: string | null
           department?: string | null
           description?: string | null
+          description_translations?: Json | null
           featured?: boolean | null
           hours?: number | null
           id?: string
@@ -134,6 +139,7 @@ export type Database = {
           status?: string | null
           subcategory?: string | null
           title?: string
+          title_translations?: Json | null
           updated_at?: string
           year?: number | null
         }
