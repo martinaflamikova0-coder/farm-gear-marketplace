@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import SEOHead from '@/components/SEOHead';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, Users, Truck, Award } from 'lucide-react';
 
@@ -16,6 +17,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead titleKey="seo.about.title" descriptionKey="seo.about.description" />
       <Header />
       <main className="flex-1 bg-background">
         <div className="container-custom py-12">

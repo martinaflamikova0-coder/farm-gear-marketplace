@@ -142,10 +142,48 @@
     "cookies": "Cookies",
     "rights": "All rights reserved"
   },
-  "errors": {
+"errors": {
     "notFound": "Page not found",
     "notFoundDesc": "The page you are looking for does not exist.",
     "backHome": "Back to home"
+  },
+  "seo": {
+    "home": {
+      "title": "Used Agricultural Equipment Marketplace",
+      "description": "EquipTrade - Buy and sell used agricultural and industrial equipment. Thousands of tractors, harvesters, and machinery from verified professional sellers."
+    },
+    "about": {
+      "title": "About Us",
+      "description": "Discover EquipTrade, the leading marketplace for used agricultural equipment in Europe. Our mission, values, and community of over 5,000 professionals."
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "description": "Learn how to buy or sell agricultural equipment on EquipTrade. Simple 4-step process: search, contact, negotiate, and finalize your transaction."
+    },
+    "faq": {
+      "title": "FAQ - Frequently Asked Questions",
+      "description": "Find answers to your questions about EquipTrade. How to post a listing, contact sellers, payment methods, warranties, and more."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Contact the EquipTrade team. We're here to answer your questions and help you with your agricultural equipment purchases or sales."
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "description": "Read EquipTrade's terms of use. Platform access conditions, user rights and obligations, listing rules, and responsibilities."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "Learn about how EquipTrade collects, uses, and protects your personal data. Your GDPR rights and our data security practices."
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "description": "Manage your cookie preferences on EquipTrade. Learn about the types of cookies we use and how to control them."
+    },
+    "listings": {
+      "title": "All Listings",
+      "description": "Browse all agricultural equipment listings on EquipTrade. Tractors, harvesters, tillage equipment, and more from verified sellers."
+    }
   },
   "pages": {
     "about": {

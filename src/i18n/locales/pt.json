@@ -119,10 +119,48 @@
     "cookies": "Cookies",
     "rights": "Todos os direitos reservados"
   },
-  "errors": {
+"errors": {
     "notFound": "Página não encontrada",
     "notFoundDesc": "A página que procura não existe.",
     "backHome": "Voltar ao início"
+  },
+  "seo": {
+    "home": {
+      "title": "Marketplace de Máquinas Agrícolas Usadas",
+      "description": "EquipTrade - Compre e venda máquinas agrícolas e industriais usadas. Milhares de tratores, ceifeiras e máquinas de vendedores profissionais verificados."
+    },
+    "about": {
+      "title": "Sobre Nós",
+      "description": "Descubra a EquipTrade, o marketplace líder de máquinas agrícolas usadas na Europa. A nossa missão, valores e comunidade de mais de 5.000 profissionais."
+    },
+    "howItWorks": {
+      "title": "Como Funciona",
+      "description": "Saiba como comprar ou vender máquinas agrícolas na EquipTrade. Processo simples de 4 passos: pesquise, contacte, negoceie e finalize."
+    },
+    "faq": {
+      "title": "FAQ - Perguntas Frequentes",
+      "description": "Encontre respostas às suas perguntas sobre a EquipTrade. Como publicar anúncios, contactar vendedores, métodos de pagamento, garantias e mais."
+    },
+    "contact": {
+      "title": "Contacte-nos",
+      "description": "Contacte a equipa EquipTrade. Estamos aqui para responder às suas perguntas e ajudar nas suas compras ou vendas de máquinas agrícolas."
+    },
+    "terms": {
+      "title": "Termos de Uso",
+      "description": "Leia os termos de uso da EquipTrade. Condições de acesso, direitos e obrigações dos utilizadores, regras de anúncios e responsabilidades."
+    },
+    "privacy": {
+      "title": "Política de Privacidade",
+      "description": "Saiba como a EquipTrade recolhe, utiliza e protege os seus dados pessoais. Os seus direitos RGPD e as nossas práticas de segurança."
+    },
+    "cookies": {
+      "title": "Política de Cookies",
+      "description": "Gerencie as suas preferências de cookies na EquipTrade. Conheça os tipos de cookies que usamos e como controlá-los."
+    },
+    "listings": {
+      "title": "Todos os Anúncios",
+      "description": "Navegue por todos os anúncios de máquinas agrícolas na EquipTrade. Tratores, ceifeiras, equipamentos de preparação do solo e mais."
+    }
   },
   "pages": {
     "about": {

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import SEOHead from '@/components/SEOHead';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
@@ -25,6 +26,7 @@ const Cookies = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead titleKey="seo.cookies.title" descriptionKey="seo.cookies.description" />
       <Header />
       <main className="flex-1 bg-background">
         <div className="container-custom py-12">

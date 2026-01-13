@@ -119,10 +119,48 @@
     "cookies": "Cookies",
     "rights": "Alle Rechte vorbehalten"
   },
-  "errors": {
+"errors": {
     "notFound": "Seite nicht gefunden",
     "notFoundDesc": "Die gesuchte Seite existiert nicht.",
     "backHome": "Zurück zur Startseite"
+  },
+  "seo": {
+    "home": {
+      "title": "Marktplatz für Gebrauchte Landmaschinen",
+      "description": "EquipTrade - Kaufen und verkaufen Sie gebrauchte Land- und Industriemaschinen. Tausende Traktoren, Mähdrescher und Maschinen von verifizierten professionellen Verkäufern."
+    },
+    "about": {
+      "title": "Über Uns",
+      "description": "Entdecken Sie EquipTrade, den führenden Marktplatz für gebrauchte Landmaschinen in Europa. Unsere Mission, Werte und Gemeinschaft von über 5.000 Fachleuten."
+    },
+    "howItWorks": {
+      "title": "So Funktioniert Es",
+      "description": "Erfahren Sie, wie Sie auf EquipTrade Landmaschinen kaufen oder verkaufen. Einfacher 4-Schritte-Prozess: Suchen, Kontaktieren, Verhandeln und Abschließen."
+    },
+    "faq": {
+      "title": "FAQ - Häufig Gestellte Fragen",
+      "description": "Finden Sie Antworten auf Ihre Fragen zu EquipTrade. Anzeigen veröffentlichen, Verkäufer kontaktieren, Zahlungsmethoden, Garantien und mehr."
+    },
+    "contact": {
+      "title": "Kontaktieren Sie Uns",
+      "description": "Kontaktieren Sie das EquipTrade-Team. Wir beantworten Ihre Fragen und helfen bei Ihren Landmaschinen-Käufen oder -Verkäufen."
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen",
+      "description": "Lesen Sie die Nutzungsbedingungen von EquipTrade. Plattformzugang, Benutzerrechte und -pflichten, Anzeigenregeln und Verantwortlichkeiten."
+    },
+    "privacy": {
+      "title": "Datenschutzrichtlinie",
+      "description": "Erfahren Sie, wie EquipTrade Ihre persönlichen Daten sammelt, nutzt und schützt. Ihre DSGVO-Rechte und unsere Datensicherheitspraktiken."
+    },
+    "cookies": {
+      "title": "Cookie-Richtlinie",
+      "description": "Verwalten Sie Ihre Cookie-Einstellungen auf EquipTrade. Erfahren Sie mehr über verwendete Cookie-Typen und deren Kontrolle."
+    },
+    "listings": {
+      "title": "Alle Anzeigen",
+      "description": "Durchsuchen Sie alle Landmaschinen-Anzeigen auf EquipTrade. Traktoren, Mähdrescher, Bodenbearbeitungsgeräte und mehr von verifizierten Verkäufern."
+    }
   },
   "pages": {
     "about": {
