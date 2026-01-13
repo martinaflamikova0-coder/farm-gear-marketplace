@@ -2,14 +2,14 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SearchBar from '@/components/home/SearchBar';
 import QuickCategories from '@/components/home/QuickCategories';
-import StatsBar from '@/components/home/StatsBar';
+import BrandsMarquee from '@/components/home/BrandsMarquee';
 import ProductsGrid from '@/components/home/ProductsGrid';
 
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col bg-secondary/30">
       <Header />
-      <StatsBar />
+      <BrandsMarquee />
       <SearchBar />
       <QuickCategories />
       
