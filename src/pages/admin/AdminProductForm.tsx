@@ -19,6 +19,7 @@ import { ArrowLeft, Save } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
 import { categories, brands } from '@/data/products';
+import ImageUploader from '@/components/admin/ImageUploader';
 
 const productSchema = z.object({
   title: z.string().trim().min(3, 'Le titre doit contenir au moins 3 caractères').max(200, 'Titre trop long'),
@@ -40,6 +41,7 @@ const productSchema = z.object({
   seller_phone: z.string().max(20, 'Numéro trop long').optional(),
   seller_email: z.string().email('Email invalide').max(255, 'Email trop long').optional().or(z.literal('')),
   featured: z.boolean(),
+  images: z.array(z.string()).default([]),
 });
 
 type ProductFormData = z.infer<typeof productSchema>;
@@ -64,6 +66,7 @@ const defaultFormData: ProductFormData = {
   seller_phone: '',
   seller_email: '',
   featured: false,
+  images: [],
 };
 
 const AdminProductForm = () => {
@@ -115,6 +118,7 @@ const AdminProductForm = () => {
           seller_phone: data.seller_phone || '',
           seller_email: data.seller_email || '',
           featured: data.featured || false,
+          images: data.images || [],
         });
       }
     } catch (error) {
@@ -182,6 +186,7 @@ const AdminProductForm = () => {
         seller_email: validation.data.seller_email || null,
         featured: validation.data.featured,
         status: validation.data.status,
+        images: validation.data.images,
         created_by: user?.id,
       };
 
@@ -451,6 +456,21 @@ const AdminProductForm = () => {
                   />
                 </div>
               </div>
+            </CardContent>
+          </Card>
+
+          {/* Images */}
+          <Card className="lg:col-span-2">
+            <CardHeader>
+              <CardTitle>Photos du produit</CardTitle>
+              <CardDescription>Ajoutez jusqu'à 10 photos. La première image sera l'image principale.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ImageUploader
+                images={formData.images}
+                onImagesChange={(images) => handleChange('images', images)}
+                maxImages={10}
+              />
             </CardContent>
           </Card>
 
