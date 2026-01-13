@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
-import { ArrowLeft, Save } from 'lucide-react';
+import { ArrowLeft, Save, Languages, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
 import { brands } from '@/data/products';
@@ -81,6 +81,7 @@ const AdminProductForm = () => {
   const [formData, setFormData] = useState<ProductFormData>(defaultFormData);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
+  const [isTranslating, setIsTranslating] = useState(false);
   const [isFetching, setIsFetching] = useState(!!id);
 
   const isEditing = !!id;
@@ -218,6 +219,8 @@ const AdminProductForm = () => {
         created_by: user?.id,
       };
 
+      let productId = id;
+
       if (isEditing) {
         const { error } = await supabase
           .from('products')
@@ -225,22 +228,56 @@ const AdminProductForm = () => {
           .eq('id', id as string);
 
         if (error) throw error;
-
-        toast({
-          title: 'Succès',
-          description: 'Produit mis à jour avec succès',
-        });
       } else {
-        const { error } = await supabase
+        const { data: newProduct, error } = await supabase
           .from('products')
-          .insert([productData]);
+          .insert([productData])
+          .select('id')
+          .single();
 
         if (error) throw error;
+        productId = newProduct.id;
+      }
 
-        toast({
-          title: 'Succès',
-          description: 'Produit créé avec succès',
-        });
+      // Trigger automatic translation
+      if (productId) {
+        setIsTranslating(true);
+        try {
+          const { error: translateError } = await supabase.functions.invoke('translate-product', {
+            body: {
+              productId,
+              title: validation.data.title,
+              description: validation.data.description || '',
+              sourceLang: 'fr',
+            },
+          });
+
+          if (translateError) {
+            console.error('Translation error:', translateError);
+            toast({
+              title: 'Avertissement',
+              description: 'Produit sauvegardé, mais la traduction automatique a échoué. Vous pouvez réessayer plus tard.',
+              variant: 'default',
+            });
+          } else {
+            toast({
+              title: 'Succès',
+              description: isEditing 
+                ? 'Produit mis à jour et traduit avec succès' 
+                : 'Produit créé et traduit avec succès',
+            });
+          }
+        } catch (translateErr) {
+          console.error('Translation error:', translateErr);
+          toast({
+            title: 'Succès',
+            description: isEditing 
+              ? 'Produit mis à jour (traduction en cours...)' 
+              : 'Produit créé (traduction en cours...)',
+          });
+        } finally {
+          setIsTranslating(false);
+        }
       }
 
       navigate('/admin/products');
@@ -253,6 +290,39 @@ const AdminProductForm = () => {
       });
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  // Manual translation trigger for existing products
+  const handleManualTranslate = async () => {
+    if (!id) return;
+    
+    setIsTranslating(true);
+    try {
+      const { error } = await supabase.functions.invoke('translate-product', {
+        body: {
+          productId: id,
+          title: formData.title,
+          description: formData.description || '',
+          sourceLang: 'fr',
+        },
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: 'Succès',
+        description: 'Traductions générées avec succès',
+      });
+    } catch (err: any) {
+      console.error('Translation error:', err);
+      toast({
+        title: 'Erreur',
+        description: err.message || 'Impossible de générer les traductions',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsTranslating(false);
     }
   };
 
@@ -596,9 +666,24 @@ const AdminProductForm = () => {
           <Button type="button" variant="outline" onClick={() => navigate('/admin/products')}>
             Annuler
           </Button>
-          <Button type="submit" disabled={isLoading}>
+          {isEditing && (
+            <Button 
+              type="button" 
+              variant="outline" 
+              onClick={handleManualTranslate}
+              disabled={isTranslating || isLoading}
+            >
+              {isTranslating ? (
+                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+              ) : (
+                <Languages className="h-4 w-4 mr-2" />
+              )}
+              {isTranslating ? 'Traduction...' : 'Régénérer les traductions'}
+            </Button>
+          )}
+          <Button type="submit" disabled={isLoading || isTranslating}>
             <Save className="h-4 w-4 mr-2" />
-            {isLoading ? 'Enregistrement...' : isEditing ? 'Mettre à jour' : 'Créer le produit'}
+            {isLoading ? 'Enregistrement...' : isTranslating ? 'Traduction...' : isEditing ? 'Mettre à jour' : 'Créer le produit'}
           </Button>
         </div>
       </form>

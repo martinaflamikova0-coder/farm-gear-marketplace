@@ -12,6 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useProductById, useRecentProducts } from '@/hooks/useProducts';
+import { useTranslatedProduct } from '@/hooks/useTranslatedProduct';
 import ProductCard from '@/components/products/ProductCard';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 
@@ -23,6 +24,9 @@ const AnnonceDetail = () => {
   
   const { data: product, isLoading } = useProductById(id);
   const { data: recentProducts = [] } = useRecentProducts(4);
+  
+  // Get translated content
+  const { title: translatedTitle, description: translatedDescription } = useTranslatedProduct(product || null);
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [formData, setFormData] = useState({
@@ -160,7 +164,7 @@ const AnnonceDetail = () => {
                 <div className="relative aspect-[16/10] bg-muted">
                   <img
                     src={images[currentImageIndex] || '/placeholder.svg'}
-                    alt={product.title}
+                    alt={translatedTitle}
                     className="w-full h-full object-cover"
                   />
                   {images.length > 1 && (
@@ -218,7 +222,7 @@ const AnnonceDetail = () => {
                   {product.category} • {product.subcategory}
                 </p>
                 <h1 className="font-display text-2xl font-bold text-foreground mb-2">
-                  {product.title}
+                  {translatedTitle}
                 </h1>
                 <div className="flex items-end gap-2 mb-4">
                   <span className="text-3xl font-display font-bold text-primary">
@@ -237,7 +241,7 @@ const AnnonceDetail = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-foreground leading-relaxed whitespace-pre-line">
-                    {product.description}
+                    {translatedDescription}
                   </p>
                 </CardContent>
               </Card>
@@ -269,7 +273,7 @@ const AnnonceDetail = () => {
                     {product.category} • {product.subcategory}
                   </p>
                   <h1 className="font-display text-2xl font-bold text-foreground mb-4">
-                    {product.title}
+                    {translatedTitle}
                   </h1>
                   
                   <div className="space-y-1 mb-6">

@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import type { ProductWithSeller } from '@/hooks/useProducts';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
+import { getTranslatedTitle, getTranslatedDescription } from '@/hooks/useTranslatedProduct';
 
 interface ProductCardProps {
   product: ProductWithSeller;
@@ -15,6 +16,10 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   const { t, i18n } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
+  
+  // Get translated content
+  const translatedTitle = getTranslatedTitle(product, currentLang);
+  const translatedDescription = getTranslatedDescription(product, currentLang);
 
   const formatPrice = (price: number) => {
     const locale = currentLang === 'en' ? 'en-GB' : 
@@ -69,7 +74,7 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
             <div className="relative w-full sm:w-64 h-48 sm:h-auto flex-shrink-0 overflow-hidden">
               <img
                 src={imageUrl}
-                alt={product.title}
+                alt={translatedTitle}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
               />
@@ -91,10 +96,10 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                     {product.category} • {product.brand}
                   </p>
                   <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                    {product.title}
+                    {translatedTitle}
                   </h3>
                   <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
-                    {product.description}
+                    {translatedDescription}
                   </p>
                   
                   <div className="flex flex-wrap gap-3 mt-3 text-xs text-muted-foreground">
@@ -145,7 +150,7 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
         <div className="relative aspect-[4/3] overflow-hidden">
           <img
             src={imageUrl}
-            alt={product.title}
+            alt={translatedTitle}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
@@ -165,7 +170,7 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
             {product.category} • {product.brand}
           </p>
           <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 min-h-[2.5rem]">
-            {product.title}
+            {translatedTitle}
           </h3>
           
           <div className="flex flex-wrap gap-2 mt-2 text-xs text-muted-foreground">
