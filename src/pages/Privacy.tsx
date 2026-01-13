@@ -1,7 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
 const Privacy = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -9,62 +12,45 @@ const Privacy = () => {
         <div className="container-custom py-12">
           <div className="max-w-4xl mx-auto prose prose-lg">
             <h1 className="font-display text-4xl font-bold text-foreground mb-8">
-              Politique de Confidentialité
+              {t('pages.privacy.title')}
             </h1>
             
-            <p className="text-muted-foreground">Dernière mise à jour : Janvier 2026</p>
+            <p className="text-muted-foreground">{t('pages.privacy.lastUpdate')}</p>
 
-            <h2 className="font-display text-2xl font-semibold text-foreground mt-8">1. Collecte des données</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Nous collectons les données que vous nous fournissez lors de la création de votre compte 
-              (nom, email, téléphone) ainsi que les données relatives à vos annonces et à votre 
-              utilisation de la plateforme.
-            </p>
+            <h2 className="font-display text-2xl font-semibold text-foreground mt-8">{t('pages.privacy.section1Title')}</h2>
+            <p className="text-muted-foreground leading-relaxed">{t('pages.privacy.section1Content')}</p>
 
-            <h2 className="font-display text-2xl font-semibold text-foreground mt-8">2. Utilisation des données</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Vos données sont utilisées pour :
-            </p>
+            <h2 className="font-display text-2xl font-semibold text-foreground mt-8">{t('pages.privacy.section2Title')}</h2>
+            <p className="text-muted-foreground leading-relaxed">{t('pages.privacy.section2Content')}</p>
             <ul className="text-muted-foreground space-y-2">
-              <li>Gérer votre compte et vos annonces</li>
-              <li>Permettre la mise en relation entre acheteurs et vendeurs</li>
-              <li>Améliorer nos services</li>
-              <li>Vous envoyer des communications relatives à votre compte</li>
+              <li>{t('pages.privacy.usage1')}</li>
+              <li>{t('pages.privacy.usage2')}</li>
+              <li>{t('pages.privacy.usage3')}</li>
+              <li>{t('pages.privacy.usage4')}</li>
             </ul>
 
-            <h2 className="font-display text-2xl font-semibold text-foreground mt-8">3. Partage des données</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Vos coordonnées de contact (téléphone, email) ne sont visibles que par les utilisateurs 
-              qui souhaitent vous contacter via une annonce. Nous ne vendons jamais vos données à des tiers.
-            </p>
+            <h2 className="font-display text-2xl font-semibold text-foreground mt-8">{t('pages.privacy.section3Title')}</h2>
+            <p className="text-muted-foreground leading-relaxed">{t('pages.privacy.section3Content')}</p>
 
-            <h2 className="font-display text-2xl font-semibold text-foreground mt-8">4. Sécurité</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Nous mettons en œuvre des mesures techniques et organisationnelles pour protéger vos 
-              données contre tout accès non autorisé, modification ou destruction.
-            </p>
+            <h2 className="font-display text-2xl font-semibold text-foreground mt-8">{t('pages.privacy.section4Title')}</h2>
+            <p className="text-muted-foreground leading-relaxed">{t('pages.privacy.section4Content')}</p>
 
-            <h2 className="font-display text-2xl font-semibold text-foreground mt-8">5. Vos droits</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Conformément au RGPD, vous disposez des droits suivants :
-            </p>
+            <h2 className="font-display text-2xl font-semibold text-foreground mt-8">{t('pages.privacy.section5Title')}</h2>
+            <p className="text-muted-foreground leading-relaxed">{t('pages.privacy.section5Content')}</p>
             <ul className="text-muted-foreground space-y-2">
-              <li>Droit d'accès à vos données</li>
-              <li>Droit de rectification</li>
-              <li>Droit à l'effacement</li>
-              <li>Droit à la portabilité</li>
-              <li>Droit d'opposition</li>
+              <li>{t('pages.privacy.right1')}</li>
+              <li>{t('pages.privacy.right2')}</li>
+              <li>{t('pages.privacy.right3')}</li>
+              <li>{t('pages.privacy.right4')}</li>
+              <li>{t('pages.privacy.right5')}</li>
             </ul>
 
-            <h2 className="font-display text-2xl font-semibold text-foreground mt-8">6. Conservation</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Vos données sont conservées pendant la durée de votre inscription et jusqu'à 3 ans 
-              après la suppression de votre compte, conformément à nos obligations légales.
-            </p>
+            <h2 className="font-display text-2xl font-semibold text-foreground mt-8">{t('pages.privacy.section6Title')}</h2>
+            <p className="text-muted-foreground leading-relaxed">{t('pages.privacy.section6Content')}</p>
 
-            <h2 className="font-display text-2xl font-semibold text-foreground mt-8">7. Contact</h2>
+            <h2 className="font-display text-2xl font-semibold text-foreground mt-8">{t('pages.privacy.section7Title')}</h2>
             <p className="text-muted-foreground leading-relaxed">
-              Pour exercer vos droits ou pour toute question, contactez notre DPO à : 
+              {t('pages.privacy.section7Content')}
               <a href="mailto:privacy@equiptrade.com" className="text-primary hover:underline ml-1">
                 privacy@equiptrade.com
               </a>
