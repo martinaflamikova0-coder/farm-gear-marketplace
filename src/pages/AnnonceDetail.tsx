@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ArrowLeft, MapPin, Clock, Calendar, Phone, Mail, Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -141,8 +142,19 @@ const AnnonceDetail = () => {
     { label: 'Département', value: product.department },
   ].filter(spec => spec.value);
 
+  // Get first image for OG meta
+  const ogImage = images[0] || '/placeholder.svg';
+
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        titleKey="seo.listingDetail.title" 
+        descriptionKey="seo.listingDetail.description"
+        dynamicTitle={translatedTitle}
+        dynamicDescription={translatedDescription?.substring(0, 160) || undefined}
+        ogImage={ogImage}
+        pageType="product"
+      />
       <Header />
       <main className="flex-1 bg-background">
         <div className="container-custom py-8">

@@ -160,6 +160,14 @@
     "listings": {
       "title": "Todos los Anuncios",
       "description": "Explore todos los anuncios de maquinaria agrícola en EquipTrade. Tractores, cosechadoras, equipos de labranza y más de vendedores verificados."
+    },
+    "listingDetail": {
+      "title": "Maquinaria Agrícola en Venta",
+      "description": "Vea información detallada sobre este anuncio de maquinaria agrícola en EquipTrade. Contacte directamente al vendedor para más información."
+    },
+    "home": {
+      "title": "Marketplace de Maquinaria Agrícola de Segunda Mano",
+      "description": "EquipTrade - Compre y venda maquinaria agrícola e industrial usada. Miles de tractores, cosechadoras y máquinas de vendedores profesionales verificados."
     }
   },
   "pages": {

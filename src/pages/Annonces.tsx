@@ -5,6 +5,7 @@ import { Filter, Grid, List, X } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ProductCard from '@/components/products/ProductCard';
+import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -263,6 +264,10 @@ const Annonces = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        titleKey="seo.listings.title" 
+        descriptionKey="seo.listings.description" 
+      />
       <Header />
       <main className="flex-1 bg-background">
         <div className="container-custom py-8">

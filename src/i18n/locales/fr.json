@@ -183,6 +183,10 @@
     "listings": {
       "title": "Toutes les Annonces",
       "description": "Parcourez toutes les annonces de matériel agricole sur EquipTrade. Tracteurs, moissonneuses, matériel de travail du sol et plus de vendeurs vérifiés."
+    },
+    "listingDetail": {
+      "title": "Matériel Agricole à Vendre",
+      "description": "Consultez les détails de cette annonce de matériel agricole sur EquipTrade. Contactez directement le vendeur pour plus d'informations."
     }
   },
   "pages": {

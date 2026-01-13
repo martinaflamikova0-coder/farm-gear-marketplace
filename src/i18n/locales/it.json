@@ -160,6 +160,14 @@
     "listings": {
       "title": "Tutti gli Annunci",
       "description": "Sfoglia tutti gli annunci di macchine agricole su EquipTrade. Trattori, mietitrebbie, attrezzature per la lavorazione del terreno e altro."
+    },
+    "listingDetail": {
+      "title": "Macchina Agricola in Vendita",
+      "description": "Visualizza informazioni dettagliate su questo annuncio di macchine agricole su EquipTrade. Contatta direttamente il venditore per ulteriori informazioni."
+    },
+    "home": {
+      "title": "Marketplace di Macchine Agricole Usate",
+      "description": "EquipTrade - Acquista e vendi macchine agricole e industriali usate. Migliaia di trattori, mietitrebbie e macchinari da venditori professionali verificati."
     }
   },
   "pages": {
