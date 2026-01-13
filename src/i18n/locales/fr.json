@@ -1,0 +1,136 @@
+{
+  "common": {
+    "search": "Rechercher",
+    "searchPlaceholder": "Rechercher un tracteur, une marque, un modèle...",
+    "allCategories": "Toutes les catégories",
+    "viewAll": "Voir tout",
+    "contact": "Contact",
+    "phone": "Téléphone",
+    "email": "Email",
+    "share": "Partager",
+    "loading": "Chargement...",
+    "noResults": "Aucun résultat trouvé",
+    "showMore": "Voir plus",
+    "showLess": "Voir moins"
+  },
+  "nav": {
+    "home": "Accueil",
+    "listings": "Annonces",
+    "categories": "Catégories",
+    "postAd": "Déposer une annonce",
+    "specialist": "Spécialiste du matériel agricole d'occasion"
+  },
+  "home": {
+    "featuredListings": "⭐ Annonces en vedette",
+    "featuredSubtitle": "Nos meilleures opportunités du moment",
+    "recentListings": "🕐 Dernières annonces",
+    "recentSubtitle": "Les plus récentes",
+    "tractors": "🚜 Tracteurs",
+    "harvestEquipment": "🌾 Matériel de récolte"
+  },
+  "stats": {
+    "listings": "annonces",
+    "sellers": "vendeurs",
+    "departments": "départements"
+  },
+  "categories": {
+    "tractors": "Tracteurs",
+    "harvest": "Matériel de récolte",
+    "tillage": "Travail du sol",
+    "livestock": "Matériel d'élevage",
+    "handling": "Manutention",
+    "construction": "Matériel de chantier",
+    "parts": "Pièces et accessoires",
+    "other": "Autres matériels"
+  },
+  "filters": {
+    "title": "Filtres",
+    "category": "Catégorie",
+    "brand": "Marque",
+    "allBrands": "Toutes les marques",
+    "priceRange": "Fourchette de prix",
+    "priceMin": "Prix min",
+    "priceMax": "Prix max",
+    "year": "Année",
+    "yearFrom": "De",
+    "yearTo": "À",
+    "condition": "État",
+    "allConditions": "Tous les états",
+    "location": "Localisation",
+    "allLocations": "Toutes les localisations",
+    "reset": "Réinitialiser",
+    "apply": "Appliquer",
+    "advancedFilters": "Filtres avancés"
+  },
+  "conditions": {
+    "excellent": "Excellent",
+    "veryGood": "Très bon",
+    "good": "Bon",
+    "fair": "Correct"
+  },
+  "sort": {
+    "label": "Trier par",
+    "newest": "Plus récent",
+    "oldest": "Plus ancien",
+    "priceLow": "Prix croissant",
+    "priceHigh": "Prix décroissant"
+  },
+  "product": {
+    "priceHT": "HT",
+    "priceTTC": "TTC",
+    "year": "Année",
+    "hours": "Heures",
+    "kilometers": "Kilomètres",
+    "condition": "État",
+    "location": "Localisation",
+    "brand": "Marque",
+    "model": "Modèle",
+    "description": "Description",
+    "specifications": "Caractéristiques",
+    "contactSeller": "Contacter le vendeur",
+    "requestInfo": "Demander des informations",
+    "similarListings": "Annonces similaires",
+    "ref": "Réf"
+  },
+  "contact": {
+    "title": "Contacter le vendeur",
+    "name": "Votre nom",
+    "namePlaceholder": "Entrez votre nom",
+    "email": "Votre email",
+    "emailPlaceholder": "Entrez votre email",
+    "phone": "Votre téléphone",
+    "phonePlaceholder": "Entrez votre numéro",
+    "message": "Votre message",
+    "messagePlaceholder": "Je suis intéressé par ce matériel...",
+    "send": "Envoyer le message",
+    "success": "Message envoyé avec succès !",
+    "error": "Erreur lors de l'envoi"
+  },
+  "footer": {
+    "description": "Votre marketplace de confiance pour le matériel agricole et industriel d'occasion. Trouvez des machines de qualité auprès de vendeurs professionnels vérifiés.",
+    "quickLinks": "Liens rapides",
+    "aboutUs": "À propos",
+    "howItWorks": "Comment ça marche",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "legal": "Informations légales",
+    "terms": "Conditions d'utilisation",
+    "privacy": "Politique de confidentialité",
+    "cookies": "Cookies",
+    "rights": "Tous droits réservés"
+  },
+  "errors": {
+    "notFound": "Page non trouvée",
+    "notFoundDesc": "La page que vous recherchez n'existe pas.",
+    "backHome": "Retour à l'accueil"
+  },
+  "language": {
+    "select": "Langue",
+    "en": "English",
+    "fr": "Français",
+    "de": "Deutsch",
+    "es": "Español",
+    "it": "Italiano",
+    "pt": "Português"
+  }
+}

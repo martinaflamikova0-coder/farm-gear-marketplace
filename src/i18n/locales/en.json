@@ -1,0 +1,136 @@
+{
+  "common": {
+    "search": "Search",
+    "searchPlaceholder": "Search for a tractor, brand, model...",
+    "allCategories": "All categories",
+    "viewAll": "View all",
+    "contact": "Contact",
+    "phone": "Phone",
+    "email": "Email",
+    "share": "Share",
+    "loading": "Loading...",
+    "noResults": "No results found",
+    "showMore": "Show more",
+    "showLess": "Show less"
+  },
+  "nav": {
+    "home": "Home",
+    "listings": "Listings",
+    "categories": "Categories",
+    "postAd": "Post an ad",
+    "specialist": "Specialist in used agricultural equipment"
+  },
+  "home": {
+    "featuredListings": "⭐ Featured listings",
+    "featuredSubtitle": "Our best opportunities of the moment",
+    "recentListings": "🕐 Latest listings",
+    "recentSubtitle": "Most recent",
+    "tractors": "🚜 Tractors",
+    "harvestEquipment": "🌾 Harvest equipment"
+  },
+  "stats": {
+    "listings": "listings",
+    "sellers": "sellers",
+    "departments": "departments"
+  },
+  "categories": {
+    "tractors": "Tractors",
+    "harvest": "Harvest equipment",
+    "tillage": "Tillage equipment",
+    "livestock": "Livestock equipment",
+    "handling": "Handling equipment",
+    "construction": "Construction equipment",
+    "parts": "Parts and accessories",
+    "other": "Other equipment"
+  },
+  "filters": {
+    "title": "Filters",
+    "category": "Category",
+    "brand": "Brand",
+    "allBrands": "All brands",
+    "priceRange": "Price range",
+    "priceMin": "Min price",
+    "priceMax": "Max price",
+    "year": "Year",
+    "yearFrom": "From",
+    "yearTo": "To",
+    "condition": "Condition",
+    "allConditions": "All conditions",
+    "location": "Location",
+    "allLocations": "All locations",
+    "reset": "Reset filters",
+    "apply": "Apply",
+    "advancedFilters": "Advanced filters"
+  },
+  "conditions": {
+    "excellent": "Excellent",
+    "veryGood": "Very good",
+    "good": "Good",
+    "fair": "Fair"
+  },
+  "sort": {
+    "label": "Sort by",
+    "newest": "Newest first",
+    "oldest": "Oldest first",
+    "priceLow": "Price: low to high",
+    "priceHigh": "Price: high to low"
+  },
+  "product": {
+    "priceHT": "excl. VAT",
+    "priceTTC": "incl. VAT",
+    "year": "Year",
+    "hours": "Hours",
+    "kilometers": "Kilometers",
+    "condition": "Condition",
+    "location": "Location",
+    "brand": "Brand",
+    "model": "Model",
+    "description": "Description",
+    "specifications": "Specifications",
+    "contactSeller": "Contact seller",
+    "requestInfo": "Request information",
+    "similarListings": "Similar listings",
+    "ref": "Ref"
+  },
+  "contact": {
+    "title": "Contact the seller",
+    "name": "Your name",
+    "namePlaceholder": "Enter your name",
+    "email": "Your email",
+    "emailPlaceholder": "Enter your email",
+    "phone": "Your phone",
+    "phonePlaceholder": "Enter your phone number",
+    "message": "Your message",
+    "messagePlaceholder": "I am interested in this equipment...",
+    "send": "Send message",
+    "success": "Message sent successfully!",
+    "error": "Error sending message"
+  },
+  "footer": {
+    "description": "Your trusted marketplace for used agricultural and industrial equipment. Find quality machinery from verified professional sellers.",
+    "quickLinks": "Quick Links",
+    "aboutUs": "About us",
+    "howItWorks": "How it works",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "legal": "Legal",
+    "terms": "Terms of use",
+    "privacy": "Privacy policy",
+    "cookies": "Cookies",
+    "rights": "All rights reserved"
+  },
+  "errors": {
+    "notFound": "Page not found",
+    "notFoundDesc": "The page you are looking for does not exist.",
+    "backHome": "Back to home"
+  },
+  "language": {
+    "select": "Language",
+    "en": "English",
+    "fr": "Français",
+    "de": "Deutsch",
+    "es": "Español",
+    "it": "Italiano",
+    "pt": "Português"
+  }
+}

@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { MapPin, Clock, Calendar } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import type { Product } from '@/data/products';
+import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 
 interface ProductCardProps {
   product: Product;
@@ -10,12 +12,40 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
+  const { t, i18n } = useTranslation();
+  const { lang } = useParams<{ lang: string }>();
+  const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
+
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('fr-FR', {
+    const locale = currentLang === 'en' ? 'en-GB' : 
+                   currentLang === 'de' ? 'de-DE' : 
+                   currentLang === 'es' ? 'es-ES' :
+                   currentLang === 'it' ? 'it-IT' :
+                   currentLang === 'pt' ? 'pt-PT' : 'fr-FR';
+    return new Intl.NumberFormat(locale, {
       style: 'currency',
       currency: 'EUR',
       maximumFractionDigits: 0,
     }).format(price);
+  };
+
+  const formatNumber = (num: number) => {
+    const locale = currentLang === 'en' ? 'en-GB' : 
+                   currentLang === 'de' ? 'de-DE' : 
+                   currentLang === 'es' ? 'es-ES' :
+                   currentLang === 'it' ? 'it-IT' :
+                   currentLang === 'pt' ? 'pt-PT' : 'fr-FR';
+    return num.toLocaleString(locale);
+  };
+
+  const getConditionTranslation = (condition: string) => {
+    const conditionMap: Record<string, string> = {
+      'Excellent': t('conditions.excellent'),
+      'Très bon': t('conditions.veryGood'),
+      'Bon': t('conditions.good'),
+      'Correct': t('conditions.fair')
+    };
+    return conditionMap[condition] || condition;
   };
 
   const conditionColors = {
@@ -25,9 +55,12 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
     'Correct': 'bg-muted text-muted-foreground',
   };
 
+  const detailSlug = getLocalizedSlug('listing', currentLang);
+  const productLink = `/${currentLang}/${detailSlug}/${product.id}`;
+
   if (variant === 'horizontal') {
     return (
-      <Link to={`/annonce/${product.id}`}>
+      <Link to={productLink}>
         <Card className="hover-lift overflow-hidden border-border group">
           <div className="flex flex-col sm:flex-row">
             <div className="relative w-full sm:w-64 h-48 sm:h-auto flex-shrink-0 overflow-hidden">
@@ -35,13 +68,14 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                 src={product.images[0]}
                 alt={product.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
               />
               <Badge className={`absolute top-2 left-2 ${conditionColors[product.condition]}`}>
-                {product.condition}
+                {getConditionTranslation(product.condition)}
               </Badge>
               {product.featured && (
                 <Badge className="absolute top-2 right-2 bg-accent text-accent-foreground">
-                  ⭐ Vedette
+                  ⭐
                 </Badge>
               )}
             </div>
@@ -66,7 +100,7 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                     {product.hours && (
                       <span className="flex items-center gap-1">
                         <Clock className="h-3 w-3" />
-                        {product.hours.toLocaleString('fr-FR')} h
+                        {formatNumber(product.hours)} h
                       </span>
                     )}
                     <span className="flex items-center gap-1">
@@ -83,12 +117,9 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                         {formatPrice(product.priceTTC)}
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        {formatPrice(product.priceHT)} HT
+                        {formatPrice(product.priceHT)} {t('product.priceHT')}
                       </p>
                     </div>
-                    <span className="text-sm font-medium text-primary">
-                      Voir l'annonce →
-                    </span>
                   </div>
                 </div>
               </div>
@@ -100,20 +131,21 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   }
 
   return (
-    <Link to={`/annonce/${product.id}`}>
+    <Link to={productLink}>
       <Card className="hover-lift overflow-hidden border-border group h-full">
         <div className="relative aspect-[4/3] overflow-hidden">
           <img
             src={product.images[0]}
             alt={product.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
           />
           <Badge className={`absolute top-2 left-2 ${conditionColors[product.condition]}`}>
-            {product.condition}
+            {getConditionTranslation(product.condition)}
           </Badge>
           {product.featured && (
             <Badge className="absolute top-2 right-2 bg-accent text-accent-foreground">
-              ⭐ Vedette
+              ⭐
             </Badge>
           )}
         </div>
@@ -133,7 +165,7 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
             {product.hours && (
               <span className="flex items-center gap-1">
                 <Clock className="h-3 w-3" />
-                {product.hours.toLocaleString('fr-FR')} h
+                {formatNumber(product.hours)} h
               </span>
             )}
           </div>
@@ -148,7 +180,7 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
               {formatPrice(product.priceTTC)}
             </p>
             <p className="text-xs text-muted-foreground">
-              {formatPrice(product.priceHT)} HT
+              {formatPrice(product.priceHT)} {t('product.priceHT')}
             </p>
           </div>
         </CardContent>

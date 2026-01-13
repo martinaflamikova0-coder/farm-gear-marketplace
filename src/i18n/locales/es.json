@@ -1,0 +1,136 @@
+{
+  "common": {
+    "search": "Buscar",
+    "searchPlaceholder": "Buscar un tractor, marca, modelo...",
+    "allCategories": "Todas las categorías",
+    "viewAll": "Ver todo",
+    "contact": "Contacto",
+    "phone": "Teléfono",
+    "email": "Email",
+    "share": "Compartir",
+    "loading": "Cargando...",
+    "noResults": "No se encontraron resultados",
+    "showMore": "Ver más",
+    "showLess": "Ver menos"
+  },
+  "nav": {
+    "home": "Inicio",
+    "listings": "Anuncios",
+    "categories": "Categorías",
+    "postAd": "Publicar anuncio",
+    "specialist": "Especialista en maquinaria agrícola usada"
+  },
+  "home": {
+    "featuredListings": "⭐ Anuncios destacados",
+    "featuredSubtitle": "Nuestras mejores oportunidades",
+    "recentListings": "🕐 Últimos anuncios",
+    "recentSubtitle": "Los más recientes",
+    "tractors": "🚜 Tractores",
+    "harvestEquipment": "🌾 Equipos de cosecha"
+  },
+  "stats": {
+    "listings": "anuncios",
+    "sellers": "vendedores",
+    "departments": "regiones"
+  },
+  "categories": {
+    "tractors": "Tractores",
+    "harvest": "Equipos de cosecha",
+    "tillage": "Laboreo del suelo",
+    "livestock": "Equipos ganaderos",
+    "handling": "Manipulación",
+    "construction": "Maquinaria de construcción",
+    "parts": "Piezas y accesorios",
+    "other": "Otros equipos"
+  },
+  "filters": {
+    "title": "Filtros",
+    "category": "Categoría",
+    "brand": "Marca",
+    "allBrands": "Todas las marcas",
+    "priceRange": "Rango de precio",
+    "priceMin": "Precio mín",
+    "priceMax": "Precio máx",
+    "year": "Año",
+    "yearFrom": "Desde",
+    "yearTo": "Hasta",
+    "condition": "Estado",
+    "allConditions": "Todos los estados",
+    "location": "Ubicación",
+    "allLocations": "Todas las ubicaciones",
+    "reset": "Restablecer",
+    "apply": "Aplicar",
+    "advancedFilters": "Filtros avanzados"
+  },
+  "conditions": {
+    "excellent": "Excelente",
+    "veryGood": "Muy bueno",
+    "good": "Bueno",
+    "fair": "Aceptable"
+  },
+  "sort": {
+    "label": "Ordenar por",
+    "newest": "Más reciente",
+    "oldest": "Más antiguo",
+    "priceLow": "Precio ascendente",
+    "priceHigh": "Precio descendente"
+  },
+  "product": {
+    "priceHT": "sin IVA",
+    "priceTTC": "con IVA",
+    "year": "Año",
+    "hours": "Horas",
+    "kilometers": "Kilómetros",
+    "condition": "Estado",
+    "location": "Ubicación",
+    "brand": "Marca",
+    "model": "Modelo",
+    "description": "Descripción",
+    "specifications": "Especificaciones",
+    "contactSeller": "Contactar vendedor",
+    "requestInfo": "Solicitar información",
+    "similarListings": "Anuncios similares",
+    "ref": "Ref"
+  },
+  "contact": {
+    "title": "Contactar al vendedor",
+    "name": "Su nombre",
+    "namePlaceholder": "Ingrese su nombre",
+    "email": "Su email",
+    "emailPlaceholder": "Ingrese su email",
+    "phone": "Su teléfono",
+    "phonePlaceholder": "Ingrese su número",
+    "message": "Su mensaje",
+    "messagePlaceholder": "Me interesa este equipo...",
+    "send": "Enviar mensaje",
+    "success": "¡Mensaje enviado con éxito!",
+    "error": "Error al enviar"
+  },
+  "footer": {
+    "description": "Su marketplace de confianza para maquinaria agrícola e industrial usada. Encuentre equipos de calidad de vendedores profesionales verificados.",
+    "quickLinks": "Enlaces rápidos",
+    "aboutUs": "Sobre nosotros",
+    "howItWorks": "Cómo funciona",
+    "faq": "FAQ",
+    "contact": "Contacto",
+    "legal": "Legal",
+    "terms": "Términos de uso",
+    "privacy": "Política de privacidad",
+    "cookies": "Cookies",
+    "rights": "Todos los derechos reservados"
+  },
+  "errors": {
+    "notFound": "Página no encontrada",
+    "notFoundDesc": "La página que busca no existe.",
+    "backHome": "Volver al inicio"
+  },
+  "language": {
+    "select": "Idioma",
+    "en": "English",
+    "fr": "Français",
+    "de": "Deutsch",
+    "es": "Español",
+    "it": "Italiano",
+    "pt": "Português"
+  }
+}

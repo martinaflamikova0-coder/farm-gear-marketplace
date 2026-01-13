@@ -1,0 +1,136 @@
+{
+  "common": {
+    "search": "Cerca",
+    "searchPlaceholder": "Cerca un trattore, marca, modello...",
+    "allCategories": "Tutte le categorie",
+    "viewAll": "Vedi tutto",
+    "contact": "Contatto",
+    "phone": "Telefono",
+    "email": "Email",
+    "share": "Condividi",
+    "loading": "Caricamento...",
+    "noResults": "Nessun risultato trovato",
+    "showMore": "Mostra di più",
+    "showLess": "Mostra di meno"
+  },
+  "nav": {
+    "home": "Home",
+    "listings": "Annunci",
+    "categories": "Categorie",
+    "postAd": "Pubblica annuncio",
+    "specialist": "Specialista in macchine agricole usate"
+  },
+  "home": {
+    "featuredListings": "⭐ Annunci in evidenza",
+    "featuredSubtitle": "Le nostre migliori opportunità",
+    "recentListings": "🕐 Ultimi annunci",
+    "recentSubtitle": "I più recenti",
+    "tractors": "🚜 Trattori",
+    "harvestEquipment": "🌾 Attrezzature da raccolta"
+  },
+  "stats": {
+    "listings": "annunci",
+    "sellers": "venditori",
+    "departments": "regioni"
+  },
+  "categories": {
+    "tractors": "Trattori",
+    "harvest": "Attrezzature da raccolta",
+    "tillage": "Lavorazione del terreno",
+    "livestock": "Attrezzature per allevamento",
+    "handling": "Movimentazione",
+    "construction": "Macchine da cantiere",
+    "parts": "Ricambi e accessori",
+    "other": "Altre attrezzature"
+  },
+  "filters": {
+    "title": "Filtri",
+    "category": "Categoria",
+    "brand": "Marca",
+    "allBrands": "Tutte le marche",
+    "priceRange": "Fascia di prezzo",
+    "priceMin": "Prezzo min",
+    "priceMax": "Prezzo max",
+    "year": "Anno",
+    "yearFrom": "Da",
+    "yearTo": "A",
+    "condition": "Condizione",
+    "allConditions": "Tutte le condizioni",
+    "location": "Località",
+    "allLocations": "Tutte le località",
+    "reset": "Reimposta",
+    "apply": "Applica",
+    "advancedFilters": "Filtri avanzati"
+  },
+  "conditions": {
+    "excellent": "Eccellente",
+    "veryGood": "Ottimo",
+    "good": "Buono",
+    "fair": "Discreto"
+  },
+  "sort": {
+    "label": "Ordina per",
+    "newest": "Più recente",
+    "oldest": "Più vecchio",
+    "priceLow": "Prezzo crescente",
+    "priceHigh": "Prezzo decrescente"
+  },
+  "product": {
+    "priceHT": "IVA esclusa",
+    "priceTTC": "IVA inclusa",
+    "year": "Anno",
+    "hours": "Ore",
+    "kilometers": "Chilometri",
+    "condition": "Condizione",
+    "location": "Località",
+    "brand": "Marca",
+    "model": "Modello",
+    "description": "Descrizione",
+    "specifications": "Specifiche",
+    "contactSeller": "Contatta il venditore",
+    "requestInfo": "Richiedi informazioni",
+    "similarListings": "Annunci simili",
+    "ref": "Rif"
+  },
+  "contact": {
+    "title": "Contatta il venditore",
+    "name": "Il tuo nome",
+    "namePlaceholder": "Inserisci il tuo nome",
+    "email": "La tua email",
+    "emailPlaceholder": "Inserisci la tua email",
+    "phone": "Il tuo telefono",
+    "phonePlaceholder": "Inserisci il tuo numero",
+    "message": "Il tuo messaggio",
+    "messagePlaceholder": "Sono interessato a questa attrezzatura...",
+    "send": "Invia messaggio",
+    "success": "Messaggio inviato con successo!",
+    "error": "Errore nell'invio"
+  },
+  "footer": {
+    "description": "Il tuo marketplace di fiducia per macchine agricole e industriali usate. Trova attrezzature di qualità da venditori professionali verificati.",
+    "quickLinks": "Link rapidi",
+    "aboutUs": "Chi siamo",
+    "howItWorks": "Come funziona",
+    "faq": "FAQ",
+    "contact": "Contatto",
+    "legal": "Legale",
+    "terms": "Termini di utilizzo",
+    "privacy": "Privacy",
+    "cookies": "Cookie",
+    "rights": "Tutti i diritti riservati"
+  },
+  "errors": {
+    "notFound": "Pagina non trovata",
+    "notFoundDesc": "La pagina che stai cercando non esiste.",
+    "backHome": "Torna alla home"
+  },
+  "language": {
+    "select": "Lingua",
+    "en": "English",
+    "fr": "Français",
+    "de": "Deutsch",
+    "es": "Español",
+    "it": "Italiano",
+    "pt": "Português"
+  }
+}
