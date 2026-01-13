@@ -13,6 +13,7 @@ import Privacy from '@/pages/Privacy';
 import Cookies from '@/pages/Cookies';
 import NotFound from '@/pages/NotFound';
 import AdminLogin from '@/pages/admin/AdminLogin';
+import AdminResetPassword from '@/pages/admin/AdminResetPassword';
 import AdminLayout from '@/pages/admin/AdminLayout';
 import AdminDashboard from '@/pages/admin/AdminDashboard';
 import AdminProducts from '@/pages/admin/AdminProducts';
@@ -131,6 +132,7 @@ const LocalizedRoutes = () => {
       
       {/* Admin routes - completely separate from public site */}
       <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/admin/reset-password" element={<AdminResetPassword />} />
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<AdminDashboard />} />
         <Route path="products" element={<AdminProducts />} />
