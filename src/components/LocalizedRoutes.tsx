@@ -5,6 +5,11 @@ import Index from '@/pages/Index';
 import Annonces from '@/pages/Annonces';
 import AnnonceDetail from '@/pages/AnnonceDetail';
 import NotFound from '@/pages/NotFound';
+import AdminLogin from '@/pages/admin/AdminLogin';
+import AdminLayout from '@/pages/admin/AdminLayout';
+import AdminDashboard from '@/pages/admin/AdminDashboard';
+import AdminProducts from '@/pages/admin/AdminProducts';
+import AdminProductForm from '@/pages/admin/AdminProductForm';
 import { SUPPORTED_LANGUAGES, getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 
 // Wrapper component that syncs URL language with i18n
@@ -107,6 +112,15 @@ const LocalizedRoutes = () => {
       <Route path="/annonces" element={<Navigate to={`/${defaultLang}/${getLocalizedSlug('listings', defaultLang)}`} replace />} />
       <Route path="/annonce/:id" element={<Navigate to={`/${defaultLang}/${getLocalizedSlug('listing', defaultLang)}/:id`} replace />} />
       
+      {/* Admin routes - completely separate from public site */}
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<AdminDashboard />} />
+        <Route path="products" element={<AdminProducts />} />
+        <Route path="products/new" element={<AdminProductForm />} />
+        <Route path="products/:id" element={<AdminProductForm />} />
+      </Route>
+
       {/* Catch-all 404 */}
       <Route path="*" element={<NotFound />} />
     </Routes>
