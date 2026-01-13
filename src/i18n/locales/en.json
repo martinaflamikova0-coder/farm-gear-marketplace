@@ -83,6 +83,9 @@
     "tryDifferentFilters": "Try modifying your search criteria"
   },
   "conditions": {
+    "new": "New",
+    "used": "Used",
+    "refurbished": "Refurbished",
     "excellent": "Excellent",
     "veryGood": "Very good",
     "good": "Good",
