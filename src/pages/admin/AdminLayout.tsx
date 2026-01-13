@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { 
   LayoutDashboard, 
   Package, 
+  FolderTree,
   LogOut, 
   Menu,
   X
@@ -49,6 +50,7 @@ const AdminLayout = () => {
   const navItems = [
     { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/admin/products', label: 'Produits', icon: Package },
+    { href: '/admin/categories', label: 'Catégories', icon: FolderTree },
   ];
 
   return (

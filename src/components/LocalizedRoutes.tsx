@@ -10,6 +10,7 @@ import AdminLayout from '@/pages/admin/AdminLayout';
 import AdminDashboard from '@/pages/admin/AdminDashboard';
 import AdminProducts from '@/pages/admin/AdminProducts';
 import AdminProductForm from '@/pages/admin/AdminProductForm';
+import AdminCategories from '@/pages/admin/AdminCategories';
 import { SUPPORTED_LANGUAGES, getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 
 // Wrapper component that syncs URL language with i18n
@@ -119,6 +120,7 @@ const LocalizedRoutes = () => {
         <Route path="products" element={<AdminProducts />} />
         <Route path="products/new" element={<AdminProductForm />} />
         <Route path="products/:id" element={<AdminProductForm />} />
+        <Route path="categories" element={<AdminCategories />} />
       </Route>
 
       {/* Catch-all 404 */}
