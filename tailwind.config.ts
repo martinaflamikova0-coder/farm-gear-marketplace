@@ -111,7 +111,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.5s ease-out forwards",
         "slide-up": "slide-up 0.5s ease-out forwards",
-        "marquee": "marquee 30s linear infinite",
+        "marquee": "marquee 15s linear infinite",
       },
     },
   },
