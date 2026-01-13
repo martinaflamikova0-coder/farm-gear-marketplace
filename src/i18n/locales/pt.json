@@ -1,0 +1,136 @@
+{
+  "common": {
+    "search": "Pesquisar",
+    "searchPlaceholder": "Pesquisar trator, marca, modelo...",
+    "allCategories": "Todas as categorias",
+    "viewAll": "Ver tudo",
+    "contact": "Contacto",
+    "phone": "Telefone",
+    "email": "Email",
+    "share": "Partilhar",
+    "loading": "A carregar...",
+    "noResults": "Nenhum resultado encontrado",
+    "showMore": "Ver mais",
+    "showLess": "Ver menos"
+  },
+  "nav": {
+    "home": "Início",
+    "listings": "Anúncios",
+    "categories": "Categorias",
+    "postAd": "Publicar anúncio",
+    "specialist": "Especialista em máquinas agrícolas usadas"
+  },
+  "home": {
+    "featuredListings": "⭐ Anúncios em destaque",
+    "featuredSubtitle": "As nossas melhores oportunidades",
+    "recentListings": "🕐 Últimos anúncios",
+    "recentSubtitle": "Os mais recentes",
+    "tractors": "🚜 Tratores",
+    "harvestEquipment": "🌾 Equipamento de colheita"
+  },
+  "stats": {
+    "listings": "anúncios",
+    "sellers": "vendedores",
+    "departments": "regiões"
+  },
+  "categories": {
+    "tractors": "Tratores",
+    "harvest": "Equipamento de colheita",
+    "tillage": "Preparação do solo",
+    "livestock": "Equipamento pecuário",
+    "handling": "Movimentação",
+    "construction": "Máquinas de construção",
+    "parts": "Peças e acessórios",
+    "other": "Outros equipamentos"
+  },
+  "filters": {
+    "title": "Filtros",
+    "category": "Categoria",
+    "brand": "Marca",
+    "allBrands": "Todas as marcas",
+    "priceRange": "Faixa de preço",
+    "priceMin": "Preço mín",
+    "priceMax": "Preço máx",
+    "year": "Ano",
+    "yearFrom": "De",
+    "yearTo": "Até",
+    "condition": "Estado",
+    "allConditions": "Todos os estados",
+    "location": "Localização",
+    "allLocations": "Todas as localizações",
+    "reset": "Limpar",
+    "apply": "Aplicar",
+    "advancedFilters": "Filtros avançados"
+  },
+  "conditions": {
+    "excellent": "Excelente",
+    "veryGood": "Muito bom",
+    "good": "Bom",
+    "fair": "Razoável"
+  },
+  "sort": {
+    "label": "Ordenar por",
+    "newest": "Mais recente",
+    "oldest": "Mais antigo",
+    "priceLow": "Preço crescente",
+    "priceHigh": "Preço decrescente"
+  },
+  "product": {
+    "priceHT": "sem IVA",
+    "priceTTC": "com IVA",
+    "year": "Ano",
+    "hours": "Horas",
+    "kilometers": "Quilómetros",
+    "condition": "Estado",
+    "location": "Localização",
+    "brand": "Marca",
+    "model": "Modelo",
+    "description": "Descrição",
+    "specifications": "Especificações",
+    "contactSeller": "Contactar vendedor",
+    "requestInfo": "Pedir informações",
+    "similarListings": "Anúncios semelhantes",
+    "ref": "Ref"
+  },
+  "contact": {
+    "title": "Contactar o vendedor",
+    "name": "O seu nome",
+    "namePlaceholder": "Introduza o seu nome",
+    "email": "O seu email",
+    "emailPlaceholder": "Introduza o seu email",
+    "phone": "O seu telefone",
+    "phonePlaceholder": "Introduza o seu número",
+    "message": "A sua mensagem",
+    "messagePlaceholder": "Estou interessado neste equipamento...",
+    "send": "Enviar mensagem",
+    "success": "Mensagem enviada com sucesso!",
+    "error": "Erro ao enviar"
+  },
+  "footer": {
+    "description": "O seu marketplace de confiança para máquinas agrícolas e industriais usadas. Encontre equipamentos de qualidade de vendedores profissionais verificados.",
+    "quickLinks": "Links rápidos",
+    "aboutUs": "Sobre nós",
+    "howItWorks": "Como funciona",
+    "faq": "FAQ",
+    "contact": "Contacto",
+    "legal": "Legal",
+    "terms": "Termos de uso",
+    "privacy": "Política de privacidade",
+    "cookies": "Cookies",
+    "rights": "Todos os direitos reservados"
+  },
+  "errors": {
+    "notFound": "Página não encontrada",
+    "notFoundDesc": "A página que procura não existe.",
+    "backHome": "Voltar ao início"
+  },
+  "language": {
+    "select": "Idioma",
+    "en": "English",
+    "fr": "Français",
+    "de": "Deutsch",
+    "es": "Español",
+    "it": "Italiano",
+    "pt": "Português"
+  }
+}

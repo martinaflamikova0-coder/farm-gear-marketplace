@@ -1,10 +1,13 @@
 import { Package, Users, MapPin } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const StatsBar = () => {
+  const { t } = useTranslation();
+
   const stats = [
-    { icon: Package, value: '995', label: 'annonces' },
-    { icon: Users, value: '200+', label: 'vendeurs' },
-    { icon: MapPin, value: '95', label: 'départements' },
+    { icon: Package, value: '995', label: t('stats.listings') },
+    { icon: Users, value: '200+', label: t('stats.sellers') },
+    { icon: MapPin, value: '95', label: t('stats.departments') },
   ];
 
   return (

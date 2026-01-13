@@ -1,0 +1,136 @@
+{
+  "common": {
+    "search": "Suchen",
+    "searchPlaceholder": "Traktor, Marke, Modell suchen...",
+    "allCategories": "Alle Kategorien",
+    "viewAll": "Alle anzeigen",
+    "contact": "Kontakt",
+    "phone": "Telefon",
+    "email": "E-Mail",
+    "share": "Teilen",
+    "loading": "Laden...",
+    "noResults": "Keine Ergebnisse gefunden",
+    "showMore": "Mehr anzeigen",
+    "showLess": "Weniger anzeigen"
+  },
+  "nav": {
+    "home": "Startseite",
+    "listings": "Anzeigen",
+    "categories": "Kategorien",
+    "postAd": "Anzeige aufgeben",
+    "specialist": "Spezialist für gebrauchte Landmaschinen"
+  },
+  "home": {
+    "featuredListings": "⭐ Empfohlene Anzeigen",
+    "featuredSubtitle": "Unsere besten Angebote",
+    "recentListings": "🕐 Neueste Anzeigen",
+    "recentSubtitle": "Die aktuellsten",
+    "tractors": "🚜 Traktoren",
+    "harvestEquipment": "🌾 Erntetechnik"
+  },
+  "stats": {
+    "listings": "Anzeigen",
+    "sellers": "Verkäufer",
+    "departments": "Regionen"
+  },
+  "categories": {
+    "tractors": "Traktoren",
+    "harvest": "Erntetechnik",
+    "tillage": "Bodenbearbeitung",
+    "livestock": "Tierhaltung",
+    "handling": "Fördertechnik",
+    "construction": "Baumaschinen",
+    "parts": "Ersatzteile",
+    "other": "Sonstiges"
+  },
+  "filters": {
+    "title": "Filter",
+    "category": "Kategorie",
+    "brand": "Marke",
+    "allBrands": "Alle Marken",
+    "priceRange": "Preisspanne",
+    "priceMin": "Min. Preis",
+    "priceMax": "Max. Preis",
+    "year": "Baujahr",
+    "yearFrom": "Von",
+    "yearTo": "Bis",
+    "condition": "Zustand",
+    "allConditions": "Alle Zustände",
+    "location": "Standort",
+    "allLocations": "Alle Standorte",
+    "reset": "Zurücksetzen",
+    "apply": "Anwenden",
+    "advancedFilters": "Erweiterte Filter"
+  },
+  "conditions": {
+    "excellent": "Ausgezeichnet",
+    "veryGood": "Sehr gut",
+    "good": "Gut",
+    "fair": "Befriedigend"
+  },
+  "sort": {
+    "label": "Sortieren nach",
+    "newest": "Neueste zuerst",
+    "oldest": "Älteste zuerst",
+    "priceLow": "Preis aufsteigend",
+    "priceHigh": "Preis absteigend"
+  },
+  "product": {
+    "priceHT": "netto",
+    "priceTTC": "brutto",
+    "year": "Baujahr",
+    "hours": "Stunden",
+    "kilometers": "Kilometer",
+    "condition": "Zustand",
+    "location": "Standort",
+    "brand": "Marke",
+    "model": "Modell",
+    "description": "Beschreibung",
+    "specifications": "Spezifikationen",
+    "contactSeller": "Verkäufer kontaktieren",
+    "requestInfo": "Informationen anfordern",
+    "similarListings": "Ähnliche Anzeigen",
+    "ref": "Ref"
+  },
+  "contact": {
+    "title": "Verkäufer kontaktieren",
+    "name": "Ihr Name",
+    "namePlaceholder": "Geben Sie Ihren Namen ein",
+    "email": "Ihre E-Mail",
+    "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+    "phone": "Ihre Telefonnummer",
+    "phonePlaceholder": "Geben Sie Ihre Nummer ein",
+    "message": "Ihre Nachricht",
+    "messagePlaceholder": "Ich interessiere mich für diese Maschine...",
+    "send": "Nachricht senden",
+    "success": "Nachricht erfolgreich gesendet!",
+    "error": "Fehler beim Senden"
+  },
+  "footer": {
+    "description": "Ihr vertrauenswürdiger Marktplatz für gebrauchte Land- und Industriemaschinen. Finden Sie Qualitätsmaschinen von verifizierten professionellen Verkäufern.",
+    "quickLinks": "Schnelllinks",
+    "aboutUs": "Über uns",
+    "howItWorks": "So funktioniert's",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "legal": "Rechtliches",
+    "terms": "Nutzungsbedingungen",
+    "privacy": "Datenschutz",
+    "cookies": "Cookies",
+    "rights": "Alle Rechte vorbehalten"
+  },
+  "errors": {
+    "notFound": "Seite nicht gefunden",
+    "notFoundDesc": "Die gesuchte Seite existiert nicht.",
+    "backHome": "Zurück zur Startseite"
+  },
+  "language": {
+    "select": "Sprache",
+    "en": "English",
+    "fr": "Français",
+    "de": "Deutsch",
+    "es": "Español",
+    "it": "Italiano",
+    "pt": "Português"
+  }
+}

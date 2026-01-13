@@ -4,7 +4,6 @@ import SearchBar from '@/components/home/SearchBar';
 import QuickCategories from '@/components/home/QuickCategories';
 import StatsBar from '@/components/home/StatsBar';
 import ProductsGrid from '@/components/home/ProductsGrid';
-import { products } from '@/data/products';
 
 const Index = () => {
   return (
@@ -16,16 +15,16 @@ const Index = () => {
       
       <main className="flex-1">
         <ProductsGrid 
-          title="⭐ Annonces en vedette"
-          subtitle="Nos meilleures opportunités du moment"
+          titleKey="home.featuredListings"
+          subtitleKey="home.featuredSubtitle"
           filterFn={(p) => p.filter(product => product.featured)}
           limit={4}
         />
         
         <div className="bg-card">
           <ProductsGrid 
-            title="🕐 Dernières annonces"
-            subtitle="Les plus récentes"
+            titleKey="home.recentListings"
+            subtitleKey="home.recentSubtitle"
             filterFn={(p) => [...p].sort((a, b) => 
               new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
             )}
@@ -34,14 +33,14 @@ const Index = () => {
         </div>
 
         <ProductsGrid 
-          title="🚜 Tracteurs"
+          titleKey="home.tractors"
           filterFn={(p) => p.filter(product => product.category === 'Tracteurs')}
           limit={4}
         />
 
         <div className="bg-card">
           <ProductsGrid 
-            title="🌾 Matériel de récolte"
+            titleKey="home.harvestEquipment"
             filterFn={(p) => p.filter(product => product.category === 'Matériel de récolte')}
             limit={4}
           />
