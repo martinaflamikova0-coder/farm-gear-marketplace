@@ -160,6 +160,14 @@
     "listings": {
       "title": "Todos os Anúncios",
       "description": "Navegue por todos os anúncios de máquinas agrícolas na EquipTrade. Tratores, ceifeiras, equipamentos de preparação do solo e mais."
+    },
+    "listingDetail": {
+      "title": "Máquina Agrícola à Venda",
+      "description": "Veja informações detalhadas sobre este anúncio de máquinas agrícolas na EquipTrade. Contacte diretamente o vendedor para mais informações."
+    },
+    "home": {
+      "title": "Marketplace de Máquinas Agrícolas Usadas",
+      "description": "EquipTrade - Compre e venda máquinas agrícolas e industriais usadas. Milhares de tratores, ceifeiras e máquinas de vendedores profissionais verificados."
     }
   },
   "pages": {

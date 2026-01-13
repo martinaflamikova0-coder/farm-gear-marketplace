@@ -160,6 +160,14 @@
     "listings": {
       "title": "Alle Anzeigen",
       "description": "Durchsuchen Sie alle Landmaschinen-Anzeigen auf EquipTrade. Traktoren, Mähdrescher, Bodenbearbeitungsgeräte und mehr von verifizierten Verkäufern."
+    },
+    "listingDetail": {
+      "title": "Landmaschine zu Verkaufen",
+      "description": "Sehen Sie detaillierte Informationen zu dieser Landmaschinen-Anzeige auf EquipTrade. Kontaktieren Sie den Verkäufer direkt für weitere Informationen."
+    },
+    "home": {
+      "title": "Marktplatz für Gebrauchte Landmaschinen",
+      "description": "EquipTrade - Kaufen und verkaufen Sie gebrauchte Land- und Industriemaschinen. Tausende Traktoren, Mähdrescher und Maschinen von verifizierten professionellen Verkäufern."
     }
   },
   "pages": {

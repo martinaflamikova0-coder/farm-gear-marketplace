@@ -183,6 +183,10 @@
     "listings": {
       "title": "All Listings",
       "description": "Browse all agricultural equipment listings on EquipTrade. Tractors, harvesters, tillage equipment, and more from verified sellers."
+    },
+    "listingDetail": {
+      "title": "Agricultural Equipment for Sale",
+      "description": "View detailed information about this agricultural equipment listing on EquipTrade. Contact the seller directly for more information."
     }
   },
   "pages": {
