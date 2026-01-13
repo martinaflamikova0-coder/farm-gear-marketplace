@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
@@ -18,8 +19,11 @@ import { Switch } from '@/components/ui/switch';
 import { ArrowLeft, Save } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
-import { categories, brands } from '@/data/products';
+import { brands } from '@/data/products';
 import ImageUploader from '@/components/admin/ImageUploader';
+import type { Tables } from '@/integrations/supabase/types';
+
+type Category = Tables<'categories'>;
 
 const productSchema = z.object({
   title: z.string().trim().min(3, 'Le titre doit contenir au moins 3 caractères').max(200, 'Titre trop long'),
@@ -80,6 +84,30 @@ const AdminProductForm = () => {
   const [isFetching, setIsFetching] = useState(!!id);
 
   const isEditing = !!id;
+
+  // Fetch categories from database
+  const { data: categories = [] } = useQuery({
+    queryKey: ['categories'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('categories')
+        .select('*')
+        .order('sort_order', { ascending: true })
+        .order('name', { ascending: true });
+      
+      if (error) throw error;
+      return data as Category[];
+    },
+  });
+
+  // Get parent categories (no parent_id)
+  const parentCategories = categories.filter(c => !c.parent_id);
+  
+  // Get subcategories for selected category
+  const selectedCategory = categories.find(c => c.slug === formData.category);
+  const subcategories = selectedCategory 
+    ? categories.filter(c => c.parent_id === selectedCategory.id)
+    : [];
 
   useEffect(() => {
     if (id) {
@@ -236,8 +264,6 @@ const AdminProductForm = () => {
     );
   }
 
-  const selectedCategory = categories.find(c => c.slug === formData.category);
-
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-4">
@@ -318,13 +344,21 @@ const AdminProductForm = () => {
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="category">Catégorie *</Label>
-                  <Select value={formData.category} onValueChange={(v) => handleChange('category', v)}>
+                  <Select 
+                    value={formData.category} 
+                    onValueChange={(v) => {
+                      handleChange('category', v);
+                      handleChange('subcategory', '');
+                    }}
+                  >
                     <SelectTrigger className={errors.category ? 'border-destructive' : ''}>
                       <SelectValue placeholder="Sélectionner" />
                     </SelectTrigger>
                     <SelectContent>
-                      {categories.map((cat) => (
-                        <SelectItem key={cat.slug} value={cat.slug}>{cat.name}</SelectItem>
+                      {parentCategories.map((cat) => (
+                        <SelectItem key={cat.slug} value={cat.slug}>
+                          {cat.icon && `${cat.icon} `}{cat.name}
+                        </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
@@ -334,16 +368,19 @@ const AdminProductForm = () => {
                 <div className="space-y-2">
                   <Label htmlFor="subcategory">Sous-catégorie</Label>
                   <Select 
-                    value={formData.subcategory} 
-                    onValueChange={(v) => handleChange('subcategory', v)}
-                    disabled={!selectedCategory}
+                    value={formData.subcategory || 'none'} 
+                    onValueChange={(v) => handleChange('subcategory', v === 'none' ? '' : v)}
+                    disabled={subcategories.length === 0}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Sélectionner" />
                     </SelectTrigger>
                     <SelectContent>
-                      {selectedCategory?.subcategories.map((sub) => (
-                        <SelectItem key={sub} value={sub}>{sub}</SelectItem>
+                      <SelectItem value="none">Aucune</SelectItem>
+                      {subcategories.map((sub) => (
+                        <SelectItem key={sub.slug} value={sub.slug}>
+                          {sub.icon && `${sub.icon} `}{sub.name}
+                        </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
