@@ -142,10 +142,48 @@
     "cookies": "Cookies",
     "rights": "Tous droits réservés"
   },
-  "errors": {
+"errors": {
     "notFound": "Page non trouvée",
     "notFoundDesc": "La page que vous recherchez n'existe pas.",
     "backHome": "Retour à l'accueil"
+  },
+  "seo": {
+    "home": {
+      "title": "Marketplace de Matériel Agricole d'Occasion",
+      "description": "EquipTrade - Achetez et vendez du matériel agricole et industriel d'occasion. Des milliers de tracteurs, moissonneuses et machines de vendeurs professionnels vérifiés."
+    },
+    "about": {
+      "title": "À Propos de Nous",
+      "description": "Découvrez EquipTrade, le marketplace leader du matériel agricole d'occasion en Europe. Notre mission, nos valeurs et notre communauté de plus de 5 000 professionnels."
+    },
+    "howItWorks": {
+      "title": "Comment Ça Marche",
+      "description": "Apprenez comment acheter ou vendre du matériel agricole sur EquipTrade. Processus simple en 4 étapes : recherchez, contactez, négociez et finalisez."
+    },
+    "faq": {
+      "title": "FAQ - Questions Fréquentes",
+      "description": "Trouvez les réponses à vos questions sur EquipTrade. Comment publier une annonce, contacter les vendeurs, modes de paiement, garanties et plus."
+    },
+    "contact": {
+      "title": "Contactez-Nous",
+      "description": "Contactez l'équipe EquipTrade. Nous sommes là pour répondre à vos questions et vous aider dans vos achats ou ventes de matériel agricole."
+    },
+    "terms": {
+      "title": "Conditions Générales d'Utilisation",
+      "description": "Lisez les conditions d'utilisation d'EquipTrade. Accès à la plateforme, droits et obligations des utilisateurs, règles des annonces et responsabilités."
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité",
+      "description": "Découvrez comment EquipTrade collecte, utilise et protège vos données personnelles. Vos droits RGPD et nos pratiques de sécurité des données."
+    },
+    "cookies": {
+      "title": "Politique de Cookies",
+      "description": "Gérez vos préférences de cookies sur EquipTrade. Découvrez les types de cookies utilisés et comment les contrôler."
+    },
+    "listings": {
+      "title": "Toutes les Annonces",
+      "description": "Parcourez toutes les annonces de matériel agricole sur EquipTrade. Tracteurs, moissonneuses, matériel de travail du sol et plus de vendeurs vérifiés."
+    }
   },
   "pages": {
     "about": {

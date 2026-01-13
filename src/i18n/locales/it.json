@@ -119,10 +119,48 @@
     "cookies": "Cookie",
     "rights": "Tutti i diritti riservati"
   },
-  "errors": {
+"errors": {
     "notFound": "Pagina non trovata",
     "notFoundDesc": "La pagina che stai cercando non esiste.",
     "backHome": "Torna alla home"
+  },
+  "seo": {
+    "home": {
+      "title": "Marketplace di Macchine Agricole Usate",
+      "description": "EquipTrade - Compra e vendi macchine agricole e industriali usate. Migliaia di trattori, mietitrebbie e macchine da venditori professionali verificati."
+    },
+    "about": {
+      "title": "Chi Siamo",
+      "description": "Scopri EquipTrade, il marketplace leader per macchine agricole usate in Europa. La nostra missione, valori e comunità di oltre 5.000 professionisti."
+    },
+    "howItWorks": {
+      "title": "Come Funziona",
+      "description": "Scopri come acquistare o vendere macchine agricole su EquipTrade. Processo semplice in 4 passaggi: cerca, contatta, negozia e finalizza."
+    },
+    "faq": {
+      "title": "FAQ - Domande Frequenti",
+      "description": "Trova risposte alle tue domande su EquipTrade. Come pubblicare annunci, contattare venditori, metodi di pagamento, garanzie e altro."
+    },
+    "contact": {
+      "title": "Contattaci",
+      "description": "Contatta il team EquipTrade. Siamo qui per rispondere alle tue domande e aiutarti con acquisti o vendite di macchine agricole."
+    },
+    "terms": {
+      "title": "Termini di Utilizzo",
+      "description": "Leggi i termini di utilizzo di EquipTrade. Condizioni di accesso, diritti e obblighi degli utenti, regole degli annunci e responsabilità."
+    },
+    "privacy": {
+      "title": "Informativa sulla Privacy",
+      "description": "Scopri come EquipTrade raccoglie, utilizza e protegge i tuoi dati personali. I tuoi diritti GDPR e le nostre pratiche di sicurezza."
+    },
+    "cookies": {
+      "title": "Informativa sui Cookie",
+      "description": "Gestisci le tue preferenze sui cookie su EquipTrade. Scopri i tipi di cookie che usiamo e come controllarli."
+    },
+    "listings": {
+      "title": "Tutti gli Annunci",
+      "description": "Sfoglia tutti gli annunci di macchine agricole su EquipTrade. Trattori, mietitrebbie, attrezzature per la lavorazione del terreno e altro."
+    }
   },
   "pages": {
     "about": {

@@ -119,10 +119,48 @@
     "cookies": "Cookies",
     "rights": "Todos los derechos reservados"
   },
-  "errors": {
+"errors": {
     "notFound": "Página no encontrada",
     "notFoundDesc": "La página que busca no existe.",
     "backHome": "Volver al inicio"
+  },
+  "seo": {
+    "home": {
+      "title": "Marketplace de Maquinaria Agrícola Usada",
+      "description": "EquipTrade - Compre y venda maquinaria agrícola e industrial usada. Miles de tractores, cosechadoras y máquinas de vendedores profesionales verificados."
+    },
+    "about": {
+      "title": "Sobre Nosotros",
+      "description": "Descubra EquipTrade, el marketplace líder de maquinaria agrícola usada en Europa. Nuestra misión, valores y comunidad de más de 5.000 profesionales."
+    },
+    "howItWorks": {
+      "title": "Cómo Funciona",
+      "description": "Aprenda cómo comprar o vender maquinaria agrícola en EquipTrade. Proceso simple de 4 pasos: busque, contacte, negocie y finalice su transacción."
+    },
+    "faq": {
+      "title": "FAQ - Preguntas Frecuentes",
+      "description": "Encuentre respuestas a sus preguntas sobre EquipTrade. Cómo publicar anuncios, contactar vendedores, métodos de pago, garantías y más."
+    },
+    "contact": {
+      "title": "Contáctenos",
+      "description": "Contacte al equipo de EquipTrade. Estamos aquí para responder sus preguntas y ayudarle con sus compras o ventas de maquinaria agrícola."
+    },
+    "terms": {
+      "title": "Términos de Uso",
+      "description": "Lea los términos de uso de EquipTrade. Condiciones de acceso, derechos y obligaciones de usuarios, reglas de anuncios y responsabilidades."
+    },
+    "privacy": {
+      "title": "Política de Privacidad",
+      "description": "Conozca cómo EquipTrade recopila, usa y protege sus datos personales. Sus derechos RGPD y nuestras prácticas de seguridad de datos."
+    },
+    "cookies": {
+      "title": "Política de Cookies",
+      "description": "Gestione sus preferencias de cookies en EquipTrade. Conozca los tipos de cookies que usamos y cómo controlarlas."
+    },
+    "listings": {
+      "title": "Todos los Anuncios",
+      "description": "Explore todos los anuncios de maquinaria agrícola en EquipTrade. Tractores, cosechadoras, equipos de labranza y más de vendedores verificados."
+    }
   },
   "pages": {
     "about": {
