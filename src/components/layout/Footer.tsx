@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { categories } from '@/data/products';
+import { useCategoriesWithCounts, type CategoryWithCount } from '@/hooks/useCategories';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import logoEquiptrade from '@/assets/logo-equiptrade.png';
 
@@ -9,6 +9,7 @@ const Footer = () => {
   const { t, i18n } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
+  const { data: categories } = useCategoriesWithCounts();
 
   const getLocalizedLink = (path: string) => {
     return `/${currentLang}${path}`;
@@ -19,18 +20,18 @@ const Footer = () => {
     return `/${currentLang}/${listingsSlug}?category=${categorySlug}`;
   };
 
-  const getCategoryName = (category: typeof categories[0]) => {
+  const getCategoryName = (category: CategoryWithCount) => {
     const categoryMap: Record<string, string> = {
-      'Tracteurs': t('categories.tractors'),
-      'Matériel de récolte': t('categories.harvest'),
-      'Travail du sol': t('categories.tillage'),
-      'Matériel d\'élevage': t('categories.livestock'),
-      'Manutention': t('categories.handling'),
-      'Matériel de chantier': t('categories.construction'),
-      'Pièces et accessoires': t('categories.parts'),
-      'Autres matériels': t('categories.other')
+      'tracteurs': t('categories.tractors'),
+      'recolte': t('categories.harvest'),
+      'travail-sol': t('categories.tillage'),
+      'elevage': t('categories.livestock'),
+      'manutention': t('categories.handling'),
+      'chantier': t('categories.construction'),
+      'pieces': t('categories.parts'),
+      'autres': t('categories.other')
     };
-    return categoryMap[category.name] || category.name;
+    return categoryMap[category.slug] || category.name;
   };
 
   return (

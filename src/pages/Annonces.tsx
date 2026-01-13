@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Filter, Grid, List, ChevronDown, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Filter, Grid, List, X } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ProductCard from '@/components/products/ProductCard';
@@ -11,12 +12,17 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Checkbox } from '@/components/ui/checkbox';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Badge } from '@/components/ui/badge';
-import { products, categories, brands, departments } from '@/data/products';
+import { Skeleton } from '@/components/ui/skeleton';
+import { products, brands } from '@/data/products';
+import { useCategoriesWithCounts, type CategoryWithCount } from '@/hooks/useCategories';
 
 const Annonces = () => {
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [sortBy, setSortBy] = useState('date-desc');
+  
+  const { data: categories, isLoading: categoriesLoading } = useCategoriesWithCounts();
   
   // Filters state
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || '');
@@ -29,6 +35,20 @@ const Annonces = () => {
   const searchQuery = searchParams.get('search') || '';
 
   const conditions = ['Excellent', 'Très bon', 'Bon', 'Correct'];
+
+  const getCategoryName = (category: CategoryWithCount) => {
+    const categoryMap: Record<string, string> = {
+      'tracteurs': t('categories.tractors'),
+      'recolte': t('categories.harvest'),
+      'travail-sol': t('categories.tillage'),
+      'elevage': t('categories.livestock'),
+      'manutention': t('categories.handling'),
+      'chantier': t('categories.construction'),
+      'pieces': t('categories.parts'),
+      'autres': t('categories.other')
+    };
+    return categoryMap[category.slug] || category.name;
+  };
 
   const toggleBrand = (brand: string) => {
     setSelectedBrands(prev =>
@@ -130,31 +150,35 @@ const Annonces = () => {
     }
 
     return result;
-  }, [searchQuery, selectedCategory, selectedBrands, priceMin, priceMax, yearMin, yearMax, selectedConditions, sortBy]);
+  }, [searchQuery, selectedCategory, selectedBrands, priceMin, priceMax, yearMin, yearMax, selectedConditions, sortBy, categories]);
 
   const FiltersContent = () => (
     <div className="space-y-6">
       {/* Category */}
       <div>
-        <Label className="text-sm font-semibold mb-3 block">Catégorie</Label>
-        <Select value={selectedCategory || "all"} onValueChange={(val) => setSelectedCategory(val === "all" ? "" : val)}>
-          <SelectTrigger>
-            <SelectValue placeholder="Toutes les catégories" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">Toutes les catégories</SelectItem>
-            {categories.map(cat => (
-              <SelectItem key={cat.id} value={cat.slug}>
-                {cat.icon} {cat.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <Label className="text-sm font-semibold mb-3 block">{t('filters.category')}</Label>
+        {categoriesLoading ? (
+          <Skeleton className="h-10 w-full" />
+        ) : (
+          <Select value={selectedCategory || "all"} onValueChange={(val) => setSelectedCategory(val === "all" ? "" : val)}>
+            <SelectTrigger>
+              <SelectValue placeholder={t('filters.allCategories')} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">{t('filters.allCategories')}</SelectItem>
+              {categories.map(cat => (
+                <SelectItem key={cat.id} value={cat.slug}>
+                  {cat.icon} {getCategoryName(cat)}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
       </div>
 
       {/* Brands */}
       <div>
-        <Label className="text-sm font-semibold mb-3 block">Marques</Label>
+        <Label className="text-sm font-semibold mb-3 block">{t('filters.brands')}</Label>
         <div className="space-y-2 max-h-48 overflow-y-auto">
           {brands.slice(0, 10).map(brand => (
             <div key={brand} className="flex items-center gap-2">
@@ -173,7 +197,7 @@ const Annonces = () => {
 
       {/* Price range */}
       <div>
-        <Label className="text-sm font-semibold mb-3 block">Prix TTC (€)</Label>
+        <Label className="text-sm font-semibold mb-3 block">{t('filters.priceTTC')}</Label>
         <div className="flex gap-2">
           <Input
             type="number"
@@ -192,7 +216,7 @@ const Annonces = () => {
 
       {/* Year range */}
       <div>
-        <Label className="text-sm font-semibold mb-3 block">Année</Label>
+        <Label className="text-sm font-semibold mb-3 block">{t('filters.year')}</Label>
         <div className="flex gap-2">
           <Input
             type="number"
@@ -211,7 +235,7 @@ const Annonces = () => {
 
       {/* Condition */}
       <div>
-        <Label className="text-sm font-semibold mb-3 block">État</Label>
+        <Label className="text-sm font-semibold mb-3 block">{t('filters.condition')}</Label>
         <div className="space-y-2">
           {conditions.map(condition => (
             <div key={condition} className="flex items-center gap-2">
@@ -231,11 +255,13 @@ const Annonces = () => {
       {activeFiltersCount > 0 && (
         <Button variant="outline" className="w-full" onClick={clearFilters}>
           <X className="h-4 w-4 mr-2" />
-          Effacer les filtres
+          {t('filters.clearFilters')}
         </Button>
       )}
     </div>
   );
+
+  const selectedCategoryData = categories.find(c => c.slug === selectedCategory);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -245,10 +271,10 @@ const Annonces = () => {
           {/* Page header */}
           <div className="mb-6">
             <h1 className="font-display text-3xl font-bold text-foreground mb-2">
-              {searchQuery ? `Résultats pour "${searchQuery}"` : 'Toutes les annonces'}
+              {searchQuery ? `${t('listings.resultsFor')} "${searchQuery}"` : t('listings.allListings')}
             </h1>
             <p className="text-muted-foreground">
-              {filteredProducts.length} annonce{filteredProducts.length > 1 ? 's' : ''} trouvée{filteredProducts.length > 1 ? 's' : ''}
+              {filteredProducts.length} {t('listings.found', { count: filteredProducts.length })}
             </p>
           </div>
 
@@ -257,15 +283,15 @@ const Annonces = () => {
             <div className="flex flex-wrap gap-2 mb-4">
               {searchQuery && (
                 <Badge variant="secondary" className="gap-1">
-                  Recherche: {searchQuery}
+                  {t('filters.search')}: {searchQuery}
                   <button onClick={() => setSearchParams({})}>
                     <X className="h-3 w-3" />
                   </button>
                 </Badge>
               )}
-              {selectedCategory && (
+              {selectedCategory && selectedCategoryData && (
                 <Badge variant="secondary" className="gap-1">
-                  {categories.find(c => c.slug === selectedCategory)?.name}
+                  {getCategoryName(selectedCategoryData)}
                   <button onClick={() => setSelectedCategory('')}>
                     <X className="h-3 w-3" />
                   </button>
@@ -288,7 +314,7 @@ const Annonces = () => {
               <div className="sticky top-24 bg-card rounded-lg border border-border p-5">
                 <h2 className="font-display font-semibold text-lg mb-4 flex items-center gap-2">
                   <Filter className="h-5 w-5" />
-                  Filtres
+                  {t('filters.title')}
                   {activeFiltersCount > 0 && (
                     <Badge variant="default" className="ml-auto">{activeFiltersCount}</Badge>
                   )}
@@ -306,7 +332,7 @@ const Annonces = () => {
                   <SheetTrigger asChild>
                     <Button variant="outline" className="lg:hidden">
                       <Filter className="h-4 w-4 mr-2" />
-                      Filtres
+                      {t('filters.title')}
                       {activeFiltersCount > 0 && (
                         <Badge variant="default" className="ml-2">{activeFiltersCount}</Badge>
                       )}
@@ -314,7 +340,7 @@ const Annonces = () => {
                   </SheetTrigger>
                   <SheetContent side="left" className="w-80">
                     <SheetHeader>
-                      <SheetTitle>Filtres</SheetTitle>
+                      <SheetTitle>{t('filters.title')}</SheetTitle>
                     </SheetHeader>
                     <div className="mt-6">
                       <FiltersContent />
@@ -324,16 +350,16 @@ const Annonces = () => {
 
                 {/* Sort */}
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-muted-foreground hidden sm:inline">Trier par:</span>
+                  <span className="text-sm text-muted-foreground hidden sm:inline">{t('filters.sortBy')}:</span>
                   <Select value={sortBy} onValueChange={setSortBy}>
                     <SelectTrigger className="w-[180px]">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="date-desc">Plus récentes</SelectItem>
-                      <SelectItem value="price-asc">Prix croissant</SelectItem>
-                      <SelectItem value="price-desc">Prix décroissant</SelectItem>
-                      <SelectItem value="year-desc">Année décroissante</SelectItem>
+                      <SelectItem value="date-desc">{t('filters.mostRecent')}</SelectItem>
+                      <SelectItem value="price-asc">{t('filters.priceAsc')}</SelectItem>
+                      <SelectItem value="price-desc">{t('filters.priceDesc')}</SelectItem>
+                      <SelectItem value="year-desc">{t('filters.yearDesc')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -381,13 +407,13 @@ const Annonces = () => {
                 <div className="text-center py-16">
                   <div className="text-6xl mb-4">🔍</div>
                   <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-                    Aucun résultat trouvé
+                    {t('listings.noResults')}
                   </h3>
                   <p className="text-muted-foreground mb-4">
-                    Essayez de modifier vos critères de recherche
+                    {t('listings.tryDifferentFilters')}
                   </p>
                   <Button variant="outline" onClick={clearFilters}>
-                    Effacer les filtres
+                    {t('filters.clearFilters')}
                   </Button>
                 </div>
               )}
