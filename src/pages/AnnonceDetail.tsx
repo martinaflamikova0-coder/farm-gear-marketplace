@@ -5,6 +5,7 @@ import { ArrowLeft, MapPin, Clock, Calendar, Phone, Mail, Check, ChevronLeft, Ch
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SEOHead from '@/components/SEOHead';
+import ProductJsonLd from '@/components/ProductJsonLd';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -154,6 +155,24 @@ const AnnonceDetail = () => {
         dynamicDescription={translatedDescription?.substring(0, 160) || undefined}
         ogImage={ogImage}
         pageType="product"
+      />
+      <ProductJsonLd 
+        product={{
+          id: product.id,
+          title: product.title,
+          description: product.description,
+          price: product.price,
+          condition: product.condition,
+          brand: product.brand,
+          model: product.model,
+          year: product.year,
+          images: product.images,
+          location: product.location,
+          seller_name: product.seller_name,
+        }}
+        translatedTitle={translatedTitle}
+        translatedDescription={translatedDescription}
+        currentLang={currentLang}
       />
       <Header />
       <main className="flex-1 bg-background">
