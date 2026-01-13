@@ -4,6 +4,13 @@ import { useTranslation } from 'react-i18next';
 import Index from '@/pages/Index';
 import Annonces from '@/pages/Annonces';
 import AnnonceDetail from '@/pages/AnnonceDetail';
+import About from '@/pages/About';
+import HowItWorks from '@/pages/HowItWorks';
+import FAQ from '@/pages/FAQ';
+import Contact from '@/pages/Contact';
+import Terms from '@/pages/Terms';
+import Privacy from '@/pages/Privacy';
+import Cookies from '@/pages/Cookies';
 import NotFound from '@/pages/NotFound';
 import AdminLogin from '@/pages/admin/AdminLogin';
 import AdminLayout from '@/pages/admin/AdminLayout';
@@ -94,6 +101,15 @@ const LocalizedRoutes = () => {
       
       {/* Language-prefixed routes */}
       <Route path="/:lang" element={<LanguageWrapper><Index /></LanguageWrapper>} />
+      
+      {/* Static pages */}
+      <Route path="/:lang/about" element={<LanguageWrapper><About /></LanguageWrapper>} />
+      <Route path="/:lang/how-it-works" element={<LanguageWrapper><HowItWorks /></LanguageWrapper>} />
+      <Route path="/:lang/faq" element={<LanguageWrapper><FAQ /></LanguageWrapper>} />
+      <Route path="/:lang/contact" element={<LanguageWrapper><Contact /></LanguageWrapper>} />
+      <Route path="/:lang/terms" element={<LanguageWrapper><Terms /></LanguageWrapper>} />
+      <Route path="/:lang/privacy" element={<LanguageWrapper><Privacy /></LanguageWrapper>} />
+      <Route path="/:lang/cookies" element={<LanguageWrapper><Cookies /></LanguageWrapper>} />
       
       {/* Listings routes with localized slugs */}
       <Route path="/:lang/listings" element={<LanguageWrapper><ListingsRoute /></LanguageWrapper>} />
