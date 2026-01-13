@@ -137,12 +137,12 @@ const Annonces = () => {
       {/* Category */}
       <div>
         <Label className="text-sm font-semibold mb-3 block">Catégorie</Label>
-        <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+        <Select value={selectedCategory || "all"} onValueChange={(val) => setSelectedCategory(val === "all" ? "" : val)}>
           <SelectTrigger>
             <SelectValue placeholder="Toutes les catégories" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">Toutes les catégories</SelectItem>
+            <SelectItem value="all">Toutes les catégories</SelectItem>
             {categories.map(cat => (
               <SelectItem key={cat.id} value={cat.slug}>
                 {cat.icon} {cat.name}
