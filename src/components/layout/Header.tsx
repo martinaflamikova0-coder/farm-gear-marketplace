@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { categories } from '@/data/products';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
+import logoEquiptrade from '@/assets/logo-equiptrade.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -72,15 +73,11 @@ const Header = () => {
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo */}
           <Link to={getLocalizedLink('')} className="flex items-center gap-2">
-            <div className="flex items-center gap-2">
-              <div className="h-10 w-10 rounded-lg bg-gradient-hero flex items-center justify-center text-2xl">
-                🚜
-              </div>
-              <div className="hidden sm:block">
-                <span className="font-display text-xl font-bold text-foreground">AgriOccaz</span>
-                <span className="block text-xs text-muted-foreground">{t('nav.specialist')}</span>
-              </div>
-            </div>
+            <img 
+              src={logoEquiptrade} 
+              alt="EquipTrade" 
+              className="h-12 w-auto object-contain"
+            />
           </Link>
 
           {/* Search bar - Desktop */}
