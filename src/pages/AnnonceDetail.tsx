@@ -285,12 +285,16 @@ const AnnonceDetail = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="grid sm:grid-cols-2 gap-4">
-                    {specifications.map((spec, index) => (
-                      <div key={index} className="flex justify-between items-center py-2 border-b border-border last:border-0">
-                        <span className="text-muted-foreground">{spec.label}</span>
-                        <span className="font-medium text-foreground">{spec.value}</span>
-                      </div>
-                    ))}
+                    {specifications.length > 0 ? (
+                      specifications.map((spec, index) => (
+                        <div key={index} className="flex justify-between items-center py-2 border-b border-border last:border-0">
+                          <span className="text-muted-foreground">{spec.label}</span>
+                          <span className="font-medium text-foreground text-right">{spec.value}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="text-muted-foreground col-span-2">{t('common.noResults')}</p>
+                    )}
                   </div>
                 </CardContent>
               </Card>
