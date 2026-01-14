@@ -94,6 +94,18 @@
     "financing": "oder {{amount}}/Monat über 72 Monate",
     "financingAvailable": "Finanzierung verfügbar"
   },
+  "financing": {
+    "title": "Finanzierungsrechner",
+    "cashOption": "Barzahlung möglich",
+    "financingOption": "Finanzierung über 72 Monate möglich",
+    "selectDuration": "Wählen Sie die Rückzahlungsdauer",
+    "months": "Monate",
+    "month": "Monat",
+    "monthlyPayment": "Geschätzte monatliche Rate",
+    "duration": "Laufzeit",
+    "requestFinancing": "Finanzierung anfragen",
+    "disclaimer": "Unverbindliche Simulation. Vorbehaltlich Genehmigung."
+  },
   "contact": {
     "title": "Verkäufer kontaktieren",
     "name": "Ihr Name",

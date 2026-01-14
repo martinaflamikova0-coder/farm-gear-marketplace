@@ -94,6 +94,18 @@
     "financing": "o {{amount}}/mese in 72 mesi",
     "financingAvailable": "Finanziamento disponibile"
   },
+  "financing": {
+    "title": "Simulatore di finanziamento",
+    "cashOption": "Pagamento in contanti disponibile",
+    "financingOption": "Finanziamento disponibile in 72 mesi",
+    "selectDuration": "Scegli la durata del rimborso",
+    "months": "mesi",
+    "month": "mese",
+    "monthlyPayment": "Rata mensile stimata",
+    "duration": "Durata",
+    "requestFinancing": "Richiedi finanziamento",
+    "disclaimer": "Simulazione indicativa. Soggetto ad approvazione."
+  },
   "contact": {
     "title": "Contatta il venditore",
     "name": "Il tuo nome",

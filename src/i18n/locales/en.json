@@ -117,6 +117,18 @@
     "financing": "or {{amount}}/month over 72 months",
     "financingAvailable": "Financing available"
   },
+  "financing": {
+    "title": "Financing Simulator",
+    "cashOption": "Cash payment available",
+    "financingOption": "Financing available over 72 months",
+    "selectDuration": "Choose repayment duration",
+    "months": "months",
+    "month": "month",
+    "monthlyPayment": "Estimated monthly payment",
+    "duration": "Duration",
+    "requestFinancing": "Request financing",
+    "disclaimer": "Indicative simulation. Subject to approval."
+  },
   "contact": {
     "title": "Contact the seller",
     "name": "Your name",
