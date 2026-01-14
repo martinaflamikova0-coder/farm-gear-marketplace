@@ -32,8 +32,8 @@ const BrandsMarquee = () => {
   const allBrands = [...brands, ...brands];
 
   return (
-    <div className="bg-card border-y border-border overflow-hidden py-4">
-      <div className="flex animate-marquee">
+    <div className="bg-card border-y border-border overflow-hidden py-4 w-full">
+      <div className="flex animate-marquee w-max">
         {allBrands.map((brand, index) => (
           <div
             key={`brand-${index}`}
