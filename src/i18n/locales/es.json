@@ -90,7 +90,9 @@
     "contactSeller": "Contactar vendedor",
     "requestInfo": "Solicitar información",
     "similarListings": "Anuncios similares",
-    "ref": "Ref"
+    "ref": "Ref",
+    "financing": "o {{amount}}/mes en 72 meses",
+    "financingAvailable": "Financiación disponible"
   },
   "contact": {
     "title": "Contactar al vendedor",

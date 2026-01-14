@@ -113,7 +113,9 @@
     "contactSeller": "Contact seller",
     "requestInfo": "Request information",
     "similarListings": "Similar listings",
-    "ref": "Ref"
+    "ref": "Ref",
+    "financing": "or {{amount}}/month over 72 months",
+    "financingAvailable": "Financing available"
   },
   "contact": {
     "title": "Contact the seller",
