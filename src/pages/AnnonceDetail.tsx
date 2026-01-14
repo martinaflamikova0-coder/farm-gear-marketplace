@@ -348,7 +348,7 @@ const AnnonceDetail = () => {
               </Card>
 
               {/* Financing Simulator */}
-              <FinancingSimulator price={price} />
+              <FinancingSimulator price={price} productTitle={translatedTitle} productId={id || ''} />
 
               {/* Contact form */}
               <Card>

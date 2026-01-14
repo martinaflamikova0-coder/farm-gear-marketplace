@@ -1,1 +1,7 @@
 project_id = "iukwizjteyfzljmizueb"
+
+[functions.translate-product]
+verify_jwt = false
+
+[functions.send-financing-request]
+verify_jwt = false
