@@ -16,6 +16,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useProductById, useRecentProducts } from '@/hooks/useProducts';
 import { useTranslatedProduct } from '@/hooks/useTranslatedProduct';
 import ProductCard from '@/components/products/ProductCard';
+import FinancingSimulator from '@/components/products/FinancingSimulator';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 
 const AnnonceDetail = () => {
@@ -345,6 +346,9 @@ const AnnonceDetail = () => {
                   </div>
                 </CardContent>
               </Card>
+
+              {/* Financing Simulator */}
+              <FinancingSimulator price={price} />
 
               {/* Contact form */}
               <Card>
