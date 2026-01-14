@@ -113,7 +113,9 @@
     "contactSeller": "Contacter le vendeur",
     "requestInfo": "Demander des informations",
     "similarListings": "Annonces similaires",
-    "ref": "Réf"
+    "ref": "Réf",
+    "financing": "ou {{amount}}/mois sur 72 mois",
+    "financingAvailable": "Financement disponible"
   },
   "contact": {
     "title": "Contacter le vendeur",

@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { MapPin, Clock, Calendar } from 'lucide-react';
+import { MapPin, Clock, Calendar, CreditCard } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -65,6 +65,12 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   const imageUrl = product.images?.[0] || '/placeholder.svg';
   const price = Number(product.price) || 0;
   const priceHT = Math.round(price / 1.2); // Approximate HT from TTC
+  
+  // Financing available for products >= 5000€
+  const FINANCING_THRESHOLD = 5000;
+  const FINANCING_MONTHS = 72;
+  const hasFinancing = price >= FINANCING_THRESHOLD;
+  const monthlyPayment = hasFinancing ? Math.round(price / FINANCING_MONTHS) : 0;
 
   if (variant === 'horizontal') {
     return (
@@ -133,6 +139,12 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                       <p className="text-xs text-muted-foreground">
                         {formatPrice(priceHT)} {t('product.priceHT')}
                       </p>
+                      {hasFinancing && (
+                        <div className="flex items-center gap-1 mt-1 text-xs text-success">
+                          <CreditCard className="h-3 w-3" />
+                          <span>{t('product.financing', { amount: formatPrice(monthlyPayment) })}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -202,6 +214,12 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
             <p className="text-xs text-muted-foreground">
               {formatPrice(priceHT)} {t('product.priceHT')}
             </p>
+            {hasFinancing && (
+              <div className="flex items-center gap-1 mt-1 text-xs text-success">
+                <CreditCard className="h-3 w-3" />
+                <span>{t('product.financing', { amount: formatPrice(monthlyPayment) })}</span>
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>
