@@ -32,19 +32,22 @@ const TrustBar = () => {
     },
   ];
 
+  // Double the items for seamless loop
+  const duplicatedItems = [...trustItems, ...trustItems];
+
   return (
-    <div className="bg-card border-y border-border/50">
-      <div className="container-custom py-6">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {trustItems.map((item, index) => (
-            <div key={index} className="flex flex-col items-center text-center gap-2">
-              <div className="p-3 rounded-full bg-primary/10">
-                <item.icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
-              </div>
-              <div>
-                <p className="font-medium text-sm text-foreground">{item.title}</p>
-                <p className="text-xs text-muted-foreground">{item.subtitle}</p>
-              </div>
+    <div className="bg-primary text-primary-foreground overflow-hidden">
+      <div className="py-3">
+        <div className="flex animate-marquee">
+          {duplicatedItems.map((item, index) => (
+            <div 
+              key={index} 
+              className="flex items-center gap-2 px-8 whitespace-nowrap"
+            >
+              <item.icon className="h-5 w-5 opacity-80" strokeWidth={1.5} />
+              <span className="font-medium text-sm">{item.title}</span>
+              <span className="text-sm opacity-70">—</span>
+              <span className="text-sm opacity-80">{item.subtitle}</span>
             </div>
           ))}
         </div>
