@@ -120,6 +120,7 @@ const AnnonceDetail = () => {
   };
 
   const images = product.images || [];
+  const customerImages = (product as any).customer_images || [];
   const price = Number(product.price) || 0;
   const priceHT = Math.round(price / 1.2);
 
@@ -450,6 +451,35 @@ const AnnonceDetail = () => {
                   </div>
                 </CardContent>
               </Card>
+
+              {/* Customer Photos Section */}
+              {customerImages.length > 0 && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="font-display">{t('product.customerPhotos')}</CardTitle>
+                    <p className="text-sm text-muted-foreground">{t('product.customerPhotosDesc')}</p>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                      {customerImages.map((img: string, index: number) => (
+                        <button
+                          key={index}
+                          onClick={() => {
+                            setCurrentImageIndex(images.length + index);
+                          }}
+                          className="aspect-square rounded-lg overflow-hidden border border-border hover:border-primary transition-colors"
+                        >
+                          <img 
+                            src={img} 
+                            alt={`${t('product.customerPhotos')} ${index + 1}`} 
+                            className="w-full h-full object-cover"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
             </div>
 
             {/* Sidebar */}

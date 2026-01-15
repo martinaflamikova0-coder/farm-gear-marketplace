@@ -48,6 +48,7 @@ const productSchema = z.object({
   seller_email: z.string().email('Email invalide').max(255, 'Email trop long').optional().or(z.literal('')),
   featured: z.boolean(),
   images: z.array(z.string()).default([]),
+  customer_images: z.array(z.string()).default([]),
   stock: z.number().min(0, 'Le stock doit être positif').optional().nullable(),
   low_stock_threshold: z.number().min(1, 'Le seuil doit être supérieur à 0').optional().nullable(),
 });
@@ -86,6 +87,7 @@ const defaultFormData: ProductFormData = {
   seller_email: '',
   featured: false,
   images: [],
+  customer_images: [],
   stock: null,
   low_stock_threshold: 5,
 };
@@ -171,6 +173,7 @@ const AdminProductForm = () => {
           seller_email: data.seller_email || '',
           featured: data.featured || false,
           images: data.images || [],
+          customer_images: (data as any).customer_images || [],
           stock: data.stock ?? null,
           low_stock_threshold: data.low_stock_threshold ?? 5,
         });
@@ -263,6 +266,7 @@ const AdminProductForm = () => {
         featured: validation.data.featured,
         status: validation.data.status,
         images: validation.data.images,
+        customer_images: validation.data.customer_images,
         created_by: user?.id,
         // Stock only for new items
         stock: validation.data.condition === 'new' ? (validation.data.stock ?? null) : null,
@@ -708,12 +712,27 @@ const AdminProductForm = () => {
           <Card className="lg:col-span-2">
             <CardHeader>
               <CardTitle>Photos du produit</CardTitle>
-              <CardDescription>Ajoutez jusqu'à 10 photos. La première image sera l'image principale.</CardDescription>
+              <CardDescription>Ajoutez jusqu'à 20 photos. La première image sera l'image principale.</CardDescription>
             </CardHeader>
             <CardContent>
               <ImageUploader
                 images={formData.images}
                 onImagesChange={(images) => handleChange('images', images)}
+                maxImages={20}
+              />
+            </CardContent>
+          </Card>
+
+          {/* Customer Images */}
+          <Card className="lg:col-span-2">
+            <CardHeader>
+              <CardTitle>📸 Photos clients</CardTitle>
+              <CardDescription>Photos montrant le produit en utilisation chez les clients (visible sur la fiche produit)</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ImageUploader
+                images={formData.customer_images}
+                onImagesChange={(images) => handleChange('customer_images', images)}
                 maxImages={10}
               />
             </CardContent>

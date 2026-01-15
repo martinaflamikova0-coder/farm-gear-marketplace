@@ -197,7 +197,9 @@
     "verifiedSeller": "Venditore verificato",
     "outOfStock": "Esaurito",
     "inStock": "Disponibile",
-    "stockCount": "{{count}} disponibili"
+    "stockCount": "{{count}} disponibili",
+    "customerPhotos": "📸 Foto dei clienti",
+    "customerPhotosDesc": "Guarda questo prodotto in uso dai nostri clienti"
   },
   "validation": {
     "firstNameMin": "Il nome deve contenere almeno 2 caratteri",

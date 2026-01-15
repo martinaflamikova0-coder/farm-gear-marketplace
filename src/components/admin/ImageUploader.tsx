@@ -11,7 +11,7 @@ interface ImageUploaderProps {
   maxImages?: number;
 }
 
-const ImageUploader = ({ images, onImagesChange, maxImages = 10 }: ImageUploaderProps) => {
+const ImageUploader = ({ images, onImagesChange, maxImages = 20 }: ImageUploaderProps) => {
   const { toast } = useToast();
   const [isUploading, setIsUploading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
