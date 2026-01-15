@@ -10,6 +10,7 @@ export interface ProductWithSeller extends Product {
     phone: string | null;
     email: string | null;
   };
+  customer_images: string[] | null;
 }
 
 // Transform database product to include seller object for compatibility

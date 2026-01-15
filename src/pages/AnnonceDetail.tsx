@@ -120,7 +120,7 @@ const AnnonceDetail = () => {
   };
 
   const images = product.images || [];
-  const customerImages = (product as any).customer_images || [];
+  const customerImages = product.customer_images || [];
   const price = Number(product.price) || 0;
   const priceHT = Math.round(price / 1.2);
 

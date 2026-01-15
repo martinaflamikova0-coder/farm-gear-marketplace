@@ -7,6 +7,8 @@ import type { ProductWithSeller } from '@/hooks/useProducts';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import { getTranslatedTitle, getTranslatedDescription } from '@/hooks/useTranslatedProduct';
 import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
+import AddToCartButton from '@/components/cart/AddToCartButton';
+import { CART_MAX_PRICE } from '@/contexts/CartContext';
 
 interface ProductCardProps {
   product: ProductWithSeller;
@@ -165,6 +167,18 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                         </div>
                       )}
                     </div>
+                    {price <= CART_MAX_PRICE && (
+                      <div onClick={(e) => e.preventDefault()}>
+                        <AddToCartButton
+                          productId={product.id}
+                          price={price}
+                          condition={product.condition}
+                          stock={product.stock}
+                          size="sm"
+                          showLabel={false}
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -233,18 +247,34 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
           )}
           
           <div className="mt-3 pt-3 border-t border-border">
-            <p className="text-xl font-display font-bold text-primary">
-              {formatPrice(price)}
-            </p>
-            <p className="text-xs text-muted-foreground">
-              {formatPrice(priceHT)} {t('product.priceHT')}
-            </p>
-            {hasFinancing && (
-              <div className="flex items-center gap-1 mt-1 text-xs text-success">
-                <CreditCard className="h-3 w-3" />
-                <span>{t('product.financing', { amount: formatPrice(monthlyPayment) })}</span>
+            <div className="flex items-start justify-between gap-2">
+              <div className="flex-1 min-w-0">
+                <p className="text-xl font-display font-bold text-primary">
+                  {formatPrice(price)}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  {formatPrice(priceHT)} {t('product.priceHT')}
+                </p>
+                {hasFinancing && (
+                  <div className="flex items-center gap-1 mt-1 text-xs text-success">
+                    <CreditCard className="h-3 w-3" />
+                    <span>{t('product.financing', { amount: formatPrice(monthlyPayment) })}</span>
+                  </div>
+                )}
               </div>
-            )}
+              {price <= CART_MAX_PRICE && (
+                <div onClick={(e) => e.preventDefault()}>
+                  <AddToCartButton
+                    productId={product.id}
+                    price={price}
+                    condition={product.condition}
+                    stock={product.stock}
+                    size="icon"
+                    showLabel={false}
+                  />
+                </div>
+              )}
+            </div>
           </div>
         </CardContent>
       </Card>
