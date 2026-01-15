@@ -95,7 +95,8 @@
     "similarListings": "Annunci simili",
     "ref": "Rif",
     "financing": "o {{amount}}/mese in 72 mesi",
-    "financingAvailable": "Finanziamento disponibile"
+    "financingAvailable": "Finanziamento disponibile",
+    "vatDisclaimer": "IVA variabile in base al profilo e al paese dell'acquirente"
   },
   "financing": {
     "title": "Simulatore di finanziamento",

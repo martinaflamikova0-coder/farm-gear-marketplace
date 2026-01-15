@@ -118,7 +118,8 @@
     "similarListings": "Similar listings",
     "ref": "Ref",
     "financing": "or {{amount}}/month over 72 months",
-    "financingAvailable": "Financing available"
+    "financingAvailable": "Financing available",
+    "vatDisclaimer": "VAT varies by buyer status and country"
   },
   "financing": {
     "title": "Financing Simulator",
