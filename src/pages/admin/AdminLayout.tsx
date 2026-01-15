@@ -7,6 +7,7 @@ import {
   Package, 
   FolderTree,
   Tags,
+  ShoppingCart,
   LogOut, 
   Menu,
   X
@@ -50,6 +51,7 @@ const AdminLayout = () => {
 
   const navItems = [
     { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
+    { href: '/admin/orders', label: 'Commandes', icon: ShoppingCart },
     { href: '/admin/products', label: 'Produits', icon: Package },
     { href: '/admin/categories', label: 'Catégories', icon: FolderTree },
     { href: '/admin/brands', label: 'Marques', icon: Tags },

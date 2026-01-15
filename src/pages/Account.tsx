@@ -9,7 +9,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Package, Calendar, Euro, ChevronDown, ChevronUp, LogOut, User } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Package, Calendar, Euro, ChevronDown, ChevronUp, LogOut, User, FileImage, Download, Eye, MapPin, Receipt } from 'lucide-react';
 import { format } from 'date-fns';
 import { fr, enUS, de, es, it, pt, type Locale } from 'date-fns/locale';
 
@@ -25,10 +26,12 @@ interface Order {
   created_at: string;
   status: string;
   total_amount: number;
+  payment_receipt_url: string | null;
   shipping_name: string | null;
   shipping_address: string | null;
   shipping_city: string | null;
   shipping_postal_code: string | null;
+  shipping_country: string | null;
   order_items: OrderItem[];
 }
 
@@ -55,6 +58,8 @@ const Account = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [expandedOrder, setExpandedOrder] = useState<string | null>(null);
+  const [receiptDialogOpen, setReceiptDialogOpen] = useState(false);
+  const [selectedReceipt, setSelectedReceipt] = useState<{ url: string; orderId: string } | null>(null);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -73,10 +78,12 @@ const Account = () => {
           created_at,
           status,
           total_amount,
+          payment_receipt_url,
           shipping_name,
           shipping_address,
           shipping_city,
           shipping_postal_code,
+          shipping_country,
           order_items (
             id,
             product_title,
@@ -107,6 +114,30 @@ const Account = () => {
 
   const toggleOrderDetails = (orderId: string) => {
     setExpandedOrder(expandedOrder === orderId ? null : orderId);
+  };
+
+  const viewReceipt = async (receiptPath: string, orderId: string) => {
+    const { data } = await supabase.storage
+      .from('payment-receipts')
+      .createSignedUrl(receiptPath, 3600);
+
+    if (data?.signedUrl) {
+      setSelectedReceipt({ url: data.signedUrl, orderId });
+      setReceiptDialogOpen(true);
+    }
+  };
+
+  const downloadReceipt = async (receiptPath: string, orderId: string) => {
+    const { data } = await supabase.storage
+      .from('payment-receipts')
+      .createSignedUrl(receiptPath, 60);
+
+    if (data?.signedUrl) {
+      const link = document.createElement('a');
+      link.href = data.signedUrl;
+      link.download = `receipt-${orderId.slice(0, 8)}.${receiptPath.split('.').pop()}`;
+      link.click();
+    }
   };
 
   if (authLoading) {
@@ -208,38 +239,81 @@ const Account = () => {
                 </CardHeader>
 
                 {expandedOrder === order.id && (
-                  <CardContent className="border-t bg-muted/30">
+                  <CardContent className="border-t bg-muted/30 space-y-4">
                     {/* Shipping Address */}
                     {order.shipping_name && (
-                      <div className="mb-4 p-3 bg-background rounded-lg">
-                        <h4 className="font-medium mb-2">{t('account.shippingAddress')}</h4>
+                      <div className="p-3 bg-background rounded-lg">
+                        <h4 className="font-medium mb-2 flex items-center gap-2">
+                          <MapPin className="h-4 w-4" />
+                          {t('account.shippingAddress')}
+                        </h4>
                         <p className="text-sm text-muted-foreground">
                           {order.shipping_name}<br />
                           {order.shipping_address}<br />
                           {order.shipping_postal_code} {order.shipping_city}
+                          {order.shipping_country && <><br />{order.shipping_country}</>}
                         </p>
                       </div>
                     )}
 
+                    {/* Payment Receipt */}
+                    {order.payment_receipt_url && (
+                      <div className="p-3 bg-background rounded-lg">
+                        <h4 className="font-medium mb-2 flex items-center gap-2">
+                          <Receipt className="h-4 w-4" />
+                          {t('account.paymentReceipt')}
+                        </h4>
+                        <div className="flex gap-2">
+                          <Button 
+                            variant="outline" 
+                            size="sm"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              viewReceipt(order.payment_receipt_url!, order.id);
+                            }}
+                          >
+                            <Eye className="h-4 w-4 mr-2" />
+                            {t('account.viewReceipt')}
+                          </Button>
+                          <Button 
+                            variant="outline" 
+                            size="sm"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              downloadReceipt(order.payment_receipt_url!, order.id);
+                            }}
+                          >
+                            <Download className="h-4 w-4 mr-2" />
+                            {t('account.downloadReceipt')}
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+
                     {/* Order Items */}
-                    <h4 className="font-medium mb-3">{t('account.orderItems')}</h4>
-                    <div className="space-y-2">
-                      {order.order_items.map((item) => (
-                        <div 
-                          key={item.id} 
-                          className="flex justify-between items-center p-3 bg-background rounded-lg"
-                        >
-                          <div>
-                            <p className="font-medium">{item.product_title}</p>
-                            <p className="text-sm text-muted-foreground">
-                              {t('account.quantity')}: {item.quantity}
+                    <div>
+                      <h4 className="font-medium mb-3 flex items-center gap-2">
+                        <Package className="h-4 w-4" />
+                        {t('account.orderItems')}
+                      </h4>
+                      <div className="space-y-2">
+                        {order.order_items.map((item) => (
+                          <div 
+                            key={item.id} 
+                            className="flex justify-between items-center p-3 bg-background rounded-lg"
+                          >
+                            <div>
+                              <p className="font-medium">{item.product_title}</p>
+                              <p className="text-sm text-muted-foreground">
+                                {t('account.quantity')}: {item.quantity}
+                              </p>
+                            </div>
+                            <p className="font-semibold">
+                              {item.product_price.toLocaleString('fr-FR')} €
                             </p>
                           </div>
-                          <p className="font-semibold">
-                            {item.product_price.toLocaleString('fr-FR')} €
-                          </p>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </CardContent>
                 )}
@@ -249,6 +323,34 @@ const Account = () => {
         )}
       </main>
       <Footer />
+
+      {/* Receipt Dialog */}
+      <Dialog open={receiptDialogOpen} onOpenChange={setReceiptDialogOpen}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-auto">
+          <DialogHeader>
+            <DialogTitle>
+              {t('account.paymentReceipt')} - #{selectedReceipt?.orderId.slice(0, 8).toUpperCase()}
+            </DialogTitle>
+          </DialogHeader>
+          {selectedReceipt && (
+            <div className="flex items-center justify-center p-4">
+              {selectedReceipt.url.includes('.pdf') ? (
+                <iframe 
+                  src={selectedReceipt.url} 
+                  className="w-full h-[70vh] border rounded"
+                  title="Receipt PDF"
+                />
+              ) : (
+                <img 
+                  src={selectedReceipt.url} 
+                  alt="Receipt" 
+                  className="max-w-full max-h-[70vh] object-contain rounded shadow-lg"
+                />
+              )}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
