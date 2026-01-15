@@ -56,6 +56,13 @@
     "paymentReceipt": "Reçu de paiement",
     "viewReceipt": "Voir",
     "downloadReceipt": "Télécharger",
+    "invoice": "Facture",
+    "viewInvoice": "Voir la facture",
+    "downloadInvoice": "Télécharger la facture",
+    "receiptDownloaded": "Reçu téléchargé avec succès",
+    "invoiceDownloaded": "Facture téléchargée avec succès",
+    "errorGeneratingInvoice": "Erreur lors de la génération de la facture",
+    "errorDownloadingInvoice": "Erreur lors du téléchargement de la facture",
     "status": {
       "pending": "En attente",
       "confirmed": "Confirmée",

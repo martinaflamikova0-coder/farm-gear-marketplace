@@ -56,6 +56,13 @@
     "paymentReceipt": "Payment receipt",
     "viewReceipt": "View",
     "downloadReceipt": "Download",
+    "invoice": "Invoice",
+    "viewInvoice": "View invoice",
+    "downloadInvoice": "Download invoice",
+    "receiptDownloaded": "Receipt downloaded successfully",
+    "invoiceDownloaded": "Invoice downloaded successfully",
+    "errorGeneratingInvoice": "Error generating invoice",
+    "errorDownloadingInvoice": "Error downloading invoice",
     "status": {
       "pending": "Pending",
       "confirmed": "Confirmed",
