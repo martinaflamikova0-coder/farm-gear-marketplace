@@ -19,7 +19,29 @@
     "listings": "Annonces",
     "categories": "Catégories",
     "postAd": "Déposer une annonce",
-    "specialist": "Spécialiste du matériel agricole d'occasion"
+    "specialist": "Spécialiste du matériel agricole d'occasion",
+    "account": "Mon compte",
+    "login": "Se connecter"
+  },
+  "cart": {
+    "title": "Mon panier",
+    "empty": "Votre panier est vide",
+    "emptyDescription": "Parcourez nos annonces pour ajouter des articles à votre panier",
+    "browseProducts": "Voir les annonces",
+    "addToCart": "Ajouter au panier",
+    "inCart": "Dans le panier",
+    "item": "article",
+    "items": "articles",
+    "summary": "Récapitulatif",
+    "subtotal": "Sous-total",
+    "shipping": "Livraison",
+    "freeShipping": "Gratuite",
+    "total": "Total",
+    "checkout": "Passer commande",
+    "continueShopping": "Continuer mes achats",
+    "loginRequired": "Connexion requise",
+    "loginDescription": "Connectez-vous pour accéder à votre panier et passer commande",
+    "login": "Se connecter"
   },
   "home": {
     "featuredListings": "⭐ Annonces en vedette",

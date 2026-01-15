@@ -12,6 +12,8 @@ import Terms from '@/pages/Terms';
 import Privacy from '@/pages/Privacy';
 import Cookies from '@/pages/Cookies';
 import NotFound from '@/pages/NotFound';
+import Auth from '@/pages/Auth';
+import Cart from '@/pages/Cart';
 import AdminLogin from '@/pages/admin/AdminLogin';
 import AdminResetPassword from '@/pages/admin/AdminResetPassword';
 import AdminLayout from '@/pages/admin/AdminLayout';
@@ -111,6 +113,11 @@ const LocalizedRoutes = () => {
       <Route path="/:lang/terms" element={<LanguageWrapper><Terms /></LanguageWrapper>} />
       <Route path="/:lang/privacy" element={<LanguageWrapper><Privacy /></LanguageWrapper>} />
       <Route path="/:lang/cookies" element={<LanguageWrapper><Cookies /></LanguageWrapper>} />
+      
+      {/* Auth & Cart routes */}
+      <Route path="/:lang/auth" element={<LanguageWrapper><Auth /></LanguageWrapper>} />
+      <Route path="/:lang/panier" element={<LanguageWrapper><Cart /></LanguageWrapper>} />
+      <Route path="/:lang/cart" element={<LanguageWrapper><Cart /></LanguageWrapper>} />
       
       {/* Listings routes with localized slugs */}
       <Route path="/:lang/listings" element={<LanguageWrapper><ListingsRoute /></LanguageWrapper>} />

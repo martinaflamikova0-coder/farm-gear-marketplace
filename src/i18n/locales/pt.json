@@ -18,7 +18,29 @@
     "listings": "Anúncios",
     "categories": "Categorias",
     "postAd": "Publicar anúncio",
-    "specialist": "Especialista em máquinas agrícolas usadas"
+    "specialist": "Especialista em máquinas agrícolas usadas",
+    "account": "Minha conta",
+    "login": "Entrar"
+  },
+  "cart": {
+    "title": "Meu carrinho",
+    "empty": "O seu carrinho está vazio",
+    "emptyDescription": "Explore os nossos anúncios para adicionar artigos ao carrinho",
+    "browseProducts": "Ver anúncios",
+    "addToCart": "Adicionar ao carrinho",
+    "inCart": "No carrinho",
+    "item": "artigo",
+    "items": "artigos",
+    "summary": "Resumo",
+    "subtotal": "Subtotal",
+    "shipping": "Envio",
+    "freeShipping": "Grátis",
+    "total": "Total",
+    "checkout": "Finalizar compra",
+    "continueShopping": "Continuar a comprar",
+    "loginRequired": "Login necessário",
+    "loginDescription": "Entre na sua conta para aceder ao carrinho e fazer encomendas",
+    "login": "Entrar"
   },
   "home": {
     "featuredListings": "⭐ Anúncios em destaque",

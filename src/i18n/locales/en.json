@@ -19,7 +19,29 @@
     "listings": "Listings",
     "categories": "Categories",
     "postAd": "Post an ad",
-    "specialist": "Specialist in used agricultural equipment"
+    "specialist": "Specialist in used agricultural equipment",
+    "account": "My account",
+    "login": "Sign in"
+  },
+  "cart": {
+    "title": "My cart",
+    "empty": "Your cart is empty",
+    "emptyDescription": "Browse our listings to add items to your cart",
+    "browseProducts": "Browse listings",
+    "addToCart": "Add to cart",
+    "inCart": "In cart",
+    "item": "item",
+    "items": "items",
+    "summary": "Summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "freeShipping": "Free",
+    "total": "Total",
+    "checkout": "Checkout",
+    "continueShopping": "Continue shopping",
+    "loginRequired": "Login required",
+    "loginDescription": "Sign in to access your cart and place orders",
+    "login": "Sign in"
   },
   "home": {
     "featuredListings": "⭐ Featured listings",

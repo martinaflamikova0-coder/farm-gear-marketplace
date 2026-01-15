@@ -18,7 +18,29 @@
     "listings": "Annunci",
     "categories": "Categorie",
     "postAd": "Pubblica annuncio",
-    "specialist": "Specialista in macchine agricole usate"
+    "specialist": "Specialista in macchine agricole usate",
+    "account": "Il mio account",
+    "login": "Accedi"
+  },
+  "cart": {
+    "title": "Il mio carrello",
+    "empty": "Il tuo carrello è vuoto",
+    "emptyDescription": "Sfoglia i nostri annunci per aggiungere articoli al carrello",
+    "browseProducts": "Sfoglia annunci",
+    "addToCart": "Aggiungi al carrello",
+    "inCart": "Nel carrello",
+    "item": "articolo",
+    "items": "articoli",
+    "summary": "Riepilogo",
+    "subtotal": "Subtotale",
+    "shipping": "Spedizione",
+    "freeShipping": "Gratuita",
+    "total": "Totale",
+    "checkout": "Procedi all'acquisto",
+    "continueShopping": "Continua lo shopping",
+    "loginRequired": "Accesso richiesto",
+    "loginDescription": "Accedi per visualizzare il carrello e effettuare ordini",
+    "login": "Accedi"
   },
   "home": {
     "featuredListings": "⭐ Annunci in evidenza",

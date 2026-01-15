@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Search, Menu, X, ChevronDown, Phone } from 'lucide-react';
+import { Search, Menu, X, ChevronDown, Phone, User } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { categories } from '@/data/products';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import CartIcon from '@/components/cart/CartIcon';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
+import { useCart } from '@/contexts/CartContext';
 import logoEquiptrade from '@/assets/logo-equiptrade.png';
 
 const Header = () => {
@@ -17,6 +19,7 @@ const Header = () => {
   const { t, i18n } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
+  const { user } = useCart();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -105,6 +108,17 @@ const Header = () => {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
+            {/* Cart icon */}
+            <CartIcon />
+            
+            {/* User account */}
+            <Button variant="ghost" size="icon" asChild>
+              <Link to={user ? `/${currentLang}/compte` : `/${currentLang}/auth`}>
+                <User className="h-5 w-5" />
+                <span className="sr-only">{user ? t('nav.account') : t('nav.login')}</span>
+              </Link>
+            </Button>
+            
             {/* Mobile menu button */}
             <Button
               variant="ghost"
