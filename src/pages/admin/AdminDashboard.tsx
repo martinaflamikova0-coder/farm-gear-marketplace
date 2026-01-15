@@ -3,13 +3,21 @@ import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Package, Plus, TrendingUp, Eye } from 'lucide-react';
+import { Package, Plus, TrendingUp, Eye, AlertTriangle, PackageX } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 interface Stats {
   totalProducts: number;
   activeProducts: number;
   draftProducts: number;
   soldProducts: number;
+}
+
+interface LowStockProduct {
+  id: string;
+  title: string;
+  stock: number;
+  low_stock_threshold: number;
 }
 
 const AdminDashboard = () => {
@@ -19,14 +27,17 @@ const AdminDashboard = () => {
     draftProducts: 0,
     soldProducts: 0,
   });
+  const [lowStockProducts, setLowStockProducts] = useState<LowStockProduct[]>([]);
+  const [outOfStockCount, setOutOfStockCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
+        // Fetch all products with stock info
         const { data: products, error } = await supabase
           .from('products')
-          .select('status');
+          .select('id, title, status, condition, stock, low_stock_threshold');
 
         if (error) throw error;
 
@@ -36,6 +47,33 @@ const AdminDashboard = () => {
         const soldProducts = products?.filter(p => p.status === 'sold').length || 0;
 
         setStats({ totalProducts, activeProducts, draftProducts, soldProducts });
+
+        // Find low stock products (new items with stock <= threshold)
+        const lowStock = products?.filter(p => 
+          p.condition === 'new' && 
+          p.stock !== null && 
+          p.low_stock_threshold !== null &&
+          p.stock <= p.low_stock_threshold &&
+          p.stock > 0 &&
+          p.status === 'active'
+        ).map(p => ({
+          id: p.id,
+          title: p.title,
+          stock: p.stock!,
+          low_stock_threshold: p.low_stock_threshold!,
+        })) || [];
+        
+        setLowStockProducts(lowStock);
+
+        // Count out of stock products
+        const outOfStock = products?.filter(p => 
+          p.condition === 'new' && 
+          p.stock !== null && 
+          p.stock === 0 &&
+          p.status === 'active'
+        ).length || 0;
+        
+        setOutOfStockCount(outOfStock);
       } catch (error) {
         console.error('Error fetching stats:', error);
       } finally {
@@ -104,6 +142,61 @@ const AdminDashboard = () => {
           </Card>
         ))}
       </div>
+
+      {/* Stock Alerts */}
+      {(lowStockProducts.length > 0 || outOfStockCount > 0) && (
+        <Card className="border-warning">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-warning">
+              <AlertTriangle className="h-5 w-5" />
+              Alertes de stock
+            </CardTitle>
+            <CardDescription>Articles nécessitant votre attention</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {outOfStockCount > 0 && (
+              <div className="flex items-center gap-3 p-3 bg-destructive/10 rounded-lg">
+                <PackageX className="h-5 w-5 text-destructive" />
+                <div className="flex-1">
+                  <p className="font-medium text-destructive">
+                    {outOfStockCount} article{outOfStockCount > 1 ? 's' : ''} en rupture de stock
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Ces articles sont visibles mais affichent "Rupture de stock"
+                  </p>
+                </div>
+              </div>
+            )}
+            
+            {lowStockProducts.length > 0 && (
+              <div className="space-y-2">
+                <p className="text-sm font-medium text-muted-foreground">Stock bas :</p>
+                <div className="space-y-2">
+                  {lowStockProducts.slice(0, 5).map((product) => (
+                    <Link
+                      key={product.id}
+                      to={`/admin/products/${product.id}`}
+                      className="flex items-center justify-between p-2 rounded-lg hover:bg-muted transition-colors"
+                    >
+                      <span className="text-sm truncate max-w-[200px] sm:max-w-none">
+                        {product.title}
+                      </span>
+                      <Badge variant="outline" className="text-warning border-warning">
+                        {product.stock} restant{product.stock > 1 ? 's' : ''}
+                      </Badge>
+                    </Link>
+                  ))}
+                  {lowStockProducts.length > 5 && (
+                    <p className="text-sm text-muted-foreground text-center pt-2">
+                      + {lowStockProducts.length - 5} autres articles
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      )}
 
       {/* Quick Actions */}
       <Card>

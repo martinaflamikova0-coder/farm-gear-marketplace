@@ -165,7 +165,10 @@
     "vatDisclaimer": "TVA variable selon votre statut et pays",
     "seller": "Vendeur",
     "sellerDefault": "Vendeur",
-    "verifiedSeller": "Vendeur vérifié"
+    "verifiedSeller": "Vendeur vérifié",
+    "outOfStock": "Rupture de stock",
+    "inStock": "En stock",
+    "stockCount": "{{count}} en stock"
   },
   "validation": {
     "firstNameMin": "Le prénom doit contenir au moins 2 caractères",

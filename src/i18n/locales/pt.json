@@ -142,7 +142,10 @@
     "vatDisclaimer": "IVA variável conforme o perfil e país do comprador",
     "seller": "Vendedor",
     "sellerDefault": "Vendedor",
-    "verifiedSeller": "Vendedor verificado"
+    "verifiedSeller": "Vendedor verificado",
+    "outOfStock": "Esgotado",
+    "inStock": "Em stock",
+    "stockCount": "{{count}} em stock"
   },
   "validation": {
     "firstNameMin": "O nome deve ter pelo menos 2 caracteres",
