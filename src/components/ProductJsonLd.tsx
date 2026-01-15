@@ -14,6 +14,7 @@ interface ProductJsonLdProps {
     images: string[] | null;
     location: string | null;
     seller_name: string | null;
+    stock?: number | null;
   };
   translatedTitle: string;
   translatedDescription: string;
@@ -49,6 +50,16 @@ const ProductJsonLd = ({
       ? conditionMap[product.condition] || 'https://schema.org/UsedCondition'
       : 'https://schema.org/UsedCondition';
 
+    // Determine availability based on stock (for new items) or default to InStock
+    const getAvailability = () => {
+      if (product.condition === 'new' && product.stock !== undefined && product.stock !== null) {
+        return product.stock === 0 
+          ? 'https://schema.org/OutOfStock' 
+          : 'https://schema.org/InStock';
+      }
+      return 'https://schema.org/InStock';
+    };
+
     // Build the JSON-LD structured data
     const jsonLd = {
       '@context': 'https://schema.org',
@@ -67,7 +78,7 @@ const ProductJsonLd = ({
         price: price.toFixed(2),
         priceValidUntil: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
         itemCondition,
-        availability: 'https://schema.org/InStock',
+        availability: getAvailability(),
         ...(product.seller_name && {
           seller: {
             '@type': 'Organization',
