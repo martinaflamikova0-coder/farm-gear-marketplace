@@ -358,14 +358,16 @@ const AnnonceDetail = () => {
               )}
 
               {/* Title and price - Mobile */}
-              <div className="lg:hidden">
-                <p className="text-sm text-muted-foreground mb-1">
-                  {product.category} • {product.subcategory}
+              <div className="lg:hidden overflow-hidden">
+                <p className="text-sm text-muted-foreground mb-1 truncate">
+                  {product.subcategory && product.subcategory !== product.category 
+                    ? product.subcategory 
+                    : product.category}
                 </p>
-                <h1 className="font-display text-2xl font-bold text-foreground mb-2">
+                <h1 className="font-display text-2xl font-bold text-foreground mb-2 break-words">
                   {translatedTitle}
                 </h1>
-                <div className="flex items-end gap-2 mb-4">
+                <div className="flex flex-wrap items-end gap-2 mb-2">
                   <span className="text-3xl font-display font-bold text-primary">
                     {formatPrice(price)}
                   </span>
@@ -373,6 +375,9 @@ const AnnonceDetail = () => {
                     ({formatPrice(priceHT)} {t('product.priceHT')})
                   </span>
                 </div>
+                <p className="text-xs text-muted-foreground italic mb-4">
+                  {t('product.vatDisclaimer')}
+                </p>
               </div>
 
               {/* Description */}
@@ -418,14 +423,16 @@ const AnnonceDetail = () => {
               {/* Price card - Desktop */}
               <Card className="hidden lg:block sticky top-24">
                 <CardContent className="p-6">
-                  <p className="text-sm text-muted-foreground mb-1">
-                    {product.category} • {product.subcategory}
+                  <p className="text-sm text-muted-foreground mb-1 truncate">
+                    {product.subcategory && product.subcategory !== product.category 
+                      ? product.subcategory 
+                      : product.category}
                   </p>
-                  <h1 className="font-display text-2xl font-bold text-foreground mb-4">
+                  <h1 className="font-display text-2xl font-bold text-foreground mb-4 break-words">
                     {translatedTitle}
                   </h1>
                   
-                  <div className="space-y-1 mb-6">
+                  <div className="space-y-1 mb-2">
                     <div className="text-4xl font-display font-bold text-primary">
                       {formatPrice(price)}
                     </div>
@@ -433,6 +440,9 @@ const AnnonceDetail = () => {
                       {formatPrice(priceHT)} {t('product.priceHT')}
                     </p>
                   </div>
+                  <p className="text-xs text-muted-foreground italic mb-6">
+                    {t('product.vatDisclaimer')}
+                  </p>
 
                   <div className="space-y-3 mb-6 text-sm">
                     {product.year && (

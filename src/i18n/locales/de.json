@@ -95,7 +95,8 @@
     "similarListings": "Ähnliche Anzeigen",
     "ref": "Ref",
     "financing": "oder {{amount}}/Monat über 72 Monate",
-    "financingAvailable": "Finanzierung verfügbar"
+    "financingAvailable": "Finanzierung verfügbar",
+    "vatDisclaimer": "MwSt. variiert je nach Käuferstatus und Land"
   },
   "financing": {
     "title": "Finanzierungsrechner",
