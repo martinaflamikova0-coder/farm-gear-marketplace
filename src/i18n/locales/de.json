@@ -358,6 +358,16 @@
     "success": {
       "orderSaved": "Bestellung gespeichert!",
       "orderSavedDescription": "Ihre Bestellung und Ihr Beleg wurden erfolgreich gespeichert."
+    },
+    "validation": {
+      "firstNameMin": "Vorname muss mindestens 2 Zeichen haben",
+      "lastNameMin": "Nachname muss mindestens 2 Zeichen haben",
+      "emailInvalid": "Ungültige E-Mail-Adresse",
+      "phoneInvalid": "Ungültige Telefonnummer",
+      "addressRequired": "Adresse erforderlich (mindestens 5 Zeichen)",
+      "cityRequired": "Stadt erforderlich",
+      "postalCodeRequired": "Postleitzahl erforderlich",
+      "countryRequired": "Land erforderlich"
     }
   },
   "seo": {
