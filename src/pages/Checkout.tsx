@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, CreditCard, Building2, Check, Loader2, Copy, CheckCheck } from 'lucide-react';
+import { ArrowLeft, CreditCard, Building2, Check, Loader2, Copy, CheckCheck, Upload, FileCheck, X } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SEOHead from '@/components/SEOHead';
@@ -63,11 +63,16 @@ const Checkout = () => {
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const [orderReference, setOrderReference] = useState<string>('');
   
-  // Shipping form
+  // Receipt upload state
+  const [receiptFile, setReceiptFile] = useState<File | null>(null);
+  const [isUploadingReceipt, setIsUploadingReceipt] = useState(false);
+  const receiptInputRef = useRef<HTMLInputElement>(null);
+  
+  // Shipping form - email is NOT pre-filled
   const [shippingData, setShippingData] = useState({
     firstName: '',
     lastName: '',
-    email: user?.email || '',
+    email: '',
     phone: '',
     address: '',
     city: '',
@@ -132,12 +137,73 @@ const Checkout = () => {
     }
   };
 
+  const handleReceiptSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      // Validate file type
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'];
+      if (!allowedTypes.includes(file.type)) {
+        toast({
+          title: 'Format non supporté',
+          description: 'Veuillez télécharger une image (JPG, PNG, WebP) ou un PDF',
+          variant: 'destructive',
+        });
+        return;
+      }
+      // Validate file size (max 10MB)
+      if (file.size > 10 * 1024 * 1024) {
+        toast({
+          title: 'Fichier trop volumineux',
+          description: 'La taille maximale est de 10 Mo',
+          variant: 'destructive',
+        });
+        return;
+      }
+      setReceiptFile(file);
+    }
+  };
+
+  const handleRemoveReceipt = () => {
+    setReceiptFile(null);
+    if (receiptInputRef.current) {
+      receiptInputRef.current.value = '';
+    }
+  };
+
+  const uploadReceipt = async (orderId: string): Promise<string | null> => {
+    if (!receiptFile || !user) return null;
+
+    const fileExt = receiptFile.name.split('.').pop();
+    const fileName = `${user.id}/${orderId}-receipt.${fileExt}`;
+
+    const { data, error } = await supabase.storage
+      .from('payment-receipts')
+      .upload(fileName, receiptFile, { upsert: true });
+
+    if (error) {
+      console.error('Receipt upload error:', error);
+      return null;
+    }
+
+    return data.path;
+  };
+
   const handleConfirmOrder = async () => {
     if (!user) return;
 
+    // Validate receipt is uploaded
+    if (!receiptFile) {
+      toast({
+        title: 'Reçu manquant',
+        description: 'Veuillez joindre votre reçu de virement',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsLoading(true);
     try {
-      // Create order
+      // Create order first
       const { data: order, error: orderError } = await supabase
         .from('orders')
         .insert({
@@ -157,6 +223,19 @@ const Checkout = () => {
         .single();
 
       if (orderError) throw orderError;
+
+      // Upload receipt
+      setIsUploadingReceipt(true);
+      const receiptPath = await uploadReceipt(order.id);
+      setIsUploadingReceipt(false);
+
+      // Update order with receipt URL if uploaded
+      if (receiptPath) {
+        await supabase
+          .from('orders')
+          .update({ payment_receipt_url: receiptPath })
+          .eq('id', order.id);
+      }
 
       // Create order items
       const orderItems = items.map(item => ({
@@ -185,7 +264,7 @@ const Checkout = () => {
 
       toast({
         title: 'Commande enregistrée !',
-        description: 'Votre commande a été enregistrée avec succès.',
+        description: 'Votre commande et votre reçu ont été enregistrés avec succès.',
       });
     } catch (error) {
       console.error('Order error:', error);
@@ -196,6 +275,7 @@ const Checkout = () => {
       });
     } finally {
       setIsLoading(false);
+      setIsUploadingReceipt(false);
     }
   };
 
@@ -478,18 +558,69 @@ const Checkout = () => {
                       <ul className="text-sm text-muted-foreground space-y-1">
                         <li>• Indiquez votre nom et prénom dans la référence du virement</li>
                         <li>• Les délais de traitement sont de 1 à 3 jours ouvrés</li>
-                        <li>• Vous recevrez un email de confirmation dès réception du paiement</li>
+                        <li>• Joignez votre reçu de virement ci-dessous</li>
                       </ul>
+                    </div>
+
+                    {/* Receipt Upload */}
+                    <div className="space-y-3">
+                      <Label className="text-base font-medium">
+                        Joindre le reçu de virement *
+                      </Label>
+                      <p className="text-sm text-muted-foreground">
+                        Téléchargez une capture d'écran ou un PDF de votre confirmation de virement
+                      </p>
+                      
+                      <input
+                        type="file"
+                        ref={receiptInputRef}
+                        accept="image/jpeg,image/png,image/webp,application/pdf"
+                        className="hidden"
+                        onChange={handleReceiptSelect}
+                      />
+
+                      {!receiptFile ? (
+                        <Button
+                          type="button"
+                          variant="outline"
+                          className="w-full h-24 border-dashed flex flex-col gap-2"
+                          onClick={() => receiptInputRef.current?.click()}
+                        >
+                          <Upload className="h-6 w-6 text-muted-foreground" />
+                          <span className="text-sm text-muted-foreground">
+                            Cliquez pour télécharger (JPG, PNG, PDF - max 10 Mo)
+                          </span>
+                        </Button>
+                      ) : (
+                        <div className="flex items-center gap-3 p-4 bg-success/10 border border-success/30 rounded-lg">
+                          <FileCheck className="h-6 w-6 text-success flex-shrink-0" />
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-medium truncate">{receiptFile.name}</p>
+                            <p className="text-xs text-muted-foreground">
+                              {(receiptFile.size / 1024 / 1024).toFixed(2)} Mo
+                            </p>
+                          </div>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8 text-destructive hover:text-destructive"
+                            onClick={handleRemoveReceipt}
+                          >
+                            <X className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      )}
                     </div>
 
                     <Button 
                       onClick={handleConfirmOrder} 
                       className="w-full" 
                       size="lg"
-                      disabled={isLoading}
+                      disabled={isLoading || !receiptFile}
                     >
                       {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                      Confirmer ma commande
+                      {isUploadingReceipt ? 'Téléchargement du reçu...' : 'Confirmer ma commande'}
                     </Button>
                   </CardContent>
                 </Card>
