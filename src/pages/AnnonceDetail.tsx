@@ -16,6 +16,7 @@ import { Label } from '@/components/ui/label';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useProductById, useRecentProducts } from '@/hooks/useProducts';
 import { useTranslatedProduct } from '@/hooks/useTranslatedProduct';
+import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
 import ProductCard from '@/components/products/ProductCard';
 import FinancingSimulator from '@/components/products/FinancingSimulator';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
@@ -31,6 +32,7 @@ const AnnonceDetail = () => {
   
   // Get translated content
   const { title: translatedTitle, description: translatedDescription } = useTranslatedProduct(product || null);
+  const { translateCategory } = useTranslatedCategory();
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
@@ -365,8 +367,8 @@ const AnnonceDetail = () => {
               <div className="lg:hidden overflow-hidden">
                 <p className="text-sm text-muted-foreground mb-1 truncate">
                   {product.subcategory && product.subcategory !== product.category 
-                    ? product.subcategory 
-                    : product.category}
+                    ? translateCategory(product.subcategory) 
+                    : translateCategory(product.category)}
                 </p>
                 <h1 className="font-display text-2xl font-bold text-foreground mb-2 break-words">
                   {translatedTitle}
@@ -429,8 +431,8 @@ const AnnonceDetail = () => {
                 <CardContent className="p-6">
                   <p className="text-sm text-muted-foreground mb-1 truncate">
                     {product.subcategory && product.subcategory !== product.category 
-                      ? product.subcategory 
-                      : product.category}
+                      ? translateCategory(product.subcategory) 
+                      : translateCategory(product.category)}
                   </p>
                   <h1 className="font-display text-2xl font-bold text-foreground mb-4 break-words">
                     {translatedTitle}
