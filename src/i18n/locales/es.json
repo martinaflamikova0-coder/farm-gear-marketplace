@@ -73,6 +73,18 @@
     "sellers": "vendedores",
     "departments": "regiones"
   },
+  "trust": {
+    "securePayment": "Pago seguro",
+    "securePaymentDesc": "100% seguro en línea",
+    "delivery": "Entrega",
+    "deliveryDesc": "En toda Europa",
+    "quality": "Equipo verificado",
+    "qualityDesc": "Control de calidad",
+    "proAndPrivate": "Pro & Particular",
+    "proAndPrivateDesc": "Para todos los perfiles",
+    "support": "Soporte",
+    "supportDesc": "Equipo dedicado"
+  },
   "categories": {
     "tractors": "Tractores",
     "harvest": "Equipos de cosecha",

@@ -6,6 +6,7 @@ import BrandsMarquee from '@/components/home/BrandsMarquee';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
 import RecentProducts from '@/components/home/RecentProducts';
 import ProductsGrid from '@/components/home/ProductsGrid';
+import TrustBar from '@/components/home/TrustBar';
 import SEOHead from '@/components/SEOHead';
 
 const Index = () => {
@@ -17,6 +18,7 @@ const Index = () => {
       />
       <Header />
       <BrandsMarquee />
+      <TrustBar />
       <SearchBar />
       <QuickCategories />
       
