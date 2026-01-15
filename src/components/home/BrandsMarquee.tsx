@@ -32,20 +32,22 @@ const BrandsMarquee = () => {
   const allBrands = [...brands, ...brands];
 
   return (
-    <div className="bg-card border-y border-border overflow-hidden py-2 w-full">
-      <div className="flex animate-marquee w-max">
-        {allBrands.map((brand, index) => (
-          <div
-            key={`brand-${index}`}
-            className="flex items-center justify-center mx-4 md:mx-6 flex-shrink-0"
-          >
-            <img
-              src={brand.logo}
-              alt={brand.name}
-              className="h-5 md:h-6 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-50 hover:opacity-100"
-            />
-          </div>
-        ))}
+    <div className="bg-card border-y border-border overflow-hidden w-full">
+      <div className="h-8 md:h-10 flex items-center overflow-hidden">
+        <div className="flex animate-marquee w-max">
+          {allBrands.map((brand, index) => (
+            <div
+              key={`brand-${index}`}
+              className="flex items-center justify-center mx-4 md:mx-6 flex-shrink-0 h-5 md:h-6"
+            >
+              <img
+                src={brand.logo}
+                alt={brand.name}
+                className="max-h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-50 hover:opacity-100"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
