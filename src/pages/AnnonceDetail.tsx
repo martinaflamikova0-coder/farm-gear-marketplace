@@ -9,6 +9,7 @@ import ProductJsonLd from '@/components/ProductJsonLd';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
@@ -214,16 +215,18 @@ const AnnonceDetail = () => {
               {/* Image gallery */}
               <Card className="overflow-hidden">
                 <div
-                  className="relative bg-muted cursor-pointer flex items-center justify-center overflow-hidden"
+                  className="relative bg-muted cursor-pointer overflow-hidden"
                   onClick={openZoom}
                 >
-                  {/* Full image display - mobile optimized */}
-                  <img
-                    src={images[currentImageIndex] || '/placeholder.svg'}
-                    alt={translatedTitle}
-                    className="block w-full h-auto max-h-[50vh] sm:max-h-[60vh] object-contain"
-                    style={{ maxWidth: '100%' }}
-                  />
+                  {/* iOS/Android-safe: fixed aspect-ratio container prevents Safari crop */}
+                  <AspectRatio ratio={16 / 10} className="w-full">
+                    <img
+                      src={images[currentImageIndex] || '/placeholder.svg'}
+                      alt={translatedTitle}
+                      className="h-full w-full object-contain"
+                      draggable={false}
+                    />
+                  </AspectRatio>
                   {images.length > 1 && (
                     <>
                       <button
