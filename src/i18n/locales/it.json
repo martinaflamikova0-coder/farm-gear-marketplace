@@ -97,7 +97,16 @@
     "ref": "Rif",
     "financing": "o {{amount}}/mese in 72 mesi",
     "financingAvailable": "Finanziamento disponibile",
-    "vatDisclaimer": "IVA variabile in base al profilo e al paese dell'acquirente"
+    "vatDisclaimer": "IVA variabile in base al profilo e al paese dell'acquirente",
+    "seller": "Venditore",
+    "sellerDefault": "Venditore",
+    "verifiedSeller": "Venditore verificato"
+  },
+  "validation": {
+    "firstNameMin": "Il nome deve contenere almeno 2 caratteri",
+    "lastNameMin": "Il cognome deve contenere almeno 2 caratteri",
+    "emailInvalid": "Indirizzo email non valido",
+    "phoneInvalid": "Numero di telefono non valido"
   },
   "hero": {
     "title": "Macchine agricole usate,",

@@ -120,7 +120,16 @@
     "ref": "Réf",
     "financing": "ou {{amount}}/mois sur 72 mois",
     "financingAvailable": "Financement disponible",
-    "vatDisclaimer": "TVA variable selon votre statut et pays"
+    "vatDisclaimer": "TVA variable selon votre statut et pays",
+    "seller": "Vendeur",
+    "sellerDefault": "Vendeur",
+    "verifiedSeller": "Vendeur vérifié"
+  },
+  "validation": {
+    "firstNameMin": "Le prénom doit contenir au moins 2 caractères",
+    "lastNameMin": "Le nom doit contenir au moins 2 caractères",
+    "emailInvalid": "Email invalide",
+    "phoneInvalid": "Numéro de téléphone invalide"
   },
   "hero": {
     "title": "Le matériel agricole d'occasion,",

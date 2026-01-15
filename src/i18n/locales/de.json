@@ -97,7 +97,16 @@
     "ref": "Ref",
     "financing": "oder {{amount}}/Monat über 72 Monate",
     "financingAvailable": "Finanzierung verfügbar",
-    "vatDisclaimer": "MwSt. variiert je nach Käuferstatus und Land"
+    "vatDisclaimer": "MwSt. variiert je nach Käuferstatus und Land",
+    "seller": "Verkäufer",
+    "sellerDefault": "Verkäufer",
+    "verifiedSeller": "Verifizierter Verkäufer"
+  },
+  "validation": {
+    "firstNameMin": "Vorname muss mindestens 2 Zeichen haben",
+    "lastNameMin": "Nachname muss mindestens 2 Zeichen haben",
+    "emailInvalid": "Ungültige E-Mail-Adresse",
+    "phoneInvalid": "Ungültige Telefonnummer"
   },
   "hero": {
     "title": "Gebrauchte Landmaschinen,",

@@ -97,7 +97,16 @@
     "ref": "Ref",
     "financing": "o {{amount}}/mes en 72 meses",
     "financingAvailable": "Financiación disponible",
-    "vatDisclaimer": "IVA variable según su perfil y país"
+    "vatDisclaimer": "IVA variable según su perfil y país",
+    "seller": "Vendedor",
+    "sellerDefault": "Vendedor",
+    "verifiedSeller": "Vendedor verificado"
+  },
+  "validation": {
+    "firstNameMin": "El nombre debe tener al menos 2 caracteres",
+    "lastNameMin": "El apellido debe tener al menos 2 caracteres",
+    "emailInvalid": "Dirección de correo inválida",
+    "phoneInvalid": "Número de teléfono inválido"
   },
   "hero": {
     "title": "Maquinaria agrícola usada,",

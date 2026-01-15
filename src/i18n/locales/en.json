@@ -120,7 +120,16 @@
     "ref": "Ref",
     "financing": "or {{amount}}/month over 72 months",
     "financingAvailable": "Financing available",
-    "vatDisclaimer": "VAT varies by buyer status and country"
+    "vatDisclaimer": "VAT varies by buyer status and country",
+    "seller": "Seller",
+    "sellerDefault": "Seller",
+    "verifiedSeller": "Verified seller"
+  },
+  "validation": {
+    "firstNameMin": "First name must be at least 2 characters",
+    "lastNameMin": "Last name must be at least 2 characters",
+    "emailInvalid": "Invalid email address",
+    "phoneInvalid": "Invalid phone number"
   },
   "hero": {
     "title": "Used agricultural equipment,",

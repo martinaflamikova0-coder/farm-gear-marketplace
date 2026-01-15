@@ -24,11 +24,11 @@ interface FinancingRequestFormProps {
   monthlyPayment: number;
 }
 
-const financingFormSchema = z.object({
-  firstName: z.string().min(2, { message: 'Le prénom doit contenir au moins 2 caractères' }).max(50),
-  lastName: z.string().min(2, { message: 'Le nom doit contenir au moins 2 caractères' }).max(50),
-  email: z.string().email({ message: 'Email invalide' }).max(255),
-  phone: z.string().min(10, { message: 'Numéro de téléphone invalide' }).max(20),
+const createFinancingFormSchema = (t: (key: string) => string) => z.object({
+  firstName: z.string().min(2, { message: t('validation.firstNameMin') }).max(50),
+  lastName: z.string().min(2, { message: t('validation.lastNameMin') }).max(50),
+  email: z.string().email({ message: t('validation.emailInvalid') }).max(255),
+  phone: z.string().min(10, { message: t('validation.phoneInvalid') }).max(20),
   company: z.string().max(100).optional(),
   siret: z.string().max(14).optional(),
   downPayment: z.string().optional(),
@@ -36,7 +36,7 @@ const financingFormSchema = z.object({
   additionalInfo: z.string().max(1000).optional(),
 });
 
-type FinancingFormData = z.infer<typeof financingFormSchema>;
+type FinancingFormData = z.infer<ReturnType<typeof createFinancingFormSchema>>;
 
 const DURATION_OPTIONS = [12, 24, 36, 48, 60, 72];
 
@@ -52,6 +52,8 @@ const FinancingRequestForm = ({
   const { t } = useTranslation();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const financingFormSchema = createFinancingFormSchema(t);
 
   const form = useForm<FinancingFormData>({
     resolver: zodResolver(financingFormSchema),
