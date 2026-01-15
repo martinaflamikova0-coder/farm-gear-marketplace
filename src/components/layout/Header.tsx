@@ -51,7 +51,7 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
+    <header className="sticky top-0 z-40 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
       {/* Top bar */}
       <div className="bg-primary text-primary-foreground">
         <div className="container-custom flex h-10 items-center justify-between text-sm">

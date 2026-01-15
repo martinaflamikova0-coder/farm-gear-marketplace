@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, MapPin, Clock, Calendar, Phone, Mail, Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, MapPin, Clock, Calendar, Phone, Mail, Check, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, X, FileText } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SEOHead from '@/components/SEOHead';
@@ -32,6 +32,8 @@ const AnnonceDetail = () => {
   const { title: translatedTitle, description: translatedDescription } = useTranslatedProduct(product || null);
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -128,6 +130,24 @@ const AnnonceDetail = () => {
     }
   };
 
+  const openZoom = () => {
+    setIsZoomed(true);
+    setZoomLevel(1);
+  };
+
+  const closeZoom = () => {
+    setIsZoomed(false);
+    setZoomLevel(1);
+  };
+
+  const handleZoomIn = () => {
+    setZoomLevel((prev) => Math.min(prev + 0.5, 3));
+  };
+
+  const handleZoomOut = () => {
+    setZoomLevel((prev) => Math.max(prev - 0.5, 0.5));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert(t('contact.success'));
@@ -193,51 +213,56 @@ const AnnonceDetail = () => {
             <div className="lg:col-span-2 space-y-6">
               {/* Image gallery */}
               <Card className="overflow-hidden">
-                <div className="relative aspect-[16/10] bg-muted">
+                <div className="relative aspect-[4/3] bg-muted cursor-pointer" onClick={openZoom}>
                   <img
                     src={images[currentImageIndex] || '/placeholder.svg'}
                     alt={translatedTitle}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                   {images.length > 1 && (
                     <>
                       <button
-                        onClick={prevImage}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card/90 flex items-center justify-center hover:bg-card transition-colors shadow-lg"
+                        onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-card/90 flex items-center justify-center hover:bg-card transition-colors shadow-lg"
                       >
-                        <ChevronLeft className="h-5 w-5" />
+                        <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                       </button>
                       <button
-                        onClick={nextImage}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card/90 flex items-center justify-center hover:bg-card transition-colors shadow-lg"
+                        onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-card/90 flex items-center justify-center hover:bg-card transition-colors shadow-lg"
                       >
-                        <ChevronRight className="h-5 w-5" />
+                        <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
                       </button>
                     </>
                   )}
                   {product.condition && (
-                    <Badge className={`absolute top-4 left-4 ${conditionColors[product.condition] || 'bg-muted'}`}>
+                    <Badge className={`absolute top-2 sm:top-4 left-2 sm:left-4 text-xs sm:text-sm ${conditionColors[product.condition] || 'bg-muted'}`}>
                       {getConditionLabel(product.condition)}
                     </Badge>
                   )}
                   {product.featured && (
-                    <Badge className="absolute top-4 right-4 bg-accent text-accent-foreground">
+                    <Badge className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-accent text-accent-foreground text-xs sm:text-sm">
                       ⭐ {t('home.featuredListings').replace('⭐ ', '')}
                     </Badge>
                   )}
+                  {/* Zoom hint */}
+                  <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 bg-card/90 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm flex items-center gap-1">
+                    <ZoomIn className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span className="hidden sm:inline">{t('product.clickToZoom')}</span>
+                  </div>
                   {images.length > 0 && (
-                    <div className="absolute bottom-4 right-4 bg-card/90 px-3 py-1 rounded-full text-sm">
+                    <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 bg-card/90 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
                       {currentImageIndex + 1} / {images.length}
                     </div>
                   )}
                 </div>
                 {images.length > 1 && (
-                  <div className="p-4 flex gap-2 overflow-x-auto">
+                  <div className="p-2 sm:p-4 flex gap-1.5 sm:gap-2 overflow-x-auto">
                     {images.map((img, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentImageIndex(index)}
-                        className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                        className={`flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 transition-all ${
                           index === currentImageIndex ? 'border-primary' : 'border-transparent hover:border-border'
                         }`}
                       >
@@ -247,6 +272,86 @@ const AnnonceDetail = () => {
                   </div>
                 )}
               </Card>
+
+              {/* Zoom modal */}
+              {isZoomed && (
+                <div className="fixed inset-0 z-50 bg-black/95 flex flex-col">
+                  {/* Zoom controls */}
+                  <div className="flex justify-between items-center p-4 bg-black/50">
+                    <div className="text-white text-sm">
+                      {currentImageIndex + 1} / {images.length}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={handleZoomOut}
+                        disabled={zoomLevel <= 0.5}
+                        className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors disabled:opacity-50"
+                      >
+                        <ZoomOut className="h-5 w-5 text-white" />
+                      </button>
+                      <span className="text-white text-sm w-16 text-center">{Math.round(zoomLevel * 100)}%</span>
+                      <button
+                        onClick={handleZoomIn}
+                        disabled={zoomLevel >= 3}
+                        className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors disabled:opacity-50"
+                      >
+                        <ZoomIn className="h-5 w-5 text-white" />
+                      </button>
+                      <button
+                        onClick={closeZoom}
+                        className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors ml-4"
+                      >
+                        <X className="h-5 w-5 text-white" />
+                      </button>
+                    </div>
+                  </div>
+                  
+                  {/* Main image */}
+                  <div className="flex-1 overflow-auto flex items-center justify-center p-4">
+                    <img
+                      src={images[currentImageIndex] || '/placeholder.svg'}
+                      alt={translatedTitle}
+                      className="max-w-full max-h-full object-contain transition-transform duration-200"
+                      style={{ transform: `scale(${zoomLevel})` }}
+                    />
+                  </div>
+
+                  {/* Navigation */}
+                  {images.length > 1 && (
+                    <>
+                      <button
+                        onClick={prevImage}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                      >
+                        <ChevronLeft className="h-6 w-6 text-white" />
+                      </button>
+                      <button
+                        onClick={nextImage}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                      >
+                        <ChevronRight className="h-6 w-6 text-white" />
+                      </button>
+                    </>
+                  )}
+
+                  {/* Thumbnails */}
+                  {images.length > 1 && (
+                    <div className="p-4 bg-black/50 flex justify-center gap-2 overflow-x-auto">
+                      {images.map((img, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setCurrentImageIndex(index)}
+                          className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                            index === currentImageIndex ? 'border-primary' : 'border-transparent hover:border-white/50'
+                          }`}
+                        >
+                          <img src={img} alt="" className="w-full h-full object-cover" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
 
               {/* Title and price - Mobile */}
               <div className="lg:hidden">
@@ -343,9 +448,11 @@ const AnnonceDetail = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Button variant="accent" className="w-full" size="lg">
-                      <Phone className="h-4 w-4 mr-2" />
-                      {t('product.contactSeller')}
+                    <Button variant="accent" className="w-full" size="lg" asChild>
+                      <a href="#request-quote">
+                        <FileText className="h-4 w-4 mr-2" />
+                        {t('product.requestQuote')}
+                      </a>
                     </Button>
                   </div>
                 </CardContent>
@@ -354,10 +461,10 @@ const AnnonceDetail = () => {
               {/* Financing Simulator */}
               <FinancingSimulator price={price} productTitle={translatedTitle} productId={id || ''} />
 
-              {/* Contact form */}
-              <Card>
+              {/* Quote request form */}
+              <Card id="request-quote">
                 <CardHeader>
-                  <CardTitle className="font-display">{t('product.requestInfo')}</CardTitle>
+                  <CardTitle className="font-display">{t('product.requestQuote')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-4">
@@ -403,9 +510,9 @@ const AnnonceDetail = () => {
                         placeholder={t('contact.messagePlaceholder')}
                       />
                     </div>
-                    <Button type="submit" className="w-full" variant="default">
-                      <Mail className="h-4 w-4 mr-2" />
-                      {t('contact.send')}
+                    <Button type="submit" className="w-full" variant="accent" size="lg">
+                      <FileText className="h-4 w-4 mr-2" />
+                      {t('product.sendQuoteRequest')}
                     </Button>
                   </form>
                 </CardContent>
