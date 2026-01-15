@@ -184,6 +184,7 @@ export type Database = {
           created_at: string
           id: string
           notes: string | null
+          payment_receipt_url: string | null
           shipping_address: string | null
           shipping_city: string | null
           shipping_country: string | null
@@ -202,6 +203,7 @@ export type Database = {
           created_at?: string
           id?: string
           notes?: string | null
+          payment_receipt_url?: string | null
           shipping_address?: string | null
           shipping_city?: string | null
           shipping_country?: string | null
@@ -220,6 +222,7 @@ export type Database = {
           created_at?: string
           id?: string
           notes?: string | null
+          payment_receipt_url?: string | null
           shipping_address?: string | null
           shipping_city?: string | null
           shipping_country?: string | null
