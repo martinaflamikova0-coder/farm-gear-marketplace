@@ -196,10 +196,10 @@ const AnnonceDetail = () => {
         currentLang={currentLang}
       />
       <Header />
-      <main className="flex-1 bg-background">
-        <div className="container-custom py-8">
+      <main className="flex-1 bg-background overflow-x-hidden">
+        <div className="container-custom py-4 sm:py-8 max-w-full overflow-hidden">
           {/* Breadcrumb */}
-          <nav className="mb-6">
+          <nav className="mb-4 sm:mb-6">
             <Button variant="ghost" size="sm" asChild className="gap-2 -ml-2">
               <Link to={`/${currentLang}/${listingsSlug}`}>
                 <ArrowLeft className="h-4 w-4" />
@@ -208,20 +208,21 @@ const AnnonceDetail = () => {
             </Button>
           </nav>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-4 sm:gap-8 max-w-full overflow-hidden">
             {/* Main content */}
-            <div className="lg:col-span-2 space-y-6">
+            <div className="lg:col-span-2 space-y-4 sm:space-y-6 min-w-0 overflow-hidden">
               {/* Image gallery */}
-              <Card>
+              <Card className="overflow-hidden">
                 <div
-                  className="relative bg-muted cursor-pointer flex items-center justify-center"
+                  className="relative bg-muted cursor-pointer flex items-center justify-center overflow-hidden"
                   onClick={openZoom}
                 >
-                  {/* Full image display - no cropping */}
+                  {/* Full image display - mobile optimized */}
                   <img
                     src={images[currentImageIndex] || '/placeholder.svg'}
                     alt={translatedTitle}
-                    className="block w-full max-w-full h-auto max-h-[60vh] object-contain"
+                    className="block w-full h-auto max-h-[50vh] sm:max-h-[60vh] object-contain"
+                    style={{ maxWidth: '100%' }}
                   />
                   {images.length > 1 && (
                     <>
