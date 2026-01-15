@@ -213,11 +213,12 @@ const AnnonceDetail = () => {
             <div className="lg:col-span-2 space-y-6">
               {/* Image gallery */}
               <Card className="overflow-hidden">
-                <div className="relative aspect-[4/3] bg-muted cursor-pointer" onClick={openZoom}>
+                <div className="relative bg-muted cursor-pointer" onClick={openZoom}>
+                  {/* Full image display - no cropping */}
                   <img
                     src={images[currentImageIndex] || '/placeholder.svg'}
                     alt={translatedTitle}
-                    className="w-full h-full object-contain"
+                    className="w-full h-auto max-h-[70vh] object-contain mx-auto"
                   />
                   {images.length > 1 && (
                     <>
