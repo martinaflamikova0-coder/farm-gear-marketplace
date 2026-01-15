@@ -18,7 +18,29 @@
     "listings": "Anzeigen",
     "categories": "Kategorien",
     "postAd": "Anzeige aufgeben",
-    "specialist": "Spezialist für gebrauchte Landmaschinen"
+    "specialist": "Spezialist für gebrauchte Landmaschinen",
+    "account": "Mein Konto",
+    "login": "Anmelden"
+  },
+  "cart": {
+    "title": "Mein Warenkorb",
+    "empty": "Ihr Warenkorb ist leer",
+    "emptyDescription": "Durchsuchen Sie unsere Anzeigen, um Artikel in Ihren Warenkorb zu legen",
+    "browseProducts": "Anzeigen durchsuchen",
+    "addToCart": "In den Warenkorb",
+    "inCart": "Im Warenkorb",
+    "item": "Artikel",
+    "items": "Artikel",
+    "summary": "Zusammenfassung",
+    "subtotal": "Zwischensumme",
+    "shipping": "Versand",
+    "freeShipping": "Kostenlos",
+    "total": "Gesamt",
+    "checkout": "Zur Kasse",
+    "continueShopping": "Weiter einkaufen",
+    "loginRequired": "Anmeldung erforderlich",
+    "loginDescription": "Melden Sie sich an, um auf Ihren Warenkorb zuzugreifen und Bestellungen aufzugeben",
+    "login": "Anmelden"
   },
   "home": {
     "featuredListings": "⭐ Empfohlene Anzeigen",
