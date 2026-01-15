@@ -73,6 +73,18 @@
     "sellers": "venditori",
     "departments": "regioni"
   },
+  "trust": {
+    "securePayment": "Pagamento sicuro",
+    "securePaymentDesc": "100% sicuro online",
+    "delivery": "Consegna",
+    "deliveryDesc": "In tutta Europa",
+    "quality": "Macchinari verificati",
+    "qualityDesc": "Controllo qualità",
+    "proAndPrivate": "Pro & Privati",
+    "proAndPrivateDesc": "Per tutti i profili",
+    "support": "Assistenza",
+    "supportDesc": "Team dedicato"
+  },
   "categories": {
     "tractors": "Trattori",
     "harvest": "Attrezzature da raccolta",
