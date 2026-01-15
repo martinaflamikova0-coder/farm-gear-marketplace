@@ -291,6 +291,75 @@
     "notFoundDesc": "La pagina che stai cercando non esiste.",
     "backHome": "Torna alla home"
   },
+  "checkout": {
+    "title": "Cassa",
+    "emptyCart": "Carrello vuoto",
+    "emptyCartDescription": "Il tuo carrello è vuoto. Aggiungi articoli per effettuare un ordine.",
+    "viewListings": "Vedi annunci",
+    "backToCart": "Torna al carrello",
+    "backToShipping": "Torna alle informazioni",
+    "steps": {
+      "shipping": "Spedizione",
+      "payment": "Pagamento",
+      "confirmation": "Conferma"
+    },
+    "shipping": {
+      "title": "Informazioni di spedizione",
+      "description": "Inserisci i tuoi dati di spedizione",
+      "firstName": "Nome",
+      "lastName": "Cognome",
+      "email": "Email",
+      "phone": "Telefono",
+      "address": "Indirizzo",
+      "addressPlaceholder": "Numero civico e via",
+      "postalCode": "CAP",
+      "city": "Città",
+      "country": "Paese",
+      "continueToPayment": "Continua al pagamento"
+    },
+    "payment": {
+      "title": "Pagamento tramite bonifico bancario",
+      "description": "Effettua il bonifico sul conto indicato. Il tuo ordine sarà validato alla ricezione del pagamento.",
+      "accountHolder": "Intestatario",
+      "amountToTransfer": "Importo da trasferire",
+      "amountThresholdHigh": "Importi ≥ 5.000€",
+      "amountThresholdLow": "Importi < 5.000€",
+      "important": "Importante",
+      "instruction1": "Includi il tuo nome nel riferimento del bonifico",
+      "instruction2": "I tempi di elaborazione sono di 1-3 giorni lavorativi",
+      "instruction3": "Allega la ricevuta del bonifico qui sotto",
+      "uploadReceipt": "Allega ricevuta del bonifico",
+      "uploadReceiptDescription": "Carica uno screenshot o PDF della tua conferma di bonifico",
+      "uploadButton": "Clicca per caricare (JPG, PNG, PDF - max 10 MB)",
+      "confirmOrder": "Conferma il mio ordine",
+      "uploadingReceipt": "Caricamento ricevuta..."
+    },
+    "confirmation": {
+      "title": "Ordine confermato!",
+      "description": "Il tuo ordine è stato registrato con successo",
+      "orderReference": "Riferimento ordine",
+      "nextSteps": "Prossimi passi:",
+      "step1": "Effettua il bonifico con i dati forniti",
+      "step2": "Riceverai un'email di conferma a",
+      "step3": "Il tuo ordine sarà preparato alla ricezione del pagamento",
+      "backToHome": "Torna alla home"
+    },
+    "summary": "Riepilogo",
+    "errors": {
+      "receiptMissing": "Ricevuta mancante",
+      "receiptMissingDescription": "Allega la ricevuta del bonifico",
+      "unsupportedFormat": "Formato non supportato",
+      "unsupportedFormatDescription": "Carica un'immagine (JPG, PNG, WebP) o PDF",
+      "fileTooLarge": "File troppo grande",
+      "fileTooLargeDescription": "La dimensione massima è 10 MB",
+      "orderError": "Errore",
+      "orderErrorDescription": "Impossibile finalizzare l'ordine"
+    },
+    "success": {
+      "orderSaved": "Ordine salvato!",
+      "orderSavedDescription": "Il tuo ordine e la ricevuta sono stati salvati con successo."
+    }
+  },
   "seo": {
     "home": {
       "title": "Marketplace di Macchine Agricole Usate",

@@ -314,6 +314,75 @@
     "notFoundDesc": "The page you are looking for does not exist.",
     "backHome": "Back to home"
   },
+  "checkout": {
+    "title": "Checkout",
+    "emptyCart": "Empty cart",
+    "emptyCartDescription": "Your cart is empty. Add items to place an order.",
+    "viewListings": "View listings",
+    "backToCart": "Back to cart",
+    "backToShipping": "Back to shipping info",
+    "steps": {
+      "shipping": "Shipping",
+      "payment": "Payment",
+      "confirmation": "Confirmation"
+    },
+    "shipping": {
+      "title": "Shipping information",
+      "description": "Enter your shipping details",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "addressPlaceholder": "Street number and name",
+      "postalCode": "Postal code",
+      "city": "City",
+      "country": "Country",
+      "continueToPayment": "Continue to payment"
+    },
+    "payment": {
+      "title": "Bank transfer payment",
+      "description": "Make your transfer to the account below. Your order will be validated upon receipt of payment.",
+      "accountHolder": "Account holder",
+      "amountToTransfer": "Amount to transfer",
+      "amountThresholdHigh": "Amounts ≥ €5,000",
+      "amountThresholdLow": "Amounts < €5,000",
+      "important": "Important",
+      "instruction1": "Include your name in the transfer reference",
+      "instruction2": "Processing time is 1 to 3 business days",
+      "instruction3": "Attach your transfer receipt below",
+      "uploadReceipt": "Attach transfer receipt",
+      "uploadReceiptDescription": "Upload a screenshot or PDF of your transfer confirmation",
+      "uploadButton": "Click to upload (JPG, PNG, PDF - max 10 MB)",
+      "confirmOrder": "Confirm my order",
+      "uploadingReceipt": "Uploading receipt..."
+    },
+    "confirmation": {
+      "title": "Order confirmed!",
+      "description": "Your order has been successfully registered",
+      "orderReference": "Order reference",
+      "nextSteps": "Next steps:",
+      "step1": "Make your bank transfer with the provided details",
+      "step2": "You will receive a confirmation email at",
+      "step3": "Your order will be prepared upon receipt of payment",
+      "backToHome": "Back to home"
+    },
+    "summary": "Summary",
+    "errors": {
+      "receiptMissing": "Receipt missing",
+      "receiptMissingDescription": "Please attach your transfer receipt",
+      "unsupportedFormat": "Unsupported format",
+      "unsupportedFormatDescription": "Please upload an image (JPG, PNG, WebP) or PDF",
+      "fileTooLarge": "File too large",
+      "fileTooLargeDescription": "Maximum size is 10 MB",
+      "orderError": "Error",
+      "orderErrorDescription": "Unable to finalize order"
+    },
+    "success": {
+      "orderSaved": "Order saved!",
+      "orderSavedDescription": "Your order and receipt have been successfully saved."
+    }
+  },
   "seo": {
     "home": {
       "title": "Used Agricultural Equipment Marketplace",

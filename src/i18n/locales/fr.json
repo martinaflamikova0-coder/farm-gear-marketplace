@@ -314,6 +314,75 @@
     "notFoundDesc": "La page que vous recherchez n'existe pas.",
     "backHome": "Retour à l'accueil"
   },
+  "checkout": {
+    "title": "Paiement",
+    "emptyCart": "Panier vide",
+    "emptyCartDescription": "Votre panier est vide. Ajoutez des articles pour passer commande.",
+    "viewListings": "Voir les annonces",
+    "backToCart": "Retour au panier",
+    "backToShipping": "Retour aux informations",
+    "steps": {
+      "shipping": "Livraison",
+      "payment": "Paiement",
+      "confirmation": "Confirmation"
+    },
+    "shipping": {
+      "title": "Informations de livraison",
+      "description": "Renseignez vos coordonnées pour la livraison",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Email",
+      "phone": "Téléphone",
+      "address": "Adresse",
+      "addressPlaceholder": "Numéro et nom de rue",
+      "postalCode": "Code postal",
+      "city": "Ville",
+      "country": "Pays",
+      "continueToPayment": "Continuer vers le paiement"
+    },
+    "payment": {
+      "title": "Paiement par virement bancaire",
+      "description": "Effectuez votre virement sur le compte ci-dessous. Votre commande sera validée dès réception du paiement.",
+      "accountHolder": "Titulaire",
+      "amountToTransfer": "Montant à virer",
+      "amountThresholdHigh": "Montants ≥ 5000€",
+      "amountThresholdLow": "Montants < 5000€",
+      "important": "Important",
+      "instruction1": "Indiquez votre nom et prénom dans la référence du virement",
+      "instruction2": "Les délais de traitement sont de 1 à 3 jours ouvrés",
+      "instruction3": "Joignez votre reçu de virement ci-dessous",
+      "uploadReceipt": "Joindre le reçu de virement",
+      "uploadReceiptDescription": "Téléchargez une capture d'écran ou un PDF de votre confirmation de virement",
+      "uploadButton": "Cliquez pour télécharger (JPG, PNG, PDF - max 10 Mo)",
+      "confirmOrder": "Confirmer ma commande",
+      "uploadingReceipt": "Téléchargement du reçu..."
+    },
+    "confirmation": {
+      "title": "Commande confirmée !",
+      "description": "Votre commande a été enregistrée avec succès",
+      "orderReference": "Référence de commande",
+      "nextSteps": "Prochaines étapes :",
+      "step1": "Effectuez votre virement bancaire avec les coordonnées fournies",
+      "step2": "Vous recevrez un email de confirmation à",
+      "step3": "Votre commande sera préparée dès réception du paiement",
+      "backToHome": "Retour à l'accueil"
+    },
+    "summary": "Récapitulatif",
+    "errors": {
+      "receiptMissing": "Reçu manquant",
+      "receiptMissingDescription": "Veuillez joindre votre reçu de virement",
+      "unsupportedFormat": "Format non supporté",
+      "unsupportedFormatDescription": "Veuillez télécharger une image (JPG, PNG, WebP) ou un PDF",
+      "fileTooLarge": "Fichier trop volumineux",
+      "fileTooLargeDescription": "La taille maximale est de 10 Mo",
+      "orderError": "Erreur",
+      "orderErrorDescription": "Impossible de finaliser la commande"
+    },
+    "success": {
+      "orderSaved": "Commande enregistrée !",
+      "orderSavedDescription": "Votre commande et votre reçu ont été enregistrés avec succès."
+    }
+  },
   "seo": {
     "home": {
       "title": "Marketplace de Matériel Agricole d'Occasion",

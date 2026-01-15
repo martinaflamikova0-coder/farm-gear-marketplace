@@ -291,6 +291,75 @@
     "notFoundDesc": "Die gesuchte Seite existiert nicht.",
     "backHome": "Zurück zur Startseite"
   },
+  "checkout": {
+    "title": "Kasse",
+    "emptyCart": "Warenkorb leer",
+    "emptyCartDescription": "Ihr Warenkorb ist leer. Fügen Sie Artikel hinzu, um zu bestellen.",
+    "viewListings": "Anzeigen ansehen",
+    "backToCart": "Zurück zum Warenkorb",
+    "backToShipping": "Zurück zu den Informationen",
+    "steps": {
+      "shipping": "Lieferung",
+      "payment": "Zahlung",
+      "confirmation": "Bestätigung"
+    },
+    "shipping": {
+      "title": "Lieferinformationen",
+      "description": "Geben Sie Ihre Lieferdaten ein",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "address": "Adresse",
+      "addressPlaceholder": "Hausnummer und Straße",
+      "postalCode": "Postleitzahl",
+      "city": "Stadt",
+      "country": "Land",
+      "continueToPayment": "Weiter zur Zahlung"
+    },
+    "payment": {
+      "title": "Zahlung per Banküberweisung",
+      "description": "Überweisen Sie auf das untenstehende Konto. Ihre Bestellung wird nach Zahlungseingang bestätigt.",
+      "accountHolder": "Kontoinhaber",
+      "amountToTransfer": "Zu überweisender Betrag",
+      "amountThresholdHigh": "Beträge ≥ 5.000€",
+      "amountThresholdLow": "Beträge < 5.000€",
+      "important": "Wichtig",
+      "instruction1": "Geben Sie Ihren Namen in der Überweisungsreferenz an",
+      "instruction2": "Bearbeitungszeit beträgt 1 bis 3 Werktage",
+      "instruction3": "Fügen Sie Ihren Überweisungsbeleg unten bei",
+      "uploadReceipt": "Überweisungsbeleg anhängen",
+      "uploadReceiptDescription": "Laden Sie einen Screenshot oder PDF Ihrer Überweisungsbestätigung hoch",
+      "uploadButton": "Klicken zum Hochladen (JPG, PNG, PDF - max 10 MB)",
+      "confirmOrder": "Bestellung bestätigen",
+      "uploadingReceipt": "Beleg wird hochgeladen..."
+    },
+    "confirmation": {
+      "title": "Bestellung bestätigt!",
+      "description": "Ihre Bestellung wurde erfolgreich registriert",
+      "orderReference": "Bestellreferenz",
+      "nextSteps": "Nächste Schritte:",
+      "step1": "Führen Sie Ihre Banküberweisung mit den angegebenen Daten durch",
+      "step2": "Sie erhalten eine Bestätigungs-E-Mail an",
+      "step3": "Ihre Bestellung wird nach Zahlungseingang vorbereitet",
+      "backToHome": "Zurück zur Startseite"
+    },
+    "summary": "Zusammenfassung",
+    "errors": {
+      "receiptMissing": "Beleg fehlt",
+      "receiptMissingDescription": "Bitte fügen Sie Ihren Überweisungsbeleg bei",
+      "unsupportedFormat": "Nicht unterstütztes Format",
+      "unsupportedFormatDescription": "Bitte laden Sie ein Bild (JPG, PNG, WebP) oder PDF hoch",
+      "fileTooLarge": "Datei zu groß",
+      "fileTooLargeDescription": "Maximale Größe ist 10 MB",
+      "orderError": "Fehler",
+      "orderErrorDescription": "Bestellung konnte nicht abgeschlossen werden"
+    },
+    "success": {
+      "orderSaved": "Bestellung gespeichert!",
+      "orderSavedDescription": "Ihre Bestellung und Ihr Beleg wurden erfolgreich gespeichert."
+    }
+  },
   "seo": {
     "home": {
       "title": "Marktplatz für Gebrauchte Landmaschinen",

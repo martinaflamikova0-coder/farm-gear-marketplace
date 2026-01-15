@@ -291,6 +291,75 @@
     "notFoundDesc": "A página que procura não existe.",
     "backHome": "Voltar ao início"
   },
+  "checkout": {
+    "title": "Pagamento",
+    "emptyCart": "Carrinho vazio",
+    "emptyCartDescription": "O seu carrinho está vazio. Adicione artigos para fazer uma encomenda.",
+    "viewListings": "Ver anúncios",
+    "backToCart": "Voltar ao carrinho",
+    "backToShipping": "Voltar às informações",
+    "steps": {
+      "shipping": "Entrega",
+      "payment": "Pagamento",
+      "confirmation": "Confirmação"
+    },
+    "shipping": {
+      "title": "Informações de entrega",
+      "description": "Introduza os seus dados de entrega",
+      "firstName": "Nome",
+      "lastName": "Apelido",
+      "email": "Email",
+      "phone": "Telefone",
+      "address": "Morada",
+      "addressPlaceholder": "Número e nome da rua",
+      "postalCode": "Código postal",
+      "city": "Cidade",
+      "country": "País",
+      "continueToPayment": "Continuar para pagamento"
+    },
+    "payment": {
+      "title": "Pagamento por transferência bancária",
+      "description": "Faça a transferência para a conta indicada. A sua encomenda será validada após receção do pagamento.",
+      "accountHolder": "Titular",
+      "amountToTransfer": "Valor a transferir",
+      "amountThresholdHigh": "Valores ≥ 5.000€",
+      "amountThresholdLow": "Valores < 5.000€",
+      "important": "Importante",
+      "instruction1": "Inclua o seu nome na referência da transferência",
+      "instruction2": "O tempo de processamento é de 1 a 3 dias úteis",
+      "instruction3": "Anexe o seu comprovativo de transferência abaixo",
+      "uploadReceipt": "Anexar comprovativo de transferência",
+      "uploadReceiptDescription": "Carregue uma captura de ecrã ou PDF da sua confirmação de transferência",
+      "uploadButton": "Clique para carregar (JPG, PNG, PDF - máx 10 MB)",
+      "confirmOrder": "Confirmar a minha encomenda",
+      "uploadingReceipt": "A carregar comprovativo..."
+    },
+    "confirmation": {
+      "title": "Encomenda confirmada!",
+      "description": "A sua encomenda foi registada com sucesso",
+      "orderReference": "Referência da encomenda",
+      "nextSteps": "Próximos passos:",
+      "step1": "Faça a transferência bancária com os dados fornecidos",
+      "step2": "Receberá um email de confirmação em",
+      "step3": "A sua encomenda será preparada após receção do pagamento",
+      "backToHome": "Voltar ao início"
+    },
+    "summary": "Resumo",
+    "errors": {
+      "receiptMissing": "Comprovativo em falta",
+      "receiptMissingDescription": "Por favor anexe o seu comprovativo de transferência",
+      "unsupportedFormat": "Formato não suportado",
+      "unsupportedFormatDescription": "Por favor carregue uma imagem (JPG, PNG, WebP) ou PDF",
+      "fileTooLarge": "Ficheiro demasiado grande",
+      "fileTooLargeDescription": "O tamanho máximo é 10 MB",
+      "orderError": "Erro",
+      "orderErrorDescription": "Não foi possível finalizar a encomenda"
+    },
+    "success": {
+      "orderSaved": "Encomenda guardada!",
+      "orderSavedDescription": "A sua encomenda e comprovativo foram guardados com sucesso."
+    }
+  },
   "seo": {
     "home": {
       "title": "Marketplace de Máquinas Agrícolas Usadas",
