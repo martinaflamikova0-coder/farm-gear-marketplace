@@ -202,6 +202,7 @@ export type Database = {
           condition: string | null
           created_at: string
           created_by: string | null
+          customer_images: string[] | null
           department: string | null
           description: string | null
           description_translations: Json | null
@@ -233,6 +234,7 @@ export type Database = {
           condition?: string | null
           created_at?: string
           created_by?: string | null
+          customer_images?: string[] | null
           department?: string | null
           description?: string | null
           description_translations?: Json | null
@@ -264,6 +266,7 @@ export type Database = {
           condition?: string | null
           created_at?: string
           created_by?: string | null
+          customer_images?: string[] | null
           department?: string | null
           description?: string | null
           description_translations?: Json | null
