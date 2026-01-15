@@ -543,7 +543,7 @@ const AnnonceDetail = () => {
               {/* Seller info */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="font-display">Vendeur</CardTitle>
+                  <CardTitle className="font-display">{t('product.seller')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center gap-3 mb-4">
@@ -551,10 +551,10 @@ const AnnonceDetail = () => {
                       <span className="text-xl">🏪</span>
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground">{product.seller.name || 'Vendeur'}</p>
+                      <p className="font-semibold text-foreground">{product.seller.name || t('product.sellerDefault')}</p>
                       <p className="text-sm text-muted-foreground flex items-center gap-1">
                         <Check className="h-3 w-3 text-success" />
-                        Vendeur vérifié
+                        {t('product.verifiedSeller')}
                       </p>
                     </div>
                   </div>
