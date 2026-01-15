@@ -76,7 +76,7 @@ const Header = () => {
             <img 
               src={logoEquiptrade} 
               alt="EquipTrade" 
-              className="h-10 md:h-12 w-auto object-contain max-w-[180px] md:max-w-[220px]"
+              className="h-8 md:h-9 w-auto object-contain"
             />
           </Link>
 
