@@ -77,11 +77,11 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
       <Link to={productLink}>
         <Card className="hover-lift overflow-hidden border-border group">
           <div className="flex flex-col sm:flex-row">
-            <div className="relative w-full sm:w-64 h-48 sm:h-auto flex-shrink-0 overflow-hidden">
+            <div className="relative w-full sm:w-64 h-48 sm:h-auto flex-shrink-0 overflow-hidden bg-muted">
               <img
                 src={imageUrl}
                 alt={translatedTitle}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
               />
               {product.condition && (
@@ -101,10 +101,10 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                   <p className="text-xs text-muted-foreground mb-1">
                     {product.category} • {product.brand}
                   </p>
-                  <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                  <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors line-clamp-3 sm:line-clamp-2">
                     {translatedTitle}
                   </h3>
-                  <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
+                  <p className="text-sm text-muted-foreground mt-2 line-clamp-3 sm:line-clamp-2">
                     {translatedDescription}
                   </p>
                   
@@ -159,11 +159,11 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   return (
     <Link to={productLink}>
       <Card className="hover-lift overflow-hidden border-border group h-full">
-        <div className="relative aspect-[4/3] overflow-hidden">
+        <div className="relative aspect-[4/3] overflow-hidden bg-muted">
           <img
             src={imageUrl}
             alt={translatedTitle}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
           {product.condition && (
@@ -181,7 +181,7 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
           <p className="text-xs text-muted-foreground mb-1">
             {product.category} • {product.brand}
           </p>
-          <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 min-h-[2.5rem]">
+          <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-3 sm:line-clamp-2 min-h-[2.5rem]">
             {translatedTitle}
           </h3>
           
