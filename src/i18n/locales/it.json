@@ -401,9 +401,13 @@
       "title": "Macchina Agricola in Vendita",
       "description": "Visualizza informazioni dettagliate su questo annuncio di macchine agricole su EquipTrade. Contatta direttamente il venditore per ulteriori informazioni."
     },
-    "home": {
-      "title": "Marketplace di Macchine Agricole Usate",
-      "description": "EquipTrade - Acquista e vendi macchine agricole e industriali usate. Migliaia di trattori, mietitrebbie e macchinari da venditori professionali verificati."
+    "checkout": {
+      "title": "Pagamento",
+      "description": "Completa il tuo acquisto di macchine agricole su EquipTrade. Pagamento sicuro tramite bonifico bancario."
+    },
+    "cart": {
+      "title": "Il Mio Carrello",
+      "description": "Visualizza il tuo carrello su EquipTrade. Completa il tuo ordine di macchine agricole in sicurezza."
     }
   },
   "pages": {

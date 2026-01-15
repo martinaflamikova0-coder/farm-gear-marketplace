@@ -423,6 +423,14 @@
     "listingDetail": {
       "title": "Matériel Agricole à Vendre",
       "description": "Consultez les détails de cette annonce de matériel agricole sur EquipTrade. Contactez directement le vendeur pour plus d'informations."
+    },
+    "checkout": {
+      "title": "Finaliser la Commande",
+      "description": "Finalisez votre achat de matériel agricole sur EquipTrade. Paiement sécurisé par virement bancaire."
+    },
+    "cart": {
+      "title": "Mon Panier",
+      "description": "Consultez votre panier d'achats sur EquipTrade. Finalisez votre commande de matériel agricole en toute sécurité."
     }
   },
   "pages": {
