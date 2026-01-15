@@ -358,6 +358,16 @@
     "success": {
       "orderSaved": "Encomenda guardada!",
       "orderSavedDescription": "A sua encomenda e comprovativo foram guardados com sucesso."
+    },
+    "validation": {
+      "firstNameMin": "O nome deve ter pelo menos 2 caracteres",
+      "lastNameMin": "O apelido deve ter pelo menos 2 caracteres",
+      "emailInvalid": "Endereço de email inválido",
+      "phoneInvalid": "Número de telefone inválido",
+      "addressRequired": "Morada obrigatória (mínimo 5 caracteres)",
+      "cityRequired": "Cidade obrigatória",
+      "postalCodeRequired": "Código postal obrigatório",
+      "countryRequired": "País obrigatório"
     }
   },
   "seo": {

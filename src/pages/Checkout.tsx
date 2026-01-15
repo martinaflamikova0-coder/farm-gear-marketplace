@@ -38,15 +38,16 @@ const BANK_ACCOUNTS = {
   },
 };
 
-const shippingSchema = z.object({
-  firstName: z.string().min(2, 'Le prénom doit contenir au moins 2 caractères'),
-  lastName: z.string().min(2, 'Le nom doit contenir au moins 2 caractères'),
-  email: z.string().email('Email invalide'),
-  phone: z.string().min(10, 'Numéro de téléphone invalide'),
-  address: z.string().min(5, 'Adresse requise'),
-  city: z.string().min(2, 'Ville requise'),
-  postalCode: z.string().min(4, 'Code postal requis'),
-  country: z.string().min(2, 'Pays requis'),
+// Schema will be created inside component to access translations
+const createShippingSchema = (t: (key: string) => string) => z.object({
+  firstName: z.string().min(2, t('checkout.validation.firstNameMin')),
+  lastName: z.string().min(2, t('checkout.validation.lastNameMin')),
+  email: z.string().email(t('checkout.validation.emailInvalid')),
+  phone: z.string().min(10, t('checkout.validation.phoneInvalid')),
+  address: z.string().min(5, t('checkout.validation.addressRequired')),
+  city: z.string().min(2, t('checkout.validation.cityRequired')),
+  postalCode: z.string().min(4, t('checkout.validation.postalCodeRequired')),
+  country: z.string().min(2, t('checkout.validation.countryRequired')),
 });
 
 const Checkout = () => {
@@ -114,6 +115,7 @@ const Checkout = () => {
     e.preventDefault();
     setErrors({});
 
+    const shippingSchema = createShippingSchema(t);
     const validation = shippingSchema.safeParse(shippingData);
     if (!validation.success) {
       const newErrors: Record<string, string> = {};

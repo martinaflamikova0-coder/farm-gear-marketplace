@@ -381,6 +381,16 @@
     "success": {
       "orderSaved": "Commande enregistrée !",
       "orderSavedDescription": "Votre commande et votre reçu ont été enregistrés avec succès."
+    },
+    "validation": {
+      "firstNameMin": "Le prénom doit contenir au moins 2 caractères",
+      "lastNameMin": "Le nom doit contenir au moins 2 caractères",
+      "emailInvalid": "Adresse email invalide",
+      "phoneInvalid": "Numéro de téléphone invalide",
+      "addressRequired": "Adresse requise (minimum 5 caractères)",
+      "cityRequired": "Ville requise",
+      "postalCodeRequired": "Code postal requis",
+      "countryRequired": "Pays requis"
     }
   },
   "seo": {

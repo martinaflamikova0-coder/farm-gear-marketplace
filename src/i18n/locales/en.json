@@ -381,6 +381,16 @@
     "success": {
       "orderSaved": "Order saved!",
       "orderSavedDescription": "Your order and receipt have been successfully saved."
+    },
+    "validation": {
+      "firstNameMin": "First name must be at least 2 characters",
+      "lastNameMin": "Last name must be at least 2 characters",
+      "emailInvalid": "Invalid email address",
+      "phoneInvalid": "Invalid phone number",
+      "addressRequired": "Address required (minimum 5 characters)",
+      "cityRequired": "City required",
+      "postalCodeRequired": "Postal code required",
+      "countryRequired": "Country required"
     }
   },
   "seo": {
