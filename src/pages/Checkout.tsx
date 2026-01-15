@@ -144,8 +144,8 @@ const Checkout = () => {
       const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'];
       if (!allowedTypes.includes(file.type)) {
         toast({
-          title: 'Format non supporté',
-          description: 'Veuillez télécharger une image (JPG, PNG, WebP) ou un PDF',
+          title: t('checkout.errors.unsupportedFormat'),
+          description: t('checkout.errors.unsupportedFormatDescription'),
           variant: 'destructive',
         });
         return;
@@ -153,8 +153,8 @@ const Checkout = () => {
       // Validate file size (max 10MB)
       if (file.size > 10 * 1024 * 1024) {
         toast({
-          title: 'Fichier trop volumineux',
-          description: 'La taille maximale est de 10 Mo',
+          title: t('checkout.errors.fileTooLarge'),
+          description: t('checkout.errors.fileTooLargeDescription'),
           variant: 'destructive',
         });
         return;
@@ -194,8 +194,8 @@ const Checkout = () => {
     // Validate receipt is uploaded
     if (!receiptFile) {
       toast({
-        title: 'Reçu manquant',
-        description: 'Veuillez joindre votre reçu de virement',
+        title: t('checkout.errors.receiptMissing'),
+        description: t('checkout.errors.receiptMissingDescription'),
         variant: 'destructive',
       });
       return;
@@ -263,14 +263,14 @@ const Checkout = () => {
       setStep('confirmation');
 
       toast({
-        title: 'Commande enregistrée !',
-        description: 'Votre commande et votre reçu ont été enregistrés avec succès.',
+        title: t('checkout.success.orderSaved'),
+        description: t('checkout.success.orderSavedDescription'),
       });
     } catch (error) {
       console.error('Order error:', error);
       toast({
-        title: 'Erreur',
-        description: 'Impossible de finaliser la commande',
+        title: t('checkout.errors.orderError'),
+        description: t('checkout.errors.orderErrorDescription'),
         variant: 'destructive',
       });
     } finally {
@@ -288,15 +288,15 @@ const Checkout = () => {
         <main className="flex-1 bg-background flex items-center justify-center py-12">
           <Card className="max-w-md w-full mx-4 text-center">
             <CardHeader>
-              <CardTitle className="font-display text-2xl">Panier vide</CardTitle>
+              <CardTitle className="font-display text-2xl">{t('checkout.emptyCart')}</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-6">
-                Votre panier est vide. Ajoutez des articles pour passer commande.
+                {t('checkout.emptyCartDescription')}
               </p>
               <Button asChild>
                 <Link to={`/${currentLang}/${getLocalizedSlug('listings', currentLang)}`}>
-                  Voir les annonces
+                  {t('checkout.viewListings')}
                 </Link>
               </Button>
             </CardContent>
@@ -323,7 +323,7 @@ const Checkout = () => {
                 onClick={() => step === 'payment' ? setStep('shipping') : navigate(`/${currentLang}/${cartSlug}`)}
               >
                 <ArrowLeft className="h-4 w-4" />
-                {step === 'payment' ? 'Retour aux informations' : 'Retour au panier'}
+                {step === 'payment' ? t('checkout.backToShipping') : t('checkout.backToCart')}
               </Button>
             </nav>
           )}
@@ -334,21 +334,21 @@ const Checkout = () => {
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${step === 'shipping' ? 'bg-primary text-primary-foreground' : step === 'payment' || step === 'confirmation' ? 'bg-success text-success-foreground' : 'bg-muted'}`}>
                 {step === 'payment' || step === 'confirmation' ? <Check className="h-4 w-4" /> : '1'}
               </div>
-              <span className="hidden sm:inline text-sm font-medium">Livraison</span>
+              <span className="hidden sm:inline text-sm font-medium">{t('checkout.steps.shipping')}</span>
             </div>
             <div className="w-12 h-px bg-border" />
             <div className={`flex items-center gap-2 ${step === 'payment' ? 'text-primary' : 'text-muted-foreground'}`}>
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${step === 'payment' ? 'bg-primary text-primary-foreground' : step === 'confirmation' ? 'bg-success text-success-foreground' : 'bg-muted'}`}>
                 {step === 'confirmation' ? <Check className="h-4 w-4" /> : '2'}
               </div>
-              <span className="hidden sm:inline text-sm font-medium">Paiement</span>
+              <span className="hidden sm:inline text-sm font-medium">{t('checkout.steps.payment')}</span>
             </div>
             <div className="w-12 h-px bg-border" />
             <div className={`flex items-center gap-2 ${step === 'confirmation' ? 'text-primary' : 'text-muted-foreground'}`}>
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${step === 'confirmation' ? 'bg-success text-success-foreground' : 'bg-muted'}`}>
                 {step === 'confirmation' ? <Check className="h-4 w-4" /> : '3'}
               </div>
-              <span className="hidden sm:inline text-sm font-medium">Confirmation</span>
+              <span className="hidden sm:inline text-sm font-medium">{t('checkout.steps.confirmation')}</span>
             </div>
           </div>
 
@@ -359,14 +359,14 @@ const Checkout = () => {
               {step === 'shipping' && (
                 <Card>
                   <CardHeader>
-                    <CardTitle className="font-display">Informations de livraison</CardTitle>
-                    <CardDescription>Renseignez vos coordonnées pour la livraison</CardDescription>
+                    <CardTitle className="font-display">{t('checkout.shipping.title')}</CardTitle>
+                    <CardDescription>{t('checkout.shipping.description')}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <form onSubmit={handleShippingSubmit} className="space-y-4">
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label htmlFor="firstName">Prénom *</Label>
+                          <Label htmlFor="firstName">{t('checkout.shipping.firstName')} *</Label>
                           <Input
                             id="firstName"
                             value={shippingData.firstName}
@@ -376,7 +376,7 @@ const Checkout = () => {
                           {errors.firstName && <p className="text-sm text-destructive">{errors.firstName}</p>}
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="lastName">Nom *</Label>
+                          <Label htmlFor="lastName">{t('checkout.shipping.lastName')} *</Label>
                           <Input
                             id="lastName"
                             value={shippingData.lastName}
@@ -389,7 +389,7 @@ const Checkout = () => {
 
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label htmlFor="email">Email *</Label>
+                          <Label htmlFor="email">{t('checkout.shipping.email')} *</Label>
                           <Input
                             id="email"
                             type="email"
@@ -400,7 +400,7 @@ const Checkout = () => {
                           {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="phone">Téléphone *</Label>
+                          <Label htmlFor="phone">{t('checkout.shipping.phone')} *</Label>
                           <Input
                             id="phone"
                             type="tel"
@@ -413,12 +413,12 @@ const Checkout = () => {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="address">Adresse *</Label>
+                        <Label htmlFor="address">{t('checkout.shipping.address')} *</Label>
                         <Input
                           id="address"
                           value={shippingData.address}
                           onChange={(e) => handleShippingChange('address', e.target.value)}
-                          placeholder="Numéro et nom de rue"
+                          placeholder={t('checkout.shipping.addressPlaceholder')}
                           className={errors.address ? 'border-destructive' : ''}
                         />
                         {errors.address && <p className="text-sm text-destructive">{errors.address}</p>}
@@ -426,7 +426,7 @@ const Checkout = () => {
 
                       <div className="grid sm:grid-cols-3 gap-4">
                         <div className="space-y-2">
-                          <Label htmlFor="postalCode">Code postal *</Label>
+                          <Label htmlFor="postalCode">{t('checkout.shipping.postalCode')} *</Label>
                           <Input
                             id="postalCode"
                             value={shippingData.postalCode}
@@ -436,7 +436,7 @@ const Checkout = () => {
                           {errors.postalCode && <p className="text-sm text-destructive">{errors.postalCode}</p>}
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="city">Ville *</Label>
+                          <Label htmlFor="city">{t('checkout.shipping.city')} *</Label>
                           <Input
                             id="city"
                             value={shippingData.city}
@@ -446,7 +446,7 @@ const Checkout = () => {
                           {errors.city && <p className="text-sm text-destructive">{errors.city}</p>}
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="country">Pays *</Label>
+                          <Label htmlFor="country">{t('checkout.shipping.country')} *</Label>
                           <Input
                             id="country"
                             value={shippingData.country}
@@ -458,7 +458,7 @@ const Checkout = () => {
                       </div>
 
                       <Button type="submit" className="w-full" size="lg">
-                        Continuer vers le paiement
+                        {t('checkout.shipping.continueToPayment')}
                       </Button>
                     </form>
                   </CardContent>
@@ -471,10 +471,10 @@ const Checkout = () => {
                   <CardHeader>
                     <CardTitle className="font-display flex items-center gap-2">
                       <Building2 className="h-5 w-5" />
-                      Paiement par virement bancaire
+                      {t('checkout.payment.title')}
                     </CardTitle>
                     <CardDescription>
-                      Effectuez votre virement sur le compte ci-dessous. Votre commande sera validée dès réception du paiement.
+                      {t('checkout.payment.description')}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
@@ -483,13 +483,13 @@ const Checkout = () => {
                       <div className="flex items-center justify-between">
                         <h3 className="font-semibold">{selectedBankAccount.bankName}</h3>
                         <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
-                          {total >= BANK_ACCOUNT_THRESHOLD ? 'Montants ≥ 5000€' : 'Montants < 5000€'}
+                          {total >= BANK_ACCOUNT_THRESHOLD ? t('checkout.payment.amountThresholdHigh') : t('checkout.payment.amountThresholdLow')}
                         </span>
                       </div>
                       
                       <div className="space-y-3">
                         <div className="flex justify-between items-center">
-                          <span className="text-sm text-muted-foreground">Titulaire</span>
+                          <span className="text-sm text-muted-foreground">{t('checkout.payment.accountHolder')}</span>
                           <div className="flex items-center gap-2">
                             <span className="font-mono font-medium">{selectedBankAccount.holder}</span>
                             <Button
@@ -536,7 +536,7 @@ const Checkout = () => {
                         <Separator />
                         
                         <div className="flex justify-between items-center">
-                          <span className="text-sm text-muted-foreground">Montant à virer</span>
+                          <span className="text-sm text-muted-foreground">{t('checkout.payment.amountToTransfer')}</span>
                           <div className="flex items-center gap-2">
                             <span className="font-display font-bold text-lg text-primary">{formatPrice(total)}</span>
                             <Button
@@ -554,21 +554,21 @@ const Checkout = () => {
 
                     {/* Instructions */}
                     <div className="bg-warning/10 border border-warning/30 rounded-lg p-4">
-                      <h4 className="font-medium text-warning mb-2">⚠️ Important</h4>
+                      <h4 className="font-medium text-warning mb-2">⚠️ {t('checkout.payment.important')}</h4>
                       <ul className="text-sm text-muted-foreground space-y-1">
-                        <li>• Indiquez votre nom et prénom dans la référence du virement</li>
-                        <li>• Les délais de traitement sont de 1 à 3 jours ouvrés</li>
-                        <li>• Joignez votre reçu de virement ci-dessous</li>
+                        <li>• {t('checkout.payment.instruction1')}</li>
+                        <li>• {t('checkout.payment.instruction2')}</li>
+                        <li>• {t('checkout.payment.instruction3')}</li>
                       </ul>
                     </div>
 
                     {/* Receipt Upload */}
                     <div className="space-y-3">
                       <Label className="text-base font-medium">
-                        Joindre le reçu de virement *
+                        {t('checkout.payment.uploadReceipt')} *
                       </Label>
                       <p className="text-sm text-muted-foreground">
-                        Téléchargez une capture d'écran ou un PDF de votre confirmation de virement
+                        {t('checkout.payment.uploadReceiptDescription')}
                       </p>
                       
                       <input
@@ -588,7 +588,7 @@ const Checkout = () => {
                         >
                           <Upload className="h-6 w-6 text-muted-foreground" />
                           <span className="text-sm text-muted-foreground">
-                            Cliquez pour télécharger (JPG, PNG, PDF - max 10 Mo)
+                            {t('checkout.payment.uploadButton')}
                           </span>
                         </Button>
                       ) : (
@@ -597,7 +597,7 @@ const Checkout = () => {
                           <div className="flex-1 min-w-0">
                             <p className="text-sm font-medium truncate">{receiptFile.name}</p>
                             <p className="text-xs text-muted-foreground">
-                              {(receiptFile.size / 1024 / 1024).toFixed(2)} Mo
+                              {(receiptFile.size / 1024 / 1024).toFixed(2)} MB
                             </p>
                           </div>
                           <Button
@@ -620,7 +620,7 @@ const Checkout = () => {
                       disabled={isLoading || !receiptFile}
                     >
                       {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                      {isUploadingReceipt ? 'Téléchargement du reçu...' : 'Confirmer ma commande'}
+                      {isUploadingReceipt ? t('checkout.payment.uploadingReceipt') : t('checkout.payment.confirmOrder')}
                     </Button>
                   </CardContent>
                 </Card>
@@ -633,30 +633,30 @@ const Checkout = () => {
                     <div className="w-16 h-16 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Check className="h-8 w-8 text-success" />
                     </div>
-                    <CardTitle className="font-display text-2xl">Commande confirmée !</CardTitle>
+                    <CardTitle className="font-display text-2xl">{t('checkout.confirmation.title')}</CardTitle>
                     <CardDescription>
-                      Votre commande a été enregistrée avec succès
+                      {t('checkout.confirmation.description')}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div className="bg-secondary/50 rounded-lg p-4">
-                      <p className="text-sm text-muted-foreground">Référence de commande</p>
+                      <p className="text-sm text-muted-foreground">{t('checkout.confirmation.orderReference')}</p>
                       <p className="font-mono font-bold text-lg">{orderReference}</p>
                     </div>
 
                     <div className="text-left bg-muted/50 rounded-lg p-4 space-y-2">
-                      <h4 className="font-medium">Prochaines étapes :</h4>
+                      <h4 className="font-medium">{t('checkout.confirmation.nextSteps')}</h4>
                       <ol className="text-sm text-muted-foreground space-y-2 list-decimal list-inside">
-                        <li>Effectuez votre virement bancaire avec les coordonnées fournies</li>
-                        <li>Vous recevrez un email de confirmation à <strong>{shippingData.email}</strong></li>
-                        <li>Votre commande sera préparée dès réception du paiement</li>
+                        <li>{t('checkout.confirmation.step1')}</li>
+                        <li>{t('checkout.confirmation.step2')} <strong>{shippingData.email}</strong></li>
+                        <li>{t('checkout.confirmation.step3')}</li>
                       </ol>
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-4">
                       <Button asChild className="flex-1">
                         <Link to={`/${currentLang}`}>
-                          Retour à l'accueil
+                          {t('checkout.confirmation.backToHome')}
                         </Link>
                       </Button>
                     </div>
@@ -670,7 +670,7 @@ const Checkout = () => {
               <div>
                 <Card className="sticky top-24">
                   <CardHeader>
-                    <CardTitle className="font-display">Récapitulatif</CardTitle>
+                    <CardTitle className="font-display">{t('checkout.summary')}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     {/* Items */}
@@ -699,19 +699,19 @@ const Checkout = () => {
 
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Sous-total</span>
+                        <span className="text-muted-foreground">{t('cart.subtotal')}</span>
                         <span>{formatPrice(total)}</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Livraison</span>
-                        <span className="text-success">Gratuite</span>
+                        <span className="text-muted-foreground">{t('cart.shipping')}</span>
+                        <span className="text-success">{t('cart.freeShipping')}</span>
                       </div>
                     </div>
 
                     <Separator />
 
                     <div className="flex justify-between font-semibold text-lg">
-                      <span>Total</span>
+                      <span>{t('cart.total')}</span>
                       <span className="font-display text-primary">{formatPrice(total)}</span>
                     </div>
                   </CardContent>

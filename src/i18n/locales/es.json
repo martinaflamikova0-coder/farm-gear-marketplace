@@ -291,6 +291,75 @@
     "notFoundDesc": "La página que busca no existe.",
     "backHome": "Volver al inicio"
   },
+  "checkout": {
+    "title": "Pago",
+    "emptyCart": "Carrito vacío",
+    "emptyCartDescription": "Tu carrito está vacío. Añade artículos para hacer un pedido.",
+    "viewListings": "Ver anuncios",
+    "backToCart": "Volver al carrito",
+    "backToShipping": "Volver a la información",
+    "steps": {
+      "shipping": "Envío",
+      "payment": "Pago",
+      "confirmation": "Confirmación"
+    },
+    "shipping": {
+      "title": "Información de envío",
+      "description": "Introduce tus datos de envío",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Email",
+      "phone": "Teléfono",
+      "address": "Dirección",
+      "addressPlaceholder": "Número y nombre de calle",
+      "postalCode": "Código postal",
+      "city": "Ciudad",
+      "country": "País",
+      "continueToPayment": "Continuar al pago"
+    },
+    "payment": {
+      "title": "Pago por transferencia bancaria",
+      "description": "Realiza tu transferencia a la cuenta indicada. Tu pedido será validado tras recibir el pago.",
+      "accountHolder": "Titular",
+      "amountToTransfer": "Importe a transferir",
+      "amountThresholdHigh": "Importes ≥ 5.000€",
+      "amountThresholdLow": "Importes < 5.000€",
+      "important": "Importante",
+      "instruction1": "Incluye tu nombre en la referencia de la transferencia",
+      "instruction2": "El tiempo de procesamiento es de 1 a 3 días hábiles",
+      "instruction3": "Adjunta tu recibo de transferencia abajo",
+      "uploadReceipt": "Adjuntar recibo de transferencia",
+      "uploadReceiptDescription": "Sube una captura de pantalla o PDF de tu confirmación de transferencia",
+      "uploadButton": "Haz clic para subir (JPG, PNG, PDF - máx 10 MB)",
+      "confirmOrder": "Confirmar mi pedido",
+      "uploadingReceipt": "Subiendo recibo..."
+    },
+    "confirmation": {
+      "title": "¡Pedido confirmado!",
+      "description": "Tu pedido ha sido registrado correctamente",
+      "orderReference": "Referencia del pedido",
+      "nextSteps": "Próximos pasos:",
+      "step1": "Realiza tu transferencia bancaria con los datos proporcionados",
+      "step2": "Recibirás un email de confirmación en",
+      "step3": "Tu pedido se preparará tras recibir el pago",
+      "backToHome": "Volver al inicio"
+    },
+    "summary": "Resumen",
+    "errors": {
+      "receiptMissing": "Falta el recibo",
+      "receiptMissingDescription": "Por favor adjunta tu recibo de transferencia",
+      "unsupportedFormat": "Formato no soportado",
+      "unsupportedFormatDescription": "Por favor sube una imagen (JPG, PNG, WebP) o PDF",
+      "fileTooLarge": "Archivo demasiado grande",
+      "fileTooLargeDescription": "El tamaño máximo es 10 MB",
+      "orderError": "Error",
+      "orderErrorDescription": "No se pudo finalizar el pedido"
+    },
+    "success": {
+      "orderSaved": "¡Pedido guardado!",
+      "orderSavedDescription": "Tu pedido y recibo se han guardado correctamente."
+    }
+  },
   "seo": {
     "home": {
       "title": "Marketplace de Maquinaria Agrícola Usada",
