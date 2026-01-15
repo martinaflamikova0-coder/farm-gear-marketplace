@@ -98,9 +98,9 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
             <CardContent className="flex-1 p-4">
               <div className="flex flex-col h-full">
                 <div className="flex-1">
-                  <p className="text-xs text-muted-foreground mb-1">
-                    {product.category} • {product.brand}
-                  </p>
+          <p className="text-xs text-muted-foreground mb-1">
+            <span className="font-medium">#{product.reference_number}</span> • {product.category} • {product.brand}
+          </p>
                   <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors line-clamp-3 sm:line-clamp-2">
                     {translatedTitle}
                   </h3>
@@ -179,7 +179,7 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
         </div>
         <CardContent className="p-4">
           <p className="text-xs text-muted-foreground mb-1">
-            {product.category} • {product.brand}
+            <span className="font-medium">#{product.reference_number}</span> • {product.category} • {product.brand}
           </p>
           <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-3 sm:line-clamp-2 min-h-[2.5rem]">
             {translatedTitle}

@@ -77,6 +77,7 @@ export type Database = {
           model: string | null
           price: number
           price_type: string | null
+          reference_number: number
           seller_email: string | null
           seller_name: string | null
           seller_phone: string | null
@@ -105,6 +106,7 @@ export type Database = {
           model?: string | null
           price: number
           price_type?: string | null
+          reference_number?: number
           seller_email?: string | null
           seller_name?: string | null
           seller_phone?: string | null
@@ -133,6 +135,7 @@ export type Database = {
           model?: string | null
           price?: number
           price_type?: string | null
+          reference_number?: number
           seller_email?: string | null
           seller_name?: string | null
           seller_phone?: string | null
