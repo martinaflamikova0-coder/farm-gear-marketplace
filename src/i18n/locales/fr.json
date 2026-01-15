@@ -53,9 +53,13 @@
     "shippingAddress": "Adresse de livraison",
     "orderItems": "Articles commandés",
     "quantity": "Quantité",
+    "paymentReceipt": "Reçu de paiement",
+    "viewReceipt": "Voir",
+    "downloadReceipt": "Télécharger",
     "status": {
       "pending": "En attente",
       "confirmed": "Confirmée",
+      "paid": "Payée",
       "shipped": "Expédiée",
       "delivered": "Livrée",
       "cancelled": "Annulée"

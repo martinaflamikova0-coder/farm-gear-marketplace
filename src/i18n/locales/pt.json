@@ -52,9 +52,13 @@
     "shippingAddress": "Endereço de entrega",
     "orderItems": "Itens do pedido",
     "quantity": "Quantidade",
+    "paymentReceipt": "Comprovativo de pagamento",
+    "viewReceipt": "Ver",
+    "downloadReceipt": "Descarregar",
     "status": {
       "pending": "Pendente",
       "confirmed": "Confirmado",
+      "paid": "Pago",
       "shipped": "Enviado",
       "delivered": "Entregue",
       "cancelled": "Cancelado"

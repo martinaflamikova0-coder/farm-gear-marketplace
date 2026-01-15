@@ -52,9 +52,13 @@
     "shippingAddress": "Lieferadresse",
     "orderItems": "Bestellte Artikel",
     "quantity": "Menge",
+    "paymentReceipt": "Zahlungsbeleg",
+    "viewReceipt": "Ansehen",
+    "downloadReceipt": "Herunterladen",
     "status": {
       "pending": "Ausstehend",
       "confirmed": "Bestätigt",
+      "paid": "Bezahlt",
       "shipped": "Versendet",
       "delivered": "Geliefert",
       "cancelled": "Storniert"
