@@ -28,6 +28,8 @@ type Category = Tables<'categories'>;
 const productSchema = z.object({
   title: z.string().trim().min(3, 'Le titre doit contenir au moins 3 caractères').max(200, 'Titre trop long'),
   description: z.string().max(5000, 'Description trop longue').optional(),
+  title_translations: z.record(z.string()).optional(),
+  description_translations: z.record(z.string()).optional(),
   price: z.number().min(0, 'Le prix doit être positif').max(999999999, 'Prix trop élevé'),
   category: z.string().min(1, 'Sélectionnez une catégorie'),
   subcategory: z.string().optional(),
@@ -48,11 +50,22 @@ const productSchema = z.object({
   images: z.array(z.string()).default([]),
 });
 
+const SUPPORTED_LANGUAGES = ['en', 'de', 'es', 'it', 'pt'] as const;
+const LANGUAGE_LABELS: Record<string, string> = {
+  en: '🇬🇧 Anglais',
+  de: '🇩🇪 Allemand',
+  es: '🇪🇸 Espagnol',
+  it: '🇮🇹 Italien',
+  pt: '🇵🇹 Portugais',
+};
+
 type ProductFormData = z.infer<typeof productSchema>;
 
 const defaultFormData: ProductFormData = {
   title: '',
   description: '',
+  title_translations: {},
+  description_translations: {},
   price: 0,
   category: '',
   subcategory: '',
@@ -83,6 +96,7 @@ const AdminProductForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isTranslating, setIsTranslating] = useState(false);
   const [isFetching, setIsFetching] = useState(!!id);
+  const [showTranslations, setShowTranslations] = useState(false);
 
   const isEditing = !!id;
 
@@ -127,9 +141,14 @@ const AdminProductForm = () => {
       if (error) throw error;
 
       if (data) {
+        const titleTranslations = (data.title_translations as Record<string, string>) || {};
+        const descriptionTranslations = (data.description_translations as Record<string, string>) || {};
+        
         setFormData({
           title: data.title || '',
           description: data.description || '',
+          title_translations: titleTranslations,
+          description_translations: descriptionTranslations,
           price: data.price || 0,
           category: data.category || '',
           subcategory: data.subcategory || '',
@@ -149,6 +168,11 @@ const AdminProductForm = () => {
           featured: data.featured || false,
           images: data.images || [],
         });
+        
+        // Show translations section if there are existing translations
+        if (Object.keys(titleTranslations).length > 0 || Object.keys(descriptionTranslations).length > 0) {
+          setShowTranslations(true);
+        }
       }
     } catch (error) {
       console.error('Error fetching product:', error);
@@ -175,6 +199,21 @@ const AdminProductForm = () => {
     }
   };
 
+  const handleTranslationChange = (
+    type: 'title' | 'description',
+    lang: string,
+    value: string
+  ) => {
+    const field = type === 'title' ? 'title_translations' : 'description_translations';
+    setFormData(prev => ({
+      ...prev,
+      [field]: {
+        ...prev[field],
+        [lang]: value,
+      },
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
@@ -198,6 +237,8 @@ const AdminProductForm = () => {
       const productData = {
         title: validation.data.title,
         description: validation.data.description || null,
+        title_translations: validation.data.title_translations || null,
+        description_translations: validation.data.description_translations || null,
         price: validation.data.price,
         price_type: validation.data.price_type,
         category: validation.data.category,
@@ -372,7 +413,7 @@ const AdminProductForm = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="description">Description</Label>
+                <Label htmlFor="description">Description (Français)</Label>
                 <Textarea
                   id="description"
                   value={formData.description}
@@ -381,6 +422,49 @@ const AdminProductForm = () => {
                   rows={5}
                 />
               </div>
+
+              {/* Toggle translations section */}
+              <div className="pt-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setShowTranslations(!showTranslations)}
+                  className="gap-2"
+                >
+                  <Languages className="h-4 w-4" />
+                  {showTranslations ? 'Masquer les traductions' : 'Ajouter des traductions manuelles'}
+                </Button>
+              </div>
+
+              {/* Manual translations section */}
+              {showTranslations && (
+                <div className="space-y-4 p-4 border border-border rounded-lg bg-secondary/30">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Languages className="h-4 w-4" />
+                    <span>Traductions manuelles (optionnel - prioritaires sur l'IA)</span>
+                  </div>
+                  
+                  {SUPPORTED_LANGUAGES.map((lang) => (
+                    <div key={lang} className="space-y-3 p-3 border border-border rounded bg-card">
+                      <p className="text-sm font-medium">{LANGUAGE_LABELS[lang]}</p>
+                      <div className="space-y-2">
+                        <Input
+                          placeholder={`Titre en ${LANGUAGE_LABELS[lang].split(' ')[1]}`}
+                          value={formData.title_translations?.[lang] || ''}
+                          onChange={(e) => handleTranslationChange('title', lang, e.target.value)}
+                        />
+                        <Textarea
+                          placeholder={`Description en ${LANGUAGE_LABELS[lang].split(' ')[1]}`}
+                          value={formData.description_translations?.[lang] || ''}
+                          onChange={(e) => handleTranslationChange('description', lang, e.target.value)}
+                          rows={3}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
