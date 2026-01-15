@@ -111,7 +111,7 @@ const FinancingSimulator = ({ price, productTitle, productId, className }: Finan
             onClick={() => setIsFormOpen(true)}
           >
             <CreditCard className="h-4 w-4 mr-2" />
-            {t('financing.requestFinancing')}
+            {t('product.requestQuote')}
           </Button>
 
           {/* Disclaimer */}
