@@ -18,7 +18,6 @@ const Index = () => {
       />
       <Header />
       <BrandsMarquee />
-      <TrustBar />
       <SearchBar />
       <QuickCategories />
       
@@ -44,6 +43,7 @@ const Index = () => {
         </div>
       </main>
       
+      <TrustBar />
       <Footer />
     </div>
   );
