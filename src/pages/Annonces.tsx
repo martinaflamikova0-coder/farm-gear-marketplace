@@ -14,7 +14,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
-import { brands } from '@/data/products';
+import { useBrandNames } from '@/hooks/useBrands';
 import { useCategoriesWithCounts, type CategoryWithCount } from '@/hooks/useCategories';
 import { useProducts } from '@/hooks/useProducts';
 
@@ -25,6 +25,7 @@ const Annonces = () => {
   const [sortBy, setSortBy] = useState('date-desc');
   
   const { data: categories, isLoading: categoriesLoading } = useCategoriesWithCounts();
+  const { data: brands = [], isLoading: brandsLoading } = useBrandNames();
   
   // Filters state
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || '');
@@ -178,7 +179,7 @@ const Annonces = () => {
       <div>
         <Label className="text-sm font-semibold mb-3 block">{t('filters.brands')}</Label>
         <div className="space-y-2 max-h-48 overflow-y-auto">
-          {brands.slice(0, 10).map(brand => (
+          {brands.slice(0, 15).map(brand => (
             <div key={brand} className="flex items-center gap-2">
               <Checkbox
                 id={`brand-${brand}`}
