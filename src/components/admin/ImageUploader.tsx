@@ -9,9 +9,10 @@ interface ImageUploaderProps {
   images: string[];
   onImagesChange: (images: string[]) => void;
   maxImages?: number;
+  id?: string;
 }
 
-const ImageUploader = ({ images, onImagesChange, maxImages = 20 }: ImageUploaderProps) => {
+const ImageUploader = ({ images, onImagesChange, maxImages = 20, id = 'image-upload' }: ImageUploaderProps) => {
   const { toast } = useToast();
   const [isUploading, setIsUploading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
@@ -148,12 +149,12 @@ const ImageUploader = ({ images, onImagesChange, maxImages = 20 }: ImageUploader
           accept="image/jpeg,image/png,image/webp,image/gif"
           multiple
           className="hidden"
-          id="image-upload"
+          id={id}
           onChange={(e) => handleFiles(e.target.files)}
           disabled={isUploading || images.length >= maxImages}
         />
         <label
-          htmlFor="image-upload"
+          htmlFor={id}
           className="cursor-pointer flex flex-col items-center gap-2"
         >
           {isUploading ? (
