@@ -1,25 +1,32 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Search, TrendingUp, Shield, Truck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 
 const HeroSection = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language as SupportedLanguage;
+  const listingsSlug = getLocalizedSlug('listings', currentLang);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      navigate(`/annonces?search=${encodeURIComponent(searchQuery)}`);
+      navigate(`/${currentLang}/${listingsSlug}?search=${encodeURIComponent(searchQuery)}`);
     }
   };
 
   const stats = [
-    { icon: TrendingUp, value: '995+', label: 'Annonces actives' },
-    { icon: Shield, value: '100%', label: 'Annonces vérifiées' },
-    { icon: Truck, value: '200+', label: 'Vendeurs partenaires' },
+    { icon: TrendingUp, value: '995+', label: t('hero.activeListings') },
+    { icon: Shield, value: '100%', label: t('hero.verifiedListings') },
+    { icon: Truck, value: '200+', label: t('hero.partnerSellers') },
   ];
+
+  const popularSearches = ['John Deere', 'Tracteur 2020', 'Moissonneuse Claas', 'Manitou'];
 
   return (
     <section className="relative bg-gradient-hero overflow-hidden">
@@ -33,11 +40,11 @@ const HeroSection = () => {
       <div className="container-custom relative py-16 md:py-24">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 animate-fade-in">
-            Le matériel agricole d'occasion,{' '}
-            <span className="text-accent">simplement.</span>
+            {t('hero.title')}{' '}
+            <span className="text-accent">{t('hero.titleAccent')}</span>
           </h1>
           <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-            Trouvez tracteurs, moissonneuses, outils de travail du sol et bien plus parmi des centaines d'annonces professionnelles vérifiées.
+            {t('hero.subtitle')}
           </p>
 
           {/* Search form */}
@@ -47,25 +54,25 @@ const HeroSection = () => {
                 <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   type="search"
-                  placeholder="Rechercher un tracteur, une marque, un modèle..."
+                  placeholder={t('common.searchPlaceholder')}
                   className="pl-12 h-14 text-base bg-card border-0 shadow-lg focus:ring-2 focus:ring-accent"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
               <Button type="submit" variant="hero" size="lg">
-                Rechercher
+                {t('common.search')}
               </Button>
             </div>
           </form>
 
           {/* Quick links */}
           <div className="flex flex-wrap justify-center gap-2 mt-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            <span className="text-primary-foreground/60 text-sm">Recherches populaires :</span>
-            {['John Deere', 'Tracteur 2020', 'Moissonneuse Claas', 'Manitou'].map((term) => (
+            <span className="text-primary-foreground/60 text-sm">{t('hero.popularSearches')}:</span>
+            {popularSearches.map((term) => (
               <button
                 key={term}
-                onClick={() => navigate(`/annonces?search=${encodeURIComponent(term)}`)}
+                onClick={() => navigate(`/${currentLang}/${listingsSlug}?search=${encodeURIComponent(term)}`)}
                 className="text-sm text-primary-foreground/80 hover:text-accent underline underline-offset-2 transition-colors"
               >
                 {term}

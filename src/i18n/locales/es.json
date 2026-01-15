@@ -83,6 +83,7 @@
     "kilometers": "Kilómetros",
     "condition": "Estado",
     "location": "Ubicación",
+    "department": "Región",
     "brand": "Marca",
     "model": "Modelo",
     "description": "Descripción",
@@ -97,6 +98,15 @@
     "financing": "o {{amount}}/mes en 72 meses",
     "financingAvailable": "Financiación disponible",
     "vatDisclaimer": "IVA variable según su perfil y país"
+  },
+  "hero": {
+    "title": "Maquinaria agrícola usada,",
+    "titleAccent": "simplemente.",
+    "subtitle": "Encuentre tractores, cosechadoras, equipos de labranza y más entre cientos de anuncios profesionales verificados.",
+    "popularSearches": "Búsquedas populares",
+    "activeListings": "Anuncios activos",
+    "verifiedListings": "Anuncios verificados",
+    "partnerSellers": "Vendedores asociados"
   },
   "financing": {
     "title": "Simulador de financiación",

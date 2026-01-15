@@ -106,6 +106,7 @@
     "kilometers": "Kilometers",
     "condition": "Condition",
     "location": "Location",
+    "department": "Region",
     "brand": "Brand",
     "model": "Model",
     "description": "Description",
@@ -120,6 +121,15 @@
     "financing": "or {{amount}}/month over 72 months",
     "financingAvailable": "Financing available",
     "vatDisclaimer": "VAT varies by buyer status and country"
+  },
+  "hero": {
+    "title": "Used agricultural equipment,",
+    "titleAccent": "simply.",
+    "subtitle": "Find tractors, harvesters, tillage equipment and more among hundreds of verified professional listings.",
+    "popularSearches": "Popular searches",
+    "activeListings": "Active listings",
+    "verifiedListings": "Verified listings",
+    "partnerSellers": "Partner sellers"
   },
   "financing": {
     "title": "Financing Simulator",
