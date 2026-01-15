@@ -19,6 +19,8 @@ import { useTranslatedProduct } from '@/hooks/useTranslatedProduct';
 import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
 import ProductCard from '@/components/products/ProductCard';
 import FinancingSimulator from '@/components/products/FinancingSimulator';
+import AddToCartButton from '@/components/cart/AddToCartButton';
+import { CART_MAX_PRICE } from '@/contexts/CartContext';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 
 const AnnonceDetail = () => {
@@ -514,13 +516,25 @@ const AnnonceDetail = () => {
                     )}
                   </div>
 
+                  {/* Conditional CTA: Cart button for <= 8000€, Quote for > 8000€ */}
                   <div className="space-y-2">
-                    <Button variant="accent" className="w-full" size="lg" asChild>
-                      <a href="#request-quote">
-                        <FileText className="h-4 w-4 mr-2" />
-                        {t('product.requestQuote')}
-                      </a>
-                    </Button>
+                    {price <= CART_MAX_PRICE ? (
+                      <AddToCartButton
+                        productId={product.id}
+                        price={price}
+                        condition={product.condition}
+                        stock={product.stock}
+                        className="w-full"
+                        size="lg"
+                      />
+                    ) : (
+                      <Button variant="accent" className="w-full" size="lg" asChild>
+                        <a href="#request-quote">
+                          <FileText className="h-4 w-4 mr-2" />
+                          {t('product.requestQuote')}
+                        </a>
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>
