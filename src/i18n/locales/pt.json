@@ -55,6 +55,13 @@
     "paymentReceipt": "Comprovativo de pagamento",
     "viewReceipt": "Ver",
     "downloadReceipt": "Descarregar",
+    "invoice": "Fatura",
+    "viewInvoice": "Ver fatura",
+    "downloadInvoice": "Descarregar fatura",
+    "receiptDownloaded": "Comprovativo descarregado com sucesso",
+    "invoiceDownloaded": "Fatura descarregada com sucesso",
+    "errorGeneratingInvoice": "Erro ao gerar a fatura",
+    "errorDownloadingInvoice": "Erro ao descarregar a fatura",
     "status": {
       "pending": "Pendente",
       "confirmed": "Confirmado",

@@ -55,6 +55,13 @@
     "paymentReceipt": "Zahlungsbeleg",
     "viewReceipt": "Ansehen",
     "downloadReceipt": "Herunterladen",
+    "invoice": "Rechnung",
+    "viewInvoice": "Rechnung ansehen",
+    "downloadInvoice": "Rechnung herunterladen",
+    "receiptDownloaded": "Beleg erfolgreich heruntergeladen",
+    "invoiceDownloaded": "Rechnung erfolgreich heruntergeladen",
+    "errorGeneratingInvoice": "Fehler beim Erstellen der Rechnung",
+    "errorDownloadingInvoice": "Fehler beim Herunterladen der Rechnung",
     "status": {
       "pending": "Ausstehend",
       "confirmed": "Bestätigt",

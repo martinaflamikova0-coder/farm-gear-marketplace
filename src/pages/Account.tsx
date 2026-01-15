@@ -10,10 +10,10 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Package, Calendar, Euro, ChevronDown, ChevronUp, LogOut, User, FileImage, Download, Eye, MapPin, Receipt } from 'lucide-react';
+import { Package, Calendar, Euro, ChevronDown, ChevronUp, LogOut, User, FileImage, Download, Eye, MapPin, Receipt, FileText, Loader2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { fr, enUS, de, es, it, pt, type Locale } from 'date-fns/locale';
-
+import { toast } from 'sonner';
 interface OrderItem {
   id: string;
   product_title: string;
@@ -60,6 +60,7 @@ const Account = () => {
   const [expandedOrder, setExpandedOrder] = useState<string | null>(null);
   const [receiptDialogOpen, setReceiptDialogOpen] = useState(false);
   const [selectedReceipt, setSelectedReceipt] = useState<{ url: string; orderId: string } | null>(null);
+  const [generatingInvoice, setGeneratingInvoice] = useState<string | null>(null);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -135,8 +136,62 @@ const Account = () => {
     if (data?.signedUrl) {
       const link = document.createElement('a');
       link.href = data.signedUrl;
+      link.target = '_blank';
       link.download = `receipt-${orderId.slice(0, 8)}.${receiptPath.split('.').pop()}`;
+      document.body.appendChild(link);
       link.click();
+      document.body.removeChild(link);
+      toast.success(t('account.receiptDownloaded'));
+    }
+  };
+
+  const handleViewInvoice = async (orderId: string) => {
+    try {
+      setGeneratingInvoice(orderId);
+      const response = await supabase.functions.invoke('generate-invoice', {
+        body: { orderId }
+      });
+
+      if (response.error) throw response.error;
+
+      const printWindow = window.open('', '_blank');
+      if (printWindow) {
+        printWindow.document.write(response.data);
+        printWindow.document.close();
+      }
+    } catch (error) {
+      console.error('Error generating invoice:', error);
+      toast.error(t('account.errorGeneratingInvoice'));
+    } finally {
+      setGeneratingInvoice(null);
+    }
+  };
+
+  const handleDownloadInvoice = async (orderId: string) => {
+    try {
+      setGeneratingInvoice(orderId);
+      const response = await supabase.functions.invoke('generate-invoice', {
+        body: { orderId }
+      });
+
+      if (response.error) throw response.error;
+
+      const blob = new Blob([response.data], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `facture-${orderId.slice(0, 8)}.html`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      toast.success(t('account.invoiceDownloaded'));
+    } catch (error) {
+      console.error('Error downloading invoice:', error);
+      toast.error(t('account.errorDownloadingInvoice'));
+    } finally {
+      setGeneratingInvoice(null);
     }
   };
 
@@ -289,6 +344,48 @@ const Account = () => {
                         </div>
                       </div>
                     )}
+
+                    {/* Invoice */}
+                    <div className="p-3 bg-background rounded-lg">
+                      <h4 className="font-medium mb-2 flex items-center gap-2">
+                        <FileText className="h-4 w-4" />
+                        {t('account.invoice')}
+                      </h4>
+                      <div className="flex gap-2">
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleViewInvoice(order.id);
+                          }}
+                          disabled={generatingInvoice === order.id}
+                        >
+                          {generatingInvoice === order.id ? (
+                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                          ) : (
+                            <Eye className="h-4 w-4 mr-2" />
+                          )}
+                          {t('account.viewInvoice')}
+                        </Button>
+                        <Button 
+                          variant="default" 
+                          size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDownloadInvoice(order.id);
+                          }}
+                          disabled={generatingInvoice === order.id}
+                        >
+                          {generatingInvoice === order.id ? (
+                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                          ) : (
+                            <Download className="h-4 w-4 mr-2" />
+                          )}
+                          {t('account.downloadInvoice')}
+                        </Button>
+                      </div>
+                    </div>
 
                     {/* Order Items */}
                     <div>
