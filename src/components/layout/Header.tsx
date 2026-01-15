@@ -72,12 +72,18 @@ const Header = () => {
       <div className="container-custom">
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo */}
-          <Link to={getLocalizedLink('')} className="flex items-center gap-2 flex-shrink-0">
-            <img 
-              src={logoEquiptrade} 
-              alt="EquipTrade" 
-              className="h-8 md:h-9 w-auto object-contain"
-            />
+          <Link
+            to={getLocalizedLink('')}
+            className="flex items-center gap-2 flex-shrink-0"
+            aria-label="EquipTrade"
+          >
+            <div className="h-10 md:h-12 w-[140px] md:w-[180px] overflow-hidden flex items-center">
+              <img
+                src={logoEquiptrade}
+                alt="EquipTrade"
+                className="max-h-full max-w-full object-contain"
+              />
+            </div>
           </Link>
 
           {/* Search bar - Desktop */}
