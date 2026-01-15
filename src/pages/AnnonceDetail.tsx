@@ -593,7 +593,7 @@ const AnnonceDetail = () => {
                     </div>
                     <Button type="submit" className="w-full" variant="accent" size="lg">
                       <FileText className="h-4 w-4 mr-2" />
-                      {t('product.sendQuoteRequest')}
+                      {t('product.requestQuote')}
                     </Button>
                   </form>
                 </CardContent>
