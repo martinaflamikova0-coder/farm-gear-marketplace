@@ -401,9 +401,13 @@
       "title": "Maquinaria Agrícola en Venta",
       "description": "Vea información detallada sobre este anuncio de maquinaria agrícola en EquipTrade. Contacte directamente al vendedor para más información."
     },
-    "home": {
-      "title": "Marketplace de Maquinaria Agrícola de Segunda Mano",
-      "description": "EquipTrade - Compre y venda maquinaria agrícola e industrial usada. Miles de tractores, cosechadoras y máquinas de vendedores profesionales verificados."
+    "checkout": {
+      "title": "Finalizar Pedido",
+      "description": "Complete su compra de maquinaria agrícola en EquipTrade. Pago seguro mediante transferencia bancaria."
+    },
+    "cart": {
+      "title": "Mi Carrito",
+      "description": "Consulte su carrito de compras en EquipTrade. Complete su pedido de maquinaria agrícola de forma segura."
     }
   },
   "pages": {

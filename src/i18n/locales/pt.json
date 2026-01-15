@@ -401,9 +401,13 @@
       "title": "Máquina Agrícola à Venda",
       "description": "Veja informações detalhadas sobre este anúncio de máquinas agrícolas na EquipTrade. Contacte diretamente o vendedor para mais informações."
     },
-    "home": {
-      "title": "Marketplace de Máquinas Agrícolas Usadas",
-      "description": "EquipTrade - Compre e venda máquinas agrícolas e industriais usadas. Milhares de tratores, ceifeiras e máquinas de vendedores profissionais verificados."
+    "checkout": {
+      "title": "Finalizar Encomenda",
+      "description": "Complete a sua compra de máquinas agrícolas na EquipTrade. Pagamento seguro por transferência bancária."
+    },
+    "cart": {
+      "title": "O Meu Carrinho",
+      "description": "Consulte o seu carrinho de compras na EquipTrade. Complete a sua encomenda de máquinas agrícolas em segurança."
     }
   },
   "pages": {

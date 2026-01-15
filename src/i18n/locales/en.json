@@ -423,6 +423,14 @@
     "listingDetail": {
       "title": "Agricultural Equipment for Sale",
       "description": "View detailed information about this agricultural equipment listing on EquipTrade. Contact the seller directly for more information."
+    },
+    "checkout": {
+      "title": "Checkout",
+      "description": "Complete your agricultural equipment purchase on EquipTrade. Secure payment via bank transfer."
+    },
+    "cart": {
+      "title": "My Cart",
+      "description": "View your shopping cart on EquipTrade. Securely complete your agricultural equipment order."
     }
   },
   "pages": {
