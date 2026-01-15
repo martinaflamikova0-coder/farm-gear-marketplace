@@ -46,8 +46,25 @@ export const useProducts = (options?: {
       }
 
       if (options?.search) {
-        const searchTerm = `%${options.search}%`;
-        query = query.or(`title.ilike.${searchTerm},brand.ilike.${searchTerm},model.ilike.${searchTerm},description.ilike.${searchTerm}`);
+        const searchValue = options.search.trim();
+        
+        // Check if searching by reference number (REFEQUITRAD format or just number)
+        const refMatch = searchValue.toUpperCase().match(/^REFEQUITRAD0*(\d+)$/);
+        const numericMatch = searchValue.match(/^\d+$/);
+        
+        if (refMatch) {
+          // Search by exact reference number from REFEQUITRAD format
+          const refNumber = parseInt(refMatch[1], 10);
+          query = query.eq('reference_number', refNumber);
+        } else if (numericMatch && searchValue.length <= 5) {
+          // If it's just a number (up to 5 digits), could be a reference number
+          const refNumber = parseInt(numericMatch[0], 10);
+          query = query.eq('reference_number', refNumber);
+        } else {
+          // Regular text search
+          const searchTerm = `%${searchValue}%`;
+          query = query.or(`title.ilike.${searchTerm},brand.ilike.${searchTerm},model.ilike.${searchTerm},description.ilike.${searchTerm}`);
+        }
       }
 
       if (options?.limit) {
