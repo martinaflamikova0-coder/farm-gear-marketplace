@@ -15,6 +15,7 @@ import NotFound from '@/pages/NotFound';
 import Auth from '@/pages/Auth';
 import Cart from '@/pages/Cart';
 import Checkout from '@/pages/Checkout';
+import Account from '@/pages/Account';
 import AdminLogin from '@/pages/admin/AdminLogin';
 import AdminResetPassword from '@/pages/admin/AdminResetPassword';
 import AdminLayout from '@/pages/admin/AdminLayout';
@@ -120,6 +121,8 @@ const LocalizedRoutes = () => {
       <Route path="/:lang/panier" element={<LanguageWrapper><Cart /></LanguageWrapper>} />
       <Route path="/:lang/cart" element={<LanguageWrapper><Cart /></LanguageWrapper>} />
       <Route path="/:lang/checkout" element={<LanguageWrapper><Checkout /></LanguageWrapper>} />
+      <Route path="/:lang/compte" element={<LanguageWrapper><Account /></LanguageWrapper>} />
+      <Route path="/:lang/account" element={<LanguageWrapper><Account /></LanguageWrapper>} />
       
       {/* Listings routes with localized slugs */}
       <Route path="/:lang/listings" element={<LanguageWrapper><ListingsRoute /></LanguageWrapper>} />

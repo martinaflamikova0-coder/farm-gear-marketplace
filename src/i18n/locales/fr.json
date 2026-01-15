@@ -43,6 +43,24 @@
     "loginDescription": "Connectez-vous pour accéder à votre panier et passer commande",
     "login": "Se connecter"
   },
+  "account": {
+    "title": "Mon compte",
+    "logout": "Se déconnecter",
+    "orderHistory": "Historique des commandes",
+    "noOrders": "Vous n'avez pas encore passé de commande",
+    "browseProducts": "Parcourir les annonces",
+    "orderNumber": "N° de commande",
+    "shippingAddress": "Adresse de livraison",
+    "orderItems": "Articles commandés",
+    "quantity": "Quantité",
+    "status": {
+      "pending": "En attente",
+      "confirmed": "Confirmée",
+      "shipped": "Expédiée",
+      "delivered": "Livrée",
+      "cancelled": "Annulée"
+    }
+  },
   "home": {
     "featuredListings": "⭐ Annonces en vedette",
     "featuredSubtitle": "Nos meilleures opportunités du moment",
