@@ -165,7 +165,10 @@
     "vatDisclaimer": "VAT varies by buyer status and country",
     "seller": "Seller",
     "sellerDefault": "Seller",
-    "verifiedSeller": "Verified seller"
+    "verifiedSeller": "Verified seller",
+    "outOfStock": "Out of stock",
+    "inStock": "In stock",
+    "stockCount": "{{count}} in stock"
   },
   "validation": {
     "firstNameMin": "First name must be at least 2 characters",

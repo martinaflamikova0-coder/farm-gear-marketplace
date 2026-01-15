@@ -48,6 +48,8 @@ const productSchema = z.object({
   seller_email: z.string().email('Email invalide').max(255, 'Email trop long').optional().or(z.literal('')),
   featured: z.boolean(),
   images: z.array(z.string()).default([]),
+  stock: z.number().min(0, 'Le stock doit être positif').optional().nullable(),
+  low_stock_threshold: z.number().min(1, 'Le seuil doit être supérieur à 0').optional().nullable(),
 });
 
 const SUPPORTED_LANGUAGES = ['en', 'de', 'es', 'it', 'pt'] as const;
@@ -84,6 +86,8 @@ const defaultFormData: ProductFormData = {
   seller_email: '',
   featured: false,
   images: [],
+  stock: null,
+  low_stock_threshold: 5,
 };
 
 const AdminProductForm = () => {
@@ -167,6 +171,8 @@ const AdminProductForm = () => {
           seller_email: data.seller_email || '',
           featured: data.featured || false,
           images: data.images || [],
+          stock: data.stock ?? null,
+          low_stock_threshold: data.low_stock_threshold ?? 5,
         });
         
         // Show translations section if there are existing translations
@@ -258,6 +264,9 @@ const AdminProductForm = () => {
         status: validation.data.status,
         images: validation.data.images,
         created_by: user?.id,
+        // Stock only for new items
+        stock: validation.data.condition === 'new' ? (validation.data.stock ?? null) : null,
+        low_stock_threshold: validation.data.condition === 'new' ? (validation.data.low_stock_threshold ?? 5) : null,
       };
 
       let productId = id;
@@ -614,7 +623,13 @@ const AdminProductForm = () => {
 
               <div className="space-y-2">
                 <Label htmlFor="condition">État</Label>
-                <Select value={formData.condition} onValueChange={(v) => handleChange('condition', v)}>
+                <Select value={formData.condition} onValueChange={(v) => {
+                  handleChange('condition', v);
+                  // Reset stock when changing from new to other conditions
+                  if (v !== 'new') {
+                    handleChange('stock', null);
+                  }
+                }}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
@@ -625,6 +640,45 @@ const AdminProductForm = () => {
                   </SelectContent>
                 </Select>
               </div>
+
+              {/* Stock fields - only visible for new items */}
+              {formData.condition === 'new' && (
+                <div className="grid gap-4 sm:grid-cols-2 p-4 border border-border rounded-lg bg-secondary/30">
+                  <div className="sm:col-span-2">
+                    <p className="text-sm font-medium text-muted-foreground mb-3">
+                      📦 Gestion du stock (articles neufs uniquement)
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="stock">Quantité en stock</Label>
+                    <Input
+                      id="stock"
+                      type="number"
+                      value={formData.stock ?? ''}
+                      onChange={(e) => handleChange('stock', e.target.value ? parseInt(e.target.value) : null)}
+                      min={0}
+                      placeholder="Ex: 10"
+                    />
+                    <p className="text-xs text-muted-foreground">
+                      Laissez vide si non applicable
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="low_stock_threshold">Seuil d'alerte stock bas</Label>
+                    <Input
+                      id="low_stock_threshold"
+                      type="number"
+                      value={formData.low_stock_threshold ?? 5}
+                      onChange={(e) => handleChange('low_stock_threshold', e.target.value ? parseInt(e.target.value) : 5)}
+                      min={1}
+                      placeholder="Ex: 5"
+                    />
+                    <p className="text-xs text-muted-foreground">
+                      Alerte si stock ≤ ce seuil
+                    </p>
+                  </div>
+                </div>
+              )}
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">

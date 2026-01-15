@@ -74,6 +74,7 @@ export type Database = {
           images: string[] | null
           kilometers: number | null
           location: string | null
+          low_stock_threshold: number | null
           model: string | null
           price: number
           price_type: string | null
@@ -82,6 +83,7 @@ export type Database = {
           seller_name: string | null
           seller_phone: string | null
           status: string | null
+          stock: number | null
           subcategory: string | null
           title: string
           title_translations: Json | null
@@ -103,6 +105,7 @@ export type Database = {
           images?: string[] | null
           kilometers?: number | null
           location?: string | null
+          low_stock_threshold?: number | null
           model?: string | null
           price: number
           price_type?: string | null
@@ -111,6 +114,7 @@ export type Database = {
           seller_name?: string | null
           seller_phone?: string | null
           status?: string | null
+          stock?: number | null
           subcategory?: string | null
           title: string
           title_translations?: Json | null
@@ -132,6 +136,7 @@ export type Database = {
           images?: string[] | null
           kilometers?: number | null
           location?: string | null
+          low_stock_threshold?: number | null
           model?: string | null
           price?: number
           price_type?: string | null
@@ -140,6 +145,7 @@ export type Database = {
           seller_name?: string | null
           seller_phone?: string | null
           status?: string | null
+          stock?: number | null
           subcategory?: string | null
           title?: string
           title_translations?: Json | null

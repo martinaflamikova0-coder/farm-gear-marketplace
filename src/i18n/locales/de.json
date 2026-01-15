@@ -142,7 +142,10 @@
     "vatDisclaimer": "MwSt. variiert je nach Käuferstatus und Land",
     "seller": "Verkäufer",
     "sellerDefault": "Verkäufer",
-    "verifiedSeller": "Verifizierter Verkäufer"
+    "verifiedSeller": "Verifizierter Verkäufer",
+    "outOfStock": "Nicht auf Lager",
+    "inStock": "Auf Lager",
+    "stockCount": "{{count}} auf Lager"
   },
   "validation": {
     "firstNameMin": "Vorname muss mindestens 2 Zeichen haben",

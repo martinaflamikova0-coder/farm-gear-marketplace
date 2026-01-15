@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { MapPin, Clock, Calendar, CreditCard } from 'lucide-react';
+import { MapPin, Clock, Calendar, CreditCard, AlertTriangle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -12,6 +12,11 @@ interface ProductCardProps {
   product: ProductWithSeller;
   variant?: 'default' | 'horizontal';
 }
+
+// Check if product is out of stock (only for new items with stock tracking)
+const isOutOfStock = (product: ProductWithSeller): boolean => {
+  return product.condition === 'new' && product.stock !== null && product.stock === 0;
+};
 
 const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   const { t, i18n } = useTranslation();
@@ -97,6 +102,12 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                   {getConditionTranslation(product.condition)}
                 </Badge>
               )}
+              {isOutOfStock(product) && (
+                <Badge className="absolute top-10 left-2 bg-destructive text-destructive-foreground">
+                  <AlertTriangle className="h-3 w-3 mr-1" />
+                  {t('product.outOfStock')}
+                </Badge>
+              )}
               {product.featured && (
                 <Badge className="absolute top-2 right-2 bg-accent text-accent-foreground">
                   ⭐
@@ -177,6 +188,12 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
           {product.condition && (
             <Badge className={`absolute top-2 left-2 ${conditionColors[product.condition] || 'bg-muted'}`}>
               {getConditionTranslation(product.condition)}
+            </Badge>
+          )}
+          {isOutOfStock(product) && (
+            <Badge className="absolute top-10 left-2 bg-destructive text-destructive-foreground">
+              <AlertTriangle className="h-3 w-3 mr-1" />
+              {t('product.outOfStock')}
             </Badge>
           )}
           {product.featured && (
