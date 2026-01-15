@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import type { ProductWithSeller } from '@/hooks/useProducts';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import { getTranslatedTitle, getTranslatedDescription } from '@/hooks/useTranslatedProduct';
+import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
 
 interface ProductCardProps {
   product: ProductWithSeller;
@@ -16,10 +17,12 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   const { t, i18n } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
+  const { translateCategory } = useTranslatedCategory();
   
   // Get translated content
   const translatedTitle = getTranslatedTitle(product, currentLang);
   const translatedDescription = getTranslatedDescription(product, currentLang);
+  const translatedCategory = translateCategory(product.category);
 
   const formatPrice = (price: number) => {
     const locale = currentLang === 'en' ? 'en-GB' : 
@@ -104,7 +107,7 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
               <div className="flex flex-col h-full">
                 <div className="flex-1">
                   <p className="text-xs text-muted-foreground mb-1">
-                    <span className="font-mono font-medium">{formatReferenceNumber(product.reference_number)}</span> • {product.category} • {product.brand}
+                    <span className="font-mono font-medium">{formatReferenceNumber(product.reference_number)}</span> • {translatedCategory} • {product.brand}
                   </p>
                   <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors line-clamp-3 sm:line-clamp-2">
                     {translatedTitle}
@@ -184,7 +187,7 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
         </div>
         <CardContent className="p-4">
           <p className="text-xs text-muted-foreground mb-1">
-            <span className="font-mono font-medium">{formatReferenceNumber(product.reference_number)}</span> • {product.category} • {product.brand}
+            <span className="font-mono font-medium">{formatReferenceNumber(product.reference_number)}</span> • {translatedCategory} • {product.brand}
           </p>
           <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-3 sm:line-clamp-2 min-h-[2.5rem]">
             {translatedTitle}
