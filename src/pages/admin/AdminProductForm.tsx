@@ -719,6 +719,7 @@ const AdminProductForm = () => {
                 images={formData.images}
                 onImagesChange={(images) => handleChange('images', images)}
                 maxImages={20}
+                id="product-images-upload"
               />
             </CardContent>
           </Card>
@@ -734,6 +735,7 @@ const AdminProductForm = () => {
                 images={formData.customer_images}
                 onImagesChange={(images) => handleChange('customer_images', images)}
                 maxImages={10}
+                id="customer-images-upload"
               />
             </CardContent>
           </Card>
