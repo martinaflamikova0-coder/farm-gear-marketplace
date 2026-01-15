@@ -212,13 +212,16 @@ const AnnonceDetail = () => {
             {/* Main content */}
             <div className="lg:col-span-2 space-y-6">
               {/* Image gallery */}
-              <Card className="overflow-hidden">
-                <div className="relative bg-muted cursor-pointer" onClick={openZoom}>
+              <Card>
+                <div
+                  className="relative bg-muted cursor-pointer flex items-center justify-center"
+                  onClick={openZoom}
+                >
                   {/* Full image display - no cropping */}
                   <img
                     src={images[currentImageIndex] || '/placeholder.svg'}
                     alt={translatedTitle}
-                    className="w-full h-auto max-h-[70vh] object-contain mx-auto"
+                    className="block w-full max-w-full h-auto max-h-[60vh] object-contain"
                   />
                   {images.length > 1 && (
                     <>
@@ -378,7 +381,7 @@ const AnnonceDetail = () => {
                   <CardTitle className="font-display">{t('product.description')}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-foreground leading-relaxed whitespace-pre-line">
+                  <p className="text-foreground leading-relaxed whitespace-pre-line break-words [overflow-wrap:anywhere]">
                     {translatedDescription}
                   </p>
                 </CardContent>
@@ -393,9 +396,13 @@ const AnnonceDetail = () => {
                   <div className="grid sm:grid-cols-2 gap-4">
                     {specifications.length > 0 ? (
                       specifications.map((spec, index) => (
-                        <div key={index} className="flex justify-between items-center py-2 border-b border-border last:border-0">
-                          <span className="text-muted-foreground">{spec.label}</span>
-                          <span className="font-medium text-foreground text-right">{spec.value}</span>
+                        <div key={index} className="flex justify-between gap-4 items-start py-2 border-b border-border last:border-0 min-w-0">
+                          <span className="text-muted-foreground break-words [overflow-wrap:anywhere] min-w-0">
+                            {spec.label}
+                          </span>
+                          <span className="font-medium text-foreground text-right break-words [overflow-wrap:anywhere] min-w-0">
+                            {spec.value}
+                          </span>
                         </div>
                       ))
                     ) : (
