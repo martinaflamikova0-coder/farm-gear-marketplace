@@ -19,7 +19,7 @@ import { Switch } from '@/components/ui/switch';
 import { ArrowLeft, Save, Languages, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
-import { brands } from '@/data/products';
+import { useBrands } from '@/hooks/useBrands';
 import ImageUploader from '@/components/admin/ImageUploader';
 import type { Tables } from '@/integrations/supabase/types';
 
@@ -129,6 +129,10 @@ const AdminProductForm = () => {
   const subcategories = selectedCategory 
     ? categories.filter(c => c.parent_id === selectedCategory.id)
     : [];
+
+  // Fetch brands from database - filter by selected category
+  const selectedCategoryForBrands = categories.find(c => c.slug === formData.category);
+  const { data: brands = [] } = useBrands(selectedCategoryForBrands?.id);
 
   useEffect(() => {
     if (id) {
@@ -572,7 +576,7 @@ const AdminProductForm = () => {
                     </SelectTrigger>
                     <SelectContent>
                       {brands.map((brand) => (
-                        <SelectItem key={brand} value={brand}>{brand}</SelectItem>
+                        <SelectItem key={brand.id} value={brand.name}>{brand.name}</SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
