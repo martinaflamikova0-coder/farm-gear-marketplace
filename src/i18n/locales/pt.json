@@ -42,6 +42,24 @@
     "loginDescription": "Entre na sua conta para aceder ao carrinho e fazer encomendas",
     "login": "Entrar"
   },
+  "account": {
+    "title": "Minha conta",
+    "logout": "Sair",
+    "orderHistory": "Histórico de pedidos",
+    "noOrders": "Ainda não fez nenhum pedido",
+    "browseProducts": "Ver anúncios",
+    "orderNumber": "Pedido #",
+    "shippingAddress": "Endereço de entrega",
+    "orderItems": "Itens do pedido",
+    "quantity": "Quantidade",
+    "status": {
+      "pending": "Pendente",
+      "confirmed": "Confirmado",
+      "shipped": "Enviado",
+      "delivered": "Entregue",
+      "cancelled": "Cancelado"
+    }
+  },
   "home": {
     "featuredListings": "⭐ Anúncios em destaque",
     "featuredSubtitle": "As nossas melhores oportunidades",

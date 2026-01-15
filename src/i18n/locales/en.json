@@ -43,6 +43,24 @@
     "loginDescription": "Sign in to access your cart and place orders",
     "login": "Sign in"
   },
+  "account": {
+    "title": "My Account",
+    "logout": "Sign out",
+    "orderHistory": "Order History",
+    "noOrders": "You haven't placed any orders yet",
+    "browseProducts": "Browse listings",
+    "orderNumber": "Order #",
+    "shippingAddress": "Shipping address",
+    "orderItems": "Order items",
+    "quantity": "Quantity",
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    }
+  },
   "home": {
     "featuredListings": "⭐ Featured listings",
     "featuredSubtitle": "Our best opportunities of the moment",
