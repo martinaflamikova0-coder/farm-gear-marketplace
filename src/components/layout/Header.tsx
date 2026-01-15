@@ -77,7 +77,7 @@ const Header = () => {
             className="flex items-center gap-2 flex-shrink-0"
             aria-label="EquipTrade"
           >
-            <div className="h-10 md:h-12 w-[140px] md:w-[180px] overflow-hidden flex items-center">
+            <div className="h-12 md:h-14 w-[160px] md:w-[200px] overflow-hidden flex items-center">
               <img
                 src={logoEquiptrade}
                 alt="EquipTrade"
