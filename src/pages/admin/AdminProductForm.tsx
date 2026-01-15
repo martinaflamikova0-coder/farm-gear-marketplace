@@ -19,7 +19,8 @@ import { Switch } from '@/components/ui/switch';
 import { ArrowLeft, Save, Languages, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
-import { useBrands } from '@/hooks/useBrands';
+
+import BrandCombobox from '@/components/admin/BrandCombobox';
 import ImageUploader from '@/components/admin/ImageUploader';
 import type { Tables } from '@/integrations/supabase/types';
 
@@ -130,9 +131,8 @@ const AdminProductForm = () => {
     ? categories.filter(c => c.parent_id === selectedCategory.id)
     : [];
 
-  // Fetch brands from database - filter by selected category
+  // Get category for brand filtering
   const selectedCategoryForBrands = categories.find(c => c.slug === formData.category);
-  const { data: brands = [] } = useBrands(selectedCategoryForBrands?.id);
 
   useEffect(() => {
     if (id) {
@@ -570,16 +570,12 @@ const AdminProductForm = () => {
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="brand">Marque</Label>
-                  <Select value={formData.brand} onValueChange={(v) => handleChange('brand', v)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Sélectionner" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {brands.map((brand) => (
-                        <SelectItem key={brand.id} value={brand.name}>{brand.name}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <BrandCombobox
+                    value={formData.brand || ''}
+                    onChange={(v) => handleChange('brand', v)}
+                    categoryId={selectedCategoryForBrands?.id}
+                    placeholder="Rechercher ou saisir une marque..."
+                  />
                 </div>
 
                 <div className="space-y-2">
