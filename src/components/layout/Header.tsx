@@ -72,11 +72,11 @@ const Header = () => {
       <div className="container-custom">
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo */}
-          <Link to={getLocalizedLink('')} className="flex items-center gap-2">
+          <Link to={getLocalizedLink('')} className="flex items-center gap-2 flex-shrink-0">
             <img 
               src={logoEquiptrade} 
               alt="EquipTrade" 
-              className="h-12 w-auto object-contain"
+              className="h-10 md:h-12 w-auto object-contain max-w-[180px] md:max-w-[220px]"
             />
           </Link>
 
