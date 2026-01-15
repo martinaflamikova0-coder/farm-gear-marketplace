@@ -83,6 +83,7 @@
     "kilometers": "Chilometri",
     "condition": "Condizione",
     "location": "Località",
+    "department": "Regione",
     "brand": "Marca",
     "model": "Modello",
     "description": "Descrizione",
@@ -97,6 +98,15 @@
     "financing": "o {{amount}}/mese in 72 mesi",
     "financingAvailable": "Finanziamento disponibile",
     "vatDisclaimer": "IVA variabile in base al profilo e al paese dell'acquirente"
+  },
+  "hero": {
+    "title": "Macchine agricole usate,",
+    "titleAccent": "semplicemente.",
+    "subtitle": "Trova trattori, mietitrebbie, attrezzature per la lavorazione del terreno e molto altro tra centinaia di annunci professionali verificati.",
+    "popularSearches": "Ricerche popolari",
+    "activeListings": "Annunci attivi",
+    "verifiedListings": "Annunci verificati",
+    "partnerSellers": "Venditori partner"
   },
   "financing": {
     "title": "Simulatore di finanziamento",

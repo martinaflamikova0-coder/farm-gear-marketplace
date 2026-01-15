@@ -162,7 +162,7 @@ const AnnonceDetail = () => {
     ...(product.hours ? [{ label: t('product.hours'), value: `${product.hours.toLocaleString()} h` }] : []),
     ...(product.kilometers ? [{ label: t('product.kilometers'), value: `${product.kilometers.toLocaleString()} km` }] : []),
     { label: t('product.location'), value: product.location },
-    { label: 'Département', value: product.department },
+    { label: t('product.department'), value: product.department },
   ].filter(spec => spec.value);
 
   // Get first image for OG meta

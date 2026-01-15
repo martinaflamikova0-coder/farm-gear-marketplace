@@ -106,6 +106,7 @@
     "kilometers": "Kilomètres",
     "condition": "État",
     "location": "Localisation",
+    "department": "Département",
     "brand": "Marque",
     "model": "Modèle",
     "description": "Description",
@@ -120,6 +121,15 @@
     "financing": "ou {{amount}}/mois sur 72 mois",
     "financingAvailable": "Financement disponible",
     "vatDisclaimer": "TVA variable selon votre statut et pays"
+  },
+  "hero": {
+    "title": "Le matériel agricole d'occasion,",
+    "titleAccent": "simplement.",
+    "subtitle": "Trouvez tracteurs, moissonneuses, outils de travail du sol et bien plus parmi des centaines d'annonces professionnelles vérifiées.",
+    "popularSearches": "Recherches populaires",
+    "activeListings": "Annonces actives",
+    "verifiedListings": "Annonces vérifiées",
+    "partnerSellers": "Vendeurs partenaires"
   },
   "financing": {
     "title": "Simulateur de financement",
