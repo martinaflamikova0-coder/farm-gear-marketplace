@@ -195,6 +195,7 @@ const AnnonceDetail = () => {
           images: product.images,
           location: product.location,
           seller_name: product.seller_name,
+          stock: product.stock,
         }}
         translatedTitle={translatedTitle}
         translatedDescription={translatedDescription}
