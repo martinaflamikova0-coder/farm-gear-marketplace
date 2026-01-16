@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { PDFDocument, rgb, StandardFonts } from "https://esm.sh/pdf-lib@1.17.1";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -52,163 +53,285 @@ serve(async (req) => {
       );
     }
 
-    // Generate invoice number
+    // Generate invoice number and date
     const invoiceNumber = `INV-${new Date(order.created_at).getFullYear()}-${order.id.slice(0, 8).toUpperCase()}`;
     const invoiceDate = new Date(order.created_at).toLocaleDateString("fr-FR");
-    
-    // Calculate totals
-    const subtotal = orderItems.reduce((sum: number, item: any) => sum + (item.product_price * item.quantity), 0);
-    const tva = subtotal * 0.20; // 20% TVA
-    const total = subtotal + tva;
 
-    // Generate HTML invoice
-    const htmlContent = `
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Facture ${invoiceNumber}</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #333; line-height: 1.6; }
-    .invoice { max-width: 800px; margin: 0 auto; padding: 40px; }
-    .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; border-bottom: 3px solid #2d5a27; padding-bottom: 20px; }
-    .logo { font-size: 28px; font-weight: bold; color: #2d5a27; }
-    .logo span { color: #f59e0b; }
-    .invoice-info { text-align: right; }
-    .invoice-info h1 { font-size: 32px; color: #2d5a27; margin-bottom: 5px; }
-    .invoice-info p { color: #666; }
-    .addresses { display: flex; justify-content: space-between; margin-bottom: 40px; }
-    .address-block { width: 45%; }
-    .address-block h3 { color: #2d5a27; margin-bottom: 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
-    .address-block p { color: #555; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
-    th { background: #2d5a27; color: white; padding: 12px; text-align: left; }
-    td { padding: 12px; border-bottom: 1px solid #ddd; }
-    tr:nth-child(even) { background: #f9f9f9; }
-    .totals { width: 300px; margin-left: auto; }
-    .totals table { margin-bottom: 0; }
-    .totals td { border: none; padding: 8px 12px; }
-    .totals tr:last-child { background: #2d5a27; color: white; font-weight: bold; font-size: 18px; }
-    .totals tr:last-child td { padding: 15px 12px; }
-    .footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; color: #888; font-size: 12px; }
-    .status { display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
-    .status-pending { background: #fef3c7; color: #d97706; }
-    .status-confirmed { background: #d1fae5; color: #059669; }
-    .status-shipped { background: #dbeafe; color: #2563eb; }
-    .status-delivered { background: #dcfce7; color: #16a34a; }
-    .status-cancelled { background: #fee2e2; color: #dc2626; }
-    .bank-info { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 30px; }
-    .bank-info h3 { color: #2d5a27; margin-bottom: 10px; }
-    .bank-info p { margin: 5px 0; color: #555; }
-    @media print {
-      body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-      .invoice { padding: 20px; }
+    // Create PDF document
+    const pdfDoc = await PDFDocument.create();
+    const page = pdfDoc.addPage([595, 842]); // A4 size in points
+    const { width, height } = page.getSize();
+
+    // Embed fonts
+    const helveticaBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+    const helvetica = await pdfDoc.embedFont(StandardFonts.Helvetica);
+
+    // Colors
+    const primaryColor = rgb(0.18, 0.35, 0.15); // #2d5a27
+    const accentColor = rgb(0.96, 0.62, 0.04); // #f59e0b
+    const textColor = rgb(0.2, 0.2, 0.2);
+    const mutedColor = rgb(0.4, 0.4, 0.4);
+
+    let yPos = height - 50;
+
+    // Header - Logo
+    page.drawText("Equip", {
+      x: 50,
+      y: yPos,
+      size: 28,
+      font: helveticaBold,
+      color: primaryColor,
+    });
+    page.drawText("Trade", {
+      x: 50 + helveticaBold.widthOfTextAtSize("Equip", 28),
+      y: yPos,
+      size: 28,
+      font: helveticaBold,
+      color: accentColor,
+    });
+
+    // Header - Invoice info (right side)
+    page.drawText("FACTURE", {
+      x: width - 150,
+      y: yPos,
+      size: 24,
+      font: helveticaBold,
+      color: primaryColor,
+    });
+
+    yPos -= 25;
+    page.drawText(`N°: ${invoiceNumber}`, {
+      x: width - 150,
+      y: yPos,
+      size: 10,
+      font: helvetica,
+      color: mutedColor,
+    });
+
+    yPos -= 15;
+    page.drawText(`Date: ${invoiceDate}`, {
+      x: width - 150,
+      y: yPos,
+      size: 10,
+      font: helvetica,
+      color: mutedColor,
+    });
+
+    yPos -= 15;
+    page.drawText(`Statut: ${getStatusLabel(order.status)}`, {
+      x: width - 150,
+      y: yPos,
+      size: 10,
+      font: helvetica,
+      color: mutedColor,
+    });
+
+    // Header line
+    yPos -= 20;
+    page.drawLine({
+      start: { x: 50, y: yPos },
+      end: { x: width - 50, y: yPos },
+      thickness: 2,
+      color: primaryColor,
+    });
+
+    // Addresses section
+    yPos -= 40;
+
+    // Seller address
+    page.drawText("VENDEUR", {
+      x: 50,
+      y: yPos,
+      size: 10,
+      font: helveticaBold,
+      color: primaryColor,
+    });
+    yPos -= 18;
+    page.drawText("EquipTrade", { x: 50, y: yPos, size: 11, font: helveticaBold, color: textColor });
+    yPos -= 15;
+    page.drawText("Marketplace de Matériel Agricole", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    yPos -= 15;
+    page.drawText("France", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    yPos -= 15;
+    page.drawText("contact@equiptrade.fr", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+
+    // Client address (right side)
+    let clientY = yPos + 63;
+    page.drawText("FACTURÉ À", {
+      x: 320,
+      y: clientY,
+      size: 10,
+      font: helveticaBold,
+      color: primaryColor,
+    });
+    clientY -= 18;
+    page.drawText(order.shipping_name || "N/A", { x: 320, y: clientY, size: 11, font: helveticaBold, color: textColor });
+    clientY -= 15;
+    if (order.shipping_address) {
+      page.drawText(order.shipping_address, { x: 320, y: clientY, size: 10, font: helvetica, color: mutedColor });
+      clientY -= 15;
     }
-  </style>
-</head>
-<body>
-  <div class="invoice">
-    <div class="header">
-      <div class="logo">Equip<span>Trade</span></div>
-      <div class="invoice-info">
-        <h1>FACTURE</h1>
-        <p><strong>N°:</strong> ${invoiceNumber}</p>
-        <p><strong>Date:</strong> ${invoiceDate}</p>
-        <p><span class="status status-${order.status}">${getStatusLabel(order.status)}</span></p>
-      </div>
-    </div>
-    
-    <div class="addresses">
-      <div class="address-block">
-        <h3>Vendeur</h3>
-        <p><strong>EquipTrade</strong></p>
-        <p>Marketplace de Matériel Agricole</p>
-        <p>France</p>
-        <p>contact@equiptrade.fr</p>
-      </div>
-      <div class="address-block">
-        <h3>Facturé à</h3>
-        <p><strong>${order.shipping_name || 'N/A'}</strong></p>
-        <p>${order.shipping_address || ''}</p>
-        <p>${order.shipping_postal_code || ''} ${order.shipping_city || ''}</p>
-        <p>${order.shipping_country || 'France'}</p>
-        <p>${order.shipping_email || ''}</p>
-        <p>${order.shipping_phone || ''}</p>
-      </div>
-    </div>
-    
-    <table>
-      <thead>
-        <tr>
-          <th>Description</th>
-          <th style="text-align: center;">Quantité</th>
-          <th style="text-align: right;">Prix unitaire</th>
-          <th style="text-align: right;">Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${orderItems.map((item: any) => `
-        <tr>
-          <td>${item.product_title}</td>
-          <td style="text-align: center;">${item.quantity}</td>
-          <td style="text-align: right;">${formatPrice(item.product_price)}</td>
-          <td style="text-align: right;">${formatPrice(item.product_price * item.quantity)}</td>
-        </tr>
-        `).join('')}
-      </tbody>
-    </table>
-    
-    <div class="totals">
-      <table>
-        <tr>
-          <td>Sous-total HT</td>
-          <td style="text-align: right;">${formatPrice(subtotal / 1.20)}</td>
-        </tr>
-        <tr>
-          <td>TVA (20%)</td>
-          <td style="text-align: right;">${formatPrice(subtotal - subtotal / 1.20)}</td>
-        </tr>
-        <tr>
-          <td>Total TTC</td>
-          <td style="text-align: right;">${formatPrice(subtotal)}</td>
-        </tr>
-      </table>
-    </div>
-    
-    <div class="bank-info">
-      <h3>Informations de paiement</h3>
-      <p><strong>Mode de paiement:</strong> Virement bancaire</p>
-      ${order.total_amount < 5000 ? `
-      <p><strong>IBAN:</strong> FR76 XXXX XXXX XXXX XXXX XXXX XXX</p>
-      <p><strong>BIC:</strong> BNPAFRPP</p>
-      ` : `
-      <p><strong>IBAN:</strong> FR76 YYYY YYYY YYYY YYYY YYYY YYY</p>
-      <p><strong>BIC:</strong> CRLYFRPP</p>
-      `}
-      <p><strong>Référence:</strong> ${invoiceNumber}</p>
-    </div>
-    
-    <div class="footer">
-      <p>EquipTrade - Marketplace de Matériel Agricole</p>
-      <p>Document généré automatiquement - Facture valide sans signature</p>
-    </div>
-  </div>
-</body>
-</html>
-    `;
+    page.drawText(`${order.shipping_postal_code || ""} ${order.shipping_city || ""}`.trim(), { x: 320, y: clientY, size: 10, font: helvetica, color: mutedColor });
+    clientY -= 15;
+    page.drawText(order.shipping_country || "France", { x: 320, y: clientY, size: 10, font: helvetica, color: mutedColor });
+    clientY -= 15;
+    if (order.shipping_email) {
+      page.drawText(order.shipping_email, { x: 320, y: clientY, size: 10, font: helvetica, color: mutedColor });
+      clientY -= 15;
+    }
+    if (order.shipping_phone) {
+      page.drawText(order.shipping_phone, { x: 320, y: clientY, size: 10, font: helvetica, color: mutedColor });
+    }
 
-    return new Response(htmlContent, {
+    // Items table
+    yPos -= 60;
+
+    // Table header
+    page.drawRectangle({
+      x: 50,
+      y: yPos - 5,
+      width: width - 100,
+      height: 25,
+      color: primaryColor,
+    });
+
+    page.drawText("Description", { x: 55, y: yPos + 3, size: 10, font: helveticaBold, color: rgb(1, 1, 1) });
+    page.drawText("Qté", { x: 340, y: yPos + 3, size: 10, font: helveticaBold, color: rgb(1, 1, 1) });
+    page.drawText("Prix unit.", { x: 390, y: yPos + 3, size: 10, font: helveticaBold, color: rgb(1, 1, 1) });
+    page.drawText("Total", { x: 480, y: yPos + 3, size: 10, font: helveticaBold, color: rgb(1, 1, 1) });
+
+    yPos -= 25;
+
+    // Table rows
+    let subtotalHT = 0;
+    for (let i = 0; i < orderItems.length; i++) {
+      const item = orderItems[i];
+      const itemTotal = item.product_price * item.quantity;
+      subtotalHT += itemTotal;
+
+      // Alternate row background
+      if (i % 2 === 1) {
+        page.drawRectangle({
+          x: 50,
+          y: yPos - 5,
+          width: width - 100,
+          height: 22,
+          color: rgb(0.97, 0.97, 0.97),
+        });
+      }
+
+      // Truncate long titles
+      let title = item.product_title;
+      if (title.length > 40) {
+        title = title.substring(0, 37) + "...";
+      }
+
+      page.drawText(title, { x: 55, y: yPos + 3, size: 10, font: helvetica, color: textColor });
+      page.drawText(item.quantity.toString(), { x: 350, y: yPos + 3, size: 10, font: helvetica, color: textColor });
+      page.drawText(formatPrice(item.product_price), { x: 390, y: yPos + 3, size: 10, font: helvetica, color: textColor });
+      page.drawText(formatPrice(itemTotal), { x: 480, y: yPos + 3, size: 10, font: helvetica, color: textColor });
+
+      yPos -= 22;
+    }
+
+    // Separator line
+    yPos -= 10;
+    page.drawLine({
+      start: { x: 50, y: yPos },
+      end: { x: width - 50, y: yPos },
+      thickness: 0.5,
+      color: rgb(0.85, 0.85, 0.85),
+    });
+
+    // Totals section (right aligned)
+    yPos -= 30;
+    const totalsX = 380;
+
+    // Calculate HT and TVA
+    const htAmount = subtotalHT / 1.20;
+    const tvaAmount = subtotalHT - htAmount;
+
+    page.drawText("Sous-total HT:", { x: totalsX, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText(formatPrice(htAmount), { x: 480, y: yPos, size: 10, font: helvetica, color: textColor });
+
+    yPos -= 18;
+    page.drawText("TVA (20%):", { x: totalsX, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText(formatPrice(tvaAmount), { x: 480, y: yPos, size: 10, font: helvetica, color: textColor });
+
+    yPos -= 25;
+    // Total TTC box
+    page.drawRectangle({
+      x: totalsX - 10,
+      y: yPos - 8,
+      width: width - totalsX - 30,
+      height: 28,
+      color: primaryColor,
+    });
+    page.drawText("TOTAL TTC:", { x: totalsX, y: yPos, size: 12, font: helveticaBold, color: rgb(1, 1, 1) });
+    page.drawText(formatPrice(subtotalHT), { x: 475, y: yPos, size: 12, font: helveticaBold, color: rgb(1, 1, 1) });
+
+    // Bank info section
+    yPos -= 60;
+    page.drawRectangle({
+      x: 50,
+      y: yPos - 80,
+      width: width - 100,
+      height: 95,
+      color: rgb(0.97, 0.97, 0.97),
+      borderColor: rgb(0.9, 0.9, 0.9),
+      borderWidth: 1,
+    });
+
+    page.drawText("Informations de paiement", { x: 60, y: yPos - 15, size: 12, font: helveticaBold, color: primaryColor });
+    page.drawText("Mode de paiement: Virement bancaire", { x: 60, y: yPos - 35, size: 10, font: helvetica, color: mutedColor });
+    
+    const bankDetails = order.total_amount < 5000 
+      ? { iban: "FR76 1234 5678 9012 3456 7890 123", bic: "AGRIFRPP" }
+      : { iban: "FR76 9876 5432 1098 7654 3210 987", bic: "BNPAFRPP" };
+    
+    page.drawText(`IBAN: ${bankDetails.iban}`, { x: 60, y: yPos - 50, size: 10, font: helvetica, color: mutedColor });
+    page.drawText(`BIC: ${bankDetails.bic}`, { x: 60, y: yPos - 65, size: 10, font: helvetica, color: mutedColor });
+    page.drawText(`Référence: ${invoiceNumber}`, { x: 350, y: yPos - 50, size: 10, font: helvetica, color: mutedColor });
+
+    // Footer
+    const footerY = 50;
+    page.drawLine({
+      start: { x: 50, y: footerY + 20 },
+      end: { x: width - 50, y: footerY + 20 },
+      thickness: 0.5,
+      color: rgb(0.85, 0.85, 0.85),
+    });
+
+    page.drawText("EquipTrade - Marketplace de Matériel Agricole", {
+      x: 180,
+      y: footerY + 5,
+      size: 9,
+      font: helvetica,
+      color: mutedColor,
+    });
+    page.drawText("Document généré automatiquement - Facture valide sans signature", {
+      x: 150,
+      y: footerY - 10,
+      size: 8,
+      font: helvetica,
+      color: rgb(0.6, 0.6, 0.6),
+    });
+
+    // Serialize PDF to bytes
+    const pdfBytes = await pdfDoc.save();
+
+    return new Response(new Uint8Array(pdfBytes).buffer as ArrayBuffer, {
       headers: {
         ...corsHeaders,
-        "Content-Type": "text/html; charset=utf-8",
+        "Content-Type": "application/pdf",
+        "Content-Disposition": `inline; filename="facture-${invoiceNumber}.pdf"`,
       },
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Error generating invoice:", error);
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
     return new Response(
-      JSON.stringify({ error: "Failed to generate invoice" }),
+      JSON.stringify({ error: "Failed to generate invoice", details: errorMessage }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }

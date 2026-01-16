@@ -23,7 +23,9 @@ import {
   MapPin,
   Phone,
   Mail,
-  User
+  User,
+  FileText,
+  Loader2
 } from 'lucide-react';
 
 interface OrderItem {
@@ -80,6 +82,7 @@ const AdminOrders = () => {
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [receiptDialogOpen, setReceiptDialogOpen] = useState(false);
   const [selectedReceipt, setSelectedReceipt] = useState<{ url: string; orderId: string } | null>(null);
+  const [generatingInvoice, setGeneratingInvoice] = useState<string | null>(null);
 
   useEffect(() => {
     fetchOrders();
@@ -173,6 +176,66 @@ const AdminOrders = () => {
       link.href = data.signedUrl;
       link.download = `receipt-${orderId.slice(0, 8)}.${receiptPath.split('.').pop()}`;
       link.click();
+    }
+  };
+
+  const handleViewInvoice = async (orderId: string) => {
+    try {
+      setGeneratingInvoice(orderId);
+      const response = await supabase.functions.invoke('generate-invoice', {
+        body: { orderId }
+      });
+
+      if (response.error) throw response.error;
+
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+      setTimeout(() => URL.revokeObjectURL(url), 5000);
+    } catch (error) {
+      console.error('Error generating invoice:', error);
+      toast({
+        title: 'Erreur',
+        description: 'Impossible de générer la facture',
+        variant: 'destructive',
+      });
+    } finally {
+      setGeneratingInvoice(null);
+    }
+  };
+
+  const handleDownloadInvoice = async (orderId: string) => {
+    try {
+      setGeneratingInvoice(orderId);
+      const response = await supabase.functions.invoke('generate-invoice', {
+        body: { orderId }
+      });
+
+      if (response.error) throw response.error;
+
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `facture-${orderId.slice(0, 8)}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      toast({
+        title: 'Succès',
+        description: 'Facture téléchargée',
+      });
+    } catch (error) {
+      console.error('Error downloading invoice:', error);
+      toast({
+        title: 'Erreur',
+        description: 'Impossible de télécharger la facture',
+        variant: 'destructive',
+      });
+    } finally {
+      setGeneratingInvoice(null);
     }
   };
 
@@ -386,6 +449,48 @@ const AdminOrders = () => {
                       </div>
                     </div>
                   )}
+
+                  {/* Invoice */}
+                  <div className="p-4 bg-background rounded-lg space-y-3">
+                    <h4 className="font-semibold flex items-center gap-2">
+                      <FileText className="h-4 w-4" />
+                      Facture PDF
+                    </h4>
+                    <div className="flex gap-2">
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleViewInvoice(order.id);
+                        }}
+                        disabled={generatingInvoice === order.id}
+                      >
+                        {generatingInvoice === order.id ? (
+                          <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                        ) : (
+                          <Eye className="h-4 w-4 mr-2" />
+                        )}
+                        Voir
+                      </Button>
+                      <Button 
+                        variant="default" 
+                        size="sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDownloadInvoice(order.id);
+                        }}
+                        disabled={generatingInvoice === order.id}
+                      >
+                        {generatingInvoice === order.id ? (
+                          <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                        ) : (
+                          <Download className="h-4 w-4 mr-2" />
+                        )}
+                        Télécharger
+                      </Button>
+                    </div>
+                  </div>
 
                   {/* Order Items */}
                   <div className="space-y-3">
