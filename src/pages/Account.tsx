@@ -154,11 +154,12 @@ const Account = () => {
 
       if (response.error) throw response.error;
 
-      const printWindow = window.open('', '_blank');
-      if (printWindow) {
-        printWindow.document.write(response.data);
-        printWindow.document.close();
-      }
+      // Response is ArrayBuffer for PDF
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+      // Revoke after a delay to allow the window to open
+      setTimeout(() => URL.revokeObjectURL(url), 5000);
     } catch (error) {
       console.error('Error generating invoice:', error);
       toast.error(t('account.errorGeneratingInvoice'));
@@ -176,11 +177,12 @@ const Account = () => {
 
       if (response.error) throw response.error;
 
-      const blob = new Blob([response.data], { type: 'text/html' });
+      // Response is ArrayBuffer for PDF
+      const blob = new Blob([response.data], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `facture-${orderId.slice(0, 8)}.html`;
+      a.download = `facture-${orderId.slice(0, 8)}.pdf`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
