@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { MapPin, Clock, Calendar, CreditCard, AlertTriangle } from 'lucide-react';
+import { MapPin, Clock, Calendar, CreditCard, AlertTriangle, Star } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -9,6 +9,52 @@ import { getTranslatedTitle, getTranslatedDescription } from '@/hooks/useTransla
 import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
 import AddToCartButton from '@/components/cart/AddToCartButton';
 import { CART_MAX_PRICE } from '@/contexts/CartContext';
+
+// Generate consistent fake rating based on product ID (seeded random)
+const generateRating = (productId: string) => {
+  // Use product ID hash to generate consistent values
+  let hash = 0;
+  for (let i = 0; i < productId.length; i++) {
+    const char = productId.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash;
+  }
+  
+  // Rating between 4.0 and 5.0
+  const rating = 4 + (Math.abs(hash % 100) / 100);
+  // Reviews between 12 and 248
+  const reviews = 12 + Math.abs(hash % 237);
+  
+  return { rating: Math.round(rating * 10) / 10, reviews };
+};
+
+// Star rating component
+const StarRating = ({ rating, reviews }: { rating: number; reviews: number }) => {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 >= 0.5;
+  
+  return (
+    <div className="flex items-center gap-1">
+      <div className="flex items-center">
+        {[...Array(5)].map((_, i) => (
+          <Star
+            key={i}
+            className={`h-3 w-3 ${
+              i < fullStars 
+                ? 'fill-warning text-warning' 
+                : i === fullStars && hasHalfStar 
+                  ? 'fill-warning/50 text-warning' 
+                  : 'fill-muted text-muted-foreground/30'
+            }`}
+          />
+        ))}
+      </div>
+      <span className="text-xs text-muted-foreground">
+        {rating.toFixed(1)} ({reviews})
+      </span>
+    </div>
+  );
+};
 
 interface ProductCardProps {
   product: ProductWithSeller;
@@ -86,6 +132,9 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   const FINANCING_MONTHS = 72;
   const hasFinancing = price >= FINANCING_THRESHOLD;
   const monthlyPayment = hasFinancing ? Math.round(price / FINANCING_MONTHS) : 0;
+  
+  // Generate consistent rating for this product
+  const { rating, reviews } = generateRating(product.id);
 
   if (variant === 'horizontal') {
     return (
@@ -125,6 +174,9 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                   <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors line-clamp-3 sm:line-clamp-2">
                     {translatedTitle}
                   </h3>
+                  <div className="mt-1">
+                    <StarRating rating={rating} reviews={reviews} />
+                  </div>
                   <p className="text-sm text-muted-foreground mt-2 line-clamp-3 sm:line-clamp-2">
                     {translatedDescription}
                   </p>
@@ -223,7 +275,9 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
           <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-3 sm:line-clamp-2 min-h-[2.5rem]">
             {translatedTitle}
           </h3>
-          
+          <div className="mt-1">
+            <StarRating rating={rating} reviews={reviews} />
+          </div>
           <div className="flex flex-wrap gap-2 mt-2 text-xs text-muted-foreground">
             {product.year && (
               <span className="flex items-center gap-1">
