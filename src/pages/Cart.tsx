@@ -32,8 +32,8 @@ const Cart = () => {
     }).format(price);
   };
 
-  // Redirect to login if not authenticated
-  if (!user && !isLoading) {
+  // Redirect to login if not authenticated - check this BEFORE loading state
+  if (!user) {
     return (
       <div className="min-h-screen flex flex-col">
         <SEOHead titleKey="seo.cart.title" descriptionKey="seo.cart.description" />
