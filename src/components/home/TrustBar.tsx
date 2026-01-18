@@ -36,18 +36,18 @@ const TrustBar = () => {
   const duplicatedItems = [...trustItems, ...trustItems];
 
   return (
-    <div className="bg-primary text-primary-foreground overflow-hidden">
-      <div className="py-4 min-h-[48px] flex items-center">
-        <div className="flex animate-marquee items-center">
+    <div className="bg-primary text-primary-foreground overflow-hidden w-full">
+      <div className="py-4 flex items-center">
+        <div className="flex animate-marquee w-max">
           {duplicatedItems.map((item, index) => (
             <div 
               key={index} 
-              className="flex items-center gap-2 px-8 whitespace-nowrap"
+              className="flex items-center gap-2 px-6 md:px-8 whitespace-nowrap flex-shrink-0"
             >
               <item.icon className="h-5 w-5 opacity-80 flex-shrink-0" strokeWidth={1.5} />
-              <span className="font-medium text-sm leading-normal">{item.title}</span>
-              <span className="text-sm opacity-70">—</span>
-              <span className="text-sm opacity-80 leading-normal">{item.subtitle}</span>
+              <span className="font-medium text-sm">{item.title}</span>
+              <span className="text-sm opacity-70 mx-1">—</span>
+              <span className="text-sm opacity-80">{item.subtitle}</span>
             </div>
           ))}
         </div>
