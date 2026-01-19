@@ -22,6 +22,8 @@ import FinancingSimulator from '@/components/products/FinancingSimulator';
 import AddToCartButton from '@/components/cart/AddToCartButton';
 import { CART_MAX_PRICE } from '@/contexts/CartContext';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
+import { useProductGifts } from '@/hooks/useProductGifts';
+import ProductGiftsList from '@/components/products/ProductGiftsList';
 
 const AnnonceDetail = () => {
   const { id, lang } = useParams<{ id: string; lang: string }>();
@@ -47,6 +49,9 @@ const AnnonceDetail = () => {
   });
 
   const similarProducts = recentProducts.filter(p => p.id !== id);
+  
+  // Get automatic gifts for this product
+  const gifts = useProductGifts(product);
 
   if (isLoading) {
     return (
@@ -501,6 +506,9 @@ const AnnonceDetail = () => {
                   </CardContent>
                 </Card>
               )}
+              
+              {/* Gifts Section */}
+              <ProductGiftsList gifts={gifts} />
             </div>
 
             {/* Sidebar */}
