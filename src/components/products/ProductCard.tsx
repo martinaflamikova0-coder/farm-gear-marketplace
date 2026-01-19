@@ -9,7 +9,8 @@ import { getTranslatedTitle, getTranslatedDescription } from '@/hooks/useTransla
 import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
 import AddToCartButton from '@/components/cart/AddToCartButton';
 import { CART_MAX_PRICE } from '@/contexts/CartContext';
-
+import { useProductGifts } from '@/hooks/useProductGifts';
+import ProductGiftsBadge from '@/components/products/ProductGiftsBadge';
 // Generate consistent fake rating based on product ID (seeded random)
 const generateRating = (productId: string) => {
   // Use product ID hash to generate consistent values
@@ -135,11 +136,14 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   
   // Generate consistent rating for this product
   const { rating, reviews } = generateRating(product.id);
+  
+  // Get automatic gifts for this product
+  const gifts = useProductGifts(product);
 
   if (variant === 'horizontal') {
     return (
       <Link to={productLink}>
-        <Card className="hover-lift overflow-hidden border-border group">
+      <Card className="hover-lift overflow-hidden border-border group">
           <div className="flex flex-col sm:flex-row">
             <div className="relative w-full sm:w-64 h-48 sm:h-auto flex-shrink-0 overflow-hidden bg-muted">
               <img
@@ -148,19 +152,20 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                 className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
               />
+              <ProductGiftsBadge gifts={gifts} variant="card" />
               {product.condition && (
-                <Badge className={`absolute top-2 left-2 ${conditionColors[product.condition] || 'bg-muted'}`}>
+                <Badge className={`absolute top-2 right-2 ${conditionColors[product.condition] || 'bg-muted'}`}>
                   {getConditionTranslation(product.condition)}
                 </Badge>
               )}
               {isOutOfStock(product) && (
-                <Badge className="absolute top-10 left-2 bg-destructive text-destructive-foreground">
+                <Badge className="absolute top-10 right-2 bg-destructive text-destructive-foreground">
                   <AlertTriangle className="h-3 w-3 mr-1" />
                   {t('product.outOfStock')}
                 </Badge>
               )}
               {product.featured && (
-                <Badge className="absolute top-2 right-2 bg-accent text-accent-foreground">
+                <Badge className="absolute bottom-2 right-2 bg-accent text-accent-foreground">
                   ⭐
                 </Badge>
               )}
@@ -251,19 +256,20 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
             className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
+          <ProductGiftsBadge gifts={gifts} variant="card" />
           {product.condition && (
-            <Badge className={`absolute top-2 left-2 ${conditionColors[product.condition] || 'bg-muted'}`}>
+            <Badge className={`absolute top-2 right-2 ${conditionColors[product.condition] || 'bg-muted'}`}>
               {getConditionTranslation(product.condition)}
             </Badge>
           )}
           {isOutOfStock(product) && (
-            <Badge className="absolute top-10 left-2 bg-destructive text-destructive-foreground">
+            <Badge className="absolute top-10 right-2 bg-destructive text-destructive-foreground">
               <AlertTriangle className="h-3 w-3 mr-1" />
               {t('product.outOfStock')}
             </Badge>
           )}
           {product.featured && (
-            <Badge className="absolute top-2 right-2 bg-accent text-accent-foreground">
+            <Badge className="absolute bottom-2 right-2 bg-accent text-accent-foreground">
               ⭐
             </Badge>
           )}
