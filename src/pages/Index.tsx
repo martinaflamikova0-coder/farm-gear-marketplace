@@ -41,6 +41,34 @@ const Index = () => {
             limit={4}
           />
         </div>
+
+        <ProductsGrid 
+          titleKey="home.constructionEquipment"
+          category="chantier"
+          limit={4}
+        />
+
+        <div className="bg-card">
+          <ProductsGrid 
+            titleKey="home.soilWork"
+            category="travail-sol"
+            limit={4}
+          />
+        </div>
+
+        <ProductsGrid 
+          titleKey="home.handling"
+          category="manutention"
+          limit={4}
+        />
+
+        <div className="bg-card">
+          <ProductsGrid 
+            titleKey="home.partsAccessories"
+            category="pieces"
+            limit={4}
+          />
+        </div>
       </main>
       
       <TrustBar />
