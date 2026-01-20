@@ -77,7 +77,11 @@
     "recentListings": "🕐 Neueste Anzeigen",
     "recentSubtitle": "Die aktuellsten",
     "tractors": "🚜 Traktoren",
-    "harvestEquipment": "🌾 Erntetechnik"
+    "harvestEquipment": "🌾 Erntetechnik",
+    "constructionEquipment": "🏗️ Baumaschinen",
+    "soilWork": "🌍 Bodenbearbeitung",
+    "handling": "🏋️ Fördertechnik",
+    "partsAccessories": "🔧 Ersatzteile & Zubehör"
   },
   "stats": {
     "listings": "Anzeigen",

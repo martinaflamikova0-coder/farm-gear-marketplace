@@ -79,6 +79,10 @@
     "recentSubtitle": "Most recent",
     "tractors": "🚜 Tractors",
     "harvestEquipment": "🌾 Harvest equipment",
+    "constructionEquipment": "🏗️ Construction equipment",
+    "soilWork": "🌍 Soil work",
+    "handling": "🏋️ Handling",
+    "partsAccessories": "🔧 Parts & accessories",
     "browseByCategory": "Browse by category",
     "categoryDescription": "Quickly find the equipment you need among our different categories"
   },

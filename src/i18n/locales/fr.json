@@ -79,6 +79,10 @@
     "recentSubtitle": "Les plus récentes",
     "tractors": "🚜 Tracteurs",
     "harvestEquipment": "🌾 Matériel de récolte",
+    "constructionEquipment": "🏗️ Matériel de chantier",
+    "soilWork": "🌍 Travail du sol",
+    "handling": "🏋️ Manutention",
+    "partsAccessories": "🔧 Pièces et accessoires",
     "browseByCategory": "Parcourir par catégorie",
     "categoryDescription": "Trouvez rapidement le matériel dont vous avez besoin parmi nos différentes catégories"
   },
