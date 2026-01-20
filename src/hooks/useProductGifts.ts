@@ -15,7 +15,8 @@ interface ProductForGifts {
 
 // Complementary gifts by category - real useful accessories for the purchased item
 const categoryGifts: Record<string, ProductGift[]> = {
-  tracteurs: [
+  // TRACTEURS
+  'tracteurs': [
     { icon: '📡', name: 'Antenne GPS agricole' },
     { icon: '💡', name: 'Kit phares LED de travail' },
     { icon: '🛢️', name: 'Bidon huile hydraulique 20L' },
@@ -25,55 +26,271 @@ const categoryGifts: Record<string, ProductGift[]> = {
     { icon: '🌡️', name: 'Jauge multifonction digitale' },
     { icon: '🔊', name: 'Kit radio Bluetooth cabine' },
   ],
-  moissonneuses: [
+  'tracteurs-agricoles': [
+    { icon: '📡', name: 'Antenne GPS agricole' },
+    { icon: '💡', name: 'Kit phares LED de travail' },
+    { icon: '🛢️', name: 'Bidon huile hydraulique 20L' },
+    { icon: '🔋', name: 'Chargeur de batterie intelligent' },
+    { icon: '🪞', name: 'Rétroviseurs grand angle' },
+    { icon: '🧲', name: 'Attelage rapide 3 points' },
+  ],
+  'tracteurs-forestiers': [
+    { icon: '🛡️', name: 'Protection forestière cabine' },
+    { icon: '🔗', name: 'Chaînes forestières renforcées' },
+    { icon: '💡', name: 'Projecteurs anti-branche' },
+    { icon: '🛢️', name: 'Huile biodégradable 20L' },
+    { icon: '🔧', name: 'Kit de treuil forestier' },
+  ],
+  'tracteurs-vignerons': [
+    { icon: '🍇', name: 'Kit pulvérisation vignoble' },
+    { icon: '📏', name: 'Capteur inter-rang' },
+    { icon: '💡', name: 'Éclairage basse hauteur' },
+    { icon: '🛢️', name: 'Huile moteur premium 10L' },
+  ],
+  'micro-tracteurs': [
+    { icon: '🔧', name: 'Kit outils compacts' },
+    { icon: '💡', name: 'Phares LED avant/arrière' },
+    { icon: '🛢️', name: 'Huile moteur 5L' },
+    { icon: '🪜', name: 'Chargeur frontal mini' },
+  ],
+
+  // RÉCOLTE
+  'moissonneuses-batteuses': [
     { icon: '📊', name: 'Testeur d\'humidité grain' },
     { icon: '🔪', name: 'Jeu de contre-couteaux neufs' },
     { icon: '⚙️', name: 'Kit courroies de rechange' },
     { icon: '🧹', name: 'Souffleur nettoyage radiateur' },
     { icon: '💡', name: 'Rampe LED pour travail de nuit' },
-    { icon: '🛡️', name: 'Grilles de protection moteur' },
     { icon: '📡', name: 'Capteur de rendement' },
   ],
-  'outils-materiels': [
-    { icon: '🔩', name: 'Kit visserie inox complet' },
-    { icon: '⚙️', name: 'Pièces d\'usure de rechange' },
+  'ensileuses': [
+    { icon: '🔪', name: 'Jeu de couteaux affûtés' },
+    { icon: '📊', name: 'Analyseur matière sèche' },
+    { icon: '⚙️', name: 'Courroies de transmission' },
+    { icon: '🛢️', name: 'Graisse spéciale chaîne' },
+  ],
+  'presses-balles': [
+    { icon: '🧵', name: 'Rouleaux ficelle haute résistance' },
+    { icon: '🔧', name: 'Kit aiguilles de rechange' },
+    { icon: '⚙️', name: 'Courroies presse' },
+    { icon: '🛢️', name: 'Graisse roulements 5kg' },
+  ],
+  'faucheuses': [
+    { icon: '🔪', name: 'Jeu de lames de rechange' },
+    { icon: '🔩', name: 'Kit boulonnerie faucheuse' },
+    { icon: '🛢️', name: 'Huile transmission' },
+    { icon: '⚙️', name: 'Courroies trapézoïdales' },
+  ],
+  'recolte': [
+    { icon: '📊', name: 'Testeur d\'humidité' },
+    { icon: '🔪', name: 'Pièces d\'usure de rechange' },
+    { icon: '🛢️', name: 'Lubrifiant spécial récolte' },
+    { icon: '💡', name: 'Éclairage LED de travail' },
+  ],
+
+  // TRAVAIL DU SOL
+  'travail-sol': [
+    { icon: '🔩', name: 'Kit socs de rechange' },
     { icon: '🛢️', name: 'Graisse spéciale agricole 5kg' },
-    { icon: '🔧', name: 'Coffret clés à chocs' },
+    { icon: '🔧', name: 'Coffret clés de réglage' },
     { icon: '📏', name: 'Laser de nivellement' },
   ],
-  'pieces-accessoires': [
-    { icon: '🔧', name: 'Kit montage professionnel' },
-    { icon: '🧴', name: 'Lubrifiant haute performance' },
-    { icon: '📦', name: 'Pièces de fixation renforcées' },
-    { icon: '🛡️', name: 'Protection anti-usure' },
+  'charrues': [
+    { icon: '🔩', name: 'Jeu de socs neufs' },
+    { icon: '⚙️', name: 'Versoirs de rechange' },
+    { icon: '🛢️', name: 'Graisse haute pression 5kg' },
+    { icon: '🔧', name: 'Clés de réglage charrue' },
   ],
-  'elevage-betail': [
-    { icon: '💉', name: 'Kit vétérinaire de base' },
-    { icon: '🧴', name: 'Désinfectant professionnel 10L' },
+  'herses': [
+    { icon: '🔩', name: 'Dents de herse de rechange' },
+    { icon: '⚙️', name: 'Roulements étanches' },
+    { icon: '🛢️', name: 'Graisse roulements' },
+  ],
+  'cultivateurs': [
+    { icon: '🔩', name: 'Socs cultivateur neufs' },
+    { icon: '⚙️', name: 'Ressorts de sécurité' },
+    { icon: '🔧', name: 'Kit réglage profondeur' },
+  ],
+  'semoirs': [
+    { icon: '🌱', name: 'Disques semeurs de rechange' },
+    { icon: '📊', name: 'Moniteur de semis' },
+    { icon: '⚙️', name: 'Courroies distribution' },
+    { icon: '🔧', name: 'Kit calibration semoir' },
+  ],
+  'broyeurs': [
+    { icon: '🔪', name: 'Jeu de couteaux Y' },
+    { icon: '⚙️', name: 'Courroies broyeur' },
+    { icon: '🛢️', name: 'Huile boîtier 5L' },
+    { icon: '🔩', name: 'Boulonnerie anti-vibration' },
+  ],
+
+  // PULVÉRISATION / ÉPANDAGE
+  'pulverisateurs': [
+    { icon: '💧', name: 'Buses de pulvérisation neuves' },
+    { icon: '🔧', name: 'Kit joints et membranes' },
+    { icon: '📊', name: 'Débitmètre de contrôle' },
+    { icon: '🧴', name: 'Nettoyant cuve 5L' },
+  ],
+  'epandeurs': [
+    { icon: '⚙️', name: 'Disques d\'épandage neufs' },
+    { icon: '🔧', name: 'Kit déflecteurs' },
+    { icon: '📊', name: 'Testeur de débit' },
+    { icon: '🛢️', name: 'Graisse alimentaire' },
+  ],
+
+  // ÉLEVAGE
+  'elevage': [
+    { icon: '💉', name: 'Kit vétérinaire complet' },
+    { icon: '🧴', name: 'Désinfectant professionnel 20L' },
     { icon: '📊', name: 'Balance de pesée portable' },
-    { icon: '🔦', name: 'Lampe d\'examen LED' },
     { icon: '🌡️', name: 'Thermomètre digital précis' },
   ],
-  'espaces-verts': [
-    { icon: '🔪', name: 'Jeu de lames de rechange' },
-    { icon: '🛢️', name: 'Huile 2 temps 5L' },
-    { icon: '⚡', name: 'Batterie supplémentaire' },
-    { icon: '🧹', name: 'Kit nettoyage filtre à air' },
-    { icon: '🎧', name: 'Casque anti-bruit pro' },
+  'traite': [
+    { icon: '🧴', name: 'Produit lavage tank 25L' },
+    { icon: '⚙️', name: 'Manchons trayeurs neufs' },
+    { icon: '🔧', name: 'Kit joints et clapets' },
+    { icon: '📊', name: 'Testeur qualité lait' },
   ],
-  'transport-manutention': [
+  'melangeuses': [
+    { icon: '🔪', name: 'Couteaux mélangeur neufs' },
+    { icon: '⚙️', name: 'Courroies distribution' },
+    { icon: '📊', name: 'Système de pesée' },
+    { icon: '🛢️', name: 'Huile réducteur 20L' },
+  ],
+  'distributeurs': [
+    { icon: '⚙️', name: 'Chaînes distribution neuves' },
+    { icon: '🔧', name: 'Kit réglage débit' },
+    { icon: '🛢️', name: 'Graisse chaîne 5kg' },
+  ],
+  'clotures': [
+    { icon: '⚡', name: 'Électrificateur solaire' },
+    { icon: '🔌', name: 'Testeur de clôture' },
+    { icon: '🔧', name: 'Kit isolateurs' },
+    { icon: '📏', name: 'Enrouleur fil 500m' },
+  ],
+
+  // MANUTENTION / TRANSPORT
+  'manutention': [
     { icon: '🔗', name: 'Chaînes d\'arrimage HD' },
     { icon: '💡', name: 'Gyrophare LED magnétique' },
-    { icon: '🛞', name: 'Kit réparation pneu' },
     { icon: '🔌', name: 'Prise remorque 13 broches' },
     { icon: '📐', name: 'Cales de roue alu' },
   ],
-  'batiments-hangars': [
-    { icon: '💡', name: 'Éclairage LED 150W' },
-    { icon: '🌀', name: 'Ventilateur industriel' },
-    { icon: '🚪', name: 'Kit motorisation portail' },
-    { icon: '📹', name: 'Caméra de surveillance' },
-    { icon: '🔒', name: 'Serrure haute sécurité' },
+  'chargeurs-telescopiques': [
+    { icon: '🪣', name: 'Godet multifonction' },
+    { icon: '🔧', name: 'Kit raccords hydrauliques' },
+    { icon: '💡', name: 'Phares de travail LED' },
+    { icon: '🛢️', name: 'Huile hydraulique 20L' },
+  ],
+  'chariots-elevateurs': [
+    { icon: '🔋', name: 'Batterie haute capacité' },
+    { icon: '💡', name: 'Gyrophare sécurité' },
+    { icon: '🔧', name: 'Kit fourches réglables' },
+    { icon: '🛞', name: 'Pneumatiques neufs' },
+  ],
+  'remorques': [
+    { icon: '🔗', name: 'Sangles d\'arrimage pro' },
+    { icon: '💡', name: 'Kit feux LED complet' },
+    { icon: '🛞', name: 'Kit réparation pneu' },
+    { icon: '🔌', name: 'Câblage électrique neuf' },
+  ],
+  'bennes': [
+    { icon: '🔧', name: 'Vérin de levage neuf' },
+    { icon: '⚙️', name: 'Kit charnières renforcées' },
+    { icon: '🛢️', name: 'Huile hydraulique 20L' },
+  ],
+
+  // CHANTIER
+  'chantier': [
+    { icon: '💡', name: 'Éclairage LED chantier' },
+    { icon: '🦺', name: 'Kit sécurité complet' },
+    { icon: '🔧', name: 'Outillage professionnel' },
+  ],
+  'mini-pelles': [
+    { icon: '🪣', name: 'Godet terrassement' },
+    { icon: '🔧', name: 'Kit flexibles hydrauliques' },
+    { icon: '💡', name: 'Phares de travail LED' },
+    { icon: '🛢️', name: 'Huile hydraulique 20L' },
+  ],
+  'pelles': [
+    { icon: '🪣', name: 'Godet renforcé' },
+    { icon: '⚙️', name: 'Dents de godet neuves' },
+    { icon: '🔧', name: 'Kit flexibles HD' },
+    { icon: '🛢️', name: 'Huile hydraulique 40L' },
+  ],
+  'compacteurs': [
+    { icon: '🛢️', name: 'Huile vibration 10L' },
+    { icon: '⚙️', name: 'Bandes de roulement' },
+    { icon: '🔧', name: 'Kit filtration complet' },
+  ],
+
+  // ESPACES VERTS
+  'tondeuse': [
+    { icon: '🔪', name: 'Lames de rechange affûtées' },
+    { icon: '🛢️', name: 'Huile moteur 4T 2L' },
+    { icon: '⚙️', name: 'Courroie de transmission' },
+    { icon: '🧹', name: 'Kit nettoyage carter' },
+  ],
+  'robot-tondeuse': [
+    { icon: '🔪', name: 'Pack lames 12 mois' },
+    { icon: '🔌', name: 'Câble périphérique 150m' },
+    { icon: '🔋', name: 'Batterie de rechange' },
+    { icon: '📡', name: 'Module GPS précision' },
+  ],
+
+  // IRRIGATION
+  'irrigation': [
+    { icon: '💧', name: 'Tuyaux goutte-à-goutte 100m' },
+    { icon: '⚙️', name: 'Programmateur digital' },
+    { icon: '🔧', name: 'Kit raccords rapides' },
+    { icon: '📊', name: 'Capteur humidité sol' },
+  ],
+
+  // PIÈCES
+  'pieces': [
+    { icon: '🔧', name: 'Kit montage professionnel' },
+    { icon: '🧴', name: 'Lubrifiant haute performance' },
+    { icon: '📦', name: 'Pièces de fixation renforcées' },
+  ],
+  'hydraulique': [
+    { icon: '🔧', name: 'Kit joints toriques' },
+    { icon: '🛢️', name: 'Huile hydraulique 20L' },
+    { icon: '⚙️', name: 'Flexibles de rechange' },
+  ],
+  'pneumatiques': [
+    { icon: '🛞', name: 'Kit réparation tubeless' },
+    { icon: '🔧', name: 'Démonte-pneu pro' },
+    { icon: '📊', name: 'Manomètre digital' },
+  ],
+  'electrique': [
+    { icon: '🔌', name: 'Connecteurs étanches' },
+    { icon: '🔋', name: 'Testeur de circuit' },
+    { icon: '💡', name: 'Ampoules LED de rechange' },
+  ],
+  'carrosserie': [
+    { icon: '🎨', name: 'Kit retouche peinture' },
+    { icon: '🔧', name: 'Rivets et fixations' },
+    { icon: '🧴', name: 'Produit anti-rouille' },
+  ],
+
+  // ÉNERGIE
+  'groupes-electrogenes': [
+    { icon: '🛢️', name: 'Huile moteur 5L' },
+    { icon: '⚙️', name: 'Kit filtration complet' },
+    { icon: '🔌', name: 'Rallonge électrique 25m' },
+    { icon: '🔋', name: 'Chargeur batterie' },
+  ],
+
+  // AUTRES
+  'autres': [
+    { icon: '🔧', name: 'Kit outillage universel' },
+    { icon: '🛢️', name: 'Lubrifiant multifonction' },
+    { icon: '📦', name: 'Pièces d\'usure standard' },
+  ],
+  'divers': [
+    { icon: '🔧', name: 'Outillage de base' },
+    { icon: '🛢️', name: 'Lubrifiant universel' },
+    { icon: '📦', name: 'Kit accessoires' },
   ],
 };
 
