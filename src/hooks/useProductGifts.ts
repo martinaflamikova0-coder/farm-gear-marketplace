@@ -13,80 +13,95 @@ interface ProductForGifts {
   condition?: string | null;
 }
 
-// Gift pools by category with base values
+// Complementary gifts by category - real useful accessories for the purchased item
 const categoryGifts: Record<string, ProductGift[]> = {
   tracteurs: [
-    { icon: '🧢', name: 'Casquette de la marque' },
-    { icon: '🧤', name: 'Gants de travail professionnels' },
-    { icon: '📘', name: 'Manuel d\'utilisation complet' },
-    { icon: '🔧', name: 'Kit d\'outils de base' },
-    { icon: '🛢️', name: 'Bidon d\'huile moteur 5L' },
+    { icon: '📡', name: 'Antenne GPS agricole' },
+    { icon: '💡', name: 'Kit phares LED de travail' },
+    { icon: '🛢️', name: 'Bidon huile hydraulique 20L' },
+    { icon: '🔋', name: 'Chargeur de batterie intelligent' },
+    { icon: '🪞', name: 'Rétroviseurs grand angle' },
+    { icon: '🧲', name: 'Attelage rapide 3 points' },
+    { icon: '🌡️', name: 'Jauge multifonction digitale' },
+    { icon: '🔊', name: 'Kit radio Bluetooth cabine' },
   ],
   moissonneuses: [
-    { icon: '🧢', name: 'Casquette premium' },
-    { icon: '🧤', name: 'Gants haute protection' },
-    { icon: '📘', name: 'Guide de maintenance' },
-    { icon: '🔦', name: 'Lampe torche LED' },
-    { icon: '🛢️', name: 'Lubrifiant spécial' },
+    { icon: '📊', name: 'Testeur d\'humidité grain' },
+    { icon: '🔪', name: 'Jeu de contre-couteaux neufs' },
+    { icon: '⚙️', name: 'Kit courroies de rechange' },
+    { icon: '🧹', name: 'Souffleur nettoyage radiateur' },
+    { icon: '💡', name: 'Rampe LED pour travail de nuit' },
+    { icon: '🛡️', name: 'Grilles de protection moteur' },
+    { icon: '📡', name: 'Capteur de rendement' },
   ],
   'outils-materiels': [
-    { icon: '🧰', name: 'Boîte de rangement' },
-    { icon: '🧤', name: 'Gants de protection' },
-    { icon: '📋', name: 'Guide d\'utilisation' },
-    { icon: '🔩', name: 'Kit de fixations' },
+    { icon: '🔩', name: 'Kit visserie inox complet' },
+    { icon: '⚙️', name: 'Pièces d\'usure de rechange' },
+    { icon: '🛢️', name: 'Graisse spéciale agricole 5kg' },
+    { icon: '🔧', name: 'Coffret clés à chocs' },
+    { icon: '📏', name: 'Laser de nivellement' },
   ],
   'pieces-accessoires': [
-    { icon: '📦', name: 'Emballage premium' },
-    { icon: '📋', name: 'Fiche technique détaillée' },
-    { icon: '🔧', name: 'Outil de montage' },
+    { icon: '🔧', name: 'Kit montage professionnel' },
+    { icon: '🧴', name: 'Lubrifiant haute performance' },
+    { icon: '📦', name: 'Pièces de fixation renforcées' },
+    { icon: '🛡️', name: 'Protection anti-usure' },
   ],
   'elevage-betail': [
-    { icon: '🧤', name: 'Gants vétérinaires' },
-    { icon: '📘', name: 'Guide sanitaire' },
-    { icon: '🧴', name: 'Désinfectant professionnel' },
+    { icon: '💉', name: 'Kit vétérinaire de base' },
+    { icon: '🧴', name: 'Désinfectant professionnel 10L' },
+    { icon: '📊', name: 'Balance de pesée portable' },
+    { icon: '🔦', name: 'Lampe d\'examen LED' },
+    { icon: '🌡️', name: 'Thermomètre digital précis' },
   ],
   'espaces-verts': [
-    { icon: '🧤', name: 'Gants de jardinage pro' },
-    { icon: '🧢', name: 'Casquette été' },
-    { icon: '🌱', name: 'Engrais universel 5kg' },
+    { icon: '🔪', name: 'Jeu de lames de rechange' },
+    { icon: '🛢️', name: 'Huile 2 temps 5L' },
+    { icon: '⚡', name: 'Batterie supplémentaire' },
+    { icon: '🧹', name: 'Kit nettoyage filtre à air' },
+    { icon: '🎧', name: 'Casque anti-bruit pro' },
   ],
   'transport-manutention': [
-    { icon: '🦺', name: 'Gilet de sécurité' },
-    { icon: '🧤', name: 'Gants manutention' },
-    { icon: '🔦', name: 'Lampe de signalisation' },
+    { icon: '🔗', name: 'Chaînes d\'arrimage HD' },
+    { icon: '💡', name: 'Gyrophare LED magnétique' },
+    { icon: '🛞', name: 'Kit réparation pneu' },
+    { icon: '🔌', name: 'Prise remorque 13 broches' },
+    { icon: '📐', name: 'Cales de roue alu' },
   ],
   'batiments-hangars': [
-    { icon: '🪖', name: 'Casque de chantier' },
-    { icon: '🧤', name: 'Gants BTP' },
-    { icon: '📐', name: 'Mètre laser' },
+    { icon: '💡', name: 'Éclairage LED 150W' },
+    { icon: '🌀', name: 'Ventilateur industriel' },
+    { icon: '🚪', name: 'Kit motorisation portail' },
+    { icon: '📹', name: 'Caméra de surveillance' },
+    { icon: '🔒', name: 'Serrure haute sécurité' },
   ],
 };
 
 // Default gifts for unknown categories
 const defaultGifts: ProductGift[] = [
-  { icon: '🎁', name: 'Cadeau surprise' },
-  { icon: '📘', name: 'Documentation complète' },
-  { icon: '🧤', name: 'Gants de travail' },
+  { icon: '🔧', name: 'Kit outillage de base' },
+  { icon: '🛢️', name: 'Lubrifiant universel' },
+  { icon: '📦', name: 'Pièces d\'usure de rechange' },
 ];
 
-// Premium gifts for high-value items
+// Premium gifts for high-value items (real valuable additions)
 const premiumGifts: ProductGift[] = [
-  { icon: '🎓', name: 'Formation en ligne offerte' },
-  { icon: '🛡️', name: 'Extension de garantie +6 mois' },
-  { icon: '🚚', name: 'Livraison premium express' },
-  { icon: '📞', name: 'Support technique prioritaire 1 an' },
+  { icon: '🛡️', name: 'Extension garantie +12 mois' },
+  { icon: '🔧', name: 'Première révision complète offerte' },
+  { icon: '📡', name: 'Module télémétrie connectée' },
+  { icon: '🎓', name: 'Formation opérateur sur site' },
 ];
 
-// Brand-specific gifts
+// Brand-specific complementary accessories
 const brandGifts: Record<string, ProductGift> = {
-  'john deere': { icon: '🧢', name: 'Casquette John Deere officielle' },
-  'fendt': { icon: '🧥', name: 'Veste Fendt collector' },
-  'massey ferguson': { icon: '🧢', name: 'Casquette Massey Ferguson' },
-  'new holland': { icon: '☕', name: 'Mug New Holland' },
-  'claas': { icon: '🧢', name: 'Casquette Claas premium' },
-  'case ih': { icon: '🎒', name: 'Sac à dos Case IH' },
-  'kubota': { icon: '🧤', name: 'Gants Kubota pro' },
-  'deutz-fahr': { icon: '🧢', name: 'Casquette Deutz-Fahr' },
+  'john deere': { icon: '📱', name: 'Abonnement JDLink 1 an' },
+  'fendt': { icon: '📡', name: 'Terminal Fendt Connect' },
+  'massey ferguson': { icon: '🔌', name: 'Prise diagnostique MF' },
+  'new holland': { icon: '📊', name: 'Licence PLM Connect' },
+  'claas': { icon: '📡', name: 'Telematics CLAAS offert' },
+  'case ih': { icon: '📱', name: 'AFS Connect 1 an' },
+  'kubota': { icon: '🔋', name: 'Kit batterie renforcée Kubota' },
+  'deutz-fahr': { icon: '⚙️', name: 'Pack filtration Deutz' },
 };
 
 function getGiftCount(price: number): number {
