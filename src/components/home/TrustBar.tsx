@@ -32,8 +32,8 @@ const TrustBar = () => {
     },
   ];
 
-  // Triple the items for seamless loop
-  const duplicatedItems = [...trustItems, ...trustItems, ...trustItems];
+  // Quadruple the items for seamless loop (more items = smoother animation)
+  const duplicatedItems = [...trustItems, ...trustItems, ...trustItems, ...trustItems];
 
   return (
     <div className="bg-primary text-primary-foreground overflow-hidden w-full">

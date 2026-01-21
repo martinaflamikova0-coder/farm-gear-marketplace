@@ -148,17 +148,30 @@ const Account = () => {
   const handleViewInvoice = async (orderId: string) => {
     try {
       setGeneratingInvoice(orderId);
-      const response = await supabase.functions.invoke('generate-invoice', {
-        body: { orderId }
-      });
+      
+      // Use fetch directly for binary response (PDF)
+      const { data: { session } } = await supabase.auth.getSession();
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/generate-invoice`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${session?.access_token || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+          },
+          body: JSON.stringify({ orderId }),
+        }
+      );
 
-      if (response.error) throw response.error;
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to generate invoice');
+      }
 
-      // Response is ArrayBuffer for PDF
-      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const blob = await response.blob();
       const url = URL.createObjectURL(blob);
       window.open(url, '_blank');
-      // Revoke after a delay to allow the window to open
       setTimeout(() => URL.revokeObjectURL(url), 5000);
     } catch (error) {
       console.error('Error generating invoice:', error);
@@ -171,14 +184,28 @@ const Account = () => {
   const handleDownloadInvoice = async (orderId: string) => {
     try {
       setGeneratingInvoice(orderId);
-      const response = await supabase.functions.invoke('generate-invoice', {
-        body: { orderId }
-      });
+      
+      // Use fetch directly for binary response (PDF)
+      const { data: { session } } = await supabase.auth.getSession();
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/generate-invoice`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${session?.access_token || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+          },
+          body: JSON.stringify({ orderId }),
+        }
+      );
 
-      if (response.error) throw response.error;
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to download invoice');
+      }
 
-      // Response is ArrayBuffer for PDF
-      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const blob = await response.blob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

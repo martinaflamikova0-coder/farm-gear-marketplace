@@ -28,8 +28,8 @@ const brands: Brand[] = [
 ];
 
 const BrandsMarquee = () => {
-  // Double the brands array for seamless infinite scroll
-  const allBrands = [...brands, ...brands];
+  // Quadruple the brands array for seamless infinite scroll (more items = smoother animation)
+  const allBrands = [...brands, ...brands, ...brands, ...brands];
 
   return (
     <div className="bg-card border-y border-border overflow-hidden w-full">
