@@ -5,6 +5,7 @@ import QuickCategories from '@/components/home/QuickCategories';
 import BrandsMarquee from '@/components/home/BrandsMarquee';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
 import RecentProducts from '@/components/home/RecentProducts';
+import PremiumProducts from '@/components/home/PremiumProducts';
 import ProductsGrid from '@/components/home/ProductsGrid';
 import TrustBar from '@/components/home/TrustBar';
 import SEOHead from '@/components/SEOHead';
@@ -23,6 +24,8 @@ const Index = () => {
       
       <main className="flex-1">
         <FeaturedProducts />
+        
+        <PremiumProducts />
         
         <div className="bg-card">
           <RecentProducts />

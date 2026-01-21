@@ -321,26 +321,32 @@ const brandGifts: Record<string, ProductGift> = {
   'deutz-fahr': { icon: '⚙️', name: 'Pack filtration Deutz' },
 };
 
+// Determine number of gifts based on product price
 function getGiftCount(price: number): number {
-  if (price >= 80000) return 6;
-  if (price >= 50000) return 5;
+  if (price >= 150000) return 10;
+  if (price >= 100000) return 8;
+  if (price >= 80000) return 7;
+  if (price >= 50000) return 6;
+  if (price >= 30000) return 5;
   if (price >= 20000) return 4;
   if (price >= 10000) return 3;
   if (price >= 5000) return 2;
   return 1;
 }
 
-// Calculate target total gift value based on price (max 400€)
+// Calculate target total gift value based on price (max 700€)
 function getTargetGiftValue(price: number): number {
-  if (price >= 100000) return 400;
-  if (price >= 80000) return 350;
-  if (price >= 50000) return 280;
-  if (price >= 30000) return 200;
-  if (price >= 20000) return 150;
-  if (price >= 10000) return 100;
-  if (price >= 5000) return 60;
-  if (price >= 2000) return 40;
-  return 25;
+  if (price >= 200000) return 700;
+  if (price >= 150000) return 600;
+  if (price >= 100000) return 500;
+  if (price >= 80000) return 400;
+  if (price >= 50000) return 320;
+  if (price >= 30000) return 250;
+  if (price >= 20000) return 180;
+  if (price >= 10000) return 120;
+  if (price >= 5000) return 80;
+  if (price >= 2000) return 50;
+  return 30;
 }
 
 // Assign values to gifts based on target total
@@ -410,7 +416,7 @@ export function useProductGifts(product: ProductForGifts | null | undefined): Pr
     
     // Add premium gifts for expensive items
     if (product.price >= 30000) {
-      const premiumCount = product.price >= 80000 ? 2 : 1;
+      const premiumCount = product.price >= 150000 ? 4 : product.price >= 100000 ? 3 : product.price >= 80000 ? 2 : 1;
       const shuffledPremium = [...premiumGifts].sort(() => random() - 0.5);
       gifts.push(...shuffledPremium.slice(0, premiumCount));
     }

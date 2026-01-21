@@ -86,7 +86,42 @@ export const useFeaturedProducts = () => {
 };
 
 export const useRecentProducts = (limit: number = 4) => {
-  return useProducts({ limit });
+  return useQuery({
+    queryKey: ['products', 'recent', limit],
+    queryFn: async () => {
+      // Get recent products that are NOT featured to avoid duplication
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .eq('status', 'active')
+        .eq('featured', false)
+        .order('created_at', { ascending: false })
+        .limit(limit);
+
+      if (error) throw error;
+      return (data as Product[]).map(transformProduct);
+    },
+    staleTime: 2 * 60 * 1000,
+  });
+};
+
+export const usePremiumProducts = (limit: number = 10) => {
+  return useQuery({
+    queryKey: ['products', 'premium', limit],
+    queryFn: async () => {
+      // Get the most expensive products
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .eq('status', 'active')
+        .order('price', { ascending: false })
+        .limit(limit);
+
+      if (error) throw error;
+      return (data as Product[]).map(transformProduct);
+    },
+    staleTime: 2 * 60 * 1000,
+  });
 };
 
 export const useProductById = (id: string | undefined) => {
