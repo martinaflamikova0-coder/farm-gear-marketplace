@@ -73,20 +73,37 @@
     }
   },
   "home": {
-    "featuredListings": "⭐ Annonces en vedette",
+    "featuredListings": "Annonces en vedette",
     "featuredSubtitle": "Nos meilleures opportunités du moment",
-    "recentListings": "🕐 Dernières annonces",
+    "recentListings": "Dernières annonces",
     "recentSubtitle": "Les plus récentes",
-    "premiumListings": "💎 Articles Premium",
+    "premiumListings": "Articles Premium",
     "premiumSubtitle": "Le haut de gamme",
-    "tractors": "🚜 Tracteurs",
-    "harvestEquipment": "🌾 Matériel de récolte",
-    "constructionEquipment": "🏗️ Matériel de chantier",
-    "soilWork": "🌍 Travail du sol",
-    "handling": "🏋️ Manutention",
-    "partsAccessories": "🔧 Pièces et accessoires",
+    "lawnMowers": "Tondeuses",
+    "lawnMowersSubtitle": "Espaces verts",
+    "tractors": "Tracteurs",
+    "harvestEquipment": "Matériel de récolte",
+    "constructionEquipment": "Matériel de chantier",
+    "soilWork": "Travail du sol",
+    "handling": "Manutention",
+    "partsAccessories": "Pièces et accessoires",
     "browseByCategory": "Parcourir par catégorie",
     "categoryDescription": "Trouvez rapidement le matériel dont vous avez besoin parmi nos différentes catégories"
+  },
+  "gifts": {
+    "count": "{{count}} cadeau",
+    "count_plural": "{{count}} cadeaux",
+    "includedValue": "Cadeaux inclus ({{value}}€ de valeur)",
+    "moreGifts": "+{{count}} autres cadeaux...",
+    "title": "Cadeaux offerts avec cet article",
+    "totalValue": "Valeur totale : {{value}}€ de cadeaux inclus",
+    "value": "Valeur",
+    "free": "OFFERT",
+    "autoSent": "Ces cadeaux vous seront automatiquement envoyés avec votre commande"
+  },
+  "testimonials": {
+    "title": "Ce que disent nos clients",
+    "subtitle": "Découvrez les témoignages de professionnels satisfaits partout en Europe"
   },
   "stats": {
     "listings": "annonces",

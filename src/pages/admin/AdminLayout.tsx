@@ -55,6 +55,8 @@ const AdminLayout = () => {
     { href: '/admin/products', label: 'Produits', icon: Package },
     { href: '/admin/categories', label: 'Catégories', icon: FolderTree },
     { href: '/admin/brands', label: 'Marques', icon: Tags },
+    { href: '/admin/customers', label: 'Clients', icon: Package },
+    { href: '/admin/bank-accounts', label: 'Comptes bancaires', icon: Package },
   ];
 
   return (

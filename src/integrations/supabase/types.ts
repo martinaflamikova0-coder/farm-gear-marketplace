@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      bank_accounts: {
+        Row: {
+          account_key: string
+          bank_name: string
+          bic: string
+          created_at: string | null
+          holder: string
+          iban: string
+          id: string
+          is_active: boolean | null
+          name: string
+          threshold_max: number | null
+          threshold_min: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          account_key: string
+          bank_name: string
+          bic: string
+          created_at?: string | null
+          holder?: string
+          iban: string
+          id?: string
+          is_active?: boolean | null
+          name: string
+          threshold_max?: number | null
+          threshold_min?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          account_key?: string
+          bank_name?: string
+          bic?: string
+          created_at?: string | null
+          holder?: string
+          iban?: string
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          threshold_max?: number | null
+          threshold_min?: number | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       brands: {
         Row: {
           category_id: string | null
@@ -250,6 +295,7 @@ export type Database = {
           department: string | null
           description: string | null
           description_translations: Json | null
+          discount_percentage: number | null
           featured: boolean | null
           hours: number | null
           id: string
@@ -258,6 +304,7 @@ export type Database = {
           location: string | null
           low_stock_threshold: number | null
           model: string | null
+          original_price: number | null
           price: number
           price_type: string | null
           reference_number: number
@@ -282,6 +329,7 @@ export type Database = {
           department?: string | null
           description?: string | null
           description_translations?: Json | null
+          discount_percentage?: number | null
           featured?: boolean | null
           hours?: number | null
           id?: string
@@ -290,6 +338,7 @@ export type Database = {
           location?: string | null
           low_stock_threshold?: number | null
           model?: string | null
+          original_price?: number | null
           price: number
           price_type?: string | null
           reference_number?: number
@@ -314,6 +363,7 @@ export type Database = {
           department?: string | null
           description?: string | null
           description_translations?: Json | null
+          discount_percentage?: number | null
           featured?: boolean | null
           hours?: number | null
           id?: string
@@ -322,6 +372,7 @@ export type Database = {
           location?: string | null
           low_stock_threshold?: number | null
           model?: string | null
+          original_price?: number | null
           price?: number
           price_type?: string | null
           reference_number?: number
@@ -335,6 +386,87 @@ export type Database = {
           title_translations?: Json | null
           updated_at?: string
           year?: number | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          address: string | null
+          city: string | null
+          country: string | null
+          created_at: string | null
+          email: string | null
+          full_name: string | null
+          id: string
+          phone: string | null
+          postal_code: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          address?: string | null
+          city?: string | null
+          country?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          postal_code?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          address?: string | null
+          city?: string | null
+          country?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          postal_code?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      testimonials: {
+        Row: {
+          author_company: string | null
+          author_location: string | null
+          author_name: string
+          content: string
+          created_at: string | null
+          id: string
+          is_active: boolean | null
+          is_featured: boolean | null
+          rating: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          author_company?: string | null
+          author_location?: string | null
+          author_name: string
+          content: string
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          is_featured?: boolean | null
+          rating?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          author_company?: string | null
+          author_location?: string | null
+          author_name?: string
+          content?: string
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          is_featured?: boolean | null
+          rating?: number | null
+          updated_at?: string | null
         }
         Relationships: []
       }

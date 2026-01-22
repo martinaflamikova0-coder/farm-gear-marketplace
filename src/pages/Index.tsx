@@ -6,8 +6,10 @@ import BrandsMarquee from '@/components/home/BrandsMarquee';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
 import RecentProducts from '@/components/home/RecentProducts';
 import PremiumProducts from '@/components/home/PremiumProducts';
+import LawnMowersSection from '@/components/home/LawnMowersSection';
 import ProductsGrid from '@/components/home/ProductsGrid';
 import TrustBar from '@/components/home/TrustBar';
+import TestimonialsSection from '@/components/home/TestimonialsSection';
 import SEOHead from '@/components/SEOHead';
 
 const Index = () => {
@@ -24,54 +26,24 @@ const Index = () => {
       
       <main className="flex-1">
         <FeaturedProducts />
-        
         <PremiumProducts />
-        
         <div className="bg-card">
           <RecentProducts />
         </div>
-
-        <ProductsGrid 
-          titleKey="home.tractors"
-          category="tracteurs"
-          limit={4}
-        />
-
+        <LawnMowersSection />
+        <ProductsGrid titleKey="home.tractors" category="tracteurs" limit={4} />
         <div className="bg-card">
-          <ProductsGrid 
-            titleKey="home.harvestEquipment"
-            category="recolte"
-            limit={4}
-          />
+          <ProductsGrid titleKey="home.harvestEquipment" category="recolte" limit={4} />
         </div>
-
-        <ProductsGrid 
-          titleKey="home.constructionEquipment"
-          category="chantier"
-          limit={4}
-        />
-
+        <ProductsGrid titleKey="home.constructionEquipment" category="chantier" limit={4} />
         <div className="bg-card">
-          <ProductsGrid 
-            titleKey="home.soilWork"
-            category="travail-sol"
-            limit={4}
-          />
+          <ProductsGrid titleKey="home.soilWork" category="travail-sol" limit={4} />
         </div>
-
-        <ProductsGrid 
-          titleKey="home.handling"
-          category="manutention"
-          limit={4}
-        />
-
+        <ProductsGrid titleKey="home.handling" category="manutention" limit={4} />
         <div className="bg-card">
-          <ProductsGrid 
-            titleKey="home.partsAccessories"
-            category="pieces"
-            limit={4}
-          />
+          <ProductsGrid titleKey="home.partsAccessories" category="pieces" limit={4} />
         </div>
+        <TestimonialsSection />
       </main>
       
       <TrustBar />
