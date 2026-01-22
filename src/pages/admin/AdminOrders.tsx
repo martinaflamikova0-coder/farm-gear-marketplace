@@ -193,7 +193,7 @@ const AdminOrders = () => {
             'Authorization': `Bearer ${session?.access_token || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
             'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
           },
-          body: JSON.stringify({ orderId }),
+          body: JSON.stringify({ orderId, language: 'fr' }),
         }
       );
 
@@ -229,7 +229,7 @@ const AdminOrders = () => {
             'Authorization': `Bearer ${session?.access_token || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
             'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
           },
-          body: JSON.stringify({ orderId }),
+          body: JSON.stringify({ orderId, language: 'fr' }),
         }
       );
 

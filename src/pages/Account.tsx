@@ -160,7 +160,7 @@ const Account = () => {
             'Authorization': `Bearer ${session?.access_token || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
             'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
           },
-          body: JSON.stringify({ orderId }),
+          body: JSON.stringify({ orderId, language: i18n.language }),
         }
       );
 
@@ -196,7 +196,7 @@ const Account = () => {
             'Authorization': `Bearer ${session?.access_token || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
             'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
           },
-          body: JSON.stringify({ orderId }),
+          body: JSON.stringify({ orderId, language: i18n.language }),
         }
       );
 
