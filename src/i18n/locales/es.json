@@ -72,18 +72,37 @@
     }
   },
   "home": {
-    "featuredListings": "⭐ Anuncios destacados",
+    "featuredListings": "Anuncios destacados",
     "featuredSubtitle": "Nuestras mejores oportunidades",
-    "recentListings": "🕐 Últimos anuncios",
+    "recentListings": "Últimos anuncios",
     "recentSubtitle": "Los más recientes",
-    "premiumListings": "💎 Artículos Premium",
+    "premiumListings": "Artículos Premium",
     "premiumSubtitle": "Lo mejor",
-    "tractors": "🚜 Tractores",
-    "harvestEquipment": "🌾 Equipos de cosecha",
-    "constructionEquipment": "🏗️ Maquinaria de construcción",
-    "soilWork": "🌍 Trabajo del suelo",
-    "handling": "🏋️ Manipulación",
-    "partsAccessories": "🔧 Piezas y accesorios"
+    "lawnMowers": "Cortacéspedes",
+    "lawnMowersSubtitle": "Espacios verdes",
+    "tractors": "Tractores",
+    "harvestEquipment": "Equipos de cosecha",
+    "constructionEquipment": "Maquinaria de construcción",
+    "soilWork": "Trabajo del suelo",
+    "handling": "Manipulación",
+    "partsAccessories": "Piezas y accesorios",
+    "browseByCategory": "Explorar por categoría",
+    "categoryDescription": "Encuentra rápidamente el equipo que necesitas"
+  },
+  "gifts": {
+    "count": "{{count}} regalo",
+    "count_plural": "{{count}} regalos",
+    "includedValue": "Regalos incluidos (valor de {{value}}€)",
+    "moreGifts": "+{{count}} regalos más...",
+    "title": "Regalos incluidos con este artículo",
+    "totalValue": "Valor total: {{value}}€ en regalos incluidos",
+    "value": "Valor",
+    "free": "GRATIS",
+    "autoSent": "Estos regalos se enviarán automáticamente con tu pedido"
+  },
+  "testimonials": {
+    "title": "Lo que dicen nuestros clientes",
+    "subtitle": "Descubre los testimonios de profesionales satisfechos en toda Europa"
   },
   "stats": {
     "listings": "anuncios",

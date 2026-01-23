@@ -72,18 +72,37 @@
     }
   },
   "home": {
-    "featuredListings": "⭐ Empfohlene Anzeigen",
+    "featuredListings": "Empfohlene Anzeigen",
     "featuredSubtitle": "Unsere besten Angebote",
-    "recentListings": "🕐 Neueste Anzeigen",
+    "recentListings": "Neueste Anzeigen",
     "recentSubtitle": "Die aktuellsten",
-    "premiumListings": "💎 Premium-Artikel",
+    "premiumListings": "Premium-Artikel",
     "premiumSubtitle": "Spitzenklasse",
-    "tractors": "🚜 Traktoren",
-    "harvestEquipment": "🌾 Erntetechnik",
-    "constructionEquipment": "🏗️ Baumaschinen",
-    "soilWork": "🌍 Bodenbearbeitung",
-    "handling": "🏋️ Fördertechnik",
-    "partsAccessories": "🔧 Ersatzteile & Zubehör"
+    "lawnMowers": "Rasenmäher",
+    "lawnMowersSubtitle": "Grünanlagen",
+    "tractors": "Traktoren",
+    "harvestEquipment": "Erntetechnik",
+    "constructionEquipment": "Baumaschinen",
+    "soilWork": "Bodenbearbeitung",
+    "handling": "Fördertechnik",
+    "partsAccessories": "Ersatzteile & Zubehör",
+    "browseByCategory": "Nach Kategorie durchsuchen",
+    "categoryDescription": "Finden Sie schnell die Maschinen, die Sie benötigen"
+  },
+  "gifts": {
+    "count": "{{count}} Geschenk",
+    "count_plural": "{{count}} Geschenke",
+    "includedValue": "Geschenke inklusive ({{value}}€ Wert)",
+    "moreGifts": "+{{count}} weitere Geschenke...",
+    "title": "Geschenke bei diesem Artikel inklusive",
+    "totalValue": "Gesamtwert: {{value}}€ an Geschenken inklusive",
+    "value": "Wert",
+    "free": "GRATIS",
+    "autoSent": "Diese Geschenke werden automatisch mit Ihrer Bestellung versendet"
+  },
+  "testimonials": {
+    "title": "Was unsere Kunden sagen",
+    "subtitle": "Entdecken Sie Erfahrungsberichte zufriedener Fachleute in ganz Europa"
   },
   "stats": {
     "listings": "Anzeigen",

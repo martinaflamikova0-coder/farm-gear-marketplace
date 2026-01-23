@@ -11,32 +11,13 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
 import { useCart } from '@/contexts/CartContext';
+import { useBankAccounts, getBankAccountForAmount } from '@/hooks/useBankAccounts';
 import { supabase } from '@/integrations/supabase/client';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import { z } from 'zod';
-
-// Bank account threshold (below this amount = Account A, above = Account B)
-const BANK_ACCOUNT_THRESHOLD = 5000;
-
-// Bank account details (these should ideally come from a config or admin settings)
-const BANK_ACCOUNTS = {
-  accountA: {
-    name: 'Compte principal',
-    bankName: 'Banque Agricole',
-    iban: 'FR76 1234 5678 9012 3456 7890 123',
-    bic: 'AGRIFRPP',
-    holder: 'EQUIPTRADE SAS',
-  },
-  accountB: {
-    name: 'Compte grands montants',
-    bankName: 'Banque Internationale',
-    iban: 'FR76 9876 5432 1098 7654 3210 987',
-    bic: 'BNPAFRPP',
-    holder: 'EQUIPTRADE SAS',
-  },
-};
 
 // Schema will be created inside component to access translations
 const createShippingSchema = (t: (key: string) => string) => z.object({
@@ -58,6 +39,7 @@ const Checkout = () => {
   const cartSlug = 'panier';
   
   const { items, total, user, clearCart } = useCart();
+  const { data: bankAccounts, isLoading: isBankAccountsLoading } = useBankAccounts();
   
   const [step, setStep] = useState<'shipping' | 'payment' | 'confirmation'>('shipping');
   const [isLoading, setIsLoading] = useState(false);
@@ -82,10 +64,8 @@ const Checkout = () => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  // Select bank account based on total amount
-  const selectedBankAccount = total >= BANK_ACCOUNT_THRESHOLD 
-    ? BANK_ACCOUNTS.accountB 
-    : BANK_ACCOUNTS.accountA;
+  // Select bank account based on total amount from database
+  const selectedBankAccount = bankAccounts ? getBankAccountForAmount(bankAccounts, total) : null;
 
   const formatPrice = (price: number) => {
     const locale = currentLang === 'en' ? 'en-GB' : 
@@ -481,78 +461,91 @@ const Checkout = () => {
                   </CardHeader>
                   <CardContent className="space-y-6">
                     {/* Bank account info */}
-                    <div className="bg-secondary/50 rounded-lg p-6 space-y-4">
-                      <div className="flex items-center justify-between">
-                        <h3 className="font-semibold">{selectedBankAccount.bankName}</h3>
-                        <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
-                          {total >= BANK_ACCOUNT_THRESHOLD ? t('checkout.payment.amountThresholdHigh') : t('checkout.payment.amountThresholdLow')}
-                        </span>
+                    {isBankAccountsLoading ? (
+                      <div className="space-y-4 p-6">
+                        <Skeleton className="h-6 w-48" />
+                        <Skeleton className="h-4 w-full" />
+                        <Skeleton className="h-4 w-full" />
+                        <Skeleton className="h-4 w-full" />
                       </div>
-                      
-                      <div className="space-y-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm text-muted-foreground">{t('checkout.payment.accountHolder')}</span>
-                          <div className="flex items-center gap-2">
-                            <span className="font-mono font-medium">{selectedBankAccount.holder}</span>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="h-8 w-8"
-                              onClick={() => handleCopyToClipboard(selectedBankAccount.holder, 'holder')}
-                            >
-                              {copiedField === 'holder' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
-                            </Button>
-                          </div>
+                    ) : selectedBankAccount ? (
+                      <div className="bg-secondary/50 rounded-lg p-6 space-y-4">
+                        <div className="flex items-center justify-between">
+                          <h3 className="font-semibold">{selectedBankAccount.bank_name}</h3>
+                          <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
+                            {selectedBankAccount.name}
+                          </span>
                         </div>
                         
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm text-muted-foreground">IBAN</span>
-                          <div className="flex items-center gap-2">
-                            <span className="font-mono font-medium text-sm">{selectedBankAccount.iban}</span>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="h-8 w-8"
-                              onClick={() => handleCopyToClipboard(selectedBankAccount.iban.replace(/\s/g, ''), 'iban')}
-                            >
-                              {copiedField === 'iban' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
-                            </Button>
+                        <div className="space-y-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm text-muted-foreground">{t('checkout.payment.accountHolder')}</span>
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono font-medium">{selectedBankAccount.holder}</span>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8"
+                                onClick={() => handleCopyToClipboard(selectedBankAccount.holder, 'holder')}
+                              >
+                                {copiedField === 'holder' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
+                              </Button>
+                            </div>
                           </div>
-                        </div>
-                        
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm text-muted-foreground">BIC</span>
-                          <div className="flex items-center gap-2">
-                            <span className="font-mono font-medium">{selectedBankAccount.bic}</span>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="h-8 w-8"
-                              onClick={() => handleCopyToClipboard(selectedBankAccount.bic, 'bic')}
-                            >
-                              {copiedField === 'bic' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
-                            </Button>
+                          
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm text-muted-foreground">IBAN</span>
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono font-medium text-sm">{selectedBankAccount.iban}</span>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8"
+                                onClick={() => handleCopyToClipboard(selectedBankAccount.iban.replace(/\s/g, ''), 'iban')}
+                              >
+                                {copiedField === 'iban' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
+                              </Button>
+                            </div>
                           </div>
-                        </div>
-                        
-                        <Separator />
-                        
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm text-muted-foreground">{t('checkout.payment.amountToTransfer')}</span>
-                          <div className="flex items-center gap-2">
-                            <span className="font-display font-bold text-lg text-primary">{formatPrice(total)}</span>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="h-8 w-8"
-                              onClick={() => handleCopyToClipboard(total.toString(), 'amount')}
-                            >
-                              {copiedField === 'amount' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
-                            </Button>
+                          
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm text-muted-foreground">BIC</span>
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono font-medium">{selectedBankAccount.bic}</span>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8"
+                                onClick={() => handleCopyToClipboard(selectedBankAccount.bic, 'bic')}
+                              >
+                                {copiedField === 'bic' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
+                              </Button>
+                            </div>
+                          </div>
+                          
+                          <Separator />
+                          
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm text-muted-foreground">{t('checkout.payment.amountToTransfer')}</span>
+                            <div className="flex items-center gap-2">
+                              <span className="font-display font-bold text-lg text-primary">{formatPrice(total)}</span>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8"
+                                onClick={() => handleCopyToClipboard(total.toString(), 'amount')}
+                              >
+                                {copiedField === 'amount' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
+                              </Button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    ) : (
+                      <div className="bg-destructive/10 border border-destructive/30 rounded-lg p-4 text-center">
+                        <p className="text-sm text-destructive">{t('checkout.errors.noBankAccount')}</p>
+                      </div>
+                    )}
 
                     {/* Instructions */}
                     <div className="bg-warning/10 border border-warning/30 rounded-lg p-4">
