@@ -73,20 +73,37 @@
     }
   },
   "home": {
-    "featuredListings": "⭐ Featured listings",
+    "featuredListings": "Featured listings",
     "featuredSubtitle": "Our best opportunities of the moment",
-    "recentListings": "🕐 Latest listings",
+    "recentListings": "Latest listings",
     "recentSubtitle": "Most recent",
-    "premiumListings": "💎 Premium Items",
+    "premiumListings": "Premium Items",
     "premiumSubtitle": "Top-tier equipment",
-    "tractors": "🚜 Tractors",
-    "harvestEquipment": "🌾 Harvest equipment",
-    "constructionEquipment": "🏗️ Construction equipment",
-    "soilWork": "🌍 Soil work",
-    "handling": "🏋️ Handling",
-    "partsAccessories": "🔧 Parts & accessories",
+    "lawnMowers": "Lawn Mowers",
+    "lawnMowersSubtitle": "Green spaces",
+    "tractors": "Tractors",
+    "harvestEquipment": "Harvest equipment",
+    "constructionEquipment": "Construction equipment",
+    "soilWork": "Soil work",
+    "handling": "Handling",
+    "partsAccessories": "Parts & accessories",
     "browseByCategory": "Browse by category",
     "categoryDescription": "Quickly find the equipment you need among our different categories"
+  },
+  "gifts": {
+    "count": "{{count}} gift",
+    "count_plural": "{{count}} gifts",
+    "includedValue": "Gifts included ({{value}}€ value)",
+    "moreGifts": "+{{count}} more gifts...",
+    "title": "Gifts included with this item",
+    "totalValue": "Total value: {{value}}€ worth of gifts included",
+    "value": "Value",
+    "free": "FREE",
+    "autoSent": "These gifts will be automatically sent with your order"
+  },
+  "testimonials": {
+    "title": "What our customers say",
+    "subtitle": "Discover testimonials from satisfied professionals across Europe"
   },
   "stats": {
     "listings": "listings",

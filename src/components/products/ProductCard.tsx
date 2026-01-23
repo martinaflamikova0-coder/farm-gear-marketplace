@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { MapPin, Clock, Calendar, CreditCard, AlertTriangle, Star } from 'lucide-react';
+import { MapPin, Clock, Calendar, CreditCard, AlertTriangle, Star, Percent } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -11,6 +11,7 @@ import AddToCartButton from '@/components/cart/AddToCartButton';
 import { CART_MAX_PRICE } from '@/contexts/CartContext';
 import { useProductGifts } from '@/hooks/useProductGifts';
 import ProductGiftsBadge from '@/components/products/ProductGiftsBadge';
+
 // Generate consistent fake rating based on product ID (seeded random)
 const generateRating = (productId: string) => {
   // Use product ID hash to generate consistent values
@@ -126,6 +127,9 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   
   const imageUrl = product.images?.[0] || '/placeholder.svg';
   const price = Number(product.price) || 0;
+  const originalPrice = product.original_price ? Number(product.original_price) : null;
+  const discountPercentage = product.discount_percentage || 0;
+  const hasDiscount = originalPrice && originalPrice > price && discountPercentage > 0;
   const priceHT = Math.round(price / 1.2); // Approximate HT from TTC
   
   // Financing available for products >= 5000€
@@ -166,7 +170,13 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
               )}
               {product.featured && (
                 <Badge className="absolute bottom-2 right-2 bg-accent text-accent-foreground">
-                  ⭐
+                  <Star className="h-3 w-3 fill-current" />
+                </Badge>
+              )}
+              {hasDiscount && (
+                <Badge className="absolute top-2 left-2 bg-destructive text-destructive-foreground gap-1">
+                  <Percent className="h-3 w-3" />
+                  -{discountPercentage}%
                 </Badge>
               )}
             </div>
@@ -211,6 +221,11 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                 <div className="mt-4 pt-3 border-t border-border">
                   <div className="flex items-end justify-between">
                     <div>
+                      {hasDiscount && (
+                        <p className="text-sm text-muted-foreground line-through">
+                          {formatPrice(originalPrice)}
+                        </p>
+                      )}
                       <p className="text-2xl font-display font-bold text-primary">
                         {formatPrice(price)}
                       </p>
@@ -268,9 +283,15 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
               {t('product.outOfStock')}
             </Badge>
           )}
+          {hasDiscount && (
+            <Badge className="absolute top-2 left-2 bg-destructive text-destructive-foreground gap-1">
+              <Percent className="h-3 w-3" />
+              -{discountPercentage}%
+            </Badge>
+          )}
           {product.featured && (
             <Badge className="absolute bottom-2 right-2 bg-accent text-accent-foreground">
-              ⭐
+              <Star className="h-3 w-3 fill-current" />
             </Badge>
           )}
         </div>
@@ -309,6 +330,11 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
           <div className="mt-3 pt-3 border-t border-border">
             <div className="flex items-start justify-between gap-2">
               <div className="flex-1 min-w-0">
+                {hasDiscount && (
+                  <p className="text-sm text-muted-foreground line-through">
+                    {formatPrice(originalPrice)}
+                  </p>
+                )}
                 <p className="text-xl font-display font-bold text-primary">
                   {formatPrice(price)}
                 </p>
