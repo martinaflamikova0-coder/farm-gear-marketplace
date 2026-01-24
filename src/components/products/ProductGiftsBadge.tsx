@@ -25,7 +25,7 @@ const ProductGiftsBadge = ({ gifts, variant = 'card' }: ProductGiftsBadgeProps) 
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <div className="absolute top-2 left-2 z-10 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold flex items-center gap-1 shadow-lg cursor-pointer hover:scale-105 transition-transform">
+            <div className="absolute bottom-2 left-2 z-10 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold flex items-center gap-1 shadow-lg cursor-pointer hover:scale-105 transition-transform">
               <Gift className="h-3 w-3" />
               <span>{t('gifts.count', { count: gifts.length })}</span>
             </div>

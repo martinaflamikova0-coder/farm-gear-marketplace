@@ -10,7 +10,10 @@ import {
   ShoppingCart,
   LogOut, 
   Menu,
-  X
+  X,
+  Building2,
+  CreditCard,
+  Users
 } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -55,8 +58,9 @@ const AdminLayout = () => {
     { href: '/admin/products', label: 'Produits', icon: Package },
     { href: '/admin/categories', label: 'Catégories', icon: FolderTree },
     { href: '/admin/brands', label: 'Marques', icon: Tags },
-    { href: '/admin/customers', label: 'Clients', icon: Package },
-    { href: '/admin/bank-accounts', label: 'Comptes bancaires', icon: Package },
+    { href: '/admin/customers', label: 'Clients', icon: Users },
+    { href: '/admin/bank-accounts', label: 'Comptes bancaires', icon: Building2 },
+    { href: '/admin/paypal', label: 'PayPal', icon: CreditCard },
   ];
 
   return (
