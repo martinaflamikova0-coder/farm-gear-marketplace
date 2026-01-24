@@ -18,7 +18,7 @@
     "listings": "Anzeigen",
     "categories": "Kategorien",
     "postAd": "Anzeige aufgeben",
-    "specialist": "Spezialist für gebrauchte Landmaschinen",
+    "specialist": "Spezialist für neue und gebrauchte Landmaschinen",
     "account": "Mein Konto",
     "login": "Anmelden"
   },
@@ -64,6 +64,7 @@
     "errorDownloadingInvoice": "Fehler beim Herunterladen der Rechnung",
     "status": {
       "pending": "Ausstehend",
+      "payment_uploaded": "Zahlung zu prüfen",
       "confirmed": "Bestätigt",
       "paid": "Bezahlt",
       "shipped": "Versendet",

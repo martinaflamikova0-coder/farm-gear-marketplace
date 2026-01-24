@@ -18,7 +18,7 @@
     "listings": "Anúncios",
     "categories": "Categorias",
     "postAd": "Publicar anúncio",
-    "specialist": "Especialista em máquinas agrícolas usadas",
+    "specialist": "Especialista em máquinas agrícolas novas e usadas",
     "account": "Minha conta",
     "login": "Entrar"
   },
@@ -64,6 +64,7 @@
     "errorDownloadingInvoice": "Erro ao descarregar a fatura",
     "status": {
       "pending": "Pendente",
+      "payment_uploaded": "Pagamento a verificar",
       "confirmed": "Confirmado",
       "paid": "Pago",
       "shipped": "Enviado",

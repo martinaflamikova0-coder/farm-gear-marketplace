@@ -19,7 +19,7 @@
     "listings": "Listings",
     "categories": "Categories",
     "postAd": "Post an ad",
-    "specialist": "Specialist in used agricultural equipment",
+    "specialist": "Specialist in new and used agricultural equipment",
     "account": "My account",
     "login": "Sign in"
   },
@@ -65,6 +65,7 @@
     "errorDownloadingInvoice": "Error downloading invoice",
     "status": {
       "pending": "Pending",
+      "payment_uploaded": "Payment to verify",
       "confirmed": "Confirmed",
       "paid": "Paid",
       "shipped": "Shipped",
@@ -207,7 +208,8 @@
   "listings": {
     "allListings": "All listings",
     "resultsFor": "Results for",
-    "found": "{{count}} listing(s) found",
+    "found": "listing(s) found",
+    "foundCount": "{{count}} listing(s) found",
     "noResults": "No results found",
     "tryDifferentFilters": "Try modifying your search criteria"
   },
@@ -266,7 +268,7 @@
     "phoneInvalid": "Invalid phone number"
   },
   "hero": {
-    "title": "Used agricultural equipment,",
+    "title": "New and used agricultural equipment,",
     "titleAccent": "simply.",
     "subtitle": "Find tractors, harvesters, tillage equipment and more among hundreds of verified professional listings.",
     "popularSearches": "Popular searches",
@@ -331,7 +333,7 @@
     "error": "Error sending message"
   },
   "footer": {
-    "description": "Your trusted marketplace for used agricultural and industrial equipment. Find quality machinery from verified professional sellers.",
+    "description": "Your trusted marketplace for new and used agricultural and industrial equipment. Find quality machinery from verified professional sellers.",
     "quickLinks": "Quick Links",
     "aboutUs": "About us",
     "howItWorks": "How it works",
@@ -429,8 +431,8 @@
   },
   "seo": {
     "home": {
-      "title": "Used Agricultural Equipment Marketplace",
-      "description": "EquipTrade - Buy and sell used agricultural and industrial equipment. Thousands of tractors, harvesters, and machinery from verified professional sellers."
+      "title": "New and Used Agricultural Equipment Marketplace",
+      "description": "EquipTrade - Buy and sell new and used agricultural and industrial equipment. Thousands of tractors, harvesters, and machinery from verified professional sellers."
     },
     "about": {
       "title": "About Us",
