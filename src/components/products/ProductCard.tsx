@@ -129,7 +129,10 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   const price = Number(product.price) || 0;
   const originalPrice = product.original_price ? Number(product.original_price) : null;
   const discountPercentage = product.discount_percentage || 0;
-  const hasDiscount = originalPrice && originalPrice > price && discountPercentage > 0;
+  // Show discount if original_price exists and is higher, OR if discount_percentage is set
+  const hasDiscount = (originalPrice && originalPrice > price) || discountPercentage > 0;
+  const displayOriginalPrice = originalPrice && originalPrice > price ? originalPrice : (discountPercentage > 0 ? Math.round(price / (1 - discountPercentage / 100)) : null);
+  const displayDiscountPercentage = discountPercentage > 0 ? discountPercentage : (originalPrice && originalPrice > price ? Math.round((1 - price / originalPrice) * 100) : 0);
   const priceHT = Math.round(price / 1.2); // Approximate HT from TTC
   
   // Financing available for products >= 5000€
@@ -173,10 +176,10 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                   <Star className="h-3 w-3 fill-current" />
                 </Badge>
               )}
-              {hasDiscount && (
+              {hasDiscount && displayDiscountPercentage > 0 && (
                 <Badge className="absolute top-2 left-2 bg-destructive text-destructive-foreground gap-1">
                   <Percent className="h-3 w-3" />
-                  -{discountPercentage}%
+                  -{displayDiscountPercentage}%
                 </Badge>
               )}
             </div>
@@ -221,9 +224,9 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                 <div className="mt-4 pt-3 border-t border-border">
                   <div className="flex items-end justify-between">
                     <div>
-                      {hasDiscount && (
+                      {hasDiscount && displayOriginalPrice && (
                         <p className="text-sm text-muted-foreground line-through">
-                          {formatPrice(originalPrice)}
+                          {formatPrice(displayOriginalPrice)}
                         </p>
                       )}
                       <p className="text-2xl font-display font-bold text-primary">
@@ -283,10 +286,10 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
               {t('product.outOfStock')}
             </Badge>
           )}
-          {hasDiscount && (
+          {hasDiscount && displayDiscountPercentage > 0 && (
             <Badge className="absolute top-2 left-2 bg-destructive text-destructive-foreground gap-1">
               <Percent className="h-3 w-3" />
-              -{discountPercentage}%
+              -{displayDiscountPercentage}%
             </Badge>
           )}
           {product.featured && (
@@ -330,9 +333,9 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
           <div className="mt-3 pt-3 border-t border-border">
             <div className="flex items-start justify-between gap-2">
               <div className="flex-1 min-w-0">
-                {hasDiscount && (
+                {hasDiscount && displayOriginalPrice && (
                   <p className="text-sm text-muted-foreground line-through">
-                    {formatPrice(originalPrice)}
+                    {formatPrice(displayOriginalPrice)}
                   </p>
                 )}
                 <p className="text-xl font-display font-bold text-primary">

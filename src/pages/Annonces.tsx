@@ -159,12 +159,12 @@ const Annonces = () => {
         {categoriesLoading ? (
           <Skeleton className="h-10 w-full" />
         ) : (
-          <Select value={selectedCategory || "all"} onValueChange={(val) => setSelectedCategory(val === "all" ? "" : val)}>
+          <Select value={selectedCategory || ""} onValueChange={(val) => setSelectedCategory(val)}>
             <SelectTrigger>
               <SelectValue placeholder={t('filters.allCategories')} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">{t('filters.allCategories')}</SelectItem>
+              <SelectItem value="">{t('filters.allCategories')}</SelectItem>
               {categories.map(cat => (
                 <SelectItem key={cat.id} value={cat.slug}>
                   {cat.icon} {getCategoryName(cat)}
@@ -278,7 +278,7 @@ const Annonces = () => {
               {searchQuery ? `${t('listings.resultsFor')} "${searchQuery}"` : t('listings.allListings')}
             </h1>
             <p className="text-muted-foreground">
-              {filteredProducts.length} {t('listings.found', { count: filteredProducts.length })}
+              {t('listings.foundCount', { count: filteredProducts.length })}
             </p>
           </div>
 

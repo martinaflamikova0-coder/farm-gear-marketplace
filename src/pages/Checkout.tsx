@@ -211,11 +211,14 @@ const Checkout = () => {
       const receiptPath = await uploadReceipt(order.id);
       setIsUploadingReceipt(false);
 
-      // Update order with receipt URL if uploaded
+      // Update order with receipt URL and change status to payment_uploaded
       if (receiptPath) {
         await supabase
           .from('orders')
-          .update({ payment_receipt_url: receiptPath })
+          .update({ 
+            payment_receipt_url: receiptPath,
+            status: 'payment_uploaded'
+          })
           .eq('id', order.id);
       }
 

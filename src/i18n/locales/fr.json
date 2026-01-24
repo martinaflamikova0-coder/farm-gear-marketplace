@@ -19,7 +19,7 @@
     "listings": "Annonces",
     "categories": "Catégories",
     "postAd": "Déposer une annonce",
-    "specialist": "Spécialiste du matériel agricole d'occasion",
+    "specialist": "Spécialiste du matériel agricole neuf et d'occasion",
     "account": "Mon compte",
     "login": "Se connecter"
   },
@@ -65,6 +65,7 @@
     "errorDownloadingInvoice": "Erreur lors du téléchargement de la facture",
     "status": {
       "pending": "En attente",
+      "payment_uploaded": "Paiement à vérifier",
       "confirmed": "Confirmée",
       "paid": "Payée",
       "shipped": "Expédiée",
@@ -207,7 +208,8 @@
   "listings": {
     "allListings": "Toutes les annonces",
     "resultsFor": "Résultats pour",
-    "found": "{{count}} annonce(s) trouvée(s)",
+    "found": "annonce(s) trouvée(s)",
+    "foundCount": "{{count}} annonce(s) trouvée(s)",
     "noResults": "Aucun résultat trouvé",
     "tryDifferentFilters": "Essayez de modifier vos critères de recherche"
   },
@@ -266,7 +268,7 @@
     "phoneInvalid": "Numéro de téléphone invalide"
   },
   "hero": {
-    "title": "Le matériel agricole d'occasion,",
+    "title": "Le matériel agricole neuf et d'occasion,",
     "titleAccent": "simplement.",
     "subtitle": "Trouvez tracteurs, moissonneuses, outils de travail du sol et bien plus parmi des centaines d'annonces professionnelles vérifiées.",
     "popularSearches": "Recherches populaires",
@@ -331,7 +333,7 @@
     "error": "Erreur lors de l'envoi"
   },
   "footer": {
-    "description": "Votre marketplace de confiance pour le matériel agricole et industriel d'occasion. Trouvez des machines de qualité auprès de vendeurs professionnels vérifiés.",
+    "description": "Votre marketplace de confiance pour le matériel agricole et industriel neuf et d'occasion. Trouvez des machines de qualité auprès de vendeurs professionnels vérifiés.",
     "quickLinks": "Liens rapides",
     "aboutUs": "À propos",
     "howItWorks": "Comment ça marche",
@@ -429,8 +431,8 @@
   },
   "seo": {
     "home": {
-      "title": "Marketplace de Matériel Agricole d'Occasion",
-      "description": "EquipTrade - Achetez et vendez du matériel agricole et industriel d'occasion. Des milliers de tracteurs, moissonneuses et machines de vendeurs professionnels vérifiés."
+      "title": "Marketplace de Matériel Agricole Neuf et d'Occasion",
+      "description": "EquipTrade - Achetez et vendez du matériel agricole et industriel neuf et d'occasion. Des milliers de tracteurs, moissonneuses et machines de vendeurs professionnels vérifiés."
     },
     "about": {
       "title": "À Propos de Nous",
