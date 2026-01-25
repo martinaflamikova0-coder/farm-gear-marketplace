@@ -642,6 +642,19 @@ const Checkout = () => {
                       <p className="font-mono font-bold text-lg">{orderReference}</p>
                     </div>
 
+                    {/* Invoice availability message */}
+                    <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 text-left">
+                      <div className="flex items-start gap-3">
+                        <FileCheck className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <h4 className="font-medium text-primary">{t('checkout.confirmation.invoiceTitle')}</h4>
+                          <p className="text-sm text-muted-foreground mt-1">
+                            {t('checkout.confirmation.invoiceDescription')}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
                     <div className="text-left bg-muted/50 rounded-lg p-4 space-y-2">
                       <h4 className="font-medium">{t('checkout.confirmation.nextSteps')}</h4>
                       <ol className="text-sm text-muted-foreground space-y-2 list-decimal list-inside">
@@ -655,6 +668,11 @@ const Checkout = () => {
                       <Button asChild className="flex-1">
                         <Link to={`/${currentLang}`}>
                           {t('checkout.confirmation.backToHome')}
+                        </Link>
+                      </Button>
+                      <Button asChild variant="outline" className="flex-1">
+                        <Link to={`/${currentLang}/account`}>
+                          {t('checkout.confirmation.viewAccount')}
                         </Link>
                       </Button>
                     </div>

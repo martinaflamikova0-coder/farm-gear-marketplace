@@ -159,12 +159,12 @@ const Annonces = () => {
         {categoriesLoading ? (
           <Skeleton className="h-10 w-full" />
         ) : (
-          <Select value={selectedCategory || ""} onValueChange={(val) => setSelectedCategory(val)}>
+          <Select value={selectedCategory || "all"} onValueChange={(val) => setSelectedCategory(val === "all" ? "" : val)}>
             <SelectTrigger>
               <SelectValue placeholder={t('filters.allCategories')} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">{t('filters.allCategories')}</SelectItem>
+              <SelectItem value="all">{t('filters.allCategories')}</SelectItem>
               {categories.map(cat => (
                 <SelectItem key={cat.id} value={cat.slug}>
                   {cat.icon} {getCategoryName(cat)}

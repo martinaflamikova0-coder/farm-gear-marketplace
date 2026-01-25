@@ -397,11 +397,14 @@
       "title": "Commande confirmée !",
       "description": "Votre commande a été enregistrée avec succès",
       "orderReference": "Référence de commande",
+      "invoiceTitle": "Votre facture est disponible",
+      "invoiceDescription": "Votre facture est disponible dans votre compte EquipTrade et vous sera également envoyée par email à l'adresse indiquée.",
       "nextSteps": "Prochaines étapes :",
       "step1": "Effectuez votre virement bancaire avec les coordonnées fournies",
       "step2": "Vous recevrez un email de confirmation à",
       "step3": "Votre commande sera préparée dès réception du paiement",
-      "backToHome": "Retour à l'accueil"
+      "backToHome": "Retour à l'accueil",
+      "viewAccount": "Voir mon compte"
     },
     "summary": "Récapitulatif",
     "errors": {

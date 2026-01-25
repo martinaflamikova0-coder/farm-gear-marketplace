@@ -397,11 +397,14 @@
       "title": "Order confirmed!",
       "description": "Your order has been successfully registered",
       "orderReference": "Order reference",
+      "invoiceTitle": "Your invoice is available",
+      "invoiceDescription": "Your invoice is available in your EquipTrade account and will also be sent to your email address.",
       "nextSteps": "Next steps:",
       "step1": "Make your bank transfer with the provided details",
       "step2": "You will receive a confirmation email at",
       "step3": "Your order will be prepared upon receipt of payment",
-      "backToHome": "Back to home"
+      "backToHome": "Back to home",
+      "viewAccount": "View my account"
     },
     "summary": "Summary",
     "errors": {
