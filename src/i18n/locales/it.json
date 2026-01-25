@@ -375,11 +375,14 @@
       "title": "Ordine confermato!",
       "description": "Il tuo ordine è stato registrato con successo",
       "orderReference": "Riferimento ordine",
+      "invoiceTitle": "La tua fattura è disponibile",
+      "invoiceDescription": "La tua fattura è disponibile nel tuo account EquipTrade e sarà anche inviata al tuo indirizzo email.",
       "nextSteps": "Prossimi passi:",
       "step1": "Effettua il bonifico con i dati forniti",
       "step2": "Riceverai un'email di conferma a",
       "step3": "Il tuo ordine sarà preparato alla ricezione del pagamento",
-      "backToHome": "Torna alla home"
+      "backToHome": "Torna alla home",
+      "viewAccount": "Visualizza il mio account"
     },
     "summary": "Riepilogo",
     "errors": {

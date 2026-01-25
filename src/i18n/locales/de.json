@@ -375,11 +375,14 @@
       "title": "Bestellung bestätigt!",
       "description": "Ihre Bestellung wurde erfolgreich registriert",
       "orderReference": "Bestellreferenz",
+      "invoiceTitle": "Ihre Rechnung ist verfügbar",
+      "invoiceDescription": "Ihre Rechnung ist in Ihrem EquipTrade-Konto verfügbar und wird auch an Ihre E-Mail-Adresse gesendet.",
       "nextSteps": "Nächste Schritte:",
       "step1": "Führen Sie Ihre Banküberweisung mit den angegebenen Daten durch",
       "step2": "Sie erhalten eine Bestätigungs-E-Mail an",
       "step3": "Ihre Bestellung wird nach Zahlungseingang vorbereitet",
-      "backToHome": "Zurück zur Startseite"
+      "backToHome": "Zurück zur Startseite",
+      "viewAccount": "Mein Konto anzeigen"
     },
     "summary": "Zusammenfassung",
     "errors": {

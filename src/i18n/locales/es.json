@@ -375,11 +375,14 @@
       "title": "¡Pedido confirmado!",
       "description": "Tu pedido ha sido registrado correctamente",
       "orderReference": "Referencia del pedido",
+      "invoiceTitle": "Tu factura está disponible",
+      "invoiceDescription": "Tu factura está disponible en tu cuenta de EquipTrade y también se enviará a tu correo electrónico.",
       "nextSteps": "Próximos pasos:",
       "step1": "Realiza tu transferencia bancaria con los datos proporcionados",
       "step2": "Recibirás un email de confirmación en",
       "step3": "Tu pedido se preparará tras recibir el pago",
-      "backToHome": "Volver al inicio"
+      "backToHome": "Volver al inicio",
+      "viewAccount": "Ver mi cuenta"
     },
     "summary": "Resumen",
     "errors": {
