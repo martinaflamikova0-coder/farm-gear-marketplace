@@ -284,6 +284,33 @@ export type Database = {
         }
         Relationships: []
       }
+      paypal_settings: {
+        Row: {
+          client_id: string | null
+          created_at: string
+          id: string
+          is_active: boolean
+          sandbox_mode: boolean
+          updated_at: string
+        }
+        Insert: {
+          client_id?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          sandbox_mode?: boolean
+          updated_at?: string
+        }
+        Update: {
+          client_id?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          sandbox_mode?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
       products: {
         Row: {
           brand: string | null

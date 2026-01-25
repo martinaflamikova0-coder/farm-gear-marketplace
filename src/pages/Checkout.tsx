@@ -15,6 +15,8 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
 import { useCart } from '@/contexts/CartContext';
 import { useBankAccounts, getBankAccountForAmount } from '@/hooks/useBankAccounts';
+import { usePaypalSettings } from '@/hooks/usePaypalSettings';
+import PayPalButton from '@/components/checkout/PayPalButton';
 import { supabase } from '@/integrations/supabase/client';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import { z } from 'zod';
@@ -31,6 +33,8 @@ const createShippingSchema = (t: (key: string) => string) => z.object({
   country: z.string().min(2, t('checkout.validation.countryRequired')),
 });
 
+type PaymentMethod = 'bank_transfer' | 'paypal';
+
 const Checkout = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
@@ -40,11 +44,13 @@ const Checkout = () => {
   
   const { items, total, user, clearCart } = useCart();
   const { data: bankAccounts, isLoading: isBankAccountsLoading } = useBankAccounts();
+  const { data: paypalSettings, isLoading: isPaypalLoading } = usePaypalSettings();
   
   const [step, setStep] = useState<'shipping' | 'payment' | 'confirmation'>('shipping');
   const [isLoading, setIsLoading] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const [orderReference, setOrderReference] = useState<string>('');
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('bank_transfer');
   
   // Receipt upload state
   const [receiptFile, setReceiptFile] = useState<File | null>(null);
@@ -173,8 +179,8 @@ const Checkout = () => {
   const handleConfirmOrder = async () => {
     if (!user) return;
 
-    // Validate receipt is uploaded
-    if (!receiptFile) {
+    // Validate receipt is uploaded for bank transfer
+    if (paymentMethod === 'bank_transfer' && !receiptFile) {
       toast({
         title: t('checkout.errors.receiptMissing'),
         description: t('checkout.errors.receiptMissingDescription'),
@@ -199,7 +205,7 @@ const Checkout = () => {
           shipping_city: shippingData.city,
           shipping_postal_code: shippingData.postalCode,
           shipping_country: shippingData.country,
-          notes: `Paiement par virement bancaire - Compte: ${selectedBankAccount.name}`,
+          notes: `Paiement par virement bancaire - Compte: ${selectedBankAccount?.name || 'N/A'}`,
         })
         .select('id')
         .single();
@@ -263,6 +269,77 @@ const Checkout = () => {
       setIsUploadingReceipt(false);
     }
   };
+
+  // Handle successful PayPal payment
+  const handlePayPalSuccess = async (details: { id: string; payer: { email_address: string } }) => {
+    if (!user) return;
+
+    setIsLoading(true);
+    try {
+      // Create order with PayPal payment info
+      const { data: order, error: orderError } = await supabase
+        .from('orders')
+        .insert({
+          user_id: user.id,
+          total_amount: total,
+          status: 'confirmed', // PayPal payments are immediately confirmed
+          shipping_name: `${shippingData.firstName} ${shippingData.lastName}`,
+          shipping_email: shippingData.email,
+          shipping_phone: shippingData.phone,
+          shipping_address: shippingData.address,
+          shipping_city: shippingData.city,
+          shipping_postal_code: shippingData.postalCode,
+          shipping_country: shippingData.country,
+          stripe_payment_intent_id: details.id, // Store PayPal order ID here
+          notes: `PayPal payment - Order ID: ${details.id} - Payer: ${details.payer.email_address}`,
+        })
+        .select('id')
+        .single();
+
+      if (orderError) throw orderError;
+
+      // Create order items
+      const orderItems = items.map(item => ({
+        order_id: order.id,
+        product_id: item.product_id,
+        product_title: item.product.title,
+        product_price: item.product.price,
+        quantity: item.quantity,
+      }));
+
+      const { error: itemsError } = await supabase
+        .from('order_items')
+        .insert(orderItems);
+
+      if (itemsError) throw itemsError;
+
+      // Generate order reference
+      const ref = `CMD-${Date.now().toString(36).toUpperCase()}`;
+      setOrderReference(ref);
+
+      // Clear cart
+      await clearCart();
+
+      // Move to confirmation
+      setStep('confirmation');
+
+      toast({
+        title: t('checkout.paypal.success'),
+        description: t('checkout.paypal.successDescription'),
+      });
+    } catch (error) {
+      console.error('PayPal order error:', error);
+      toast({
+        title: t('checkout.errors.orderError'),
+        description: t('checkout.errors.orderErrorDescription'),
+        variant: 'destructive',
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const isPaypalAvailable = paypalSettings?.is_active && paypalSettings?.client_id;
 
   // Redirect if cart is empty (except on confirmation step)
   if (items.length === 0 && step !== 'confirmation') {
@@ -455,7 +532,7 @@ const Checkout = () => {
                 <Card>
                   <CardHeader>
                     <CardTitle className="font-display flex items-center gap-2">
-                      <Building2 className="h-5 w-5" />
+                      <CreditCard className="h-5 w-5" />
                       {t('checkout.payment.title')}
                     </CardTitle>
                     <CardDescription>
@@ -463,163 +540,230 @@ const Checkout = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
-                    {/* Bank account info */}
-                    {isBankAccountsLoading ? (
-                      <div className="space-y-4 p-6">
-                        <Skeleton className="h-6 w-48" />
-                        <Skeleton className="h-4 w-full" />
-                        <Skeleton className="h-4 w-full" />
-                        <Skeleton className="h-4 w-full" />
-                      </div>
-                    ) : selectedBankAccount ? (
-                      <div className="bg-secondary/50 rounded-lg p-6 space-y-4">
-                        <div className="flex items-center justify-between">
-                          <h3 className="font-semibold">{selectedBankAccount.bank_name}</h3>
-                          <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
-                            {selectedBankAccount.name}
-                          </span>
+                    {/* Payment method selector */}
+                    <div className="space-y-3">
+                      <Label className="text-base font-medium">{t('checkout.payment.methodTitle')}</Label>
+                      <RadioGroup
+                        value={paymentMethod}
+                        onValueChange={(value: PaymentMethod) => setPaymentMethod(value)}
+                        className="grid gap-3"
+                      >
+                        <div className={`flex items-center space-x-3 rounded-lg border p-4 cursor-pointer transition-colors ${paymentMethod === 'bank_transfer' ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'}`}>
+                          <RadioGroupItem value="bank_transfer" id="bank_transfer" />
+                          <Label htmlFor="bank_transfer" className="flex items-center gap-2 cursor-pointer flex-1">
+                            <Building2 className="h-5 w-5 text-muted-foreground" />
+                            {t('checkout.payment.bankTransfer')}
+                          </Label>
                         </div>
-                        
+                        {isPaypalAvailable && (
+                          <div className={`flex items-center space-x-3 rounded-lg border p-4 cursor-pointer transition-colors ${paymentMethod === 'paypal' ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'}`}>
+                            <RadioGroupItem value="paypal" id="paypal" />
+                            <Label htmlFor="paypal" className="flex items-center gap-2 cursor-pointer flex-1">
+                              <CreditCard className="h-5 w-5 text-muted-foreground" />
+                              {t('checkout.payment.paypal')}
+                            </Label>
+                          </div>
+                        )}
+                      </RadioGroup>
+                    </div>
+
+                    <Separator />
+
+                    {/* Bank Transfer Section */}
+                    {paymentMethod === 'bank_transfer' && (
+                      <>
+                        {isBankAccountsLoading ? (
+                          <div className="space-y-4 p-6">
+                            <Skeleton className="h-6 w-48" />
+                            <Skeleton className="h-4 w-full" />
+                            <Skeleton className="h-4 w-full" />
+                            <Skeleton className="h-4 w-full" />
+                          </div>
+                        ) : selectedBankAccount ? (
+                          <div className="bg-secondary/50 rounded-lg p-6 space-y-4">
+                            <div className="flex items-center justify-between">
+                              <h3 className="font-semibold">{selectedBankAccount.bank_name}</h3>
+                              <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
+                                {selectedBankAccount.name}
+                              </span>
+                            </div>
+                            
+                            <div className="space-y-3">
+                              <div className="flex justify-between items-center">
+                                <span className="text-sm text-muted-foreground">{t('checkout.payment.accountHolder')}</span>
+                                <div className="flex items-center gap-2">
+                                  <span className="font-mono font-medium">{selectedBankAccount.holder}</span>
+                                  <Button
+                                    variant="ghost"
+                                    size="icon"
+                                    className="h-8 w-8"
+                                    onClick={() => handleCopyToClipboard(selectedBankAccount.holder, 'holder')}
+                                  >
+                                    {copiedField === 'holder' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
+                                  </Button>
+                                </div>
+                              </div>
+                              
+                              <div className="flex justify-between items-center">
+                                <span className="text-sm text-muted-foreground">IBAN</span>
+                                <div className="flex items-center gap-2">
+                                  <span className="font-mono font-medium text-sm">{selectedBankAccount.iban}</span>
+                                  <Button
+                                    variant="ghost"
+                                    size="icon"
+                                    className="h-8 w-8"
+                                    onClick={() => handleCopyToClipboard(selectedBankAccount.iban.replace(/\s/g, ''), 'iban')}
+                                  >
+                                    {copiedField === 'iban' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
+                                  </Button>
+                                </div>
+                              </div>
+                              
+                              <div className="flex justify-between items-center">
+                                <span className="text-sm text-muted-foreground">BIC</span>
+                                <div className="flex items-center gap-2">
+                                  <span className="font-mono font-medium">{selectedBankAccount.bic}</span>
+                                  <Button
+                                    variant="ghost"
+                                    size="icon"
+                                    className="h-8 w-8"
+                                    onClick={() => handleCopyToClipboard(selectedBankAccount.bic, 'bic')}
+                                  >
+                                    {copiedField === 'bic' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
+                                  </Button>
+                                </div>
+                              </div>
+                              
+                              <Separator />
+                              
+                              <div className="flex justify-between items-center">
+                                <span className="text-sm text-muted-foreground">{t('checkout.payment.amountToTransfer')}</span>
+                                <div className="flex items-center gap-2">
+                                  <span className="font-display font-bold text-lg text-primary">{formatPrice(total)}</span>
+                                  <Button
+                                    variant="ghost"
+                                    size="icon"
+                                    className="h-8 w-8"
+                                    onClick={() => handleCopyToClipboard(total.toString(), 'amount')}
+                                  >
+                                    {copiedField === 'amount' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
+                                  </Button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="bg-destructive/10 border border-destructive/30 rounded-lg p-4 text-center">
+                            <p className="text-sm text-destructive">{t('checkout.errors.noBankAccount')}</p>
+                          </div>
+                        )}
+
+                        {/* Instructions */}
+                        <div className="bg-warning/10 border border-warning/30 rounded-lg p-4">
+                          <h4 className="font-medium text-warning mb-2">⚠️ {t('checkout.payment.important')}</h4>
+                          <ul className="text-sm text-muted-foreground space-y-1">
+                            <li>• {t('checkout.payment.instruction1')}</li>
+                            <li>• {t('checkout.payment.instruction2')}</li>
+                            <li>• {t('checkout.payment.instruction3')}</li>
+                          </ul>
+                        </div>
+
+                        {/* Receipt Upload */}
                         <div className="space-y-3">
-                          <div className="flex justify-between items-center">
-                            <span className="text-sm text-muted-foreground">{t('checkout.payment.accountHolder')}</span>
-                            <div className="flex items-center gap-2">
-                              <span className="font-mono font-medium">{selectedBankAccount.holder}</span>
+                          <Label className="text-base font-medium">
+                            {t('checkout.payment.uploadReceipt')} *
+                          </Label>
+                          <p className="text-sm text-muted-foreground">
+                            {t('checkout.payment.uploadReceiptDescription')}
+                          </p>
+                          
+                          <input
+                            type="file"
+                            ref={receiptInputRef}
+                            accept="image/jpeg,image/png,image/webp,application/pdf"
+                            className="hidden"
+                            onChange={handleReceiptSelect}
+                          />
+
+                          {!receiptFile ? (
+                            <Button
+                              type="button"
+                              variant="outline"
+                              className="w-full h-24 border-dashed flex flex-col gap-2"
+                              onClick={() => receiptInputRef.current?.click()}
+                            >
+                              <Upload className="h-6 w-6 text-muted-foreground" />
+                              <span className="text-sm text-muted-foreground">
+                                {t('checkout.payment.uploadButton')}
+                              </span>
+                            </Button>
+                          ) : (
+                            <div className="flex items-center gap-3 p-4 bg-success/10 border border-success/30 rounded-lg">
+                              <FileCheck className="h-6 w-6 text-success flex-shrink-0" />
+                              <div className="flex-1 min-w-0">
+                                <p className="text-sm font-medium truncate">{receiptFile.name}</p>
+                                <p className="text-xs text-muted-foreground">
+                                  {(receiptFile.size / 1024 / 1024).toFixed(2)} MB
+                                </p>
+                              </div>
                               <Button
+                                type="button"
                                 variant="ghost"
                                 size="icon"
-                                className="h-8 w-8"
-                                onClick={() => handleCopyToClipboard(selectedBankAccount.holder, 'holder')}
+                                className="h-8 w-8 text-destructive hover:text-destructive"
+                                onClick={handleRemoveReceipt}
                               >
-                                {copiedField === 'holder' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
+                                <X className="h-4 w-4" />
                               </Button>
                             </div>
-                          </div>
-                          
-                          <div className="flex justify-between items-center">
-                            <span className="text-sm text-muted-foreground">IBAN</span>
-                            <div className="flex items-center gap-2">
-                              <span className="font-mono font-medium text-sm">{selectedBankAccount.iban}</span>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                className="h-8 w-8"
-                                onClick={() => handleCopyToClipboard(selectedBankAccount.iban.replace(/\s/g, ''), 'iban')}
-                              >
-                                {copiedField === 'iban' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
-                              </Button>
-                            </div>
-                          </div>
-                          
-                          <div className="flex justify-between items-center">
-                            <span className="text-sm text-muted-foreground">BIC</span>
-                            <div className="flex items-center gap-2">
-                              <span className="font-mono font-medium">{selectedBankAccount.bic}</span>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                className="h-8 w-8"
-                                onClick={() => handleCopyToClipboard(selectedBankAccount.bic, 'bic')}
-                              >
-                                {copiedField === 'bic' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
-                              </Button>
-                            </div>
-                          </div>
-                          
-                          <Separator />
-                          
-                          <div className="flex justify-between items-center">
-                            <span className="text-sm text-muted-foreground">{t('checkout.payment.amountToTransfer')}</span>
-                            <div className="flex items-center gap-2">
-                              <span className="font-display font-bold text-lg text-primary">{formatPrice(total)}</span>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                className="h-8 w-8"
-                                onClick={() => handleCopyToClipboard(total.toString(), 'amount')}
-                              >
-                                {copiedField === 'amount' ? <CheckCheck className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
-                              </Button>
-                            </div>
-                          </div>
+                          )}
                         </div>
-                      </div>
-                    ) : (
-                      <div className="bg-destructive/10 border border-destructive/30 rounded-lg p-4 text-center">
-                        <p className="text-sm text-destructive">{t('checkout.errors.noBankAccount')}</p>
-                      </div>
+
+                        <Button 
+                          onClick={handleConfirmOrder} 
+                          className="w-full" 
+                          size="lg"
+                          disabled={isLoading || !receiptFile}
+                        >
+                          {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                          {isUploadingReceipt ? t('checkout.payment.uploadingReceipt') : t('checkout.payment.confirmOrder')}
+                        </Button>
+                      </>
                     )}
 
-                    {/* Instructions */}
-                    <div className="bg-warning/10 border border-warning/30 rounded-lg p-4">
-                      <h4 className="font-medium text-warning mb-2">⚠️ {t('checkout.payment.important')}</h4>
-                      <ul className="text-sm text-muted-foreground space-y-1">
-                        <li>• {t('checkout.payment.instruction1')}</li>
-                        <li>• {t('checkout.payment.instruction2')}</li>
-                        <li>• {t('checkout.payment.instruction3')}</li>
-                      </ul>
-                    </div>
-
-                    {/* Receipt Upload */}
-                    <div className="space-y-3">
-                      <Label className="text-base font-medium">
-                        {t('checkout.payment.uploadReceipt')} *
-                      </Label>
-                      <p className="text-sm text-muted-foreground">
-                        {t('checkout.payment.uploadReceiptDescription')}
-                      </p>
-                      
-                      <input
-                        type="file"
-                        ref={receiptInputRef}
-                        accept="image/jpeg,image/png,image/webp,application/pdf"
-                        className="hidden"
-                        onChange={handleReceiptSelect}
-                      />
-
-                      {!receiptFile ? (
-                        <Button
-                          type="button"
-                          variant="outline"
-                          className="w-full h-24 border-dashed flex flex-col gap-2"
-                          onClick={() => receiptInputRef.current?.click()}
-                        >
-                          <Upload className="h-6 w-6 text-muted-foreground" />
-                          <span className="text-sm text-muted-foreground">
-                            {t('checkout.payment.uploadButton')}
-                          </span>
-                        </Button>
-                      ) : (
-                        <div className="flex items-center gap-3 p-4 bg-success/10 border border-success/30 rounded-lg">
-                          <FileCheck className="h-6 w-6 text-success flex-shrink-0" />
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium truncate">{receiptFile.name}</p>
-                            <p className="text-xs text-muted-foreground">
-                              {(receiptFile.size / 1024 / 1024).toFixed(2)} MB
-                            </p>
+                    {/* PayPal Section */}
+                    {paymentMethod === 'paypal' && (
+                      <div className="space-y-4">
+                        <div className="bg-muted/50 rounded-lg p-4 text-center">
+                          <h3 className="font-medium mb-2">{t('checkout.paypal.title')}</h3>
+                          <p className="text-sm text-muted-foreground mb-4">
+                            {t('checkout.paypal.description')}
+                          </p>
+                          <div className="font-display font-bold text-2xl text-primary mb-4">
+                            {formatPrice(total)}
                           </div>
-                          <Button
-                            type="button"
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8 text-destructive hover:text-destructive"
-                            onClick={handleRemoveReceipt}
-                          >
-                            <X className="h-4 w-4" />
-                          </Button>
                         </div>
-                      )}
-                    </div>
 
-                    <Button 
-                      onClick={handleConfirmOrder} 
-                      className="w-full" 
-                      size="lg"
-                      disabled={isLoading || !receiptFile}
-                    >
-                      {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                      {isUploadingReceipt ? t('checkout.payment.uploadingReceipt') : t('checkout.payment.confirmOrder')}
-                    </Button>
+                        <PayPalButton
+                          amount={total}
+                          currency="EUR"
+                          onSuccess={handlePayPalSuccess}
+                          onError={(error) => {
+                            console.error('PayPal error:', error);
+                          }}
+                          onCancel={() => {
+                            console.log('PayPal cancelled');
+                          }}
+                          disabled={isLoading}
+                        />
+
+                        {isLoading && (
+                          <div className="flex items-center justify-center p-4">
+                            <Loader2 className="h-6 w-6 animate-spin text-primary" />
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               )}

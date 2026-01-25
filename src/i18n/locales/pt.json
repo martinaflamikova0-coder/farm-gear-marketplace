@@ -355,8 +355,11 @@
       "continueToPayment": "Continuar para pagamento"
     },
     "payment": {
-      "title": "Pagamento por transferência bancária",
-      "description": "Faça a transferência para a conta indicada. A sua encomenda será validada após receção do pagamento.",
+      "title": "Pagamento",
+      "description": "Escolha o seu método de pagamento preferido",
+      "methodTitle": "Método de pagamento",
+      "bankTransfer": "Transferência bancária",
+      "paypal": "PayPal",
       "accountHolder": "Titular",
       "amountToTransfer": "Valor a transferir",
       "amountThresholdHigh": "Valores ≥ 5.000€",
@@ -370,6 +373,22 @@
       "uploadButton": "Clique para carregar (JPG, PNG, PDF - máx 10 MB)",
       "confirmOrder": "Confirmar a minha encomenda",
       "uploadingReceipt": "A carregar comprovativo..."
+    },
+    "paypal": {
+      "title": "Pagar com PayPal",
+      "description": "Pagamento seguro através da sua conta PayPal ou cartão de crédito",
+      "loadError": "Erro de carregamento",
+      "loadErrorDescription": "Não foi possível carregar o PayPal. Por favor, tente novamente.",
+      "captureError": "Erro de pagamento",
+      "captureErrorDescription": "O pagamento não pôde ser concluído.",
+      "error": "Erro do PayPal",
+      "errorDescription": "Ocorreu um erro com o PayPal.",
+      "cancelled": "Pagamento cancelado",
+      "cancelledDescription": "Cancelou o pagamento do PayPal.",
+      "disabled": "PayPal não disponível de momento",
+      "sandboxMode": "Modo de teste - Nenhum pagamento real será processado",
+      "success": "Pagamento bem-sucedido!",
+      "successDescription": "O seu pagamento PayPal foi concluído com sucesso."
     },
     "confirmation": {
       "title": "Encomenda confirmada!",

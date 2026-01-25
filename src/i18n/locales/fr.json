@@ -377,8 +377,11 @@
       "continueToPayment": "Continuer vers le paiement"
     },
     "payment": {
-      "title": "Paiement par virement bancaire",
-      "description": "Effectuez votre virement sur le compte ci-dessous. Votre commande sera validée dès réception du paiement.",
+      "title": "Paiement",
+      "description": "Choisissez votre méthode de paiement préférée",
+      "methodTitle": "Mode de paiement",
+      "bankTransfer": "Virement bancaire",
+      "paypal": "PayPal",
       "accountHolder": "Titulaire",
       "amountToTransfer": "Montant à virer",
       "amountThresholdHigh": "Montants ≥ 5000€",
@@ -392,6 +395,22 @@
       "uploadButton": "Cliquez pour télécharger (JPG, PNG, PDF - max 10 Mo)",
       "confirmOrder": "Confirmer ma commande",
       "uploadingReceipt": "Téléchargement du reçu..."
+    },
+    "paypal": {
+      "title": "Payer avec PayPal",
+      "description": "Paiement sécurisé via votre compte PayPal ou carte bancaire",
+      "loadError": "Erreur de chargement",
+      "loadErrorDescription": "Impossible de charger PayPal. Veuillez réessayer.",
+      "captureError": "Erreur de paiement",
+      "captureErrorDescription": "Le paiement n'a pas pu être finalisé.",
+      "error": "Erreur PayPal",
+      "errorDescription": "Une erreur est survenue avec PayPal.",
+      "cancelled": "Paiement annulé",
+      "cancelledDescription": "Vous avez annulé le paiement PayPal.",
+      "disabled": "PayPal non disponible actuellement",
+      "sandboxMode": "Mode test - Aucun paiement réel ne sera effectué",
+      "success": "Paiement réussi !",
+      "successDescription": "Votre paiement PayPal a été effectué avec succès."
     },
     "confirmation": {
       "title": "Commande confirmée !",

@@ -355,8 +355,11 @@
       "continueToPayment": "Weiter zur Zahlung"
     },
     "payment": {
-      "title": "Zahlung per Banküberweisung",
-      "description": "Überweisen Sie auf das untenstehende Konto. Ihre Bestellung wird nach Zahlungseingang bestätigt.",
+      "title": "Zahlung",
+      "description": "Wählen Sie Ihre bevorzugte Zahlungsmethode",
+      "methodTitle": "Zahlungsmethode",
+      "bankTransfer": "Banküberweisung",
+      "paypal": "PayPal",
       "accountHolder": "Kontoinhaber",
       "amountToTransfer": "Zu überweisender Betrag",
       "amountThresholdHigh": "Beträge ≥ 5.000€",
@@ -370,6 +373,22 @@
       "uploadButton": "Klicken zum Hochladen (JPG, PNG, PDF - max 10 MB)",
       "confirmOrder": "Bestellung bestätigen",
       "uploadingReceipt": "Beleg wird hochgeladen..."
+    },
+    "paypal": {
+      "title": "Mit PayPal bezahlen",
+      "description": "Sichere Zahlung über Ihr PayPal-Konto oder Kreditkarte",
+      "loadError": "Ladefehler",
+      "loadErrorDescription": "PayPal konnte nicht geladen werden. Bitte versuchen Sie es erneut.",
+      "captureError": "Zahlungsfehler",
+      "captureErrorDescription": "Die Zahlung konnte nicht abgeschlossen werden.",
+      "error": "PayPal-Fehler",
+      "errorDescription": "Ein Fehler ist bei PayPal aufgetreten.",
+      "cancelled": "Zahlung abgebrochen",
+      "cancelledDescription": "Sie haben die PayPal-Zahlung abgebrochen.",
+      "disabled": "PayPal derzeit nicht verfügbar",
+      "sandboxMode": "Testmodus - Keine echte Zahlung wird verarbeitet",
+      "success": "Zahlung erfolgreich!",
+      "successDescription": "Ihre PayPal-Zahlung wurde erfolgreich abgeschlossen."
     },
     "confirmation": {
       "title": "Bestellung bestätigt!",
