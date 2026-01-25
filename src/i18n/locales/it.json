@@ -355,8 +355,11 @@
       "continueToPayment": "Continua al pagamento"
     },
     "payment": {
-      "title": "Pagamento tramite bonifico bancario",
-      "description": "Effettua il bonifico sul conto indicato. Il tuo ordine sarà validato alla ricezione del pagamento.",
+      "title": "Pagamento",
+      "description": "Scegli il tuo metodo di pagamento preferito",
+      "methodTitle": "Metodo di pagamento",
+      "bankTransfer": "Bonifico bancario",
+      "paypal": "PayPal",
       "accountHolder": "Intestatario",
       "amountToTransfer": "Importo da trasferire",
       "amountThresholdHigh": "Importi ≥ 5.000€",
@@ -370,6 +373,22 @@
       "uploadButton": "Clicca per caricare (JPG, PNG, PDF - max 10 MB)",
       "confirmOrder": "Conferma il mio ordine",
       "uploadingReceipt": "Caricamento ricevuta..."
+    },
+    "paypal": {
+      "title": "Paga con PayPal",
+      "description": "Pagamento sicuro tramite il tuo account PayPal o carta di credito",
+      "loadError": "Errore di caricamento",
+      "loadErrorDescription": "Impossibile caricare PayPal. Riprova.",
+      "captureError": "Errore di pagamento",
+      "captureErrorDescription": "Il pagamento non è stato completato.",
+      "error": "Errore PayPal",
+      "errorDescription": "Si è verificato un errore con PayPal.",
+      "cancelled": "Pagamento annullato",
+      "cancelledDescription": "Hai annullato il pagamento PayPal.",
+      "disabled": "PayPal non disponibile al momento",
+      "sandboxMode": "Modalità test - Nessun pagamento reale verrà elaborato",
+      "success": "Pagamento riuscito!",
+      "successDescription": "Il tuo pagamento PayPal è stato completato con successo."
     },
     "confirmation": {
       "title": "Ordine confermato!",

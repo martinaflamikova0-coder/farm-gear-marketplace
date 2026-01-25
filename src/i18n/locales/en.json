@@ -377,8 +377,11 @@
       "continueToPayment": "Continue to payment"
     },
     "payment": {
-      "title": "Bank transfer payment",
-      "description": "Make your transfer to the account below. Your order will be validated upon receipt of payment.",
+      "title": "Payment",
+      "description": "Choose your preferred payment method",
+      "methodTitle": "Payment method",
+      "bankTransfer": "Bank transfer",
+      "paypal": "PayPal",
       "accountHolder": "Account holder",
       "amountToTransfer": "Amount to transfer",
       "amountThresholdHigh": "Amounts ≥ €5,000",
@@ -392,6 +395,22 @@
       "uploadButton": "Click to upload (JPG, PNG, PDF - max 10 MB)",
       "confirmOrder": "Confirm my order",
       "uploadingReceipt": "Uploading receipt..."
+    },
+    "paypal": {
+      "title": "Pay with PayPal",
+      "description": "Secure payment via your PayPal account or credit card",
+      "loadError": "Loading error",
+      "loadErrorDescription": "Unable to load PayPal. Please try again.",
+      "captureError": "Payment error",
+      "captureErrorDescription": "Payment could not be completed.",
+      "error": "PayPal error",
+      "errorDescription": "An error occurred with PayPal.",
+      "cancelled": "Payment cancelled",
+      "cancelledDescription": "You cancelled the PayPal payment.",
+      "disabled": "PayPal not currently available",
+      "sandboxMode": "Test mode - No real payment will be processed",
+      "success": "Payment successful!",
+      "successDescription": "Your PayPal payment has been completed successfully."
     },
     "confirmation": {
       "title": "Order confirmed!",
