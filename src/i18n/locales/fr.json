@@ -4,6 +4,7 @@
     "searchPlaceholder": "Rechercher un tracteur, une marque, un modèle...",
     "allCategories": "Toutes les catégories",
     "viewAll": "Voir tout",
+    "browseListings": "Voir les annonces",
     "contact": "Contact",
     "phone": "Téléphone",
     "email": "Email",
@@ -89,7 +90,9 @@
     "handling": "Manutention",
     "partsAccessories": "Pièces et accessoires",
     "browseByCategory": "Parcourir par catégorie",
-    "categoryDescription": "Trouvez rapidement le matériel dont vous avez besoin parmi nos différentes catégories"
+    "categoryDescription": "Trouvez rapidement le matériel dont vous avez besoin parmi nos différentes catégories",
+    "seeInAction": "Découvrez notre marketplace en action",
+    "videoSubtitle": "Voyez à quel point il est facile de trouver votre prochain équipement"
   },
   "gifts": {
     "count": "{{count}} cadeau",

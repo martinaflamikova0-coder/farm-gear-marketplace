@@ -4,6 +4,7 @@
     "searchPlaceholder": "Buscar un tractor, marca, modelo...",
     "allCategories": "Todas las categorías",
     "viewAll": "Ver todo",
+    "browseListings": "Ver anuncios",
     "contact": "Contacto",
     "phone": "Teléfono",
     "email": "Email",
@@ -88,7 +89,9 @@
     "handling": "Manipulación",
     "partsAccessories": "Piezas y accesorios",
     "browseByCategory": "Explorar por categoría",
-    "categoryDescription": "Encuentra rápidamente el equipo que necesitas"
+    "categoryDescription": "Encuentra rápidamente el equipo que necesitas",
+    "seeInAction": "Vea nuestro marketplace en acción",
+    "videoSubtitle": "Descubra lo fácil que es encontrar su próximo equipo"
   },
   "gifts": {
     "count": "{{count}} regalo",

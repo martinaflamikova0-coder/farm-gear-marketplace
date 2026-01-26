@@ -4,6 +4,7 @@
     "searchPlaceholder": "Traktor, Marke, Modell suchen...",
     "allCategories": "Alle Kategorien",
     "viewAll": "Alle anzeigen",
+    "browseListings": "Anzeigen durchsuchen",
     "contact": "Kontakt",
     "phone": "Telefon",
     "email": "E-Mail",
@@ -88,7 +89,9 @@
     "handling": "Fördertechnik",
     "partsAccessories": "Ersatzteile & Zubehör",
     "browseByCategory": "Nach Kategorie durchsuchen",
-    "categoryDescription": "Finden Sie schnell die Maschinen, die Sie benötigen"
+    "categoryDescription": "Finden Sie schnell die Maschinen, die Sie benötigen",
+    "seeInAction": "Erleben Sie unseren Marktplatz in Aktion",
+    "videoSubtitle": "Entdecken Sie, wie einfach es ist, Ihr nächstes Gerät zu finden"
   },
   "gifts": {
     "count": "{{count}} Geschenk",
