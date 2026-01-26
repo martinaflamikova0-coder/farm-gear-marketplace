@@ -4,6 +4,7 @@
     "searchPlaceholder": "Search for a tractor, brand, model...",
     "allCategories": "All categories",
     "viewAll": "View all",
+    "browseListings": "Browse Listings",
     "contact": "Contact",
     "phone": "Phone",
     "email": "Email",
@@ -89,7 +90,9 @@
     "handling": "Handling",
     "partsAccessories": "Parts & accessories",
     "browseByCategory": "Browse by category",
-    "categoryDescription": "Quickly find the equipment you need among our different categories"
+    "categoryDescription": "Quickly find the equipment you need among our different categories",
+    "seeInAction": "See Our Marketplace in Action",
+    "videoSubtitle": "Discover how easy it is to find your next equipment"
   },
   "gifts": {
     "count": "{{count}} gift",

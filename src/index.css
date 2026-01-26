@@ -254,4 +254,17 @@
       transform: scale(1);
     }
   }
+
+  @keyframes pulseGentle {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(var(--accent) / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 8px hsl(var(--accent) / 0);
+    }
+  }
+
+  .animate-pulse-gentle {
+    animation: pulseGentle 2s ease-in-out infinite;
+  }
 }

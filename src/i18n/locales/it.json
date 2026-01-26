@@ -4,6 +4,7 @@
     "searchPlaceholder": "Cerca un trattore, marca, modello...",
     "allCategories": "Tutte le categorie",
     "viewAll": "Vedi tutto",
+    "browseListings": "Sfoglia gli annunci",
     "contact": "Contatto",
     "phone": "Telefono",
     "email": "Email",
@@ -88,7 +89,9 @@
     "handling": "Movimentazione",
     "partsAccessories": "Ricambi e accessori",
     "browseByCategory": "Sfoglia per categoria",
-    "categoryDescription": "Trova rapidamente le attrezzature di cui hai bisogno"
+    "categoryDescription": "Trova rapidamente le attrezzature di cui hai bisogno",
+    "seeInAction": "Scopri il nostro marketplace in azione",
+    "videoSubtitle": "Scopri quanto è facile trovare la tua prossima attrezzatura"
   },
   "gifts": {
     "count": "{{count}} regalo",
