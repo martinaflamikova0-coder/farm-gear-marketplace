@@ -536,6 +536,25 @@ serve(async (req) => {
     page.drawText(`BIC: ${bankDetails.bic}`, { x: 300, y: yPos - 65, size: 10, font: helvetica, color: mutedColor });
     page.drawText(`${t.reference}: ${invoiceNumber}`, { x: 60, y: yPos - 80, size: 10, font: helvetica, color: mutedColor });
 
+    // Stamp/Signature section - positioned to the right of payment info
+    try {
+      const stampUrl = `${Deno.env.get("SUPABASE_URL")?.replace('/rest/v1', '')}/storage/v1/object/public/product-images/invoice-stamp.png`;
+      const stampResponse = await fetch(stampUrl);
+      if (stampResponse.ok) {
+        const stampBytes = new Uint8Array(await stampResponse.arrayBuffer());
+        const stampImage = await pdfDoc.embedPng(stampBytes);
+        const stampDims = stampImage.scale(0.35); // Scale down the stamp
+        page.drawImage(stampImage, {
+          x: width - 180,
+          y: yPos - 75,
+          width: stampDims.width,
+          height: stampDims.height,
+        });
+      }
+    } catch (stampError) {
+      console.log("Stamp image not available, skipping:", stampError);
+    }
+
     // Footer with terms
     const footerY = 60;
     page.drawLine({
