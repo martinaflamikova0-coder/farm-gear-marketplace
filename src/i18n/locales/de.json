@@ -389,6 +389,10 @@
       "available": "Verfügbar",
       "notConfigured": "Nicht verfügbar"
     },
+    "deliveryEstimate": {
+      "title": "Geschätzte Lieferzeit",
+      "days": "{{min}} bis {{max}} Werktage"
+    },
     "paypal": {
       "title": "Mit PayPal bezahlen",
       "description": "Sichere Zahlung über Ihr PayPal-Konto oder Kreditkarte",

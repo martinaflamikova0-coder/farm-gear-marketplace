@@ -515,6 +515,42 @@ export type Database = {
         }
         Relationships: []
       }
+      shipping_zones: {
+        Row: {
+          countries: string[]
+          created_at: string
+          id: string
+          is_active: boolean
+          max_days: number
+          min_days: number
+          name: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          countries?: string[]
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          max_days?: number
+          min_days?: number
+          name: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          countries?: string[]
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          max_days?: number
+          min_days?: number
+          name?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       testimonials: {
         Row: {
           author_company: string | null

@@ -17,6 +17,7 @@ import { useCart } from '@/contexts/CartContext';
 import { useBankAccounts, getBankAccountForAmount } from '@/hooks/useBankAccounts';
 import { usePaypalSettings } from '@/hooks/usePaypalSettings';
 import PayPalButton from '@/components/checkout/PayPalButton';
+import DeliveryEstimate from '@/components/checkout/DeliveryEstimate';
 import { supabase } from '@/integrations/supabase/client';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import { z } from 'zod';
@@ -970,6 +971,9 @@ const Checkout = () => {
                         <span className="text-success">{t('cart.freeShipping')}</span>
                       </div>
                     </div>
+
+                    {/* Delivery estimate */}
+                    <DeliveryEstimate countryCode={shippingData.country === 'France' ? 'FR' : shippingData.country.slice(0, 2).toUpperCase()} />
 
                     <Separator />
 

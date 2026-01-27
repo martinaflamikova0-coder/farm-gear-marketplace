@@ -389,6 +389,10 @@
       "available": "Disponível",
       "notConfigured": "Não disponível"
     },
+    "deliveryEstimate": {
+      "title": "Prazo de entrega estimado",
+      "days": "{{min}} a {{max}} dias úteis"
+    },
     "paypal": {
       "title": "Pagar com PayPal",
       "description": "Pagamento seguro através da sua conta PayPal ou cartão de crédito",
