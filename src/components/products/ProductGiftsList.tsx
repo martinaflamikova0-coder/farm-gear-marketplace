@@ -30,19 +30,35 @@ const ProductGiftsList = ({ gifts }: ProductGiftsListProps) => {
         </div>
       </div>
       
-      <div className="grid gap-2 sm:grid-cols-2">
+      <div className="grid gap-3 sm:grid-cols-2">
         {gifts.map((gift, index) => (
           <div 
-            key={index}
+            key={gift.id || index}
             className="flex items-center gap-3 bg-white dark:bg-background/50 rounded-lg p-3 border border-amber-100 dark:border-amber-900 hover:border-amber-300 dark:hover:border-amber-700 transition-colors"
           >
+            {gift.image ? (
+              <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 border border-amber-200 dark:border-amber-800">
+                <img 
+                  src={gift.image} 
+                  alt={gift.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ) : (
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/50 dark:to-orange-900/50 flex items-center justify-center flex-shrink-0 text-2xl">
+                {gift.icon}
+              </div>
+            )}
             <div className="flex-1 min-w-0">
-              <p className="font-medium text-sm text-foreground truncate">{gift.name}</p>
+              <p className="font-medium text-sm text-foreground line-clamp-2">{gift.name}</p>
               {gift.value && (
                 <p className="text-xs text-muted-foreground">{t('gifts.value')}: {gift.value}</p>
               )}
+              {gift.referenceNumber && (
+                <p className="text-xs text-muted-foreground">Réf: #{gift.referenceNumber}</p>
+              )}
             </div>
-            <span className="text-xs font-semibold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-2 py-0.5 rounded-full">
+            <span className="text-xs font-semibold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-2 py-0.5 rounded-full flex-shrink-0">
               {t('gifts.free')}
             </span>
           </div>
