@@ -32,13 +32,13 @@ const TrustBar = () => {
     },
   ];
 
-  // Quadruple the items for seamless loop (more items = smoother animation)
-  const duplicatedItems = [...trustItems, ...trustItems, ...trustItems, ...trustItems];
+  // Sextuple the items for seamless loop on all screen sizes
+  const duplicatedItems = [...trustItems, ...trustItems, ...trustItems, ...trustItems, ...trustItems, ...trustItems];
 
   return (
     <div className="bg-primary text-primary-foreground overflow-hidden w-full">
       <div className="py-3 md:py-4">
-        <div className="flex animate-marquee w-max">
+        <div className="flex animate-marquee w-max min-w-[200%]">
           {duplicatedItems.map((item, index) => (
             <div 
               key={index} 

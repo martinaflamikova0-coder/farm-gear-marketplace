@@ -32,6 +32,8 @@ const productSchema = z.object({
   title_translations: z.record(z.string()).optional(),
   description_translations: z.record(z.string()).optional(),
   price: z.number().min(0, 'Le prix doit être positif').max(999999999, 'Prix trop élevé'),
+  original_price: z.number().min(0, 'Le prix original doit être positif').optional().nullable(),
+  discount_percentage: z.number().min(0).max(100, 'Le pourcentage doit être entre 0 et 100').optional().nullable(),
   category: z.string().min(1, 'Sélectionnez une catégorie'),
   subcategory: z.string().optional(),
   brand: z.string().max(100, 'Marque trop longue').optional(),
@@ -71,6 +73,8 @@ const defaultFormData: ProductFormData = {
   title_translations: {},
   description_translations: {},
   price: 0,
+  original_price: null,
+  discount_percentage: null,
   category: '',
   subcategory: '',
   brand: '',
@@ -160,6 +164,8 @@ const AdminProductForm = () => {
           title_translations: titleTranslations,
           description_translations: descriptionTranslations,
           price: data.price || 0,
+          original_price: data.original_price ?? null,
+          discount_percentage: data.discount_percentage ?? null,
           category: data.category || '',
           subcategory: data.subcategory || '',
           brand: data.brand || '',
@@ -253,6 +259,8 @@ const AdminProductForm = () => {
         title_translations: validation.data.title_translations || null,
         description_translations: validation.data.description_translations || null,
         price: validation.data.price,
+        original_price: validation.data.original_price ?? null,
+        discount_percentage: validation.data.discount_percentage ?? null,
         price_type: validation.data.price_type,
         category: validation.data.category,
         subcategory: validation.data.subcategory || null,
@@ -485,7 +493,7 @@ const AdminProductForm = () => {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="price">Prix (€) *</Label>
+                  <Label htmlFor="price">Prix actuel (€) *</Label>
                   <Input
                     id="price"
                     type="number"
@@ -509,6 +517,40 @@ const AdminProductForm = () => {
                       <SelectItem value="on_request">Sur demande</SelectItem>
                     </SelectContent>
                   </Select>
+                </div>
+              </div>
+
+              {/* Discount fields */}
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="original_price">Prix original (€)</Label>
+                  <Input
+                    id="original_price"
+                    type="number"
+                    value={formData.original_price || ''}
+                    onChange={(e) => handleChange('original_price', e.target.value ? parseFloat(e.target.value) : null)}
+                    min={0}
+                    placeholder="Laisser vide pour remise automatique"
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Prix avant remise. Si vide, une remise automatique (20-35%) sera calculée.
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="discount_percentage">Pourcentage de remise (%)</Label>
+                  <Input
+                    id="discount_percentage"
+                    type="number"
+                    value={formData.discount_percentage || ''}
+                    onChange={(e) => handleChange('discount_percentage', e.target.value ? parseFloat(e.target.value) : null)}
+                    min={0}
+                    max={100}
+                    placeholder="Ex: 25"
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Prioritaire sur le calcul automatique. Barèmes auto: 20% (&lt;5k€), 22% (5k+), 25% (10k+), 30% (20k+), 35% (50k+).
+                  </p>
                 </div>
               </div>
 
