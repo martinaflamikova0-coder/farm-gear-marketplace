@@ -506,13 +506,14 @@ serve(async (req) => {
     page.drawText(`${t.totalTTC}:`, { x: totalsX, y: yPos, size: 12, font: helveticaBold, color: rgb(1, 1, 1) });
     page.drawText(formatPrice(totalTTC, locale), { x: 470, y: yPos, size: 12, font: helveticaBold, color: rgb(1, 1, 1) });
 
-    // Bank info section
+    // Bank info section - taller to accommodate stamp inside
     yPos -= 60;
+    const bankBoxHeight = 140;
     page.drawRectangle({
       x: 50,
-      y: yPos - 85,
+      y: yPos - bankBoxHeight + 15,
       width: width - 100,
-      height: 100,
+      height: bankBoxHeight,
       color: rgb(0.97, 0.97, 0.97),
       borderColor: rgb(0.9, 0.9, 0.9),
       borderWidth: 1,
@@ -536,17 +537,18 @@ serve(async (req) => {
     page.drawText(`BIC: ${bankDetails.bic}`, { x: 300, y: yPos - 65, size: 10, font: helvetica, color: mutedColor });
     page.drawText(`${t.reference}: ${invoiceNumber}`, { x: 60, y: yPos - 80, size: 10, font: helvetica, color: mutedColor });
 
-    // Stamp/Signature section - positioned to the right of payment info
+    // Stamp/Signature section - positioned INSIDE the payment info box at the bottom right
     try {
       const stampUrl = "https://field-trader-net.lovable.app/invoice-stamp.png";
       const stampResponse = await fetch(stampUrl);
       if (stampResponse.ok) {
         const stampBytes = new Uint8Array(await stampResponse.arrayBuffer());
         const stampImage = await pdfDoc.embedPng(stampBytes);
-        const stampDims = stampImage.scale(0.25); // Scale down the stamp
+        const stampDims = stampImage.scale(0.22); // Scale down the stamp
+        // Position stamp at bottom-right corner inside the payment box
         page.drawImage(stampImage, {
-          x: width - 160,
-          y: yPos - 60,
+          x: width - 50 - stampDims.width - 10,
+          y: yPos - bankBoxHeight + 20,
           width: stampDims.width,
           height: stampDims.height,
         });
