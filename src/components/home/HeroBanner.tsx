@@ -15,11 +15,13 @@ const HeroBanner = () => {
     <section className="relative w-full overflow-hidden">
       <div className="container-custom py-4 md:py-8">
         <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-          <img
-            src={heroEquipment}
-            alt="Shop Premium Used Equipment - Agricultural Machinery"
-            className="w-full h-auto object-cover max-h-[300px] md:max-h-[400px] lg:max-h-[500px]"
-          />
+          <div className="bg-muted w-full flex items-center justify-center">
+            <img
+              src={heroEquipment}
+              alt="Shop Premium Used Equipment - Agricultural Machinery"
+              className="w-full h-auto object-contain max-h-[250px] md:max-h-[350px] lg:max-h-[450px]"
+            />
+          </div>
           {/* Overlay gradient for better text readability on mobile */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent md:hidden" />
           
