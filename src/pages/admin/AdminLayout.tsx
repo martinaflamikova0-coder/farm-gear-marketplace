@@ -14,7 +14,8 @@ import {
   Building2,
   CreditCard,
   Users,
-  Sparkles
+  Sparkles,
+  Truck
 } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -63,6 +64,7 @@ const AdminLayout = () => {
     { href: '/admin/customers', label: 'Clients', icon: Users },
     { href: '/admin/bank-accounts', label: 'Comptes bancaires', icon: Building2 },
     { href: '/admin/paypal', label: 'PayPal', icon: CreditCard },
+    { href: '/admin/shipping-zones', label: 'Zones livraison', icon: Truck },
   ];
 
   return (
