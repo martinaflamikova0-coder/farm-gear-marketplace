@@ -105,6 +105,15 @@
     "free": "OFFERT",
     "autoSent": "Ces cadeaux vous seront automatiquement envoyés avec votre commande"
   },
+  "promotions": {
+    "daysLeft": "{{count}} jour restant",
+    "daysLeft_plural": "{{count}} jours restants",
+    "hoursLeft": "{{count}} heure restante",
+    "hoursLeft_plural": "{{count}} heures restantes",
+    "endsOn": "Se termine le {{date}}",
+    "limitedOffer": "Offre limitée",
+    "specialPromo": "Promotion spéciale"
+  },
   "testimonials": {
     "title": "Ce que disent nos clients",
     "subtitle": "Découvrez les témoignages de professionnels satisfaits partout en Europe"

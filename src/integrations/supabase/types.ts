@@ -458,6 +458,63 @@ export type Database = {
         }
         Relationships: []
       }
+      promotions: {
+        Row: {
+          applies_to: string
+          created_at: string
+          description: string | null
+          discount_type: string
+          discount_value: number
+          end_date: string
+          id: string
+          is_active: boolean
+          max_price: number | null
+          min_price: number | null
+          name: string
+          priority: number
+          start_date: string
+          target_categories: string[] | null
+          target_product_ids: string[] | null
+          updated_at: string
+        }
+        Insert: {
+          applies_to?: string
+          created_at?: string
+          description?: string | null
+          discount_type?: string
+          discount_value: number
+          end_date: string
+          id?: string
+          is_active?: boolean
+          max_price?: number | null
+          min_price?: number | null
+          name: string
+          priority?: number
+          start_date: string
+          target_categories?: string[] | null
+          target_product_ids?: string[] | null
+          updated_at?: string
+        }
+        Update: {
+          applies_to?: string
+          created_at?: string
+          description?: string | null
+          discount_type?: string
+          discount_value?: number
+          end_date?: string
+          id?: string
+          is_active?: boolean
+          max_price?: number | null
+          min_price?: number | null
+          name?: string
+          priority?: number
+          start_date?: string
+          target_categories?: string[] | null
+          target_product_ids?: string[] | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       testimonials: {
         Row: {
           author_company: string | null

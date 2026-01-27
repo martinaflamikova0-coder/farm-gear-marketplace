@@ -105,6 +105,15 @@
     "free": "FREE",
     "autoSent": "These gifts will be automatically sent with your order"
   },
+  "promotions": {
+    "daysLeft": "{{count}} day left",
+    "daysLeft_plural": "{{count}} days left",
+    "hoursLeft": "{{count}} hour left",
+    "hoursLeft_plural": "{{count}} hours left",
+    "endsOn": "Ends on {{date}}",
+    "limitedOffer": "Limited offer",
+    "specialPromo": "Special promotion"
+  },
   "testimonials": {
     "title": "What our customers say",
     "subtitle": "Discover testimonials from satisfied professionals across Europe"
