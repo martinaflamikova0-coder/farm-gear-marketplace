@@ -35,6 +35,23 @@ const createShippingSchema = (t: (key: string) => string) => z.object({
 
 type PaymentMethod = 'bank_transfer' | 'paypal';
 
+// Extract a useful message from Supabase/PostgREST/Storage errors.
+// Goal: unblock debugging when the UI only shows a generic failure.
+const formatBackendError = (err: unknown) => {
+  if (!err) return '';
+
+  const anyErr = err as any;
+  const parts: string[] = [];
+
+  if (typeof anyErr.message === 'string' && anyErr.message.trim()) parts.push(anyErr.message.trim());
+  if (typeof anyErr.details === 'string' && anyErr.details.trim()) parts.push(anyErr.details.trim());
+  if (typeof anyErr.hint === 'string' && anyErr.hint.trim()) parts.push(`Hint: ${anyErr.hint.trim()}`);
+  if (typeof anyErr.code === 'string' && anyErr.code.trim()) parts.push(`Code: ${anyErr.code.trim()}`);
+  if (typeof anyErr.statusCode === 'number') parts.push(`HTTP ${anyErr.statusCode}`);
+
+  return parts.length ? parts.join(' | ') : '';
+};
+
 const Checkout = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
@@ -168,8 +185,8 @@ const Checkout = () => {
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) {
       toast({
-        title: t('checkout.errors.authRequired') || 'Connexion requise',
-        description: t('checkout.errors.authRequiredDescription') || 'Veuillez vous reconnecter pour finaliser votre commande.',
+        title: t('checkout.errors.authRequired', { defaultValue: 'Connexion requise' }),
+        description: t('checkout.errors.authRequiredDescription', { defaultValue: 'Veuillez vous reconnecter pour finaliser votre commande.' }),
         variant: 'destructive',
       });
       navigate(`/${currentLang}/auth`);
@@ -208,10 +225,11 @@ const Checkout = () => {
 
         if (uploadError) {
           console.error('Receipt upload error:', uploadError);
+          const backendMsg = formatBackendError(uploadError);
           toast({
             title: t('checkout.errors.uploadError'),
             // Show the backend-provided error message to unblock debugging in production.
-            description: `${t('checkout.errors.uploadErrorDescription')}${uploadError.message ? ` (${uploadError.message})` : ''}`,
+            description: `${t('checkout.errors.uploadErrorDescription')}${backendMsg ? ` (${backendMsg})` : ''}`,
             variant: 'destructive',
           });
           setIsLoading(false);
@@ -302,9 +320,10 @@ const Checkout = () => {
       });
     } catch (error) {
       console.error('Order error:', error);
+      const backendMsg = formatBackendError(error);
       toast({
         title: t('checkout.errors.orderError'),
-        description: `${t('checkout.errors.orderErrorDescription')}${(error as any)?.message ? ` (${(error as any).message})` : ''}`,
+        description: `${t('checkout.errors.orderErrorDescription')}${backendMsg ? ` (${backendMsg})` : ''}`,
         variant: 'destructive',
       });
     } finally {
