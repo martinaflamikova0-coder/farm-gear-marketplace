@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useCategoriesWithCounts, type CategoryWithCount } from '@/hooks/useCategories';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
-import logoEquiptrade from '@/assets/logo-equiptrade.png';
+import logoEkiptrade from '@/assets/logo-ekiptrade.png';
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
@@ -42,8 +42,8 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <img 
-                src={logoEquiptrade} 
-                alt="EquipTrade" 
+                src={logoEkiptrade} 
+                alt="EkipTrade" 
                 className="h-14 w-auto object-contain"
               />
             </div>
@@ -55,9 +55,9 @@ const Footer = () => {
                 <Phone className="h-4 w-4" />
                 01 23 45 67 89
               </a>
-              <a href="mailto:contact@equiptrade.com" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+              <a href="mailto:contact@ekiptrade.com" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                 <Mail className="h-4 w-4" />
-                contact@equiptrade.com
+                contact@ekiptrade.com
               </a>
               <div className="flex items-center gap-2 text-primary-foreground/70">
                 <MapPin className="h-4 w-4" />
@@ -148,7 +148,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-primary-foreground/60">
-            © {new Date().getFullYear()} EquipTrade. {t('footer.rights')}.
+            © {new Date().getFullYear()} EkipTrade. {t('footer.rights')}.
           </p>
         </div>
       </div>

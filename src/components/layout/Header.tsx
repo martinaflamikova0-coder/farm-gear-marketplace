@@ -9,7 +9,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import CartIcon from '@/components/cart/CartIcon';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import { useCart } from '@/contexts/CartContext';
-import logoEquiptrade from '@/assets/logo-equiptrade.png';
+import logoEkiptrade from '@/assets/logo-ekiptrade.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -78,12 +78,12 @@ const Header = () => {
           <Link
             to={getLocalizedLink('')}
             className="flex items-center gap-2 flex-shrink-0"
-            aria-label="EquipTrade"
+            aria-label="EkipTrade"
           >
             <div className="h-12 md:h-14 w-[160px] md:w-[200px] overflow-hidden flex items-center">
               <img
-                src={logoEquiptrade}
-                alt="EquipTrade"
+                src={logoEkiptrade}
+                alt="EkipTrade"
                 className="max-h-full max-w-full object-contain"
               />
             </div>

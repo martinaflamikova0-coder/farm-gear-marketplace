@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
-import logoEquiptrade from '@/assets/logo-equiptrade.png';
+import logoEkiptrade from '@/assets/logo-ekiptrade.png';
 
 const AdminLayout = () => {
   const { user, isAdmin, isLoading, signOut } = useAuth();
@@ -67,7 +67,7 @@ const AdminLayout = () => {
     <div className="min-h-screen bg-muted">
       {/* Mobile header */}
       <div className="lg:hidden bg-card border-b border-border p-4 flex items-center justify-between">
-        <img src={logoEquiptrade} alt="EquipTrade" className="h-10 w-auto" />
+        <img src={logoEkiptrade} alt="EkipTrade" className="h-10 w-auto" />
         <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(!sidebarOpen)}>
           {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
@@ -84,7 +84,7 @@ const AdminLayout = () => {
           <div className="flex flex-col h-full">
             {/* Logo */}
             <div className="p-6 border-b border-border hidden lg:block">
-              <img src={logoEquiptrade} alt="EquipTrade" className="h-12 w-auto" />
+              <img src={logoEkiptrade} alt="EkipTrade" className="h-12 w-auto" />
               <p className="text-xs text-muted-foreground mt-2">Administration</p>
             </div>
 

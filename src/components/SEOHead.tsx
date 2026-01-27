@@ -29,12 +29,12 @@ const SEOHead = ({
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
   
   // Base URL - in production this should come from env
-  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://equiptrade.com';
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://ekiptrade.com';
 
   useEffect(() => {
     const title = dynamicTitle || t(titleKey);
     const description = dynamicDescription || t(descriptionKey);
-    const fullTitle = `${title} | EquipTrade`;
+    const fullTitle = `${title} | EkipTrade`;
 
     // Set document title
     document.title = fullTitle;
@@ -84,7 +84,7 @@ const SEOHead = ({
     setMetaTag('meta[property="og:url"]', 'content', `${baseUrl}${location.pathname}`, { property: 'og:url' });
     setMetaTag('meta[property="og:image"]', 'content', ogImage.startsWith('http') ? ogImage : `${baseUrl}${ogImage}`, { property: 'og:image' });
     setMetaTag('meta[property="og:locale"]', 'content', getLocale(currentLang), { property: 'og:locale' });
-    setMetaTag('meta[property="og:site_name"]', 'content', 'EquipTrade', { property: 'og:site_name' });
+    setMetaTag('meta[property="og:site_name"]', 'content', 'EkipTrade', { property: 'og:site_name' });
 
     // Set Twitter Card tags
     setMetaTag('meta[name="twitter:card"]', 'content', 'summary_large_image', { name: 'twitter:card' });

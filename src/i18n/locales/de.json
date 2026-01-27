@@ -477,17 +477,17 @@
     },
     "checkout": {
       "title": "Zur Kasse",
-      "description": "Schließen Sie Ihren Kauf von Landmaschinen auf EquipTrade ab. Sichere Zahlung per Banküberweisung."
+      "description": "Schließen Sie Ihren Kauf von Landmaschinen auf EkipTrade ab. Sichere Zahlung per Banküberweisung."
     },
     "cart": {
       "title": "Mein Warenkorb",
-      "description": "Sehen Sie Ihren Warenkorb auf EquipTrade ein. Schließen Sie Ihre Bestellung sicher ab."
+      "description": "Sehen Sie Ihren Warenkorb auf EkipTrade ein. Schließen Sie Ihre Bestellung sicher ab."
     }
   },
   "pages": {
     "about": {
-      "title": "Über EquipTrade",
-      "intro1": "EquipTrade ist der führende Marktplatz für den Kauf und Verkauf von gebrauchten Land- und Industriemaschinen in Europa. Seit unserer Gründung verbinden wir Tausende von Fachleuten, um ihre Transaktionen zu erleichtern.",
+      "title": "Über EkipTrade",
+      "intro1": "EkipTrade ist der führende Marktplatz für den Kauf und Verkauf von gebrauchten Land- und Industriemaschinen in Europa. Seit unserer Gründung verbinden wir Tausende von Fachleuten, um ihre Transaktionen zu erleichtern.",
       "intro2": "Unsere Mission ist einfach: eine zuverlässige, transparente und effiziente Plattform zu bieten, die Landwirten, Händlern und Unternehmen hilft, die benötigte Ausrüstung zum besten Preis zu finden.",
       "valuesTitle": "Unsere Werte",
       "trust": "Vertrauen",
@@ -547,7 +547,7 @@
       "phoneValue": "+33 1 23 45 67 89",
       "phoneHours": "Montag bis Freitag, 9-18 Uhr",
       "email": "E-Mail",
-      "emailValue": "contact@equiptrade.com",
+      "emailValue": "contact@ekiptrade.com",
       "emailResponse": "Antwort innerhalb von 24h",
       "address": "Adresse",
       "addressValue": "123 Landwirtschaftsstraße",
@@ -572,17 +572,17 @@
       "title": "Nutzungsbedingungen",
       "lastUpdate": "Letzte Aktualisierung: Januar 2026",
       "section1Title": "1. Zweck",
-      "section1Content": "Diese Nutzungsbedingungen definieren die Bedingungen für die Nutzung der EquipTrade-Plattform sowie die Rechte und Pflichten der Benutzer.",
+      "section1Content": "Diese Nutzungsbedingungen definieren die Bedingungen für die Nutzung der EkipTrade-Plattform sowie die Rechte und Pflichten der Benutzer.",
       "section2Title": "2. Plattformzugang",
       "section2Content": "Der Zugang zur Plattform ist für Käufer kostenlos. Das Veröffentlichen von Anzeigen erfordert die Erstellung eines Verkäuferkontos. Der Benutzer verpflichtet sich, genaue Informationen anzugeben und diese aktuell zu halten.",
       "section3Title": "3. Anzeigen",
       "section3Content": "Verkäufer verpflichten sich, genaue und nicht irreführende Anzeigen zu veröffentlichen. Fotos müssen die angebotene Ausrüstung genau darstellen. Betrügerische Anzeigen werden entfernt und können zur Kontosperrung führen.",
       "section4Title": "4. Verantwortlichkeiten",
-      "section4Content": "EquipTrade handelt als Vermittler und kann nicht für Transaktionen zwischen Benutzern verantwortlich gemacht werden. Jeder Benutzer ist für die Überprüfung der Anzeigeninformationen und der Ausrüstungsqualität verantwortlich.",
+      "section4Content": "EkipTrade handelt als Vermittler und kann nicht für Transaktionen zwischen Benutzern verantwortlich gemacht werden. Jeder Benutzer ist für die Überprüfung der Anzeigeninformationen und der Ausrüstungsqualität verantwortlich.",
       "section5Title": "5. Geistiges Eigentum",
       "section5Content": "Alle Elemente der Plattform (Logos, Texte, Bilder) sind durch geistige Eigentumsrechte geschützt. Jede Vervielfältigung ohne Genehmigung ist verboten.",
       "section6Title": "6. Änderung der Bedingungen",
-      "section6Content": "EquipTrade behält sich das Recht vor, diese Bedingungen jederzeit zu ändern. Benutzer werden über wesentliche Änderungen informiert.",
+      "section6Content": "EkipTrade behält sich das Recht vor, diese Bedingungen jederzeit zu ändern. Benutzer werden über wesentliche Änderungen informiert.",
       "section7Title": "7. Kontakt",
       "section7Content": "Bei Fragen zu diesen Bedingungen können Sie uns kontaktieren unter:"
     },

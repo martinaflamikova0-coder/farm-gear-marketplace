@@ -477,17 +477,17 @@
     },
     "checkout": {
       "title": "Finalizar Pedido",
-      "description": "Complete su compra de maquinaria agrícola en EquipTrade. Pago seguro mediante transferencia bancaria."
+      "description": "Complete su compra de maquinaria agrícola en EkipTrade. Pago seguro mediante transferencia bancaria."
     },
     "cart": {
       "title": "Mi Carrito",
-      "description": "Consulte su carrito de compras en EquipTrade. Complete su pedido de maquinaria agrícola de forma segura."
+      "description": "Consulte su carrito de compras en EkipTrade. Complete su pedido de maquinaria agrícola de forma segura."
     }
   },
   "pages": {
     "about": {
-      "title": "Sobre EquipTrade",
-      "intro1": "EquipTrade es el marketplace líder para la compra y venta de maquinaria agrícola e industrial usada en Europa. Desde nuestra creación, conectamos a miles de profesionales para facilitar sus transacciones.",
+      "title": "Sobre EkipTrade",
+      "intro1": "EkipTrade es el marketplace líder para la compra y venta de maquinaria agrícola e industrial usada en Europa. Desde nuestra creación, conectamos a miles de profesionales para facilitar sus transacciones.",
       "intro2": "Nuestra misión es simple: ofrecer una plataforma fiable, transparente y eficiente para ayudar a agricultores, concesionarios y empresas a encontrar el equipo que necesitan al mejor precio.",
       "valuesTitle": "Nuestros valores",
       "trust": "Confianza",
@@ -547,7 +547,7 @@
       "phoneValue": "+33 1 23 45 67 89",
       "phoneHours": "Lunes a viernes, 9h-18h",
       "email": "Email",
-      "emailValue": "contact@equiptrade.com",
+      "emailValue": "contact@ekiptrade.com",
       "emailResponse": "Respuesta en 24h",
       "address": "Dirección",
       "addressValue": "123 Calle de la Agricultura",
@@ -572,17 +572,17 @@
       "title": "Términos de Uso",
       "lastUpdate": "Última actualización: Enero 2026",
       "section1Title": "1. Objeto",
-      "section1Content": "Estos Términos de Uso definen las condiciones de uso de la plataforma EquipTrade, así como los derechos y obligaciones de los usuarios.",
+      "section1Content": "Estos Términos de Uso definen las condiciones de uso de la plataforma EkipTrade, así como los derechos y obligaciones de los usuarios.",
       "section2Title": "2. Acceso a la plataforma",
       "section2Content": "El acceso a la plataforma es gratuito para los compradores. La publicación de anuncios requiere crear una cuenta de vendedor. El usuario se compromete a proporcionar información precisa y mantenerla actualizada.",
       "section3Title": "3. Anuncios",
       "section3Content": "Los vendedores se comprometen a publicar anuncios precisos y no engañosos. Las fotos deben representar fielmente el equipo ofrecido. Cualquier anuncio fraudulento será eliminado y puede resultar en la suspensión de la cuenta.",
       "section4Title": "4. Responsabilidades",
-      "section4Content": "EquipTrade actúa como intermediario y no puede ser responsable de las transacciones realizadas entre usuarios. Cada usuario es responsable de verificar la información del anuncio y la calidad del equipo.",
+      "section4Content": "EkipTrade actúa como intermediario y no puede ser responsable de las transacciones realizadas entre usuarios. Cada usuario es responsable de verificar la información del anuncio y la calidad del equipo.",
       "section5Title": "5. Propiedad intelectual",
       "section5Content": "Todos los elementos de la plataforma (logos, textos, imágenes) están protegidos por derechos de propiedad intelectual. Cualquier reproducción sin autorización está prohibida.",
       "section6Title": "6. Modificación de términos",
-      "section6Content": "EquipTrade se reserva el derecho de modificar estos Términos en cualquier momento. Los usuarios serán informados de cualquier modificación sustancial.",
+      "section6Content": "EkipTrade se reserva el derecho de modificar estos Términos en cualquier momento. Los usuarios serán informados de cualquier modificación sustancial.",
       "section7Title": "7. Contacto",
       "section7Content": "Para cualquier pregunta sobre estos Términos, puede contactarnos en:"
     },

@@ -477,17 +477,17 @@
     },
     "checkout": {
       "title": "Pagamento",
-      "description": "Completa il tuo acquisto di macchine agricole su EquipTrade. Pagamento sicuro tramite bonifico bancario."
+      "description": "Completa il tuo acquisto di macchine agricole su EkipTrade. Pagamento sicuro tramite bonifico bancario."
     },
     "cart": {
       "title": "Il Mio Carrello",
-      "description": "Visualizza il tuo carrello su EquipTrade. Completa il tuo ordine di macchine agricole in sicurezza."
+      "description": "Visualizza il tuo carrello su EkipTrade. Completa il tuo ordine di macchine agricole in sicurezza."
     }
   },
   "pages": {
     "about": {
-      "title": "Chi è EquipTrade",
-      "intro1": "EquipTrade è il marketplace leader per l'acquisto e la vendita di macchine agricole e industriali usate in Europa. Dalla nostra creazione, connettiamo migliaia di professionisti per facilitare le loro transazioni.",
+      "title": "Chi è EkipTrade",
+      "intro1": "EkipTrade è il marketplace leader per l'acquisto e la vendita di macchine agricole e industriali usate in Europa. Dalla nostra creazione, connettiamo migliaia di professionisti per facilitare le loro transazioni.",
       "intro2": "La nostra missione è semplice: offrire una piattaforma affidabile, trasparente ed efficiente per aiutare agricoltori, concessionari e aziende a trovare l'attrezzatura di cui hanno bisogno al miglior prezzo.",
       "valuesTitle": "I nostri valori",
       "trust": "Fiducia",
@@ -547,7 +547,7 @@
       "phoneValue": "+33 1 23 45 67 89",
       "phoneHours": "Lunedì a venerdì, 9-18",
       "email": "Email",
-      "emailValue": "contact@equiptrade.com",
+      "emailValue": "contact@ekiptrade.com",
       "emailResponse": "Risposta entro 24h",
       "address": "Indirizzo",
       "addressValue": "123 Via dell'Agricoltura",
@@ -572,17 +572,17 @@
       "title": "Termini di Utilizzo",
       "lastUpdate": "Ultimo aggiornamento: Gennaio 2026",
       "section1Title": "1. Oggetto",
-      "section1Content": "I presenti Termini di Utilizzo definiscono le condizioni di utilizzo della piattaforma EquipTrade, nonché i diritti e gli obblighi degli utenti.",
+      "section1Content": "I presenti Termini di Utilizzo definiscono le condizioni di utilizzo della piattaforma EkipTrade, nonché i diritti e gli obblighi degli utenti.",
       "section2Title": "2. Accesso alla piattaforma",
       "section2Content": "L'accesso alla piattaforma è gratuito per gli acquirenti. La pubblicazione di annunci richiede la creazione di un account venditore. L'utente si impegna a fornire informazioni accurate e a mantenerle aggiornate.",
       "section3Title": "3. Annunci",
       "section3Content": "I venditori si impegnano a pubblicare annunci accurati e non fuorvianti. Le foto devono rappresentare fedelmente l'attrezzatura offerta. Qualsiasi annuncio fraudolento verrà rimosso e potrebbe comportare la sospensione dell'account.",
       "section4Title": "4. Responsabilità",
-      "section4Content": "EquipTrade agisce come intermediario e non può essere ritenuta responsabile per le transazioni effettuate tra utenti. Ogni utente è responsabile della verifica delle informazioni dell'annuncio e della qualità dell'attrezzatura.",
+      "section4Content": "EkipTrade agisce come intermediario e non può essere ritenuta responsabile per le transazioni effettuate tra utenti. Ogni utente è responsabile della verifica delle informazioni dell'annuncio e della qualità dell'attrezzatura.",
       "section5Title": "5. Proprietà intellettuale",
       "section5Content": "Tutti gli elementi della piattaforma (loghi, testi, immagini) sono protetti dalla legge sulla proprietà intellettuale. Qualsiasi riproduzione senza autorizzazione è vietata.",
       "section6Title": "6. Modifica dei termini",
-      "section6Content": "EquipTrade si riserva il diritto di modificare questi Termini in qualsiasi momento. Gli utenti saranno informati di qualsiasi modifica sostanziale.",
+      "section6Content": "EkipTrade si riserva il diritto di modificare questi Termini in qualsiasi momento. Gli utenti saranno informati di qualsiasi modifica sostanziale.",
       "section7Title": "7. Contatto",
       "section7Content": "Per qualsiasi domanda su questi Termini, puoi contattarci a:"
     },
