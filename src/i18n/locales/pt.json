@@ -104,6 +104,15 @@
     "free": "GRÁTIS",
     "autoSent": "Estes presentes serão automaticamente enviados com a sua encomenda"
   },
+  "promotions": {
+    "daysLeft": "{{count}} dia restante",
+    "daysLeft_plural": "{{count}} dias restantes",
+    "hoursLeft": "{{count}} hora restante",
+    "hoursLeft_plural": "{{count}} horas restantes",
+    "endsOn": "Termina a {{date}}",
+    "limitedOffer": "Oferta limitada",
+    "specialPromo": "Promoção especial"
+  },
   "testimonials": {
     "title": "O que dizem os nossos clientes",
     "subtitle": "Descubra testemunhos de profissionais satisfeitos em toda a Europa"

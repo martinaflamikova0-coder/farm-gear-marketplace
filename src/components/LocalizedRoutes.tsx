@@ -29,6 +29,7 @@ import AdminBrands from '@/pages/admin/AdminBrands';
 import AdminBankAccounts from '@/pages/admin/AdminBankAccounts';
 import AdminCustomers from '@/pages/admin/AdminCustomers';
 import AdminPaypalSettings from '@/pages/admin/AdminPaypalSettings';
+import AdminPromotions from '@/pages/admin/AdminPromotions';
 import { SUPPORTED_LANGUAGES, getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 
 // Wrapper component that syncs URL language with i18n
@@ -163,6 +164,7 @@ const LocalizedRoutes = () => {
         <Route path="customers" element={<AdminCustomers />} />
         <Route path="bank-accounts" element={<AdminBankAccounts />} />
         <Route path="paypal" element={<AdminPaypalSettings />} />
+        <Route path="promotions" element={<AdminPromotions />} />
       </Route>
 
       {/* Catch-all 404 */}

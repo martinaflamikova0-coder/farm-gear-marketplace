@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { MapPin, Clock, Calendar, CreditCard, AlertTriangle, Star, Percent } from 'lucide-react';
+import { MapPin, Clock, Calendar, CreditCard, AlertTriangle, Star, Percent, Sparkles } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -11,6 +11,7 @@ import AddToCartButton from '@/components/cart/AddToCartButton';
 import { CART_MAX_PRICE } from '@/contexts/CartContext';
 import { useProductGifts } from '@/hooks/useProductGifts';
 import ProductGiftsBadge from '@/components/products/ProductGiftsBadge';
+import { useActivePromotions, getBestPromotion, calculatePromotionalPrice, type Promotion } from '@/hooks/usePromotions';
 
 // Generate consistent fake rating based on product ID (seeded random)
 const generateRating = (productId: string) => {
@@ -73,6 +74,7 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
   const { translateCategory } = useTranslatedCategory();
+  const { data: activePromotions } = useActivePromotions();
   
   // Get translated content
   const translatedTitle = getTranslatedTitle(product, currentLang);
@@ -126,9 +128,27 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   const productLink = `/${currentLang}/${detailSlug}/${product.id}`;
   
   const imageUrl = product.images?.[0] || '/placeholder.svg';
-  const price = Number(product.price) || 0;
+  const basePrice = Number(product.price) || 0;
   const originalPrice = product.original_price ? Number(product.original_price) : null;
   const storedDiscountPercentage = product.discount_percentage || 0;
+  
+  // Check for active time-limited promotion
+  const activePromotion = activePromotions 
+    ? getBestPromotion(activePromotions, { 
+        id: product.id, 
+        category: product.category, 
+        price: basePrice 
+      })
+    : null;
+  
+  // Calculate promotional price if applicable
+  const hasActivePromotion = !!activePromotion;
+  const promotionalPrice = hasActivePromotion 
+    ? calculatePromotionalPrice(basePrice, activePromotion)
+    : null;
+  
+  // Final display price (promotional price takes precedence)
+  const price = promotionalPrice !== null ? promotionalPrice : basePrice;
   
   // Automatic discount calculation: 20-35% based on price tier (if no discount is set)
   const calculateAutoDiscount = (currentPrice: number): number => {
@@ -139,21 +159,27 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
     return 20;
   };
   
-  // Determine effective discount: use stored value if available, otherwise calculate automatically
-  const effectiveDiscountPercentage = storedDiscountPercentage > 0 
-    ? storedDiscountPercentage 
-    : (originalPrice && originalPrice > price) 
-      ? Math.round((1 - price / originalPrice) * 100) 
-      : calculateAutoDiscount(price);
+  // Determine effective discount: promotional discount takes precedence
+  const effectiveDiscountPercentage = hasActivePromotion && activePromotion.discount_type === 'percentage'
+    ? activePromotion.discount_value
+    : storedDiscountPercentage > 0 
+      ? storedDiscountPercentage 
+      : (originalPrice && originalPrice > basePrice) 
+        ? Math.round((1 - basePrice / originalPrice) * 100) 
+        : calculateAutoDiscount(basePrice);
   
   // Calculate display original price
-  const displayOriginalPrice = originalPrice && originalPrice > price 
-    ? originalPrice 
-    : Math.round(price / (1 - effectiveDiscountPercentage / 100));
+  const displayOriginalPrice = hasActivePromotion 
+    ? basePrice
+    : originalPrice && originalPrice > basePrice 
+      ? originalPrice 
+      : Math.round(basePrice / (1 - effectiveDiscountPercentage / 100));
   
-  // Always show discount (automatic system)
+  // Always show discount (automatic system or promotion)
   const hasDiscount = true;
-  const displayDiscountPercentage = effectiveDiscountPercentage;
+  const displayDiscountPercentage = hasActivePromotion && activePromotion.discount_type === 'percentage'
+    ? activePromotion.discount_value
+    : effectiveDiscountPercentage;
   const priceHT = Math.round(price / 1.2); // Approximate HT from TTC
   
   // Financing available for products >= 5000€
@@ -197,7 +223,13 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                   <Star className="h-3 w-3 fill-current" />
                 </Badge>
               )}
-              {hasDiscount && displayDiscountPercentage > 0 && (
+              {hasActivePromotion && (
+                <Badge className="absolute top-2 left-2 bg-gradient-to-r from-accent to-primary text-primary-foreground gap-1 animate-pulse shadow-lg">
+                  <Sparkles className="h-3 w-3" />
+                  -{activePromotion.discount_type === 'percentage' ? `${activePromotion.discount_value}%` : `${activePromotion.discount_value}€`}
+                </Badge>
+              )}
+              {!hasActivePromotion && hasDiscount && displayDiscountPercentage > 0 && (
                 <Badge className="absolute top-2 left-2 bg-destructive text-destructive-foreground gap-1">
                   <Percent className="h-3 w-3" />
                   -{displayDiscountPercentage}%
@@ -307,7 +339,13 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
               {t('product.outOfStock')}
             </Badge>
           )}
-          {hasDiscount && displayDiscountPercentage > 0 && (
+          {hasActivePromotion && (
+            <Badge className="absolute top-2 left-2 bg-gradient-to-r from-accent to-primary text-primary-foreground gap-1 animate-pulse shadow-lg">
+              <Sparkles className="h-3 w-3" />
+              -{activePromotion.discount_type === 'percentage' ? `${activePromotion.discount_value}%` : `${activePromotion.discount_value}€`}
+            </Badge>
+          )}
+          {!hasActivePromotion && hasDiscount && displayDiscountPercentage > 0 && (
             <Badge className="absolute top-2 left-2 bg-destructive text-destructive-foreground gap-1">
               <Percent className="h-3 w-3" />
               -{displayDiscountPercentage}%
