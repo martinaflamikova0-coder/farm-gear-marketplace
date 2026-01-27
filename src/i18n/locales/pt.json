@@ -450,6 +450,23 @@
       "countryRequired": "País obrigatório"
     }
   },
+  "shipping": {
+    "policyTitle": "Envio grátis até 150€",
+    "policyShort": "Os custos adicionais serão comunicados após verificação do pagamento.",
+    "policyFull": "Oferecemos até 150€ em custos de envio em todas as encomendas. Se o custo de entrega ultrapassar este valor, o suplemento será comunicado após a verificação do pagamento, antes do envio.",
+    "costLabel": "Custos de envio",
+    "covered": "cobertos",
+    "supplement": "Suplemento",
+    "supplementNotice": "É necessário um suplemento de envio de {{amount}}€ para esta encomenda.",
+    "noCostYet": "Os custos de envio serão calculados após verificação do pagamento.",
+    "adminCostLabel": "Custo real de envio",
+    "adminCostPlaceholder": "Ex: 250",
+    "adminCostSave": "Guardar",
+    "adminCostNotify": "Notificar cliente",
+    "adminCostSaved": "Custos guardados",
+    "adminCostNotified": "Cliente notificado por email",
+    "adminCostError": "Erro ao guardar"
+  },
   "seo": {
     "home": {
       "title": "Marketplace de Máquinas Agrícolas Usadas",

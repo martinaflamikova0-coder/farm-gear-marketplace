@@ -450,6 +450,23 @@
       "countryRequired": "Land erforderlich"
     }
   },
+  "shipping": {
+    "policyTitle": "Kostenloser Versand bis 150€",
+    "policyShort": "Eventuelle Zusatzkosten werden nach Zahlungsüberprüfung mitgeteilt.",
+    "policyFull": "Wir übernehmen bis zu 150€ Versandkosten bei allen Bestellungen. Übersteigen die Lieferkosten diesen Betrag, wird Ihnen der Aufpreis nach Zahlungsüberprüfung vor dem Versand mitgeteilt.",
+    "costLabel": "Versandkosten",
+    "covered": "übernommen",
+    "supplement": "Aufpreis",
+    "supplementNotice": "Für diese Bestellung ist ein zusätzlicher Versandkostenaufpreis von {{amount}}€ erforderlich.",
+    "noCostYet": "Die Versandkosten werden nach Zahlungsüberprüfung berechnet.",
+    "adminCostLabel": "Tatsächliche Versandkosten",
+    "adminCostPlaceholder": "z.B. 250",
+    "adminCostSave": "Speichern",
+    "adminCostNotify": "Kunde benachrichtigen",
+    "adminCostSaved": "Kosten gespeichert",
+    "adminCostNotified": "Kunde per E-Mail benachrichtigt",
+    "adminCostError": "Fehler beim Speichern"
+  },
   "seo": {
     "home": {
       "title": "Marktplatz für Gebrauchte Landmaschinen",

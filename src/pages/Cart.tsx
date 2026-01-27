@@ -10,6 +10,7 @@ import { Separator } from '@/components/ui/separator';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useCart } from '@/contexts/CartContext';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
+import ShippingPolicyBanner from '@/components/checkout/ShippingPolicyBanner';
 
 const Cart = () => {
   const { t, i18n } = useTranslation();
@@ -219,6 +220,8 @@ const Cart = () => {
                       <span className="text-muted-foreground">{t('cart.shipping')}</span>
                       <span className="text-success">{t('cart.freeShipping')}</span>
                     </div>
+                    <Separator />
+                    <ShippingPolicyBanner variant="compact" />
                     <Separator />
                     <div className="flex justify-between font-semibold text-lg">
                       <span>{t('cart.total')}</span>

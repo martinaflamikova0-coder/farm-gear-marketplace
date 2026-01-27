@@ -472,6 +472,23 @@
       "countryRequired": "Pays requis"
     }
   },
+  "shipping": {
+    "policyTitle": "Livraison offerte jusqu'à 150€",
+    "policyShort": "Le supplément éventuel vous sera communiqué après vérification du paiement.",
+    "policyFull": "Nous offrons jusqu'à 150€ de frais de port sur toutes vos commandes. Si le coût de la livraison dépasse ce montant, le supplément vous sera communiqué après vérification de votre paiement, avant l'expédition.",
+    "costLabel": "Frais de port",
+    "covered": "offerts",
+    "supplement": "Supplément à payer",
+    "supplementNotice": "Un supplément de frais de port de {{amount}}€ est à régler pour cette commande.",
+    "noCostYet": "Les frais de port seront calculés après vérification du paiement.",
+    "adminCostLabel": "Frais de transport réels",
+    "adminCostPlaceholder": "Ex: 250",
+    "adminCostSave": "Enregistrer",
+    "adminCostNotify": "Notifier le client",
+    "adminCostSaved": "Frais enregistrés",
+    "adminCostNotified": "Client notifié par email",
+    "adminCostError": "Erreur lors de l'enregistrement"
+  },
   "seo": {
     "home": {
       "title": "Marketplace de Matériel Agricole Neuf et d'Occasion",
