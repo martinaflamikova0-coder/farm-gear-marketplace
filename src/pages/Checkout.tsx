@@ -163,6 +163,19 @@ const Checkout = () => {
   const handleConfirmOrder = async () => {
     if (!user) return;
 
+    // Extra safety: ensure we have a valid authenticated session before touching storage.
+    // (If the session is missing/expired, storage upload will fail on a private bucket.)
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) {
+      toast({
+        title: t('checkout.errors.authRequired') || 'Connexion requise',
+        description: t('checkout.errors.authRequiredDescription') || 'Veuillez vous reconnecter pour finaliser votre commande.',
+        variant: 'destructive',
+      });
+      navigate(`/${currentLang}/auth`);
+      return;
+    }
+
     // Validate receipt is uploaded for bank transfer
     if (paymentMethod === 'bank_transfer' && !receiptFile) {
       toast({
@@ -181,18 +194,24 @@ const Checkout = () => {
       let receiptPath: string | null = null;
       
       if (receiptFile) {
-        const fileExt = receiptFile.name.split('.').pop();
+        const fileExt = receiptFile.name.split('.').pop() || 'png';
         const tempFileName = `${user.id}/temp-${Date.now()}-receipt.${fileExt}`;
 
         const { data: uploadData, error: uploadError } = await supabase.storage
           .from('payment-receipts')
-          .upload(tempFileName, receiptFile, { upsert: true });
+          .upload(tempFileName, receiptFile, {
+            // Avoid upsert here to keep RLS simple (INSERT only).
+            upsert: false,
+            contentType: receiptFile.type || undefined,
+            cacheControl: '3600',
+          });
 
         if (uploadError) {
           console.error('Receipt upload error:', uploadError);
           toast({
             title: t('checkout.errors.uploadError'),
-            description: t('checkout.errors.uploadErrorDescription'),
+            // Show the backend-provided error message to unblock debugging in production.
+            description: `${t('checkout.errors.uploadErrorDescription')}${uploadError.message ? ` (${uploadError.message})` : ''}`,
             variant: 'destructive',
           });
           setIsLoading(false);
@@ -285,7 +304,7 @@ const Checkout = () => {
       console.error('Order error:', error);
       toast({
         title: t('checkout.errors.orderError'),
-        description: t('checkout.errors.orderErrorDescription'),
+        description: `${t('checkout.errors.orderErrorDescription')}${(error as any)?.message ? ` (${(error as any).message})` : ''}`,
         variant: 'destructive',
       });
     } finally {
