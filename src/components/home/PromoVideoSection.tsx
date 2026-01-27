@@ -31,13 +31,16 @@ const PromoVideoSection = () => {
           <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-card">
             <video
               ref={videoRef}
-              src="/videos/promo-video.mov"
               className="w-full h-auto max-h-[300px] md:max-h-[400px] object-cover"
               autoPlay
               loop
               muted
               playsInline
+              preload="auto"
             >
+              {/* MP4 for broad compatibility, MOV as fallback for Safari */}
+              <source src="/videos/promo-video.mp4" type="video/mp4" />
+              <source src="/videos/promo-video.mov" type="video/quicktime" />
               Your browser does not support the video tag.
             </video>
           </div>
