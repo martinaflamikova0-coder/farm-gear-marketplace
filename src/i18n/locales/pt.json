@@ -324,6 +324,7 @@
     "terms": "Termos de uso",
     "privacy": "Política de privacidade",
     "cookies": "Cookies",
+    "returns": "Devoluções e reembolsos",
     "rights": "Todos os direitos reservados"
   },
 "errors": {
@@ -642,5 +643,136 @@
     "es": "Español",
     "it": "Italiano",
     "pt": "Português"
+  },
+  "returns": {
+    "seo": {
+      "title": "Política de devoluções e reembolsos",
+      "description": "Conheça a nossa política de devoluções e reembolsos para equipamentos agrícolas. Direito de retratação, condições de devolução, custos de envio e processo de reembolso."
+    },
+    "title": "Devoluções e reembolsos",
+    "subtitle": "Estamos comprometidos com a sua satisfação. Descubra a nossa política de devoluções e reembolsos para uma experiência de compra sem preocupações.",
+    "importantNotice": {
+      "title": "Informação importante",
+      "description": "Como vendedor profissional de equipamentos agrícolas e industriais, cumprimos a legislação europeia de proteção ao consumidor. Por favor, leia atentamente esta política antes de efetuar uma compra."
+    },
+    "withdrawal": {
+      "title": "Direito de retratação",
+      "intro": "De acordo com o direito europeu do consumidor (Diretiva 2011/83/UE), tem o direito de desistir da sua compra dentro de um período especificado sem apresentar qualquer razão.",
+      "period": {
+        "title": "Período de 14 dias",
+        "description": "Dispõe de 14 dias de calendário a partir da data de receção dos bens para exercer o seu direito de retratação. Para exercer este direito, deve notificar-nos da sua decisão por email ou correio antes do prazo expirar."
+      },
+      "eligible": {
+        "title": "Produtos elegíveis",
+        "item1": "Equipamentos novos na embalagem original",
+        "item2": "Equipamentos usados ainda não iniciados ou testados pelo comprador",
+        "item3": "Acessórios e peças na embalagem original",
+        "item4": "Equipamentos que não foram modificados ou personalizados"
+      },
+      "excluded": {
+        "title": "Exclusões",
+        "item1": "Equipamentos feitos segundo especificações do cliente ou claramente personalizados",
+        "item2": "Bens que se deterioram rapidamente ou têm prazo de validade curto",
+        "item3": "Bens selados não adequados para devolução por razões de saúde ou higiene",
+        "item4": "Equipamentos iniciados, usados ou danificados após a entrega"
+      }
+    },
+    "process": {
+      "title": "Processo de devolução",
+      "step1": {
+        "title": "Contacte o nosso serviço ao cliente",
+        "description": "Envie um pedido de devolução por email para retours@ekiptrade.com ou por correio. Inclua o número do pedido, o motivo da devolução e os seus dados de contacto."
+      },
+      "step2": {
+        "title": "Receba a autorização de devolução",
+        "description": "A nossa equipa analisará o seu pedido e enviar-lhe-á um número de autorização de devolução (RMA) dentro de 48 horas úteis, juntamente com instruções detalhadas."
+      },
+      "step3": {
+        "title": "Prepare e envie o equipamento",
+        "description": "Embale cuidadosamente o equipamento na embalagem original, se possível. Afixe claramente o número RMA na embalagem e envie a mercadoria para o endereço indicado."
+      },
+      "step4": {
+        "title": "Inspeção e processamento do reembolso",
+        "description": "Após a receção, inspecionaremos o equipamento. Se tudo estiver em ordem, o reembolso será processado no prazo de 14 dias após a receção da devolução."
+      }
+    },
+    "conditions": {
+      "title": "Condições de devolução",
+      "intro": "Para serem aceites, as devoluções devem cumprir as seguintes condições:",
+      "item1": "O equipamento deve ser devolvido no prazo de 14 dias após a obtenção do número RMA",
+      "item2": "Deve estar nas condições originais, não utilizado e não danificado",
+      "item3": "A embalagem original deve estar intacta e completa (acessórios, documentação, etc.)",
+      "item4": "O número RMA deve estar claramente visível na embalagem",
+      "item5": "Todas as etiquetas de identificação e selos devem estar intactos",
+      "warning": {
+        "title": "Depreciação",
+        "description": "Se o equipamento devolvido apresentar sinais de manuseamento além do necessário para estabelecer a sua natureza, características e funcionamento, pode ser deduzida uma depreciação do valor do reembolso."
+      }
+    },
+    "shipping": {
+      "title": "Custos de envio de devolução",
+      "intro": "A responsabilidade pelos custos de envio de devolução depende do motivo:",
+      "withdrawal": {
+        "title": "Retratação (mudança de ideias)",
+        "description": "Os custos de envio de devolução são da responsabilidade do comprador. Recomendamos utilizar um serviço de envio rastreado e segurado dado o valor do equipamento."
+      },
+      "defective": {
+        "title": "Produto defeituoso ou não conforme",
+        "description": "Se o produto for defeituoso ou não corresponder à descrição, os custos de devolução são cobertos pela EkipTrade. Organizaremos a recolha ou reembolsaremos os custos de envio."
+      },
+      "note": {
+        "title": "Nota:",
+        "description": "Para equipamentos grandes ou pesados, contacte-nos antes do envio para organizar uma logística adequada."
+      }
+    },
+    "refund": {
+      "title": "Condições de reembolso",
+      "intro": "Uma vez validada a devolução, o reembolso será processado de acordo com as seguintes condições:",
+      "timeline": {
+        "title": "Prazo de processamento",
+        "description": "Reembolso no prazo de 14 dias após a receção do equipamento devolvido, ou a partir da data do comprovativo de envio, se anterior."
+      },
+      "method": {
+        "title": "Método de reembolso",
+        "description": "Reembolso através do mesmo método de pagamento utilizado na compra original (transferência bancária, PayPal, etc.)."
+      },
+      "deduction": {
+        "title": "Possíveis deduções",
+        "description": "Os custos de envio iniciais só serão reembolsados se a devolução se dever a um erro nosso ou a um produto defeituoso. Pode ser deduzida uma depreciação em caso de equipamento danificado ou incompleto."
+      }
+    },
+    "warranty": {
+      "title": "Garantia legal",
+      "intro": "Além do direito de retratação, beneficia das garantias legais previstas pelo direito europeu:",
+      "legal": {
+        "title": "Garantia de conformidade",
+        "description": "Válida por 2 anos a partir da entrega para consumidores. O produto deve estar conforme com o contrato de venda e ser adequado ao uso pretendido."
+      },
+      "hidden": {
+        "title": "Defeitos ocultos",
+        "description": "Pode solicitar a resolução da venda no prazo de 2 anos após a descoberta de um defeito oculto que torne o produto inadequado para uso."
+      },
+      "options": "Ao abrigo destas garantias, pode escolher entre:",
+      "option1": "Reparação ou substituição do equipamento",
+      "option2": "Redução do preço se a reparação não for possível",
+      "option3": "Reembolso total se o defeito for significativo"
+    },
+    "contact": {
+      "title": "Contacte-nos",
+      "intro": "Para qualquer questão sobre devoluções ou reembolsos, o nosso serviço ao cliente está à sua disposição:",
+      "email": {
+        "title": "Por email"
+      },
+      "phone": {
+        "title": "Por telefone"
+      },
+      "hours": "Segunda a sexta, das 9h às 18h (hora da Europa Central)",
+      "include": "Para uma resposta rápida, inclua na sua mensagem:",
+      "include1": "O seu número de pedido",
+      "include2": "A data de compra",
+      "include3": "Uma descrição detalhada do problema",
+      "include4": "Fotos, se aplicável (para equipamentos defeituosos ou danificados)"
+    },
+    "lastUpdated": "Última atualização: Janeiro 2026"
   }
 }

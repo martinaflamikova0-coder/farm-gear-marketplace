@@ -324,6 +324,7 @@
     "terms": "Términos de uso",
     "privacy": "Política de privacidad",
     "cookies": "Cookies",
+    "returns": "Devoluciones y reembolsos",
     "rights": "Todos los derechos reservados"
   },
 "errors": {
@@ -642,5 +643,136 @@
     "es": "Español",
     "it": "Italiano",
     "pt": "Português"
+  },
+  "returns": {
+    "seo": {
+      "title": "Política de devoluciones y reembolsos",
+      "description": "Conozca nuestra política de devoluciones y reembolsos para equipos agrícolas. Derecho de desistimiento, condiciones de devolución, gastos de envío y proceso de reembolso."
+    },
+    "title": "Devoluciones y reembolsos",
+    "subtitle": "Estamos comprometidos con su satisfacción. Descubra nuestra política de devoluciones y reembolsos para una experiencia de compra sin preocupaciones.",
+    "importantNotice": {
+      "title": "Información importante",
+      "description": "Como vendedor profesional de equipos agrícolas e industriales, cumplimos con la legislación europea de protección al consumidor. Por favor, lea atentamente esta política antes de realizar una compra."
+    },
+    "withdrawal": {
+      "title": "Derecho de desistimiento",
+      "intro": "De conformidad con el derecho europeo del consumidor (Directiva 2011/83/UE), tiene derecho a desistir de su compra en un plazo determinado sin dar ninguna razón.",
+      "period": {
+        "title": "Plazo de 14 días",
+        "description": "Dispone de 14 días naturales desde la recepción del producto para ejercer su derecho de desistimiento. Para ejercer este derecho, debe notificarnos su decisión por correo electrónico o postal antes de que expire el plazo."
+      },
+      "eligible": {
+        "title": "Productos elegibles",
+        "item1": "Equipos nuevos en su embalaje original",
+        "item2": "Equipos usados no puestos en funcionamiento ni probados por el comprador",
+        "item3": "Accesorios y piezas en su embalaje original",
+        "item4": "Equipos que no hayan sido modificados o personalizados"
+      },
+      "excluded": {
+        "title": "Exclusiones",
+        "item1": "Equipos fabricados según especificaciones del cliente o claramente personalizados",
+        "item2": "Productos que se deterioran rápidamente o tienen una vida útil corta",
+        "item3": "Productos sellados que no pueden devolverse por razones de salud o higiene",
+        "item4": "Equipos que hayan sido puestos en funcionamiento, usados o dañados después de la entrega"
+      }
+    },
+    "process": {
+      "title": "Proceso de devolución",
+      "step1": {
+        "title": "Contacte con nuestro servicio de atención al cliente",
+        "description": "Envíe una solicitud de devolución por correo electrónico a retours@ekiptrade.com o por correo postal. Incluya su número de pedido, el motivo de la devolución y sus datos de contacto."
+      },
+      "step2": {
+        "title": "Reciba la autorización de devolución",
+        "description": "Nuestro equipo revisará su solicitud y le enviará un número de autorización de devolución (RMA) en un plazo de 48 horas laborables, junto con instrucciones detalladas."
+      },
+      "step3": {
+        "title": "Prepare y envíe el equipo",
+        "description": "Embale cuidadosamente el equipo en su embalaje original si es posible. Coloque claramente el número RMA en el paquete y envíe la mercancía a la dirección indicada."
+      },
+      "step4": {
+        "title": "Inspección y procesamiento del reembolso",
+        "description": "Al recibirlo, inspeccionaremos el equipo. Si todo está en orden, su reembolso se procesará en un plazo de 14 días desde la recepción de la devolución."
+      }
+    },
+    "conditions": {
+      "title": "Condiciones de devolución",
+      "intro": "Para ser aceptadas, las devoluciones deben cumplir las siguientes condiciones:",
+      "item1": "El equipo debe devolverse en un plazo de 14 días desde la obtención del número RMA",
+      "item2": "Debe estar en su estado original, sin usar y sin daños",
+      "item3": "El embalaje original debe estar intacto y completo (accesorios, documentación, etc.)",
+      "item4": "El número RMA debe ser claramente visible en el paquete",
+      "item5": "Todas las etiquetas de identificación y precintos deben estar intactos",
+      "warning": {
+        "title": "Depreciación",
+        "description": "Si el equipo devuelto muestra signos de manipulación más allá de lo necesario para establecer su naturaleza, características y funcionamiento, se puede deducir una depreciación del importe del reembolso."
+      }
+    },
+    "shipping": {
+      "title": "Gastos de envío de devolución",
+      "intro": "La responsabilidad de los gastos de envío de devolución depende del motivo:",
+      "withdrawal": {
+        "title": "Desistimiento (cambio de opinión)",
+        "description": "Los gastos de envío de devolución corren a cargo del comprador. Recomendamos utilizar un servicio de envío con seguimiento y seguro dado el valor del equipo."
+      },
+      "defective": {
+        "title": "Producto defectuoso o no conforme",
+        "description": "Si el producto es defectuoso o no coincide con la descripción, EkipTrade cubre los gastos de envío de devolución. Organizaremos la recogida o le reembolsaremos los gastos de envío."
+      },
+      "note": {
+        "title": "Nota:",
+        "description": "Para equipos grandes o pesados, contáctenos antes del envío para organizar una logística adecuada."
+      }
+    },
+    "refund": {
+      "title": "Condiciones de reembolso",
+      "intro": "Una vez validada la devolución, su reembolso se procesará según las siguientes condiciones:",
+      "timeline": {
+        "title": "Plazo de procesamiento",
+        "description": "Reembolso en un plazo de 14 días desde la recepción del equipo devuelto, o desde la fecha del comprobante de envío si es anterior."
+      },
+      "method": {
+        "title": "Método de reembolso",
+        "description": "Reembolso mediante el mismo método de pago utilizado para la compra original (transferencia bancaria, PayPal, etc.)."
+      },
+      "deduction": {
+        "title": "Posibles deducciones",
+        "description": "Los gastos de envío iniciales solo se reembolsarán si la devolución se debe a un error nuestro o a un producto defectuoso. Se puede deducir una depreciación en caso de equipo dañado o incompleto."
+      }
+    },
+    "warranty": {
+      "title": "Garantía legal",
+      "intro": "Además del derecho de desistimiento, usted se beneficia de las garantías legales según el derecho europeo:",
+      "legal": {
+        "title": "Garantía de conformidad",
+        "description": "Válida durante 2 años desde la entrega para consumidores. El producto debe ser conforme al contrato de venta y apto para el uso previsto."
+      },
+      "hidden": {
+        "title": "Vicios ocultos",
+        "description": "Puede solicitar la resolución de la venta en un plazo de 2 años desde el descubrimiento de un vicio oculto que haga el producto inadecuado para su uso."
+      },
+      "options": "Bajo estas garantías, puede elegir entre:",
+      "option1": "Reparación o sustitución del equipo",
+      "option2": "Reducción del precio si la reparación no es posible",
+      "option3": "Reembolso completo si el defecto es significativo"
+    },
+    "contact": {
+      "title": "Contáctenos",
+      "intro": "Para cualquier pregunta sobre devoluciones o reembolsos, nuestro servicio de atención al cliente está a su disposición:",
+      "email": {
+        "title": "Por correo electrónico"
+      },
+      "phone": {
+        "title": "Por teléfono"
+      },
+      "hours": "De lunes a viernes, de 9h a 18h (hora central europea)",
+      "include": "Para una respuesta rápida, incluya en su mensaje:",
+      "include1": "Su número de pedido",
+      "include2": "La fecha de compra",
+      "include3": "Una descripción detallada del problema",
+      "include4": "Fotos si corresponde (para equipos defectuosos o dañados)"
+    },
+    "lastUpdated": "Última actualización: Enero 2026"
   }
 }

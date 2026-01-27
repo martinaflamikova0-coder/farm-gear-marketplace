@@ -142,6 +142,11 @@ const Footer = () => {
                   {t('footer.cookies')}
                 </Link>
               </li>
+              <li>
+                <Link to={getLocalizedLink('/returns')} className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+                  {t('footer.returns')}
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
