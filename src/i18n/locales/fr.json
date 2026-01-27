@@ -407,7 +407,9 @@
       "uploadReceiptDescription": "Téléchargez une capture d'écran ou un PDF de votre confirmation de virement",
       "uploadButton": "Cliquez pour télécharger (JPG, PNG, PDF - max 10 Mo)",
       "confirmOrder": "Confirmer ma commande",
-      "uploadingReceipt": "Téléchargement du reçu..."
+      "uploadingReceipt": "Téléchargement du reçu...",
+      "available": "Disponible",
+      "notConfigured": "Non disponible"
     },
     "paypal": {
       "title": "Payer avec PayPal",

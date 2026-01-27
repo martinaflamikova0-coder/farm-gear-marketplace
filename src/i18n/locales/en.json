@@ -407,7 +407,9 @@
       "uploadReceiptDescription": "Upload a screenshot or PDF of your transfer confirmation",
       "uploadButton": "Click to upload (JPG, PNG, PDF - max 10 MB)",
       "confirmOrder": "Confirm my order",
-      "uploadingReceipt": "Uploading receipt..."
+      "uploadingReceipt": "Uploading receipt...",
+      "available": "Available",
+      "notConfigured": "Not available"
     },
     "paypal": {
       "title": "Pay with PayPal",

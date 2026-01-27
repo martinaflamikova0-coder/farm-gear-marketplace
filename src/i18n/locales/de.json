@@ -385,7 +385,9 @@
       "uploadReceiptDescription": "Laden Sie einen Screenshot oder PDF Ihrer Überweisungsbestätigung hoch",
       "uploadButton": "Klicken zum Hochladen (JPG, PNG, PDF - max 10 MB)",
       "confirmOrder": "Bestellung bestätigen",
-      "uploadingReceipt": "Beleg wird hochgeladen..."
+      "uploadingReceipt": "Beleg wird hochgeladen...",
+      "available": "Verfügbar",
+      "notConfigured": "Nicht verfügbar"
     },
     "paypal": {
       "title": "Mit PayPal bezahlen",

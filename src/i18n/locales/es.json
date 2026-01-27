@@ -385,7 +385,9 @@
       "uploadReceiptDescription": "Sube una captura de pantalla o PDF de tu confirmación de transferencia",
       "uploadButton": "Haz clic para subir (JPG, PNG, PDF - máx 10 MB)",
       "confirmOrder": "Confirmar mi pedido",
-      "uploadingReceipt": "Subiendo recibo..."
+      "uploadingReceipt": "Subiendo recibo...",
+      "available": "Disponible",
+      "notConfigured": "No disponible"
     },
     "paypal": {
       "title": "Pagar con PayPal",
