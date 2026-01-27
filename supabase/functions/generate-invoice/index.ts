@@ -382,7 +382,7 @@ serve(async (req) => {
       color: primaryColor,
     });
     yPos -= 18;
-    page.drawText("EquipTrade Ltd", { x: 50, y: yPos, size: 11, font: helveticaBold, color: textColor });
+    page.drawText("EkipTrade Ltd", { x: 50, y: yPos, size: 11, font: helveticaBold, color: textColor });
     yPos -= 15;
     page.drawText(t.marketplace, { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
@@ -390,7 +390,7 @@ serve(async (req) => {
     yPos -= 15;
     page.drawText("London WC2H 9JQ, United Kingdom", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText("contact@equiptrade.com", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText("contact@ekiptrade.com", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
     page.drawText(`${t.companyReg}12345678`, { x: 50, y: yPos, size: 9, font: helvetica, color: mutedColor });
     yPos -= 12;
@@ -537,13 +537,13 @@ serve(async (req) => {
     page.drawText(t.paymentMethod, { x: 60, y: yPos - 25, size: 10, font: helvetica, color: mutedColor });
     
     // Get bank details from database or use defaults
-    let bankDetails = { iban: "GB82 WEST 1234 5698 7654 32", bic: "WESTGB2L", holder: "EquipTrade Ltd" };
+    let bankDetails = { iban: "GB82 WEST 1234 5698 7654 32", bic: "WESTGB2L", holder: "EkipTrade Ltd" };
     if (bankAccounts && bankAccounts.length > 0) {
       const selectedAccount = bankAccounts.find(acc => 
         totalTTC >= (acc.threshold_min || 0) && 
         (acc.threshold_max === null || totalTTC <= acc.threshold_max)
       ) || bankAccounts[0];
-      bankDetails = { iban: selectedAccount.iban, bic: selectedAccount.bic, holder: selectedAccount.holder || "EquipTrade Ltd" };
+      bankDetails = { iban: selectedAccount.iban, bic: selectedAccount.bic, holder: selectedAccount.holder || "EkipTrade Ltd" };
     }
     
     page.drawText(`${t.bankDetails}:`, { x: 60, y: yPos - 42, size: 10, font: helveticaBold, color: textColor });
@@ -581,7 +581,7 @@ serve(async (req) => {
       color: rgb(0.85, 0.85, 0.85),
     });
 
-    page.drawText(`EquipTrade Ltd - ${t.marketplace}`, {
+    page.drawText(`EkipTrade Ltd - ${t.marketplace}`, {
       x: 160,
       y: footerY + 15,
       size: 9,

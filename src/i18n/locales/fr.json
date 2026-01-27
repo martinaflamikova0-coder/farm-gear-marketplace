@@ -499,17 +499,17 @@
     },
     "checkout": {
       "title": "Finaliser la Commande",
-      "description": "Finalisez votre achat de matériel agricole sur EquipTrade. Paiement sécurisé par virement bancaire."
+      "description": "Finalisez votre achat de matériel agricole sur EkipTrade. Paiement sécurisé par virement bancaire."
     },
     "cart": {
       "title": "Mon Panier",
-      "description": "Consultez votre panier d'achats sur EquipTrade. Finalisez votre commande de matériel agricole en toute sécurité."
+      "description": "Consultez votre panier d'achats sur EkipTrade. Finalisez votre commande de matériel agricole en toute sécurité."
     }
   },
   "pages": {
     "about": {
-      "title": "À propos d'EquipTrade",
-      "intro1": "EquipTrade est la marketplace de référence pour l'achat et la vente de matériel agricole et industriel d'occasion en France et en Europe. Depuis notre création, nous connectons des milliers de professionnels pour faciliter leurs transactions.",
+      "title": "À propos d'EkipTrade",
+      "intro1": "EkipTrade est la marketplace de référence pour l'achat et la vente de matériel agricole et industriel d'occasion en France et en Europe. Depuis notre création, nous connectons des milliers de professionnels pour faciliter leurs transactions.",
       "intro2": "Notre mission est simple : offrir une plateforme fiable, transparente et efficace pour permettre aux agriculteurs, concessionnaires et entreprises de trouver le matériel dont ils ont besoin au meilleur prix.",
       "valuesTitle": "Nos valeurs",
       "trust": "Confiance",
@@ -569,7 +569,7 @@
       "phoneValue": "01 23 45 67 89",
       "phoneHours": "Du lundi au vendredi, 9h-18h",
       "email": "Email",
-      "emailValue": "contact@equiptrade.com",
+      "emailValue": "contact@ekiptrade.com",
       "emailResponse": "Réponse sous 24h",
       "address": "Adresse",
       "addressValue": "123 Rue de l'Agriculture",
@@ -594,17 +594,17 @@
       "title": "Conditions Générales d'Utilisation",
       "lastUpdate": "Dernière mise à jour : Janvier 2026",
       "section1Title": "1. Objet",
-      "section1Content": "Les présentes Conditions Générales d'Utilisation (CGU) ont pour objet de définir les modalités et conditions d'utilisation de la plateforme EquipTrade, ainsi que les droits et obligations des utilisateurs.",
+      "section1Content": "Les présentes Conditions Générales d'Utilisation (CGU) ont pour objet de définir les modalités et conditions d'utilisation de la plateforme EkipTrade, ainsi que les droits et obligations des utilisateurs.",
       "section2Title": "2. Accès à la plateforme",
       "section2Content": "L'accès à la plateforme est gratuit pour les acheteurs. La publication d'annonces nécessite la création d'un compte vendeur. L'utilisateur s'engage à fournir des informations exactes et à les maintenir à jour.",
       "section3Title": "3. Annonces",
       "section3Content": "Les vendeurs s'engagent à publier des annonces exactes et non trompeuses. Les photos doivent représenter fidèlement le matériel proposé. Toute annonce frauduleuse sera supprimée et pourra entraîner la suspension du compte.",
       "section4Title": "4. Responsabilités",
-      "section4Content": "EquipTrade agit en qualité d'intermédiaire et ne peut être tenu responsable des transactions effectuées entre utilisateurs. Chaque utilisateur est responsable de vérifier les informations des annonces et la qualité du matériel.",
+      "section4Content": "EkipTrade agit en qualité d'intermédiaire et ne peut être tenu responsable des transactions effectuées entre utilisateurs. Chaque utilisateur est responsable de vérifier les informations des annonces et la qualité du matériel.",
       "section5Title": "5. Propriété intellectuelle",
       "section5Content": "L'ensemble des éléments de la plateforme (logos, textes, images) sont protégés par le droit de la propriété intellectuelle. Toute reproduction sans autorisation est interdite.",
       "section6Title": "6. Modification des CGU",
-      "section6Content": "EquipTrade se réserve le droit de modifier les présentes CGU à tout moment. Les utilisateurs seront informés de toute modification substantielle.",
+      "section6Content": "EkipTrade se réserve le droit de modifier les présentes CGU à tout moment. Les utilisateurs seront informés de toute modification substantielle.",
       "section7Title": "7. Contact",
       "section7Content": "Pour toute question relative aux présentes CGU, vous pouvez nous contacter à l'adresse :"
     },

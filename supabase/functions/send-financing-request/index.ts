@@ -144,8 +144,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to admin
     const adminEmailResponse = await resend.emails.send({
-      from: "EquipTrade <onboarding@resend.dev>",
-      to: ["contact@equiptrade.com"], // Replace with actual admin email
+      from: "EkipTrade <onboarding@resend.dev>",
+      to: ["contact@ekiptrade.com"], // Replace with actual admin email
       subject: `🚜 Nouvelle demande de financement - ${data.productTitle}`,
       html: emailHtml,
     });
@@ -189,7 +189,7 @@ const handler = async (req: Request): Promise<Response> => {
             
             <p>Si vous avez des questions, n'hésitez pas à nous contacter.</p>
             
-            <p>Cordialement,<br>L'équipe EquipTrade</p>
+            <p>Cordialement,<br>L'équipe EkipTrade</p>
           </div>
         </div>
       </body>
@@ -197,9 +197,9 @@ const handler = async (req: Request): Promise<Response> => {
     `;
 
     const customerEmailResponse = await resend.emails.send({
-      from: "EquipTrade <onboarding@resend.dev>",
+      from: "EkipTrade <onboarding@resend.dev>",
       to: [data.email],
-      subject: "✅ Votre demande de financement a été reçue - EquipTrade",
+      subject: "✅ Votre demande de financement a été reçue - EkipTrade",
       html: customerEmailHtml,
     });
 

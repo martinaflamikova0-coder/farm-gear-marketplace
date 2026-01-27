@@ -499,17 +499,17 @@
     },
     "checkout": {
       "title": "Checkout",
-      "description": "Complete your agricultural equipment purchase on EquipTrade. Secure payment via bank transfer."
+      "description": "Complete your agricultural equipment purchase on EkipTrade. Secure payment via bank transfer."
     },
     "cart": {
       "title": "My Cart",
-      "description": "View your shopping cart on EquipTrade. Securely complete your agricultural equipment order."
+      "description": "View your shopping cart on EkipTrade. Securely complete your agricultural equipment order."
     }
   },
   "pages": {
     "about": {
-      "title": "About EquipTrade",
-      "intro1": "EquipTrade is the leading marketplace for buying and selling used agricultural and industrial equipment in Europe. Since our creation, we connect thousands of professionals to facilitate their transactions.",
+      "title": "About EkipTrade",
+      "intro1": "EkipTrade is the leading marketplace for buying and selling used agricultural and industrial equipment in Europe. Since our creation, we connect thousands of professionals to facilitate their transactions.",
       "intro2": "Our mission is simple: to offer a reliable, transparent and efficient platform to help farmers, dealers and companies find the equipment they need at the best price.",
       "valuesTitle": "Our values",
       "trust": "Trust",
@@ -569,7 +569,7 @@
       "phoneValue": "+33 1 23 45 67 89",
       "phoneHours": "Monday to Friday, 9am-6pm",
       "email": "Email",
-      "emailValue": "contact@equiptrade.com",
+      "emailValue": "contact@ekiptrade.com",
       "emailResponse": "Response within 24h",
       "address": "Address",
       "addressValue": "123 Agriculture Street",
@@ -594,17 +594,17 @@
       "title": "Terms of Use",
       "lastUpdate": "Last update: January 2026",
       "section1Title": "1. Purpose",
-      "section1Content": "These Terms of Use define the terms and conditions of use of the EquipTrade platform, as well as the rights and obligations of users.",
+      "section1Content": "These Terms of Use define the terms and conditions of use of the EkipTrade platform, as well as the rights and obligations of users.",
       "section2Title": "2. Platform Access",
       "section2Content": "Access to the platform is free for buyers. Posting listings requires creating a seller account. The user agrees to provide accurate information and keep it up to date.",
       "section3Title": "3. Listings",
       "section3Content": "Sellers agree to publish accurate and non-misleading listings. Photos must accurately represent the equipment offered. Any fraudulent listing will be removed and may result in account suspension.",
       "section4Title": "4. Responsibilities",
-      "section4Content": "EquipTrade acts as an intermediary and cannot be held responsible for transactions made between users. Each user is responsible for verifying listing information and equipment quality.",
+      "section4Content": "EkipTrade acts as an intermediary and cannot be held responsible for transactions made between users. Each user is responsible for verifying listing information and equipment quality.",
       "section5Title": "5. Intellectual Property",
       "section5Content": "All elements of the platform (logos, texts, images) are protected by intellectual property law. Any reproduction without authorization is prohibited.",
       "section6Title": "6. Terms Modification",
-      "section6Content": "EquipTrade reserves the right to modify these Terms at any time. Users will be informed of any substantial modification.",
+      "section6Content": "EkipTrade reserves the right to modify these Terms at any time. Users will be informed of any substantial modification.",
       "section7Title": "7. Contact",
       "section7Content": "For any questions regarding these Terms, you can contact us at:"
     },

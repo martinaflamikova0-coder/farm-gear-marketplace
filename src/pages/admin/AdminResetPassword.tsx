@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { AlertCircle, CheckCircle, Lock } from 'lucide-react';
-import logoEquiptrade from '@/assets/logo-equiptrade.png';
+import logoEkiptrade from '@/assets/logo-ekiptrade.png';
 
 const schema = z
   .object({
@@ -85,7 +85,7 @@ const AdminResetPassword = () => {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
-            <img src={logoEquiptrade} alt="EquipTrade" className="h-16 w-auto object-contain" />
+            <img src={logoEkiptrade} alt="EkipTrade" className="h-16 w-auto object-contain" />
           </div>
           <CardTitle className="text-2xl font-display">Définir un nouveau mot de passe</CardTitle>
           <CardDescription>

@@ -27,7 +27,7 @@ const ProductJsonLd = ({
   translatedDescription,
   currentLang 
 }: ProductJsonLdProps) => {
-  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://equiptrade.com';
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://ekiptrade.com';
   
   useEffect(() => {
     // Remove existing product JSON-LD to prevent duplicates
