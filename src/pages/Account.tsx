@@ -60,6 +60,8 @@ const Account = () => {
   const [expandedOrder, setExpandedOrder] = useState<string | null>(null);
   const [receiptDialogOpen, setReceiptDialogOpen] = useState(false);
   const [selectedReceipt, setSelectedReceipt] = useState<{ url: string; orderId: string } | null>(null);
+  const [invoiceDialogOpen, setInvoiceDialogOpen] = useState(false);
+  const [selectedInvoice, setSelectedInvoice] = useState<{ url: string; orderId: string } | null>(null);
   const [generatingInvoice, setGeneratingInvoice] = useState<string | null>(null);
 
   useEffect(() => {
@@ -171,8 +173,8 @@ const Account = () => {
 
       const blob = await response.blob();
       const url = URL.createObjectURL(blob);
-      window.open(url, '_blank');
-      setTimeout(() => URL.revokeObjectURL(url), 5000);
+      setSelectedInvoice({ url, orderId });
+      setInvoiceDialogOpen(true);
     } catch (error) {
       console.error('Error generating invoice:', error);
       toast.error(t('account.errorGeneratingInvoice'));
@@ -473,6 +475,32 @@ const Account = () => {
                   className="max-w-full max-h-[70vh] object-contain rounded shadow-lg"
                 />
               )}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Invoice Dialog */}
+      <Dialog open={invoiceDialogOpen} onOpenChange={(open) => {
+        setInvoiceDialogOpen(open);
+        if (!open && selectedInvoice?.url) {
+          URL.revokeObjectURL(selectedInvoice.url);
+          setSelectedInvoice(null);
+        }
+      }}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-auto">
+          <DialogHeader>
+            <DialogTitle>
+              {t('account.invoice')} - #{selectedInvoice?.orderId.slice(0, 8).toUpperCase()}
+            </DialogTitle>
+          </DialogHeader>
+          {selectedInvoice && (
+            <div className="flex items-center justify-center p-4">
+              <iframe 
+                src={selectedInvoice.url} 
+                className="w-full h-[70vh] border rounded"
+                title="Invoice PDF"
+              />
             </div>
           )}
         </DialogContent>
