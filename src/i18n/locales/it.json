@@ -450,6 +450,23 @@
       "countryRequired": "Paese richiesto"
     }
   },
+  "shipping": {
+    "policyTitle": "Spedizione gratuita fino a 150€",
+    "policyShort": "Eventuali costi aggiuntivi verranno comunicati dopo la verifica del pagamento.",
+    "policyFull": "Offriamo fino a 150€ di spese di spedizione su tutti gli ordini. Se il costo di consegna supera questo importo, il supplemento verrà comunicato dopo la verifica del pagamento, prima della spedizione.",
+    "costLabel": "Spese di spedizione",
+    "covered": "coperte",
+    "supplement": "Supplemento",
+    "supplementNotice": "È richiesto un supplemento di spedizione di {{amount}}€ per questo ordine.",
+    "noCostYet": "Le spese di spedizione saranno calcolate dopo la verifica del pagamento.",
+    "adminCostLabel": "Costo reale di spedizione",
+    "adminCostPlaceholder": "Es: 250",
+    "adminCostSave": "Salva",
+    "adminCostNotify": "Notifica cliente",
+    "adminCostSaved": "Costi salvati",
+    "adminCostNotified": "Cliente notificato via email",
+    "adminCostError": "Errore nel salvataggio"
+  },
   "seo": {
     "home": {
       "title": "Marketplace di Macchine Agricole Usate",

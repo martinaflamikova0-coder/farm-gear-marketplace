@@ -232,6 +232,8 @@ export type Database = {
           payment_receipt_url: string | null
           shipping_address: string | null
           shipping_city: string | null
+          shipping_cost: number | null
+          shipping_cost_notified: boolean | null
           shipping_country: string | null
           shipping_email: string | null
           shipping_name: string | null
@@ -251,6 +253,8 @@ export type Database = {
           payment_receipt_url?: string | null
           shipping_address?: string | null
           shipping_city?: string | null
+          shipping_cost?: number | null
+          shipping_cost_notified?: boolean | null
           shipping_country?: string | null
           shipping_email?: string | null
           shipping_name?: string | null
@@ -270,6 +274,8 @@ export type Database = {
           payment_receipt_url?: string | null
           shipping_address?: string | null
           shipping_city?: string | null
+          shipping_cost?: number | null
+          shipping_cost_notified?: boolean | null
           shipping_country?: string | null
           shipping_email?: string | null
           shipping_name?: string | null

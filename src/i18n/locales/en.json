@@ -472,6 +472,23 @@
       "countryRequired": "Country required"
     }
   },
+  "shipping": {
+    "policyTitle": "Free shipping up to €150",
+    "policyShort": "Any additional costs will be communicated after payment verification.",
+    "policyFull": "We offer up to €150 in shipping costs on all orders. If the delivery cost exceeds this amount, the additional charge will be communicated after payment verification, before shipment.",
+    "costLabel": "Shipping costs",
+    "covered": "covered",
+    "supplement": "Additional charge",
+    "supplementNotice": "An additional shipping charge of €{{amount}} is required for this order.",
+    "noCostYet": "Shipping costs will be calculated after payment verification.",
+    "adminCostLabel": "Actual shipping cost",
+    "adminCostPlaceholder": "e.g. 250",
+    "adminCostSave": "Save",
+    "adminCostNotify": "Notify customer",
+    "adminCostSaved": "Costs saved",
+    "adminCostNotified": "Customer notified by email",
+    "adminCostError": "Error saving costs"
+  },
   "seo": {
     "home": {
       "title": "New and Used Agricultural Equipment Marketplace",

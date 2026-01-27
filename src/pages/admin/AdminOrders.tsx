@@ -25,8 +25,10 @@ import {
   Mail,
   User,
   FileText,
-  Loader2
+  Loader2,
+  Truck
 } from 'lucide-react';
+import ShippingCostManager from '@/components/admin/ShippingCostManager';
 
 interface OrderItem {
   id: string;
@@ -49,12 +51,15 @@ interface Order {
   shipping_postal_code: string | null;
   shipping_country: string | null;
   notes: string | null;
+  shipping_cost: number | null;
+  shipping_cost_notified: boolean;
   order_items: OrderItem[];
 }
 
 const getStatusColor = (status: string) => {
   switch (status) {
     case 'pending': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
+    case 'payment_uploaded': return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200';
     case 'confirmed': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
     case 'paid': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
     case 'shipped': return 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200';
@@ -66,6 +71,7 @@ const getStatusColor = (status: string) => {
 
 const statusLabels: Record<string, string> = {
   pending: 'En attente',
+  payment_uploaded: 'Paiement à vérifier',
   confirmed: 'Confirmée',
   paid: 'Payée',
   shipped: 'Expédiée',
@@ -106,6 +112,8 @@ const AdminOrders = () => {
         shipping_postal_code,
         shipping_country,
         notes,
+        shipping_cost,
+        shipping_cost_notified,
         order_items (
           id,
           product_title,
@@ -123,7 +131,13 @@ const AdminOrders = () => {
         variant: 'destructive',
       });
     } else {
-      setOrders(data || []);
+      // Cast with defaults for new fields to handle existing orders
+      const ordersWithDefaults = (data || []).map(order => ({
+        ...order,
+        shipping_cost: order.shipping_cost ?? null,
+        shipping_cost_notified: order.shipping_cost_notified ?? false,
+      })) as Order[];
+      setOrders(ordersWithDefaults);
     }
     setIsLoading(false);
   };
@@ -316,6 +330,7 @@ const AdminOrders = () => {
           <SelectContent>
             <SelectItem value="all">Tous les statuts</SelectItem>
             <SelectItem value="pending">En attente</SelectItem>
+            <SelectItem value="payment_uploaded">Paiement à vérifier</SelectItem>
             <SelectItem value="confirmed">Confirmée</SelectItem>
             <SelectItem value="paid">Payée</SelectItem>
             <SelectItem value="shipped">Expédiée</SelectItem>
@@ -391,6 +406,7 @@ const AdminOrders = () => {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="pending">En attente</SelectItem>
+                        <SelectItem value="payment_uploaded">Paiement à vérifier</SelectItem>
                         <SelectItem value="confirmed">Confirmée</SelectItem>
                         <SelectItem value="paid">Payée</SelectItem>
                         <SelectItem value="shipped">Expédiée</SelectItem>
@@ -513,6 +529,16 @@ const AdminOrders = () => {
                       </Button>
                     </div>
                   </div>
+
+                  {/* Shipping Cost Management */}
+                  <ShippingCostManager
+                    orderId={order.id}
+                    currentCost={order.shipping_cost}
+                    isNotified={order.shipping_cost_notified}
+                    customerEmail={order.shipping_email}
+                    orderTotal={order.total_amount}
+                    onUpdate={fetchOrders}
+                  />
 
                   {/* Order Items */}
                   <div className="space-y-3">
