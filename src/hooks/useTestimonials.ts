@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
+import { useTranslation } from 'react-i18next';
 
 export interface Testimonial {
   id: string;
@@ -7,6 +8,7 @@ export interface Testimonial {
   author_location: string | null;
   author_company: string | null;
   content: string;
+  content_translations: Record<string, string> | null;
   rating: number;
   is_featured: boolean;
   is_active: boolean;
@@ -14,9 +16,16 @@ export interface Testimonial {
   updated_at: string;
 }
 
+export interface TranslatedTestimonial extends Omit<Testimonial, 'content'> {
+  content: string;
+}
+
 export const useTestimonials = (featured?: boolean) => {
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language || 'en';
+
   return useQuery({
-    queryKey: ['testimonials', featured],
+    queryKey: ['testimonials', featured, currentLang],
     queryFn: async () => {
       let query = supabase
         .from('testimonials')
@@ -31,7 +40,19 @@ export const useTestimonials = (featured?: boolean) => {
       const { data, error } = await query;
 
       if (error) throw error;
-      return data as Testimonial[];
+
+      // Apply translations based on current language
+      const testimonials = (data || []).map((testimonial: Testimonial): TranslatedTestimonial => {
+        const translations = testimonial.content_translations as Record<string, string> | null;
+        const translatedContent = translations?.[currentLang] || testimonial.content;
+        
+        return {
+          ...testimonial,
+          content: translatedContent,
+        };
+      });
+
+      return testimonials;
     },
   });
 };

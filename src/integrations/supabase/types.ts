@@ -464,6 +464,7 @@ export type Database = {
           author_location: string | null
           author_name: string
           content: string
+          content_translations: Json | null
           created_at: string | null
           id: string
           is_active: boolean | null
@@ -476,6 +477,7 @@ export type Database = {
           author_location?: string | null
           author_name: string
           content: string
+          content_translations?: Json | null
           created_at?: string | null
           id?: string
           is_active?: boolean | null
@@ -488,6 +490,7 @@ export type Database = {
           author_location?: string | null
           author_name?: string
           content?: string
+          content_translations?: Json | null
           created_at?: string | null
           id?: string
           is_active?: boolean | null
