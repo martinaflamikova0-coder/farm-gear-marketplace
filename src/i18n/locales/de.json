@@ -324,6 +324,7 @@
     "terms": "Nutzungsbedingungen",
     "privacy": "Datenschutz",
     "cookies": "Cookies",
+    "returns": "Rückgabe & Erstattung",
     "rights": "Alle Rechte vorbehalten"
   },
 "errors": {
@@ -642,5 +643,136 @@
     "es": "Español",
     "it": "Italiano",
     "pt": "Português"
+  },
+  "returns": {
+    "seo": {
+      "title": "Rückgabe- und Erstattungsrichtlinien",
+      "description": "Erfahren Sie mehr über unsere Rückgabe- und Erstattungsrichtlinien für Landmaschinen. Widerrufsrecht, Rückgabebedingungen, Versandkosten und Erstattungsprozess."
+    },
+    "title": "Rückgabe & Erstattung",
+    "subtitle": "Wir sind Ihrer Zufriedenheit verpflichtet. Entdecken Sie unsere Rückgabe- und Erstattungsrichtlinien für ein sorgenfreies Einkaufserlebnis.",
+    "importantNotice": {
+      "title": "Wichtige Information",
+      "description": "Als professioneller Händler von Landmaschinen und Industrieausrüstung halten wir uns an die europäische Verbraucherschutzgesetzgebung. Bitte lesen Sie diese Richtlinien sorgfältig vor dem Kauf."
+    },
+    "withdrawal": {
+      "title": "Widerrufsrecht",
+      "intro": "Gemäß europäischem Verbraucherrecht (Richtlinie 2011/83/EU) haben Sie das Recht, innerhalb einer bestimmten Frist ohne Angabe von Gründen von Ihrem Kauf zurückzutreten.",
+      "period": {
+        "title": "14-tägige Widerrufsfrist",
+        "description": "Sie haben 14 Kalendertage ab Erhalt der Ware Zeit, Ihr Widerrufsrecht auszuüben. Um dieses Recht auszuüben, müssen Sie uns vor Ablauf der Frist per E-Mail oder Post über Ihre Entscheidung informieren."
+      },
+      "eligible": {
+        "title": "Berechtigte Produkte",
+        "item1": "Neue Geräte in Originalverpackung",
+        "item2": "Gebrauchte Geräte, die vom Käufer noch nicht in Betrieb genommen wurden",
+        "item3": "Zubehör und Ersatzteile in Originalverpackung",
+        "item4": "Geräte ohne Modifikationen oder Anpassungen"
+      },
+      "excluded": {
+        "title": "Ausschlüsse",
+        "item1": "Nach Kundenspezifikation angefertigte oder personalisierte Geräte",
+        "item2": "Waren, die schnell verderben oder eine kurze Haltbarkeit haben",
+        "item3": "Versiegelte Waren, die aus Gesundheits- oder Hygienegründen nicht zurückgegeben werden können",
+        "item4": "Geräte, die nach der Lieferung in Betrieb genommen, benutzt oder beschädigt wurden"
+      }
+    },
+    "process": {
+      "title": "Rückgabeverfahren",
+      "step1": {
+        "title": "Kontaktieren Sie unseren Kundenservice",
+        "description": "Senden Sie eine Rückgabeanfrage per E-Mail an retours@ekiptrade.com oder per Post. Geben Sie Ihre Bestellnummer, den Rückgabegrund und Ihre Kontaktdaten an."
+      },
+      "step2": {
+        "title": "Erhalten Sie die Rückgabegenehmigung",
+        "description": "Unser Team prüft Ihre Anfrage und sendet Ihnen innerhalb von 48 Geschäftsstunden eine Rückgabeautorisierungsnummer (RMA) mit detaillierten Rückgabeanweisungen."
+      },
+      "step3": {
+        "title": "Verpacken und versenden Sie die Ausrüstung",
+        "description": "Verpacken Sie die Ausrüstung sorgfältig, möglichst in der Originalverpackung. Bringen Sie die RMA-Nummer gut sichtbar am Paket an und versenden Sie die Ware an die angegebene Adresse."
+      },
+      "step4": {
+        "title": "Prüfung und Erstattungsbearbeitung",
+        "description": "Nach Erhalt prüfen wir die Ausrüstung. Wenn alles in Ordnung ist, wird Ihre Erstattung innerhalb von 14 Tagen nach Erhalt der Rücksendung bearbeitet."
+      }
+    },
+    "conditions": {
+      "title": "Rückgabebedingungen",
+      "intro": "Um akzeptiert zu werden, müssen Rücksendungen folgende Bedingungen erfüllen:",
+      "item1": "Die Ausrüstung muss innerhalb von 14 Tagen nach Erhalt der RMA-Nummer zurückgesendet werden",
+      "item2": "Sie muss sich im Originalzustand befinden, unbenutzt und unbeschädigt",
+      "item3": "Originalverpackung muss intakt und vollständig sein (Zubehör, Dokumentation usw.)",
+      "item4": "Die RMA-Nummer muss gut sichtbar am Paket angebracht sein",
+      "item5": "Alle Identifikationsetiketten und Siegel müssen intakt sein",
+      "warning": {
+        "title": "Wertminderung",
+        "description": "Wenn die zurückgesendete Ausrüstung Gebrauchsspuren aufweist, die über das hinausgehen, was zur Feststellung von Art, Eigenschaften und Funktionsweise erforderlich ist, kann eine Wertminderung vom Erstattungsbetrag abgezogen werden."
+      }
+    },
+    "shipping": {
+      "title": "Rücksendekosten",
+      "intro": "Die Verantwortung für Rücksendekosten hängt vom Rückgabegrund ab:",
+      "withdrawal": {
+        "title": "Widerruf (Sinnesänderung)",
+        "description": "Rücksendekosten gehen zu Lasten des Käufers. Wir empfehlen angesichts des Wertes der Ausrüstung einen versicherten Versandservice mit Sendungsverfolgung."
+      },
+      "defective": {
+        "title": "Defektes oder nicht konformes Produkt",
+        "description": "Wenn das Produkt defekt ist oder nicht der Beschreibung entspricht, werden die Rücksendekosten von EkipTrade übernommen. Wir organisieren die Abholung oder erstatten Ihnen die Versandkosten."
+      },
+      "note": {
+        "title": "Hinweis:",
+        "description": "Bitte kontaktieren Sie uns vor dem Versand großer oder schwerer Geräte, um eine geeignete Logistik zu organisieren."
+      }
+    },
+    "refund": {
+      "title": "Erstattungsbedingungen",
+      "intro": "Nach Validierung der Rücksendung wird Ihre Erstattung gemäß folgenden Bedingungen bearbeitet:",
+      "timeline": {
+        "title": "Bearbeitungszeit",
+        "description": "Erstattung innerhalb von 14 Tagen nach Erhalt der zurückgesendeten Ausrüstung oder ab dem Datum des Versandnachweises, falls früher."
+      },
+      "method": {
+        "title": "Erstattungsmethode",
+        "description": "Erstattung über dieselbe Zahlungsmethode wie beim ursprünglichen Kauf (Banküberweisung, PayPal usw.)."
+      },
+      "deduction": {
+        "title": "Mögliche Abzüge",
+        "description": "Ursprüngliche Versandkosten werden nur erstattet, wenn die Rücksendung auf einen Fehler unsererseits oder ein defektes Produkt zurückzuführen ist. Eine Wertminderung kann bei beschädigter oder unvollständiger Ausrüstung abgezogen werden."
+      }
+    },
+    "warranty": {
+      "title": "Gesetzliche Gewährleistung",
+      "intro": "Zusätzlich zum Widerrufsrecht profitieren Sie von gesetzlichen Gewährleistungen nach europäischem Recht:",
+      "legal": {
+        "title": "Konformitätsgarantie",
+        "description": "Gültig für 2 Jahre ab Lieferung für Verbraucher. Das Produkt muss dem Kaufvertrag entsprechen und für den vorgesehenen Zweck geeignet sein."
+      },
+      "hidden": {
+        "title": "Versteckte Mängel",
+        "description": "Sie können innerhalb von 2 Jahren nach Entdeckung eines versteckten Mangels, der das Produkt unbrauchbar macht, die Auflösung des Kaufs verlangen."
+      },
+      "options": "Im Rahmen dieser Gewährleistungen können Sie wählen zwischen:",
+      "option1": "Reparatur oder Austausch der Ausrüstung",
+      "option2": "Preisminderung, wenn eine Reparatur nicht möglich ist",
+      "option3": "Vollständige Erstattung bei erheblichem Mangel"
+    },
+    "contact": {
+      "title": "Kontakt",
+      "intro": "Bei Fragen zu Rücksendungen oder Erstattungen steht Ihnen unser Kundenservice zur Verfügung:",
+      "email": {
+        "title": "Per E-Mail"
+      },
+      "phone": {
+        "title": "Per Telefon"
+      },
+      "hours": "Montag bis Freitag, 9-18 Uhr (MEZ)",
+      "include": "Für eine schnelle Antwort geben Sie bitte in Ihrer Nachricht an:",
+      "include1": "Ihre Bestellnummer",
+      "include2": "Das Kaufdatum",
+      "include3": "Eine detaillierte Beschreibung des Problems",
+      "include4": "Fotos falls zutreffend (bei defekter oder beschädigter Ausrüstung)"
+    },
+    "lastUpdated": "Zuletzt aktualisiert: Januar 2026"
   }
 }

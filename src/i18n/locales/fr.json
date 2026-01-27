@@ -346,6 +346,7 @@
     "terms": "Conditions d'utilisation",
     "privacy": "Politique de confidentialité",
     "cookies": "Cookies",
+    "returns": "Retours et remboursements",
     "rights": "Tous droits réservés"
   },
 "errors": {
@@ -664,5 +665,136 @@
     "es": "Español",
     "it": "Italiano",
     "pt": "Português"
+  },
+  "returns": {
+    "seo": {
+      "title": "Politique de retours et remboursements",
+      "description": "Découvrez notre politique de retours et remboursements pour le matériel agricole. Droit de rétractation, conditions de retour, frais de transport et processus de remboursement."
+    },
+    "title": "Retours et remboursements",
+    "subtitle": "Nous nous engageons à votre satisfaction. Découvrez notre politique de retours et remboursements pour une expérience d'achat sereine.",
+    "importantNotice": {
+      "title": "Information importante",
+      "description": "En tant que vendeur professionnel de matériel agricole et industriel, nous nous conformons à la législation européenne de protection des consommateurs. Veuillez lire attentivement cette politique avant tout achat."
+    },
+    "withdrawal": {
+      "title": "Droit de rétractation",
+      "intro": "Conformément au droit européen de la consommation (Directive 2011/83/UE), vous disposez d'un droit de rétractation vous permettant de renoncer à votre achat dans un délai déterminé sans avoir à justifier de motifs.",
+      "period": {
+        "title": "Délai de 14 jours",
+        "description": "Vous disposez de 14 jours calendaires à compter de la réception du bien pour exercer votre droit de rétractation. Pour exercer ce droit, vous devez nous notifier votre décision par email ou courrier avant l'expiration du délai."
+      },
+      "eligible": {
+        "title": "Produits éligibles",
+        "item1": "Matériel neuf dans son emballage d'origine",
+        "item2": "Matériel d'occasion non encore mis en service ou testé par l'acheteur",
+        "item3": "Accessoires et pièces dans leur emballage d'origine",
+        "item4": "Équipement n'ayant pas fait l'objet de modifications ou personnalisations"
+      },
+      "excluded": {
+        "title": "Exclusions",
+        "item1": "Matériel confectionné selon les spécifications du client ou nettement personnalisé",
+        "item2": "Biens susceptibles de se détériorer ou de se périmer rapidement",
+        "item3": "Biens scellés ne pouvant être renvoyés pour des raisons de protection de la santé ou d'hygiène",
+        "item4": "Équipement ayant été mis en service, utilisé ou endommagé après livraison"
+      }
+    },
+    "process": {
+      "title": "Procédure de retour",
+      "step1": {
+        "title": "Contactez notre service client",
+        "description": "Envoyez une demande de retour par email à retours@ekiptrade.com ou par courrier. Indiquez votre numéro de commande, le motif du retour et vos coordonnées."
+      },
+      "step2": {
+        "title": "Recevez l'autorisation de retour",
+        "description": "Notre équipe examine votre demande et vous transmet un numéro d'autorisation de retour (AR) sous 48h ouvrées, accompagné des instructions de retour détaillées."
+      },
+      "step3": {
+        "title": "Préparez et expédiez le matériel",
+        "description": "Emballez soigneusement le matériel dans son emballage d'origine si possible. Apposez clairement le numéro AR sur le colis et expédiez la marchandise à l'adresse indiquée."
+      },
+      "step4": {
+        "title": "Vérification et traitement du remboursement",
+        "description": "À réception, nous procédons à la vérification du matériel. Si tout est conforme, votre remboursement est traité dans un délai de 14 jours suivant la réception du retour."
+      }
+    },
+    "conditions": {
+      "title": "Conditions de retour",
+      "intro": "Pour être acceptés, les retours doivent respecter les conditions suivantes :",
+      "item1": "Le matériel doit être retourné dans les 14 jours suivant l'obtention du numéro AR",
+      "item2": "Il doit être dans son état d'origine, non utilisé et non endommagé",
+      "item3": "L'emballage d'origine doit être intact et complet (accessoires, documentation, etc.)",
+      "item4": "Le numéro AR doit être clairement visible sur le colis",
+      "item5": "Toutes les étiquettes d'identification et les scellés doivent être intacts",
+      "warning": {
+        "title": "Dépréciation",
+        "description": "Si le matériel retourné présente des signes de manipulation allant au-delà de ce qui est nécessaire pour établir sa nature, ses caractéristiques et son bon fonctionnement, une dépréciation peut être déduite du montant remboursé."
+      }
+    },
+    "shipping": {
+      "title": "Frais de retour",
+      "intro": "La prise en charge des frais de retour dépend du motif du retour :",
+      "withdrawal": {
+        "title": "Rétractation (changement d'avis)",
+        "description": "Les frais de retour sont à la charge de l'acheteur. Nous vous recommandons d'utiliser un service d'expédition suivi et assuré compte tenu de la valeur du matériel."
+      },
+      "defective": {
+        "title": "Produit défectueux ou non conforme",
+        "description": "Si le produit est défectueux ou ne correspond pas à la description, les frais de retour sont pris en charge par EkipTrade. Nous organisons l'enlèvement ou vous remboursons les frais d'expédition."
+      },
+      "note": {
+        "title": "Note :",
+        "description": "Pour les équipements volumineux ou lourds, veuillez nous contacter avant l'expédition pour organiser une logistique adaptée."
+      }
+    },
+    "refund": {
+      "title": "Modalités de remboursement",
+      "intro": "Une fois le retour validé, votre remboursement sera effectué selon les modalités suivantes :",
+      "timeline": {
+        "title": "Délai de traitement",
+        "description": "Remboursement sous 14 jours à compter de la réception du matériel retourné, ou de la date de preuve d'expédition si celle-ci est antérieure."
+      },
+      "method": {
+        "title": "Mode de remboursement",
+        "description": "Remboursement via le même moyen de paiement utilisé pour l'achat initial (virement bancaire, PayPal, etc.)."
+      },
+      "deduction": {
+        "title": "Déductions possibles",
+        "description": "Les frais de livraison initiaux ne sont remboursés que si le retour est dû à une erreur de notre part ou à un produit défectueux. Une dépréciation peut être déduite en cas de matériel endommagé ou incomplet."
+      }
+    },
+    "warranty": {
+      "title": "Garantie légale",
+      "intro": "En plus du droit de rétractation, vous bénéficiez des garanties légales prévues par le droit européen :",
+      "legal": {
+        "title": "Garantie de conformité",
+        "description": "Valable 2 ans à compter de la livraison pour les consommateurs. Le produit doit être conforme au contrat de vente et apte à l'usage auquel il est destiné."
+      },
+      "hidden": {
+        "title": "Vices cachés",
+        "description": "Vous pouvez demander la résolution de la vente dans les 2 ans suivant la découverte d'un vice caché rendant le produit impropre à l'usage."
+      },
+      "options": "Dans le cadre de ces garanties, vous pouvez choisir entre :",
+      "option1": "La réparation ou le remplacement du matériel",
+      "option2": "Une réduction du prix si la réparation n'est pas possible",
+      "option3": "Le remboursement intégral si le défaut est important"
+    },
+    "contact": {
+      "title": "Nous contacter",
+      "intro": "Pour toute question concernant les retours ou remboursements, notre service client est à votre disposition :",
+      "email": {
+        "title": "Par email"
+      },
+      "phone": {
+        "title": "Par téléphone"
+      },
+      "hours": "Du lundi au vendredi, de 9h à 18h (heure de Paris)",
+      "include": "Pour une réponse rapide, merci d'inclure dans votre message :",
+      "include1": "Votre numéro de commande",
+      "include2": "La date d'achat",
+      "include3": "Une description détaillée du problème rencontré",
+      "include4": "Des photos si applicable (pour un matériel défectueux ou endommagé)"
+    },
+    "lastUpdated": "Dernière mise à jour : Janvier 2026"
   }
 }

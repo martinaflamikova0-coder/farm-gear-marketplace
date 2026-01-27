@@ -11,6 +11,7 @@ import Contact from '@/pages/Contact';
 import Terms from '@/pages/Terms';
 import Privacy from '@/pages/Privacy';
 import Cookies from '@/pages/Cookies';
+import Returns from '@/pages/Returns';
 import NotFound from '@/pages/NotFound';
 import Auth from '@/pages/Auth';
 import Cart from '@/pages/Cart';
@@ -120,6 +121,7 @@ const LocalizedRoutes = () => {
       <Route path="/:lang/terms" element={<LanguageWrapper><Terms /></LanguageWrapper>} />
       <Route path="/:lang/privacy" element={<LanguageWrapper><Privacy /></LanguageWrapper>} />
       <Route path="/:lang/cookies" element={<LanguageWrapper><Cookies /></LanguageWrapper>} />
+      <Route path="/:lang/returns" element={<LanguageWrapper><Returns /></LanguageWrapper>} />
       
       {/* Auth & Cart routes */}
       <Route path="/:lang/auth" element={<LanguageWrapper><Auth /></LanguageWrapper>} />

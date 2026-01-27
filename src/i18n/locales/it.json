@@ -324,6 +324,7 @@
     "terms": "Termini di utilizzo",
     "privacy": "Privacy",
     "cookies": "Cookie",
+    "returns": "Resi e rimborsi",
     "rights": "Tutti i diritti riservati"
   },
 "errors": {
@@ -642,5 +643,136 @@
     "es": "Español",
     "it": "Italiano",
     "pt": "Português"
+  },
+  "returns": {
+    "seo": {
+      "title": "Politica di resi e rimborsi",
+      "description": "Scopri la nostra politica di resi e rimborsi per attrezzature agricole. Diritto di recesso, condizioni di reso, spese di spedizione e processo di rimborso."
+    },
+    "title": "Resi e rimborsi",
+    "subtitle": "Siamo impegnati nella tua soddisfazione. Scopri la nostra politica di resi e rimborsi per un'esperienza di acquisto senza preoccupazioni.",
+    "importantNotice": {
+      "title": "Informazione importante",
+      "description": "Come venditore professionale di attrezzature agricole e industriali, rispettiamo la legislazione europea sulla protezione dei consumatori. Leggi attentamente questa politica prima di effettuare un acquisto."
+    },
+    "withdrawal": {
+      "title": "Diritto di recesso",
+      "intro": "In conformità con il diritto europeo dei consumatori (Direttiva 2011/83/UE), hai il diritto di recedere dal tuo acquisto entro un periodo specificato senza fornire alcuna motivazione.",
+      "period": {
+        "title": "Periodo di 14 giorni",
+        "description": "Hai 14 giorni di calendario dalla data di ricezione della merce per esercitare il tuo diritto di recesso. Per esercitare questo diritto, devi notificarci la tua decisione via email o posta prima della scadenza."
+      },
+      "eligible": {
+        "title": "Prodotti idonei",
+        "item1": "Attrezzature nuove nella confezione originale",
+        "item2": "Attrezzature usate non ancora avviate o testate dall'acquirente",
+        "item3": "Accessori e parti nella confezione originale",
+        "item4": "Attrezzature che non sono state modificate o personalizzate"
+      },
+      "excluded": {
+        "title": "Esclusioni",
+        "item1": "Attrezzature realizzate su specifiche del cliente o chiaramente personalizzate",
+        "item2": "Beni che si deteriorano rapidamente o hanno una breve durata",
+        "item3": "Beni sigillati non idonei alla restituzione per motivi di salute o igiene",
+        "item4": "Attrezzature avviate, utilizzate o danneggiate dopo la consegna"
+      }
+    },
+    "process": {
+      "title": "Processo di reso",
+      "step1": {
+        "title": "Contatta il nostro servizio clienti",
+        "description": "Invia una richiesta di reso via email a retours@ekiptrade.com o per posta. Includi il numero d'ordine, il motivo del reso e i tuoi dati di contatto."
+      },
+      "step2": {
+        "title": "Ricevi l'autorizzazione al reso",
+        "description": "Il nostro team esaminerà la tua richiesta e ti invierà un numero di autorizzazione al reso (RMA) entro 48 ore lavorative, insieme a istruzioni dettagliate."
+      },
+      "step3": {
+        "title": "Prepara e spedisci l'attrezzatura",
+        "description": "Imballa con cura l'attrezzatura nella confezione originale se possibile. Apponi chiaramente il numero RMA sul pacco e spedisci la merce all'indirizzo indicato."
+      },
+      "step4": {
+        "title": "Ispezione ed elaborazione del rimborso",
+        "description": "Al ricevimento, ispezioneremo l'attrezzatura. Se tutto è in ordine, il rimborso verrà elaborato entro 14 giorni dalla ricezione del reso."
+      }
+    },
+    "conditions": {
+      "title": "Condizioni di reso",
+      "intro": "Per essere accettati, i resi devono soddisfare le seguenti condizioni:",
+      "item1": "L'attrezzatura deve essere restituita entro 14 giorni dall'ottenimento del numero RMA",
+      "item2": "Deve essere nelle condizioni originali, non utilizzata e non danneggiata",
+      "item3": "L'imballaggio originale deve essere intatto e completo (accessori, documentazione, ecc.)",
+      "item4": "Il numero RMA deve essere chiaramente visibile sul pacco",
+      "item5": "Tutte le etichette di identificazione e i sigilli devono essere intatti",
+      "warning": {
+        "title": "Deprezzamento",
+        "description": "Se l'attrezzatura restituita mostra segni di manipolazione oltre quanto necessario per stabilirne natura, caratteristiche e funzionamento, un deprezzamento può essere detratto dall'importo del rimborso."
+      }
+    },
+    "shipping": {
+      "title": "Spese di spedizione per il reso",
+      "intro": "La responsabilità per le spese di spedizione del reso dipende dal motivo:",
+      "withdrawal": {
+        "title": "Recesso (ripensamento)",
+        "description": "Le spese di spedizione del reso sono a carico dell'acquirente. Raccomandiamo un servizio di spedizione tracciato e assicurato dato il valore dell'attrezzatura."
+      },
+      "defective": {
+        "title": "Prodotto difettoso o non conforme",
+        "description": "Se il prodotto è difettoso o non corrisponde alla descrizione, le spese di reso sono coperte da EkipTrade. Organizzeremo il ritiro o ti rimborseremo le spese di spedizione."
+      },
+      "note": {
+        "title": "Nota:",
+        "description": "Per attrezzature grandi o pesanti, contattaci prima della spedizione per organizzare una logistica adeguata."
+      }
+    },
+    "refund": {
+      "title": "Condizioni di rimborso",
+      "intro": "Una volta convalidato il reso, il rimborso verrà elaborato secondo le seguenti condizioni:",
+      "timeline": {
+        "title": "Tempi di elaborazione",
+        "description": "Rimborso entro 14 giorni dalla ricezione dell'attrezzatura restituita, o dalla data della prova di spedizione se anteriore."
+      },
+      "method": {
+        "title": "Metodo di rimborso",
+        "description": "Rimborso tramite lo stesso metodo di pagamento utilizzato per l'acquisto originale (bonifico bancario, PayPal, ecc.)."
+      },
+      "deduction": {
+        "title": "Possibili detrazioni",
+        "description": "Le spese di spedizione iniziali verranno rimborsate solo se il reso è dovuto a un nostro errore o a un prodotto difettoso. Un deprezzamento può essere detratto in caso di attrezzatura danneggiata o incompleta."
+      }
+    },
+    "warranty": {
+      "title": "Garanzia legale",
+      "intro": "Oltre al diritto di recesso, benefici delle garanzie legali previste dal diritto europeo:",
+      "legal": {
+        "title": "Garanzia di conformità",
+        "description": "Valida per 2 anni dalla consegna per i consumatori. Il prodotto deve essere conforme al contratto di vendita e idoneo all'uso previsto."
+      },
+      "hidden": {
+        "title": "Vizi occulti",
+        "description": "Puoi richiedere la risoluzione della vendita entro 2 anni dalla scoperta di un vizio occulto che rende il prodotto inadatto all'uso."
+      },
+      "options": "In base a queste garanzie, puoi scegliere tra:",
+      "option1": "Riparazione o sostituzione dell'attrezzatura",
+      "option2": "Riduzione del prezzo se la riparazione non è possibile",
+      "option3": "Rimborso completo se il difetto è significativo"
+    },
+    "contact": {
+      "title": "Contattaci",
+      "intro": "Per qualsiasi domanda su resi o rimborsi, il nostro servizio clienti è a tua disposizione:",
+      "email": {
+        "title": "Via email"
+      },
+      "phone": {
+        "title": "Per telefono"
+      },
+      "hours": "Dal lunedì al venerdì, dalle 9 alle 18 (ora dell'Europa centrale)",
+      "include": "Per una risposta rapida, includi nel tuo messaggio:",
+      "include1": "Il tuo numero d'ordine",
+      "include2": "La data di acquisto",
+      "include3": "Una descrizione dettagliata del problema",
+      "include4": "Foto se applicabile (per attrezzature difettose o danneggiate)"
+    },
+    "lastUpdated": "Ultimo aggiornamento: Gennaio 2026"
   }
 }

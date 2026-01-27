@@ -346,6 +346,7 @@
     "terms": "Terms of use",
     "privacy": "Privacy policy",
     "cookies": "Cookies",
+    "returns": "Returns & Refunds",
     "rights": "All rights reserved"
   },
 "errors": {
@@ -664,5 +665,136 @@
     "es": "Español",
     "it": "Italiano",
     "pt": "Português"
+  },
+  "returns": {
+    "seo": {
+      "title": "Returns & Refunds Policy",
+      "description": "Learn about our returns and refunds policy for agricultural equipment. Right of withdrawal, return conditions, shipping costs, and refund process."
+    },
+    "title": "Returns & Refunds",
+    "subtitle": "We are committed to your satisfaction. Discover our returns and refunds policy for a worry-free shopping experience.",
+    "importantNotice": {
+      "title": "Important Information",
+      "description": "As a professional seller of agricultural and industrial equipment, we comply with European consumer protection legislation. Please read this policy carefully before making a purchase."
+    },
+    "withdrawal": {
+      "title": "Right of Withdrawal",
+      "intro": "In accordance with European consumer law (Directive 2011/83/EU), you have the right to withdraw from your purchase within a specified period without giving any reason.",
+      "period": {
+        "title": "14-Day Withdrawal Period",
+        "description": "You have 14 calendar days from the date of receipt of the goods to exercise your right of withdrawal. To exercise this right, you must notify us of your decision by email or post before the deadline expires."
+      },
+      "eligible": {
+        "title": "Eligible Products",
+        "item1": "New equipment in its original packaging",
+        "item2": "Used equipment not yet started or tested by the buyer",
+        "item3": "Accessories and parts in their original packaging",
+        "item4": "Equipment that has not been modified or customized"
+      },
+      "excluded": {
+        "title": "Exclusions",
+        "item1": "Equipment made to customer specifications or clearly personalized",
+        "item2": "Goods that deteriorate rapidly or have a short shelf life",
+        "item3": "Sealed goods that are not suitable for return for health or hygiene reasons",
+        "item4": "Equipment that has been started, used, or damaged after delivery"
+      }
+    },
+    "process": {
+      "title": "Return Process",
+      "step1": {
+        "title": "Contact our customer service",
+        "description": "Send a return request by email to retours@ekiptrade.com or by post. Include your order number, the reason for the return, and your contact details."
+      },
+      "step2": {
+        "title": "Receive return authorization",
+        "description": "Our team will review your request and send you a return authorization (RA) number within 48 business hours, along with detailed return instructions."
+      },
+      "step3": {
+        "title": "Prepare and ship the equipment",
+        "description": "Carefully pack the equipment in its original packaging if possible. Clearly affix the RA number to the package and ship the goods to the indicated address."
+      },
+      "step4": {
+        "title": "Inspection and refund processing",
+        "description": "Upon receipt, we will inspect the equipment. If everything is in order, your refund will be processed within 14 days of receiving the returned goods."
+      }
+    },
+    "conditions": {
+      "title": "Return Conditions",
+      "intro": "To be accepted, returns must meet the following conditions:",
+      "item1": "The equipment must be returned within 14 days of obtaining the RA number",
+      "item2": "It must be in its original condition, unused and undamaged",
+      "item3": "Original packaging must be intact and complete (accessories, documentation, etc.)",
+      "item4": "The RA number must be clearly visible on the package",
+      "item5": "All identification labels and seals must be intact",
+      "warning": {
+        "title": "Depreciation",
+        "description": "If the returned equipment shows signs of handling beyond what is necessary to establish its nature, characteristics, and proper functioning, a depreciation may be deducted from the refund amount."
+      }
+    },
+    "shipping": {
+      "title": "Return Shipping Costs",
+      "intro": "Responsibility for return shipping costs depends on the reason for the return:",
+      "withdrawal": {
+        "title": "Withdrawal (change of mind)",
+        "description": "Return shipping costs are the responsibility of the buyer. We recommend using a tracked and insured shipping service given the value of the equipment."
+      },
+      "defective": {
+        "title": "Defective or non-conforming product",
+        "description": "If the product is defective or does not match the description, return shipping costs are covered by EkipTrade. We will arrange collection or reimburse you for shipping costs."
+      },
+      "note": {
+        "title": "Note:",
+        "description": "For large or heavy equipment, please contact us before shipping to arrange appropriate logistics."
+      }
+    },
+    "refund": {
+      "title": "Refund Terms",
+      "intro": "Once the return is validated, your refund will be processed according to the following terms:",
+      "timeline": {
+        "title": "Processing Time",
+        "description": "Refund within 14 days of receiving the returned equipment, or from the date of proof of shipment if earlier."
+      },
+      "method": {
+        "title": "Refund Method",
+        "description": "Refund via the same payment method used for the original purchase (bank transfer, PayPal, etc.)."
+      },
+      "deduction": {
+        "title": "Possible Deductions",
+        "description": "Initial shipping costs will only be refunded if the return is due to an error on our part or a defective product. Depreciation may be deducted in case of damaged or incomplete equipment."
+      }
+    },
+    "warranty": {
+      "title": "Legal Warranty",
+      "intro": "In addition to the right of withdrawal, you benefit from legal warranties under European law:",
+      "legal": {
+        "title": "Warranty of Conformity",
+        "description": "Valid for 2 years from delivery for consumers. The product must conform to the sales contract and be suitable for its intended use."
+      },
+      "hidden": {
+        "title": "Hidden Defects",
+        "description": "You may request resolution of the sale within 2 years of discovering a hidden defect that makes the product unsuitable for use."
+      },
+      "options": "Under these warranties, you may choose between:",
+      "option1": "Repair or replacement of the equipment",
+      "option2": "Price reduction if repair is not possible",
+      "option3": "Full refund if the defect is significant"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "intro": "For any questions regarding returns or refunds, our customer service is at your disposal:",
+      "email": {
+        "title": "By email"
+      },
+      "phone": {
+        "title": "By phone"
+      },
+      "hours": "Monday to Friday, 9am to 6pm (CET)",
+      "include": "For a quick response, please include in your message:",
+      "include1": "Your order number",
+      "include2": "The date of purchase",
+      "include3": "A detailed description of the issue encountered",
+      "include4": "Photos if applicable (for defective or damaged equipment)"
+    },
+    "lastUpdated": "Last updated: January 2026"
   }
 }
