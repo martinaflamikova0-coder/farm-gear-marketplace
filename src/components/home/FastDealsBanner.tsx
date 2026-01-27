@@ -21,6 +21,7 @@ const FastDealsBanner = () => {
               src={fastDeals}
               alt="Deal Done in Days, Not Months - Smart matching technology"
               className="w-full h-auto object-contain max-h-[180px] md:max-h-[250px] lg:max-h-[320px] transform group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
           </div>
