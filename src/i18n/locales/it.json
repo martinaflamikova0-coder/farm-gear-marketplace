@@ -414,6 +414,8 @@
       "unsupportedFormatDescription": "Carica un'immagine (JPG, PNG, WebP) o PDF",
       "fileTooLarge": "File troppo grande",
       "fileTooLargeDescription": "La dimensione massima è 10 MB",
+      "uploadError": "Errore di caricamento",
+      "uploadErrorDescription": "Impossibile caricare la ricevuta. Riprova.",
       "orderError": "Errore",
       "orderErrorDescription": "Impossibile finalizzare l'ordine"
     },

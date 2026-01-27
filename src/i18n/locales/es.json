@@ -414,6 +414,8 @@
       "unsupportedFormatDescription": "Por favor sube una imagen (JPG, PNG, WebP) o PDF",
       "fileTooLarge": "Archivo demasiado grande",
       "fileTooLargeDescription": "El tamaño máximo es 10 MB",
+      "uploadError": "Error de carga",
+      "uploadErrorDescription": "No se pudo cargar el recibo. Por favor inténtalo de nuevo.",
       "orderError": "Error",
       "orderErrorDescription": "No se pudo finalizar el pedido"
     },
