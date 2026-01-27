@@ -13,28 +13,30 @@ const HeroBanner = () => {
 
   return (
     <section className="relative w-full overflow-hidden">
-      <div className="relative">
-        <img
-          src={heroEquipment}
-          alt="Shop Premium Used Equipment - Agricultural Machinery"
-          className="w-full h-auto object-cover"
-        />
-        {/* Overlay gradient for better text readability on mobile */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent md:hidden" />
-        
-        {/* CTA Button overlay */}
-        <div className="absolute bottom-4 left-0 right-0 flex justify-center md:bottom-8">
-          <Button 
-            variant="default" 
-            size="lg" 
-            asChild
-            className="shadow-xl hover:scale-105 transition-transform animate-pulse-gentle"
-          >
-            <Link to={`/${currentLang}/${listingsSlug}`} className="flex items-center gap-2">
-              {t('common.browseListings')}
-              <ArrowRight className="h-5 w-5" />
-            </Link>
-          </Button>
+      <div className="container-custom py-4 md:py-8">
+        <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+          <img
+            src={heroEquipment}
+            alt="Shop Premium Used Equipment - Agricultural Machinery"
+            className="w-full h-auto object-cover max-h-[300px] md:max-h-[400px] lg:max-h-[500px]"
+          />
+          {/* Overlay gradient for better text readability on mobile */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent md:hidden" />
+          
+          {/* CTA Button overlay */}
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center md:bottom-8">
+            <Button 
+              variant="default" 
+              size="lg" 
+              asChild
+              className="shadow-xl hover:scale-105 transition-transform animate-pulse-gentle"
+            >
+              <Link to={`/${currentLang}/${listingsSlug}`} className="flex items-center gap-2">
+                {t('common.browseListings')}
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </section>
