@@ -28,13 +28,13 @@ const brands: Brand[] = [
 ];
 
 const BrandsMarquee = () => {
-  // Quadruple the brands array for seamless infinite scroll (more items = smoother animation)
-  const allBrands = [...brands, ...brands, ...brands, ...brands];
+  // Sextuple the brands array for seamless infinite scroll on all screen sizes
+  const allBrands = [...brands, ...brands, ...brands, ...brands, ...brands, ...brands];
 
   return (
     <div className="bg-card border-y border-border overflow-hidden w-full">
       <div className="h-10 md:h-12 flex items-center overflow-hidden">
-        <div className="flex animate-marquee w-max">
+        <div className="flex animate-marquee w-max min-w-[200%]">
           {allBrands.map((brand, index) => (
             <div
               key={`brand-${index}`}

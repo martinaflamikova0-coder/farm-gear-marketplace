@@ -41,6 +41,8 @@ const AnnonceDetail = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
+  const [customerPhotoZoomIndex, setCustomerPhotoZoomIndex] = useState<number | null>(null);
+  const [customerPhotoZoomLevel, setCustomerPhotoZoomLevel] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -491,20 +493,107 @@ const AnnonceDetail = () => {
                         <button
                           key={index}
                           onClick={() => {
-                            setCurrentImageIndex(images.length + index);
+                            setCustomerPhotoZoomIndex(index);
+                            setCustomerPhotoZoomLevel(1);
                           }}
-                          className="aspect-square rounded-lg overflow-hidden border border-border hover:border-primary transition-colors"
+                          className="aspect-square rounded-lg overflow-hidden border border-border hover:border-primary transition-colors group relative"
                         >
                           <img 
                             src={img} 
                             alt={`${t('product.customerPhotos')} ${index + 1}`} 
                             className="w-full h-full object-cover"
                           />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                            <ZoomIn className="h-6 w-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </div>
                         </button>
                       ))}
                     </div>
                   </CardContent>
                 </Card>
+              )}
+
+              {/* Customer Photos Zoom Modal */}
+              {customerPhotoZoomIndex !== null && customerImages[customerPhotoZoomIndex] && (
+                <div className="fixed inset-0 z-50 bg-black/95 flex flex-col">
+                  {/* Zoom controls */}
+                  <div className="flex justify-between items-center p-4 bg-black/50">
+                    <div className="text-white text-sm">
+                      {t('product.customerPhotos')} - {customerPhotoZoomIndex + 1} / {customerImages.length}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => setCustomerPhotoZoomLevel((prev) => Math.max(prev - 0.5, 0.5))}
+                        disabled={customerPhotoZoomLevel <= 0.5}
+                        className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors disabled:opacity-50"
+                      >
+                        <ZoomOut className="h-5 w-5 text-white" />
+                      </button>
+                      <span className="text-white text-sm w-16 text-center">{Math.round(customerPhotoZoomLevel * 100)}%</span>
+                      <button
+                        onClick={() => setCustomerPhotoZoomLevel((prev) => Math.min(prev + 0.5, 3))}
+                        disabled={customerPhotoZoomLevel >= 3}
+                        className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors disabled:opacity-50"
+                      >
+                        <ZoomIn className="h-5 w-5 text-white" />
+                      </button>
+                      <button
+                        onClick={() => {
+                          setCustomerPhotoZoomIndex(null);
+                          setCustomerPhotoZoomLevel(1);
+                        }}
+                        className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors ml-4"
+                      >
+                        <X className="h-5 w-5 text-white" />
+                      </button>
+                    </div>
+                  </div>
+                  
+                  {/* Main image */}
+                  <div className="flex-1 overflow-auto flex items-center justify-center p-4">
+                    <img
+                      src={customerImages[customerPhotoZoomIndex]}
+                      alt={`${t('product.customerPhotos')} ${customerPhotoZoomIndex + 1}`}
+                      className="max-w-full max-h-[70vh] object-contain transition-transform duration-200"
+                      style={{ transform: `scale(${customerPhotoZoomLevel})` }}
+                    />
+                  </div>
+
+                  {/* Navigation */}
+                  {customerImages.length > 1 && (
+                    <>
+                      <button
+                        onClick={() => setCustomerPhotoZoomIndex((prev) => (prev! - 1 + customerImages.length) % customerImages.length)}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                      >
+                        <ChevronLeft className="h-6 w-6 text-white" />
+                      </button>
+                      <button
+                        onClick={() => setCustomerPhotoZoomIndex((prev) => (prev! + 1) % customerImages.length)}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                      >
+                        <ChevronRight className="h-6 w-6 text-white" />
+                      </button>
+                    </>
+                  )}
+
+                  {/* Thumbnails */}
+                  {customerImages.length > 1 && (
+                    <div className="p-4 bg-black/50 flex justify-center gap-2 overflow-x-auto">
+                      {customerImages.map((img: string, index: number) => (
+                        <button
+                          key={index}
+                          onClick={() => setCustomerPhotoZoomIndex(index)}
+                          className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                            index === customerPhotoZoomIndex ? 'border-primary' : 'border-transparent hover:border-white/50'
+                          }`}
+                        >
+                          <img src={img} alt="" className="w-full h-full object-cover" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
               )}
               
               {/* Gifts Section */}
