@@ -385,7 +385,9 @@
       "uploadReceiptDescription": "Carica uno screenshot o PDF della tua conferma di bonifico",
       "uploadButton": "Clicca per caricare (JPG, PNG, PDF - max 10 MB)",
       "confirmOrder": "Conferma il mio ordine",
-      "uploadingReceipt": "Caricamento ricevuta..."
+      "uploadingReceipt": "Caricamento ricevuta...",
+      "available": "Disponibile",
+      "notConfigured": "Non disponibile"
     },
     "paypal": {
       "title": "Paga con PayPal",

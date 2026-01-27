@@ -401,7 +401,8 @@ const Checkout = () => {
     }
   };
 
-  const isPaypalAvailable = paypalSettings?.is_active && paypalSettings?.client_id;
+  const isPaypalConfigured = paypalSettings?.is_active && paypalSettings?.client_id;
+  const hasBankAccounts = bankAccounts && bankAccounts.length > 0;
 
   // Redirect if cart is empty (except on confirmation step)
   if (items.length === 0 && step !== 'confirmation') {
@@ -603,31 +604,71 @@ const Checkout = () => {
                   </CardHeader>
                   <CardContent className="space-y-6">
                     {/* Payment method selector */}
-                    <div className="space-y-3">
-                      <Label className="text-base font-medium">{t('checkout.payment.methodTitle')}</Label>
-                      <RadioGroup
-                        value={paymentMethod}
-                        onValueChange={(value: PaymentMethod) => setPaymentMethod(value)}
-                        className="grid gap-3"
-                      >
-                        <div className={`flex items-center space-x-3 rounded-lg border p-4 cursor-pointer transition-colors ${paymentMethod === 'bank_transfer' ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'}`}>
-                          <RadioGroupItem value="bank_transfer" id="bank_transfer" />
-                          <Label htmlFor="bank_transfer" className="flex items-center gap-2 cursor-pointer flex-1">
-                            <Building2 className="h-5 w-5 text-muted-foreground" />
-                            {t('checkout.payment.bankTransfer')}
-                          </Label>
-                        </div>
-                        {isPaypalAvailable && (
-                          <div className={`flex items-center space-x-3 rounded-lg border p-4 cursor-pointer transition-colors ${paymentMethod === 'paypal' ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'}`}>
-                            <RadioGroupItem value="paypal" id="paypal" />
-                            <Label htmlFor="paypal" className="flex items-center gap-2 cursor-pointer flex-1">
-                              <CreditCard className="h-5 w-5 text-muted-foreground" />
-                              {t('checkout.payment.paypal')}
+                    {(isBankAccountsLoading || isPaypalLoading) ? (
+                      <div className="space-y-3">
+                        <Skeleton className="h-5 w-32" />
+                        <Skeleton className="h-16 w-full" />
+                        <Skeleton className="h-16 w-full" />
+                      </div>
+                    ) : (
+                      <div className="space-y-3">
+                        <Label className="text-base font-medium">{t('checkout.payment.methodTitle')}</Label>
+                        <RadioGroup
+                          value={paymentMethod}
+                          onValueChange={(value: PaymentMethod) => setPaymentMethod(value)}
+                          className="grid gap-3"
+                        >
+                          {/* Bank Transfer - always available if configured */}
+                          <div 
+                            className={`flex items-center space-x-3 rounded-lg border p-4 cursor-pointer transition-colors ${
+                              paymentMethod === 'bank_transfer' 
+                                ? 'border-primary bg-primary/5' 
+                                : 'border-border hover:border-primary/50'
+                            } ${!hasBankAccounts ? 'opacity-50 cursor-not-allowed' : ''}`}
+                          >
+                            <RadioGroupItem value="bank_transfer" id="bank_transfer" disabled={!hasBankAccounts} />
+                            <Label htmlFor="bank_transfer" className="flex items-center gap-2 cursor-pointer flex-1">
+                              <Building2 className="h-5 w-5 text-muted-foreground" />
+                              <span className="flex-1">{t('checkout.payment.bankTransfer')}</span>
+                              {hasBankAccounts && (
+                                <span className="text-xs text-success bg-success/10 px-2 py-1 rounded">
+                                  {t('checkout.payment.available', { defaultValue: 'Disponible' })}
+                                </span>
+                              )}
                             </Label>
                           </div>
-                        )}
-                      </RadioGroup>
-                    </div>
+
+                          {/* PayPal - show with status */}
+                          <div 
+                            className={`flex items-center space-x-3 rounded-lg border p-4 transition-colors ${
+                              isPaypalConfigured 
+                                ? paymentMethod === 'paypal' 
+                                  ? 'border-primary bg-primary/5 cursor-pointer' 
+                                  : 'border-border hover:border-primary/50 cursor-pointer'
+                                : 'border-border opacity-50 cursor-not-allowed'
+                            }`}
+                          >
+                            <RadioGroupItem value="paypal" id="paypal" disabled={!isPaypalConfigured} />
+                            <Label htmlFor="paypal" className={`flex items-center gap-2 flex-1 ${isPaypalConfigured ? 'cursor-pointer' : 'cursor-not-allowed'}`}>
+                              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.384c.046-.257.268-.45.53-.45h6.94c2.392 0 4.074.788 5.003 2.344.467.783.706 1.706.706 2.742 0 1.24-.377 2.284-1.122 3.104-.733.806-1.797 1.32-3.168 1.527l.02.025a4.51 4.51 0 0 1 .973 1.32c.294.59.44 1.23.44 1.907 0 1.087-.296 2.047-.881 2.855-.602.832-1.46 1.454-2.553 1.851-.784.285-1.716.428-2.774.428H7.076zM9.674 8.34l-.693 4.054h1.296c1.204 0 2.12-.21 2.723-.623.612-.42.92-1.062.92-1.908 0-.616-.198-1.08-.594-1.386-.392-.304-1.002-.457-1.83-.457l-1.822.32z" fill="#003087"/>
+                                <path d="M18.126 8.377c-.106.654-.321 1.262-.64 1.817-.562.979-1.429 1.678-2.579 2.08-.812.283-1.764.425-2.837.425h-1.21l-.633 3.692a.53.53 0 0 1-.525.442H7.076l.257-1.5h1.369a.53.53 0 0 0 .524-.442l.634-3.692h1.846c1.087 0 2.049-.135 2.867-.404 1.093-.36 1.958-.954 2.575-1.767.566-.744.87-1.598.904-2.546l.074-.105z" fill="#0070E0"/>
+                              </svg>
+                              <span className="flex-1">PayPal</span>
+                              {isPaypalConfigured ? (
+                                <span className="text-xs text-success bg-success/10 px-2 py-1 rounded">
+                                  {t('checkout.payment.available', { defaultValue: 'Disponible' })}
+                                </span>
+                              ) : (
+                                <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
+                                  {t('checkout.payment.notConfigured', { defaultValue: 'Non configuré' })}
+                                </span>
+                              )}
+                            </Label>
+                          </div>
+                        </RadioGroup>
+                      </div>
+                    )}
 
                     <Separator />
 

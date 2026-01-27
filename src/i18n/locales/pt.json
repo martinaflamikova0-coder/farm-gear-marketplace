@@ -385,7 +385,9 @@
       "uploadReceiptDescription": "Carregue uma captura de ecrã ou PDF da sua confirmação de transferência",
       "uploadButton": "Clique para carregar (JPG, PNG, PDF - máx 10 MB)",
       "confirmOrder": "Confirmar a minha encomenda",
-      "uploadingReceipt": "A carregar comprovativo..."
+      "uploadingReceipt": "A carregar comprovativo...",
+      "available": "Disponível",
+      "notConfigured": "Não disponível"
     },
     "paypal": {
       "title": "Pagar com PayPal",
