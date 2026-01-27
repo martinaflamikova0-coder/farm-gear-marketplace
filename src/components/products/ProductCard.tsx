@@ -128,11 +128,32 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   const imageUrl = product.images?.[0] || '/placeholder.svg';
   const price = Number(product.price) || 0;
   const originalPrice = product.original_price ? Number(product.original_price) : null;
-  const discountPercentage = product.discount_percentage || 0;
-  // Show discount if original_price exists and is higher, OR if discount_percentage is set
-  const hasDiscount = (originalPrice && originalPrice > price) || discountPercentage > 0;
-  const displayOriginalPrice = originalPrice && originalPrice > price ? originalPrice : (discountPercentage > 0 ? Math.round(price / (1 - discountPercentage / 100)) : null);
-  const displayDiscountPercentage = discountPercentage > 0 ? discountPercentage : (originalPrice && originalPrice > price ? Math.round((1 - price / originalPrice) * 100) : 0);
+  const storedDiscountPercentage = product.discount_percentage || 0;
+  
+  // Automatic discount calculation: 20-35% based on price tier (if no discount is set)
+  const calculateAutoDiscount = (currentPrice: number): number => {
+    if (currentPrice >= 50000) return 35;
+    if (currentPrice >= 20000) return 30;
+    if (currentPrice >= 10000) return 25;
+    if (currentPrice >= 5000) return 22;
+    return 20;
+  };
+  
+  // Determine effective discount: use stored value if available, otherwise calculate automatically
+  const effectiveDiscountPercentage = storedDiscountPercentage > 0 
+    ? storedDiscountPercentage 
+    : (originalPrice && originalPrice > price) 
+      ? Math.round((1 - price / originalPrice) * 100) 
+      : calculateAutoDiscount(price);
+  
+  // Calculate display original price
+  const displayOriginalPrice = originalPrice && originalPrice > price 
+    ? originalPrice 
+    : Math.round(price / (1 - effectiveDiscountPercentage / 100));
+  
+  // Always show discount (automatic system)
+  const hasDiscount = true;
+  const displayDiscountPercentage = effectiveDiscountPercentage;
   const priceHT = Math.round(price / 1.2); // Approximate HT from TTC
   
   // Financing available for products >= 5000€
