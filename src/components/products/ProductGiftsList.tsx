@@ -1,5 +1,6 @@
-import { Gift, Sparkles } from 'lucide-react';
+import { Gift, Sparkles, ExternalLink } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { ProductGift, calculateGiftsTotalValue } from '@/hooks/useProductGifts';
 
 interface ProductGiftsListProps {
@@ -7,11 +8,15 @@ interface ProductGiftsListProps {
 }
 
 const ProductGiftsList = ({ gifts }: ProductGiftsListProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   
   if (gifts.length === 0) return null;
 
   const totalValue = calculateGiftsTotalValue(gifts);
+  const langPrefix = i18n.language !== 'en' ? `/${i18n.language}` : '';
+
+  // Check if gift is a real product (has an id) or a premium perk
+  const isClickableGift = (gift: ProductGift) => !!gift.id;
 
   return (
     <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 border border-amber-200 dark:border-amber-800 rounded-xl p-4 md:p-6">
@@ -31,38 +36,59 @@ const ProductGiftsList = ({ gifts }: ProductGiftsListProps) => {
       </div>
       
       <div className="grid gap-3 sm:grid-cols-2">
-        {gifts.map((gift, index) => (
-          <div 
-            key={gift.id || index}
-            className="flex items-center gap-3 bg-white dark:bg-background/50 rounded-lg p-3 border border-amber-100 dark:border-amber-900 hover:border-amber-300 dark:hover:border-amber-700 transition-colors"
-          >
-            {gift.image ? (
-              <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 border border-amber-200 dark:border-amber-800">
-                <img 
-                  src={gift.image} 
-                  alt={gift.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ) : (
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/50 dark:to-orange-900/50 flex items-center justify-center flex-shrink-0 text-2xl">
-                {gift.icon}
-              </div>
-            )}
-            <div className="flex-1 min-w-0">
-              <p className="font-medium text-sm text-foreground line-clamp-2">{gift.name}</p>
-              {gift.value && (
-                <p className="text-xs text-muted-foreground">{t('gifts.value')}: {gift.value}</p>
+        {gifts.map((gift, index) => {
+          const GiftContent = (
+            <>
+              {gift.image ? (
+                <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 border border-amber-200 dark:border-amber-800">
+                  <img 
+                    src={gift.image} 
+                    alt={gift.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : (
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/50 dark:to-orange-900/50 flex items-center justify-center flex-shrink-0 text-2xl">
+                  {gift.icon}
+                </div>
               )}
-              {gift.referenceNumber && (
-                <p className="text-xs text-muted-foreground">Réf: #{gift.referenceNumber}</p>
-              )}
+              <div className="flex-1 min-w-0">
+                <p className="font-medium text-sm text-foreground line-clamp-2 flex items-center gap-1">
+                  {gift.name}
+                  {isClickableGift(gift) && (
+                    <ExternalLink className="h-3 w-3 text-amber-600 dark:text-amber-400 flex-shrink-0" />
+                  )}
+                </p>
+                {gift.value && (
+                  <p className="text-xs text-muted-foreground">{t('gifts.value')}: {gift.value}</p>
+                )}
+                {gift.referenceNumber && (
+                  <p className="text-xs text-muted-foreground">Réf: #{gift.referenceNumber}</p>
+                )}
+              </div>
+              <span className="text-xs font-semibold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-2 py-0.5 rounded-full flex-shrink-0">
+                {t('gifts.free')}
+              </span>
+            </>
+          );
+
+          return isClickableGift(gift) ? (
+            <Link
+              key={gift.id || index}
+              to={`${langPrefix}/annonce/${gift.id}`}
+              className="flex items-center gap-3 bg-white dark:bg-background/50 rounded-lg p-3 border border-amber-100 dark:border-amber-900 hover:border-amber-300 dark:hover:border-amber-700 hover:shadow-md transition-all cursor-pointer group"
+            >
+              {GiftContent}
+            </Link>
+          ) : (
+            <div 
+              key={gift.id || index}
+              className="flex items-center gap-3 bg-white dark:bg-background/50 rounded-lg p-3 border border-amber-100 dark:border-amber-900"
+            >
+              {GiftContent}
             </div>
-            <span className="text-xs font-semibold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-2 py-0.5 rounded-full flex-shrink-0">
-              {t('gifts.free')}
-            </span>
-          </div>
-        ))}
+          );
+        })}
       </div>
       
       <p className="mt-4 text-xs text-muted-foreground text-center">
