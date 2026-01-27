@@ -11,7 +11,7 @@ const corsHeaders = {
 const translations: Record<string, Record<string, string>> = {
   fr: {
     invoice: "FACTURE",
-    invoiceNumber: "N°",
+    invoiceNumber: "No",
     date: "Date",
     status: "Statut",
     seller: "VENDEUR",
@@ -36,7 +36,7 @@ const translations: Record<string, Record<string, string>> = {
     cancelled: "Annulee",
     paid: "Payee",
     companyReg: "Enregistrement: ",
-    vatNumber: "N° TVA: ",
+    vatNumber: "No TVA: ",
     termsTitle: "Conditions",
     terms: "Paiement a reception. Retards soumis a interets.",
     bankDetails: "Coordonnees bancaires",
@@ -107,7 +107,7 @@ const translations: Record<string, Record<string, string>> = {
   },
   es: {
     invoice: "FACTURA",
-    invoiceNumber: "N°",
+    invoiceNumber: "No",
     date: "Fecha",
     status: "Estado",
     seller: "VENDEDOR",
@@ -132,14 +132,14 @@ const translations: Record<string, Record<string, string>> = {
     cancelled: "Cancelada",
     paid: "Pagada",
     companyReg: "Registro: ",
-    vatNumber: "N° IVA: ",
+    vatNumber: "No IVA: ",
     termsTitle: "Condiciones",
     terms: "Pago al recibo. Pagos atrasados sujetos a intereses.",
     bankDetails: "Datos bancarios",
   },
   it: {
     invoice: "FATTURA",
-    invoiceNumber: "N°",
+    invoiceNumber: "No",
     date: "Data",
     status: "Stato",
     seller: "VENDITORE",
@@ -171,7 +171,7 @@ const translations: Record<string, Record<string, string>> = {
   },
   pt: {
     invoice: "FATURA",
-    invoiceNumber: "N°",
+    invoiceNumber: "No",
     date: "Data",
     status: "Estado",
     seller: "VENDEDOR",
@@ -215,13 +215,18 @@ function getLocale(lang: string): string {
   return locales[lang] || "en-GB";
 }
 
+// Custom price formatter that avoids special Unicode spaces that pdf-lib can't encode
 function formatPrice(price: number, locale: string): string {
-  return new Intl.NumberFormat(locale, {
+  // Format with Intl, then replace narrow no-break space (U+202F) and non-breaking space (U+00A0) with regular space
+  const formatted = new Intl.NumberFormat(locale, {
     style: "currency",
     currency: "EUR",
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(price);
+  
+  // Replace all special spaces with regular ASCII space
+  return formatted.replace(/[\u00A0\u202F\u2009\u200A]/g, " ");
 }
 
 serve(async (req) => {
@@ -431,10 +436,16 @@ serve(async (req) => {
       color: primaryColor,
     });
 
-    page.drawText(t.description, { x: 55, y: yPos + 3, size: 10, font: helveticaBold, color: rgb(1, 1, 1) });
-    page.drawText(t.qty, { x: 340, y: yPos + 3, size: 10, font: helveticaBold, color: rgb(1, 1, 1) });
-    page.drawText(t.unitPrice, { x: 390, y: yPos + 3, size: 10, font: helveticaBold, color: rgb(1, 1, 1) });
-    page.drawText(t.total, { x: 480, y: yPos + 3, size: 10, font: helveticaBold, color: rgb(1, 1, 1) });
+    // Column positions - adjusted for better spacing
+    const colDesc = 55;
+    const colQty = 320;
+    const colUnitPrice = 370;
+    const colTotal = 480;
+
+    page.drawText(t.description, { x: colDesc, y: yPos + 3, size: 10, font: helveticaBold, color: rgb(1, 1, 1) });
+    page.drawText(t.qty, { x: colQty, y: yPos + 3, size: 10, font: helveticaBold, color: rgb(1, 1, 1) });
+    page.drawText(t.unitPrice, { x: colUnitPrice, y: yPos + 3, size: 10, font: helveticaBold, color: rgb(1, 1, 1) });
+    page.drawText(t.total, { x: colTotal, y: yPos + 3, size: 10, font: helveticaBold, color: rgb(1, 1, 1) });
 
     yPos -= 25;
 
@@ -458,14 +469,14 @@ serve(async (req) => {
 
       // Truncate long titles
       let title = item.product_title;
-      if (title.length > 40) {
-        title = title.substring(0, 37) + "...";
+      if (title.length > 35) {
+        title = title.substring(0, 32) + "...";
       }
 
-      page.drawText(title, { x: 55, y: yPos + 3, size: 10, font: helvetica, color: textColor });
-      page.drawText(item.quantity.toString(), { x: 350, y: yPos + 3, size: 10, font: helvetica, color: textColor });
-      page.drawText(formatPrice(Number(item.product_price), locale), { x: 385, y: yPos + 3, size: 10, font: helvetica, color: textColor });
-      page.drawText(formatPrice(itemTotal, locale), { x: 475, y: yPos + 3, size: 10, font: helvetica, color: textColor });
+      page.drawText(title, { x: colDesc, y: yPos + 3, size: 10, font: helvetica, color: textColor });
+      page.drawText(item.quantity.toString(), { x: colQty + 10, y: yPos + 3, size: 10, font: helvetica, color: textColor });
+      page.drawText(formatPrice(Number(item.product_price), locale), { x: colUnitPrice, y: yPos + 3, size: 9, font: helvetica, color: textColor });
+      page.drawText(formatPrice(itemTotal, locale), { x: colTotal, y: yPos + 3, size: 9, font: helvetica, color: textColor });
 
       yPos -= 22;
     }
@@ -479,39 +490,42 @@ serve(async (req) => {
       color: rgb(0.85, 0.85, 0.85),
     });
 
-    // Totals section (right aligned)
+    // Totals section (right aligned) - wider spacing to avoid overlap
     yPos -= 30;
-    const totalsX = 370;
+    const labelX = 350;
+    const valueX = 480;
 
     // Calculate HT and TVA from TTC
     const htAmount = totalTTC / 1.20;
     const tvaAmount = totalTTC - htAmount;
 
-    page.drawText(`${t.subtotalHT}:`, { x: totalsX, y: yPos, size: 10, font: helvetica, color: mutedColor });
-    page.drawText(formatPrice(htAmount, locale), { x: 475, y: yPos, size: 10, font: helvetica, color: textColor });
+    page.drawText(`${t.subtotalHT}:`, { x: labelX, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText(formatPrice(htAmount, locale), { x: valueX, y: yPos, size: 10, font: helvetica, color: textColor });
 
     yPos -= 18;
-    page.drawText(`${t.vat}:`, { x: totalsX, y: yPos, size: 10, font: helvetica, color: mutedColor });
-    page.drawText(formatPrice(tvaAmount, locale), { x: 475, y: yPos, size: 10, font: helvetica, color: textColor });
+    page.drawText(`${t.vat}:`, { x: labelX, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText(formatPrice(tvaAmount, locale), { x: valueX, y: yPos, size: 10, font: helvetica, color: textColor });
 
     yPos -= 25;
     // Total TTC box
     page.drawRectangle({
-      x: totalsX - 10,
+      x: labelX - 10,
       y: yPos - 8,
-      width: width - totalsX - 30,
+      width: width - labelX - 30,
       height: 28,
       color: primaryColor,
     });
-    page.drawText(`${t.totalTTC}:`, { x: totalsX, y: yPos, size: 12, font: helveticaBold, color: rgb(1, 1, 1) });
-    page.drawText(formatPrice(totalTTC, locale), { x: 470, y: yPos, size: 12, font: helveticaBold, color: rgb(1, 1, 1) });
+    page.drawText(`${t.totalTTC}:`, { x: labelX, y: yPos, size: 11, font: helveticaBold, color: rgb(1, 1, 1) });
+    page.drawText(formatPrice(totalTTC, locale), { x: valueX, y: yPos, size: 11, font: helveticaBold, color: rgb(1, 1, 1) });
 
-    // Bank info section - taller to accommodate stamp inside
-    yPos -= 60;
-    const bankBoxHeight = 140;
+    // Bank info section - positioned lower on the page
+    yPos -= 70;
+    const bankBoxHeight = 100;
+    const bankBoxY = yPos - bankBoxHeight + 15;
+    
     page.drawRectangle({
       x: 50,
-      y: yPos - bankBoxHeight + 15,
+      y: bankBoxY,
       width: width - 100,
       height: bankBoxHeight,
       color: rgb(0.97, 0.97, 0.97),
@@ -519,8 +533,8 @@ serve(async (req) => {
       borderWidth: 1,
     });
 
-    page.drawText(t.paymentInfo, { x: 60, y: yPos - 15, size: 12, font: helveticaBold, color: primaryColor });
-    page.drawText(t.paymentMethod, { x: 60, y: yPos - 35, size: 10, font: helvetica, color: mutedColor });
+    page.drawText(t.paymentInfo, { x: 60, y: yPos - 5, size: 12, font: helveticaBold, color: primaryColor });
+    page.drawText(t.paymentMethod, { x: 60, y: yPos - 25, size: 10, font: helvetica, color: mutedColor });
     
     // Get bank details from database or use defaults
     let bankDetails = { iban: "GB82 WEST 1234 5698 7654 32", bic: "WESTGB2L", holder: "EquipTrade Ltd" };
@@ -532,23 +546,24 @@ serve(async (req) => {
       bankDetails = { iban: selectedAccount.iban, bic: selectedAccount.bic, holder: selectedAccount.holder || "EquipTrade Ltd" };
     }
     
-    page.drawText(`${t.bankDetails}:`, { x: 60, y: yPos - 50, size: 10, font: helveticaBold, color: textColor });
-    page.drawText(`IBAN: ${bankDetails.iban}`, { x: 60, y: yPos - 65, size: 10, font: helvetica, color: mutedColor });
-    page.drawText(`BIC: ${bankDetails.bic}`, { x: 300, y: yPos - 65, size: 10, font: helvetica, color: mutedColor });
-    page.drawText(`${t.reference}: ${invoiceNumber}`, { x: 60, y: yPos - 80, size: 10, font: helvetica, color: mutedColor });
+    page.drawText(`${t.bankDetails}:`, { x: 60, y: yPos - 42, size: 10, font: helveticaBold, color: textColor });
+    page.drawText(`IBAN: ${bankDetails.iban}`, { x: 60, y: yPos - 57, size: 10, font: helvetica, color: mutedColor });
+    page.drawText(`BIC: ${bankDetails.bic}`, { x: 280, y: yPos - 57, size: 10, font: helvetica, color: mutedColor });
+    page.drawText(`${t.reference}: ${invoiceNumber}`, { x: 60, y: yPos - 72, size: 10, font: helvetica, color: mutedColor });
 
-    // Stamp/Signature section - positioned INSIDE the payment info box at the bottom right
+    // Stamp/Signature section - positioned BELOW the payment info box
+    const stampY = bankBoxY - 20; // Below the bank box
     try {
       const stampUrl = "https://field-trader-net.lovable.app/invoice-stamp.png";
       const stampResponse = await fetch(stampUrl);
       if (stampResponse.ok) {
         const stampBytes = new Uint8Array(await stampResponse.arrayBuffer());
         const stampImage = await pdfDoc.embedPng(stampBytes);
-        const stampDims = stampImage.scale(0.22); // Scale down the stamp
-        // Position stamp at bottom-right corner inside the payment box
+        const stampDims = stampImage.scale(0.25); // Scale the stamp
+        // Position stamp at bottom-right, below the payment box
         page.drawImage(stampImage, {
-          x: width - 50 - stampDims.width - 10,
-          y: yPos - bankBoxHeight + 20,
+          x: width - 50 - stampDims.width,
+          y: stampY - stampDims.height,
           width: stampDims.width,
           height: stampDims.height,
         });
@@ -558,7 +573,7 @@ serve(async (req) => {
     }
 
     // Footer with terms
-    const footerY = 60;
+    const footerY = 50;
     page.drawLine({
       start: { x: 50, y: footerY + 30 },
       end: { x: width - 50, y: footerY + 30 },

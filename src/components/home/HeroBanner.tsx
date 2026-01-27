@@ -20,6 +20,7 @@ const HeroBanner = () => {
               src={heroEquipment}
               alt="Shop Premium Used Equipment - Agricultural Machinery"
               className="w-full h-auto object-contain max-h-[250px] md:max-h-[350px] lg:max-h-[450px]"
+              loading="lazy"
             />
           </div>
           {/* Overlay gradient for better text readability on mobile */}

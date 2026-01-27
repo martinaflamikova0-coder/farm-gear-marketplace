@@ -21,6 +21,7 @@ const GlobalNetworkBanner = () => {
               src={globalNetwork}
               alt="Trusted Global Network - Connect with certified sellers from 50+ countries"
               className="w-full h-auto object-contain max-h-[180px] md:max-h-[250px] lg:max-h-[320px] transform group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
           </div>
