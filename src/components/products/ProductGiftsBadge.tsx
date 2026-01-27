@@ -30,16 +30,25 @@ const ProductGiftsBadge = ({ gifts, variant = 'card' }: ProductGiftsBadgeProps) 
               <span>{t('gifts.count', { count: gifts.length })}</span>
             </div>
           </TooltipTrigger>
-          <TooltipContent side="bottom" className="max-w-xs">
-            <div className="space-y-1">
+          <TooltipContent side="bottom" className="max-w-xs p-3">
+            <div className="space-y-2">
               <p className="font-semibold text-sm flex items-center gap-1">
                 <Gift className="h-3 w-3" />
                 {t('gifts.includedValue', { value: totalValue })}
               </p>
-              <ul className="text-xs space-y-0.5">
+              <ul className="text-xs space-y-1.5">
                 {gifts.slice(0, 3).map((gift, i) => (
-                  <li key={i} className="flex items-center gap-1">
-                    <span>{gift.name}</span>
+                  <li key={gift.id || i} className="flex items-center gap-2">
+                    {gift.image ? (
+                      <img 
+                        src={gift.image} 
+                        alt={gift.name}
+                        className="w-6 h-6 rounded object-cover"
+                      />
+                    ) : (
+                      <span className="text-sm">{gift.icon}</span>
+                    )}
+                    <span className="line-clamp-1">{gift.name}</span>
                   </li>
                 ))}
                 {gifts.length > 3 && (
