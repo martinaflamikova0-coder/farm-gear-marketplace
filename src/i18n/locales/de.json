@@ -414,6 +414,8 @@
       "unsupportedFormatDescription": "Bitte laden Sie ein Bild (JPG, PNG, WebP) oder PDF hoch",
       "fileTooLarge": "Datei zu groß",
       "fileTooLargeDescription": "Maximale Größe ist 10 MB",
+      "uploadError": "Upload-Fehler",
+      "uploadErrorDescription": "Beleg konnte nicht hochgeladen werden. Bitte versuchen Sie es erneut.",
       "orderError": "Fehler",
       "orderErrorDescription": "Bestellung konnte nicht abgeschlossen werden"
     },

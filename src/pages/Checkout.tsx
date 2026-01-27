@@ -158,23 +158,7 @@ const Checkout = () => {
     }
   };
 
-  const uploadReceipt = async (orderId: string): Promise<string | null> => {
-    if (!receiptFile || !user) return null;
-
-    const fileExt = receiptFile.name.split('.').pop();
-    const fileName = `${user.id}/${orderId}-receipt.${fileExt}`;
-
-    const { data, error } = await supabase.storage
-      .from('payment-receipts')
-      .upload(fileName, receiptFile, { upsert: true });
-
-    if (error) {
-      console.error('Receipt upload error:', error);
-      return null;
-    }
-
-    return data.path;
-  };
+  // Receipt upload is now handled directly in handleConfirmOrder
 
   const handleConfirmOrder = async () => {
     if (!user) return;
@@ -190,14 +174,45 @@ const Checkout = () => {
     }
 
     setIsLoading(true);
+    setIsUploadingReceipt(true);
+    
     try {
-      // Create order first
+      // Step 1: Upload receipt FIRST to ensure it succeeds before creating order
+      let receiptPath: string | null = null;
+      
+      if (receiptFile) {
+        const fileExt = receiptFile.name.split('.').pop();
+        const tempFileName = `${user.id}/temp-${Date.now()}-receipt.${fileExt}`;
+
+        const { data: uploadData, error: uploadError } = await supabase.storage
+          .from('payment-receipts')
+          .upload(tempFileName, receiptFile, { upsert: true });
+
+        if (uploadError) {
+          console.error('Receipt upload error:', uploadError);
+          toast({
+            title: t('checkout.errors.uploadError'),
+            description: t('checkout.errors.uploadErrorDescription'),
+            variant: 'destructive',
+          });
+          setIsLoading(false);
+          setIsUploadingReceipt(false);
+          return;
+        }
+        
+        receiptPath = uploadData.path;
+      }
+
+      setIsUploadingReceipt(false);
+
+      // Step 2: Create order with receipt already uploaded
       const { data: order, error: orderError } = await supabase
         .from('orders')
         .insert({
           user_id: user.id,
           total_amount: total,
-          status: 'pending',
+          status: receiptPath ? 'payment_uploaded' : 'pending',
+          payment_receipt_url: receiptPath,
           shipping_name: `${shippingData.firstName} ${shippingData.lastName}`,
           shipping_email: shippingData.email,
           shipping_phone: shippingData.phone,
@@ -210,29 +225,31 @@ const Checkout = () => {
         .select('id')
         .single();
 
-      if (orderError) throw orderError;
+      if (orderError) {
+        console.error('Order creation error:', orderError);
+        throw orderError;
+      }
 
-      // Upload receipt
-      setIsUploadingReceipt(true);
-      const receiptPath = await uploadReceipt(order.id);
-      setIsUploadingReceipt(false);
-
-      // Update order with receipt URL and change status to payment_uploaded
+      // Step 3: Rename the receipt file to include the order ID
       if (receiptPath) {
-        const { error: updateError } = await supabase
-          .from('orders')
-          .update({ 
-            payment_receipt_url: receiptPath,
-            status: 'payment_uploaded'
-          })
-          .eq('id', order.id);
+        const fileExt = receiptFile!.name.split('.').pop();
+        const finalFileName = `${user.id}/${order.id}-receipt.${fileExt}`;
         
-        if (updateError) {
-          console.error('Error updating order with receipt:', updateError);
+        // Move the file to the correct name
+        const { error: moveError } = await supabase.storage
+          .from('payment-receipts')
+          .move(receiptPath, finalFileName);
+        
+        if (!moveError) {
+          // Update order with the new file path
+          await supabase
+            .from('orders')
+            .update({ payment_receipt_url: finalFileName })
+            .eq('id', order.id);
         }
       }
 
-      // Create order items
+      // Step 4: Create order items
       const orderItems = items.map(item => ({
         order_id: order.id,
         product_id: item.product_id,
@@ -245,7 +262,10 @@ const Checkout = () => {
         .from('order_items')
         .insert(orderItems);
 
-      if (itemsError) throw itemsError;
+      if (itemsError) {
+        console.error('Order items error:', itemsError);
+        throw itemsError;
+      }
 
       // Generate order reference
       const ref = `CMD-${Date.now().toString(36).toUpperCase()}`;

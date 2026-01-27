@@ -414,6 +414,8 @@
       "unsupportedFormatDescription": "Por favor carregue uma imagem (JPG, PNG, WebP) ou PDF",
       "fileTooLarge": "Ficheiro demasiado grande",
       "fileTooLargeDescription": "O tamanho máximo é 10 MB",
+      "uploadError": "Erro de carregamento",
+      "uploadErrorDescription": "Não foi possível carregar o comprovativo. Por favor tente novamente.",
       "orderError": "Erro",
       "orderErrorDescription": "Não foi possível finalizar a encomenda"
     },

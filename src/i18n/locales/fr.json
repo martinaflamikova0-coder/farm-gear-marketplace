@@ -436,6 +436,8 @@
       "unsupportedFormatDescription": "Veuillez télécharger une image (JPG, PNG, WebP) ou un PDF",
       "fileTooLarge": "Fichier trop volumineux",
       "fileTooLargeDescription": "La taille maximale est de 10 Mo",
+      "uploadError": "Erreur de téléchargement",
+      "uploadErrorDescription": "Impossible de télécharger le reçu. Veuillez réessayer.",
       "orderError": "Erreur",
       "orderErrorDescription": "Impossible de finaliser la commande"
     },

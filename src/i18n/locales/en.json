@@ -436,6 +436,8 @@
       "unsupportedFormatDescription": "Please upload an image (JPG, PNG, WebP) or PDF",
       "fileTooLarge": "File too large",
       "fileTooLargeDescription": "Maximum size is 10 MB",
+      "uploadError": "Upload error",
+      "uploadErrorDescription": "Unable to upload receipt. Please try again.",
       "orderError": "Error",
       "orderErrorDescription": "Unable to finalize order"
     },
