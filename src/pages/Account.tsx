@@ -10,10 +10,12 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Package, Calendar, Euro, ChevronDown, ChevronUp, LogOut, User, FileImage, Download, Eye, MapPin, Receipt, FileText, Loader2 } from 'lucide-react';
+import { Package, Calendar, Euro, ChevronDown, ChevronUp, LogOut, User, FileImage, Download, Eye, MapPin, Receipt, FileText, Loader2, Truck } from 'lucide-react';
+import { useShippingZoneForCountry } from '@/hooks/useShippingZones';
 import { format } from 'date-fns';
 import { fr, enUS, de, es, it, pt, type Locale } from 'date-fns/locale';
 import { toast } from 'sonner';
+import OrderDeliveryEstimate from '@/components/account/OrderDeliveryEstimate';
 interface OrderItem {
   id: string;
   product_title: string;
@@ -328,7 +330,7 @@ const Account = () => {
 
                 {expandedOrder === order.id && (
                   <CardContent className="border-t bg-muted/30 space-y-4">
-                    {/* Shipping Address */}
+                    {/* Shipping Address & Delivery Estimate */}
                     {order.shipping_name && (
                       <div className="p-3 bg-background rounded-lg">
                         <h4 className="font-medium mb-2 flex items-center gap-2">
@@ -341,6 +343,9 @@ const Account = () => {
                           {order.shipping_postal_code} {order.shipping_city}
                           {order.shipping_country && <><br />{order.shipping_country}</>}
                         </p>
+                        <div className="mt-3 pt-3 border-t">
+                          <OrderDeliveryEstimate countryCode={order.shipping_country} />
+                        </div>
                       </div>
                     )}
 
