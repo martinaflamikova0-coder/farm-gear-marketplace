@@ -14,7 +14,7 @@ interface ProductGiftsBadgeProps {
 }
 
 const ProductGiftsBadge = ({ gifts, variant = 'card' }: ProductGiftsBadgeProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   
   if (gifts.length === 0) return null;
 
@@ -38,9 +38,10 @@ const ProductGiftsBadge = ({ gifts, variant = 'card' }: ProductGiftsBadgeProps) 
               </p>
               <ul className="text-xs space-y-1.5">
                 {gifts.slice(0, 3).map((gift, i) => {
+                  // Use translation key for premium gifts, or translated title for product gifts
                   const displayName = gift.translationKey 
                     ? t(`gifts.${gift.translationKey}`)
-                    : gift.name;
+                    : (gift.titleTranslations?.[i18n.language] || gift.name);
                   
                   return (
                     <li key={gift.id || i} className="flex items-center gap-2">
