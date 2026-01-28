@@ -37,13 +37,18 @@ const ProductGiftsList = ({ gifts }: ProductGiftsListProps) => {
       
       <div className="grid gap-3 sm:grid-cols-2">
         {gifts.map((gift, index) => {
+          // Get the display name: use translation for premium gifts, or product title for real products
+          const displayName = gift.translationKey 
+            ? t(`gifts.${gift.translationKey}`)
+            : gift.name;
+
           const GiftContent = (
             <>
               {gift.image ? (
                 <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 border border-amber-200 dark:border-amber-800">
                   <img 
                     src={gift.image} 
-                    alt={gift.name}
+                    alt={displayName}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -54,7 +59,7 @@ const ProductGiftsList = ({ gifts }: ProductGiftsListProps) => {
               )}
               <div className="flex-1 min-w-0">
                 <p className="font-medium text-sm text-foreground line-clamp-2 flex items-center gap-1">
-                  {gift.name}
+                  {displayName}
                   {isClickableGift(gift) && (
                     <ExternalLink className="h-3 w-3 text-amber-600 dark:text-amber-400 flex-shrink-0" />
                   )}
@@ -63,7 +68,7 @@ const ProductGiftsList = ({ gifts }: ProductGiftsListProps) => {
                   <p className="text-xs text-muted-foreground">{t('gifts.value')}: {gift.value}</p>
                 )}
                 {gift.referenceNumber && (
-                  <p className="text-xs text-muted-foreground">Réf: #{gift.referenceNumber}</p>
+                  <p className="text-xs text-muted-foreground">{t('gifts.reference')}: #{gift.referenceNumber}</p>
                 )}
               </div>
               <span className="text-xs font-semibold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-2 py-0.5 rounded-full flex-shrink-0">

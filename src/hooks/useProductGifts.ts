@@ -9,6 +9,7 @@ export interface ProductGift {
   value?: string;
   image?: string;
   referenceNumber?: number;
+  translationKey?: string; // For premium gifts that need translation
 }
 
 interface ProductForGifts {
@@ -126,26 +127,27 @@ export function useProductGifts(product: ProductForGifts | null | undefined): Pr
     const selectedGifts = shuffled.slice(0, Math.min(giftCount, shuffled.length));
     
     // Add free delivery for items over 5000€
-    if (product.price >= 5000 && !selectedGifts.some(g => g.name.includes('Livraison'))) {
+    if (product.price >= 5000 && !selectedGifts.some(g => g.translationKey === 'freeDelivery')) {
       selectedGifts.push({ 
         icon: '🚚', 
-        name: 'Livraison offerte',
-        value: '150€'
+        name: 'Free delivery', // Fallback, will be translated in component
+        value: '150€',
+        translationKey: 'freeDelivery'
       });
     }
     
     // Add premium gifts for expensive items
     if (product.price >= 30000) {
       const premiumGifts: ProductGift[] = [
-        { icon: '🛡️', name: 'Extension garantie +12 mois', value: '200€' },
-        { icon: '🔧', name: 'Première révision complète offerte', value: '180€' },
+        { icon: '🛡️', name: 'Warranty extension +12 months', value: '200€', translationKey: 'warrantyExtension' },
+        { icon: '🔧', name: 'Free first complete service', value: '180€', translationKey: 'freeFirstService' },
       ];
       
       if (product.price >= 80000) {
-        premiumGifts.push({ icon: '🎓', name: 'Formation opérateur sur site', value: '350€' });
+        premiumGifts.push({ icon: '🎓', name: 'On-site operator training', value: '350€', translationKey: 'operatorTraining' });
       }
       if (product.price >= 150000) {
-        premiumGifts.push({ icon: '📡', name: 'Module télémétrie connectée', value: '450€' });
+        premiumGifts.push({ icon: '📡', name: 'Connected telemetry module', value: '450€', translationKey: 'telemetryModule' });
       }
       
       selectedGifts.push(...premiumGifts);
