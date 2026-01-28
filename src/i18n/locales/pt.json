@@ -102,7 +102,13 @@
     "totalValue": "Valor total: {{value}}€ em presentes incluídos",
     "value": "Valor",
     "free": "GRÁTIS",
-    "autoSent": "Estes presentes serão automaticamente enviados com a sua encomenda"
+    "autoSent": "Estes presentes serão automaticamente enviados com a sua encomenda",
+    "reference": "Ref",
+    "freeDelivery": "Entrega gratuita",
+    "warrantyExtension": "Extensão de garantia +12 meses",
+    "freeFirstService": "Primeira revisão completa gratuita",
+    "operatorTraining": "Formação do operador no local",
+    "telemetryModule": "Módulo de telemetria conectada"
   },
   "promotions": {
     "daysLeft": "{{count}} dia restante",
