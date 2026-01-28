@@ -10,6 +10,7 @@ export interface ProductGift {
   image?: string;
   referenceNumber?: number;
   translationKey?: string; // For premium gifts that need translation
+  titleTranslations?: Record<string, string> | null; // For product gifts with AI translations
 }
 
 interface ProductForGifts {
@@ -40,7 +41,7 @@ function getGiftCount(price: number): number {
 async function fetchGiftProducts(): Promise<ProductGift[]> {
   const { data, error } = await supabase
     .from('products')
-    .select('id, title, price, images, reference_number, category')
+    .select('id, title, title_translations, price, images, reference_number, category')
     .eq('status', 'active')
     .lte('price', GIFT_PRICE_THRESHOLD)
     .order('price', { ascending: true })
@@ -58,6 +59,7 @@ async function fetchGiftProducts(): Promise<ProductGift[]> {
     value: `${Math.round(product.price)}€`,
     image: product.images?.[0] || undefined,
     referenceNumber: product.reference_number,
+    titleTranslations: product.title_translations as Record<string, string> | null,
   }));
 }
 
