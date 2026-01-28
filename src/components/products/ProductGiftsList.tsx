@@ -40,9 +40,11 @@ const ProductGiftsList = ({ gifts }: ProductGiftsListProps) => {
           // Get the display name:
           // 1. For premium gifts: use translation key
           // 2. For product gifts: use translated title from titleTranslations, fallback to name
+          // Normalize language code (e.g., "en-GB" -> "en")
+          const lang = i18n.language.split('-')[0];
           const displayName = gift.translationKey 
             ? t(`gifts.${gift.translationKey}`)
-            : (gift.titleTranslations?.[i18n.language] || gift.name);
+            : (gift.titleTranslations?.[lang] || gift.name);
 
           const GiftContent = (
             <>

@@ -39,9 +39,11 @@ const ProductGiftsBadge = ({ gifts, variant = 'card' }: ProductGiftsBadgeProps) 
               <ul className="text-xs space-y-1.5">
                 {gifts.slice(0, 3).map((gift, i) => {
                   // Use translation key for premium gifts, or translated title for product gifts
+                  // Normalize language code (e.g., "en-GB" -> "en")
+                  const lang = i18n.language.split('-')[0];
                   const displayName = gift.translationKey 
                     ? t(`gifts.${gift.translationKey}`)
-                    : (gift.titleTranslations?.[i18n.language] || gift.name);
+                    : (gift.titleTranslations?.[lang] || gift.name);
                   
                   return (
                     <li key={gift.id || i} className="flex items-center gap-2">
