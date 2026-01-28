@@ -103,13 +103,7 @@
     "totalValue": "Valeur totale : {{value}}€ de cadeaux inclus",
     "value": "Valeur",
     "free": "OFFERT",
-    "autoSent": "Ces cadeaux vous seront automatiquement envoyés avec votre commande",
-    "reference": "Réf",
-    "freeDelivery": "Livraison offerte",
-    "warrantyExtension": "Extension garantie +12 mois",
-    "freeFirstService": "Première révision complète offerte",
-    "operatorTraining": "Formation opérateur sur site",
-    "telemetryModule": "Module télémétrie connectée"
+    "autoSent": "Ces cadeaux vous seront automatiquement envoyés avec votre commande"
   },
   "promotions": {
     "daysLeft": "{{count}} jour restant",

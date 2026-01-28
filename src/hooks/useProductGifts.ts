@@ -9,8 +9,6 @@ export interface ProductGift {
   value?: string;
   image?: string;
   referenceNumber?: number;
-  translationKey?: string; // For premium gifts that need translation
-  titleTranslations?: Record<string, string> | null; // For product gifts with AI translations
 }
 
 interface ProductForGifts {
@@ -41,7 +39,7 @@ function getGiftCount(price: number): number {
 async function fetchGiftProducts(): Promise<ProductGift[]> {
   const { data, error } = await supabase
     .from('products')
-    .select('id, title, title_translations, price, images, reference_number, category')
+    .select('id, title, price, images, reference_number, category')
     .eq('status', 'active')
     .lte('price', GIFT_PRICE_THRESHOLD)
     .order('price', { ascending: true })
@@ -59,7 +57,6 @@ async function fetchGiftProducts(): Promise<ProductGift[]> {
     value: `${Math.round(product.price)}€`,
     image: product.images?.[0] || undefined,
     referenceNumber: product.reference_number,
-    titleTranslations: product.title_translations as Record<string, string> | null,
   }));
 }
 
@@ -129,27 +126,26 @@ export function useProductGifts(product: ProductForGifts | null | undefined): Pr
     const selectedGifts = shuffled.slice(0, Math.min(giftCount, shuffled.length));
     
     // Add free delivery for items over 5000€
-    if (product.price >= 5000 && !selectedGifts.some(g => g.translationKey === 'freeDelivery')) {
+    if (product.price >= 5000 && !selectedGifts.some(g => g.name.includes('Livraison'))) {
       selectedGifts.push({ 
         icon: '🚚', 
-        name: 'Free delivery', // Fallback, will be translated in component
-        value: '150€',
-        translationKey: 'freeDelivery'
+        name: 'Livraison offerte',
+        value: '150€'
       });
     }
     
     // Add premium gifts for expensive items
     if (product.price >= 30000) {
       const premiumGifts: ProductGift[] = [
-        { icon: '🛡️', name: 'Warranty extension +12 months', value: '200€', translationKey: 'warrantyExtension' },
-        { icon: '🔧', name: 'Free first complete service', value: '180€', translationKey: 'freeFirstService' },
+        { icon: '🛡️', name: 'Extension garantie +12 mois', value: '200€' },
+        { icon: '🔧', name: 'Première révision complète offerte', value: '180€' },
       ];
       
       if (product.price >= 80000) {
-        premiumGifts.push({ icon: '🎓', name: 'On-site operator training', value: '350€', translationKey: 'operatorTraining' });
+        premiumGifts.push({ icon: '🎓', name: 'Formation opérateur sur site', value: '350€' });
       }
       if (product.price >= 150000) {
-        premiumGifts.push({ icon: '📡', name: 'Connected telemetry module', value: '450€', translationKey: 'telemetryModule' });
+        premiumGifts.push({ icon: '📡', name: 'Module télémétrie connectée', value: '450€' });
       }
       
       selectedGifts.push(...premiumGifts);

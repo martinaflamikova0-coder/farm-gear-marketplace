@@ -102,13 +102,7 @@
     "totalValue": "Gesamtwert: {{value}}€ an Geschenken inklusive",
     "value": "Wert",
     "free": "GRATIS",
-    "autoSent": "Diese Geschenke werden automatisch mit Ihrer Bestellung versendet",
-    "reference": "Ref",
-    "freeDelivery": "Kostenlose Lieferung",
-    "warrantyExtension": "Garantieverlängerung +12 Monate",
-    "freeFirstService": "Erste vollständige Wartung kostenlos",
-    "operatorTraining": "Bediener-Schulung vor Ort",
-    "telemetryModule": "Telemetrie-Modul mit Vernetzung"
+    "autoSent": "Diese Geschenke werden automatisch mit Ihrer Bestellung versendet"
   },
   "promotions": {
     "daysLeft": "{{count}} Tag verbleibend",

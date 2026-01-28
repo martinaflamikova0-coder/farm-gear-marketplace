@@ -14,7 +14,7 @@ interface ProductGiftsBadgeProps {
 }
 
 const ProductGiftsBadge = ({ gifts, variant = 'card' }: ProductGiftsBadgeProps) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   
   if (gifts.length === 0) return null;
 
@@ -37,29 +37,20 @@ const ProductGiftsBadge = ({ gifts, variant = 'card' }: ProductGiftsBadgeProps) 
                 {t('gifts.includedValue', { value: totalValue })}
               </p>
               <ul className="text-xs space-y-1.5">
-                {gifts.slice(0, 3).map((gift, i) => {
-                  // Use translation key for premium gifts, or translated title for product gifts
-                  // Normalize language code (e.g., "en-GB" -> "en")
-                  const lang = i18n.language.split('-')[0];
-                  const displayName = gift.translationKey 
-                    ? t(`gifts.${gift.translationKey}`)
-                    : (gift.titleTranslations?.[lang] || gift.name);
-                  
-                  return (
-                    <li key={gift.id || i} className="flex items-center gap-2">
-                      {gift.image ? (
-                        <img 
-                          src={gift.image} 
-                          alt={displayName}
-                          className="w-6 h-6 rounded object-cover"
-                        />
-                      ) : (
-                        <span className="text-sm">{gift.icon}</span>
-                      )}
-                      <span className="line-clamp-1">{displayName}</span>
-                    </li>
-                  );
-                })}
+                {gifts.slice(0, 3).map((gift, i) => (
+                  <li key={gift.id || i} className="flex items-center gap-2">
+                    {gift.image ? (
+                      <img 
+                        src={gift.image} 
+                        alt={gift.name}
+                        className="w-6 h-6 rounded object-cover"
+                      />
+                    ) : (
+                      <span className="text-sm">{gift.icon}</span>
+                    )}
+                    <span className="line-clamp-1">{gift.name}</span>
+                  </li>
+                ))}
                 {gifts.length > 3 && (
                   <li className="text-muted-foreground">{t('gifts.moreGifts', { count: gifts.length - 3 })}</li>
                 )}
