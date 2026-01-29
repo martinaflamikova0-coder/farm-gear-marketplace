@@ -37,10 +37,13 @@ const ProductGiftsList = ({ gifts }: ProductGiftsListProps) => {
       
       <div className="grid gap-3 sm:grid-cols-2">
         {gifts.map((gift, index) => {
-          // Get the display name: use translation for premium gifts, or product title for real products
+          // Get the display name: 
+          // 1. For premium gifts (with translationKey), use translation
+          // 2. For real products, use translated title if available, fallback to original name
+          const currentLang = i18n.language;
           const displayName = gift.translationKey 
             ? t(`gifts.${gift.translationKey}`)
-            : gift.name;
+            : gift.nameTranslations?.[currentLang] || gift.name;
 
           const GiftContent = (
             <>

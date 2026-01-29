@@ -1,11 +1,13 @@
 import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
+import type { Json } from '@/integrations/supabase/types';
 
 export interface ProductGift {
   id?: string;
   icon: string;
   name: string;
+  nameTranslations?: Record<string, string> | null;
   value?: string;
   image?: string;
   referenceNumber?: number;
@@ -40,7 +42,7 @@ function getGiftCount(price: number): number {
 async function fetchGiftProducts(): Promise<ProductGift[]> {
   const { data, error } = await supabase
     .from('products')
-    .select('id, title, price, images, reference_number, category')
+    .select('id, title, title_translations, price, images, reference_number, category')
     .eq('status', 'active')
     .lte('price', GIFT_PRICE_THRESHOLD)
     .order('price', { ascending: true })
@@ -55,6 +57,7 @@ async function fetchGiftProducts(): Promise<ProductGift[]> {
     id: product.id,
     icon: getCategoryIcon(product.category),
     name: product.title,
+    nameTranslations: product.title_translations as Record<string, string> | null,
     value: `${Math.round(product.price)}€`,
     image: product.images?.[0] || undefined,
     referenceNumber: product.reference_number,
