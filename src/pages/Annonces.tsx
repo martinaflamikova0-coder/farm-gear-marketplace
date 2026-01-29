@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
-import { useSearchParams, useParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Filter, Grid, List, X } from 'lucide-react';
+import { Filter, Grid, List, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ProductCard from '@/components/products/ProductCard';
@@ -16,15 +16,18 @@ import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useBrandNames } from '@/hooks/useBrands';
 import { useCategoriesWithCounts, type CategoryWithCount } from '@/hooks/useCategories';
-import { useProducts } from '@/hooks/useProducts';
+import { usePaginatedProducts } from '@/hooks/useProducts';
+
+const ITEMS_PER_PAGE = 24;
 
 const Annonces = () => {
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [sortBy, setSortBy] = useState('date-desc');
+  const [currentPage, setCurrentPage] = useState(1);
   
-  const { data: categories, isLoading: categoriesLoading } = useCategoriesWithCounts();
+  const { data: categories = [], isLoading: categoriesLoading } = useCategoriesWithCounts();
   const { data: brands = [], isLoading: brandsLoading } = useBrandNames();
   
   // Filters state
@@ -37,11 +40,24 @@ const Annonces = () => {
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
   const searchQuery = searchParams.get('search') || '';
 
-  // Fetch products from database
-  const { data: allProducts = [], isLoading: productsLoading } = useProducts({
+  // Fetch paginated products from database with server-side filtering & sorting
+  const { data: paginatedData, isLoading: productsLoading } = usePaginatedProducts({
     category: selectedCategory || undefined,
     search: searchQuery || undefined,
+    brands: selectedBrands.length > 0 ? selectedBrands : undefined,
+    priceMin: priceMin ? parseInt(priceMin) : undefined,
+    priceMax: priceMax ? parseInt(priceMax) : undefined,
+    yearMin: yearMin ? parseInt(yearMin) : undefined,
+    yearMax: yearMax ? parseInt(yearMax) : undefined,
+    conditions: selectedConditions.length > 0 ? selectedConditions : undefined,
+    sortBy,
+    page: currentPage,
+    pageSize: ITEMS_PER_PAGE,
   });
+
+  const products = paginatedData?.products || [];
+  const totalCount = paginatedData?.totalCount || 0;
+  const totalPages = paginatedData?.totalPages || 1;
 
   const conditions = ['new', 'used', 'refurbished'];
 
@@ -72,12 +88,24 @@ const Annonces = () => {
     setSelectedBrands(prev =>
       prev.includes(brand) ? prev.filter(b => b !== brand) : [...prev, brand]
     );
+    setCurrentPage(1); // Reset to first page when filter changes
   };
 
   const toggleCondition = (condition: string) => {
     setSelectedConditions(prev =>
       prev.includes(condition) ? prev.filter(c => c !== condition) : [...prev, condition]
     );
+    setCurrentPage(1);
+  };
+
+  const handleCategoryChange = (val: string) => {
+    setSelectedCategory(val === "all" ? "" : val);
+    setCurrentPage(1);
+  };
+
+  const handleSortChange = (val: string) => {
+    setSortBy(val);
+    setCurrentPage(1);
   };
 
   const clearFilters = () => {
@@ -89,6 +117,7 @@ const Annonces = () => {
     setYearMax('');
     setSelectedConditions([]);
     setSearchParams({});
+    setCurrentPage(1);
   };
 
   const activeFiltersCount = [
@@ -102,54 +131,38 @@ const Annonces = () => {
     searchQuery
   ].filter(Boolean).length;
 
-  // Filter and sort products
-  const filteredProducts = useMemo(() => {
-    let result = [...allProducts];
+  // Pagination handlers
+  const goToPage = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
-    // Brand filter
-    if (selectedBrands.length > 0) {
-      result = result.filter(p => p.brand && selectedBrands.includes(p.brand));
+  // Generate page numbers to display
+  const getPageNumbers = () => {
+    const pages: (number | 'ellipsis')[] = [];
+    const maxVisible = 5;
+    
+    if (totalPages <= maxVisible + 2) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      
+      if (currentPage > 3) pages.push('ellipsis');
+      
+      const start = Math.max(2, currentPage - 1);
+      const end = Math.min(totalPages - 1, currentPage + 1);
+      
+      for (let i = start; i <= end; i++) pages.push(i);
+      
+      if (currentPage < totalPages - 2) pages.push('ellipsis');
+      
+      pages.push(totalPages);
     }
-
-    // Price filter
-    if (priceMin) {
-      result = result.filter(p => Number(p.price) >= parseInt(priceMin));
-    }
-    if (priceMax) {
-      result = result.filter(p => Number(p.price) <= parseInt(priceMax));
-    }
-
-    // Year filter
-    if (yearMin) {
-      result = result.filter(p => p.year && p.year >= parseInt(yearMin));
-    }
-    if (yearMax) {
-      result = result.filter(p => p.year && p.year <= parseInt(yearMax));
-    }
-
-    // Condition filter
-    if (selectedConditions.length > 0) {
-      result = result.filter(p => p.condition && selectedConditions.includes(p.condition));
-    }
-
-    // Sort
-    switch (sortBy) {
-      case 'price-asc':
-        result.sort((a, b) => Number(a.price) - Number(b.price));
-        break;
-      case 'price-desc':
-        result.sort((a, b) => Number(b.price) - Number(a.price));
-        break;
-      case 'year-desc':
-        result.sort((a, b) => (b.year || 0) - (a.year || 0));
-        break;
-      case 'date-desc':
-      default:
-        result.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-    }
-
-    return result;
-  }, [allProducts, selectedBrands, priceMin, priceMax, yearMin, yearMax, selectedConditions, sortBy]);
+    
+    return pages;
+  };
 
   const FiltersContent = () => (
     <div className="space-y-6">
@@ -159,7 +172,7 @@ const Annonces = () => {
         {categoriesLoading ? (
           <Skeleton className="h-10 w-full" />
         ) : (
-          <Select value={selectedCategory || "all"} onValueChange={(val) => setSelectedCategory(val === "all" ? "" : val)}>
+          <Select value={selectedCategory || "all"} onValueChange={handleCategoryChange}>
             <SelectTrigger>
               <SelectValue placeholder={t('filters.allCategories')} />
             </SelectTrigger>
@@ -202,13 +215,13 @@ const Annonces = () => {
             type="number"
             placeholder="Min"
             value={priceMin}
-            onChange={(e) => setPriceMin(e.target.value)}
+            onChange={(e) => { setPriceMin(e.target.value); setCurrentPage(1); }}
           />
           <Input
             type="number"
             placeholder="Max"
             value={priceMax}
-            onChange={(e) => setPriceMax(e.target.value)}
+            onChange={(e) => { setPriceMax(e.target.value); setCurrentPage(1); }}
           />
         </div>
       </div>
@@ -221,13 +234,13 @@ const Annonces = () => {
             type="number"
             placeholder="Min"
             value={yearMin}
-            onChange={(e) => setYearMin(e.target.value)}
+            onChange={(e) => { setYearMin(e.target.value); setCurrentPage(1); }}
           />
           <Input
             type="number"
             placeholder="Max"
             value={yearMax}
-            onChange={(e) => setYearMax(e.target.value)}
+            onChange={(e) => { setYearMax(e.target.value); setCurrentPage(1); }}
           />
         </div>
       </div>
@@ -278,7 +291,7 @@ const Annonces = () => {
               {searchQuery ? `${t('listings.resultsFor')} "${searchQuery}"` : t('listings.allListings')}
             </h1>
             <p className="text-muted-foreground">
-              {t('listings.foundCount', { count: filteredProducts.length })}
+              {t('listings.foundCount', { count: totalCount })}
             </p>
           </div>
 
@@ -296,7 +309,7 @@ const Annonces = () => {
               {selectedCategory && selectedCategoryData && (
                 <Badge variant="secondary" className="gap-1">
                   {getCategoryName(selectedCategoryData)}
-                  <button onClick={() => setSelectedCategory('')}>
+                  <button onClick={() => { setSelectedCategory(''); setCurrentPage(1); }}>
                     <X className="h-3 w-3" />
                   </button>
                 </Badge>
@@ -355,7 +368,7 @@ const Annonces = () => {
                 {/* Sort */}
                 <div className="flex items-center gap-2">
                   <span className="text-sm text-muted-foreground hidden sm:inline">{t('filters.sortBy')}:</span>
-                  <Select value={sortBy} onValueChange={setSortBy}>
+                  <Select value={sortBy} onValueChange={handleSortChange}>
                     <SelectTrigger className="w-[180px]">
                       <SelectValue />
                     </SelectTrigger>
@@ -390,29 +403,70 @@ const Annonces = () => {
               {/* Products grid/list */}
               {isLoading ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                  {Array.from({ length: 6 }).map((_, i) => (
+                  {Array.from({ length: ITEMS_PER_PAGE }).map((_, i) => (
                     <Skeleton key={i} className="h-80 rounded-lg" />
                   ))}
                 </div>
-              ) : filteredProducts.length > 0 ? (
-                <div className={
-                  viewMode === 'grid'
-                    ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6'
-                    : 'space-y-4'
-                }>
-                  {filteredProducts.map((product, index) => (
-                    <div
-                      key={product.id}
-                      className="animate-fade-in"
-                      style={{ animationDelay: `${index * 0.05}s` }}
-                    >
-                      <ProductCard
-                        product={product}
-                        variant={viewMode === 'list' ? 'horizontal' : 'default'}
-                      />
+              ) : products.length > 0 ? (
+                <>
+                  <div className={
+                    viewMode === 'grid'
+                      ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6'
+                      : 'space-y-4'
+                  }>
+                    {products.map((product, index) => (
+                      <div
+                        key={product.id}
+                        className="animate-fade-in"
+                        style={{ animationDelay: `${index * 0.02}s` }}
+                      >
+                        <ProductCard
+                          product={product}
+                          variant={viewMode === 'list' ? 'horizontal' : 'default'}
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Pagination */}
+                  {totalPages > 1 && (
+                    <div className="flex justify-center items-center gap-2 mt-8">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => goToPage(currentPage - 1)}
+                        disabled={currentPage === 1}
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                      </Button>
+                      
+                      {getPageNumbers().map((page, idx) => (
+                        page === 'ellipsis' ? (
+                          <span key={`ellipsis-${idx}`} className="px-2 text-muted-foreground">...</span>
+                        ) : (
+                          <Button
+                            key={page}
+                            variant={currentPage === page ? 'default' : 'outline'}
+                            size="sm"
+                            onClick={() => goToPage(page)}
+                            className="min-w-[40px]"
+                          >
+                            {page}
+                          </Button>
+                        )
+                      ))}
+                      
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => goToPage(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                      >
+                        <ChevronRight className="h-4 w-4" />
+                      </Button>
                     </div>
-                  ))}
-                </div>
+                  )}
+                </>
               ) : (
                 <div className="text-center py-16">
                   <div className="text-6xl mb-4">🔍</div>
