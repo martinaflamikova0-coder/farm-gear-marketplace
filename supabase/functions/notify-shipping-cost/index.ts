@@ -20,72 +20,72 @@ const translations: Record<string, { subject: string; greeting: string; intro: s
     greeting: "Bonjour",
     intro: "Les frais de livraison pour votre commande ont été calculés.",
     details: "Détails de la livraison",
-    covered: "Frais pris en charge par EquipTrade (offerts)",
+    covered: "Frais pris en charge par EkipTrade (offerts)",
     supplement: "Supplément à votre charge",
     newTotal: "Nouveau total de votre commande",
     contact: "Veuillez nous contacter pour régler ce supplément avant l'expédition de votre commande.",
     thanks: "Merci pour votre confiance.",
-    team: "L'équipe EquipTrade",
+    team: "L'équipe EkipTrade",
   },
   en: {
     subject: "Shipping costs for your order",
     greeting: "Hello",
     intro: "The shipping costs for your order have been calculated.",
     details: "Shipping details",
-    covered: "Shipping covered by EquipTrade (free)",
+    covered: "Shipping covered by EkipTrade (free)",
     supplement: "Additional charge",
     newTotal: "New order total",
     contact: "Please contact us to pay this supplement before your order is shipped.",
     thanks: "Thank you for your trust.",
-    team: "The EquipTrade Team",
+    team: "The EkipTrade Team",
   },
   de: {
     subject: "Versandkosten für Ihre Bestellung",
     greeting: "Hallo",
     intro: "Die Versandkosten für Ihre Bestellung wurden berechnet.",
     details: "Versanddetails",
-    covered: "Von EquipTrade übernommene Versandkosten (kostenlos)",
+    covered: "Von EkipTrade übernommene Versandkosten (kostenlos)",
     supplement: "Zusätzliche Gebühr",
     newTotal: "Neuer Bestellbetrag",
     contact: "Bitte kontaktieren Sie uns, um diesen Aufpreis vor dem Versand zu bezahlen.",
     thanks: "Vielen Dank für Ihr Vertrauen.",
-    team: "Das EquipTrade-Team",
+    team: "Das EkipTrade-Team",
   },
   es: {
     subject: "Gastos de envío de su pedido",
     greeting: "Hola",
     intro: "Los gastos de envío de su pedido han sido calculados.",
     details: "Detalles del envío",
-    covered: "Envío cubierto por EquipTrade (gratis)",
+    covered: "Envío cubierto por EkipTrade (gratis)",
     supplement: "Cargo adicional",
     newTotal: "Nuevo total del pedido",
     contact: "Por favor, contáctenos para pagar este suplemento antes del envío.",
     thanks: "Gracias por su confianza.",
-    team: "El equipo EquipTrade",
+    team: "El equipo EkipTrade",
   },
   it: {
     subject: "Spese di spedizione per il tuo ordine",
     greeting: "Ciao",
     intro: "Le spese di spedizione per il tuo ordine sono state calcolate.",
     details: "Dettagli della spedizione",
-    covered: "Spedizione coperta da EquipTrade (gratuita)",
+    covered: "Spedizione coperta da EkipTrade (gratuita)",
     supplement: "Supplemento a tuo carico",
     newTotal: "Nuovo totale ordine",
     contact: "Ti preghiamo di contattarci per pagare questo supplemento prima della spedizione.",
     thanks: "Grazie per la tua fiducia.",
-    team: "Il team EquipTrade",
+    team: "Il team EkipTrade",
   },
   pt: {
     subject: "Custos de envio da sua encomenda",
     greeting: "Olá",
     intro: "Os custos de envio da sua encomenda foram calculados.",
     details: "Detalhes do envio",
-    covered: "Envio coberto pela EquipTrade (grátis)",
+    covered: "Envio coberto pela EkipTrade (grátis)",
     supplement: "Suplemento a seu cargo",
     newTotal: "Novo total da encomenda",
     contact: "Por favor contacte-nos para pagar este suplemento antes do envio.",
     thanks: "Obrigado pela sua confiança.",
-    team: "A equipa EquipTrade",
+    team: "A equipa EkipTrade",
   },
 };
 
@@ -133,7 +133,7 @@ const handler = async (req: Request): Promise<Response> => {
           <!-- Header -->
           <tr>
             <td style="background-color: #16a34a; padding: 30px; text-align: center;">
-              <h1 style="color: #ffffff; margin: 0; font-size: 24px;">EquipTrade</h1>
+              <h1 style="color: #ffffff; margin: 0; font-size: 24px;">EkipTrade</h1>
             </td>
           </tr>
           
@@ -200,7 +200,7 @@ const handler = async (req: Request): Promise<Response> => {
           <tr>
             <td style="background-color: #f8f9fa; padding: 20px 30px; text-align: center; border-top: 1px solid #e5e7eb;">
               <p style="margin: 0; color: #9ca3af; font-size: 12px;">
-                © ${new Date().getFullYear()} EquipTrade. All rights reserved.
+                © ${new Date().getFullYear()} EkipTrade. All rights reserved.
               </p>
             </td>
           </tr>
@@ -220,7 +220,7 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "EquipTrade <noreply@resend.dev>",
+        from: "EkipTrade <noreply@resend.dev>",
         to: [customerEmail],
         subject: `${t.subject} #${orderId.slice(0, 8).toUpperCase()}`,
         html: emailHtml,
