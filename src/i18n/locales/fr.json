@@ -442,7 +442,7 @@
       "description": "Votre commande a été enregistrée avec succès",
       "orderReference": "Référence de commande",
       "invoiceTitle": "Votre facture est disponible",
-      "invoiceDescription": "Votre facture est disponible dans votre compte EquipTrade et vous sera également envoyée par email à l'adresse indiquée.",
+      "invoiceDescription": "Votre facture est disponible dans votre compte EkipTrade et vous sera également envoyée par email à l'adresse indiquée.",
       "nextSteps": "Prochaines étapes :",
       "step1": "Effectuez votre virement bancaire avec les coordonnées fournies",
       "step2": "Vous recevrez un email de confirmation à",
@@ -498,43 +498,43 @@
   "seo": {
     "home": {
       "title": "Marketplace de Matériel Agricole Neuf et d'Occasion",
-      "description": "EquipTrade - Achetez et vendez du matériel agricole et industriel neuf et d'occasion. Des milliers de tracteurs, moissonneuses et machines de vendeurs professionnels vérifiés."
+      "description": "EkipTrade - Achetez et vendez du matériel agricole et industriel neuf et d'occasion. Des milliers de tracteurs, moissonneuses et machines de vendeurs professionnels vérifiés."
     },
     "about": {
       "title": "À Propos de Nous",
-      "description": "Découvrez EquipTrade, le marketplace leader du matériel agricole d'occasion en Europe. Notre mission, nos valeurs et notre communauté de plus de 5 000 professionnels."
+      "description": "Découvrez EkipTrade, le marketplace leader du matériel agricole d'occasion en Europe. Notre mission, nos valeurs et notre communauté de plus de 5 000 professionnels."
     },
     "howItWorks": {
       "title": "Comment Ça Marche",
-      "description": "Apprenez comment acheter ou vendre du matériel agricole sur EquipTrade. Processus simple en 4 étapes : recherchez, contactez, négociez et finalisez."
+      "description": "Apprenez comment acheter ou vendre du matériel agricole sur EkipTrade. Processus simple en 4 étapes : recherchez, contactez, négociez et finalisez."
     },
     "faq": {
       "title": "FAQ - Questions Fréquentes",
-      "description": "Trouvez les réponses à vos questions sur EquipTrade. Comment publier une annonce, contacter les vendeurs, modes de paiement, garanties et plus."
+      "description": "Trouvez les réponses à vos questions sur EkipTrade. Comment publier une annonce, contacter les vendeurs, modes de paiement, garanties et plus."
     },
     "contact": {
       "title": "Contactez-Nous",
-      "description": "Contactez l'équipe EquipTrade. Nous sommes là pour répondre à vos questions et vous aider dans vos achats ou ventes de matériel agricole."
+      "description": "Contactez l'équipe EkipTrade. Nous sommes là pour répondre à vos questions et vous aider dans vos achats ou ventes de matériel agricole."
     },
     "terms": {
       "title": "Conditions Générales d'Utilisation",
-      "description": "Lisez les conditions d'utilisation d'EquipTrade. Accès à la plateforme, droits et obligations des utilisateurs, règles des annonces et responsabilités."
+      "description": "Lisez les conditions d'utilisation d'EkipTrade. Accès à la plateforme, droits et obligations des utilisateurs, règles des annonces et responsabilités."
     },
     "privacy": {
       "title": "Politique de Confidentialité",
-      "description": "Découvrez comment EquipTrade collecte, utilise et protège vos données personnelles. Vos droits RGPD et nos pratiques de sécurité des données."
+      "description": "Découvrez comment EkipTrade collecte, utilise et protège vos données personnelles. Vos droits RGPD et nos pratiques de sécurité des données."
     },
     "cookies": {
       "title": "Politique de Cookies",
-      "description": "Gérez vos préférences de cookies sur EquipTrade. Découvrez les types de cookies utilisés et comment les contrôler."
+      "description": "Gérez vos préférences de cookies sur EkipTrade. Découvrez les types de cookies utilisés et comment les contrôler."
     },
     "listings": {
       "title": "Toutes les Annonces",
-      "description": "Parcourez toutes les annonces de matériel agricole sur EquipTrade. Tracteurs, moissonneuses, matériel de travail du sol et plus de vendeurs vérifiés."
+      "description": "Parcourez toutes les annonces de matériel agricole sur EkipTrade. Tracteurs, moissonneuses, matériel de travail du sol et plus de vendeurs vérifiés."
     },
     "listingDetail": {
       "title": "Matériel Agricole à Vendre",
-      "description": "Consultez les détails de cette annonce de matériel agricole sur EquipTrade. Contactez directement le vendeur pour plus d'informations."
+      "description": "Consultez les détails de cette annonce de matériel agricole sur EkipTrade. Contactez directement le vendeur pour plus d'informations."
     },
     "checkout": {
       "title": "Finaliser la Commande",

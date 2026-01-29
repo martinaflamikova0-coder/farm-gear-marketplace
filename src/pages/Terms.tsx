@@ -29,8 +29,8 @@ const Terms = () => {
                 <p className="text-muted-foreground leading-relaxed">
                   {t(`pages.terms.${section}Content`)}
                   {section === 'section7' && (
-                    <a href="mailto:legal@equiptrade.com" className="text-primary hover:underline ml-1">
-                      legal@equiptrade.com
+                    <a href="mailto:legal@ekiptrade.com" className="text-primary hover:underline ml-1">
+                      legal@ekiptrade.com
                     </a>
                   )}
                 </p>

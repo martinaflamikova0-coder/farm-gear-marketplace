@@ -49,8 +49,8 @@ const FAQ = () => {
               </h3>
               <p className="text-muted-foreground">
                 {t('pages.faq.notFoundDesc')}{' '}
-                <a href="mailto:support@equiptrade.com" className="text-primary hover:underline">
-                  support@equiptrade.com
+                <a href="mailto:support@ekiptrade.com" className="text-primary hover:underline">
+                  support@ekiptrade.com
                 </a>
               </p>
             </div>

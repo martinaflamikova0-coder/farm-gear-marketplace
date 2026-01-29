@@ -442,7 +442,7 @@
       "description": "Your order has been successfully registered",
       "orderReference": "Order reference",
       "invoiceTitle": "Your invoice is available",
-      "invoiceDescription": "Your invoice is available in your EquipTrade account and will also be sent to your email address.",
+      "invoiceDescription": "Your invoice is available in your EkipTrade account and will also be sent to your email address.",
       "nextSteps": "Next steps:",
       "step1": "Make your bank transfer with the provided details",
       "step2": "You will receive a confirmation email at",
@@ -498,43 +498,43 @@
   "seo": {
     "home": {
       "title": "New and Used Agricultural Equipment Marketplace",
-      "description": "EquipTrade - Buy and sell new and used agricultural and industrial equipment. Thousands of tractors, harvesters, and machinery from verified professional sellers."
+      "description": "EkipTrade - Buy and sell new and used agricultural and industrial equipment. Thousands of tractors, harvesters, and machinery from verified professional sellers."
     },
     "about": {
       "title": "About Us",
-      "description": "Discover EquipTrade, the leading marketplace for used agricultural equipment in Europe. Our mission, values, and community of over 5,000 professionals."
+      "description": "Discover EkipTrade, the leading marketplace for used agricultural equipment in Europe. Our mission, values, and community of over 5,000 professionals."
     },
     "howItWorks": {
       "title": "How It Works",
-      "description": "Learn how to buy or sell agricultural equipment on EquipTrade. Simple 4-step process: search, contact, negotiate, and finalize your transaction."
+      "description": "Learn how to buy or sell agricultural equipment on EkipTrade. Simple 4-step process: search, contact, negotiate, and finalize your transaction."
     },
     "faq": {
       "title": "FAQ - Frequently Asked Questions",
-      "description": "Find answers to your questions about EquipTrade. How to post a listing, contact sellers, payment methods, warranties, and more."
+      "description": "Find answers to your questions about EkipTrade. How to post a listing, contact sellers, payment methods, warranties, and more."
     },
     "contact": {
       "title": "Contact Us",
-      "description": "Contact the EquipTrade team. We're here to answer your questions and help you with your agricultural equipment purchases or sales."
+      "description": "Contact the EkipTrade team. We're here to answer your questions and help you with your agricultural equipment purchases or sales."
     },
     "terms": {
       "title": "Terms of Use",
-      "description": "Read EquipTrade's terms of use. Platform access conditions, user rights and obligations, listing rules, and responsibilities."
+      "description": "Read EkipTrade's terms of use. Platform access conditions, user rights and obligations, listing rules, and responsibilities."
     },
     "privacy": {
       "title": "Privacy Policy",
-      "description": "Learn about how EquipTrade collects, uses, and protects your personal data. Your GDPR rights and our data security practices."
+      "description": "Learn about how EkipTrade collects, uses, and protects your personal data. Your GDPR rights and our data security practices."
     },
     "cookies": {
       "title": "Cookie Policy",
-      "description": "Manage your cookie preferences on EquipTrade. Learn about the types of cookies we use and how to control them."
+      "description": "Manage your cookie preferences on EkipTrade. Learn about the types of cookies we use and how to control them."
     },
     "listings": {
       "title": "All Listings",
-      "description": "Browse all agricultural equipment listings on EquipTrade. Tractors, harvesters, tillage equipment, and more from verified sellers."
+      "description": "Browse all agricultural equipment listings on EkipTrade. Tractors, harvesters, tillage equipment, and more from verified sellers."
     },
     "listingDetail": {
       "title": "Agricultural Equipment for Sale",
-      "description": "View detailed information about this agricultural equipment listing on EquipTrade. Contact the seller directly for more information."
+      "description": "View detailed information about this agricultural equipment listing on EkipTrade. Contact the seller directly for more information."
     },
     "checkout": {
       "title": "Checkout",
