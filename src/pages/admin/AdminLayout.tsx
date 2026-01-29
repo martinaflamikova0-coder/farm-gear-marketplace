@@ -70,8 +70,14 @@ const AdminLayout = () => {
   return (
     <div className="min-h-screen bg-muted">
       {/* Mobile header */}
-      <div className="lg:hidden bg-card border-b border-border p-4 flex items-center justify-between">
-        <img src={logoEkiptrade} alt="EkipTrade" className="h-8 w-auto max-w-[100px]" />
+      <div className="lg:hidden bg-card border-b border-border px-3 py-2 flex items-center justify-between gap-3">
+        <div className="h-8 w-[120px] overflow-hidden flex items-center">
+          <img
+            src={logoEkiptrade}
+            alt="EkipTrade"
+            className="max-h-full max-w-full object-contain"
+          />
+        </div>
         <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(!sidebarOpen)}>
           {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
