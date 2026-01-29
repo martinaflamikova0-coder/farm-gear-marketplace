@@ -71,7 +71,7 @@ const AdminLayout = () => {
     <div className="min-h-screen bg-muted">
       {/* Mobile header */}
       <div className="lg:hidden bg-card border-b border-border p-4 flex items-center justify-between">
-        <img src={logoEkiptrade} alt="EkipTrade" className="h-10 w-auto" />
+        <img src={logoEkiptrade} alt="EkipTrade" className="h-8 w-auto max-w-[100px]" />
         <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(!sidebarOpen)}>
           {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
