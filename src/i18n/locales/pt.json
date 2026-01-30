@@ -586,7 +586,7 @@
       "phoneValue": "+33 1 23 45 67 89",
       "phoneHours": "Segunda a sexta, 9h-18h",
       "email": "Email",
-      "emailValue": "contact@ekiptrade.com",
+      "emailValue": "infos@ekiptrade.com",
       "emailResponse": "Resposta em 24h",
       "address": "Morada",
       "addressValue": "123 Rua da Agricultura",
@@ -719,7 +719,7 @@
       "title": "Processo de devolução",
       "step1": {
         "title": "Contacte o nosso serviço ao cliente",
-        "description": "Envie um pedido de devolução por email para retours@ekiptrade.com ou por correio. Inclua o número do pedido, o motivo da devolução e os seus dados de contacto."
+        "description": "Envie um pedido de devolução por email para infos@ekiptrade.com ou por correio. Inclua o número do pedido, o motivo da devolução e os seus dados de contacto."
       },
       "step2": {
         "title": "Receba a autorização de devolução",
