@@ -314,8 +314,8 @@ const Returns = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <h5 className="font-semibold text-foreground mb-2">{t('returns.contact.email.title')}</h5>
-                    <a href="mailto:retours@ekiptrade.com" className="text-primary hover:underline">
-                      retours@ekiptrade.com
+                    <a href="mailto:infos@ekiptrade.com" className="text-primary hover:underline">
+                      infos@ekiptrade.com
                     </a>
                   </div>
                   <div>

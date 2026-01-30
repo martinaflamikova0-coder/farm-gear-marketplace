@@ -608,7 +608,7 @@
       "phoneValue": "+33 1 23 45 67 89",
       "phoneHours": "Monday to Friday, 9am-6pm",
       "email": "Email",
-      "emailValue": "contact@ekiptrade.com",
+      "emailValue": "infos@ekiptrade.com",
       "emailResponse": "Response within 24h",
       "address": "Address",
       "addressValue": "123 Agriculture Street",
@@ -741,7 +741,7 @@
       "title": "Return Process",
       "step1": {
         "title": "Contact our customer service",
-        "description": "Send a return request by email to retours@ekiptrade.com or by post. Include your order number, the reason for the return, and your contact details."
+        "description": "Send a return request by email to infos@ekiptrade.com or by post. Include your order number, the reason for the return, and your contact details."
       },
       "step2": {
         "title": "Receive return authorization",

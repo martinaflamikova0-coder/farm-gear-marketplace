@@ -586,7 +586,7 @@
       "phoneValue": "+33 1 23 45 67 89",
       "phoneHours": "Lunes a viernes, 9h-18h",
       "email": "Email",
-      "emailValue": "contact@ekiptrade.com",
+      "emailValue": "infos@ekiptrade.com",
       "emailResponse": "Respuesta en 24h",
       "address": "Dirección",
       "addressValue": "123 Calle de la Agricultura",
@@ -719,7 +719,7 @@
       "title": "Proceso de devolución",
       "step1": {
         "title": "Contacte con nuestro servicio de atención al cliente",
-        "description": "Envíe una solicitud de devolución por correo electrónico a retours@ekiptrade.com o por correo postal. Incluya su número de pedido, el motivo de la devolución y sus datos de contacto."
+        "description": "Envíe una solicitud de devolución por correo electrónico a infos@ekiptrade.com o por correo postal. Incluya su número de pedido, el motivo de la devolución y sus datos de contacto."
       },
       "step2": {
         "title": "Reciba la autorización de devolución",

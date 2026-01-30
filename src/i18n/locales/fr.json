@@ -608,7 +608,7 @@
       "phoneValue": "01 23 45 67 89",
       "phoneHours": "Du lundi au vendredi, 9h-18h",
       "email": "Email",
-      "emailValue": "contact@ekiptrade.com",
+      "emailValue": "infos@ekiptrade.com",
       "emailResponse": "Réponse sous 24h",
       "address": "Adresse",
       "addressValue": "123 Rue de l'Agriculture",
@@ -741,7 +741,7 @@
       "title": "Procédure de retour",
       "step1": {
         "title": "Contactez notre service client",
-        "description": "Envoyez une demande de retour par email à retours@ekiptrade.com ou par courrier. Indiquez votre numéro de commande, le motif du retour et vos coordonnées."
+        "description": "Envoyez une demande de retour par email à infos@ekiptrade.com ou par courrier. Indiquez votre numéro de commande, le motif du retour et vos coordonnées."
       },
       "step2": {
         "title": "Recevez l'autorisation de retour",

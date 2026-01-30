@@ -586,7 +586,7 @@
       "phoneValue": "+33 1 23 45 67 89",
       "phoneHours": "Lunedì a venerdì, 9-18",
       "email": "Email",
-      "emailValue": "contact@ekiptrade.com",
+      "emailValue": "infos@ekiptrade.com",
       "emailResponse": "Risposta entro 24h",
       "address": "Indirizzo",
       "addressValue": "123 Via dell'Agricoltura",
@@ -719,7 +719,7 @@
       "title": "Processo di reso",
       "step1": {
         "title": "Contatta il nostro servizio clienti",
-        "description": "Invia una richiesta di reso via email a retours@ekiptrade.com o per posta. Includi il numero d'ordine, il motivo del reso e i tuoi dati di contatto."
+        "description": "Invia una richiesta di reso via email a infos@ekiptrade.com o per posta. Includi il numero d'ordine, il motivo del reso e i tuoi dati di contatto."
       },
       "step2": {
         "title": "Ricevi l'autorizzazione al reso",

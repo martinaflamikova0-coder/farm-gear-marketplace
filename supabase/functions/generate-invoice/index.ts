@@ -390,7 +390,7 @@ serve(async (req) => {
     yPos -= 15;
     page.drawText("London WC2H 9JQ, United Kingdom", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText("contact@ekiptrade.com", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText("infos@ekiptrade.com", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
     page.drawText(`${t.companyReg}12345678`, { x: 50, y: yPos, size: 9, font: helvetica, color: mutedColor });
     yPos -= 12;
