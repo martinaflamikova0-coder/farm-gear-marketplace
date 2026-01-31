@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Filter, Grid, List, X, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -31,7 +31,7 @@ const Annonces = () => {
   const { data: categories = [], isLoading: categoriesLoading } = useCategoriesWithCounts();
   const { data: brands = [], isLoading: brandsLoading } = useBrandNames();
   
-  // Filters state
+  // Filters state - sync with URL params
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || '');
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [priceMin, setPriceMin] = useState('');
@@ -40,6 +40,15 @@ const Annonces = () => {
   const [yearMax, setYearMax] = useState('');
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
   const searchQuery = searchParams.get('search') || '';
+
+  // Sync selectedCategory with URL when it changes (e.g., from header links)
+  useEffect(() => {
+    const categoryFromUrl = searchParams.get('category') || '';
+    if (categoryFromUrl !== selectedCategory) {
+      setSelectedCategory(categoryFromUrl);
+      setCurrentPage(1);
+    }
+  }, [searchParams]);
 
   // Fetch paginated products from database with server-side filtering & sorting
   const { data: paginatedData, isLoading: productsLoading } = usePaginatedProducts({
