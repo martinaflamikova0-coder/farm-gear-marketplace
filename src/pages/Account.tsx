@@ -5,6 +5,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -234,6 +235,7 @@ const Account = () => {
     return (
       <div className="min-h-screen bg-background">
         <Header />
+        <HeaderSpacer />
         <main className="container mx-auto px-4 py-8">
           <Skeleton className="h-10 w-48 mb-8" />
           <div className="space-y-4">
@@ -250,6 +252,7 @@ const Account = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      <HeaderSpacer />
       <main className="container mx-auto px-4 py-8">
         {/* User Info Card */}
         <Card className="mb-8">

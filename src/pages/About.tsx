@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SEOHead from '@/components/SEOHead';
+import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, Users, Truck, Award } from 'lucide-react';
 
@@ -19,6 +20,7 @@ const About = () => {
     <div className="min-h-screen flex flex-col">
       <SEOHead titleKey="seo.about.title" descriptionKey="seo.about.description" />
       <Header />
+      <HeaderSpacer />
       <main className="flex-1 bg-background">
         <div className="container-custom py-12">
           <div className="max-w-4xl mx-auto">
