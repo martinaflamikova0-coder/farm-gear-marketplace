@@ -14,7 +14,7 @@ interface NotifyShippingCostRequest {
   language?: string;
 }
 
-const translations: Record<string, { subject: string; greeting: string; intro: string; details: string; covered: string; supplement: string; newTotal: string; contact: string; thanks: string; team: string }> = {
+const translations: Record<string, { subject: string; greeting: string; intro: string; details: string; covered: string; supplement: string; newTotal: string; paymentInstruction: string; deliveryNote: string; thanks: string; team: string }> = {
   fr: {
     subject: "Frais de livraison pour votre commande",
     greeting: "Bonjour",
@@ -23,7 +23,8 @@ const translations: Record<string, { subject: string; greeting: string; intro: s
     covered: "Frais pris en charge par EkipTrade (offerts)",
     supplement: "Supplément à votre charge",
     newTotal: "Nouveau total de votre commande",
-    contact: "Veuillez nous contacter pour régler ce supplément avant l'expédition de votre commande.",
+    paymentInstruction: "Veuillez régler ce supplément sur le même compte bancaire que celui utilisé pour le paiement de votre commande.",
+    deliveryNote: "La livraison de votre commande sera entamée dès réception de ce paiement.",
     thanks: "Merci pour votre confiance.",
     team: "L'équipe EkipTrade",
   },
@@ -35,7 +36,8 @@ const translations: Record<string, { subject: string; greeting: string; intro: s
     covered: "Shipping covered by EkipTrade (free)",
     supplement: "Additional charge",
     newTotal: "New order total",
-    contact: "Please contact us to pay this supplement before your order is shipped.",
+    paymentInstruction: "Please pay this supplement to the same bank account you used for your order payment.",
+    deliveryNote: "Your order delivery will begin once we receive this payment.",
     thanks: "Thank you for your trust.",
     team: "The EkipTrade Team",
   },
@@ -47,7 +49,8 @@ const translations: Record<string, { subject: string; greeting: string; intro: s
     covered: "Von EkipTrade übernommene Versandkosten (kostenlos)",
     supplement: "Zusätzliche Gebühr",
     newTotal: "Neuer Bestellbetrag",
-    contact: "Bitte kontaktieren Sie uns, um diesen Aufpreis vor dem Versand zu bezahlen.",
+    paymentInstruction: "Bitte überweisen Sie diesen Aufpreis auf dasselbe Bankkonto, das Sie für Ihre Bestellzahlung verwendet haben.",
+    deliveryNote: "Der Versand Ihrer Bestellung beginnt, sobald wir diese Zahlung erhalten haben.",
     thanks: "Vielen Dank für Ihr Vertrauen.",
     team: "Das EkipTrade-Team",
   },
@@ -59,7 +62,8 @@ const translations: Record<string, { subject: string; greeting: string; intro: s
     covered: "Envío cubierto por EkipTrade (gratis)",
     supplement: "Cargo adicional",
     newTotal: "Nuevo total del pedido",
-    contact: "Por favor, contáctenos para pagar este suplemento antes del envío.",
+    paymentInstruction: "Por favor, realice el pago de este suplemento en la misma cuenta bancaria utilizada para el pago de su pedido.",
+    deliveryNote: "El envío de su pedido comenzará una vez que recibamos este pago.",
     thanks: "Gracias por su confianza.",
     team: "El equipo EkipTrade",
   },
@@ -71,7 +75,8 @@ const translations: Record<string, { subject: string; greeting: string; intro: s
     covered: "Spedizione coperta da EkipTrade (gratuita)",
     supplement: "Supplemento a tuo carico",
     newTotal: "Nuovo totale ordine",
-    contact: "Ti preghiamo di contattarci per pagare questo supplemento prima della spedizione.",
+    paymentInstruction: "Ti preghiamo di effettuare il pagamento di questo supplemento sullo stesso conto bancario utilizzato per il pagamento dell'ordine.",
+    deliveryNote: "La spedizione del tuo ordine inizierà una volta ricevuto questo pagamento.",
     thanks: "Grazie per la tua fiducia.",
     team: "Il team EkipTrade",
   },
@@ -83,7 +88,8 @@ const translations: Record<string, { subject: string; greeting: string; intro: s
     covered: "Envio coberto pela EkipTrade (grátis)",
     supplement: "Suplemento a seu cargo",
     newTotal: "Novo total da encomenda",
-    contact: "Por favor contacte-nos para pagar este suplemento antes do envio.",
+    paymentInstruction: "Por favor, efetue o pagamento deste suplemento na mesma conta bancária utilizada para o pagamento da sua encomenda.",
+    deliveryNote: "O envio da sua encomenda será iniciado assim que recebermos este pagamento.",
     thanks: "Obrigado pela sua confiança.",
     team: "A equipa EkipTrade",
   },
@@ -182,11 +188,15 @@ const handler = async (req: Request): Promise<Response> => {
                 </tr>
               </table>
               
-              <!-- Contact message -->
+              <!-- Payment instructions -->
               <div style="background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 15px; margin: 25px 0;">
-                <p style="margin: 0; color: #92400e; font-size: 14px;">
-                  ${t.contact}
+                <p style="margin: 0 0 10px 0; color: #92400e; font-size: 14px; font-weight: bold;">
+                  ${t.paymentInstruction}
                 </p>
+                <p style="margin: 0; color: #92400e; font-size: 14px;">
+                  ${t.deliveryNote}
+                </p>
+              </div>
               </div>
               
               <p style="color: #666666; font-size: 16px; line-height: 1.6; margin: 20px 0 0 0;">
