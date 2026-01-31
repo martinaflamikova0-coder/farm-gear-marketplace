@@ -12,6 +12,13 @@ import { CART_MAX_PRICE } from '@/contexts/CartContext';
 import { useProductGifts } from '@/hooks/useProductGifts';
 import ProductGiftsBadge from '@/components/products/ProductGiftsBadge';
 import { useActivePromotions, getBestPromotion, calculatePromotionalPrice, type Promotion } from '@/hooks/usePromotions';
+import { 
+  useMerchantCenterSettings, 
+  isMcEnabled, 
+  mcFlag, 
+  mcPriceMode,
+  getMerchantSafeImage 
+} from '@/hooks/useMerchantCenterSettings';
 
 // Generate consistent fake rating based on product ID (seeded random)
 const generateRating = (productId: string) => {
@@ -75,6 +82,20 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
   const { translateCategory } = useTranslatedCategory();
   const { data: activePromotions } = useActivePromotions();
+  const { data: mcSettings } = useMerchantCenterSettings();
+  
+  // Merchant Center mode flags
+  const mcEnabled = isMcEnabled(mcSettings);
+  const hideDiscounts = mcFlag(mcSettings, 'mc_hide_discount_percent_everywhere');
+  const hideCompareAtPrice = mcFlag(mcSettings, 'mc_hide_compare_at_price');
+  const hideReviewStars = mcFlag(mcSettings, 'mc_hide_review_stars_in_cards');
+  const hideFinancing = mcFlag(mcSettings, 'mc_hide_financing_in_cards');
+  const hideVatMentions = mcFlag(mcSettings, 'mc_hide_vat_mentions_on_cards');
+  const hideSecondaryPrice = mcFlag(mcSettings, 'mc_hide_secondary_price_text');
+  const singlePriceOnly = mcFlag(mcSettings, 'mc_single_price_only');
+  const hideBadges = mcFlag(mcSettings, 'mc_hide_badges_on_images');
+  const hideUiChips = mcFlag(mcSettings, 'mc_hide_ui_chips_and_labels');
+  const priceMode = mcPriceMode(mcSettings);
   
   // Get translated content
   const translatedTitle = getTranslatedTitle(product, currentLang);
@@ -127,7 +148,11 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   const detailSlug = getLocalizedSlug('listing', currentLang);
   const productLink = `/${currentLang}/${detailSlug}/${product.id}`;
   
-  const imageUrl = product.images?.[0] || '/placeholder.svg';
+  // Use merchant-safe image if MC mode is enabled
+  const normalImageUrl = product.images?.[0] || '/placeholder.svg';
+  const merchantSafeImageUrl = (product as any).merchant_safe_image_url;
+  const imageUrl = getMerchantSafeImage(mcSettings, normalImageUrl, merchantSafeImageUrl);
+  
   const basePrice = Number(product.price) || 0;
   const originalPrice = product.original_price ? Number(product.original_price) : null;
   const storedDiscountPercentage = product.discount_percentage || 0;
@@ -175,21 +200,27 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
       ? originalPrice 
       : Math.round(basePrice / (1 - effectiveDiscountPercentage / 100));
   
-  // Always show discount (automatic system or promotion)
-  const hasDiscount = true;
+  // Show discount only if not in MC mode with discount hiding
+  const shouldShowDiscount = !hideDiscounts && !hideCompareAtPrice;
+  const hasDiscount = shouldShowDiscount;
   const displayDiscountPercentage = hasActivePromotion && activePromotion.discount_type === 'percentage'
     ? activePromotion.discount_value
     : effectiveDiscountPercentage;
-  const priceHT = Math.round(price / 1.2); // Approximate HT from TTC
   
-  // Financing available for products >= 5000€
+  // Price display based on MC settings
+  const priceHT = Math.round(price / 1.2);
+  const displayPrice = priceMode === 'HT_only' ? priceHT : price;
+  const displayPriceLabel = priceMode === 'HT_only' ? t('product.priceHT') : '';
+  
+  // Financing available for products >= 5000€ (hidden in MC mode)
   const FINANCING_THRESHOLD = 5000;
   const FINANCING_MONTHS = 72;
-  const hasFinancing = price >= FINANCING_THRESHOLD;
+  const hasFinancing = price >= FINANCING_THRESHOLD && !hideFinancing;
   const monthlyPayment = hasFinancing ? Math.round(price / FINANCING_MONTHS) : 0;
   
-  // Generate consistent rating for this product
+  // Generate consistent rating for this product (hidden in MC mode)
   const { rating, reviews } = generateRating(product.id);
+  const showRating = !hideReviewStars;
   
   // Get automatic gifts for this product
   const gifts = useProductGifts(product);
@@ -206,30 +237,30 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                 className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
               />
-              <ProductGiftsBadge gifts={gifts} variant="card" />
-              {product.condition && (
+              {!hideBadges && <ProductGiftsBadge gifts={gifts} variant="card" />}
+              {!hideBadges && product.condition && (
                 <Badge className={`absolute top-2 right-2 ${conditionColors[product.condition] || 'bg-muted'}`}>
                   {getConditionTranslation(product.condition)}
                 </Badge>
               )}
-              {isOutOfStock(product) && (
+              {!hideBadges && isOutOfStock(product) && (
                 <Badge className="absolute top-10 right-2 bg-destructive text-destructive-foreground">
                   <AlertTriangle className="h-3 w-3 mr-1" />
                   {t('product.outOfStock')}
                 </Badge>
               )}
-              {product.featured && (
+              {!hideBadges && product.featured && (
                 <Badge className="absolute bottom-2 right-2 bg-accent text-accent-foreground">
                   <Star className="h-3 w-3 fill-current" />
                 </Badge>
               )}
-              {hasActivePromotion && (
+              {!hideDiscounts && hasActivePromotion && (
                 <Badge className="absolute top-2 left-2 bg-gradient-to-r from-accent to-primary text-primary-foreground gap-1 animate-pulse shadow-lg">
                   <Sparkles className="h-3 w-3" />
                   -{activePromotion.discount_type === 'percentage' ? `${activePromotion.discount_value}%` : `${activePromotion.discount_value}€`}
                 </Badge>
               )}
-              {!hasActivePromotion && hasDiscount && displayDiscountPercentage > 0 && (
+              {!hideDiscounts && !hasActivePromotion && hasDiscount && displayDiscountPercentage > 0 && (
                 <Badge className="absolute top-2 left-2 bg-destructive text-destructive-foreground gap-1">
                   <Percent className="h-3 w-3" />
                   -{displayDiscountPercentage}%
@@ -245,9 +276,11 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                   <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors line-clamp-3 sm:line-clamp-2">
                     {translatedTitle}
                   </h3>
-                  <div className="mt-1">
-                    <StarRating rating={rating} reviews={reviews} />
-                  </div>
+                  {showRating && (
+                    <div className="mt-1">
+                      <StarRating rating={rating} reviews={reviews} />
+                    </div>
+                  )}
                   <p className="text-sm text-muted-foreground mt-2 line-clamp-3 sm:line-clamp-2">
                     {translatedDescription}
                   </p>
@@ -277,17 +310,19 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                 <div className="mt-4 pt-3 border-t border-border">
                   <div className="flex items-end justify-between">
                     <div>
-                      {hasDiscount && displayOriginalPrice && (
+                      {!hideCompareAtPrice && hasDiscount && displayOriginalPrice && (
                         <p className="text-sm text-muted-foreground line-through">
                           {formatPrice(displayOriginalPrice)}
                         </p>
                       )}
                       <p className="text-2xl font-display font-bold text-primary">
-                        {formatPrice(price)}
+                        {formatPrice(displayPrice)}
                       </p>
-                      <p className="text-xs text-muted-foreground">
-                        {formatPrice(priceHT)} {t('product.priceHT')}
-                      </p>
+                      {!hideVatMentions && !singlePriceOnly && priceMode !== 'HT_only' && (
+                        <p className="text-xs text-muted-foreground">
+                          {formatPrice(priceHT)} {t('product.priceHT')}
+                        </p>
+                      )}
                       {hasFinancing && (
                         <div className="flex items-center gap-1 mt-1 text-xs text-success">
                           <CreditCard className="h-3 w-3" />
@@ -327,31 +362,31 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
             className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
-          <ProductGiftsBadge gifts={gifts} variant="card" />
-          {product.condition && (
+          {!hideBadges && <ProductGiftsBadge gifts={gifts} variant="card" />}
+          {!hideBadges && product.condition && (
             <Badge className={`absolute top-2 right-2 ${conditionColors[product.condition] || 'bg-muted'}`}>
               {getConditionTranslation(product.condition)}
             </Badge>
           )}
-          {isOutOfStock(product) && (
+          {!hideBadges && isOutOfStock(product) && (
             <Badge className="absolute top-10 right-2 bg-destructive text-destructive-foreground">
               <AlertTriangle className="h-3 w-3 mr-1" />
               {t('product.outOfStock')}
             </Badge>
           )}
-          {hasActivePromotion && (
+          {!hideDiscounts && hasActivePromotion && (
             <Badge className="absolute top-2 left-2 bg-gradient-to-r from-accent to-primary text-primary-foreground gap-1 animate-pulse shadow-lg">
               <Sparkles className="h-3 w-3" />
               -{activePromotion.discount_type === 'percentage' ? `${activePromotion.discount_value}%` : `${activePromotion.discount_value}€`}
             </Badge>
           )}
-          {!hasActivePromotion && hasDiscount && displayDiscountPercentage > 0 && (
+          {!hideDiscounts && !hasActivePromotion && hasDiscount && displayDiscountPercentage > 0 && (
             <Badge className="absolute top-2 left-2 bg-destructive text-destructive-foreground gap-1">
               <Percent className="h-3 w-3" />
               -{displayDiscountPercentage}%
             </Badge>
           )}
-          {product.featured && (
+          {!hideBadges && product.featured && (
             <Badge className="absolute bottom-2 right-2 bg-accent text-accent-foreground">
               <Star className="h-3 w-3 fill-current" />
             </Badge>
@@ -364,9 +399,11 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
           <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-3 sm:line-clamp-2 min-h-[2.5rem]">
             {translatedTitle}
           </h3>
-          <div className="mt-1">
-            <StarRating rating={rating} reviews={reviews} />
-          </div>
+          {showRating && (
+            <div className="mt-1">
+              <StarRating rating={rating} reviews={reviews} />
+            </div>
+          )}
           <div className="flex flex-wrap gap-2 mt-2 text-xs text-muted-foreground">
             {product.year && (
               <span className="flex items-center gap-1">
@@ -392,17 +429,19 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
           <div className="mt-3 pt-3 border-t border-border">
             <div className="flex items-start justify-between gap-2">
               <div className="flex-1 min-w-0">
-                {hasDiscount && displayOriginalPrice && (
+                {!hideCompareAtPrice && hasDiscount && displayOriginalPrice && (
                   <p className="text-sm text-muted-foreground line-through">
                     {formatPrice(displayOriginalPrice)}
                   </p>
                 )}
                 <p className="text-xl font-display font-bold text-primary">
-                  {formatPrice(price)}
+                  {formatPrice(displayPrice)}
                 </p>
-                <p className="text-xs text-muted-foreground">
-                  {formatPrice(priceHT)} {t('product.priceHT')}
-                </p>
+                {!hideVatMentions && !singlePriceOnly && priceMode !== 'HT_only' && (
+                  <p className="text-xs text-muted-foreground">
+                    {formatPrice(priceHT)} {t('product.priceHT')}
+                  </p>
+                )}
                 {hasFinancing && (
                   <div className="flex items-center gap-1 mt-1 text-xs text-success">
                     <CreditCard className="h-3 w-3" />

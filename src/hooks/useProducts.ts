@@ -11,6 +11,8 @@ export interface ProductWithSeller extends Product {
     email: string | null;
   };
   customer_images: string[] | null;
+  merchant_safe_image_url: string | null;
+  merchant_safe_additional_images: string[] | null;
 }
 
 // Transform database product to include seller object for compatibility

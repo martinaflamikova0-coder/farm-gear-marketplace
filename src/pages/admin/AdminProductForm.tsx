@@ -22,6 +22,7 @@ import { z } from 'zod';
 
 import BrandCombobox from '@/components/admin/BrandCombobox';
 import ImageUploader from '@/components/admin/ImageUploader';
+import MerchantSafeImageUploader from '@/components/admin/MerchantSafeImageUploader';
 import type { Tables } from '@/integrations/supabase/types';
 
 type Category = Tables<'categories'>;
@@ -52,6 +53,7 @@ const productSchema = z.object({
   featured: z.boolean(),
   images: z.array(z.string()).default([]),
   customer_images: z.array(z.string()).default([]),
+  merchant_safe_image_url: z.string().nullable().optional(),
   stock: z.number().min(0, 'Le stock doit être positif').optional().nullable(),
   low_stock_threshold: z.number().min(1, 'Le seuil doit être supérieur à 0').optional().nullable(),
 });
@@ -93,6 +95,7 @@ const defaultFormData: ProductFormData = {
   featured: false,
   images: [],
   customer_images: [],
+  merchant_safe_image_url: null,
   stock: null,
   low_stock_threshold: 5,
 };
@@ -184,6 +187,7 @@ const AdminProductForm = () => {
           featured: data.featured || false,
           images: data.images || [],
           customer_images: (data as any).customer_images || [],
+          merchant_safe_image_url: (data as any).merchant_safe_image_url || null,
           stock: data.stock ?? null,
           low_stock_threshold: data.low_stock_threshold ?? 5,
         });
@@ -279,6 +283,7 @@ const AdminProductForm = () => {
         status: validation.data.status,
         images: validation.data.images,
         customer_images: validation.data.customer_images,
+        merchant_safe_image_url: validation.data.merchant_safe_image_url || null,
         created_by: user?.id,
         // Stock only for new items
         stock: validation.data.condition === 'new' ? (validation.data.stock ?? null) : null,
@@ -778,6 +783,21 @@ const AdminProductForm = () => {
                 onImagesChange={(images) => handleChange('customer_images', images)}
                 maxImages={10}
                 id="customer-images-upload"
+              />
+            </CardContent>
+          </Card>
+
+          {/* Merchant-safe Image for Google MC */}
+          <Card className="lg:col-span-2">
+            <CardHeader>
+              <CardTitle>🛡️ Image Merchant Center</CardTitle>
+              <CardDescription>Image propre pour Google Merchant Center (sans texte, badge, prix ou overlay)</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <MerchantSafeImageUploader
+                merchantSafeImageUrl={formData.merchant_safe_image_url || null}
+                onImageChange={(url) => handleChange('merchant_safe_image_url', url)}
+                normalImage={formData.images?.[0]}
               />
             </CardContent>
           </Card>
