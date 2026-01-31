@@ -51,17 +51,17 @@ const Footer = () => {
               {t('footer.description')}
             </p>
             <div className="space-y-2 text-sm">
-              <a href="tel:+33123456789" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+              <a href="tel:+447883782699" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                 <Phone className="h-4 w-4" />
-                01 23 45 67 89
+                +44 7883 782699
               </a>
               <a href="mailto:infos@ekiptrade.com" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                 <Mail className="h-4 w-4" />
                 infos@ekiptrade.com
               </a>
-              <div className="flex items-center gap-2 text-primary-foreground/70">
-                <MapPin className="h-4 w-4" />
-                Paris, France
+              <div className="flex items-start gap-2 text-primary-foreground/70">
+                <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                <span>Wednesbury Trading Estate, Block P,<br />Wednesbury WS10 7JN, UK</span>
               </div>
             </div>
           </div>
