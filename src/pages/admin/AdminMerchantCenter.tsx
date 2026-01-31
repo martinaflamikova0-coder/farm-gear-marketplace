@@ -19,6 +19,7 @@ import {
   type MerchantCenterSetting,
   type PriceDisplayMode,
 } from '@/hooks/useMerchantCenterSettings';
+import { WatermarkScanner } from '@/components/admin/WatermarkScanner';
 import {
   Store,
   Image,
@@ -306,6 +307,9 @@ const AdminMerchantCenter = () => {
           </Button>
         </CardContent>
       </Card>
+
+      {/* Watermark Detection */}
+      <WatermarkScanner />
 
       {/* Settings by Category */}
       {Object.entries(CATEGORY_CONFIG).map(([categoryKey, config]) => {
