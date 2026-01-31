@@ -605,7 +605,7 @@
       "messagePlaceholder": "Descreva o seu pedido em detalhe...",
       "send": "Enviar mensagem",
       "successTitle": "Mensagem enviada!",
-      "successDesc": "Responderemos o mais rapidamente possível."
+      "successDesc": "Responderemos o mais rapidamente possível. Se não receber o nosso email de confirmação, verifique a pasta de spam."
     },
     "terms": {
       "title": "Termos de Uso",

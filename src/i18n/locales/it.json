@@ -605,7 +605,7 @@
       "messagePlaceholder": "Descrivi la tua richiesta in dettaglio...",
       "send": "Invia messaggio",
       "successTitle": "Messaggio inviato!",
-      "successDesc": "Ti risponderemo il prima possibile."
+      "successDesc": "Ti risponderemo il prima possibile. Se non ricevi la nostra email di conferma, controlla la cartella spam."
     },
     "terms": {
       "title": "Termini di Utilizzo",
