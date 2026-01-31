@@ -212,28 +212,63 @@ const handler = async (req: Request): Promise<Response> => {
 </html>
     `;
 
-    // Send email using Resend API directly via fetch
-    const resendResponse = await fetch("https://api.resend.com/emails", {
+    // Send email to customer
+    const customerEmailResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "EkipTrade <noreply@resend.dev>",
+        from: "EkipTrade <infos@ekiptrade.com>",
         to: [customerEmail],
         subject: `${t.subject} #${orderId.slice(0, 8).toUpperCase()}`,
         html: emailHtml,
       }),
     });
 
-    if (!resendResponse.ok) {
-      const errorData = await resendResponse.json().catch(() => ({}));
-      console.error("Resend API error:", errorData);
-      throw new Error(`Failed to send email: ${JSON.stringify(errorData)}`);
+    if (!customerEmailResponse.ok) {
+      const errorData = await customerEmailResponse.json().catch(() => ({}));
+      console.error("Resend API error (customer):", errorData);
+      throw new Error(`Failed to send customer email: ${JSON.stringify(errorData)}`);
     }
 
-    console.log(`Shipping cost notification sent to ${customerEmail} for order ${orderId}`);
+    console.log(`Shipping cost notification sent to customer: ${customerEmail}`);
+
+    // Also send notification to admin
+    const adminEmailResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${resendApiKey}`,
+      },
+      body: JSON.stringify({
+        from: "EkipTrade <infos@ekiptrade.com>",
+        to: ["infos@ekiptrade.com"],
+        subject: `[Admin] Notification frais de port envoyée - Commande #${orderId.slice(0, 8).toUpperCase()}`,
+        html: `
+          <h2>Notification de frais de port envoyée</h2>
+          <p>Le client <strong>${customerEmail}</strong> a été notifié des frais de port :</p>
+          <ul>
+            <li>Commande : #${orderId.slice(0, 8).toUpperCase()}</li>
+            <li>Frais couverts : ${coveredAmount}€</li>
+            <li>Supplément : ${supplement}€</li>
+            <li>Nouveau total : ${newTotal.toLocaleString('fr-FR')}€</li>
+          </ul>
+        `,
+      }),
+    });
+
+    if (!adminEmailResponse.ok) {
+      console.error("Failed to send admin notification, but customer was notified");
+    }
+
+    console.log(`Shipping cost notification also sent to admin for order ${orderId}`);
+
+    return new Response(
+      JSON.stringify({ success: true }),
+      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
 
     return new Response(
       JSON.stringify({ success: true }),
