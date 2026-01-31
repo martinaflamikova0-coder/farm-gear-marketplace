@@ -320,8 +320,8 @@ const Returns = () => {
                   </div>
                   <div>
                     <h5 className="font-semibold text-foreground mb-2">{t('returns.contact.phone.title')}</h5>
-                    <a href="tel:+33123456789" className="text-primary hover:underline">
-                      01 23 45 67 89
+                    <a href="tel:+447883782699" className="text-primary hover:underline">
+                      +44 7883 782699
                     </a>
                   </div>
                 </div>
