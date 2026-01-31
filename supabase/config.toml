@@ -17,3 +17,6 @@ verify_jwt = false
 
 [functions.generate-invoice]
 verify_jwt = false
+
+[functions.detect-watermarks]
+verify_jwt = false
