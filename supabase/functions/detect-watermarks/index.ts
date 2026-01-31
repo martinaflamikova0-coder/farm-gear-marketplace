@@ -87,23 +87,27 @@ serve(async (req) => {
                   content: [
                     {
                       type: "text",
-                      text: `Analyze this product image for watermarks, logos, or brand names that are overlaid on the image (not part of the actual product). 
-                      
-Common watermarks to detect include: AGRIEURO, AgriEuro, stock photo watermarks, competitor brand overlays, website URLs, copyright text overlays.
+                      text: `You are a watermark detection expert. Carefully analyze this product image.
 
-DO NOT report:
-- Brand names that are physically part of the product (like a John Deere logo on a tractor)
-- Model numbers on the equipment itself
-- Manufacturer labels that are part of the product
+TASK: Find any DIGITAL OVERLAYS, WATERMARKS, or THIRD-PARTY LOGOS that have been ADDED to the image (not physically on the product).
 
-ONLY report overlay watermarks that are added to the image digitally.
+SPECIFICALLY LOOK FOR:
+1. "AGRIEURO" or "AgriEuro" text anywhere on the image - THIS IS THE MAIN TARGET
+2. Website URLs (like agrieuro.com, agrieuro.fr, etc.)
+3. Stock photo watermarks (Shutterstock, Getty, etc.)
+4. Any semi-transparent text or logo overlays
+5. Copyright notices that look added digitally
+6. Competitor brand names as overlays
 
-Respond with a JSON object:
-{
-  "hasWatermark": boolean,
-  "detectedBrands": ["brand1", "brand2"],
-  "confidence": number between 0 and 1
-}`,
+IGNORE (do not report these):
+- Brand names physically printed ON the product itself (like John Deere on a tractor)
+- Model numbers on equipment
+- Manufacturer labels that are part of the physical product
+- Product stickers that came with the item
+
+BE VERY CAREFUL: AgriEuro watermarks are often in corners or edges of images, sometimes semi-transparent.
+
+If you see ANY text overlay that says "AGRIEURO", "AgriEuro", or similar - report hasWatermark: true.`,
                     },
                     {
                       type: "image_url",
