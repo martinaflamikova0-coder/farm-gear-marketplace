@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -14,7 +15,29 @@ interface NotifyShippingCostRequest {
   language?: string;
 }
 
-const translations: Record<string, { subject: string; greeting: string; intro: string; details: string; covered: string; supplement: string; newTotal: string; paymentInstruction: string; deliveryNote: string; thanks: string; team: string }> = {
+interface BankAccount {
+  name: string;
+  holder: string;
+  iban: string;
+  bic: string;
+  bank_name: string;
+}
+
+const translations: Record<string, { 
+  subject: string; 
+  greeting: string; 
+  intro: string; 
+  details: string; 
+  covered: string; 
+  supplement: string; 
+  newTotal: string; 
+  paymentInstruction: string; 
+  deliveryNote: string; 
+  bankDetails: string;
+  accountHolder: string;
+  thanks: string; 
+  team: string 
+}> = {
   fr: {
     subject: "Frais de livraison pour votre commande",
     greeting: "Bonjour",
@@ -23,8 +46,10 @@ const translations: Record<string, { subject: string; greeting: string; intro: s
     covered: "Frais pris en charge par EkipTrade (offerts)",
     supplement: "Supplément à votre charge",
     newTotal: "Nouveau total de votre commande",
-    paymentInstruction: "Veuillez régler ce supplément sur le même compte bancaire que celui utilisé pour le paiement de votre commande.",
+    paymentInstruction: "Veuillez régler ce supplément sur le compte bancaire ci-dessous (le même que pour votre commande).",
     deliveryNote: "La livraison de votre commande sera entamée dès réception de ce paiement.",
+    bankDetails: "Coordonnées bancaires",
+    accountHolder: "Titulaire",
     thanks: "Merci pour votre confiance.",
     team: "L'équipe EkipTrade",
   },
@@ -36,8 +61,10 @@ const translations: Record<string, { subject: string; greeting: string; intro: s
     covered: "Shipping covered by EkipTrade (free)",
     supplement: "Additional charge",
     newTotal: "New order total",
-    paymentInstruction: "Please pay this supplement to the same bank account you used for your order payment.",
+    paymentInstruction: "Please pay this supplement to the bank account below (same as for your order).",
     deliveryNote: "Your order delivery will begin once we receive this payment.",
+    bankDetails: "Bank details",
+    accountHolder: "Account holder",
     thanks: "Thank you for your trust.",
     team: "The EkipTrade Team",
   },
@@ -49,8 +76,10 @@ const translations: Record<string, { subject: string; greeting: string; intro: s
     covered: "Von EkipTrade übernommene Versandkosten (kostenlos)",
     supplement: "Zusätzliche Gebühr",
     newTotal: "Neuer Bestellbetrag",
-    paymentInstruction: "Bitte überweisen Sie diesen Aufpreis auf dasselbe Bankkonto, das Sie für Ihre Bestellzahlung verwendet haben.",
+    paymentInstruction: "Bitte überweisen Sie diesen Aufpreis auf das unten angegebene Bankkonto (dasselbe wie für Ihre Bestellung).",
     deliveryNote: "Der Versand Ihrer Bestellung beginnt, sobald wir diese Zahlung erhalten haben.",
+    bankDetails: "Bankverbindung",
+    accountHolder: "Kontoinhaber",
     thanks: "Vielen Dank für Ihr Vertrauen.",
     team: "Das EkipTrade-Team",
   },
@@ -62,8 +91,10 @@ const translations: Record<string, { subject: string; greeting: string; intro: s
     covered: "Envío cubierto por EkipTrade (gratis)",
     supplement: "Cargo adicional",
     newTotal: "Nuevo total del pedido",
-    paymentInstruction: "Por favor, realice el pago de este suplemento en la misma cuenta bancaria utilizada para el pago de su pedido.",
+    paymentInstruction: "Por favor, realice el pago de este suplemento en la cuenta bancaria indicada abajo (la misma de su pedido).",
     deliveryNote: "El envío de su pedido comenzará una vez que recibamos este pago.",
+    bankDetails: "Datos bancarios",
+    accountHolder: "Titular",
     thanks: "Gracias por su confianza.",
     team: "El equipo EkipTrade",
   },
@@ -75,8 +106,10 @@ const translations: Record<string, { subject: string; greeting: string; intro: s
     covered: "Spedizione coperta da EkipTrade (gratuita)",
     supplement: "Supplemento a tuo carico",
     newTotal: "Nuovo totale ordine",
-    paymentInstruction: "Ti preghiamo di effettuare il pagamento di questo supplemento sullo stesso conto bancario utilizzato per il pagamento dell'ordine.",
+    paymentInstruction: "Ti preghiamo di effettuare il pagamento di questo supplemento sul conto bancario indicato sotto (lo stesso dell'ordine).",
     deliveryNote: "La spedizione del tuo ordine inizierà una volta ricevuto questo pagamento.",
+    bankDetails: "Coordinate bancarie",
+    accountHolder: "Intestatario",
     thanks: "Grazie per la tua fiducia.",
     team: "Il team EkipTrade",
   },
@@ -88,8 +121,10 @@ const translations: Record<string, { subject: string; greeting: string; intro: s
     covered: "Envio coberto pela EkipTrade (grátis)",
     supplement: "Suplemento a seu cargo",
     newTotal: "Novo total da encomenda",
-    paymentInstruction: "Por favor, efetue o pagamento deste suplemento na mesma conta bancária utilizada para o pagamento da sua encomenda.",
+    paymentInstruction: "Por favor, efetue o pagamento deste suplemento na conta bancária indicada abaixo (a mesma da sua encomenda).",
     deliveryNote: "O envio da sua encomenda será iniciado assim que recebermos este pagamento.",
+    bankDetails: "Dados bancários",
+    accountHolder: "Titular",
     thanks: "Obrigado pela sua confiança.",
     team: "A equipa EkipTrade",
   },
@@ -104,6 +139,9 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
+    const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+    
     const requestBody = await req.json();
     const { orderId, customerEmail, shippingCost, supplement, orderTotal, language = 'fr' }: NotifyShippingCostRequest = requestBody;
 
@@ -120,9 +158,56 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
+    // Fetch bank account based on order total (same logic as checkout)
+    let bankAccount: BankAccount | null = null;
+    if (supabaseUrl && supabaseServiceKey) {
+      const supabase = createClient(supabaseUrl, supabaseServiceKey);
+      
+      const { data: bankAccounts } = await supabase
+        .from('bank_accounts')
+        .select('name, holder, iban, bic, bank_name, threshold_min, threshold_max')
+        .eq('is_active', true)
+        .order('threshold_min', { ascending: true });
+      
+      if (bankAccounts && bankAccounts.length > 0) {
+        // Find the appropriate bank account based on order total
+        bankAccount = bankAccounts.find(account => {
+          const min = account.threshold_min || 0;
+          const max = account.threshold_max || Infinity;
+          return orderTotal >= min && orderTotal < max;
+        }) || bankAccounts[0];
+      }
+    }
+
     const t = translations[language] || translations.fr;
     const coveredAmount = Math.min(shippingCost, FREE_SHIPPING_LIMIT);
     const newTotal = orderTotal + supplement;
+
+    // Build bank details HTML if available
+    const bankDetailsHtml = bankAccount ? `
+              <!-- Bank Details -->
+              <div style="background-color: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 8px; padding: 20px; margin: 25px 0;">
+                <h4 style="color: #0369a1; margin: 0 0 15px 0; font-size: 16px;">${t.bankDetails}</h4>
+                <table width="100%" cellpadding="0" cellspacing="0" style="font-size: 14px;">
+                  <tr>
+                    <td style="padding: 5px 0; color: #666666; width: 100px;">${t.accountHolder}:</td>
+                    <td style="padding: 5px 0; color: #333333; font-weight: bold;">${bankAccount.holder}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 5px 0; color: #666666;">IBAN:</td>
+                    <td style="padding: 5px 0; color: #333333; font-weight: bold; font-family: monospace;">${bankAccount.iban}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 5px 0; color: #666666;">BIC:</td>
+                    <td style="padding: 5px 0; color: #333333; font-weight: bold; font-family: monospace;">${bankAccount.bic}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 5px 0; color: #666666;">Banque:</td>
+                    <td style="padding: 5px 0; color: #333333;">${bankAccount.bank_name}</td>
+                  </tr>
+                </table>
+              </div>
+    ` : '';
 
     const emailHtml = `
 <!DOCTYPE html>
@@ -197,7 +282,8 @@ const handler = async (req: Request): Promise<Response> => {
                   ${t.deliveryNote}
                 </p>
               </div>
-              </div>
+              
+              ${bankDetailsHtml}
               
               <p style="color: #666666; font-size: 16px; line-height: 1.6; margin: 20px 0 0 0;">
                 ${t.thanks}<br><br>
@@ -265,6 +351,7 @@ const handler = async (req: Request): Promise<Response> => {
             <li>Supplément : ${supplement}€</li>
             <li>Nouveau total : ${newTotal.toLocaleString('fr-FR')}€</li>
           </ul>
+          ${bankAccount ? `<p>Compte bancaire utilisé : ${bankAccount.name} (${bankAccount.iban})</p>` : ''}
         `,
       }),
     });
@@ -274,11 +361,6 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     console.log(`Shipping cost notification also sent to admin for order ${orderId}`);
-
-    return new Response(
-      JSON.stringify({ success: true }),
-      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
 
     return new Response(
       JSON.stringify({ success: true }),
