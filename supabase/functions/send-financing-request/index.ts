@@ -144,7 +144,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to admin
     const adminEmailResponse = await resend.emails.send({
-      from: "EkipTrade <onboarding@resend.dev>",
+      from: "EkipTrade <infos@ekiptrade.com>",
       to: ["infos@ekiptrade.com"],
       subject: `🚜 Nouvelle demande de financement - ${data.productTitle}`,
       html: emailHtml,
@@ -197,7 +197,7 @@ const handler = async (req: Request): Promise<Response> => {
     `;
 
     const customerEmailResponse = await resend.emails.send({
-      from: "EkipTrade <onboarding@resend.dev>",
+      from: "EkipTrade <infos@ekiptrade.com>",
       to: [data.email],
       subject: "✅ Votre demande de financement a été reçue - EkipTrade",
       html: customerEmailHtml,

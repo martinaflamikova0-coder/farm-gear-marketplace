@@ -8,3 +8,12 @@ verify_jwt = false
 
 [functions.sitemap]
 verify_jwt = false
+
+[functions.send-order-confirmation]
+verify_jwt = false
+
+[functions.notify-shipping-cost]
+verify_jwt = false
+
+[functions.generate-invoice]
+verify_jwt = false

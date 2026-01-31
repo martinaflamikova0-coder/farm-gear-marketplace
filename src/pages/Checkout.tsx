@@ -310,6 +310,24 @@ const Checkout = () => {
       const ref = `CMD-${Date.now().toString(36).toUpperCase()}`;
       setOrderReference(ref);
 
+      // Send order confirmation email
+      try {
+        await supabase.functions.invoke('send-order-confirmation', {
+          body: {
+            orderId: order.id,
+            customerEmail: shippingData.email,
+            customerName: `${shippingData.firstName} ${shippingData.lastName}`,
+            orderTotal: total,
+            paymentMethod: 'bank_transfer',
+            language: currentLang,
+          },
+        });
+        console.log('Order confirmation email sent');
+      } catch (emailError) {
+        console.error('Failed to send confirmation email:', emailError);
+        // Don't fail the order if email fails
+      }
+
       // Clear cart
       await clearCart();
 
@@ -380,6 +398,24 @@ const Checkout = () => {
       // Generate order reference
       const ref = `CMD-${Date.now().toString(36).toUpperCase()}`;
       setOrderReference(ref);
+
+      // Send order confirmation email
+      try {
+        await supabase.functions.invoke('send-order-confirmation', {
+          body: {
+            orderId: order.id,
+            customerEmail: shippingData.email,
+            customerName: `${shippingData.firstName} ${shippingData.lastName}`,
+            orderTotal: total,
+            paymentMethod: 'paypal',
+            language: currentLang,
+          },
+        });
+        console.log('PayPal order confirmation email sent');
+      } catch (emailError) {
+        console.error('Failed to send PayPal confirmation email:', emailError);
+        // Don't fail the order if email fails
+      }
 
       // Clear cart
       await clearCart();

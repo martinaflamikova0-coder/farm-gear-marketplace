@@ -386,9 +386,11 @@ serve(async (req) => {
     yPos -= 15;
     page.drawText(t.marketplace, { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText("71-75 Shelton Street", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText("Wednesbury Trading Estate, Block P", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText("London WC2H 9JQ, United Kingdom", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText("Wednesbury WS10 7JN, United Kingdom", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    yPos -= 15;
+    page.drawText("Tel: +44 7883 782699", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
     page.drawText("infos@ekiptrade.com", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
