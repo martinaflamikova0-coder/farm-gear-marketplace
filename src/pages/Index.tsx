@@ -26,6 +26,8 @@ const Index = () => {
         descriptionKey="seo.home.description" 
       />
       <Header />
+      {/* Spacer for fixed header */}
+      <div className="h-[120px] md:h-[140px]" />
       <BrandsMarquee />
       
       {/* Hero Banner - Full width impact */}
