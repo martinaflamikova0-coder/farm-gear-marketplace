@@ -53,6 +53,7 @@ interface Order {
   notes: string | null;
   shipping_cost: number | null;
   shipping_cost_notified: boolean;
+  language: string | null;
   order_items: OrderItem[];
 }
 
@@ -114,6 +115,7 @@ const AdminOrders = () => {
         notes,
         shipping_cost,
         shipping_cost_notified,
+        language,
         order_items (
           id,
           product_title,
@@ -136,6 +138,7 @@ const AdminOrders = () => {
         ...order,
         shipping_cost: order.shipping_cost ?? null,
         shipping_cost_notified: order.shipping_cost_notified ?? false,
+        language: order.language ?? 'fr',
       })) as Order[];
       setOrders(ordersWithDefaults);
     }
@@ -193,7 +196,7 @@ const AdminOrders = () => {
     }
   };
 
-  const handleViewInvoice = async (orderId: string) => {
+  const handleViewInvoice = async (orderId: string, language: string = 'fr') => {
     try {
       setGeneratingInvoice(orderId);
       
@@ -207,7 +210,7 @@ const AdminOrders = () => {
             'Authorization': `Bearer ${session?.access_token || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
             'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
           },
-          body: JSON.stringify({ orderId, language: 'fr' }),
+          body: JSON.stringify({ orderId, language }),
         }
       );
 
@@ -229,7 +232,7 @@ const AdminOrders = () => {
     }
   };
 
-  const handleDownloadInvoice = async (orderId: string) => {
+  const handleDownloadInvoice = async (orderId: string, language: string = 'fr') => {
     try {
       setGeneratingInvoice(orderId);
       
@@ -243,7 +246,7 @@ const AdminOrders = () => {
             'Authorization': `Bearer ${session?.access_token || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
             'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
           },
-          body: JSON.stringify({ orderId, language: 'fr' }),
+          body: JSON.stringify({ orderId, language }),
         }
       );
 
@@ -500,7 +503,7 @@ const AdminOrders = () => {
                         size="sm"
                         onClick={(e) => {
                           e.stopPropagation();
-                          handleViewInvoice(order.id);
+                          handleViewInvoice(order.id, order.language || 'fr');
                         }}
                         disabled={generatingInvoice === order.id}
                       >
@@ -516,7 +519,7 @@ const AdminOrders = () => {
                         size="sm"
                         onClick={(e) => {
                           e.stopPropagation();
-                          handleDownloadInvoice(order.id);
+                          handleDownloadInvoice(order.id, order.language || 'fr');
                         }}
                         disabled={generatingInvoice === order.id}
                       >
@@ -537,6 +540,7 @@ const AdminOrders = () => {
                     isNotified={order.shipping_cost_notified}
                     customerEmail={order.shipping_email}
                     orderTotal={order.total_amount}
+                    customerLanguage={order.language}
                     onUpdate={fetchOrders}
                   />
 

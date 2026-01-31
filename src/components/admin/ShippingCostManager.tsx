@@ -13,6 +13,7 @@ interface ShippingCostManagerProps {
   isNotified: boolean;
   customerEmail: string | null;
   orderTotal: number;
+  customerLanguage?: string | null;
   onUpdate: () => void;
 }
 
@@ -24,6 +25,7 @@ const ShippingCostManager = ({
   isNotified,
   customerEmail,
   orderTotal,
+  customerLanguage,
   onUpdate,
 }: ShippingCostManagerProps) => {
   const { toast } = useToast();
@@ -110,6 +112,7 @@ const ShippingCostManager = ({
             shippingCost: numericCost,
             supplement,
             orderTotal,
+            language: customerLanguage || 'fr', // Use customer's language preference
           }),
         }
       );

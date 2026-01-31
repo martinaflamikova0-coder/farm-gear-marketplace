@@ -228,6 +228,7 @@ export type Database = {
         Row: {
           created_at: string
           id: string
+          language: string | null
           notes: string | null
           payment_receipt_url: string | null
           shipping_address: string | null
@@ -249,6 +250,7 @@ export type Database = {
         Insert: {
           created_at?: string
           id?: string
+          language?: string | null
           notes?: string | null
           payment_receipt_url?: string | null
           shipping_address?: string | null
@@ -270,6 +272,7 @@ export type Database = {
         Update: {
           created_at?: string
           id?: string
+          language?: string | null
           notes?: string | null
           payment_receipt_url?: string | null
           shipping_address?: string | null
