@@ -834,5 +834,13 @@
       "include4": "Photos if applicable (for defective or damaged equipment)"
     },
     "lastUpdated": "Last updated: January 2026"
+  },
+  "auth": {
+    "existingAccount": "Account exists",
+    "existingAccountDesc": "An account already exists with this email. Please log in.",
+    "error": "Error",
+    "accountCreated": "Account created!",
+    "accountCreatedDesc": "Your account has been successfully created. Check your email for the welcome message.",
+    "signupError": "An error occurred during registration"
   }
 }

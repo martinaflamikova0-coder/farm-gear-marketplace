@@ -812,5 +812,13 @@
       "include4": "Foto se applicabile (per attrezzature difettose o danneggiate)"
     },
     "lastUpdated": "Ultimo aggiornamento: Gennaio 2026"
+  },
+  "auth": {
+    "existingAccount": "Account esistente",
+    "existingAccountDesc": "Esiste già un account con questa email. Effettua il login.",
+    "error": "Errore",
+    "accountCreated": "Account creato!",
+    "accountCreatedDesc": "Il tuo account è stato creato con successo. Controlla la tua email per il messaggio di benvenuto.",
+    "signupError": "Si è verificato un errore durante la registrazione"
   }
 }
