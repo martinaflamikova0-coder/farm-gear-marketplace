@@ -145,7 +145,7 @@ const Auth = () => {
 
     setIsLoading(true);
     try {
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email: signupEmail,
         password: signupPassword,
         options: {
@@ -160,23 +160,38 @@ const Auth = () => {
       if (error) {
         if (error.message.includes('already registered')) {
           toast({
-            title: 'Compte existant',
-            description: 'Un compte existe déjà avec cet email. Veuillez vous connecter.',
+            title: t('auth.existingAccount'),
+            description: t('auth.existingAccountDesc'),
             variant: 'destructive',
           });
           setActiveTab('login');
           setLoginEmail(signupEmail);
         } else {
           toast({
-            title: 'Erreur',
+            title: t('auth.error'),
             description: error.message,
             variant: 'destructive',
           });
         }
       } else {
+        // Send custom welcome email via Resend
+        try {
+          await supabase.functions.invoke('send-welcome-email', {
+            body: {
+              email: signupEmail,
+              firstName,
+              lastName,
+              language: i18n.language,
+            },
+          });
+        } catch (emailError) {
+          console.error('Failed to send welcome email:', emailError);
+          // Don't block the signup if email fails
+        }
+
         toast({
-          title: 'Compte créé !',
-          description: 'Votre compte a été créé avec succès. Vous pouvez maintenant vous connecter.',
+          title: t('auth.accountCreated'),
+          description: t('auth.accountCreatedDesc'),
         });
         setActiveTab('login');
         setLoginEmail(signupEmail);
@@ -184,8 +199,8 @@ const Auth = () => {
     } catch (error) {
       console.error('Signup error:', error);
       toast({
-        title: 'Erreur',
-        description: 'Une erreur est survenue lors de l\'inscription',
+        title: t('auth.error'),
+        description: t('auth.signupError'),
         variant: 'destructive',
       });
     } finally {

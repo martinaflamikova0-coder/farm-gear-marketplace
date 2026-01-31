@@ -812,5 +812,13 @@
       "include4": "Fotos falls zutreffend (bei defekter oder beschädigter Ausrüstung)"
     },
     "lastUpdated": "Zuletzt aktualisiert: Januar 2026"
+  },
+  "auth": {
+    "existingAccount": "Konto existiert",
+    "existingAccountDesc": "Ein Konto mit dieser E-Mail existiert bereits. Bitte melden Sie sich an.",
+    "error": "Fehler",
+    "accountCreated": "Konto erstellt!",
+    "accountCreatedDesc": "Ihr Konto wurde erfolgreich erstellt. Prüfen Sie Ihre E-Mails für die Willkommensnachricht.",
+    "signupError": "Bei der Registrierung ist ein Fehler aufgetreten"
   }
 }

@@ -834,5 +834,13 @@
       "include4": "Des photos si applicable (pour un matériel défectueux ou endommagé)"
     },
     "lastUpdated": "Dernière mise à jour : Janvier 2026"
+  },
+  "auth": {
+    "existingAccount": "Compte existant",
+    "existingAccountDesc": "Un compte existe déjà avec cet email. Veuillez vous connecter.",
+    "error": "Erreur",
+    "accountCreated": "Compte créé !",
+    "accountCreatedDesc": "Votre compte a été créé avec succès. Vérifiez votre boîte mail pour l'email de bienvenue.",
+    "signupError": "Une erreur est survenue lors de l'inscription"
   }
 }
