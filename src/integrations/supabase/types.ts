@@ -179,6 +179,33 @@ export type Database = {
           },
         ]
       }
+      merchant_center_settings: {
+        Row: {
+          category: string
+          description: string | null
+          id: string
+          key: string
+          updated_at: string
+          value: Json
+        }
+        Insert: {
+          category?: string
+          description?: string | null
+          id?: string
+          key: string
+          updated_at?: string
+          value?: Json
+        }
+        Update: {
+          category?: string
+          description?: string | null
+          id?: string
+          key?: string
+          updated_at?: string
+          value?: Json
+        }
+        Relationships: []
+      }
       order_items: {
         Row: {
           created_at: string
@@ -339,6 +366,8 @@ export type Database = {
           kilometers: number | null
           location: string | null
           low_stock_threshold: number | null
+          merchant_safe_additional_images: string[] | null
+          merchant_safe_image_url: string | null
           model: string | null
           original_price: number | null
           price: number
@@ -373,6 +402,8 @@ export type Database = {
           kilometers?: number | null
           location?: string | null
           low_stock_threshold?: number | null
+          merchant_safe_additional_images?: string[] | null
+          merchant_safe_image_url?: string | null
           model?: string | null
           original_price?: number | null
           price: number
@@ -407,6 +438,8 @@ export type Database = {
           kilometers?: number | null
           location?: string | null
           low_stock_threshold?: number | null
+          merchant_safe_additional_images?: string[] | null
+          merchant_safe_image_url?: string | null
           model?: string | null
           original_price?: number | null
           price?: number
