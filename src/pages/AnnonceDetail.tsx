@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ArrowLeft, MapPin, Clock, Calendar, Phone, Mail, Check, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, X, FileText, Package, AlertTriangle } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import SEOHead from '@/components/SEOHead';
 import ProductJsonLd from '@/components/ProductJsonLd';
 import { Button } from '@/components/ui/button';
@@ -59,6 +60,7 @@ const AnnonceDetail = () => {
     return (
       <div className="min-h-screen flex flex-col">
         <Header />
+        <HeaderSpacer />
         <main className="flex-1 bg-background">
           <div className="container-custom py-8">
             <Skeleton className="h-8 w-48 mb-6" />
@@ -82,6 +84,7 @@ const AnnonceDetail = () => {
     return (
       <div className="min-h-screen flex flex-col">
         <Header />
+        <HeaderSpacer />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">
             <div className="text-6xl mb-4">😕</div>
@@ -210,6 +213,7 @@ const AnnonceDetail = () => {
         currentLang={currentLang}
       />
       <Header />
+      <HeaderSpacer />
       <main className="flex-1 bg-background overflow-x-hidden">
         <div className="container-custom py-4 sm:py-8 max-w-full overflow-hidden">
           {/* Breadcrumb */}

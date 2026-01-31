@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Filter, Grid, List, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import ProductCard from '@/components/products/ProductCard';
 import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
@@ -283,6 +284,7 @@ const Annonces = () => {
         descriptionKey="seo.listings.description" 
       />
       <Header />
+      <HeaderSpacer />
       <main className="flex-1 bg-background">
         <div className="container-custom py-8">
           {/* Page header */}

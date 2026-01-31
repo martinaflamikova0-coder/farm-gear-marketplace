@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import SEOHead from '@/components/SEOHead';
 import { z } from 'zod';
 import { Loader2, Mail, Lock, User } from 'lucide-react';
@@ -246,6 +247,7 @@ const Auth = () => {
     <div className="min-h-screen flex flex-col">
       <SEOHead titleKey="seo.auth.title" descriptionKey="seo.auth.description" />
       <Header />
+      <HeaderSpacer />
       <main className="flex-1 bg-background flex items-center justify-center py-12 px-4">
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">

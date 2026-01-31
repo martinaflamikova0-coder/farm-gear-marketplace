@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Trash2, Plus, Minus, ShoppingBag, ArrowLeft, ArrowRight } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -39,6 +40,7 @@ const Cart = () => {
       <div className="min-h-screen flex flex-col">
         <SEOHead titleKey="seo.cart.title" descriptionKey="seo.cart.description" />
         <Header />
+        <HeaderSpacer />
         <main className="flex-1 bg-background flex items-center justify-center py-12">
           <Card className="max-w-md w-full mx-4">
             <CardHeader className="text-center">
@@ -69,6 +71,7 @@ const Cart = () => {
       <div className="min-h-screen flex flex-col">
         <SEOHead titleKey="seo.cart.title" descriptionKey="seo.cart.description" />
         <Header />
+        <HeaderSpacer />
         <main className="flex-1 bg-background">
           <div className="container-custom py-8">
             <Skeleton className="h-10 w-48 mb-6" />
@@ -91,6 +94,7 @@ const Cart = () => {
     <div className="min-h-screen flex flex-col">
       <SEOHead titleKey="seo.cart.title" descriptionKey="seo.cart.description" />
       <Header />
+      <HeaderSpacer />
       <main className="flex-1 bg-background">
         <div className="container-custom py-8">
           {/* Breadcrumb */}

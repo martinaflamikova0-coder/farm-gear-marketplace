@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import SEOHead from '@/components/SEOHead';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { 
@@ -29,6 +30,7 @@ const Returns = () => {
       />
       <div className="min-h-screen bg-background">
         <Header />
+        <HeaderSpacer />
         
         <main className="container-custom py-8 md:py-12">
           {/* Hero Section */}

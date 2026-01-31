@@ -1,5 +1,6 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import SearchBar from '@/components/home/SearchBar';
 import QuickCategories from '@/components/home/QuickCategories';
 import BrandsMarquee from '@/components/home/BrandsMarquee';
@@ -26,8 +27,7 @@ const Index = () => {
         descriptionKey="seo.home.description" 
       />
       <Header />
-      {/* Spacer for fixed header */}
-      <div className="h-[120px] md:h-[140px]" />
+      <HeaderSpacer />
       <BrandsMarquee />
       
       {/* Hero Banner - Full width impact */}
