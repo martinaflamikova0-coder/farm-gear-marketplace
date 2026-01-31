@@ -332,7 +332,7 @@
     "cancel": "Cancel",
     "submit": "Submit request",
     "successTitle": "Request sent!",
-    "successDescription": "Our sales team will contact you shortly.",
+    "successDescription": "Our sales team will contact you shortly. If you don't receive our confirmation email, please check your spam folder.",
     "errorTitle": "Error",
     "errorDescription": "An error occurred. Please try again."
   },
@@ -465,7 +465,7 @@
     },
     "success": {
       "orderSaved": "Order saved!",
-      "orderSavedDescription": "Your order and receipt have been successfully saved."
+      "orderSavedDescription": "Your order and receipt have been successfully saved. If you don't receive our confirmation email, please check your spam folder."
     },
     "validation": {
       "firstNameMin": "First name must be at least 2 characters",
@@ -840,7 +840,7 @@
     "existingAccountDesc": "An account already exists with this email. Please log in.",
     "error": "Error",
     "accountCreated": "Account created!",
-    "accountCreatedDesc": "Your account has been successfully created. Check your email for the welcome message.",
+    "accountCreatedDesc": "Your account has been successfully created. Check your email for the welcome message. If you don't receive it, please check your spam folder.",
     "signupError": "An error occurred during registration"
   }
 }

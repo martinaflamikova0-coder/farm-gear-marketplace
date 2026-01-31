@@ -332,7 +332,7 @@
     "cancel": "Annuler",
     "submit": "Envoyer ma demande",
     "successTitle": "Demande envoyée !",
-    "successDescription": "Notre équipe commerciale vous contactera dans les plus brefs délais.",
+    "successDescription": "Notre équipe commerciale vous contactera dans les plus brefs délais. Si vous ne recevez pas notre email de confirmation, pensez à vérifier vos spams.",
     "errorTitle": "Erreur",
     "errorDescription": "Une erreur s'est produite. Veuillez réessayer."
   },
@@ -465,7 +465,7 @@
     },
     "success": {
       "orderSaved": "Commande enregistrée !",
-      "orderSavedDescription": "Votre commande et votre reçu ont été enregistrés avec succès."
+      "orderSavedDescription": "Votre commande et votre reçu ont été enregistrés avec succès. Si vous ne recevez pas notre email de confirmation, pensez à vérifier vos spams."
     },
     "validation": {
       "firstNameMin": "Le prénom doit contenir au moins 2 caractères",
@@ -840,7 +840,7 @@
     "existingAccountDesc": "Un compte existe déjà avec cet email. Veuillez vous connecter.",
     "error": "Erreur",
     "accountCreated": "Compte créé !",
-    "accountCreatedDesc": "Votre compte a été créé avec succès. Vérifiez votre boîte mail pour l'email de bienvenue.",
+    "accountCreatedDesc": "Votre compte a été créé avec succès. Vérifiez votre boîte mail pour l'email de bienvenue. Si vous ne le recevez pas, pensez à vérifier vos spams.",
     "signupError": "Une erreur est survenue lors de l'inscription"
   }
 }
