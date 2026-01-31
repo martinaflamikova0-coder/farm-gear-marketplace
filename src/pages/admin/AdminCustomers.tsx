@@ -33,6 +33,7 @@ interface CustomerWithOrders {
     shipping_address: string | null;
     shipping_city: string | null;
     payment_receipt_url: string | null;
+    language: string | null;
     items: {
       id: string;
       product_title: string;
@@ -70,6 +71,7 @@ const AdminCustomers = () => {
           shipping_postal_code,
           shipping_country,
           payment_receipt_url,
+          language,
           order_items (
             id,
             product_title,
@@ -120,6 +122,7 @@ const AdminCustomers = () => {
           shipping_address: order.shipping_address,
           shipping_city: order.shipping_city,
           payment_receipt_url: order.payment_receipt_url,
+          language: order.language || 'fr',
           items: order.order_items || [],
         });
         customer.total_orders += 1;
@@ -180,7 +183,7 @@ const AdminCustomers = () => {
     }
   };
 
-  const handleViewInvoice = async (orderId: string) => {
+  const handleViewInvoice = async (orderId: string, language: string = 'fr') => {
     try {
       setGeneratingInvoice(orderId);
       
@@ -194,7 +197,7 @@ const AdminCustomers = () => {
             'Authorization': `Bearer ${session?.access_token || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
             'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
           },
-          body: JSON.stringify({ orderId, language: 'fr' }),
+          body: JSON.stringify({ orderId, language }),
         }
       );
 
@@ -374,7 +377,7 @@ const AdminCustomers = () => {
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => handleViewInvoice(order.id)}
+                            onClick={() => handleViewInvoice(order.id, order.language || 'fr')}
                             disabled={generatingInvoice === order.id}
                           >
                             <FileText className="h-4 w-4 mr-1" />

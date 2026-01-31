@@ -259,6 +259,7 @@ const Checkout = () => {
           shipping_city: shippingData.city,
           shipping_postal_code: shippingData.postalCode,
           shipping_country: shippingData.country,
+          language: currentLang, // Store customer's language preference
           notes: `Paiement par virement bancaire - Compte: ${selectedBankAccount?.name || 'N/A'}`,
         })
         .select('id')
@@ -372,6 +373,7 @@ const Checkout = () => {
           shipping_city: shippingData.city,
           shipping_postal_code: shippingData.postalCode,
           shipping_country: shippingData.country,
+          language: currentLang, // Store customer's language preference
           stripe_payment_intent_id: details.id, // Store PayPal order ID here
           notes: `PayPal payment - Order ID: ${details.id} - Payer: ${details.payer.email_address}`,
         })
