@@ -63,6 +63,9 @@ const Footer = () => {
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
                 <span>Wednesbury Trading Estate, Block P,<br />Wednesbury WS10 7JN, UK</span>
               </div>
+              <p className="text-primary-foreground/70 text-xs mt-2">
+                Company No. 54456764
+              </p>
             </div>
           </div>
 
@@ -153,7 +156,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-primary-foreground/60">
-            © {new Date().getFullYear()} EkipTrade. {t('footer.rights')}.
+            © {new Date().getFullYear()} EkipTrade. {t('footer.rights')}. Company No. 54456764
           </p>
         </div>
       </div>
