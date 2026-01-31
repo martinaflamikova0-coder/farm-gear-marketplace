@@ -627,7 +627,7 @@
       "messagePlaceholder": "Describe your request in detail...",
       "send": "Send message",
       "successTitle": "Message sent!",
-      "successDesc": "We will respond as soon as possible."
+      "successDesc": "We will respond as soon as possible. If you don't receive our confirmation email, please check your spam folder."
     },
     "terms": {
       "title": "Terms of Use",

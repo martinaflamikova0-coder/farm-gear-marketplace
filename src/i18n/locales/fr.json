@@ -627,7 +627,7 @@
       "messagePlaceholder": "Décrivez votre demande en détail...",
       "send": "Envoyer le message",
       "successTitle": "Message envoyé !",
-      "successDesc": "Nous vous répondrons dans les plus brefs délais."
+      "successDesc": "Nous vous répondrons dans les plus brefs délais. Si vous ne recevez pas notre email de confirmation, pensez à vérifier vos spams."
     },
     "terms": {
       "title": "Conditions Générales d'Utilisation",
