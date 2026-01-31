@@ -310,7 +310,7 @@
     "cancel": "Annulla",
     "submit": "Invia richiesta",
     "successTitle": "Richiesta inviata!",
-    "successDescription": "Il nostro team commerciale ti contatterà a breve.",
+    "successDescription": "Il nostro team commerciale ti contatterà a breve. Se non ricevi la nostra email di conferma, controlla la cartella spam.",
     "errorTitle": "Errore",
     "errorDescription": "Si è verificato un errore. Riprova."
   },
@@ -443,7 +443,7 @@
     },
     "success": {
       "orderSaved": "Ordine salvato!",
-      "orderSavedDescription": "Il tuo ordine e la ricevuta sono stati salvati con successo."
+      "orderSavedDescription": "Il tuo ordine e la ricevuta sono stati salvati con successo. Se non ricevi la nostra email di conferma, controlla la cartella spam."
     },
     "validation": {
       "firstNameMin": "Il nome deve avere almeno 2 caratteri",
@@ -818,7 +818,7 @@
     "existingAccountDesc": "Esiste già un account con questa email. Effettua il login.",
     "error": "Errore",
     "accountCreated": "Account creato!",
-    "accountCreatedDesc": "Il tuo account è stato creato con successo. Controlla la tua email per il messaggio di benvenuto.",
+    "accountCreatedDesc": "Il tuo account è stato creato con successo. Controlla la tua email per il messaggio di benvenuto. Se non lo ricevi, controlla la cartella spam.",
     "signupError": "Si è verificato un errore durante la registrazione"
   }
 }

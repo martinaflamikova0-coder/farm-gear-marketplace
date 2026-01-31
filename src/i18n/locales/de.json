@@ -310,7 +310,7 @@
     "cancel": "Abbrechen",
     "submit": "Anfrage senden",
     "successTitle": "Anfrage gesendet!",
-    "successDescription": "Unser Vertriebsteam wird Sie in Kürze kontaktieren.",
+    "successDescription": "Unser Vertriebsteam wird Sie in Kürze kontaktieren. Wenn Sie unsere Bestätigungs-E-Mail nicht erhalten, überprüfen Sie bitte Ihren Spam-Ordner.",
     "errorTitle": "Fehler",
     "errorDescription": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
   },
@@ -443,7 +443,7 @@
     },
     "success": {
       "orderSaved": "Bestellung gespeichert!",
-      "orderSavedDescription": "Ihre Bestellung und Ihr Beleg wurden erfolgreich gespeichert."
+      "orderSavedDescription": "Ihre Bestellung und Ihr Beleg wurden erfolgreich gespeichert. Wenn Sie unsere Bestätigungs-E-Mail nicht erhalten, überprüfen Sie bitte Ihren Spam-Ordner."
     },
     "validation": {
       "firstNameMin": "Vorname muss mindestens 2 Zeichen haben",
@@ -818,7 +818,7 @@
     "existingAccountDesc": "Ein Konto mit dieser E-Mail existiert bereits. Bitte melden Sie sich an.",
     "error": "Fehler",
     "accountCreated": "Konto erstellt!",
-    "accountCreatedDesc": "Ihr Konto wurde erfolgreich erstellt. Prüfen Sie Ihre E-Mails für die Willkommensnachricht.",
+    "accountCreatedDesc": "Ihr Konto wurde erfolgreich erstellt. Prüfen Sie Ihre E-Mails für die Willkommensnachricht. Wenn Sie sie nicht erhalten, überprüfen Sie bitte Ihren Spam-Ordner.",
     "signupError": "Bei der Registrierung ist ein Fehler aufgetreten"
   }
 }
