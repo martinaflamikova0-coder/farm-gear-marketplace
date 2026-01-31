@@ -8,12 +8,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,13 +23,35 @@ const Contact = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: t('pages.contact.successTitle'),
-      description: t('pages.contact.successDesc'),
-    });
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          ...formData,
+          language: i18n.language,
+        },
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: t('pages.contact.successTitle'),
+        description: t('pages.contact.successDesc'),
+      });
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Error sending contact email:', error);
+      toast({
+        title: t('pages.contact.errorTitle', 'Error'),
+        description: t('pages.contact.errorDesc', 'Failed to send message. Please try again.'),
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -121,8 +145,15 @@ const Contact = () => {
                         placeholder={t('pages.contact.messagePlaceholder')}
                       />
                     </div>
-                    <Button type="submit" className="w-full sm:w-auto">
-                      {t('pages.contact.send')}
+                    <Button type="submit" className="w-full sm:w-auto" disabled={isSubmitting}>
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          {t('common.sending', 'Sending...')}
+                        </>
+                      ) : (
+                        t('pages.contact.send')
+                      )}
                     </Button>
                   </form>
                 </CardContent>
