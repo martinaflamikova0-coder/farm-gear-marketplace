@@ -25,14 +25,20 @@ const Annonces = () => {
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [sortBy, setSortBy] = useState('date-desc');
-  const [currentPage, setCurrentPage] = useState(1);
+  
+  // Get initial values from URL params
+  const initialPage = parseInt(searchParams.get('page') || '1', 10);
+  const initialSort = searchParams.get('sort') || 'date-desc';
+  const initialCategory = searchParams.get('category') || '';
+  
+  const [sortBy, setSortBy] = useState(initialSort);
+  const [currentPage, setCurrentPage] = useState(initialPage);
   
   const { data: categories = [], isLoading: categoriesLoading } = useCategoriesWithCounts();
   const { data: brands = [], isLoading: brandsLoading } = useBrandNames();
   
   // Filters state - sync with URL params
-  const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || '');
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [priceMin, setPriceMin] = useState('');
   const [priceMax, setPriceMax] = useState('');
@@ -41,12 +47,45 @@ const Annonces = () => {
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
   const searchQuery = searchParams.get('search') || '';
 
-  // Sync selectedCategory with URL when it changes (e.g., from header links)
+  // Update URL when page/sort/category changes
+  const updateUrlParams = (updates: Record<string, string | null>) => {
+    const newParams = new URLSearchParams(searchParams);
+    Object.entries(updates).forEach(([key, value]) => {
+      if (value && value !== '1' && key === 'page') {
+        newParams.set(key, value);
+      } else if (value && value !== 'date-desc' && key === 'sort') {
+        newParams.set(key, value);
+      } else if (value && key === 'category') {
+        newParams.set(key, value);
+      } else if (key === 'page' && value === '1') {
+        newParams.delete(key);
+      } else if (key === 'sort' && value === 'date-desc') {
+        newParams.delete(key);
+      } else if (key === 'category' && !value) {
+        newParams.delete(key);
+      } else if (!value) {
+        newParams.delete(key);
+      } else {
+        newParams.set(key, value);
+      }
+    });
+    setSearchParams(newParams, { replace: true });
+  };
+
+  // Sync state with URL when URL changes (browser back/forward)
   useEffect(() => {
+    const pageFromUrl = parseInt(searchParams.get('page') || '1', 10);
+    const sortFromUrl = searchParams.get('sort') || 'date-desc';
     const categoryFromUrl = searchParams.get('category') || '';
+    
+    if (pageFromUrl !== currentPage) {
+      setCurrentPage(pageFromUrl);
+    }
+    if (sortFromUrl !== sortBy) {
+      setSortBy(sortFromUrl);
+    }
     if (categoryFromUrl !== selectedCategory) {
       setSelectedCategory(categoryFromUrl);
-      setCurrentPage(1);
     }
   }, [searchParams]);
 
@@ -98,7 +137,8 @@ const Annonces = () => {
     setSelectedBrands(prev =>
       prev.includes(brand) ? prev.filter(b => b !== brand) : [...prev, brand]
     );
-    setCurrentPage(1); // Reset to first page when filter changes
+    setCurrentPage(1);
+    updateUrlParams({ page: '1' });
   };
 
   const toggleCondition = (condition: string) => {
@@ -106,16 +146,20 @@ const Annonces = () => {
       prev.includes(condition) ? prev.filter(c => c !== condition) : [...prev, condition]
     );
     setCurrentPage(1);
+    updateUrlParams({ page: '1' });
   };
 
   const handleCategoryChange = (val: string) => {
-    setSelectedCategory(val === "all" ? "" : val);
+    const newCategory = val === "all" ? "" : val;
+    setSelectedCategory(newCategory);
     setCurrentPage(1);
+    updateUrlParams({ category: newCategory || null, page: '1' });
   };
 
   const handleSortChange = (val: string) => {
     setSortBy(val);
     setCurrentPage(1);
+    updateUrlParams({ sort: val, page: '1' });
   };
 
   const clearFilters = () => {
@@ -145,6 +189,7 @@ const Annonces = () => {
   const goToPage = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
+      updateUrlParams({ page: page.toString() });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
