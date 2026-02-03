@@ -280,12 +280,36 @@ function extractProductData(markdown: string, html: string, sourceUrl: string): 
     }
   }
   
-  // Extract brand from title or content
+  // Extract brand from title or content - extended list
   let brand = "";
-  const brandPatterns = ["LEICA", "NEDO", "WACKER NEUSON", "HÄNER", "HEB", "BOSCH", "MAKITA", "HILTI", "DEWALT", "METABO", "EPIROC", "HUSQVARNA", "STIHL", "CAT", "CATERPILLAR", "VOLVO", "HITACHI", "KOMATSU", "JCB", "KUBOTA", "BOBCAT", "LIEBHERR"];
+  const brandPatterns = [
+    // Construction equipment
+    "WACKER NEUSON", "HÄNER", "HEB", "EPIROC", "ATLAS COPCO", "KINSHOFER", "RÄDLINGER", "RADLINGER",
+    "CAT", "CATERPILLAR", "VOLVO", "HITACHI", "KOMATSU", "JCB", "KUBOTA", "BOBCAT", "LIEBHERR",
+    "TAKEUCHI", "YANMAR", "KOBELCO", "DOOSAN", "HYUNDAI", "CASE", "NEW HOLLAND",
+    // Power tools
+    "BOSCH", "MAKITA", "HILTI", "DEWALT", "METABO", "HUSQVARNA", "STIHL", "MILWAUKEE", "FESTOOL",
+    // Measuring instruments
+    "LEICA", "NEDO", "TOPCON", "TRIMBLE", "GEO FENNEL", "STABILA",
+    // Agricultural
+    "JOHN DEERE", "FENDT", "MASSEY FERGUSON", "CLAAS", "DEUTZ-FAHR", "VALTRA", "ZETOR",
+    "MCCORMICK", "SAME", "LANDINI", "NEW HOLLAND", "CASE IH",
+    // Others
+    "DITCH WITCH", "VERMEER", "SANDVIK", "WIRTGEN", "BOMAG", "HAMM", "DYNAPAC"
+  ];
+  
+  const titleUpper = title.toUpperCase();
   for (const b of brandPatterns) {
-    if (title.toUpperCase().includes(b)) {
-      brand = b;
+    if (titleUpper.includes(b.toUpperCase())) {
+      // Keep proper casing for the brand
+      brand = b.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ");
+      // Special casing for some brands
+      if (b === "CAT") brand = "CAT";
+      if (b === "JCB") brand = "JCB";
+      if (b === "HEB") brand = "HEB";
+      if (b === "HÄNER") brand = "Häner";
+      if (b === "KINSHOFER") brand = "Kinshofer";
+      if (b === "RÄDLINGER" || b === "RADLINGER") brand = "Rädlinger";
       break;
     }
   }
@@ -310,22 +334,38 @@ function extractProductData(markdown: string, html: string, sourceUrl: string): 
     }
   }
   
+  // Category mapping: German source categories -> French target categories
+  const categoryMapping: Record<string, string> = {
+    // Construction equipment
+    "hydraulikhammer": "chantier",
+    "erdbohrgerate": "chantier",
+    "greifer": "chantier",
+    "diamanttechnik": "chantier",
+    "gerate": "chantier",
+    "hacksler": "broyeurs",
+    "messwerkzeuge": "pieces",
+    // Default fallbacks
+    "default": "autres"
+  };
+  
   // Determine category from URL or content
-  let category = "";
-  if (sourceUrl.includes("messwerkzeuge") || title.toLowerCase().includes("laser") || title.toLowerCase().includes("messfix")) {
-    category = "messwerkzeuge";
-  } else if (sourceUrl.includes("erdbohrgerate") || title.toLowerCase().includes("bohr")) {
-    category = "erdbohrgerate";
-  } else if (sourceUrl.includes("greifer")) {
-    category = "greifer";
-  } else if (sourceUrl.includes("hydraulikhammer")) {
-    category = "hydraulikhammer";
-  } else if (sourceUrl.includes("diamanttechnik")) {
-    category = "diamanttechnik";
-  } else if (sourceUrl.includes("hacksler")) {
-    category = "hacksler";
+  let category = "autres";
+  const urlLower = sourceUrl.toLowerCase();
+  
+  if (urlLower.includes("messwerkzeuge") || titleUpper.includes("LASER") || titleUpper.includes("MESSFIX")) {
+    category = categoryMapping["messwerkzeuge"] || "pieces";
+  } else if (urlLower.includes("erdbohrgerate") || titleUpper.includes("BOHR")) {
+    category = categoryMapping["erdbohrgerate"] || "chantier";
+  } else if (urlLower.includes("greifer")) {
+    category = categoryMapping["greifer"] || "chantier";
+  } else if (urlLower.includes("hydraulikhammer")) {
+    category = categoryMapping["hydraulikhammer"] || "chantier";
+  } else if (urlLower.includes("diamanttechnik")) {
+    category = categoryMapping["diamanttechnik"] || "chantier";
+  } else if (urlLower.includes("hacksler")) {
+    category = categoryMapping["hacksler"] || "broyeurs";
   } else {
-    category = "gerate";
+    category = categoryMapping["default"] || "autres";
   }
   
   return {
