@@ -324,7 +324,22 @@ const AdminImport = () => {
     toast({ title: "Traitement terminé", description: "Vérifiez les résultats ci-dessous" });
   };
 
-  // Import all ready items
+  // Check for existing product duplicates
+  const checkForDuplicates = async (title: string, price: number): Promise<boolean> => {
+    // Normalize title for comparison
+    const normalizedTitle = title.toLowerCase().trim().substring(0, 50);
+    
+    const { data } = await supabase
+      .from('products')
+      .select('id, title')
+      .ilike('title', `%${normalizedTitle.substring(0, 30)}%`)
+      .eq('price', price)
+      .limit(1);
+    
+    return (data && data.length > 0);
+  };
+
+  // Import all ready items with deduplication
   const importReadyItems = async () => {
     const readyItems = importItems.filter(item => item.status === 'ready' && item.selected);
     if (readyItems.length === 0) {
@@ -334,11 +349,45 @@ const AdminImport = () => {
 
     let successCount = 0;
     let errorCount = 0;
+    let duplicateCount = 0;
+    const importedTitles = new Set<string>(); // Track titles in this batch
 
     for (const item of readyItems) {
       try {
         const content = item.generatedContent!;
         const product = item.product!;
+        
+        // Create a unique key for deduplication
+        const dedupeKey = `${content.title.toLowerCase().trim()}_${product.price}`;
+        
+        // Check if already imported in this batch
+        if (importedTitles.has(dedupeKey)) {
+          console.log(`Skipping duplicate in batch: ${content.title}`);
+          setImportItems(items => 
+            items.map(it => it.id === item.id ? { 
+              ...it, 
+              status: 'error' as const, 
+              error: 'Doublon dans ce lot' 
+            } : it)
+          );
+          duplicateCount++;
+          continue;
+        }
+        
+        // Check if already exists in database
+        const isDuplicate = await checkForDuplicates(content.title, product.price);
+        if (isDuplicate) {
+          console.log(`Skipping existing product: ${content.title}`);
+          setImportItems(items => 
+            items.map(it => it.id === item.id ? { 
+              ...it, 
+              status: 'error' as const, 
+              error: 'Existe déjà en base' 
+            } : it)
+          );
+          duplicateCount++;
+          continue;
+        }
 
         const { error } = await supabase.from('products').insert({
           title: content.title,
@@ -354,19 +403,32 @@ const AdminImport = () => {
 
         if (error) throw error;
 
+        // Mark as imported and track for deduplication
+        importedTitles.add(dedupeKey);
         setImportItems(items => 
           items.map(it => it.id === item.id ? { ...it, status: 'imported' as const } : it)
         );
         successCount++;
       } catch (error) {
         console.error(`Error importing ${item.url}:`, error);
+        setImportItems(items => 
+          items.map(it => it.id === item.id ? { 
+            ...it, 
+            status: 'error' as const, 
+            error: error instanceof Error ? error.message : 'Erreur d\'import' 
+          } : it)
+        );
         errorCount++;
       }
     }
 
+    const message = duplicateCount > 0 
+      ? `${successCount} importés, ${duplicateCount} doublons ignorés, ${errorCount} erreurs`
+      : `${successCount} importés, ${errorCount} erreurs`;
+    
     toast({ 
       title: "Import terminé", 
-      description: `${successCount} importés, ${errorCount} erreurs` 
+      description: message
     });
   };
 
