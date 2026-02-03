@@ -164,7 +164,9 @@ const AdminImport = () => {
         category: selectedCategory || scrapedProduct.category,
         brand: scrapedProduct.brand,
         images: scrapedProduct.images,
-        status: 'active'
+        status: 'active',
+        stock: 5,
+        condition: 'new'
       });
 
       if (error) throw error;
@@ -398,7 +400,9 @@ const AdminImport = () => {
           category: selectedCategory || product.category,
           brand: product.brand,
           images: product.images,
-          status: 'active'
+          status: 'active',
+          stock: 5,
+          condition: 'new'
         });
 
         if (error) throw error;
