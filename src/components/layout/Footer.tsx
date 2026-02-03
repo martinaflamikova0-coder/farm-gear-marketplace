@@ -1,15 +1,17 @@
 import { Link, useParams } from 'react-router-dom';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useCategoriesWithCounts, type CategoryWithCount } from '@/hooks/useCategories';
+import { useCategoriesWithCounts } from '@/hooks/useCategories';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import logoEkiptrade from '@/assets/logo-ekiptrade.png';
+import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
   const { data: categories } = useCategoriesWithCounts();
+  const { translateCategory } = useTranslatedCategory();
 
   const getLocalizedLink = (path: string) => {
     return `/${currentLang}${path}`;
@@ -18,20 +20,6 @@ const Footer = () => {
   const getCategoryLink = (categorySlug: string) => {
     const listingsSlug = getLocalizedSlug('listings', currentLang);
     return `/${currentLang}/${listingsSlug}?category=${categorySlug}`;
-  };
-
-  const getCategoryName = (category: CategoryWithCount) => {
-    const categoryMap: Record<string, string> = {
-      'tracteurs': t('categories.tractors'),
-      'recolte': t('categories.harvest'),
-      'travail-sol': t('categories.tillage'),
-      'elevage': t('categories.livestock'),
-      'manutention': t('categories.handling'),
-      'chantier': t('categories.construction'),
-      'pieces': t('categories.parts'),
-      'autres': t('categories.other')
-    };
-    return categoryMap[category.slug] || category.name;
   };
 
   return (
@@ -73,13 +61,13 @@ const Footer = () => {
           <div>
             <h3 className="font-display font-semibold text-lg mb-4">{t('nav.categories')}</h3>
             <ul className="space-y-2">
-              {categories.slice(0, 6).map((category) => (
+              {categories?.slice(0, 6).map((category) => (
                 <li key={category.id}>
                   <Link
                     to={getCategoryLink(category.slug)}
                     className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
                   >
-                    {getCategoryName(category)}
+                    {translateCategory(category.slug)}
                   </Link>
                 </li>
               ))}

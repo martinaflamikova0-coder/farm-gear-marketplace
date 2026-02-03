@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/select';
 import { categories } from '@/data/products';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
+import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -21,20 +22,7 @@ const SearchBar = () => {
   const { t, i18n } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
-
-  const getCategoryName = (category: typeof categories[0]) => {
-    const categoryMap: Record<string, string> = {
-      'Tracteurs': t('categories.tractors'),
-      'Matériel de récolte': t('categories.harvest'),
-      'Travail du sol': t('categories.tillage'),
-      'Matériel d\'élevage': t('categories.livestock'),
-      'Manutention': t('categories.handling'),
-      'Matériel de chantier': t('categories.construction'),
-      'Pièces et accessoires': t('categories.parts'),
-      'Autres matériels': t('categories.other')
-    };
-    return categoryMap[category.name] || category.name;
-  };
+  const { translateCategory } = useTranslatedCategory();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -68,7 +56,7 @@ const SearchBar = () => {
               <SelectItem value="all">{t('common.allCategories')}</SelectItem>
               {categories.map((category) => (
                 <SelectItem key={category.id} value={category.slug}>
-                  {category.icon} {getCategoryName(category)}
+                  {category.icon} {translateCategory(category.slug)}
                 </SelectItem>
               ))}
             </SelectContent>

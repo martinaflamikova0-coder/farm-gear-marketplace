@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Card, CardContent } from '@/components/ui/card';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import type { CategoryWithCount } from '@/hooks/useCategories';
+import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
 
 interface CategoryCardProps {
   category: CategoryWithCount;
@@ -14,21 +15,7 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
   const listingsSlug = getLocalizedSlug('listings', currentLang);
-
-  // Map category slugs to translation keys
-  const getCategoryName = () => {
-    const categoryMap: Record<string, string> = {
-      'tracteurs': t('categories.tractors'),
-      'recolte': t('categories.harvest'),
-      'travail-sol': t('categories.tillage'),
-      'elevage': t('categories.livestock'),
-      'manutention': t('categories.handling'),
-      'chantier': t('categories.construction'),
-      'pieces': t('categories.parts'),
-      'autres': t('categories.other')
-    };
-    return categoryMap[category.slug] || category.name;
-  };
+  const { translateCategory } = useTranslatedCategory();
 
   return (
     <Link to={`/${currentLang}/${listingsSlug}?category=${category.slug}`}>
@@ -38,7 +25,7 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
             {category.icon}
           </div>
           <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors">
-            {getCategoryName()}
+            {translateCategory(category.slug)}
           </h3>
           <p className="text-sm text-muted-foreground mt-1">
             {category.count} {t('common.listings')}

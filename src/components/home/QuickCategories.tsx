@@ -1,30 +1,18 @@
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useCategoriesWithCounts, type CategoryWithCount } from '@/hooks/useCategories';
+import { useCategoriesWithCounts } from '@/hooks/useCategories';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
 
 const QuickCategories = () => {
   const { t, i18n } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
   const listingsSlug = getLocalizedSlug('listings', currentLang);
+  const { translateCategory } = useTranslatedCategory();
   
   const { data: categories, isLoading } = useCategoriesWithCounts();
-
-  const getCategoryName = (category: CategoryWithCount) => {
-    const categoryMap: Record<string, string> = {
-      'tracteurs': t('categories.tractors'),
-      'recolte': t('categories.harvest'),
-      'travail-sol': t('categories.tillage'),
-      'elevage': t('categories.livestock'),
-      'manutention': t('categories.handling'),
-      'chantier': t('categories.construction'),
-      'pieces': t('categories.parts'),
-      'autres': t('categories.other')
-    };
-    return categoryMap[category.slug] || category.name;
-  };
 
   if (isLoading) {
     return (
@@ -57,7 +45,7 @@ const QuickCategories = () => {
               className="flex-shrink-0 px-4 py-2 rounded-full bg-card border border-border text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
             >
               <span className="mr-1.5">{category.icon}</span>
-              {getCategoryName(category)}
+              {translateCategory(category.slug)}
               <span className="ml-1.5 text-muted-foreground">({category.count})</span>
             </Link>
           ))}
