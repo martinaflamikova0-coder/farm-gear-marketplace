@@ -35,10 +35,10 @@ serve(async (req) => {
       formattedUrl = `https://${formattedUrl}`;
     }
 
-    console.log("Mapping category URL:", formattedUrl);
+    console.log("Scraping category page:", formattedUrl);
 
-    // First, use Firecrawl Map to discover all product URLs
-    const mapResponse = await fetch("https://api.firecrawl.dev/v1/map", {
+    // First, scrape the category page to get product links
+    const scrapeResponse = await fetch("https://api.firecrawl.dev/v1/scrape", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${apiKey}`,
@@ -46,40 +46,93 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         url: formattedUrl,
-        limit: limit,
-        includeSubdomains: false,
+        formats: ["markdown", "links"],
+        onlyMainContent: true,
+        waitFor: 3000,
       }),
     });
 
-    const mapData = await mapResponse.json();
+    const scrapeData = await scrapeResponse.json();
 
-    if (!mapResponse.ok) {
-      console.error("Firecrawl Map API error:", mapData);
+    if (!scrapeResponse.ok) {
+      console.error("Firecrawl Scrape API error:", scrapeData);
       return new Response(
-        JSON.stringify({ success: false, error: mapData.error || `Map request failed with status ${mapResponse.status}` }),
-        { status: mapResponse.status, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        JSON.stringify({ success: false, error: scrapeData.error || `Scrape request failed with status ${scrapeResponse.status}` }),
+        { status: scrapeResponse.status, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    // Filter for product URLs only
-    const allUrls = mapData.links || [];
-    const productUrls = allUrls.filter((link: string) => 
+    // Extract product URLs from the scraped content
+    const markdown = scrapeData.data?.markdown || scrapeData.markdown || "";
+    const links = scrapeData.data?.links || scrapeData.links || [];
+    
+    // Extract domain from the category URL
+    const urlObj = new URL(formattedUrl);
+    const domain = urlObj.origin;
+    
+    // Method 1: Extract from links array
+    let productUrls: string[] = links.filter((link: string) => 
       link.includes("/product/") && 
       !link.includes("/product-category/") &&
       !link.includes("#") &&
-      !link.includes("?")
+      !link.includes("?add-to-cart=") &&
+      !link.includes("?") &&
+      link.startsWith(domain)
     );
 
-    // Remove duplicates
-    const uniqueProductUrls = [...new Set(productUrls)];
+    // Method 2: Extract product URLs from markdown content
+    const markdownUrlPattern = /\]\((https?:\/\/[^\s)]+\/product\/[^\/\s)]+\/?)\)/g;
+    let match;
+    while ((match = markdownUrlPattern.exec(markdown)) !== null) {
+      const productUrl = match[1].replace(/\/$/, ""); // Remove trailing slash
+      if (!productUrl.includes("?") && !productUrls.includes(productUrl)) {
+        productUrls.push(productUrl);
+      }
+    }
 
-    console.log(`Found ${uniqueProductUrls.length} product URLs in category`);
+    // Method 3: Try Firecrawl Map as fallback if no products found
+    if (productUrls.length === 0) {
+      console.log("No products found via scrape, trying Map API...");
+      
+      const mapResponse = await fetch("https://api.firecrawl.dev/v1/map", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          url: formattedUrl,
+          limit: limit,
+          includeSubdomains: false,
+        }),
+      });
+
+      const mapData = await mapResponse.json();
+
+      if (mapResponse.ok) {
+        const allUrls = mapData.links || [];
+        productUrls = allUrls.filter((link: string) => 
+          link.includes("/product/") && 
+          !link.includes("/product-category/") &&
+          !link.includes("#") &&
+          !link.includes("?")
+        );
+      }
+    }
+
+    // Remove duplicates and normalize URLs
+    productUrls = [...new Set(productUrls.map((url: string) => url.replace(/\/$/, "")))];
+    
+    // Limit results
+    productUrls = productUrls.slice(0, limit);
+
+    console.log(`Found ${productUrls.length} product URLs in category`);
 
     return new Response(
       JSON.stringify({ 
         success: true, 
-        productUrls: uniqueProductUrls,
-        totalFound: uniqueProductUrls.length,
+        productUrls,
+        totalFound: productUrls.length,
         categoryUrl: formattedUrl
       }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
