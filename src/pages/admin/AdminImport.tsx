@@ -449,23 +449,25 @@ const AdminImport = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 w-full overflow-x-hidden">
       <div>
-        <h1 className="text-3xl font-bold">Import de produits</h1>
-        <p className="text-muted-foreground mt-1">
+        <h1 className="text-2xl md:text-3xl font-bold">Import de produits</h1>
+        <p className="text-muted-foreground mt-1 text-sm md:text-base">
           Scrapez des produits depuis werkzeug-und-maschinen.com et générez du contenu avec l'IA
         </p>
       </div>
 
       <Tabs defaultValue="single" className="space-y-4">
-        <TabsList>
+        <TabsList className="flex-wrap h-auto gap-1">
           <TabsTrigger value="single" className="flex items-center gap-2">
             <Package className="h-4 w-4" />
-            Produit unique
+            <span className="hidden sm:inline">Produit unique</span>
+            <span className="sm:hidden">Unique</span>
           </TabsTrigger>
           <TabsTrigger value="batch" className="flex items-center gap-2">
             <Globe className="h-4 w-4" />
-            Import en masse
+            <span className="hidden sm:inline">Import en masse</span>
+            <span className="sm:hidden">Masse</span>
           </TabsTrigger>
         </TabsList>
 
@@ -669,13 +671,13 @@ const AdminImport = () => {
           </Card>
 
           {importItems.length > 0 && (
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  <span>{importItems.length} produits trouvés</span>
-                  <div className="flex gap-2">
+            <Card className="overflow-hidden">
+              <CardHeader className="pb-4">
+                <div className="flex flex-col gap-3">
+                  <CardTitle>{importItems.length} produits trouvés</CardTitle>
+                  <div className="flex flex-wrap gap-2">
                     <Button variant="outline" size="sm" onClick={toggleSelectAll}>
-                      {importItems.every(i => i.selected) ? 'Désélectionner tout' : 'Sélectionner tout'}
+                      {importItems.every(i => i.selected) ? 'Désélectionner' : 'Tout sélectionner'}
                     </Button>
                     <Button 
                       onClick={processBatch} 
@@ -687,7 +689,8 @@ const AdminImport = () => {
                       ) : (
                         <Sparkles className="h-4 w-4 mr-2" />
                       )}
-                      Traiter sélectionnés
+                      <span className="hidden sm:inline">Traiter sélectionnés</span>
+                      <span className="sm:hidden">Traiter</span>
                     </Button>
                     <Button 
                       onClick={importReadyItems}
@@ -696,10 +699,11 @@ const AdminImport = () => {
                       disabled={!importItems.some(i => i.status === 'ready' && i.selected)}
                     >
                       <Download className="h-4 w-4 mr-2" />
-                      Importer prêts
+                      <span className="hidden sm:inline">Importer prêts</span>
+                      <span className="sm:hidden">Importer</span>
                     </Button>
                   </div>
-                </CardTitle>
+                </div>
               </CardHeader>
               <CardContent>
                 {isBatchProcessing && (
@@ -712,11 +716,11 @@ const AdminImport = () => {
                 )}
 
                 <ScrollArea className="h-[400px]">
-                  <div className="space-y-2">
+                  <div className="space-y-2 pr-2">
                     {importItems.map(item => (
                       <div 
                         key={item.id} 
-                        className={`flex items-center gap-3 p-3 rounded-lg border ${
+                        className={`flex items-start sm:items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg border ${
                           item.status === 'error' ? 'border-destructive/30 bg-destructive/10' :
                           item.status === 'imported' ? 'border-primary/30 bg-primary/10' :
                           item.status === 'ready' ? 'border-accent/30 bg-accent/10' :
@@ -727,43 +731,46 @@ const AdminImport = () => {
                           checked={item.selected}
                           onCheckedChange={() => toggleItemSelection(item.id)}
                           disabled={item.status === 'imported'}
+                          className="mt-1 sm:mt-0"
                         />
                         
                         {item.product?.images?.[0] ? (
                           <img 
                             src={item.product.images[0]} 
                             alt="" 
-                            className="w-12 h-12 object-cover rounded"
+                            className="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded flex-shrink-0"
                             onError={(e) => (e.currentTarget.style.display = 'none')}
                           />
                         ) : (
-                          <div className="w-12 h-12 bg-muted rounded flex items-center justify-center">
-                            <ImageIcon className="h-5 w-5 text-muted-foreground" />
+                          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-muted rounded flex items-center justify-center flex-shrink-0">
+                            <ImageIcon className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
                           </div>
                         )}
 
-                        <div className="flex-1 min-w-0">
-                          <p className="font-medium truncate">
+                        <div className="flex-1 min-w-0 overflow-hidden">
+                          <p className="font-medium text-sm sm:text-base truncate">
                             {item.generatedContent?.title || item.product?.title || item.url.split('/').pop()}
                           </p>
-                          <p className="text-sm text-muted-foreground truncate">
+                          <p className="text-xs sm:text-sm text-muted-foreground truncate">
                             {item.product?.price ? `${item.product.price}€` : item.url}
                           </p>
                           {item.error && (
-                            <p className="text-sm text-destructive">{item.error}</p>
+                            <p className="text-xs sm:text-sm text-destructive truncate">{item.error}</p>
                           )}
                         </div>
 
-                        {getStatusBadge(item.status)}
-
-                        <Button 
-                          variant="ghost" 
-                          size="icon"
-                          onClick={() => removeItem(item.id)}
-                          disabled={isBatchProcessing}
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </Button>
+                        <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+                          {getStatusBadge(item.status)}
+                          <Button 
+                            variant="ghost" 
+                            size="icon"
+                            className="h-8 w-8"
+                            onClick={() => removeItem(item.id)}
+                            disabled={isBatchProcessing}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
                       </div>
                     ))}
                   </div>
