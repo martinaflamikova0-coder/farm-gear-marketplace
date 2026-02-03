@@ -16,7 +16,8 @@ import {
   Users,
   Sparkles,
   Truck,
-  Store
+  Store,
+  Download
 } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -59,6 +60,7 @@ const AdminLayout = () => {
     { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/admin/orders', label: 'Commandes', icon: ShoppingCart },
     { href: '/admin/products', label: 'Produits', icon: Package },
+    { href: '/admin/import', label: 'Import', icon: Download },
     { href: '/admin/promotions', label: 'Promotions', icon: Sparkles },
     { href: '/admin/categories', label: 'Catégories', icon: FolderTree },
     { href: '/admin/brands', label: 'Marques', icon: Tags },

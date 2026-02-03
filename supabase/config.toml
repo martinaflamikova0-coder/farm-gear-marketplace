@@ -20,3 +20,12 @@ verify_jwt = false
 
 [functions.detect-watermarks]
 verify_jwt = false
+
+[functions.scrape-product]
+verify_jwt = false
+
+[functions.scrape-category]
+verify_jwt = false
+
+[functions.generate-product-content]
+verify_jwt = false
