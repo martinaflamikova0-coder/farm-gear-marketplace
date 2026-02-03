@@ -96,33 +96,62 @@ serve(async (req) => {
 });
 
 function extractProductData(markdown: string, html: string, sourceUrl: string): ScrapedProduct {
-  // Extract title - look for H1 or first significant heading
-  const titleMatch = markdown.match(/^# (.+)$/m) || markdown.match(/^## (.+)$/m);
-  let title = titleMatch ? titleMatch[1].trim() : "";
+  // Extract title from HTML - most reliable source
+  let title = "";
   
-  // Clean title from special chars
-  title = title.replace(/[–—]/g, "-").trim();
+  // Method 1: Look for product_title class in HTML
+  const productTitleMatch = html.match(/<h1[^>]*class="[^"]*product_title[^"]*"[^>]*>([^<]+)<\/h1>/i);
+  if (productTitleMatch) {
+    title = productTitleMatch[1].trim();
+  }
   
-  // Extract price - look for the product price, which follows the H1 title
-  // The product page shows title then price: "# Product Title\n\n865,80 €"
-  // We need to find the price that appears right after the main title, not in related products
-  let price = 0;
-  
-  // Find position of main title in markdown
-  const titlePos = markdown.indexOf(`# ${title}`);
-  if (titlePos !== -1) {
-    // Look for price in the section after the title (next 500 chars)
-    const afterTitle = markdown.substring(titlePos, titlePos + 500);
-    const priceMatch = afterTitle.match(/\n\n(\d{1,3}(?:\.\d{3})*(?:,\d{2})?)\s*€/);
-    if (priceMatch) {
-      const priceStr = priceMatch[1]
-        .replace(/\./g, "") // Remove thousand separators
-        .replace(",", "."); // Convert decimal comma to dot
-      price = parseFloat(priceStr) || 0;
+  // Method 2: Look for entry-title class
+  if (!title) {
+    const entryTitleMatch = html.match(/<h1[^>]*class="[^"]*entry-title[^"]*"[^>]*>([^<]+)<\/h1>/i);
+    if (entryTitleMatch) {
+      title = entryTitleMatch[1].trim();
     }
   }
   
-  // Fallback: look for price pattern near "inkl. MwSt"
+  // Method 3: Fall back to markdown H1
+  if (!title) {
+    const titleMatch = markdown.match(/^# (.+)$/m);
+    if (titleMatch) {
+      title = titleMatch[1].trim();
+    }
+  }
+  
+  // Clean title from special chars
+  title = title.replace(/[–—]/g, "-").replace(/\s+/g, " ").trim();
+  
+  // Extract price - look for the main product price
+  let price = 0;
+  
+  // Method 1: Look for price in WooCommerce price element
+  const wcPriceMatch = html.match(/<p[^>]*class="[^"]*price[^"]*"[^>]*>[\s\S]*?(\d{1,3}(?:[.,]\d{3})*(?:[.,]\d{2})?)\s*[€$£]/);
+  if (wcPriceMatch) {
+    const priceStr = wcPriceMatch[1]
+      .replace(/\./g, "") // Remove thousand separators
+      .replace(",", "."); // Convert decimal comma to dot
+    price = parseFloat(priceStr) || 0;
+  }
+  
+  // Method 2: Look for price in markdown near title
+  if (price === 0) {
+    const titlePos = markdown.indexOf(`# ${title}`) || markdown.indexOf(title);
+    if (titlePos !== -1) {
+      const afterTitle = markdown.substring(titlePos, titlePos + 500);
+      const priceMatch = afterTitle.match(/\n\n(\d{1,3}(?:\.\d{3})*(?:,\d{2})?)\s*€/);
+      if (priceMatch) {
+        const priceStr = priceMatch[1]
+          .replace(/\./g, "")
+          .replace(",", ".");
+        price = parseFloat(priceStr) || 0;
+      }
+    }
+  }
+  
+  // Method 3: Look for price near "inkl. MwSt"
   if (price === 0) {
     const mwstMatch = markdown.match(/(\d{1,3}(?:\.\d{3})*(?:,\d{2})?)\s*€\s*\n\n.*inkl\.\s*MwSt/i);
     if (mwstMatch) {
@@ -133,64 +162,127 @@ function extractProductData(markdown: string, html: string, sourceUrl: string): 
     }
   }
   
-  // Extract images - look for image URLs in markdown
-  const imagePattern = /!\[.*?\]\((https:\/\/[^\s)]+\.(jpg|jpeg|png|webp)[^\s)]*)\)/gi;
-  const imageMatches = [...markdown.matchAll(imagePattern)];
-  let images = imageMatches.map(m => m[1]).filter(img => 
-    !img.includes("icon") && 
-    !img.includes("logo") && 
-    !img.includes("payment") &&
-    !img.includes("Payment") &&
-    !img.includes("Zahlungsmethode") &&
-    !img.includes("16x16") &&
-    !img.includes("32x32") &&
-    !img.includes("65x74") && // thumbnails
-    !img.includes("WhatsApp") &&
-    !img.includes("Untitled-design") &&
-    !img.includes("removebg")
-  );
+  // Extract ONLY main product images from WooCommerce gallery
+  let images: string[] = [];
   
-  // Also extract from HTML for larger images
-  const htmlImagePattern = /src=["'](https:\/\/[^"']+\.(jpg|jpeg|png|webp)[^"']*)["']/gi;
-  const htmlImageMatches = [...html.matchAll(htmlImagePattern)];
-  const htmlImages = htmlImageMatches.map(m => m[1]).filter(img => 
-    !img.includes("icon") && 
-    !img.includes("logo") && 
-    !img.includes("payment") &&
-    !img.includes("Payment") &&
-    !img.includes("Zahlungsmethode") &&
-    !img.includes("16x16") &&
-    !img.includes("32x32") &&
-    !img.includes("65x74") &&
-    !img.includes("WhatsApp") &&
-    !img.includes("Untitled-design") &&
-    !img.includes("removebg") &&
-    (img.includes("600x600") || img.includes("wp-content/uploads"))
-  );
+  // Method 1: Extract from woocommerce-product-gallery images (most reliable)
+  const galleryMatch = html.match(/<div[^>]*class="[^"]*woocommerce-product-gallery[^"]*"[^>]*>[\s\S]*?<\/div>\s*<\/div>/i);
+  if (galleryMatch) {
+    const galleryHtml = galleryMatch[0];
+    // Extract data-large_image URLs (full resolution)
+    const largeImagePattern = /data-large_image="([^"]+)"/g;
+    let match;
+    while ((match = largeImagePattern.exec(galleryHtml)) !== null) {
+      if (match[1] && !images.includes(match[1])) {
+        images.push(match[1]);
+      }
+    }
+    
+    // Also check for data-src or src in gallery
+    if (images.length === 0) {
+      const srcPattern = /(?:data-src|src)="(https:\/\/[^"]+(?:\.jpg|\.jpeg|\.png|\.webp)[^"]*)"/gi;
+      while ((match = srcPattern.exec(galleryHtml)) !== null) {
+        if (match[1] && !images.includes(match[1])) {
+          images.push(match[1]);
+        }
+      }
+    }
+  }
   
-  // Merge and dedupe images
-  images = [...new Set([...images, ...htmlImages])];
+  // Method 2: Look for wp-post-image (main product image)
+  if (images.length === 0) {
+    const mainImagePattern = /<img[^>]*class="[^"]*wp-post-image[^"]*"[^>]*src="([^"]+)"[^>]*>/gi;
+    let match;
+    while ((match = mainImagePattern.exec(html)) !== null) {
+      if (match[1] && !images.includes(match[1])) {
+        images.push(match[1]);
+      }
+    }
+  }
   
-  // Get high-res versions (remove size suffixes)
-  images = images.map(img => img.replace(/-\d+x\d+(\.(jpg|jpeg|png|webp))/, "$1"));
-  images = [...new Set(images)].slice(0, 10); // Limit to 10 images
+  // Method 3: Look for product images by URL pattern (product uploads folder)
+  if (images.length === 0) {
+    // Extract product slug from URL
+    const slugMatch = sourceUrl.match(/\/product\/([^\/]+)/);
+    const productSlug = slugMatch ? slugMatch[1] : "";
+    
+    const htmlImagePattern = /src=["'](https:\/\/[^"']+\/wp-content\/uploads\/[^"']+\.(jpg|jpeg|png|webp))["']/gi;
+    let match;
+    const allImages: string[] = [];
+    while ((match = htmlImagePattern.exec(html)) !== null) {
+      const img = match[1];
+      // Filter out unwanted images
+      if (
+        !img.includes("icon") && 
+        !img.includes("logo") && 
+        !img.includes("payment") &&
+        !img.includes("Payment") &&
+        !img.includes("Zahlungsmethode") &&
+        !img.includes("16x16") &&
+        !img.includes("32x32") &&
+        !img.includes("50x") &&
+        !img.includes("65x74") &&
+        !img.includes("100x100") &&
+        !img.includes("150x150") &&
+        !img.includes("WhatsApp") &&
+        !img.includes("Untitled-design") &&
+        !img.includes("removebg") &&
+        !img.includes("placeholder") &&
+        !img.includes("woocommerce-placeholder")
+      ) {
+        allImages.push(img);
+      }
+    }
+    
+    // Prioritize images that appear in the first half of the page (product section)
+    // and remove duplicates
+    const uniqueImages = [...new Set(allImages)];
+    
+    // Get high-res versions (remove size suffixes)
+    images = uniqueImages.map(img => img.replace(/-\d+x\d+(\.(jpg|jpeg|png|webp))/, "$1"));
+    images = [...new Set(images)];
+  }
   
-  // Extract description - look for product description section
+  // Filter and limit images
+  images = images.filter(img => 
+    img.startsWith("http") && 
+    !img.includes("related") &&
+    !img.includes("upsell")
+  ).slice(0, 10);
+  
+  // Extract description from product description section
   let description = "";
+  
+  // Method 1: Look for Produktbeschreibung section in markdown
   const descMatch = markdown.match(/## Produktbeschreibung[\s\S]*?((?:- .*\n)+)/i);
   if (descMatch) {
     description = descMatch[1].trim();
-  } else {
-    // Fallback: look for bullet points after title
+  }
+  
+  // Method 2: Look for description tab content in HTML
+  if (!description) {
+    const descTabMatch = html.match(/<div[^>]*id="tab-description"[^>]*>([\s\S]*?)<\/div>/i);
+    if (descTabMatch) {
+      // Extract text content, removing HTML tags
+      description = descTabMatch[1]
+        .replace(/<[^>]+>/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 1000);
+    }
+  }
+  
+  // Method 3: Fallback to bullet points
+  if (!description) {
     const bulletMatch = markdown.match(/(?:^[-•*] .+$\n?)+/m);
     if (bulletMatch) {
       description = bulletMatch[0].trim();
     }
   }
   
-  // Extract brand from title
+  // Extract brand from title or content
   let brand = "";
-  const brandPatterns = ["LEICA", "NEDO", "WACKER NEUSON", "HÄNER", "HEB", "BOSCH", "MAKITA", "HILTI", "DEWALT", "METABO"];
+  const brandPatterns = ["LEICA", "NEDO", "WACKER NEUSON", "HÄNER", "HEB", "BOSCH", "MAKITA", "HILTI", "DEWALT", "METABO", "EPIROC", "HUSQVARNA", "STIHL", "CAT", "CATERPILLAR", "VOLVO", "HITACHI", "KOMATSU", "JCB", "KUBOTA", "BOBCAT", "LIEBHERR"];
   for (const b of brandPatterns) {
     if (title.toUpperCase().includes(b)) {
       brand = b;
@@ -198,12 +290,22 @@ function extractProductData(markdown: string, html: string, sourceUrl: string): 
     }
   }
   
-  // Extract specifications
+  // Extract specifications - focus on product-specific specs
   const specifications: string[] = [];
   const specMatches = markdown.matchAll(/^[-•*] (.+)$/gm);
+  const seenSpecs = new Set<string>();
   for (const match of specMatches) {
     const spec = match[1].trim();
-    if (spec.length > 5 && spec.length < 200 && !spec.includes("http")) {
+    // Filter out generic site content and duplicates
+    if (
+      spec.length > 5 && 
+      spec.length < 200 && 
+      !spec.includes("http") &&
+      !spec.includes("Description") &&
+      !spec.includes("Bewertungen") &&
+      !seenSpecs.has(spec.toLowerCase())
+    ) {
+      seenSpecs.add(spec.toLowerCase());
       specifications.push(spec);
     }
   }
@@ -223,7 +325,7 @@ function extractProductData(markdown: string, html: string, sourceUrl: string): 
   } else if (sourceUrl.includes("hacksler")) {
     category = "hacksler";
   } else {
-    category = "gerate"; // Default
+    category = "gerate";
   }
   
   return {
@@ -233,7 +335,7 @@ function extractProductData(markdown: string, html: string, sourceUrl: string): 
     images,
     category,
     brand,
-    specifications,
+    specifications: specifications.slice(0, 20), // Limit to 20 specs
     sourceUrl,
   };
 }
