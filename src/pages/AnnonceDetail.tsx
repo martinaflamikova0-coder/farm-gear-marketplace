@@ -307,7 +307,29 @@ const AnnonceDetail = () => {
 
               {/* Zoom modal */}
               {isZoomed && (
-                <div className="fixed inset-0 z-50 bg-black/95 flex flex-col">
+                <div 
+                  className="fixed inset-0 z-50 bg-black/95 flex flex-col"
+                  onClick={(e) => {
+                    // Close when clicking on backdrop (not on controls)
+                    if (e.target === e.currentTarget) closeZoom();
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Escape') closeZoom();
+                    if (e.key === 'ArrowLeft') prevImage();
+                    if (e.key === 'ArrowRight') nextImage();
+                  }}
+                  tabIndex={0}
+                  ref={(el) => el?.focus()}
+                >
+                  {/* Close button - prominent top right */}
+                  <button
+                    onClick={closeZoom}
+                    className="absolute top-4 right-4 z-10 w-12 h-12 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
+                    aria-label={t('common.close')}
+                  >
+                    <X className="h-6 w-6 text-white" />
+                  </button>
+
                   {/* Zoom controls */}
                   <div className="flex justify-between items-center p-4 bg-black/50">
                     <div className="text-white text-sm">
@@ -329,22 +351,23 @@ const AnnonceDetail = () => {
                       >
                         <ZoomIn className="h-5 w-5 text-white" />
                       </button>
-                      <button
-                        onClick={closeZoom}
-                        className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors ml-4"
-                      >
-                        <X className="h-5 w-5 text-white" />
-                      </button>
                     </div>
                   </div>
                   
                   {/* Main image */}
-                  <div className="flex-1 overflow-auto flex items-center justify-center p-4">
+                  <div 
+                    className="flex-1 overflow-auto flex items-center justify-center p-4"
+                    onClick={(e) => {
+                      // Close when clicking around the image
+                      if (e.target === e.currentTarget) closeZoom();
+                    }}
+                  >
                     <img
                       src={images[currentImageIndex] || '/placeholder.svg'}
                       alt={translatedTitle}
                       className="max-w-full max-h-full object-contain transition-transform duration-200"
                       style={{ transform: `scale(${zoomLevel})` }}
+                      onClick={(e) => e.stopPropagation()}
                     />
                   </div>
 
@@ -519,7 +542,37 @@ const AnnonceDetail = () => {
 
               {/* Customer Photos Zoom Modal */}
               {customerPhotoZoomIndex !== null && customerImages[customerPhotoZoomIndex] && (
-                <div className="fixed inset-0 z-50 bg-black/95 flex flex-col">
+                <div 
+                  className="fixed inset-0 z-50 bg-black/95 flex flex-col"
+                  onClick={(e) => {
+                    if (e.target === e.currentTarget) {
+                      setCustomerPhotoZoomIndex(null);
+                      setCustomerPhotoZoomLevel(1);
+                    }
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Escape') {
+                      setCustomerPhotoZoomIndex(null);
+                      setCustomerPhotoZoomLevel(1);
+                    }
+                    if (e.key === 'ArrowLeft') setCustomerPhotoZoomIndex((prev) => (prev! - 1 + customerImages.length) % customerImages.length);
+                    if (e.key === 'ArrowRight') setCustomerPhotoZoomIndex((prev) => (prev! + 1) % customerImages.length);
+                  }}
+                  tabIndex={0}
+                  ref={(el) => el?.focus()}
+                >
+                  {/* Close button - prominent top right */}
+                  <button
+                    onClick={() => {
+                      setCustomerPhotoZoomIndex(null);
+                      setCustomerPhotoZoomLevel(1);
+                    }}
+                    className="absolute top-4 right-4 z-10 w-12 h-12 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
+                    aria-label={t('common.close')}
+                  >
+                    <X className="h-6 w-6 text-white" />
+                  </button>
+
                   {/* Zoom controls */}
                   <div className="flex justify-between items-center p-4 bg-black/50">
                     <div className="text-white text-sm">
@@ -541,25 +594,25 @@ const AnnonceDetail = () => {
                       >
                         <ZoomIn className="h-5 w-5 text-white" />
                       </button>
-                      <button
-                        onClick={() => {
-                          setCustomerPhotoZoomIndex(null);
-                          setCustomerPhotoZoomLevel(1);
-                        }}
-                        className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors ml-4"
-                      >
-                        <X className="h-5 w-5 text-white" />
-                      </button>
                     </div>
                   </div>
                   
                   {/* Main image */}
-                  <div className="flex-1 overflow-auto flex items-center justify-center p-4">
+                  <div 
+                    className="flex-1 overflow-auto flex items-center justify-center p-4"
+                    onClick={(e) => {
+                      if (e.target === e.currentTarget) {
+                        setCustomerPhotoZoomIndex(null);
+                        setCustomerPhotoZoomLevel(1);
+                      }
+                    }}
+                  >
                     <img
                       src={customerImages[customerPhotoZoomIndex]}
                       alt={`${t('product.customerPhotos')} ${customerPhotoZoomIndex + 1}`}
                       className="max-w-full max-h-[70vh] object-contain transition-transform duration-200"
                       style={{ transform: `scale(${customerPhotoZoomLevel})` }}
+                      onClick={(e) => e.stopPropagation()}
                     />
                   </div>
 
