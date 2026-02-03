@@ -191,7 +191,10 @@
     "pulverisateurs": "Atomizzatori",
     "irrigation": "Irrigazione",
     "groupes-electrogenes": "Gruppi elettrogeni",
-    "divers": "Vari"
+    "divers": "Vari",
+    "tondeuse": "Tosaerba",
+    "debroussailleuses": "Decespugliatori",
+    "taille-haies": "Tagliasiepi"
   },
   "filters": {
     "title": "Filtri",

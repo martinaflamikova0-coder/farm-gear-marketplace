@@ -192,7 +192,10 @@
     "pulverisateurs": "Sprayers",
     "irrigation": "Irrigation",
     "groupes-electrogenes": "Generators",
-    "divers": "Miscellaneous"
+    "divers": "Miscellaneous",
+    "tondeuse": "Lawn mowers",
+    "debroussailleuses": "Brush cutters",
+    "taille-haies": "Hedge trimmers"
   },
   "filters": {
     "title": "Filters",
