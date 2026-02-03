@@ -32,6 +32,7 @@ import AdminPaypalSettings from '@/pages/admin/AdminPaypalSettings';
 import AdminPromotions from '@/pages/admin/AdminPromotions';
 import AdminShippingZones from '@/pages/admin/AdminShippingZones';
 import AdminMerchantCenter from '@/pages/admin/AdminMerchantCenter';
+import AdminImport from '@/pages/admin/AdminImport';
 import { SUPPORTED_LANGUAGES, getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 
 // Wrapper component that syncs URL language with i18n
@@ -169,6 +170,7 @@ const LocalizedRoutes = () => {
         <Route path="promotions" element={<AdminPromotions />} />
         <Route path="shipping-zones" element={<AdminShippingZones />} />
         <Route path="merchant-center" element={<AdminMerchantCenter />} />
+        <Route path="import" element={<AdminImport />} />
       </Route>
 
       {/* Catch-all 404 */}
