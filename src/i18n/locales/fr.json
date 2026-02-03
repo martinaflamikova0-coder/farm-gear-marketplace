@@ -192,7 +192,10 @@
     "pulverisateurs": "Pulvérisateurs",
     "irrigation": "Irrigation",
     "groupes-electrogenes": "Groupes électrogènes",
-    "divers": "Divers"
+    "divers": "Divers",
+    "tondeuse": "Tondeuses",
+    "debroussailleuses": "Débroussailleuses",
+    "taille-haies": "Taille-haies"
   },
   "filters": {
     "title": "Filtres",

@@ -191,7 +191,10 @@
     "pulverisateurs": "Pulverizadores",
     "irrigation": "Riego",
     "groupes-electrogenes": "Grupos electrógenos",
-    "divers": "Varios"
+    "divers": "Varios",
+    "tondeuse": "Cortacéspedes",
+    "debroussailleuses": "Desbrozadoras",
+    "taille-haies": "Cortasetos"
   },
   "filters": {
     "title": "Filtros",

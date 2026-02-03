@@ -191,7 +191,10 @@
     "pulverisateurs": "Spritzen",
     "irrigation": "Bewässerung",
     "groupes-electrogenes": "Stromerzeuger",
-    "divers": "Verschiedenes"
+    "divers": "Verschiedenes",
+    "tondeuse": "Rasenmäher",
+    "debroussailleuses": "Freischneider",
+    "taille-haies": "Heckenscheren"
   },
   "filters": {
     "title": "Filter",
