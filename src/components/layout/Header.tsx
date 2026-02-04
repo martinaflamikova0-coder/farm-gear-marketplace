@@ -138,36 +138,23 @@ const Header = () => {
             onMouseEnter={() => setIsCategoriesOpen(true)}
             onMouseLeave={() => setIsCategoriesOpen(false)}
           >
-            <button 
+            <Link 
+              to={`/${currentLang}/${getLocalizedSlug('listings', currentLang)}`}
               className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors rounded-lg hover:bg-secondary"
-              onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
             >
               {t('common.allCategories')}
               <ChevronDown className={`h-4 w-4 transition-transform ${isCategoriesOpen ? 'rotate-180' : ''}`} />
-            </button>
+            </Link>
             
+            {/* Dropdown on hover (desktop only) */}
             {isCategoriesOpen && (
               <div className="absolute left-0 top-full pt-2 w-72 animate-fade-in z-50">
                 <div className="bg-card rounded-lg shadow-elevated border border-border p-2">
-                  {/* Link to all listings */}
-                  <Link
-                    to={`/${currentLang}/${getLocalizedSlug('listings', currentLang)}`}
-                    className="flex items-center gap-3 px-3 py-2 rounded-md bg-primary/10 hover:bg-primary/20 transition-colors mb-2"
-                    onClick={() => setIsCategoriesOpen(false)}
-                  >
-                    <span className="text-xl">📋</span>
-                    <div className="flex-1">
-                      <span className="text-sm font-semibold text-primary">{t('common.viewAll')}</span>
-                    </div>
-                  </Link>
-                  
-                  {/* Category links */}
                   {categories.map((category) => (
                     <Link
                       key={category.id}
                       to={getCategoryLink(category.slug)}
                       className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-secondary transition-colors"
-                      onClick={() => setIsCategoriesOpen(false)}
                     >
                       <span className="text-xl">{category.icon}</span>
                       <div className="flex-1">
