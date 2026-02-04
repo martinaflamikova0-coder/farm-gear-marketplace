@@ -77,6 +77,8 @@
   "home": {
     "featuredListings": "Annonces en vedette",
     "featuredSubtitle": "Nos meilleures opportunités du moment",
+    "bestsellers": "Top 100 Meilleures Ventes",
+    "bestsellersSubtitle": "Les équipements les plus populaires sélectionnés pour vous",
     "recentListings": "Dernières annonces",
     "recentSubtitle": "Les plus récentes",
     "premiumListings": "Articles Premium",

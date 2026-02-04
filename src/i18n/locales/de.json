@@ -76,6 +76,8 @@
   "home": {
     "featuredListings": "Empfohlene Anzeigen",
     "featuredSubtitle": "Unsere besten Angebote",
+    "bestsellers": "Top 100 Bestseller",
+    "bestsellersSubtitle": "Die beliebtesten Geräte für Sie ausgewählt",
     "recentListings": "Neueste Anzeigen",
     "recentSubtitle": "Die aktuellsten",
     "premiumListings": "Premium-Artikel",
