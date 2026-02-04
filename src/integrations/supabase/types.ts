@@ -349,6 +349,7 @@ export type Database = {
       }
       products: {
         Row: {
+          bestseller_rank: number | null
           brand: string | null
           category: string
           condition: string | null
@@ -385,6 +386,7 @@ export type Database = {
           year: number | null
         }
         Insert: {
+          bestseller_rank?: number | null
           brand?: string | null
           category: string
           condition?: string | null
@@ -421,6 +423,7 @@ export type Database = {
           year?: number | null
         }
         Update: {
+          bestseller_rank?: number | null
           brand?: string | null
           category?: string
           condition?: string | null

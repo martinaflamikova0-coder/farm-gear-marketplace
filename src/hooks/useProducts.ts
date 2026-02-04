@@ -282,3 +282,22 @@ export const useProductById = (id: string | undefined) => {
 export const useProductsByCategory = (categorySlug: string) => {
   return useProducts({ category: categorySlug });
 };
+
+export const useBestSellers = (limit: number = 100) => {
+  return useQuery({
+    queryKey: ['products', 'bestsellers', limit],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .eq('status', 'active')
+        .not('bestseller_rank', 'is', null)
+        .order('bestseller_rank', { ascending: true })
+        .limit(limit);
+
+      if (error) throw error;
+      return (data as Product[]).map(transformProduct);
+    },
+    staleTime: 2 * 60 * 1000,
+  });
+};
