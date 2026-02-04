@@ -8,6 +8,7 @@ import HeroBanner from '@/components/home/HeroBanner';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
 import RecentProducts from '@/components/home/RecentProducts';
 import PremiumProducts from '@/components/home/PremiumProducts';
+import BestSellersSection from '@/components/home/BestSellersSection';
 import VerifiedQualityBanner from '@/components/home/VerifiedQualityBanner';
 import FastDealsBanner from '@/components/home/FastDealsBanner';
 import GlobalNetworkBanner from '@/components/home/GlobalNetworkBanner';
@@ -39,6 +40,9 @@ const Index = () => {
       <main className="flex-1">
         {/* Featured Products */}
         <FeaturedProducts />
+        
+        {/* Best Sellers - Top 100 */}
+        <BestSellersSection />
         
         {/* Verified Quality Banner - Build trust early */}
         <VerifiedQualityBanner />
