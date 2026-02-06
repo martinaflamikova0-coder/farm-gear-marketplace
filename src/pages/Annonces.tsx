@@ -19,11 +19,14 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useBrandNames } from '@/hooks/useBrands';
 import { useCategoriesWithCounts, type CategoryWithCount } from '@/hooks/useCategories';
 import { usePaginatedProducts } from '@/hooks/useProducts';
+import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 
 const ITEMS_PER_PAGE = 24;
 
 const Annonces = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLang = (i18n.language || 'en') as SupportedLanguage;
+  const listingSlug = getLocalizedSlug('listing', currentLang);
   const [searchParams, setSearchParams] = useSearchParams();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   
@@ -339,6 +342,25 @@ const Annonces = () => {
         descriptionKey="seo.listings.description" 
       />
       <BreadcrumbJsonLd items={[{ name: t('nav.listings') }]} />
+      {products.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ItemList',
+              name: searchQuery ? `${t('listings.resultsFor')} "${searchQuery}"` : t('listings.allListings'),
+              numberOfItems: totalCount,
+              itemListElement: products.slice(0, 10).map((product, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                url: `https://ekiptrade.com/${currentLang}/${listingSlug}/${product.id}`,
+                name: product.title,
+              })),
+            })
+          }}
+        />
+      )}
       <Header />
       <HeaderSpacer />
       <main className="flex-1 bg-background">
