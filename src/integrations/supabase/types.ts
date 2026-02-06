@@ -133,6 +133,13 @@ export type Database = {
             referencedRelation: "products"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "cart_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products_public"
+            referencedColumns: ["id"]
+          },
         ]
       }
       categories: {
@@ -247,6 +254,13 @@ export type Database = {
             columns: ["product_id"]
             isOneToOne: false
             referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "order_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products_public"
             referencedColumns: ["id"]
           },
         ]
@@ -661,7 +675,111 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      products_public: {
+        Row: {
+          bestseller_rank: number | null
+          brand: string | null
+          category: string | null
+          condition: string | null
+          created_at: string | null
+          created_by: string | null
+          customer_images: string[] | null
+          department: string | null
+          description: string | null
+          description_translations: Json | null
+          discount_percentage: number | null
+          featured: boolean | null
+          hours: number | null
+          id: string | null
+          images: string[] | null
+          kilometers: number | null
+          location: string | null
+          low_stock_threshold: number | null
+          merchant_safe_additional_images: string[] | null
+          merchant_safe_image_url: string | null
+          model: string | null
+          original_price: number | null
+          price: number | null
+          price_type: string | null
+          reference_number: number | null
+          status: string | null
+          stock: number | null
+          subcategory: string | null
+          title: string | null
+          title_translations: Json | null
+          updated_at: string | null
+          year: number | null
+        }
+        Insert: {
+          bestseller_rank?: number | null
+          brand?: string | null
+          category?: string | null
+          condition?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          customer_images?: string[] | null
+          department?: string | null
+          description?: string | null
+          description_translations?: Json | null
+          discount_percentage?: number | null
+          featured?: boolean | null
+          hours?: number | null
+          id?: string | null
+          images?: string[] | null
+          kilometers?: number | null
+          location?: string | null
+          low_stock_threshold?: number | null
+          merchant_safe_additional_images?: string[] | null
+          merchant_safe_image_url?: string | null
+          model?: string | null
+          original_price?: number | null
+          price?: number | null
+          price_type?: string | null
+          reference_number?: number | null
+          status?: string | null
+          stock?: number | null
+          subcategory?: string | null
+          title?: string | null
+          title_translations?: Json | null
+          updated_at?: string | null
+          year?: number | null
+        }
+        Update: {
+          bestseller_rank?: number | null
+          brand?: string | null
+          category?: string | null
+          condition?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          customer_images?: string[] | null
+          department?: string | null
+          description?: string | null
+          description_translations?: Json | null
+          discount_percentage?: number | null
+          featured?: boolean | null
+          hours?: number | null
+          id?: string | null
+          images?: string[] | null
+          kilometers?: number | null
+          location?: string | null
+          low_stock_threshold?: number | null
+          merchant_safe_additional_images?: string[] | null
+          merchant_safe_image_url?: string | null
+          model?: string | null
+          original_price?: number | null
+          price?: number | null
+          price_type?: string | null
+          reference_number?: number | null
+          status?: string | null
+          stock?: number | null
+          subcategory?: string | null
+          title?: string | null
+          title_translations?: Json | null
+          updated_at?: string | null
+          year?: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       has_role: {
