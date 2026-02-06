@@ -49,6 +49,7 @@ const ProductGiftsBadge = ({ gifts, variant = 'card' }: ProductGiftsBadgeProps) 
                           src={gift.image} 
                           alt={displayName}
                           className="w-6 h-6 rounded object-cover"
+                          loading="lazy"
                         />
                       ) : (
                         <span className="text-sm">{gift.icon}</span>

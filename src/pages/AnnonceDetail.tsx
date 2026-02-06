@@ -264,6 +264,8 @@ const AnnonceDetail = () => {
                       alt={translatedTitle}
                       className="h-full w-full object-contain"
                       draggable={false}
+                      loading="eager"
+                      fetchPriority="high"
                     />
                   </AspectRatio>
                   {images.length > 1 && (
@@ -320,7 +322,7 @@ const AnnonceDetail = () => {
                           index === currentImageIndex ? 'border-primary' : 'border-transparent hover:border-border'
                         }`}
                       >
-                        <img src={img} alt="" className="w-full h-full object-cover" />
+                        <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" />
                       </button>
                     ))}
                   </div>
@@ -422,7 +424,7 @@ const AnnonceDetail = () => {
                             index === currentImageIndex ? 'border-primary' : 'border-transparent hover:border-white/50'
                           }`}
                         >
-                          <img src={img} alt="" className="w-full h-full object-cover" />
+                          <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" />
                         </button>
                       ))}
                     </div>

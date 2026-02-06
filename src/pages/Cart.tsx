@@ -142,6 +142,7 @@ const Cart = () => {
                             src={item.product.images?.[0] || '/placeholder.svg'}
                             alt={item.product.title}
                             className="w-full h-full object-cover"
+                            loading="lazy"
                           />
                         </Link>
                       </div>
