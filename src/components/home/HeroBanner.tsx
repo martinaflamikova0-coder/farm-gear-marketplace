@@ -19,7 +19,7 @@ const HeroBanner = () => {
             <img
               src={heroEquipment}
               alt="Shop Premium Used Equipment - Agricultural Machinery"
-              className="w-full h-[280px] sm:h-[320px] md:h-[380px] lg:h-[450px] object-cover object-center"
+              className="w-full h-[280px] sm:h-[320px] md:h-[380px] lg:h-[450px] object-cover object-[center_30%]"
               loading="eager"
             />
           </div>
