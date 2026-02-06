@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SEOHead from '@/components/SEOHead';
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Search, MessageCircle, Handshake, CheckCircle } from 'lucide-react';
@@ -19,6 +20,7 @@ const HowItWorks = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEOHead titleKey="seo.howItWorks.title" descriptionKey="seo.howItWorks.description" />
+      <BreadcrumbJsonLd items={[{ name: t('pages.howItWorks.title'), path: 'how-it-works' }]} />
       <Header />
       <HeaderSpacer />
       <main className="flex-1 bg-background">

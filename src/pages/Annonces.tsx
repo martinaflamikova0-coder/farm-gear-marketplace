@@ -7,6 +7,7 @@ import Footer from '@/components/layout/Footer';
 import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import ProductCard from '@/components/products/ProductCard';
 import SEOHead from '@/components/SEOHead';
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -337,6 +338,7 @@ const Annonces = () => {
         titleKey="seo.listings.title" 
         descriptionKey="seo.listings.description" 
       />
+      <BreadcrumbJsonLd items={[{ name: t('nav.listings') }]} />
       <Header />
       <HeaderSpacer />
       <main className="flex-1 bg-background">

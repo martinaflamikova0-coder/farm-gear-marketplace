@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SEOHead from '@/components/SEOHead';
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import HeaderSpacer from '@/components/layout/HeaderSpacer';
 
 const Privacy = () => {
@@ -10,6 +11,7 @@ const Privacy = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEOHead titleKey="seo.privacy.title" descriptionKey="seo.privacy.description" />
+      <BreadcrumbJsonLd items={[{ name: t('pages.privacy.title'), path: 'privacy' }]} />
       <Header />
       <HeaderSpacer />
       <main className="flex-1 bg-background">

@@ -3,6 +3,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import SEOHead from '@/components/SEOHead';
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { 
   Package, 
@@ -28,6 +29,7 @@ const Returns = () => {
         titleKey="returns.seo.title"
         descriptionKey="returns.seo.description"
       />
+      <BreadcrumbJsonLd items={[{ name: t('returns.pageTitle'), path: 'returns' }]} />
       <div className="min-h-screen bg-background">
         <Header />
         <HeaderSpacer />
