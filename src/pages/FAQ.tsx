@@ -11,15 +11,33 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 
+const faqKeys = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
+
 const FAQ = () => {
   const { t } = useTranslation();
 
-  const faqKeys = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
+  // Build FAQPage JSON-LD for Google rich snippets
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqKeys.map((key, index) => ({
+      '@type': 'Question',
+      name: t(`pages.faq.${key}`),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: t(`pages.faq.a${index + 1}`),
+      },
+    })),
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
       <SEOHead titleKey="seo.faq.title" descriptionKey="seo.faq.description" />
       <BreadcrumbJsonLd items={[{ name: 'FAQ', path: 'faq' }]} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <Header />
       <HeaderSpacer />
       <main className="flex-1 bg-background">
