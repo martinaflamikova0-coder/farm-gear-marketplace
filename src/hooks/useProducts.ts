@@ -15,13 +15,54 @@ export interface ProductWithSeller extends Product {
   merchant_safe_additional_images: string[] | null;
 }
 
-// Transform database product to include seller object for compatibility
-const transformProduct = (product: Product): ProductWithSeller => ({
-  ...product,
+// The public view excludes seller_email and seller_phone for security
+type ProductPublicRow = Tables<'products_public'>;
+
+// Transform public view row to ProductWithSeller (seller contact is masked)
+const transformPublicProduct = (row: ProductPublicRow): ProductWithSeller => ({
+  // Map nullable view fields to required Product fields with safe defaults
+  id: row.id!,
+  title: row.title || '',
+  price: row.price || 0,
+  category: row.category || '',
+  reference_number: row.reference_number || 0,
+  created_at: row.created_at || new Date().toISOString(),
+  updated_at: row.updated_at || new Date().toISOString(),
+  // Nullable fields pass through
+  brand: row.brand,
+  model: row.model,
+  year: row.year,
+  hours: row.hours,
+  kilometers: row.kilometers,
+  condition: row.condition,
+  location: row.location,
+  department: row.department,
+  description: row.description,
+  description_translations: row.description_translations,
+  title_translations: row.title_translations,
+  images: row.images,
+  featured: row.featured,
+  status: row.status,
+  stock: row.stock,
+  low_stock_threshold: row.low_stock_threshold,
+  original_price: row.original_price,
+  discount_percentage: row.discount_percentage,
+  bestseller_rank: row.bestseller_rank,
+  price_type: row.price_type,
+  subcategory: row.subcategory,
+  created_by: row.created_by,
+  customer_images: row.customer_images,
+  merchant_safe_image_url: row.merchant_safe_image_url,
+  merchant_safe_additional_images: row.merchant_safe_additional_images,
+  seller_name: row.seller_name || null,
+  // These are masked by the view - always null for public access
+  seller_phone: null,
+  seller_email: null,
+  // Seller object
   seller: {
-    name: product.seller_name,
-    phone: product.seller_phone,
-    email: product.seller_email,
+    name: row.seller_name || null,
+    phone: null,
+    email: null,
   },
 });
 
@@ -46,7 +87,7 @@ export const useProducts = (options?: ProductsQueryOptions) => {
     queryKey: ['products', options],
     queryFn: async () => {
       let query = supabase
-        .from('products')
+        .from('products_public')
         .select('*')
         .eq('status', 'active')
         .order('created_at', { ascending: false });
@@ -61,21 +102,16 @@ export const useProducts = (options?: ProductsQueryOptions) => {
 
       if (options?.search) {
         const searchValue = options.search.trim();
-        
-        // Check if searching by reference number (REFEQUITRAD format or just number)
         const refMatch = searchValue.toUpperCase().match(/^REFEQUITRAD0*(\d+)$/);
         const numericMatch = searchValue.match(/^\d+$/);
         
         if (refMatch) {
-          // Search by exact reference number from REFEQUITRAD format
           const refNumber = parseInt(refMatch[1], 10);
           query = query.eq('reference_number', refNumber);
         } else if (numericMatch && searchValue.length <= 5) {
-          // If it's just a number (up to 5 digits), could be a reference number
           const refNumber = parseInt(numericMatch[0], 10);
           query = query.eq('reference_number', refNumber);
         } else {
-          // Regular text search
           const searchTerm = `%${searchValue}%`;
           query = query.or(`title.ilike.${searchTerm},brand.ilike.${searchTerm},model.ilike.${searchTerm},description.ilike.${searchTerm}`);
         }
@@ -88,13 +124,13 @@ export const useProducts = (options?: ProductsQueryOptions) => {
       const { data, error } = await query;
 
       if (error) throw error;
-      return (data as Product[]).map(transformProduct);
+      return (data as ProductPublicRow[]).map(transformPublicProduct);
     },
-    staleTime: 2 * 60 * 1000, // Cache for 2 minutes
+    staleTime: 2 * 60 * 1000,
   });
 };
 
-// New paginated hook for listings page
+// Paginated hook for listings page
 export const usePaginatedProducts = (options: {
   category?: string;
   search?: string;
@@ -115,11 +151,10 @@ export const usePaginatedProducts = (options: {
       
       // First, get total count with filters
       let countQuery = supabase
-        .from('products')
+        .from('products_public')
         .select('*', { count: 'exact', head: true })
         .eq('status', 'active');
 
-      // Apply filters to count query
       if (category) countQuery = countQuery.eq('category', category);
       if (brands && brands.length > 0) countQuery = countQuery.in('brand', brands);
       if (priceMin) countQuery = countQuery.gte('price', priceMin);
@@ -151,11 +186,10 @@ export const usePaginatedProducts = (options: {
 
       // Now get paginated data
       let dataQuery = supabase
-        .from('products')
+        .from('products_public')
         .select('*')
         .eq('status', 'active');
 
-      // Apply same filters
       if (category) dataQuery = dataQuery.eq('category', category);
       if (brands && brands.length > 0) dataQuery = dataQuery.in('brand', brands);
       if (priceMin) dataQuery = dataQuery.gte('price', priceMin);
@@ -195,7 +229,6 @@ export const usePaginatedProducts = (options: {
           dataQuery = dataQuery.order('created_at', { ascending: false });
       }
 
-      // Apply pagination
       const from = (page - 1) * pageSize;
       const to = from + pageSize - 1;
       dataQuery = dataQuery.range(from, to);
@@ -204,7 +237,7 @@ export const usePaginatedProducts = (options: {
       if (error) throw error;
 
       return {
-        products: (data as Product[]).map(transformProduct),
+        products: (data as ProductPublicRow[]).map(transformPublicProduct),
         totalCount,
         totalPages,
         currentPage: page,
@@ -222,9 +255,8 @@ export const useRecentProducts = (limit: number = 4) => {
   return useQuery({
     queryKey: ['products', 'recent', limit],
     queryFn: async () => {
-      // Get recent products that are NOT featured to avoid duplication
       const { data, error } = await supabase
-        .from('products')
+        .from('products_public')
         .select('*')
         .eq('status', 'active')
         .eq('featured', false)
@@ -232,7 +264,7 @@ export const useRecentProducts = (limit: number = 4) => {
         .limit(limit);
 
       if (error) throw error;
-      return (data as Product[]).map(transformProduct);
+      return (data as ProductPublicRow[]).map(transformPublicProduct);
     },
     staleTime: 2 * 60 * 1000,
   });
@@ -242,16 +274,15 @@ export const usePremiumProducts = (limit: number = 10) => {
   return useQuery({
     queryKey: ['products', 'premium', limit],
     queryFn: async () => {
-      // Get the most expensive products
       const { data, error } = await supabase
-        .from('products')
+        .from('products_public')
         .select('*')
         .eq('status', 'active')
         .order('price', { ascending: false })
         .limit(limit);
 
       if (error) throw error;
-      return (data as Product[]).map(transformProduct);
+      return (data as ProductPublicRow[]).map(transformPublicProduct);
     },
     staleTime: 2 * 60 * 1000,
   });
@@ -264,7 +295,7 @@ export const useProductById = (id: string | undefined) => {
       if (!id) return null;
       
       const { data, error } = await supabase
-        .from('products')
+        .from('products_public')
         .select('*')
         .eq('id', id)
         .eq('status', 'active')
@@ -273,7 +304,7 @@ export const useProductById = (id: string | undefined) => {
       if (error) throw error;
       if (!data) return null;
       
-      return transformProduct(data as Product);
+      return transformPublicProduct(data as ProductPublicRow);
     },
     enabled: !!id,
   });
@@ -288,7 +319,7 @@ export const useBestSellers = (limit: number = 100) => {
     queryKey: ['products', 'bestsellers', limit],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from('products')
+        .from('products_public')
         .select('*')
         .eq('status', 'active')
         .not('bestseller_rank', 'is', null)
@@ -296,7 +327,7 @@ export const useBestSellers = (limit: number = 100) => {
         .limit(limit);
 
       if (error) throw error;
-      return (data as Product[]).map(transformProduct);
+      return (data as ProductPublicRow[]).map(transformPublicProduct);
     },
     staleTime: 2 * 60 * 1000,
   });
