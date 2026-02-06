@@ -18,9 +18,10 @@ const HeroBanner = () => {
           <div className="bg-muted w-full">
             <img
               src={heroEquipment}
-              alt="Shop Premium Used Equipment - Agricultural Machinery"
+              alt={t('hero.bannerAlt')}
               className="w-full h-[280px] sm:h-[320px] md:h-[380px] lg:h-[450px] object-cover object-[center_30%]"
               loading="eager"
+              fetchPriority="high"
             />
           </div>
           {/* Overlay gradient for better text readability on mobile */}

@@ -297,7 +297,14 @@
     "popularSearches": "Recherches populaires",
     "activeListings": "Annonces actives",
     "verifiedListings": "Annonces vérifiées",
-    "partnerSellers": "Vendeurs partenaires"
+    "partnerSellers": "Vendeurs partenaires",
+    "bannerAlt": "Matériel agricole et industriel neuf et d'occasion - EkipTrade"
+  },
+  "banners": {
+    "verifiedQualityAlt": "Qualité vérifiée - Chaque machine inspectée et certifiée",
+    "fastDealsAlt": "Transactions rapides - Technologie de mise en relation intelligente",
+    "globalNetworkAlt": "Réseau international de confiance - Vendeurs certifiés dans plus de 50 pays",
+    "shopPremiumAlt": "Achetez du matériel premium d'occasion - Tracteurs, moissonneuses, pelleteuses et chargeuses"
   },
   "financing": {
     "title": "Simulateur de financement",

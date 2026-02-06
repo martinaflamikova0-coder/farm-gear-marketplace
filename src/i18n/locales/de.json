@@ -275,7 +275,14 @@
     "popularSearches": "Beliebte Suchanfragen",
     "activeListings": "Aktive Anzeigen",
     "verifiedListings": "Geprüfte Anzeigen",
-    "partnerSellers": "Partnerverkäufer"
+    "partnerSellers": "Partnerverkäufer",
+    "bannerAlt": "Neue und gebrauchte Land- und Industriemaschinen - EkipTrade"
+  },
+  "banners": {
+    "verifiedQualityAlt": "Geprüfte Qualität - Jede Maschine inspiziert und zertifiziert",
+    "fastDealsAlt": "Schnelle Abschlüsse - Intelligente Vermittlungstechnologie",
+    "globalNetworkAlt": "Vertrauenswürdiges globales Netzwerk - Zertifizierte Verkäufer aus über 50 Ländern",
+    "shopPremiumAlt": "Premium-Gebrauchtmaschinen kaufen - Traktoren, Mähdrescher, Bagger und Lader"
   },
   "financing": {
     "title": "Finanzierungsrechner",

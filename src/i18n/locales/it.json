@@ -275,7 +275,14 @@
     "popularSearches": "Ricerche popolari",
     "activeListings": "Annunci attivi",
     "verifiedListings": "Annunci verificati",
-    "partnerSellers": "Venditori partner"
+    "partnerSellers": "Venditori partner",
+    "bannerAlt": "Macchine agricole e industriali nuove e usate - EkipTrade"
+  },
+  "banners": {
+    "verifiedQualityAlt": "Qualità verificata - Ogni macchina ispezionata e certificata",
+    "fastDealsAlt": "Transazioni rapide - Tecnologia di abbinamento intelligente",
+    "globalNetworkAlt": "Rete globale di fiducia - Venditori certificati in oltre 50 paesi",
+    "shopPremiumAlt": "Acquista macchine premium usate - Trattori, mietitrebbie, escavatori e pale"
   },
   "financing": {
     "title": "Simulatore di finanziamento",

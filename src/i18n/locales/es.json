@@ -275,7 +275,14 @@
     "popularSearches": "Búsquedas populares",
     "activeListings": "Anuncios activos",
     "verifiedListings": "Anuncios verificados",
-    "partnerSellers": "Vendedores asociados"
+    "partnerSellers": "Vendedores asociados",
+    "bannerAlt": "Maquinaria agrícola e industrial nueva y de ocasión - EkipTrade"
+  },
+  "banners": {
+    "verifiedQualityAlt": "Calidad verificada - Cada máquina inspeccionada y certificada",
+    "fastDealsAlt": "Transacciones rápidas - Tecnología de emparejamiento inteligente",
+    "globalNetworkAlt": "Red global de confianza - Vendedores certificados en más de 50 países",
+    "shopPremiumAlt": "Compre maquinaria premium de ocasión - Tractores, cosechadoras, excavadoras y cargadoras"
   },
   "financing": {
     "title": "Simulador de financiación",
