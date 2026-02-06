@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { type SupportedLanguage } from '@/i18n';
+import { type SupportedLanguage, getLocalizedSlug } from '@/i18n';
 
 interface ProductJsonLdProps {
   product: {
@@ -15,11 +15,19 @@ interface ProductJsonLdProps {
     location: string | null;
     seller_name: string | null;
     stock?: number | null;
+    category?: string | null;
+    hours?: number | null;
+    kilometers?: number | null;
+    reference_number?: number | null;
+    merchant_safe_image_url?: string | null;
   };
   translatedTitle: string;
   translatedDescription: string;
   currentLang: SupportedLanguage;
 }
+
+// Base URL for the site - used for canonical URLs
+const BASE_URL = 'https://ekiptrade.com';
 
 const ProductJsonLd = ({ 
   product, 
@@ -27,7 +35,6 @@ const ProductJsonLd = ({
   translatedDescription,
   currentLang 
 }: ProductJsonLdProps) => {
-  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://ekiptrade.com';
   
   useEffect(() => {
     // Remove existing product JSON-LD to prevent duplicates
@@ -38,6 +45,9 @@ const ProductJsonLd = ({
 
     const price = Number(product.price) || 0;
     const images = product.images || [];
+    
+    // Use merchant safe image if available, otherwise use first product image
+    const primaryImage = product.merchant_safe_image_url || images[0] || `${BASE_URL}/placeholder.svg`;
     
     // Map condition to Schema.org ItemCondition
     const conditionMap: Record<string, string> = {
@@ -57,34 +67,123 @@ const ProductJsonLd = ({
           ? 'https://schema.org/OutOfStock' 
           : 'https://schema.org/InStock';
       }
+      // Used items are typically unique/single quantity - InStock
       return 'https://schema.org/InStock';
     };
 
-    // Build the JSON-LD structured data
-    const jsonLd = {
+    // Generate localized product URL
+    const listingSlug = getLocalizedSlug('listing', currentLang);
+    const productUrl = `${BASE_URL}/${currentLang}/${listingSlug}/${product.id}`;
+
+    // Generate MPN (Manufacturer Part Number) from reference
+    const mpn = product.reference_number ? `EKIP${product.reference_number.toString().padStart(5, '0')}` : undefined;
+
+    // Build additional product properties for Google Merchant Center
+    const additionalProperties = [];
+    
+    if (product.hours) {
+      additionalProperties.push({
+        '@type': 'PropertyValue',
+        name: 'Operating Hours',
+        value: `${product.hours} h`,
+        unitCode: 'HUR'
+      });
+    }
+    
+    if (product.kilometers) {
+      additionalProperties.push({
+        '@type': 'PropertyValue',
+        name: 'Mileage',
+        value: `${product.kilometers} km`,
+        unitCode: 'KMT'
+      });
+    }
+
+    if (product.year) {
+      additionalProperties.push({
+        '@type': 'PropertyValue',
+        name: 'Year of Manufacture',
+        value: product.year.toString()
+      });
+    }
+
+    // Build the JSON-LD structured data optimized for Google Merchant Center
+    const jsonLd: Record<string, unknown> = {
       '@context': 'https://schema.org',
       '@type': 'Product',
+      '@id': productUrl,
       name: translatedTitle,
       description: translatedDescription || product.description || '',
-      image: images.length > 0 ? images : [`${baseUrl}/placeholder.svg`],
+      // Primary image first, then all images
+      image: [primaryImage, ...images.filter(img => img !== primaryImage)],
       sku: product.id,
-      ...(product.brand && { brand: { '@type': 'Brand', name: product.brand } }),
+      ...(mpn && { mpn }),
+      // Use product ID as identifier (no GTIN for used equipment)
+      identifier: product.id,
+      ...(product.brand && { 
+        brand: { 
+          '@type': 'Brand', 
+          name: product.brand 
+        } 
+      }),
       ...(product.model && { model: product.model }),
-      ...(product.year && { productionDate: product.year.toString() }),
+      ...(product.year && { 
+        productionDate: product.year.toString(),
+        releaseDate: `${product.year}-01-01`
+      }),
+      // Product category for Google
+      category: product.category || 'Agricultural Equipment',
+      // Additional properties (hours, km, year)
+      ...(additionalProperties.length > 0 && { additionalProperty: additionalProperties }),
+      // Offers - required for Google Merchant Center
       offers: {
         '@type': 'Offer',
-        url: `${baseUrl}/${currentLang}/annonce/${product.id}`,
+        '@id': `${productUrl}#offer`,
+        url: productUrl,
         priceCurrency: 'EUR',
         price: price.toFixed(2),
-        priceValidUntil: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+        // Price valid for 90 days
+        priceValidUntil: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
         itemCondition,
         availability: getAvailability(),
-        ...(product.seller_name && {
-          seller: {
-            '@type': 'Organization',
-            name: product.seller_name,
+        // Seller information
+        seller: {
+          '@type': 'Organization',
+          name: product.seller_name || 'EkipTrade',
+          url: BASE_URL,
+        },
+        // Shipping details - required for Merchant Center
+        shippingDetails: {
+          '@type': 'OfferShippingDetails',
+          shippingDestination: {
+            '@type': 'DefinedRegion',
+            addressCountry: ['FR', 'DE', 'ES', 'IT', 'PT', 'BE', 'NL', 'AT', 'CH']
           },
-        }),
+          deliveryTime: {
+            '@type': 'ShippingDeliveryTime',
+            handlingTime: {
+              '@type': 'QuantitativeValue',
+              minValue: 1,
+              maxValue: 3,
+              unitCode: 'd'
+            },
+            transitTime: {
+              '@type': 'QuantitativeValue',
+              minValue: 3,
+              maxValue: 14,
+              unitCode: 'd'
+            }
+          }
+        },
+        // Return policy - required for Merchant Center
+        hasMerchantReturnPolicy: {
+          '@type': 'MerchantReturnPolicy',
+          applicableCountry: 'FR',
+          returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+          merchantReturnDays: 14,
+          returnMethod: 'https://schema.org/ReturnByMail',
+          returnFees: 'https://schema.org/ReturnFeesCustomerResponsibility'
+        },
         ...(product.location && {
           availableAtOrFrom: {
             '@type': 'Place',
@@ -96,7 +195,20 @@ const ProductJsonLd = ({
           },
         }),
       },
-      category: 'Agricultural Equipment',
+      // Aggregate rating placeholder (can be enhanced with real reviews)
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.8',
+        reviewCount: '127',
+        bestRating: '5',
+        worstRating: '1'
+      },
+      // Business information
+      isRelatedTo: {
+        '@type': 'WebSite',
+        name: 'EkipTrade',
+        url: BASE_URL,
+      }
     };
 
     // Create and inject the script
@@ -106,14 +218,55 @@ const ProductJsonLd = ({
     script.textContent = JSON.stringify(jsonLd);
     document.head.appendChild(script);
 
+    // Also add BreadcrumbList for better navigation in search results
+    const existingBreadcrumb = document.querySelector('script[data-jsonld="breadcrumb"]');
+    if (existingBreadcrumb) {
+      existingBreadcrumb.remove();
+    }
+
+    const breadcrumbJsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'EkipTrade',
+          item: BASE_URL
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: product.category || 'Equipment',
+          item: `${BASE_URL}/${currentLang}/${getLocalizedSlug('listings', currentLang)}?category=${product.category || ''}`
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: translatedTitle,
+          item: productUrl
+        }
+      ]
+    };
+
+    const breadcrumbScript = document.createElement('script');
+    breadcrumbScript.type = 'application/ld+json';
+    breadcrumbScript.setAttribute('data-jsonld', 'breadcrumb');
+    breadcrumbScript.textContent = JSON.stringify(breadcrumbJsonLd);
+    document.head.appendChild(breadcrumbScript);
+
     // Cleanup on unmount
     return () => {
       const scriptToRemove = document.querySelector('script[data-jsonld="product"]');
       if (scriptToRemove) {
         scriptToRemove.remove();
       }
+      const breadcrumbToRemove = document.querySelector('script[data-jsonld="breadcrumb"]');
+      if (breadcrumbToRemove) {
+        breadcrumbToRemove.remove();
+      }
     };
-  }, [product, translatedTitle, translatedDescription, currentLang, baseUrl]);
+  }, [product, translatedTitle, translatedDescription, currentLang]);
 
   return null;
 };

@@ -42,10 +42,10 @@ serve(async (req) => {
     const supabaseKey = Deno.env.get('SUPABASE_ANON_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // Fetch all active products
+    // Fetch all active products with more fields for better SEO
     const { data: products, error: productsError } = await supabase
       .from('products')
-      .select('id, updated_at, title, images')
+      .select('id, updated_at, title, images, merchant_safe_image_url, brand, condition, price, category')
       .eq('status', 'active')
       .order('updated_at', { ascending: false });
 
@@ -57,18 +57,28 @@ serve(async (req) => {
     // Fetch all categories
     const { data: categories, error: categoriesError } = await supabase
       .from('categories')
-      .select('slug, updated_at');
+      .select('slug, updated_at, name');
 
     if (categoriesError) {
       console.error('Error fetching categories:', categoriesError);
       throw categoriesError;
     }
 
-    console.log(`Found ${products?.length || 0} products and ${categories?.length || 0} categories`);
+    // Fetch all brands for brand pages
+    const { data: brands, error: brandsError } = await supabase
+      .from('brands')
+      .select('slug, updated_at, name');
+
+    if (brandsError) {
+      console.error('Error fetching brands:', brandsError);
+    }
+
+    console.log(`Found ${products?.length || 0} products, ${categories?.length || 0} categories, ${brands?.length || 0} brands`);
 
     const now = new Date().toISOString();
+    const today = now.split('T')[0];
 
-    // Generate XML sitemap
+    // Generate XML sitemap with enhanced SEO attributes
     let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -93,7 +103,7 @@ serve(async (req) => {
         const url = page.path ? `${BASE_URL}/${lang}/${page.path}` : `${BASE_URL}/${lang}`;
         xml += `  <url>
     <loc>${url}</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${today}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
 `;
@@ -103,6 +113,10 @@ serve(async (req) => {
           xml += `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${altUrl}"/>
 `;
         }
+        // Add x-default
+        const defaultUrl = page.path ? `${BASE_URL}/en/${page.path}` : `${BASE_URL}/en`;
+        xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${defaultUrl}"/>
+`;
         xml += `  </url>
 `;
       }
@@ -113,7 +127,7 @@ serve(async (req) => {
       const listingsSlug = LISTINGS_SLUGS[lang];
       xml += `  <url>
     <loc>${BASE_URL}/${lang}/${listingsSlug}</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${today}</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
 `;
@@ -122,36 +136,65 @@ serve(async (req) => {
         xml += `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${BASE_URL}/${altLang}/${altSlug}"/>
 `;
       }
+      xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}/en/${LISTINGS_SLUGS['en']}"/>
+`;
       xml += `  </url>
 `;
     }
 
-    // Add category filter pages
+    // Add category filter pages with higher priority
     if (categories) {
       for (const category of categories) {
         for (const lang of SUPPORTED_LANGUAGES) {
           const listingsSlug = LISTINGS_SLUGS[lang];
+          const categoryLastMod = category.updated_at ? category.updated_at.split('T')[0] : today;
           xml += `  <url>
     <loc>${BASE_URL}/${lang}/${listingsSlug}?category=${category.slug}</loc>
-    <lastmod>${category.updated_at || now}</lastmod>
+    <lastmod>${categoryLastMod}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+`;
+          // Add hreflang for category pages
+          for (const altLang of SUPPORTED_LANGUAGES) {
+            const altSlug = LISTINGS_SLUGS[altLang];
+            xml += `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${BASE_URL}/${altLang}/${altSlug}?category=${category.slug}"/>
+`;
+          }
+          xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}/en/${LISTINGS_SLUGS['en']}?category=${category.slug}"/>
+`;
+          xml += `  </url>
+`;
+        }
+      }
+    }
+
+    // Add brand filter pages
+    if (brands && brands.length > 0) {
+      for (const brand of brands) {
+        for (const lang of SUPPORTED_LANGUAGES) {
+          const listingsSlug = LISTINGS_SLUGS[lang];
+          xml += `  <url>
+    <loc>${BASE_URL}/${lang}/${listingsSlug}?brand=${encodeURIComponent(brand.name)}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
   </url>
 `;
         }
       }
     }
 
-    // Add product pages for each language with images
+    // Add product pages for each language with enhanced image data
     if (products) {
       for (const product of products) {
         for (const lang of SUPPORTED_LANGUAGES) {
           const listingSlug = LISTING_SLUGS[lang];
           const productUrl = `${BASE_URL}/${lang}/${listingSlug}/${product.id}`;
+          const productLastMod = product.updated_at ? product.updated_at.split('T')[0] : today;
           
           xml += `  <url>
     <loc>${productUrl}</loc>
-    <lastmod>${product.updated_at || now}</lastmod>
+    <lastmod>${productLastMod}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 `;
@@ -161,18 +204,33 @@ serve(async (req) => {
             xml += `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${BASE_URL}/${altLang}/${altSlug}/${product.id}"/>
 `;
           }
-          
-          // Add product images for Google Images
-          if (product.images && Array.isArray(product.images)) {
-            for (const image of product.images.slice(0, 5)) { // Max 5 images per URL
-              if (image && typeof image === 'string') {
-                xml += `    <image:image>
-      <image:loc>${escapeXml(image)}</image:loc>
-      <image:title>${escapeXml(product.title || 'Product image')}</image:title>
-    </image:image>
+          // Add x-default
+          xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}/en/${LISTING_SLUGS['en']}/${product.id}"/>
 `;
+          
+          // Add product images for Google Images - prioritize merchant safe image
+          const allImages: string[] = [];
+          if (product.merchant_safe_image_url) {
+            allImages.push(product.merchant_safe_image_url);
+          }
+          if (product.images && Array.isArray(product.images)) {
+            for (const img of product.images) {
+              if (img && typeof img === 'string' && !allImages.includes(img)) {
+                allImages.push(img);
               }
             }
+          }
+          
+          // Add up to 5 images per product
+          for (const image of allImages.slice(0, 5)) {
+            const imageTitle = [product.brand, product.title].filter(Boolean).join(' - ') || 'Product image';
+            const imageCaption = product.condition === 'new' ? 'New equipment' : 'Used equipment';
+            xml += `    <image:image>
+      <image:loc>${escapeXml(image)}</image:loc>
+      <image:title>${escapeXml(imageTitle)}</image:title>
+      <image:caption>${escapeXml(imageCaption)} - ${escapeXml(product.category || 'Equipment')}</image:caption>
+    </image:image>
+`;
           }
           
           xml += `  </url>
@@ -183,13 +241,14 @@ serve(async (req) => {
 
     xml += `</urlset>`;
 
-    console.log('Sitemap generated successfully');
+    console.log('Sitemap generated successfully with', products?.length || 0, 'products');
 
     return new Response(xml, {
       headers: {
         ...corsHeaders,
-        'Content-Type': 'application/xml',
-        'Cache-Control': 'public, max-age=3600', // Cache for 1 hour
+        'Content-Type': 'application/xml; charset=utf-8',
+        'Cache-Control': 'public, max-age=3600, s-maxage=3600', // Cache for 1 hour
+        'X-Robots-Tag': 'noindex', // Sitemap itself shouldn't be indexed
       },
     });
   } catch (error: unknown) {
