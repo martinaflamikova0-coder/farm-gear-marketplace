@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SEOHead from '@/components/SEOHead';
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import {
   Accordion,
@@ -18,6 +19,7 @@ const FAQ = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEOHead titleKey="seo.faq.title" descriptionKey="seo.faq.description" />
+      <BreadcrumbJsonLd items={[{ name: 'FAQ', path: 'faq' }]} />
       <Header />
       <HeaderSpacer />
       <main className="flex-1 bg-background">

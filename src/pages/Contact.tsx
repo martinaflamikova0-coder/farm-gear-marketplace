@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SEOHead from '@/components/SEOHead';
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -65,6 +66,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEOHead titleKey="seo.contact.title" descriptionKey="seo.contact.description" />
+      <BreadcrumbJsonLd items={[{ name: t('nav.contact'), path: 'contact' }]} />
       <Header />
       <HeaderSpacer />
       <main className="flex-1 bg-background">

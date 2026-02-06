@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SEOHead from '@/components/SEOHead';
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import HeaderSpacer from '@/components/layout/HeaderSpacer';
 
 const Terms = () => {
@@ -12,6 +13,7 @@ const Terms = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEOHead titleKey="seo.terms.title" descriptionKey="seo.terms.description" />
+      <BreadcrumbJsonLd items={[{ name: t('pages.terms.title'), path: 'terms' }]} />
       <Header />
       <HeaderSpacer />
       <main className="flex-1 bg-background">
