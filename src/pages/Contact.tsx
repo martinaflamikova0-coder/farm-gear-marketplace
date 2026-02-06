@@ -67,6 +67,27 @@ const Contact = () => {
     <div className="min-h-screen flex flex-col">
       <SEOHead titleKey="seo.contact.title" descriptionKey="seo.contact.description" />
       <BreadcrumbJsonLd items={[{ name: t('nav.contact'), path: 'contact' }]} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ContactPage',
+          name: t('pages.contact.title'),
+          description: t('seo.contact.description'),
+          url: 'https://ekiptrade.com/en/contact',
+          mainEntity: {
+            '@type': 'Organization',
+            name: 'EkipTrade',
+            email: 'infos@ekiptrade.com',
+            contactPoint: {
+              '@type': 'ContactPoint',
+              contactType: 'customer service',
+              email: 'infos@ekiptrade.com',
+              availableLanguage: ['English', 'French', 'German', 'Spanish', 'Italian', 'Portuguese'],
+            },
+          },
+        }) }}
+      />
       <Header />
       <HeaderSpacer />
       <main className="flex-1 bg-background">
