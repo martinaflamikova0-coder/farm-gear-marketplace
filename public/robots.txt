@@ -17,4 +17,4 @@ Allow: /
 Crawl-delay: 2
 
 # Sitemap
-Sitemap: https://iukwizjteyfzljmizueb.supabase.co/functions/v1/sitemap
+Sitemap: https://ekiptrade.com/sitemap.xml
