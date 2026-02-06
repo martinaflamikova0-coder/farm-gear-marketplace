@@ -20,7 +20,7 @@
     "listings": "Annonces",
     "categories": "Catégories",
     "postAd": "Déposer une annonce",
-    "specialist": "Spécialiste du matériel agricole neuf et d'occasion",
+    "specialist": "Spécialiste du matériel agricole et industriel neuf et d'occasion",
     "account": "Mon compte",
     "login": "Se connecter"
   },
@@ -291,7 +291,7 @@
     "phoneInvalid": "Numéro de téléphone invalide"
   },
   "hero": {
-    "title": "Le matériel agricole neuf et d'occasion,",
+    "title": "Le matériel agricole et industriel neuf et d'occasion,",
     "titleAccent": "simplement.",
     "subtitle": "Trouvez tracteurs, moissonneuses, outils de travail du sol et bien plus parmi des centaines d'annonces professionnelles vérifiées.",
     "popularSearches": "Recherches populaires",
@@ -502,16 +502,16 @@
   },
   "seo": {
     "home": {
-      "title": "Marketplace de Matériel Agricole Neuf et d'Occasion",
+      "title": "Marketplace de Matériel Agricole et Industriel Neuf et d'Occasion",
       "description": "EkipTrade - Achetez et vendez du matériel agricole et industriel neuf et d'occasion. Des milliers de tracteurs, moissonneuses et machines de vendeurs professionnels vérifiés."
     },
     "about": {
       "title": "À Propos de Nous",
-      "description": "Découvrez EkipTrade, le marketplace leader du matériel agricole d'occasion en Europe. Notre mission, nos valeurs et notre communauté de plus de 5 000 professionnels."
+      "description": "Découvrez EkipTrade, le marketplace leader du matériel agricole et industriel d'occasion en Europe. Notre mission, nos valeurs et notre communauté de plus de 5 000 professionnels."
     },
     "howItWorks": {
       "title": "Comment Ça Marche",
-      "description": "Apprenez comment acheter ou vendre du matériel agricole sur EkipTrade. Processus simple en 4 étapes : recherchez, contactez, négociez et finalisez."
+      "description": "Apprenez comment acheter ou vendre du matériel agricole et industriel sur EkipTrade. Processus simple en 4 étapes : recherchez, contactez, négociez et finalisez."
     },
     "faq": {
       "title": "FAQ - Questions Fréquentes",
@@ -519,7 +519,7 @@
     },
     "contact": {
       "title": "Contactez-Nous",
-      "description": "Contactez l'équipe EkipTrade. Nous sommes là pour répondre à vos questions et vous aider dans vos achats ou ventes de matériel agricole."
+      "description": "Contactez l'équipe EkipTrade. Nous sommes là pour répondre à vos questions et vous aider dans vos achats ou ventes de matériel agricole et industriel."
     },
     "terms": {
       "title": "Conditions Générales d'Utilisation",
@@ -535,19 +535,19 @@
     },
     "listings": {
       "title": "Toutes les Annonces",
-      "description": "Parcourez toutes les annonces de matériel agricole sur EkipTrade. Tracteurs, moissonneuses, matériel de travail du sol et plus de vendeurs vérifiés."
+      "description": "Parcourez toutes les annonces de matériel agricole et industriel sur EkipTrade. Tracteurs, moissonneuses, matériel de travail du sol et plus de vendeurs vérifiés."
     },
     "listingDetail": {
-      "title": "Matériel Agricole à Vendre",
-      "description": "Consultez les détails de cette annonce de matériel agricole sur EkipTrade. Contactez directement le vendeur pour plus d'informations."
+      "title": "Matériel Agricole et Industriel à Vendre",
+      "description": "Consultez les détails de cette annonce de matériel agricole et industriel sur EkipTrade. Contactez directement le vendeur pour plus d'informations."
     },
     "checkout": {
       "title": "Finaliser la Commande",
-      "description": "Finalisez votre achat de matériel agricole sur EkipTrade. Paiement sécurisé par virement bancaire."
+      "description": "Finalisez votre achat de matériel agricole et industriel sur EkipTrade. Paiement sécurisé par virement bancaire."
     },
     "cart": {
       "title": "Mon Panier",
-      "description": "Consultez votre panier d'achats sur EkipTrade. Finalisez votre commande de matériel agricole en toute sécurité."
+      "description": "Consultez votre panier d'achats sur EkipTrade. Finalisez votre commande de matériel agricole et industriel en toute sécurité."
     }
   },
   "pages": {
@@ -559,7 +559,7 @@
       "trust": "Confiance",
       "trustDesc": "Tous nos vendeurs sont vérifiés et chaque annonce est contrôlée pour garantir votre sécurité.",
       "community": "Communauté",
-      "communityDesc": "Plus de 5 000 professionnels du secteur agricole nous font confiance chaque jour.",
+      "communityDesc": "Plus de 5 000 professionnels du secteur agricole et industriel nous font confiance chaque jour.",
       "service": "Service",
       "serviceDesc": "Un accompagnement personnalisé pour faciliter vos transactions de A à Z.",
       "quality": "Qualité",
@@ -572,7 +572,7 @@
     },
     "howItWorks": {
       "title": "Comment ça marche ?",
-      "subtitle": "Acheter ou vendre du matériel agricole n'a jamais été aussi simple",
+      "subtitle": "Acheter ou vendre du matériel agricole et industriel n'a jamais été aussi simple",
       "step1Title": "Recherchez",
       "step1Desc": "Parcourez notre catalogue de milliers de machines agricoles et industrielles. Utilisez les filtres pour affiner votre recherche par catégorie, marque, prix ou localisation.",
       "step2Title": "Contactez",
@@ -712,7 +712,7 @@
   "returns": {
     "seo": {
       "title": "Politique de retours et remboursements",
-      "description": "Découvrez notre politique de retours et remboursements pour le matériel agricole. Droit de rétractation, conditions de retour, frais de transport et processus de remboursement."
+      "description": "Découvrez notre politique de retours et remboursements pour le matériel agricole et industriel. Droit de rétractation, conditions de retour, frais de transport et processus de remboursement."
     },
     "title": "Retours et remboursements",
     "subtitle": "Nous nous engageons à votre satisfaction. Découvrez notre politique de retours et remboursements pour une expérience d'achat sereine.",

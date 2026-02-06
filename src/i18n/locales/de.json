@@ -19,7 +19,7 @@
     "listings": "Anzeigen",
     "categories": "Kategorien",
     "postAd": "Anzeige aufgeben",
-    "specialist": "Spezialist für neue und gebrauchte Landmaschinen",
+    "specialist": "Spezialist für neue und gebrauchte Land- und Industriemaschinen",
     "account": "Mein Konto",
     "login": "Anmelden"
   },
@@ -269,7 +269,7 @@
     "phoneInvalid": "Ungültige Telefonnummer"
   },
   "hero": {
-    "title": "Gebrauchte Landmaschinen,",
+    "title": "Neue und gebrauchte Land- und Industriemaschinen,",
     "titleAccent": "einfach.",
     "subtitle": "Finden Sie Traktoren, Mähdrescher, Bodenbearbeitungsgeräte und mehr unter Hunderten von geprüften professionellen Anzeigen.",
     "popularSearches": "Beliebte Suchanfragen",
@@ -480,16 +480,16 @@
   },
   "seo": {
     "home": {
-      "title": "Marktplatz für Gebrauchte Landmaschinen",
+      "title": "Marktplatz für Neue und Gebrauchte Land- und Industriemaschinen",
       "description": "EkipTrade - Kaufen und verkaufen Sie gebrauchte Land- und Industriemaschinen. Tausende Traktoren, Mähdrescher und Maschinen von verifizierten professionellen Verkäufern."
     },
     "about": {
       "title": "Über Uns",
-      "description": "Entdecken Sie EkipTrade, den führenden Marktplatz für gebrauchte Landmaschinen in Europa. Unsere Mission, Werte und Gemeinschaft von über 5.000 Fachleuten."
+      "description": "Entdecken Sie EkipTrade, den führenden Marktplatz für gebrauchte Land- und Industriemaschinen in Europa. Unsere Mission, Werte und Gemeinschaft von über 5.000 Fachleuten."
     },
     "howItWorks": {
       "title": "So Funktioniert Es",
-      "description": "Erfahren Sie, wie Sie auf EkipTrade Landmaschinen kaufen oder verkaufen. Einfacher 4-Schritte-Prozess: Suchen, Kontaktieren, Verhandeln und Abschließen."
+      "description": "Erfahren Sie, wie Sie auf EkipTrade Land- und Industriemaschinen kaufen oder verkaufen. Einfacher 4-Schritte-Prozess: Suchen, Kontaktieren, Verhandeln und Abschließen."
     },
     "faq": {
       "title": "FAQ - Häufig Gestellte Fragen",
@@ -497,7 +497,7 @@
     },
     "contact": {
       "title": "Kontaktieren Sie Uns",
-      "description": "Kontaktieren Sie das EkipTrade-Team. Wir beantworten Ihre Fragen und helfen bei Ihren Landmaschinen-Käufen oder -Verkäufen."
+      "description": "Kontaktieren Sie das EkipTrade-Team. Wir beantworten Ihre Fragen und helfen bei Ihren Land- und Industriemaschinen-Käufen oder -Verkäufen."
     },
     "terms": {
       "title": "Nutzungsbedingungen",
@@ -513,15 +513,15 @@
     },
     "listings": {
       "title": "Alle Anzeigen",
-      "description": "Durchsuchen Sie alle Landmaschinen-Anzeigen auf EkipTrade. Traktoren, Mähdrescher, Bodenbearbeitungsgeräte und mehr von verifizierten Verkäufern."
+      "description": "Durchsuchen Sie alle Land- und Industriemaschinen-Anzeigen auf EkipTrade. Traktoren, Mähdrescher, Bodenbearbeitungsgeräte und mehr von verifizierten Verkäufern."
     },
     "listingDetail": {
-      "title": "Landmaschine zu Verkaufen",
-      "description": "Sehen Sie detaillierte Informationen zu dieser Landmaschinen-Anzeige auf EkipTrade. Kontaktieren Sie den Verkäufer direkt für weitere Informationen."
+      "title": "Land- und Industriemaschine zu Verkaufen",
+      "description": "Sehen Sie detaillierte Informationen zu dieser Land- und Industriemaschinen-Anzeige auf EkipTrade. Kontaktieren Sie den Verkäufer direkt für weitere Informationen."
     },
     "checkout": {
       "title": "Zur Kasse",
-      "description": "Schließen Sie Ihren Kauf von Landmaschinen auf EkipTrade ab. Sichere Zahlung per Banküberweisung."
+      "description": "Schließen Sie Ihren Kauf von Land- und Industriemaschinen auf EkipTrade ab. Sichere Zahlung per Banküberweisung."
     },
     "cart": {
       "title": "Mein Warenkorb",
@@ -537,7 +537,7 @@
       "trust": "Vertrauen",
       "trustDesc": "Alle unsere Verkäufer sind verifiziert und jede Anzeige wird überprüft, um Ihre Sicherheit zu gewährleisten.",
       "community": "Gemeinschaft",
-      "communityDesc": "Mehr als 5.000 Fachleute aus der Landwirtschaft vertrauen uns täglich.",
+      "communityDesc": "Mehr als 5.000 Fachleute aus der Land- und Industriebranche vertrauen uns täglich.",
       "service": "Service",
       "serviceDesc": "Persönliche Betreuung, um Ihre Transaktionen von A bis Z zu erleichtern.",
       "quality": "Qualität",
@@ -550,7 +550,7 @@
     },
     "howItWorks": {
       "title": "Wie funktioniert es?",
-      "subtitle": "Der Kauf oder Verkauf von Landmaschinen war noch nie so einfach",
+      "subtitle": "Der Kauf oder Verkauf von Land- und Industriemaschinen war noch nie so einfach",
       "step1Title": "Suchen",
       "step1Desc": "Durchsuchen Sie unseren Katalog mit Tausenden von Land- und Industriemaschinen. Nutzen Sie Filter, um Ihre Suche nach Kategorie, Marke, Preis oder Standort zu verfeinern.",
       "step2Title": "Kontaktieren",
@@ -690,7 +690,7 @@
   "returns": {
     "seo": {
       "title": "Rückgabe- und Erstattungsrichtlinien",
-      "description": "Erfahren Sie mehr über unsere Rückgabe- und Erstattungsrichtlinien für Landmaschinen. Widerrufsrecht, Rückgabebedingungen, Versandkosten und Erstattungsprozess."
+      "description": "Erfahren Sie mehr über unsere Rückgabe- und Erstattungsrichtlinien für Land- und Industriemaschinen. Widerrufsrecht, Rückgabebedingungen, Versandkosten und Erstattungsprozess."
     },
     "title": "Rückgabe & Erstattung",
     "subtitle": "Wir sind Ihrer Zufriedenheit verpflichtet. Entdecken Sie unsere Rückgabe- und Erstattungsrichtlinien für ein sorgenfreies Einkaufserlebnis.",

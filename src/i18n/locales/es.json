@@ -19,7 +19,7 @@
     "listings": "Anuncios",
     "categories": "Categorías",
     "postAd": "Publicar anuncio",
-    "specialist": "Especialista en maquinaria agrícola nueva y usada",
+    "specialist": "Especialista en maquinaria agrícola e industrial nueva y usada",
     "account": "Mi cuenta",
     "login": "Iniciar sesión"
   },
@@ -269,7 +269,7 @@
     "phoneInvalid": "Número de teléfono inválido"
   },
   "hero": {
-    "title": "Maquinaria agrícola usada,",
+    "title": "Maquinaria agrícola e industrial nueva y usada,",
     "titleAccent": "simplemente.",
     "subtitle": "Encuentre tractores, cosechadoras, equipos de labranza y más entre cientos de anuncios profesionales verificados.",
     "popularSearches": "Búsquedas populares",
@@ -480,16 +480,16 @@
   },
   "seo": {
     "home": {
-      "title": "Marketplace de Maquinaria Agrícola Usada",
+      "title": "Marketplace de Maquinaria Agrícola e Industrial Nueva y Usada",
       "description": "EkipTrade - Compre y venda maquinaria agrícola e industrial usada. Miles de tractores, cosechadoras y máquinas de vendedores profesionales verificados."
     },
     "about": {
       "title": "Sobre Nosotros",
-      "description": "Descubra EkipTrade, el marketplace líder de maquinaria agrícola usada en Europa. Nuestra misión, valores y comunidad de más de 5.000 profesionales."
+      "description": "Descubra EkipTrade, el marketplace líder de maquinaria agrícola e industrial usada en Europa. Nuestra misión, valores y comunidad de más de 5.000 profesionales."
     },
     "howItWorks": {
       "title": "Cómo Funciona",
-      "description": "Aprenda cómo comprar o vender maquinaria agrícola en EkipTrade. Proceso simple de 4 pasos: busque, contacte, negocie y finalice su transacción."
+      "description": "Aprenda cómo comprar o vender maquinaria agrícola e industrial en EkipTrade. Proceso simple de 4 pasos: busque, contacte, negocie y finalice su transacción."
     },
     "faq": {
       "title": "FAQ - Preguntas Frecuentes",
@@ -497,7 +497,7 @@
     },
     "contact": {
       "title": "Contáctenos",
-      "description": "Contacte al equipo de EkipTrade. Estamos aquí para responder sus preguntas y ayudarle con sus compras o ventas de maquinaria agrícola."
+      "description": "Contacte al equipo de EkipTrade. Estamos aquí para responder sus preguntas y ayudarle con sus compras o ventas de maquinaria agrícola e industrial."
     },
     "terms": {
       "title": "Términos de Uso",
@@ -513,19 +513,19 @@
     },
     "listings": {
       "title": "Todos los Anuncios",
-      "description": "Explore todos los anuncios de maquinaria agrícola en EkipTrade. Tractores, cosechadoras, equipos de labranza y más de vendedores verificados."
+      "description": "Explore todos los anuncios de maquinaria agrícola e industrial en EkipTrade. Tractores, cosechadoras, equipos de labranza y más de vendedores verificados."
     },
     "listingDetail": {
-      "title": "Maquinaria Agrícola en Venta",
-      "description": "Vea información detallada sobre este anuncio de maquinaria agrícola en EkipTrade. Contacte directamente al vendedor para más información."
+      "title": "Maquinaria Agrícola e Industrial en Venta",
+      "description": "Vea información detallada sobre este anuncio de maquinaria agrícola e industrial en EkipTrade. Contacte directamente al vendedor para más información."
     },
     "checkout": {
       "title": "Finalizar Pedido",
-      "description": "Complete su compra de maquinaria agrícola en EkipTrade. Pago seguro mediante transferencia bancaria."
+      "description": "Complete su compra de maquinaria agrícola e industrial en EkipTrade. Pago seguro mediante transferencia bancaria."
     },
     "cart": {
       "title": "Mi Carrito",
-      "description": "Consulte su carrito de compras en EkipTrade. Complete su pedido de maquinaria agrícola de forma segura."
+      "description": "Consulte su carrito de compras en EkipTrade. Complete su pedido de maquinaria agrícola e industrial de forma segura."
     }
   },
   "pages": {
@@ -537,7 +537,7 @@
       "trust": "Confianza",
       "trustDesc": "Todos nuestros vendedores están verificados y cada anuncio se revisa para garantizar su seguridad.",
       "community": "Comunidad",
-      "communityDesc": "Más de 5.000 profesionales del sector agrícola confían en nosotros cada día.",
+      "communityDesc": "Más de 5.000 profesionales del sector agrícola e industrial confían en nosotros cada día.",
       "service": "Servicio",
       "serviceDesc": "Acompañamiento personalizado para facilitar sus transacciones de principio a fin.",
       "quality": "Calidad",
@@ -550,7 +550,7 @@
     },
     "howItWorks": {
       "title": "¿Cómo funciona?",
-      "subtitle": "Comprar o vender maquinaria agrícola nunca ha sido tan fácil",
+      "subtitle": "Comprar o vender maquinaria agrícola e industrial nunca ha sido tan fácil",
       "step1Title": "Busque",
       "step1Desc": "Explore nuestro catálogo de miles de máquinas agrícolas e industriales. Use los filtros para refinar su búsqueda por categoría, marca, precio o ubicación.",
       "step2Title": "Contacte",
@@ -690,7 +690,7 @@
   "returns": {
     "seo": {
       "title": "Política de devoluciones y reembolsos",
-      "description": "Conozca nuestra política de devoluciones y reembolsos para equipos agrícolas. Derecho de desistimiento, condiciones de devolución, gastos de envío y proceso de reembolso."
+      "description": "Conozca nuestra política de devoluciones y reembolsos para equipos agrícolas e industriales. Derecho de desistimiento, condiciones de devolución, gastos de envío y proceso de reembolso."
     },
     "title": "Devoluciones y reembolsos",
     "subtitle": "Estamos comprometidos con su satisfacción. Descubra nuestra política de devoluciones y reembolsos para una experiencia de compra sin preocupaciones.",
