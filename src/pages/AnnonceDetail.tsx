@@ -180,8 +180,16 @@ const AnnonceDetail = () => {
     { label: t('product.department'), value: product.department },
   ].filter(spec => spec.value);
 
-  // Get first image for OG meta
-  const ogImage = images[0] || '/placeholder.svg';
+  // Get first image for OG meta - prefer merchant safe image
+  const ogImage = product.merchant_safe_image_url || images[0] || '/placeholder.svg';
+  
+  // Determine availability for SEO
+  const getAvailability = (): 'in stock' | 'out of stock' => {
+    if (product.condition === 'new' && product.stock !== null && product.stock === 0) {
+      return 'out of stock';
+    }
+    return 'in stock';
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -192,6 +200,15 @@ const AnnonceDetail = () => {
         dynamicDescription={translatedDescription?.substring(0, 160) || undefined}
         ogImage={ogImage}
         pageType="product"
+        productData={{
+          price: price,
+          currency: 'EUR',
+          availability: getAvailability(),
+          condition: product.condition as 'new' | 'used' | 'refurbished' || 'used',
+          brand: product.brand || undefined,
+          sku: product.id,
+          category: product.category || 'Agricultural Equipment',
+        }}
       />
       <ProductJsonLd 
         product={{
@@ -207,6 +224,11 @@ const AnnonceDetail = () => {
           location: product.location,
           seller_name: product.seller_name,
           stock: product.stock,
+          category: product.category,
+          hours: product.hours,
+          kilometers: product.kilometers,
+          reference_number: product.reference_number,
+          merchant_safe_image_url: product.merchant_safe_image_url,
         }}
         translatedTitle={translatedTitle}
         translatedDescription={translatedDescription}

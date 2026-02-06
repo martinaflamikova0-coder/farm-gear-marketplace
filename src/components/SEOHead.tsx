@@ -13,7 +13,20 @@ interface SEOHeadProps {
   ogImage?: string;
   // Page type for structured data
   pageType?: 'website' | 'article' | 'product';
+  // Product-specific data for Google Merchant Center
+  productData?: {
+    price?: number;
+    currency?: string;
+    availability?: 'in stock' | 'out of stock' | 'preorder';
+    condition?: 'new' | 'used' | 'refurbished';
+    brand?: string;
+    sku?: string;
+    category?: string;
+  };
 }
+
+// Base URL for canonical and hreflang - use production domain
+const BASE_URL = 'https://ekiptrade.com';
 
 const SEOHead = ({ 
   titleKey, 
@@ -21,15 +34,13 @@ const SEOHead = ({
   dynamicTitle,
   dynamicDescription,
   ogImage = '/og-image.jpg',
-  pageType = 'website'
+  pageType = 'website',
+  productData
 }: SEOHeadProps) => {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
-  
-  // Base URL - in production this should come from env
-  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://ekiptrade.com';
 
   useEffect(() => {
     const title = dynamicTitle || t(titleKey);
@@ -77,12 +88,15 @@ const SEOHead = ({
     // Set meta description
     setMetaTag('meta[name="description"]', 'content', description, { name: 'description' });
 
+    // Set robots meta - allow indexing
+    setMetaTag('meta[name="robots"]', 'content', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1', { name: 'robots' });
+
     // Set Open Graph tags
     setMetaTag('meta[property="og:title"]', 'content', fullTitle, { property: 'og:title' });
     setMetaTag('meta[property="og:description"]', 'content', description, { property: 'og:description' });
     setMetaTag('meta[property="og:type"]', 'content', pageType, { property: 'og:type' });
-    setMetaTag('meta[property="og:url"]', 'content', `${baseUrl}${location.pathname}`, { property: 'og:url' });
-    setMetaTag('meta[property="og:image"]', 'content', ogImage.startsWith('http') ? ogImage : `${baseUrl}${ogImage}`, { property: 'og:image' });
+    setMetaTag('meta[property="og:url"]', 'content', `${BASE_URL}${location.pathname}`, { property: 'og:url' });
+    setMetaTag('meta[property="og:image"]', 'content', ogImage.startsWith('http') ? ogImage : `${BASE_URL}${ogImage}`, { property: 'og:image' });
     setMetaTag('meta[property="og:locale"]', 'content', getLocale(currentLang), { property: 'og:locale' });
     setMetaTag('meta[property="og:site_name"]', 'content', 'EkipTrade', { property: 'og:site_name' });
 
@@ -90,11 +104,35 @@ const SEOHead = ({
     setMetaTag('meta[name="twitter:card"]', 'content', 'summary_large_image', { name: 'twitter:card' });
     setMetaTag('meta[name="twitter:title"]', 'content', fullTitle, { name: 'twitter:title' });
     setMetaTag('meta[name="twitter:description"]', 'content', description, { name: 'twitter:description' });
-    setMetaTag('meta[name="twitter:image"]', 'content', ogImage.startsWith('http') ? ogImage : `${baseUrl}${ogImage}`, { name: 'twitter:image' });
+    setMetaTag('meta[name="twitter:image"]', 'content', ogImage.startsWith('http') ? ogImage : `${BASE_URL}${ogImage}`, { name: 'twitter:image' });
+
+    // Product-specific meta tags for Google Merchant Center
+    if (pageType === 'product' && productData) {
+      // Open Graph Product tags
+      if (productData.price) {
+        setMetaTag('meta[property="product:price:amount"]', 'content', productData.price.toFixed(2), { property: 'product:price:amount' });
+        setMetaTag('meta[property="product:price:currency"]', 'content', productData.currency || 'EUR', { property: 'product:price:currency' });
+      }
+      if (productData.availability) {
+        setMetaTag('meta[property="product:availability"]', 'content', productData.availability, { property: 'product:availability' });
+      }
+      if (productData.condition) {
+        setMetaTag('meta[property="product:condition"]', 'content', productData.condition, { property: 'product:condition' });
+      }
+      if (productData.brand) {
+        setMetaTag('meta[property="product:brand"]', 'content', productData.brand, { property: 'product:brand' });
+      }
+      if (productData.sku) {
+        setMetaTag('meta[property="product:retailer_item_id"]', 'content', productData.sku, { property: 'product:retailer_item_id' });
+      }
+      if (productData.category) {
+        setMetaTag('meta[property="product:category"]', 'content', productData.category, { property: 'product:category' });
+      }
+    }
 
     // Set canonical URL
     const canonicalPath = location.pathname;
-    setLinkTag('canonical', `${baseUrl}${canonicalPath}`);
+    setLinkTag('canonical', `${BASE_URL}${canonicalPath}`);
 
     // Set hreflang tags for all supported languages
     SUPPORTED_LANGUAGES.forEach(langCode => {
@@ -102,7 +140,7 @@ const SEOHead = ({
       const link = document.createElement('link');
       link.setAttribute('rel', 'alternate');
       link.setAttribute('hreflang', langCode);
-      link.setAttribute('href', `${baseUrl}${localizedPath}`);
+      link.setAttribute('href', `${BASE_URL}${localizedPath}`);
       document.head.appendChild(link);
     });
 
@@ -110,10 +148,10 @@ const SEOHead = ({
     const xDefaultLink = document.createElement('link');
     xDefaultLink.setAttribute('rel', 'alternate');
     xDefaultLink.setAttribute('hreflang', 'x-default');
-    xDefaultLink.setAttribute('href', `${baseUrl}${getLocalizedPath(canonicalPath, 'en', currentLang)}`);
+    xDefaultLink.setAttribute('href', `${BASE_URL}${getLocalizedPath(canonicalPath, 'en', currentLang)}`);
     document.head.appendChild(xDefaultLink);
 
-  }, [t, titleKey, descriptionKey, dynamicTitle, dynamicDescription, location.pathname, currentLang, baseUrl, ogImage, pageType]);
+  }, [t, titleKey, descriptionKey, dynamicTitle, dynamicDescription, location.pathname, currentLang, ogImage, pageType, productData]);
 
   return null;
 };
@@ -131,15 +169,33 @@ const getLocale = (lang: SupportedLanguage): string => {
   return localeMap[lang] || 'en_GB';
 };
 
+// Localized slugs mapping for hreflang generation
+const SLUG_MAPPINGS: Record<string, Record<SupportedLanguage, string>> = {
+  'listing': { en: 'listing', fr: 'annonce', de: 'anzeige', es: 'anuncio', it: 'annuncio', pt: 'anuncio' },
+  'listings': { en: 'listings', fr: 'annonces', de: 'anzeigen', es: 'anuncios', it: 'annunci', pt: 'anuncios' },
+};
+
 // Helper to get localized path for hreflang
 const getLocalizedPath = (path: string, targetLang: SupportedLanguage, currentLang: SupportedLanguage): string => {
   // Remove current language prefix if exists
-  const pathWithoutLang = path.replace(new RegExp(`^/${currentLang}(/|$)`), '/');
+  let pathWithoutLang = path.replace(new RegExp(`^/${currentLang}(/|$)`), '/');
   
   // Handle root path
   if (pathWithoutLang === '/' || pathWithoutLang === '') {
     return `/${targetLang}`;
   }
+
+  // Replace localized slugs
+  Object.entries(SLUG_MAPPINGS).forEach(([, langMap]) => {
+    const currentSlug = langMap[currentLang];
+    const targetSlug = langMap[targetLang];
+    if (currentSlug && targetSlug) {
+      pathWithoutLang = pathWithoutLang.replace(
+        new RegExp(`/${currentSlug}(/|$)`), 
+        `/${targetSlug}$1`
+      );
+    }
+  });
   
   // Add target language prefix
   return `/${targetLang}${pathWithoutLang}`;
