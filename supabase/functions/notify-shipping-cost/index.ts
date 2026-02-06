@@ -141,6 +141,48 @@ const handler = async (req: Request): Promise<Response> => {
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY");
+
+    // Verify admin authentication
+    const authHeader = req.headers.get("Authorization");
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      console.error("Missing or invalid Authorization header");
+      return new Response(
+        JSON.stringify({ error: "Unauthorized" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    if (supabaseUrl && supabaseAnonKey && supabaseServiceKey) {
+      const authClient = createClient(supabaseUrl, supabaseAnonKey);
+      const token = authHeader.replace("Bearer ", "");
+      const { data: { user }, error: authError } = await authClient.auth.getUser(token);
+      
+      if (authError || !user) {
+        console.error("Auth verification failed:", authError);
+        return new Response(
+          JSON.stringify({ error: "Unauthorized" }),
+          { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+
+      // Verify admin role
+      const serviceClient = createClient(supabaseUrl, supabaseServiceKey);
+      const { data: isAdmin } = await serviceClient.rpc("has_role", { 
+        _user_id: user.id, 
+        _role: "admin" 
+      });
+
+      if (!isAdmin) {
+        console.error(`Non-admin user ${user.id} attempted to send shipping notification`);
+        return new Response(
+          JSON.stringify({ error: "Forbidden - Admin access required" }),
+          { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+
+      console.log(`Admin ${user.id} sending shipping cost notification`);
+    }
     
     const requestBody = await req.json();
     const { orderId, customerEmail, shippingCost, supplement, orderTotal, language = 'fr' }: NotifyShippingCostRequest = requestBody;

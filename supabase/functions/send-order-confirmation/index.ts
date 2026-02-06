@@ -150,10 +150,65 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
+    const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY");
+    const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+
+    // Verify authentication - user must be logged in
+    const authHeader = req.headers.get("Authorization");
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      console.error("Missing or invalid Authorization header");
+      return new Response(
+        JSON.stringify({ error: "Unauthorized" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    let userId: string | null = null;
+    if (supabaseUrl && supabaseAnonKey) {
+      const authClient = createClient(supabaseUrl, supabaseAnonKey);
+      const token = authHeader.replace("Bearer ", "");
+      const { data: { user }, error: authError } = await authClient.auth.getUser(token);
+      
+      if (authError || !user) {
+        console.error("Auth verification failed:", authError);
+        return new Response(
+          JSON.stringify({ error: "Unauthorized" }),
+          { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      userId = user.id;
+      console.log(`Order confirmation request by user ${userId}`);
+    }
+
     const { orderId, customerEmail, customerName, orderTotal, paymentMethod, language = 'fr' }: OrderConfirmationRequest = await req.json();
 
     if (!orderId || !customerEmail) {
       throw new Error("Missing required fields: orderId, customerEmail");
+    }
+
+    // Verify user owns this order (or is admin)
+    if (supabaseUrl && supabaseServiceKey && userId) {
+      const serviceClient = createClient(supabaseUrl, supabaseServiceKey);
+      
+      const { data: order } = await serviceClient
+        .from("orders")
+        .select("user_id")
+        .eq("id", orderId)
+        .single();
+
+      const { data: isAdmin } = await serviceClient.rpc("has_role", { 
+        _user_id: userId, 
+        _role: "admin" 
+      });
+
+      if (order && order.user_id !== userId && !isAdmin) {
+        console.error(`User ${userId} attempted to send confirmation for order ${orderId} owned by ${order.user_id}`);
+        return new Response(
+          JSON.stringify({ error: "Forbidden" }),
+          { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
     }
 
     const t = translations[language] || translations.fr;

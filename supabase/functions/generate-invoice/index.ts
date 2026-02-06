@@ -235,10 +235,40 @@ serve(async (req) => {
   }
 
   try {
+    // Create client with service role for data access
     const supabaseClient = createClient(
       Deno.env.get("SUPABASE_URL") ?? "",
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
     );
+
+    // Create client with anon key for auth verification
+    const authClient = createClient(
+      Deno.env.get("SUPABASE_URL") ?? "",
+      Deno.env.get("SUPABASE_ANON_KEY") ?? ""
+    );
+
+    // Verify authentication
+    const authHeader = req.headers.get("Authorization");
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      console.error("Missing or invalid Authorization header");
+      return new Response(
+        JSON.stringify({ error: "Unauthorized" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const token = authHeader.replace("Bearer ", "");
+    const { data: { user }, error: authError } = await authClient.auth.getUser(token);
+    
+    if (authError || !user) {
+      console.error("Auth verification failed:", authError);
+      return new Response(
+        JSON.stringify({ error: "Unauthorized" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    console.log(`Invoice request by user ${user.id}`);
 
     const { orderId, language = "en" } = await req.json();
     const lang = translations[language] ? language : "en";
@@ -266,6 +296,22 @@ serve(async (req) => {
         { status: 404, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
+
+    // Check if user owns this order or is an admin
+    const { data: isAdmin } = await supabaseClient.rpc("has_role", { 
+      _user_id: user.id, 
+      _role: "admin" 
+    });
+
+    if (order.user_id !== user.id && !isAdmin) {
+      console.error(`User ${user.id} attempted to access order ${orderId} owned by ${order.user_id}`);
+      return new Response(
+        JSON.stringify({ error: "Forbidden" }),
+        { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    console.log(`Generating invoice for order ${orderId}`);
 
     // Fetch order items
     const { data: orderItems, error: itemsError } = await supabaseClient

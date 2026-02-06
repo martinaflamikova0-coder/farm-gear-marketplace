@@ -702,6 +702,7 @@ export type Database = {
           price: number | null
           price_type: string | null
           reference_number: number | null
+          seller_name: string | null
           status: string | null
           stock: number | null
           subcategory: string | null
@@ -736,6 +737,7 @@ export type Database = {
           price?: number | null
           price_type?: string | null
           reference_number?: number | null
+          seller_name?: string | null
           status?: string | null
           stock?: number | null
           subcategory?: string | null
@@ -770,6 +772,7 @@ export type Database = {
           price?: number | null
           price_type?: string | null
           reference_number?: number | null
+          seller_name?: string | null
           status?: string | null
           stock?: number | null
           subcategory?: string | null
