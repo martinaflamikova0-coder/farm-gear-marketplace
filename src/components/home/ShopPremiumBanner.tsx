@@ -4,7 +4,7 @@ import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import shopPremium from '@/assets/banners/shop-premium.jpeg';
 
 const ShopPremiumBanner = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
   const listingsSlug = getLocalizedSlug('listings', currentLang);
@@ -19,7 +19,7 @@ const ShopPremiumBanner = () => {
           <div className="relative overflow-hidden bg-muted flex items-center justify-center">
             <img
               src={shopPremium}
-              alt="Shop Premium Used - Tractors, Combines, Excavators & Loaders"
+              alt={t('banners.shopPremiumAlt')}
               className="w-full h-auto object-contain max-h-[180px] md:max-h-[250px] lg:max-h-[320px] transform group-hover:scale-105 transition-transform duration-700"
               loading="lazy"
             />

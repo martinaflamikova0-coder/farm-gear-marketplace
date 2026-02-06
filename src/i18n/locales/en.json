@@ -297,7 +297,14 @@
     "popularSearches": "Popular searches",
     "activeListings": "Active listings",
     "verifiedListings": "Verified listings",
-    "partnerSellers": "Partner sellers"
+    "partnerSellers": "Partner sellers",
+    "bannerAlt": "New and used agricultural and industrial equipment - EkipTrade"
+  },
+  "banners": {
+    "verifiedQualityAlt": "Verified quality - Every machine inspected and certified",
+    "fastDealsAlt": "Fast deals - Smart matching technology",
+    "globalNetworkAlt": "Trusted global network - Certified sellers from 50+ countries",
+    "shopPremiumAlt": "Shop premium used equipment - Tractors, combines, excavators and loaders"
   },
   "financing": {
     "title": "Financing Simulator",

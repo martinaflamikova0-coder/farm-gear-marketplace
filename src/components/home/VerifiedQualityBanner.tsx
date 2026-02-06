@@ -4,7 +4,7 @@ import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import verifiedQuality from '@/assets/banners/verified-quality.jpeg';
 
 const VerifiedQualityBanner = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
   const aboutSlug = getLocalizedSlug('about', currentLang);
@@ -19,7 +19,7 @@ const VerifiedQualityBanner = () => {
           <div className="relative overflow-hidden bg-muted flex items-center justify-center">
             <img
               src={verifiedQuality}
-              alt="Verified Quality Equipment - Every machine inspected and certified"
+              alt={t('banners.verifiedQualityAlt')}
               className="w-full h-auto object-contain max-h-[180px] md:max-h-[250px] lg:max-h-[320px] transform group-hover:scale-105 transition-transform duration-700"
               loading="lazy"
             />

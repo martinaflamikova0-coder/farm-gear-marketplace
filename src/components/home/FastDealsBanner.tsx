@@ -4,7 +4,7 @@ import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import fastDeals from '@/assets/banners/fast-deals.jpeg';
 
 const FastDealsBanner = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
   const howItWorksSlug = getLocalizedSlug('how-it-works', currentLang);
@@ -19,7 +19,7 @@ const FastDealsBanner = () => {
           <div className="relative overflow-hidden bg-muted flex items-center justify-center">
             <img
               src={fastDeals}
-              alt="Deal Done in Days, Not Months - Smart matching technology"
+              alt={t('banners.fastDealsAlt')}
               className="w-full h-auto object-contain max-h-[180px] md:max-h-[250px] lg:max-h-[320px] transform group-hover:scale-105 transition-transform duration-700"
               loading="lazy"
             />

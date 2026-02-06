@@ -4,7 +4,7 @@ import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import globalNetwork from '@/assets/banners/global-network.jpeg';
 
 const GlobalNetworkBanner = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
   const contactSlug = getLocalizedSlug('contact', currentLang);
@@ -19,7 +19,7 @@ const GlobalNetworkBanner = () => {
           <div className="relative overflow-hidden bg-muted flex items-center justify-center">
             <img
               src={globalNetwork}
-              alt="Trusted Global Network - Connect with certified sellers from 50+ countries"
+              alt={t('banners.globalNetworkAlt')}
               className="w-full h-auto object-contain max-h-[180px] md:max-h-[250px] lg:max-h-[320px] transform group-hover:scale-105 transition-transform duration-700"
               loading="lazy"
             />

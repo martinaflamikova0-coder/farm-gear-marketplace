@@ -275,7 +275,14 @@
     "popularSearches": "Pesquisas populares",
     "activeListings": "Anúncios ativos",
     "verifiedListings": "Anúncios verificados",
-    "partnerSellers": "Vendedores parceiros"
+    "partnerSellers": "Vendedores parceiros",
+    "bannerAlt": "Máquinas agrícolas e industriais novas e usadas - EkipTrade"
+  },
+  "banners": {
+    "verifiedQualityAlt": "Qualidade verificada - Cada máquina inspecionada e certificada",
+    "fastDealsAlt": "Negócios rápidos - Tecnologia de correspondência inteligente",
+    "globalNetworkAlt": "Rede global de confiança - Vendedores certificados em mais de 50 países",
+    "shopPremiumAlt": "Compre máquinas premium usadas - Tratores, colheitadeiras, escavadeiras e carregadeiras"
   },
   "financing": {
     "title": "Simulador de financiamento",
