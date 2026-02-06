@@ -44,6 +44,7 @@ const BrandsMarquee = () => {
                 src={brand.logo}
                 alt={brand.name}
                 className="max-h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-50 hover:opacity-100"
+                loading="lazy"
               />
             </div>
           ))}

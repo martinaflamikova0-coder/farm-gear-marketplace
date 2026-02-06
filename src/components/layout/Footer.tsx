@@ -33,6 +33,7 @@ const Footer = () => {
                 src={logoEkiptrade} 
                 alt="EkipTrade" 
                 className="h-14 w-auto object-contain"
+                loading="lazy"
               />
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">

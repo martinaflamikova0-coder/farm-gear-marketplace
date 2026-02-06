@@ -53,6 +53,7 @@ const ProductGiftsList = ({ gifts }: ProductGiftsListProps) => {
                     src={gift.image} 
                     alt={displayName}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
               ) : (
