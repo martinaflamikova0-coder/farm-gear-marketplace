@@ -19,6 +19,7 @@ import ProductsGrid from '@/components/home/ProductsGrid';
 import TrustBar from '@/components/home/TrustBar';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import SEOHead from '@/components/SEOHead';
+import HomeJsonLd from '@/components/HomeJsonLd';
 
 const Index = () => {
   return (
@@ -27,6 +28,7 @@ const Index = () => {
         titleKey="seo.home.title" 
         descriptionKey="seo.home.description" 
       />
+      <HomeJsonLd />
       <Header />
       <HeaderSpacer />
       <BrandsMarquee />
