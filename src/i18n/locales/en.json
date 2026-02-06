@@ -20,7 +20,7 @@
     "listings": "Listings",
     "categories": "Categories",
     "postAd": "Post an ad",
-    "specialist": "Specialist in new and used agricultural equipment",
+    "specialist": "Specialist in new and used agricultural and industrial equipment",
     "account": "My account",
     "login": "Sign in"
   },
@@ -291,7 +291,7 @@
     "phoneInvalid": "Invalid phone number"
   },
   "hero": {
-    "title": "New and used agricultural equipment,",
+    "title": "New and used agricultural and industrial equipment,",
     "titleAccent": "simply.",
     "subtitle": "Find tractors, harvesters, tillage equipment and more among hundreds of verified professional listings.",
     "popularSearches": "Popular searches",
@@ -502,16 +502,16 @@
   },
   "seo": {
     "home": {
-      "title": "New and Used Agricultural Equipment Marketplace",
+      "title": "New and Used Agricultural and Industrial Equipment Marketplace",
       "description": "EkipTrade - Buy and sell new and used agricultural and industrial equipment. Thousands of tractors, harvesters, and machinery from verified professional sellers."
     },
     "about": {
       "title": "About Us",
-      "description": "Discover EkipTrade, the leading marketplace for used agricultural equipment in Europe. Our mission, values, and community of over 5,000 professionals."
+      "description": "Discover EkipTrade, the leading marketplace for used agricultural and industrial equipment in Europe. Our mission, values, and community of over 5,000 professionals."
     },
     "howItWorks": {
       "title": "How It Works",
-      "description": "Learn how to buy or sell agricultural equipment on EkipTrade. Simple 4-step process: search, contact, negotiate, and finalize your transaction."
+      "description": "Learn how to buy or sell agricultural and industrial equipment on EkipTrade. Simple 4-step process: search, contact, negotiate, and finalize your transaction."
     },
     "faq": {
       "title": "FAQ - Frequently Asked Questions",
@@ -519,7 +519,7 @@
     },
     "contact": {
       "title": "Contact Us",
-      "description": "Contact the EkipTrade team. We're here to answer your questions and help you with your agricultural equipment purchases or sales."
+      "description": "Contact the EkipTrade team. We're here to answer your questions and help you with your agricultural and industrial equipment purchases or sales."
     },
     "terms": {
       "title": "Terms of Use",
@@ -535,19 +535,19 @@
     },
     "listings": {
       "title": "All Listings",
-      "description": "Browse all agricultural equipment listings on EkipTrade. Tractors, harvesters, tillage equipment, and more from verified sellers."
+      "description": "Browse all agricultural and industrial equipment listings on EkipTrade. Tractors, harvesters, tillage equipment, and more from verified sellers."
     },
     "listingDetail": {
-      "title": "Agricultural Equipment for Sale",
-      "description": "View detailed information about this agricultural equipment listing on EkipTrade. Contact the seller directly for more information."
+      "title": "Agricultural and Industrial Equipment for Sale",
+      "description": "View detailed information about this agricultural and industrial equipment listing on EkipTrade. Contact the seller directly for more information."
     },
     "checkout": {
       "title": "Checkout",
-      "description": "Complete your agricultural equipment purchase on EkipTrade. Secure payment via bank transfer."
+      "description": "Complete your agricultural and industrial equipment purchase on EkipTrade. Secure payment via bank transfer."
     },
     "cart": {
       "title": "My Cart",
-      "description": "View your shopping cart on EkipTrade. Securely complete your agricultural equipment order."
+      "description": "View your shopping cart on EkipTrade. Securely complete your agricultural and industrial equipment order."
     }
   },
   "pages": {
@@ -559,7 +559,7 @@
       "trust": "Trust",
       "trustDesc": "All our sellers are verified and every listing is checked to ensure your safety.",
       "community": "Community",
-      "communityDesc": "More than 5,000 agricultural professionals trust us every day.",
+      "communityDesc": "More than 5,000 agricultural and industrial professionals trust us every day.",
       "service": "Service",
       "serviceDesc": "Personalized support to facilitate your transactions from A to Z.",
       "quality": "Quality",
@@ -572,7 +572,7 @@
     },
     "howItWorks": {
       "title": "How does it work?",
-      "subtitle": "Buying or selling agricultural equipment has never been easier",
+      "subtitle": "Buying or selling agricultural and industrial equipment has never been easier",
       "step1Title": "Search",
       "step1Desc": "Browse our catalog of thousands of agricultural and industrial machines. Use filters to refine your search by category, brand, price or location.",
       "step2Title": "Contact",
@@ -712,7 +712,7 @@
   "returns": {
     "seo": {
       "title": "Returns & Refunds Policy",
-      "description": "Learn about our returns and refunds policy for agricultural equipment. Right of withdrawal, return conditions, shipping costs, and refund process."
+      "description": "Learn about our returns and refunds policy for agricultural and industrial equipment. Right of withdrawal, return conditions, shipping costs, and refund process."
     },
     "title": "Returns & Refunds",
     "subtitle": "We are committed to your satisfaction. Discover our returns and refunds policy for a worry-free shopping experience.",
