@@ -488,51 +488,63 @@
   "seo": {
     "home": {
       "title": "Marketplace di Macchine Agricole e Industriali Nuove e Usate",
-      "description": "EkipTrade - Compra e vendi macchine agricole e industriali usate. Migliaia di trattori, mietitrebbie e macchine da venditori professionali verificati."
+      "description": "EkipTrade - Acquista e vendi macchine agricole e industriali nuove e usate. Migliaia di trattori, mietitrebbie e macchine da venditori professionali verificati.",
+      "keywords": "trattore, mietitrebbia, macchine agricole, macchine edili, ricambi, movimentazione, aratro, seminatrice, irroratrice, rimorchio, usato, nuovo, Europa"
     },
     "about": {
       "title": "Chi Siamo",
-      "description": "Scopri EkipTrade, il marketplace leader per macchine agricole e industriali usate in Europa. La nostra missione, valori e comunità di oltre 5.000 professionisti."
+      "description": "Scopri EkipTrade, il marketplace leader per macchine agricole e industriali usate in Europa. La nostra missione, i nostri valori e la nostra comunità di oltre 5.000 professionisti.",
+      "keywords": "marketplace, macchine agricole, usato, Europa, venditori verificati, professionista"
     },
     "howItWorks": {
       "title": "Come Funziona",
-      "description": "Scopri come acquistare o vendere macchine agricole e industriali su EkipTrade. Processo semplice in 4 passaggi: cerca, contatta, negozia e finalizza."
+      "description": "Scopri come comprare o vendere macchine agricole e industriali su EkipTrade. Processo semplice in 4 passaggi: cerca, contatta, negozia e finalizza.",
+      "keywords": "comprare, vendere, macchine agricole, processo, transazione, sicuro"
     },
     "faq": {
       "title": "FAQ - Domande Frequenti",
-      "description": "Trova risposte alle tue domande su EkipTrade. Come pubblicare annunci, contattare venditori, metodi di pagamento, garanzie e altro."
+      "description": "Trova le risposte alle tue domande su EkipTrade. Come pubblicare un annuncio, contattare i venditori, metodi di pagamento, garanzie e altro.",
+      "keywords": "FAQ, domande, pagamento, garanzia, annuncio, venditore, consegna"
     },
     "contact": {
       "title": "Contattaci",
-      "description": "Contatta il team EkipTrade. Siamo qui per rispondere alle tue domande e aiutarti con acquisti o vendite di macchine agricole e industriali."
+      "description": "Contatta il team EkipTrade. Siamo qui per rispondere alle tue domande e aiutarti nei tuoi acquisti o vendite di macchine agricole e industriali.",
+      "keywords": "contatto, supporto, aiuto, macchine agricole, servizio clienti"
     },
     "terms": {
       "title": "Termini di Utilizzo",
-      "description": "Leggi i termini di utilizzo di EkipTrade. Condizioni di accesso, diritti e obblighi degli utenti, regole degli annunci e responsabilità."
+      "description": "Leggi i termini di utilizzo di EkipTrade. Condizioni di accesso, diritti e obblighi degli utenti, regole degli annunci e responsabilità.",
+      "keywords": "termini, condizioni, utilizzo, piattaforma, regole"
     },
     "privacy": {
       "title": "Informativa sulla Privacy",
-      "description": "Scopri come EkipTrade raccoglie, utilizza e protegge i tuoi dati personali. I tuoi diritti GDPR e le nostre pratiche di sicurezza."
+      "description": "Scopri come EkipTrade raccoglie, utilizza e protegge i tuoi dati personali. I tuoi diritti GDPR e le nostre pratiche di sicurezza.",
+      "keywords": "privacy, GDPR, dati personali, sicurezza, protezione"
     },
     "cookies": {
       "title": "Informativa sui Cookie",
-      "description": "Gestisci le tue preferenze sui cookie su EkipTrade. Scopri i tipi di cookie che usiamo e come controllarli."
+      "description": "Gestisci le tue preferenze sui cookie su EkipTrade. Scopri i tipi di cookie che usiamo e come controllarli.",
+      "keywords": "cookie, preferenze, navigazione, consenso"
     },
     "listings": {
       "title": "Tutti gli Annunci",
-      "description": "Sfoglia tutti gli annunci di macchine agricole e industriali su EkipTrade. Trattori, mietitrebbie, attrezzature per la lavorazione del terreno e altro."
+      "description": "Sfoglia tutti gli annunci di macchine agricole e industriali su EkipTrade. Trattori, mietitrebbie, attrezzature per la lavorazione del terreno e altro.",
+      "keywords": "annunci, trattore, mietitrebbia, aratro, seminatrice, usato, nuovo, ricambi, macchine edili, movimentazione"
     },
     "listingDetail": {
       "title": "Macchina Agricola e Industriale in Vendita",
-      "description": "Visualizza informazioni dettagliate su questo annuncio di macchine agricole e industriali su EkipTrade. Contatta direttamente il venditore per ulteriori informazioni."
+      "description": "Visualizza informazioni dettagliate su questo annuncio di macchine agricole e industriali su EkipTrade. Contatta direttamente il venditore per ulteriori informazioni.",
+      "keywords": "annuncio, vendita, macchine agricole, industriale, usato, prezzo, venditore"
     },
     "checkout": {
       "title": "Pagamento",
-      "description": "Completa il tuo acquisto di macchine agricole e industriali su EkipTrade. Pagamento sicuro tramite bonifico bancario."
+      "description": "Completa il tuo acquisto di macchine agricole e industriali su EkipTrade. Pagamento sicuro tramite bonifico bancario.",
+      "keywords": "pagamento, bonifico, sicuro, acquisto, ordine"
     },
     "cart": {
       "title": "Il Mio Carrello",
-      "description": "Visualizza il tuo carrello su EkipTrade. Completa il tuo ordine di macchine agricole e industriali in sicurezza."
+      "description": "Visualizza il tuo carrello su EkipTrade. Completa il tuo ordine di macchine agricole e industriali in sicurezza.",
+      "keywords": "carrello, ordine, acquisto, macchine agricole"
     }
   },
   "pages": {

@@ -10,7 +10,7 @@ const Privacy = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEOHead titleKey="seo.privacy.title" descriptionKey="seo.privacy.description" />
+      <SEOHead titleKey="seo.privacy.title" descriptionKey="seo.privacy.description" keywordsKey="seo.privacy.keywords" />
       <BreadcrumbJsonLd items={[{ name: t('pages.privacy.title'), path: 'privacy' }]} />
       <Header />
       <HeaderSpacer />

@@ -488,51 +488,63 @@
   "seo": {
     "home": {
       "title": "Marktplatz für Neue und Gebrauchte Land- und Industriemaschinen",
-      "description": "EkipTrade - Kaufen und verkaufen Sie gebrauchte Land- und Industriemaschinen. Tausende Traktoren, Mähdrescher und Maschinen von verifizierten professionellen Verkäufern."
+      "description": "EkipTrade - Kaufen und verkaufen Sie gebrauchte Land- und Industriemaschinen. Tausende Traktoren, Mähdrescher und Maschinen von verifizierten professionellen Verkäufern.",
+      "keywords": "Traktor, Mähdrescher, Landmaschinen, Baumaschinen, Ersatzteile, Fördertechnik, Pflug, Sämaschine, Feldspritze, Anhänger, gebraucht, neu, Europa"
     },
     "about": {
       "title": "Über Uns",
-      "description": "Entdecken Sie EkipTrade, den führenden Marktplatz für gebrauchte Land- und Industriemaschinen in Europa. Unsere Mission, Werte und Gemeinschaft von über 5.000 Fachleuten."
+      "description": "Entdecken Sie EkipTrade, den führenden Marktplatz für gebrauchte Land- und Industriemaschinen in Europa. Unsere Mission, Werte und Gemeinschaft von über 5.000 Fachleuten.",
+      "keywords": "Marktplatz, Landmaschinen, gebraucht, Europa, verifizierte Verkäufer, Fachleute"
     },
     "howItWorks": {
       "title": "So Funktioniert Es",
-      "description": "Erfahren Sie, wie Sie auf EkipTrade Land- und Industriemaschinen kaufen oder verkaufen. Einfacher 4-Schritte-Prozess: Suchen, Kontaktieren, Verhandeln und Abschließen."
+      "description": "Erfahren Sie, wie Sie auf EkipTrade Land- und Industriemaschinen kaufen oder verkaufen. Einfacher 4-Schritte-Prozess: Suchen, Kontaktieren, Verhandeln und Abschließen.",
+      "keywords": "kaufen, verkaufen, Landmaschinen, Prozess, Transaktion, sicher"
     },
     "faq": {
       "title": "FAQ - Häufig Gestellte Fragen",
-      "description": "Finden Sie Antworten auf Ihre Fragen zu EkipTrade. Anzeigen veröffentlichen, Verkäufer kontaktieren, Zahlungsmethoden, Garantien und mehr."
+      "description": "Finden Sie Antworten auf Ihre Fragen zu EkipTrade. Anzeigen veröffentlichen, Verkäufer kontaktieren, Zahlungsmethoden, Garantien und mehr.",
+      "keywords": "FAQ, Fragen, Zahlung, Garantie, Anzeige, Verkäufer, Lieferung"
     },
     "contact": {
       "title": "Kontaktieren Sie Uns",
-      "description": "Kontaktieren Sie das EkipTrade-Team. Wir beantworten Ihre Fragen und helfen bei Ihren Land- und Industriemaschinen-Käufen oder -Verkäufen."
+      "description": "Kontaktieren Sie das EkipTrade-Team. Wir beantworten Ihre Fragen und helfen bei Ihren Land- und Industriemaschinen-Käufen oder -Verkäufen.",
+      "keywords": "Kontakt, Support, Hilfe, Landmaschinen, Kundenservice"
     },
     "terms": {
       "title": "Nutzungsbedingungen",
-      "description": "Lesen Sie die Nutzungsbedingungen von EkipTrade. Plattformzugang, Benutzerrechte und -pflichten, Anzeigenregeln und Verantwortlichkeiten."
+      "description": "Lesen Sie die Nutzungsbedingungen von EkipTrade. Plattformzugang, Benutzerrechte und -pflichten, Anzeigenregeln und Verantwortlichkeiten.",
+      "keywords": "AGB, Bedingungen, Nutzung, Plattform, Regeln"
     },
     "privacy": {
       "title": "Datenschutzrichtlinie",
-      "description": "Erfahren Sie, wie EkipTrade Ihre persönlichen Daten sammelt, nutzt und schützt. Ihre DSGVO-Rechte und unsere Datensicherheitspraktiken."
+      "description": "Erfahren Sie, wie EkipTrade Ihre persönlichen Daten sammelt, nutzt und schützt. Ihre DSGVO-Rechte und unsere Datensicherheitspraktiken.",
+      "keywords": "Datenschutz, DSGVO, personenbezogene Daten, Sicherheit, Schutz"
     },
     "cookies": {
       "title": "Cookie-Richtlinie",
-      "description": "Verwalten Sie Ihre Cookie-Einstellungen auf EkipTrade. Erfahren Sie mehr über verwendete Cookie-Typen und deren Kontrolle."
+      "description": "Verwalten Sie Ihre Cookie-Einstellungen auf EkipTrade. Erfahren Sie mehr über verwendete Cookie-Typen und deren Kontrolle.",
+      "keywords": "Cookies, Einstellungen, Navigation, Einwilligung"
     },
     "listings": {
       "title": "Alle Anzeigen",
-      "description": "Durchsuchen Sie alle Land- und Industriemaschinen-Anzeigen auf EkipTrade. Traktoren, Mähdrescher, Bodenbearbeitungsgeräte und mehr von verifizierten Verkäufern."
+      "description": "Durchsuchen Sie alle Land- und Industriemaschinen-Anzeigen auf EkipTrade. Traktoren, Mähdrescher, Bodenbearbeitungsgeräte und mehr von verifizierten Verkäufern.",
+      "keywords": "Anzeigen, Traktor, Mähdrescher, Pflug, Sämaschine, gebraucht, neu, Ersatzteile, Baumaschinen, Fördertechnik"
     },
     "listingDetail": {
       "title": "Land- und Industriemaschine zu Verkaufen",
-      "description": "Sehen Sie detaillierte Informationen zu dieser Land- und Industriemaschinen-Anzeige auf EkipTrade. Kontaktieren Sie den Verkäufer direkt für weitere Informationen."
+      "description": "Sehen Sie detaillierte Informationen zu dieser Land- und Industriemaschinen-Anzeige auf EkipTrade. Kontaktieren Sie den Verkäufer direkt für weitere Informationen.",
+      "keywords": "Anzeige, Verkauf, Landmaschinen, Industrie, gebraucht, Preis, Verkäufer"
     },
     "checkout": {
       "title": "Zur Kasse",
-      "description": "Schließen Sie Ihren Kauf von Land- und Industriemaschinen auf EkipTrade ab. Sichere Zahlung per Banküberweisung."
+      "description": "Schließen Sie Ihren Kauf von Land- und Industriemaschinen auf EkipTrade ab. Sichere Zahlung per Banküberweisung.",
+      "keywords": "Kasse, Zahlung, Überweisung, sicher, Kauf"
     },
     "cart": {
       "title": "Mein Warenkorb",
-      "description": "Sehen Sie Ihren Warenkorb auf EkipTrade ein. Schließen Sie Ihre Bestellung sicher ab."
+      "description": "Sehen Sie Ihren Warenkorb auf EkipTrade ein. Schließen Sie Ihre Bestellung sicher ab.",
+      "keywords": "Warenkorb, Bestellung, Kauf, Landmaschinen"
     }
   },
   "pages": {
