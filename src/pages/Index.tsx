@@ -26,7 +26,8 @@ const Index = () => {
     <div className="min-h-screen flex flex-col bg-secondary/30">
       <SEOHead 
         titleKey="seo.home.title" 
-        descriptionKey="seo.home.description" 
+        descriptionKey="seo.home.description"
+        keywordsKey="seo.home.keywords"
       />
       <HomeJsonLd />
       <Header />

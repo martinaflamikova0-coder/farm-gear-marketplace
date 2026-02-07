@@ -6,9 +6,12 @@ import { SUPPORTED_LANGUAGES, type SupportedLanguage } from '@/i18n';
 interface SEOHeadProps {
   titleKey: string;
   descriptionKey: string;
+  // Keywords key from i18n (e.g. "seo.home.keywords")
+  keywordsKey?: string;
   // For dynamic content (like product pages)
   dynamicTitle?: string;
   dynamicDescription?: string;
+  dynamicKeywords?: string;
   // Optional image for Open Graph
   ogImage?: string;
   // Page type for structured data
@@ -30,9 +33,11 @@ const BASE_URL = 'https://ekiptrade.com';
 
 const SEOHead = ({ 
   titleKey, 
-  descriptionKey, 
+  descriptionKey,
+  keywordsKey,
   dynamicTitle,
   dynamicDescription,
+  dynamicKeywords,
   ogImage = '/og-image.jpg',
   pageType = 'website',
   productData
@@ -45,6 +50,7 @@ const SEOHead = ({
   useEffect(() => {
     const title = dynamicTitle || t(titleKey);
     const description = dynamicDescription || t(descriptionKey);
+    const keywords = dynamicKeywords || (keywordsKey ? t(keywordsKey) : '');
     const fullTitle = `${title} | EkipTrade`;
 
     // Set document title
@@ -87,6 +93,11 @@ const SEOHead = ({
 
     // Set meta description
     setMetaTag('meta[name="description"]', 'content', description, { name: 'description' });
+
+    // Set meta keywords
+    if (keywords) {
+      setMetaTag('meta[name="keywords"]', 'content', keywords, { name: 'keywords' });
+    }
 
     // Set robots meta - allow indexing
     setMetaTag('meta[name="robots"]', 'content', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1', { name: 'robots' });
@@ -151,7 +162,7 @@ const SEOHead = ({
     xDefaultLink.setAttribute('href', `${BASE_URL}${getLocalizedPath(canonicalPath, 'en', currentLang)}`);
     document.head.appendChild(xDefaultLink);
 
-  }, [t, titleKey, descriptionKey, dynamicTitle, dynamicDescription, location.pathname, currentLang, ogImage, pageType, productData]);
+  }, [t, titleKey, descriptionKey, keywordsKey, dynamicTitle, dynamicDescription, dynamicKeywords, location.pathname, currentLang, ogImage, pageType, productData]);
 
   return null;
 };

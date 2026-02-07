@@ -19,7 +19,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEOHead titleKey="seo.about.title" descriptionKey="seo.about.description" />
+      <SEOHead titleKey="seo.about.title" descriptionKey="seo.about.description" keywordsKey="seo.about.keywords" />
       <BreadcrumbJsonLd items={[{ name: t('nav.about'), path: 'about' }]} />
       <Header />
       <HeaderSpacer />

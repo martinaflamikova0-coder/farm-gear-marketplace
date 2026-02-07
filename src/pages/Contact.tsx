@@ -65,7 +65,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEOHead titleKey="seo.contact.title" descriptionKey="seo.contact.description" />
+      <SEOHead titleKey="seo.contact.title" descriptionKey="seo.contact.description" keywordsKey="seo.contact.keywords" />
       <BreadcrumbJsonLd items={[{ name: t('nav.contact'), path: 'contact' }]} />
       <script
         type="application/ld+json"

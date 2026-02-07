@@ -488,51 +488,63 @@
   "seo": {
     "home": {
       "title": "Marketplace de Maquinaria Agrícola e Industrial Nueva y Usada",
-      "description": "EkipTrade - Compre y venda maquinaria agrícola e industrial usada. Miles de tractores, cosechadoras y máquinas de vendedores profesionales verificados."
+      "description": "EkipTrade - Compre y venda maquinaria agrícola e industrial nueva y usada. Miles de tractores, cosechadoras y máquinas de vendedores profesionales verificados.",
+      "keywords": "tractor, cosechadora, maquinaria agrícola, maquinaria de construcción, repuestos, manipulación, arado, sembradora, pulverizador, remolque, usado, nuevo, Europa"
     },
     "about": {
       "title": "Sobre Nosotros",
-      "description": "Descubra EkipTrade, el marketplace líder de maquinaria agrícola e industrial usada en Europa. Nuestra misión, valores y comunidad de más de 5.000 profesionales."
+      "description": "Descubra EkipTrade, el marketplace líder de maquinaria agrícola e industrial usada en Europa. Nuestra misión, valores y comunidad de más de 5.000 profesionales.",
+      "keywords": "marketplace, maquinaria agrícola, usado, Europa, vendedores verificados, profesional"
     },
     "howItWorks": {
       "title": "Cómo Funciona",
-      "description": "Aprenda cómo comprar o vender maquinaria agrícola e industrial en EkipTrade. Proceso simple de 4 pasos: busque, contacte, negocie y finalice su transacción."
+      "description": "Aprenda a comprar o vender maquinaria agrícola e industrial en EkipTrade. Proceso simple en 4 pasos: busque, contacte, negocie y finalice.",
+      "keywords": "comprar, vender, maquinaria agrícola, proceso, transacción, seguro"
     },
     "faq": {
       "title": "FAQ - Preguntas Frecuentes",
-      "description": "Encuentre respuestas a sus preguntas sobre EkipTrade. Cómo publicar anuncios, contactar vendedores, métodos de pago, garantías y más."
+      "description": "Encuentre respuestas a sus preguntas sobre EkipTrade. Cómo publicar un anuncio, contactar vendedores, métodos de pago, garantías y más.",
+      "keywords": "FAQ, preguntas, pago, garantía, anuncio, vendedor, entrega"
     },
     "contact": {
       "title": "Contáctenos",
-      "description": "Contacte al equipo de EkipTrade. Estamos aquí para responder sus preguntas y ayudarle con sus compras o ventas de maquinaria agrícola e industrial."
+      "description": "Contacte al equipo EkipTrade. Estamos aquí para responder sus preguntas y ayudarle con sus compras o ventas de maquinaria agrícola e industrial.",
+      "keywords": "contacto, soporte, ayuda, maquinaria agrícola, servicio al cliente"
     },
     "terms": {
       "title": "Términos de Uso",
-      "description": "Lea los términos de uso de EkipTrade. Condiciones de acceso, derechos y obligaciones de usuarios, reglas de anuncios y responsabilidades."
+      "description": "Lea los términos de uso de EkipTrade. Condiciones de acceso, derechos y obligaciones de usuarios, reglas de anuncios y responsabilidades.",
+      "keywords": "términos, condiciones, uso, plataforma, reglas"
     },
     "privacy": {
       "title": "Política de Privacidad",
-      "description": "Conozca cómo EkipTrade recopila, usa y protege sus datos personales. Sus derechos RGPD y nuestras prácticas de seguridad de datos."
+      "description": "Conozca cómo EkipTrade recopila, usa y protege sus datos personales. Sus derechos RGPD y nuestras prácticas de seguridad de datos.",
+      "keywords": "privacidad, RGPD, datos personales, seguridad, protección"
     },
     "cookies": {
       "title": "Política de Cookies",
-      "description": "Gestione sus preferencias de cookies en EkipTrade. Conozca los tipos de cookies que usamos y cómo controlarlas."
+      "description": "Gestione sus preferencias de cookies en EkipTrade. Conozca los tipos de cookies que usamos y cómo controlarlas.",
+      "keywords": "cookies, preferencias, navegación, consentimiento"
     },
     "listings": {
       "title": "Todos los Anuncios",
-      "description": "Explore todos los anuncios de maquinaria agrícola e industrial en EkipTrade. Tractores, cosechadoras, equipos de labranza y más de vendedores verificados."
+      "description": "Explore todos los anuncios de maquinaria agrícola e industrial en EkipTrade. Tractores, cosechadoras, equipos de labranza y más de vendedores verificados.",
+      "keywords": "anuncios, tractor, cosechadora, arado, sembradora, usado, nuevo, repuestos, maquinaria de construcción, manipulación"
     },
     "listingDetail": {
       "title": "Maquinaria Agrícola e Industrial en Venta",
-      "description": "Vea información detallada sobre este anuncio de maquinaria agrícola e industrial en EkipTrade. Contacte directamente al vendedor para más información."
+      "description": "Vea información detallada sobre este anuncio de maquinaria agrícola e industrial en EkipTrade. Contacte directamente al vendedor para más información.",
+      "keywords": "anuncio, venta, maquinaria agrícola, industrial, usado, precio, vendedor"
     },
     "checkout": {
       "title": "Finalizar Pedido",
-      "description": "Complete su compra de maquinaria agrícola e industrial en EkipTrade. Pago seguro mediante transferencia bancaria."
+      "description": "Complete su compra de maquinaria agrícola e industrial en EkipTrade. Pago seguro mediante transferencia bancaria.",
+      "keywords": "pedido, pago, transferencia, seguro, compra"
     },
     "cart": {
       "title": "Mi Carrito",
-      "description": "Consulte su carrito de compras en EkipTrade. Complete su pedido de maquinaria agrícola e industrial de forma segura."
+      "description": "Consulte su carrito de compras en EkipTrade. Complete su pedido de maquinaria agrícola e industrial de forma segura.",
+      "keywords": "carrito, pedido, compra, maquinaria agrícola"
     }
   },
   "pages": {

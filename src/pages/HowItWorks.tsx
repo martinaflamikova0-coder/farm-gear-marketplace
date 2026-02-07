@@ -19,7 +19,7 @@ const HowItWorks = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEOHead titleKey="seo.howItWorks.title" descriptionKey="seo.howItWorks.description" />
+      <SEOHead titleKey="seo.howItWorks.title" descriptionKey="seo.howItWorks.description" keywordsKey="seo.howItWorks.keywords" />
       <BreadcrumbJsonLd items={[{ name: t('pages.howItWorks.title'), path: 'how-it-works' }]} />
       <Header />
       <HeaderSpacer />

@@ -32,7 +32,7 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEOHead titleKey="seo.faq.title" descriptionKey="seo.faq.description" />
+      <SEOHead titleKey="seo.faq.title" descriptionKey="seo.faq.description" keywordsKey="seo.faq.keywords" />
       <BreadcrumbJsonLd items={[{ name: 'FAQ', path: 'faq' }]} />
       <script
         type="application/ld+json"

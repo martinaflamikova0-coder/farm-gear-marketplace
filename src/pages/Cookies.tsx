@@ -28,7 +28,7 @@ const Cookies = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEOHead titleKey="seo.cookies.title" descriptionKey="seo.cookies.description" />
+      <SEOHead titleKey="seo.cookies.title" descriptionKey="seo.cookies.description" keywordsKey="seo.cookies.keywords" />
       <BreadcrumbJsonLd items={[{ name: t('pages.cookies.title'), path: 'cookies' }]} />
       <Header />
       <HeaderSpacer />

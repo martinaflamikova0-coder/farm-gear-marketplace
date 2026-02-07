@@ -12,7 +12,7 @@ const Terms = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEOHead titleKey="seo.terms.title" descriptionKey="seo.terms.description" />
+      <SEOHead titleKey="seo.terms.title" descriptionKey="seo.terms.description" keywordsKey="seo.terms.keywords" />
       <BreadcrumbJsonLd items={[{ name: t('pages.terms.title'), path: 'terms' }]} />
       <Header />
       <HeaderSpacer />

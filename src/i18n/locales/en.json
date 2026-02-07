@@ -510,51 +510,63 @@
   "seo": {
     "home": {
       "title": "New and Used Agricultural and Industrial Equipment Marketplace",
-      "description": "EkipTrade - Buy and sell new and used agricultural and industrial equipment. Thousands of tractors, harvesters, and machinery from verified professional sellers."
+      "description": "EkipTrade - Buy and sell new and used agricultural and industrial equipment. Thousands of tractors, harvesters, and machinery from verified professional sellers.",
+      "keywords": "tractor, harvester, farm equipment, construction machinery, spare parts, handling, plough, seeder, sprayer, trailer, used, new, Europe"
     },
     "about": {
       "title": "About Us",
-      "description": "Discover EkipTrade, the leading marketplace for used agricultural and industrial equipment in Europe. Our mission, values, and community of over 5,000 professionals."
+      "description": "Discover EkipTrade, the leading marketplace for used agricultural and industrial equipment in Europe. Our mission, values, and community of over 5,000 professionals.",
+      "keywords": "marketplace, farm equipment, used, Europe, verified sellers, professional"
     },
     "howItWorks": {
       "title": "How It Works",
-      "description": "Learn how to buy or sell agricultural and industrial equipment on EkipTrade. Simple 4-step process: search, contact, negotiate, and finalize your transaction."
+      "description": "Learn how to buy or sell agricultural and industrial equipment on EkipTrade. Simple 4-step process: search, contact, negotiate, and finalize your transaction.",
+      "keywords": "buy, sell, farm equipment, process, transaction, secure"
     },
     "faq": {
       "title": "FAQ - Frequently Asked Questions",
-      "description": "Find answers to your questions about EkipTrade. How to post a listing, contact sellers, payment methods, warranties, and more."
+      "description": "Find answers to your questions about EkipTrade. How to post a listing, contact sellers, payment methods, warranties, and more.",
+      "keywords": "FAQ, questions, payment, warranty, listing, seller, delivery"
     },
     "contact": {
       "title": "Contact Us",
-      "description": "Contact the EkipTrade team. We're here to answer your questions and help you with your agricultural and industrial equipment purchases or sales."
+      "description": "Contact the EkipTrade team. We're here to answer your questions and help you with your agricultural and industrial equipment purchases or sales.",
+      "keywords": "contact, support, help, farm equipment, customer service"
     },
     "terms": {
       "title": "Terms of Use",
-      "description": "Read EkipTrade's terms of use. Platform access conditions, user rights and obligations, listing rules, and responsibilities."
+      "description": "Read EkipTrade's terms of use. Platform access conditions, user rights and obligations, listing rules, and responsibilities.",
+      "keywords": "terms, conditions, platform, rules, usage"
     },
     "privacy": {
       "title": "Privacy Policy",
-      "description": "Learn about how EkipTrade collects, uses, and protects your personal data. Your GDPR rights and our data security practices."
+      "description": "Learn about how EkipTrade collects, uses, and protects your personal data. Your GDPR rights and our data security practices.",
+      "keywords": "privacy, GDPR, personal data, security, protection"
     },
     "cookies": {
       "title": "Cookie Policy",
-      "description": "Manage your cookie preferences on EkipTrade. Learn about the types of cookies we use and how to control them."
+      "description": "Manage your cookie preferences on EkipTrade. Learn about the types of cookies we use and how to control them.",
+      "keywords": "cookies, preferences, browsing, consent"
     },
     "listings": {
       "title": "All Listings",
-      "description": "Browse all agricultural and industrial equipment listings on EkipTrade. Tractors, harvesters, tillage equipment, and more from verified sellers."
+      "description": "Browse all agricultural and industrial equipment listings on EkipTrade. Tractors, harvesters, tillage equipment, and more from verified sellers.",
+      "keywords": "listings, tractor, harvester, plough, seeder, used, new, spare parts, construction machinery, handling"
     },
     "listingDetail": {
       "title": "Agricultural and Industrial Equipment for Sale",
-      "description": "View detailed information about this agricultural and industrial equipment listing on EkipTrade. Contact the seller directly for more information."
+      "description": "View detailed information about this agricultural and industrial equipment listing on EkipTrade. Contact the seller directly for more information.",
+      "keywords": "listing, sale, farm equipment, industrial, used, price, seller"
     },
     "checkout": {
       "title": "Checkout",
-      "description": "Complete your agricultural and industrial equipment purchase on EkipTrade. Secure payment via bank transfer."
+      "description": "Complete your agricultural and industrial equipment purchase on EkipTrade. Secure payment via bank transfer.",
+      "keywords": "checkout, payment, bank transfer, secure, purchase"
     },
     "cart": {
       "title": "My Cart",
-      "description": "View your shopping cart on EkipTrade. Securely complete your agricultural and industrial equipment order."
+      "description": "View your shopping cart on EkipTrade. Securely complete your agricultural and industrial equipment order.",
+      "keywords": "cart, order, purchase, farm equipment"
     }
   },
   "pages": {
