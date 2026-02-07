@@ -191,13 +191,27 @@ const AnnonceDetail = () => {
     return 'in stock';
   };
 
+  // Generate dynamic keywords from product data
+  const productKeywords = [
+    product.brand,
+    product.model,
+    translatedTitle,
+    translateCategory(product.category),
+    product.condition ? getConditionLabel(product.condition) : null,
+    product.year?.toString(),
+    product.location,
+    t('common.search'),
+  ].filter(Boolean).join(', ');
+
   return (
     <div className="min-h-screen flex flex-col">
       <SEOHead 
         titleKey="seo.listingDetail.title" 
         descriptionKey="seo.listingDetail.description"
+        keywordsKey="seo.listingDetail.keywords"
         dynamicTitle={translatedTitle}
         dynamicDescription={translatedDescription?.substring(0, 160) || undefined}
+        dynamicKeywords={productKeywords}
         ogImage={ogImage}
         pageType="product"
         productData={{
