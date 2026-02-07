@@ -339,7 +339,8 @@ const Annonces = () => {
     <div className="min-h-screen flex flex-col">
       <SEOHead 
         titleKey="seo.listings.title" 
-        descriptionKey="seo.listings.description" 
+        descriptionKey="seo.listings.description"
+        keywordsKey="seo.listings.keywords"
       />
       <BreadcrumbJsonLd items={[{ name: t('nav.listings') }]} />
       {products.length > 0 && (
