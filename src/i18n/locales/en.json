@@ -567,6 +567,11 @@
       "title": "My Cart",
       "description": "View your shopping cart on EkipTrade. Securely complete your agricultural and industrial equipment order.",
       "keywords": "cart, order, purchase, farm equipment"
+    },
+    "orderConfirmation": {
+      "title": "Order Confirmation",
+      "description": "Your order has been confirmed. View your order details and track your delivery on EkipTrade.",
+      "keywords": "order confirmation, order tracking, delivery, invoice"
     }
   },
   "pages": {
@@ -866,5 +871,26 @@
     "accountCreated": "Account created!",
     "accountCreatedDesc": "Your account has been successfully created. Check your email for the welcome message. If you don't receive it, please check your spam folder.",
     "signupError": "An error occurred during registration"
+  },
+  "orderConfirmation": {
+    "title": "Order Confirmed!",
+    "subtitle": "Thank you for your purchase",
+    "orderDetails": "Order Details",
+    "orderId": "Order ID",
+    "orderDate": "Order Date",
+    "customerName": "Customer Name",
+    "items": "Items",
+    "quantity": "Quantity",
+    "total": "Total",
+    "whatNext": "What Happens Next?",
+    "confirmationEmail": "A confirmation email has been sent to your inbox",
+    "invoiceAvailable": "Your invoice is available in your account and email",
+    "trackOrder": "You can track your order status in your account",
+    "supportContact": "For questions, please contact our support team",
+    "viewAccount": "View Your Account",
+    "continueShopping": "Continue Shopping",
+    "noOrderId": "No order ID provided",
+    "orderNotFound": "Order not found",
+    "unexpectedError": "An unexpected error occurred"
   }
 }

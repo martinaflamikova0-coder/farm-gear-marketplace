@@ -333,8 +333,8 @@ const Checkout = () => {
       // Clear cart
       await clearCart();
 
-      // Move to confirmation
-      setStep('confirmation');
+      // Redirect to order confirmation page with order ID
+      navigate(`/${currentLang}/order-confirmation?orderId=${order.id}`);
 
       toast({
         title: t('checkout.success.orderSaved'),
@@ -423,8 +423,8 @@ const Checkout = () => {
       // Clear cart
       await clearCart();
 
-      // Move to confirmation
-      setStep('confirmation');
+      // Redirect to order confirmation page with order ID
+      navigate(`/${currentLang}/order-confirmation?orderId=${order.id}`);
 
       toast({
         title: t('checkout.paypal.success'),

@@ -567,6 +567,11 @@
       "title": "Mon Panier",
       "description": "Consultez votre panier d'achats sur EkipTrade. Finalisez votre commande de matériel agricole et industriel en toute sécurité.",
       "keywords": "panier, commande, achat, matériel agricole"
+    },
+    "orderConfirmation": {
+      "title": "Confirmation de Commande",
+      "description": "Votre commande a été confirmée. Consultez les détails de votre commande et suivez votre livraison sur EkipTrade.",
+      "keywords": "confirmation de commande, suivi commande, livraison, facture"
     }
   },
   "pages": {
@@ -866,5 +871,26 @@
     "accountCreated": "Compte créé !",
     "accountCreatedDesc": "Votre compte a été créé avec succès. Vérifiez votre boîte mail pour l'email de bienvenue. Si vous ne le recevez pas, pensez à vérifier vos spams.",
     "signupError": "Une erreur est survenue lors de l'inscription"
+  },
+  "orderConfirmation": {
+    "title": "Commande confirmée !",
+    "subtitle": "Merci pour votre achat",
+    "orderDetails": "Détails de la commande",
+    "orderId": "Numéro de commande",
+    "orderDate": "Date de commande",
+    "customerName": "Nom du client",
+    "items": "Articles",
+    "quantity": "Quantité",
+    "total": "Total",
+    "whatNext": "Et maintenant ?",
+    "confirmationEmail": "Un email de confirmation a été envoyé à votre boîte mail",
+    "invoiceAvailable": "Votre facture est disponible dans votre compte et par email",
+    "trackOrder": "Vous pouvez suivre le statut de votre commande dans votre compte",
+    "supportContact": "Pour toute question, contactez notre équipe d'assistance",
+    "viewAccount": "Voir mon compte",
+    "continueShopping": "Continuer mes achats",
+    "noOrderId": "Aucun numéro de commande fourni",
+    "orderNotFound": "Commande non trouvée",
+    "unexpectedError": "Une erreur inattendue est survenue"
   }
 }
