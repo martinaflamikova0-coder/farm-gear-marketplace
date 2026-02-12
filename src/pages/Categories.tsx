@@ -3,6 +3,9 @@ import { useCategoriesWithCounts } from '@/hooks/useCategories';
 import { type SupportedLanguage } from '@/i18n';
 import CategoryCard from '@/components/products/CategoryCard';
 import SEOHead from '@/components/SEOHead';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import HeaderSpacer from '@/components/layout/HeaderSpacer';
 
 const Categories = () => {
   const { t, i18n } = useTranslation();
@@ -16,6 +19,9 @@ const Categories = () => {
         descriptionKey="seo.categories.description"
         keywordsKey="seo.categories.keywords"
       />
+      
+      <Header />
+      <HeaderSpacer />
       
       <div className="min-h-screen bg-background">
         {/* Header */}
@@ -39,6 +45,8 @@ const Categories = () => {
           </div>
         </main>
       </div>
+      
+      <Footer />
     </>
   );
 };
