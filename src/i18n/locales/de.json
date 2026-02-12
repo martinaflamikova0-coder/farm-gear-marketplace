@@ -548,6 +548,11 @@
       "description": "Verwalten Sie Ihre Cookie-Einstellungen auf EkipTrade. Erfahren Sie mehr über verwendete Cookie-Typen und deren Kontrolle.",
       "keywords": "Cookies, Einstellungen, Navigation, Einwilligung"
     },
+    "categories": {
+      "title": "Alle Kategorien - Land- & Industriemaschinen",
+      "description": "Durchsuchen Sie alle Kategorien von Land- und Industriemaschinen auf EkipTrade. Traktoren, Erntemaschinen, Bodenbearbeitung, Fördertechnik, Baumaschinen, Ersatzteile und mehr.",
+      "keywords": "Kategorien, Traktoren, Erntemaschinen, Bodenbearbeitung, Fördertechnik, Baumaschinen, Ersatzteile, Landmaschinen"
+    },
     "listings": {
       "title": "Alle Anzeigen",
       "description": "Durchsuchen Sie alle Land- und Industriemaschinen-Anzeigen auf EkipTrade. Traktoren, Mähdrescher, Bodenbearbeitungsgeräte und mehr von verifizierten Verkäufern.",
@@ -570,6 +575,10 @@
     }
   },
   "pages": {
+    "categories": {
+      "title": "Alle Kategorien",
+      "description": "Durchsuchen Sie alle verfügbaren Kategorien von Land- und Industriemaschinen"
+    },
     "about": {
       "title": "Über EkipTrade",
       "intro1": "EkipTrade ist der führende Marktplatz für den Kauf und Verkauf von gebrauchten Land- und Industriemaschinen in Europa. Seit unserer Gründung verbinden wir Tausende von Fachleuten, um ihre Transaktionen zu erleichtern.",
