@@ -43,6 +43,23 @@
     "loginDescription": "Inicia sesión para acceder a tu carrito y realizar pedidos",
     "login": "Iniciar sesión"
   },
+  "orderConfirmation": {
+    "title": "Pedido confirmado",
+    "description": "¡Gracias por tu compra!",
+    "orderNumber": "Número de pedido",
+    "orderDate": "Fecha del pedido",
+    "total": "Total",
+    "status": "Estado",
+    "items": "Artículos",
+    "shippingAddress": "Dirección de envío",
+    "estimatedDelivery": "Fecha de entrega estimada",
+    "thankYou": "Te agradecemos tu compra. Pronto recibirás un correo de confirmación.",
+    "accountPage": "Ir a mi cuenta",
+    "seO": {
+      "title": "Pedido confirmado | EquipTrade",
+      "description": "Gracias por tu compra. Tu pedido ha sido confirmado."
+    }
+  },
   "account": {
     "title": "Mi cuenta",
     "logout": "Cerrar sesión",
