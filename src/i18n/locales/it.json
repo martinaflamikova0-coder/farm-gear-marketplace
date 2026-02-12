@@ -12,7 +12,9 @@
     "loading": "Caricamento...",
     "noResults": "Nessun risultato trovato",
     "showMore": "Mostra di più",
-    "showLess": "Mostra di meno"
+    "showLess": "Mostra di meno",
+    "listings": "annunci",
+    "products": "prodotti"
   },
   "nav": {
     "home": "Home",
