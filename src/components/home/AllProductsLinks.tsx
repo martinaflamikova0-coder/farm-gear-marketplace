@@ -132,16 +132,14 @@ const ProductLink = ({ product, lang, listingSlug }: { product: any; lang: Suppo
   return (
     <Link
       to={`/${lang}/${listingSlug}/${product.id}`}
-      className="flex items-baseline gap-1.5 py-1 text-sm hover:text-primary transition-colors group"
+      className="flex items-baseline gap-2 py-1 text-sm hover:text-primary transition-colors group"
     >
-      <span className="text-foreground/70 group-hover:text-primary truncate">
+      <span className="text-foreground/70 group-hover:text-primary truncate flex-1">
         {title}
       </span>
-      {product.brand && (
-        <span className="text-muted-foreground text-xs shrink-0">
-          {product.brand}
-        </span>
-      )}
+      <span className="text-primary font-semibold shrink-0 whitespace-nowrap">
+        €{Number(product.price).toLocaleString()}
+      </span>
     </Link>
   );
 };
