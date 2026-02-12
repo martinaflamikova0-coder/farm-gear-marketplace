@@ -5,6 +5,7 @@ import Index from '@/pages/Index';
 import Annonces from '@/pages/Annonces';
 import AnnonceDetail from '@/pages/AnnonceDetail';
 import About from '@/pages/About';
+import Categories from '@/pages/Categories';
 import HowItWorks from '@/pages/HowItWorks';
 import FAQ from '@/pages/FAQ';
 import Contact from '@/pages/Contact';
@@ -118,9 +119,10 @@ const LocalizedRoutes = () => {
       {/* Language-prefixed routes */}
       <Route path="/:lang" element={<LanguageWrapper><Index /></LanguageWrapper>} />
       
-      {/* Static pages */}
-      <Route path="/:lang/about" element={<LanguageWrapper><About /></LanguageWrapper>} />
-      <Route path="/:lang/how-it-works" element={<LanguageWrapper><HowItWorks /></LanguageWrapper>} />
+       {/* Static pages */}
+       <Route path="/:lang/about" element={<LanguageWrapper><About /></LanguageWrapper>} />
+       <Route path="/:lang/categories" element={<LanguageWrapper><Categories /></LanguageWrapper>} />
+       <Route path="/:lang/how-it-works" element={<LanguageWrapper><HowItWorks /></LanguageWrapper>} />
       <Route path="/:lang/faq" element={<LanguageWrapper><FAQ /></LanguageWrapper>} />
       <Route path="/:lang/contact" element={<LanguageWrapper><Contact /></LanguageWrapper>} />
       <Route path="/:lang/terms" element={<LanguageWrapper><Terms /></LanguageWrapper>} />
