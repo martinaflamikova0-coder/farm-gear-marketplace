@@ -15,11 +15,11 @@ const HeroBanner = () => {
     <section className="relative w-full overflow-hidden">
       <div className="container-custom py-4 md:py-8">
         <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-          <div className="bg-muted w-full">
+          <div className="bg-[hsl(var(--primary)/0.08)] w-full">
             <img
               src={heroEquipment}
               alt={t('hero.bannerAlt')}
-              className="w-full h-[280px] sm:h-[320px] md:h-[380px] lg:h-[450px] object-cover object-[center_30%]"
+              className="w-full h-auto object-contain"
               loading="eager"
               fetchPriority="high"
             />
