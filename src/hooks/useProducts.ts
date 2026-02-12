@@ -332,22 +332,31 @@ export const useBestSellers = (limit: number = 100) => {
   });
 };
 
-export const useLatestProducts = (offset: number = 100, limit: number = 200) => {
+export const useLatestProducts = (excludeIds: string[] = [], limit: number = 100) => {
   return useQuery({
-    queryKey: ['products', 'latest', offset, limit],
+    queryKey: ['products', 'latest-chantier', excludeIds.length, limit],
     queryFn: async () => {
-      const { data, error } = await supabase
+      let query = supabase
         .from('products_public')
         .select('*')
         .eq('status', 'active')
         .eq('category', 'chantier')
         .not('subcategory', 'is', null)
         .order('created_at', { ascending: false })
-        .range(offset, offset + limit - 1);
+        .limit(limit + excludeIds.length); // fetch extra to compensate for exclusions
 
+      const { data, error } = await query;
       if (error) throw error;
-      return (data as ProductPublicRow[]).map(transformPublicProduct);
+      
+      const excludeSet = new Set(excludeIds);
+      const filtered = (data as ProductPublicRow[])
+        .map(transformPublicProduct)
+        .filter(p => !excludeSet.has(p.id))
+        .slice(0, limit);
+      
+      return filtered;
     },
     staleTime: 2 * 60 * 1000,
+    enabled: excludeIds.length > 0 || true,
   });
 };

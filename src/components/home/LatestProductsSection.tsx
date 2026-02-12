@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import ProductCard from '@/components/products/ProductCard';
-import { useLatestProducts } from '@/hooks/useProducts';
+import { useBestSellers, useLatestProducts } from '@/hooks/useProducts';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 
 const ITEMS_PER_PAGE = 8;
@@ -17,7 +17,11 @@ const LatestProductsSection = () => {
   const listingsSlug = getLocalizedSlug('listings', currentLang);
   const [currentPage, setCurrentPage] = useState(0);
 
-  const { data: latestProducts = [], isLoading } = useLatestProducts(0, 100);
+  // Get best-seller IDs to exclude them
+  const { data: bestSellers = [] } = useBestSellers(100);
+  const bestSellerIds = bestSellers.map(p => p.id);
+  
+  const { data: latestProducts = [], isLoading } = useLatestProducts(bestSellerIds, 100);
 
   const totalPages = Math.ceil(latestProducts.length / ITEMS_PER_PAGE);
   const currentProducts = latestProducts.slice(
@@ -39,11 +43,11 @@ const LatestProductsSection = () => {
 
   if (isLoading) {
     return (
-      <section className="py-12 bg-gradient-to-b from-accent/5 to-background">
+      <section className="py-12 bg-gradient-to-b from-amber-50/50 to-background dark:from-amber-950/20">
         <div className="container-custom">
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-accent/10 rounded-lg">
-              <Wrench className="h-6 w-6 text-accent" />
+            <div className="p-2 bg-amber-500/10 rounded-lg">
+              <Wrench className="h-6 w-6 text-amber-600" />
             </div>
             <Skeleton className="h-8 w-48" />
           </div>
@@ -59,7 +63,7 @@ const LatestProductsSection = () => {
 
   if (latestProducts.length === 0) return null;
 
-  // Group by subcategory for the subtitle
+  // Group by subcategory for the pills
   const subcategoryCounts = latestProducts.reduce((acc, p) => {
     const sub = p.subcategory || 'other';
     acc[sub] = (acc[sub] || 0) + 1;
@@ -68,12 +72,12 @@ const LatestProductsSection = () => {
   const subcategoryCount = Object.keys(subcategoryCounts).length;
 
   return (
-    <section className="py-12 bg-gradient-to-b from-accent/5 to-background">
+    <section className="py-12 bg-gradient-to-b from-amber-50/50 to-background dark:from-amber-950/20">
       <div className="container-custom">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-accent/10 rounded-xl">
-              <Wrench className="h-6 w-6 text-accent" />
+            <div className="p-2 bg-amber-500/10 rounded-lg">
+              <Wrench className="h-6 w-6 text-amber-600" />
             </div>
             <div>
               <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
@@ -116,7 +120,7 @@ const LatestProductsSection = () => {
             .map(([slug, count]) => (
               <span
                 key={slug}
-                className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20"
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20"
               >
                 {t(`categoryNames.${slug}`, slug)} ({count})
               </span>
@@ -124,8 +128,14 @@ const LatestProductsSection = () => {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {currentProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {currentProducts.map((product, index) => (
+            <div key={product.id} className="relative">
+              {/* Rank badge - same style as BestSellersSection */}
+              <div className="absolute -top-2 -left-2 z-10 flex items-center justify-center w-8 h-8 bg-amber-500 text-white text-xs font-bold rounded-full shadow-lg">
+                #{currentPage * ITEMS_PER_PAGE + index + 1}
+              </div>
+              <ProductCard product={product} />
+            </div>
           ))}
         </div>
 
@@ -137,7 +147,7 @@ const LatestProductsSection = () => {
                 onClick={() => setCurrentPage(index)}
                 className={`w-2 h-2 rounded-full transition-all ${
                   index === currentPage
-                    ? 'bg-accent w-6'
+                    ? 'bg-amber-500 w-6'
                     : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
                 }`}
               />
