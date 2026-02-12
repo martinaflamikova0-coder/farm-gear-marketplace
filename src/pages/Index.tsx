@@ -11,6 +11,7 @@ import RecentProducts from '@/components/home/RecentProducts';
 import PremiumProducts from '@/components/home/PremiumProducts';
 import BestSellersSection from '@/components/home/BestSellersSection';
 import BestSellersLinks from '@/components/home/BestSellersLinks';
+import LatestProductsSection from '@/components/home/LatestProductsSection';
 import AllProductsLinks from '@/components/home/AllProductsLinks';
 import PopularCategoriesLinks from '@/components/home/PopularCategoriesLinks';
 import VerifiedQualityBanner from '@/components/home/VerifiedQualityBanner';
@@ -44,7 +45,6 @@ const Index = () => {
       <SearchBar />
       <QuickCategories />
       
-      
       <main className="flex-1">
         {/* Featured Products */}
         <FeaturedProducts />
@@ -57,6 +57,9 @@ const Index = () => {
         
         {/* Top Bestsellers Quick Links - Internal SEO */}
         <BestSellersLinks />
+        
+        {/* Latest 200 Products */}
+        <LatestProductsSection />
         
         {/* Verified Quality Banner - Build trust early */}
         <VerifiedQualityBanner />

@@ -95,8 +95,10 @@
   "home": {
     "featuredListings": "Anuncios destacados",
     "featuredSubtitle": "Nuestras mejores oportunidades",
-    "bestsellers": "Top 100 Más Vendidos",
-    "bestsellersSubtitle": "Los equipos más populares seleccionados para ti",
+    "bestsellers": "Top 100 Últimas Adiciones",
+    "bestsellersSubtitle": "Los 100 equipos más recientemente añadidos en nuestra plataforma",
+    "latestProducts": "Más Anuncios Recientes",
+    "latestProductsSubtitle": "Descubra 200 equipos más recientemente listados",
     "recentListings": "Últimos anuncios",
     "recentSubtitle": "Los más recientes",
     "premiumListings": "Artículos Premium",

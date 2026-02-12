@@ -78,8 +78,10 @@
   "home": {
     "featuredListings": "Featured listings",
     "featuredSubtitle": "Our best opportunities of the moment",
-    "bestsellers": "Top 100 Best Sellers",
-    "bestsellersSubtitle": "The most popular equipment selected for you",
+    "bestsellers": "Top 100 Latest Additions",
+    "bestsellersSubtitle": "The 100 most recently added equipment on our platform",
+    "latestProducts": "More Recent Listings",
+    "latestProductsSubtitle": "Discover 200 more recently listed equipment",
     "recentListings": "Latest listings",
     "recentSubtitle": "Most recent",
     "premiumListings": "Premium Items",

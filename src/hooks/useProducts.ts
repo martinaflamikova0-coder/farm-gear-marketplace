@@ -322,9 +322,26 @@ export const useBestSellers = (limit: number = 100) => {
         .from('products_public')
         .select('*')
         .eq('status', 'active')
-        .not('bestseller_rank', 'is', null)
-        .order('bestseller_rank', { ascending: true })
+        .order('created_at', { ascending: false })
         .limit(limit);
+
+      if (error) throw error;
+      return (data as ProductPublicRow[]).map(transformPublicProduct);
+    },
+    staleTime: 2 * 60 * 1000,
+  });
+};
+
+export const useLatestProducts = (offset: number = 100, limit: number = 200) => {
+  return useQuery({
+    queryKey: ['products', 'latest', offset, limit],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('products_public')
+        .select('*')
+        .eq('status', 'active')
+        .order('created_at', { ascending: false })
+        .range(offset, offset + limit - 1);
 
       if (error) throw error;
       return (data as ProductPublicRow[]).map(transformPublicProduct);
