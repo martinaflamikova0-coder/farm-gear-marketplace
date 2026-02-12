@@ -18,8 +18,7 @@ const BestSellersLinks = () => {
         .from('products_public')
         .select('id, title, title_translations, bestseller_rank, brand, price')
         .eq('status', 'active')
-        .not('bestseller_rank', 'is', null)
-        .order('bestseller_rank', { ascending: true })
+        .order('created_at', { ascending: false })
         .limit(100);
       
       if (error) throw error;
@@ -44,12 +43,13 @@ const BestSellersLinks = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-1">
-          {products.map((product) => (
+          {products.map((product, index) => (
             <BestsellerLink
               key={product.id}
               product={product}
               lang={currentLang}
               listingSlug={listingSlug}
+              index={index}
             />
           ))}
         </div>
@@ -62,9 +62,10 @@ interface BestsellerLinkProps {
   product: any;
   lang: SupportedLanguage;
   listingSlug: string;
+  index: number;
 }
 
-const BestsellerLink = ({ product, lang, listingSlug }: BestsellerLinkProps) => {
+const BestsellerLink = ({ product, lang, listingSlug, index }: BestsellerLinkProps) => {
   const { title } = useTranslatedProduct(product);
 
   return (
@@ -73,7 +74,7 @@ const BestsellerLink = ({ product, lang, listingSlug }: BestsellerLinkProps) => 
       className="flex items-baseline gap-2 py-1.5 text-sm hover:text-primary transition-colors group"
     >
       <span className="text-xs font-bold text-accent shrink-0">
-        #{product.bestseller_rank}
+        #{index + 1}
       </span>
       <span className="text-foreground/80 group-hover:text-primary truncate">
         {title}

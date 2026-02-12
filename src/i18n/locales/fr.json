@@ -78,8 +78,10 @@
   "home": {
     "featuredListings": "Annonces en vedette",
     "featuredSubtitle": "Nos meilleures opportunités du moment",
-    "bestsellers": "Top 100 Meilleures Ventes",
-    "bestsellersSubtitle": "Les équipements les plus populaires sélectionnés pour vous",
+    "bestsellers": "Top 100 Derniers Ajouts",
+    "bestsellersSubtitle": "Les 100 équipements les plus récemment ajoutés sur notre plateforme",
+    "latestProducts": "Plus d'Annonces Récentes",
+    "latestProductsSubtitle": "Découvrez 200 autres équipements récemment ajoutés",
     "recentListings": "Dernières annonces",
     "recentSubtitle": "Les plus récentes",
     "premiumListings": "Articles Premium",
