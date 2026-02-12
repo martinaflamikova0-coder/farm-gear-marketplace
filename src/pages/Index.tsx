@@ -3,6 +3,7 @@ import Footer from '@/components/layout/Footer';
 import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import SearchBar from '@/components/home/SearchBar';
 import QuickCategories from '@/components/home/QuickCategories';
+import CategoriesSection from '@/components/home/CategoriesSection';
 import BrandsMarquee from '@/components/home/BrandsMarquee';
 import HeroBanner from '@/components/home/HeroBanner';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
@@ -42,6 +43,9 @@ const Index = () => {
       
       <SearchBar />
       <QuickCategories />
+      
+      {/* Categories with images */}
+      <CategoriesSection />
       
       <main className="flex-1">
         {/* Featured Products */}
