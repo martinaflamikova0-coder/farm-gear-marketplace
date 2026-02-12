@@ -340,6 +340,8 @@ export const useLatestProducts = (offset: number = 100, limit: number = 200) => 
         .from('products_public')
         .select('*')
         .eq('status', 'active')
+        .eq('category', 'chantier')
+        .not('subcategory', 'is', null)
         .order('created_at', { ascending: false })
         .range(offset, offset + limit - 1);
 

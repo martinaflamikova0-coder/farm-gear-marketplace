@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { ArrowRight, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Wrench, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -17,7 +17,7 @@ const LatestProductsSection = () => {
   const listingsSlug = getLocalizedSlug('listings', currentLang);
   const [currentPage, setCurrentPage] = useState(0);
 
-  const { data: latestProducts = [], isLoading } = useLatestProducts(100, 200);
+  const { data: latestProducts = [], isLoading } = useLatestProducts(0, 100);
 
   const totalPages = Math.ceil(latestProducts.length / ITEMS_PER_PAGE);
   const currentProducts = latestProducts.slice(
@@ -39,11 +39,11 @@ const LatestProductsSection = () => {
 
   if (isLoading) {
     return (
-      <section className="py-12 bg-gradient-to-b from-blue-50/50 to-background dark:from-blue-950/20">
+      <section className="py-12 bg-gradient-to-b from-accent/5 to-background">
         <div className="container-custom">
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-blue-500/10 rounded-lg">
-              <Clock className="h-6 w-6 text-blue-600" />
+            <div className="p-2 bg-accent/10 rounded-lg">
+              <Wrench className="h-6 w-6 text-accent" />
             </div>
             <Skeleton className="h-8 w-48" />
           </div>
@@ -59,20 +59,28 @@ const LatestProductsSection = () => {
 
   if (latestProducts.length === 0) return null;
 
+  // Group by subcategory for the subtitle
+  const subcategoryCounts = latestProducts.reduce((acc, p) => {
+    const sub = p.subcategory || 'other';
+    acc[sub] = (acc[sub] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+  const subcategoryCount = Object.keys(subcategoryCounts).length;
+
   return (
-    <section className="py-12 bg-gradient-to-b from-blue-50/50 to-background dark:from-blue-950/20">
+    <section className="py-12 bg-gradient-to-b from-accent/5 to-background">
       <div className="container-custom">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-500/10 rounded-lg">
-              <Clock className="h-6 w-6 text-blue-600" />
+            <div className="p-2.5 bg-accent/10 rounded-xl">
+              <Wrench className="h-6 w-6 text-accent" />
             </div>
             <div>
               <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
-                {t('home.latestProducts', 'Latest Additions')}
+                {t('home.latestProducts', 'Construction Equipment')}
               </h2>
               <p className="text-sm text-muted-foreground">
-                {t('home.latestProductsSubtitle', 'Discover our most recently listed equipment')}
+                {latestProducts.length} {t('common.products', 'products')} · {subcategoryCount} {t('home.subcategories', 'subcategories')}
               </p>
             </div>
           </div>
@@ -101,6 +109,20 @@ const LatestProductsSection = () => {
           </div>
         </div>
 
+        {/* Subcategory pills */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {Object.entries(subcategoryCounts)
+            .sort((a, b) => b[1] - a[1])
+            .map(([slug, count]) => (
+              <span
+                key={slug}
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20"
+              >
+                {t(`categoryNames.${slug}`, slug)} ({count})
+              </span>
+            ))}
+        </div>
+
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {currentProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
@@ -109,13 +131,13 @@ const LatestProductsSection = () => {
 
         {totalPages > 1 && (
           <div className="flex justify-center mt-6 gap-1">
-            {Array.from({ length: totalPages }).map((_, index) => (
+            {Array.from({ length: Math.min(totalPages, 15) }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentPage(index)}
                 className={`w-2 h-2 rounded-full transition-all ${
                   index === currentPage
-                    ? 'bg-blue-500 w-6'
+                    ? 'bg-accent w-6'
                     : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
                 }`}
               />
@@ -125,7 +147,7 @@ const LatestProductsSection = () => {
 
         <div className="flex justify-center mt-6">
           <Button variant="outline" asChild>
-            <Link to={`/${currentLang}/${listingsSlug}`} className="flex items-center gap-2">
+            <Link to={`/${currentLang}/${listingsSlug}?category=chantier`} className="flex items-center gap-2">
               {t('common.viewAll')}
               <ArrowRight className="h-4 w-4" />
             </Link>
