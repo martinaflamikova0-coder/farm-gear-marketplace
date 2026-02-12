@@ -553,6 +553,11 @@
       "description": "Manage your cookie preferences on EkipTrade. Learn about the types of cookies we use and how to control them.",
       "keywords": "cookies, preferences, browsing, consent"
     },
+    "categories": {
+      "title": "All Categories - Agricultural & Industrial Equipment",
+      "description": "Browse all categories of agricultural and industrial equipment on EkipTrade. Tractors, harvesters, tillage, handling, construction machinery, spare parts and more.",
+      "keywords": "categories, tractors, harvesters, tillage, handling, construction, spare parts, agricultural equipment"
+    },
     "listings": {
       "title": "All Listings",
       "description": "Browse all agricultural and industrial equipment listings on EkipTrade. Tractors, harvesters, tillage equipment, and more from verified sellers.",
@@ -580,6 +585,10 @@
     }
   },
   "pages": {
+    "categories": {
+      "title": "All Categories",
+      "description": "Browse all our available categories of agricultural and industrial equipment"
+    },
     "about": {
       "title": "About EkipTrade",
       "intro1": "EkipTrade is the leading marketplace for buying and selling used agricultural and industrial equipment in Europe. Since our creation, we connect thousands of professionals to facilitate their transactions.",

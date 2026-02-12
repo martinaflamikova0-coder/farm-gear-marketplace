@@ -548,6 +548,11 @@
       "description": "Gerencie as suas preferências de cookies na EkipTrade. Conheça os tipos de cookies que usamos e como controlá-los.",
       "keywords": "cookies, preferências, navegação, consentimento"
     },
+    "categories": {
+      "title": "Todas as Categorias - Máquinas Agrícolas e Industriais",
+      "description": "Navegue por todas as categorias de máquinas agrícolas e industriais na EkipTrade. Tratores, ceifeiras, preparação do solo, movimentação, construção, peças e mais.",
+      "keywords": "categorias, tratores, ceifeiras, preparação do solo, movimentação, construção, peças, máquinas agrícolas"
+    },
     "listings": {
       "title": "Todos os Anúncios",
       "description": "Navegue por todos os anúncios de máquinas agrícolas e industriais na EkipTrade. Tratores, ceifeiras, equipamentos de preparação do solo e mais.",
@@ -570,6 +575,10 @@
     }
   },
   "pages": {
+    "categories": {
+      "title": "Todas as Categorias",
+      "description": "Navegue por todas as nossas categorias de máquinas agrícolas e industriais disponíveis"
+    },
     "about": {
       "title": "Sobre a EkipTrade",
       "intro1": "A EkipTrade é o marketplace líder para compra e venda de máquinas agrícolas e industriais usadas na Europa. Desde a nossa criação, conectamos milhares de profissionais para facilitar as suas transações.",

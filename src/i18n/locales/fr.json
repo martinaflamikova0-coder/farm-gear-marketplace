@@ -553,6 +553,11 @@
       "description": "Gérez vos préférences de cookies sur EkipTrade. Découvrez les types de cookies utilisés et comment les contrôler.",
       "keywords": "cookies, préférences, navigation, consentement"
     },
+    "categories": {
+      "title": "Toutes les Catégories - Matériel Agricole & Industriel",
+      "description": "Parcourez toutes les catégories de matériel agricole et industriel sur EkipTrade. Tracteurs, récolte, travail du sol, manutention, chantier, pièces détachées et plus.",
+      "keywords": "catégories, tracteurs, récolte, travail du sol, manutention, chantier, pièces détachées, matériel agricole"
+    },
     "listings": {
       "title": "Toutes les Annonces",
       "description": "Parcourez toutes les annonces de matériel agricole et industriel sur EkipTrade. Tracteurs, moissonneuses, matériel de travail du sol et plus de vendeurs vérifiés.",
@@ -580,6 +585,10 @@
     }
   },
   "pages": {
+    "categories": {
+      "title": "Toutes les Catégories",
+      "description": "Parcourez toutes nos catégories de matériel agricole et industriel disponibles"
+    },
     "about": {
       "title": "À propos d'EkipTrade",
       "intro1": "EkipTrade est la marketplace de référence pour l'achat et la vente de matériel agricole et industriel d'occasion en France et en Europe. Depuis notre création, nous connectons des milliers de professionnels pour faciliter leurs transactions.",

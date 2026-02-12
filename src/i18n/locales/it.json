@@ -548,6 +548,11 @@
       "description": "Gestisci le tue preferenze sui cookie su EkipTrade. Scopri i tipi di cookie che usiamo e come controllarli.",
       "keywords": "cookie, preferenze, navigazione, consenso"
     },
+    "categories": {
+      "title": "Tutte le Categorie - Macchine Agricole e Industriali",
+      "description": "Sfoglia tutte le categorie di macchine agricole e industriali su EkipTrade. Trattori, mietitrebbie, lavorazione del terreno, movimentazione, edilizia, ricambi e altro.",
+      "keywords": "categorie, trattori, mietitrebbie, lavorazione del terreno, movimentazione, edilizia, ricambi, macchine agricole"
+    },
     "listings": {
       "title": "Tutti gli Annunci",
       "description": "Sfoglia tutti gli annunci di macchine agricole e industriali su EkipTrade. Trattori, mietitrebbie, attrezzature per la lavorazione del terreno e altro.",
@@ -570,6 +575,10 @@
     }
   },
   "pages": {
+    "categories": {
+      "title": "Tutte le Categorie",
+      "description": "Sfoglia tutte le nostre categorie di macchine agricole e industriali disponibili"
+    },
     "about": {
       "title": "Chi è EkipTrade",
       "intro1": "EkipTrade è il marketplace leader per l'acquisto e la vendita di macchine agricole e industriali usate in Europa. Dalla nostra creazione, connettiamo migliaia di professionisti per facilitare le loro transazioni.",

@@ -12,9 +12,9 @@ const Categories = () => {
   return (
     <>
       <SEOHead 
-        titleKey="meta.categories.title"
-        descriptionKey="meta.categories.description"
-        keywordsKey="meta.categories.keywords"
+        titleKey="seo.categories.title"
+        descriptionKey="seo.categories.description"
+        keywordsKey="seo.categories.keywords"
       />
       
       <div className="min-h-screen bg-background">

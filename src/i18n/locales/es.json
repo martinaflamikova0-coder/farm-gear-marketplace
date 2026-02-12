@@ -548,6 +548,11 @@
       "description": "Gestione sus preferencias de cookies en EkipTrade. Conozca los tipos de cookies que usamos y cómo controlarlas.",
       "keywords": "cookies, preferencias, navegación, consentimiento"
     },
+    "categories": {
+      "title": "Todas las Categorías - Maquinaria Agrícola e Industrial",
+      "description": "Explore todas las categorías de maquinaria agrícola e industrial en EkipTrade. Tractores, cosechadoras, labranza, manipulación, construcción, repuestos y más.",
+      "keywords": "categorías, tractores, cosechadoras, labranza, manipulación, construcción, repuestos, maquinaria agrícola"
+    },
     "listings": {
       "title": "Todos los Anuncios",
       "description": "Explore todos los anuncios de maquinaria agrícola e industrial en EkipTrade. Tractores, cosechadoras, equipos de labranza y más de vendedores verificados.",
@@ -570,6 +575,10 @@
     }
   },
   "pages": {
+    "categories": {
+      "title": "Todas las Categorías",
+      "description": "Explore todas nuestras categorías de maquinaria agrícola e industrial disponibles"
+    },
     "about": {
       "title": "Sobre EkipTrade",
       "intro1": "EkipTrade es el marketplace líder para la compra y venta de maquinaria agrícola e industrial usada en Europa. Desde nuestra creación, conectamos a miles de profesionales para facilitar sus transacciones.",
