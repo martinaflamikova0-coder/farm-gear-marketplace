@@ -2,8 +2,10 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useCategories } from '@/hooks/useCategories';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
+import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
+import categoryImages from '@/assets/categories';
 
 const PopularCategoriesLinks = () => {
   const { t, i18n } = useTranslation();
@@ -11,6 +13,7 @@ const PopularCategoriesLinks = () => {
   const currentLang = i18n.language as SupportedLanguage;
   const listingsSlug = getLocalizedSlug('listings', currentLang);
   const { data: categories = [] } = useCategories();
+  const { translateCategory } = useTranslatedCategory();
 
   // Define main categories in order
   const mainCategoryOrder = [
@@ -50,26 +53,40 @@ const PopularCategoriesLinks = () => {
 
         {/* Categories Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          {sortedCategories.map((category) => (
-            <button
-              key={category?.id}
-              onClick={() => handleCategoryClick(category?.slug || '')}
-              className="group relative overflow-hidden rounded-lg border border-primary/20 bg-card p-6 text-center transition-all hover:border-primary/50 hover:shadow-md hover:bg-primary/5"
-            >
-              <div className="flex flex-col items-center gap-3">
-                <div className="text-3xl">{category?.icon || '📦'}</div>
-                <div>
-                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                    {category?.name}
-                  </h3>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    {t('common.viewAll')}
-                  </p>
+          {sortedCategories.map((category) => {
+            const image = categoryImages[category?.slug || ''];
+            return (
+              <button
+                key={category?.id}
+                onClick={() => handleCategoryClick(category?.slug || '')}
+                className="group relative overflow-hidden rounded-lg border border-primary/20 bg-card p-4 text-center transition-all hover:border-primary/50 hover:shadow-md hover:bg-primary/5"
+              >
+                <div className="flex flex-col items-center gap-3">
+                  {image ? (
+                    <div className="w-20 h-20 rounded-xl overflow-hidden bg-white flex items-center justify-center">
+                      <img
+                        src={image}
+                        alt={translateCategory(category?.slug || '')}
+                        className="w-full h-full object-contain p-1"
+                        loading="lazy"
+                      />
+                    </div>
+                  ) : (
+                    <div className="text-3xl">{category?.icon || '📦'}</div>
+                  )}
+                  <div>
+                    <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                      {translateCategory(category?.slug || '') || category?.name}
+                    </h3>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {t('common.viewAll')}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none bg-gradient-to-t from-primary/10 to-transparent" />
-            </button>
-          ))}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none bg-gradient-to-t from-primary/10 to-transparent" />
+              </button>
+            );
+          })}
         </div>
 
         {/* View All Categories Button */}
