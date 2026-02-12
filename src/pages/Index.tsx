@@ -10,6 +10,7 @@ import RecentProducts from '@/components/home/RecentProducts';
 import PremiumProducts from '@/components/home/PremiumProducts';
 import BestSellersSection from '@/components/home/BestSellersSection';
 import BestSellersLinks from '@/components/home/BestSellersLinks';
+import AllProductsLinks from '@/components/home/AllProductsLinks';
 import PopularCategoriesLinks from '@/components/home/PopularCategoriesLinks';
 import VerifiedQualityBanner from '@/components/home/VerifiedQualityBanner';
 import FastDealsBanner from '@/components/home/FastDealsBanner';
@@ -107,6 +108,9 @@ const Index = () => {
         
         {/* Testimonials */}
         <TestimonialsSection />
+        
+        {/* All Products Links - Dense SEO internal linking */}
+        <AllProductsLinks />
       </main>
       
       <TrustBar />
