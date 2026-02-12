@@ -131,9 +131,9 @@ const BestsellerCard = ({ product, rank, onClick }: BestsellerCardProps) => {
         <p className="text-primary font-bold text-lg mt-2">
           €{product.price.toFixed(2)}
         </p>
-        <button className="w-full mt-3 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
-          View Details →
-        </button>
+        <span className="block w-full mt-3 text-sm font-medium text-primary group-hover:text-primary/80 transition-colors">
+          {useTranslation().t('common.viewDetails') || 'View Details'} →
+        </span>
       </div>
     </Card>
   );
