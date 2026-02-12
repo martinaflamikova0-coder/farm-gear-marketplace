@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter } from "react-router-dom";
 import LocalizedRoutes from "@/components/LocalizedRoutes";
 import ScrollToTop from "@/components/ScrollToTop";
+import CookieConsentBanner from "@/components/CookieConsentBanner";
 import { AuthProvider } from "@/hooks/useAuth";
 import { CartProvider } from "@/contexts/CartContext";
 import '@/i18n';
@@ -21,6 +22,7 @@ const App = () => (
           <BrowserRouter>
             <ScrollToTop />
             <LocalizedRoutes />
+            <CookieConsentBanner />
           </BrowserRouter>
         </TooltipProvider>
       </CartProvider>
