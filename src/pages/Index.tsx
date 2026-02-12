@@ -10,7 +10,7 @@ import FeaturedProducts from '@/components/home/FeaturedProducts';
 import RecentProducts from '@/components/home/RecentProducts';
 import PremiumProducts from '@/components/home/PremiumProducts';
 import BestSellersSection from '@/components/home/BestSellersSection';
-import BestSellersLinks from '@/components/home/BestSellersLinks';
+
 import LatestProductsSection from '@/components/home/LatestProductsSection';
 import AllProductsLinks from '@/components/home/AllProductsLinks';
 import PopularCategoriesLinks from '@/components/home/PopularCategoriesLinks';
@@ -55,8 +55,7 @@ const Index = () => {
         {/* Best Sellers - Top 100 */}
         <BestSellersSection />
         
-        {/* Top Bestsellers Quick Links - Internal SEO */}
-        <BestSellersLinks />
+        {/* BestSellersLinks removed - BestSellersSection already shows cards */}
         
         {/* Latest 200 Products */}
         <LatestProductsSection />
