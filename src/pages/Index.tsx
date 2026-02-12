@@ -9,6 +9,8 @@ import FeaturedProducts from '@/components/home/FeaturedProducts';
 import RecentProducts from '@/components/home/RecentProducts';
 import PremiumProducts from '@/components/home/PremiumProducts';
 import BestSellersSection from '@/components/home/BestSellersSection';
+import BestSellersLinks from '@/components/home/BestSellersLinks';
+import PopularCategoriesLinks from '@/components/home/PopularCategoriesLinks';
 import VerifiedQualityBanner from '@/components/home/VerifiedQualityBanner';
 import FastDealsBanner from '@/components/home/FastDealsBanner';
 import GlobalNetworkBanner from '@/components/home/GlobalNetworkBanner';
@@ -44,8 +46,14 @@ const Index = () => {
         {/* Featured Products */}
         <FeaturedProducts />
         
+        {/* Popular Categories Links - Internal SEO */}
+        <PopularCategoriesLinks />
+        
         {/* Best Sellers - Top 100 */}
         <BestSellersSection />
+        
+        {/* Top Bestsellers Quick Links - Internal SEO */}
+        <BestSellersLinks />
         
         {/* Verified Quality Banner - Build trust early */}
         <VerifiedQualityBanner />
