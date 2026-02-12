@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import type { CategoryWithCount } from '@/hooks/useCategories';
 import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
+import categoryImages from '@/assets/categories';
 
 interface CategoryCardProps {
   category: CategoryWithCount;
@@ -17,13 +18,26 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
   const listingsSlug = getLocalizedSlug('listings', currentLang);
   const { translateCategory } = useTranslatedCategory();
 
+  const image = categoryImages[category.slug];
+
   return (
     <Link to={`/${currentLang}/${listingsSlug}?category=${category.slug}`}>
       <Card className="hover-lift overflow-hidden border-border group h-full bg-gradient-to-br from-card to-secondary/30">
-        <CardContent className="p-6 flex flex-col items-center text-center h-full">
-          <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-4xl mb-4 group-hover:bg-primary/20 transition-colors">
-            {category.icon}
-          </div>
+        <CardContent className="p-4 flex flex-col items-center text-center h-full">
+          {image ? (
+            <div className="w-24 h-24 rounded-2xl overflow-hidden mb-4 bg-white flex items-center justify-center">
+              <img
+                src={image}
+                alt={translateCategory(category.slug)}
+                className="w-full h-full object-contain p-1"
+                loading="lazy"
+              />
+            </div>
+          ) : (
+            <div className="w-24 h-24 rounded-2xl bg-primary/10 flex items-center justify-center text-4xl mb-4 group-hover:bg-primary/20 transition-colors">
+              {category.icon}
+            </div>
+          )}
           <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors">
             {translateCategory(category.slug)}
           </h3>
