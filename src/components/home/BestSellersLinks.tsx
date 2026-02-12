@@ -1,141 +1,87 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useTranslatedProduct } from '@/hooks/useTranslatedProduct';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { ChevronRight } from 'lucide-react';
-import type { ProductWithSeller } from '@/hooks/useProducts';
+import { Trophy } from 'lucide-react';
 
 const BestSellersLinks = () => {
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
   const currentLang = i18n.language as SupportedLanguage;
   const listingSlug = getLocalizedSlug('listing', currentLang);
   
-  // Fetch top bestsellers with rank
   const { data: products = [] } = useQuery({
-    queryKey: ['bestsellers-top-4'],
+    queryKey: ['bestsellers-seo-links'],
     queryFn: async () => {
       const { data, error } = await supabase
         .from('products_public')
-        .select('*')
+        .select('id, title, title_translations, bestseller_rank, brand, price')
         .eq('status', 'active')
         .not('bestseller_rank', 'is', null)
         .order('bestseller_rank', { ascending: true })
-        .limit(4);
+        .limit(100);
       
       if (error) throw error;
-      return data as ProductWithSeller[];
+      return data || [];
     },
-    staleTime: 5 * 60 * 1000,
+    staleTime: 10 * 60 * 1000,
   });
 
-  const handleProductClick = (productId: string) => {
-    navigate(`/${currentLang}/${listingSlug}/${productId}`);
-  };
-
-  if (products.length === 0) {
-    return null;
-  }
+  if (products.length === 0) return null;
 
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-10 md:py-14 bg-secondary/10">
       <div className="container-custom">
-        {/* Heading */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              {t('home.topBestsellers') || 'Top Bestsellers'}
-            </h2>
-            <p className="text-muted-foreground mt-2">
-              {t('home.topBestsellersDesc') || 'Most popular items right now'}
-            </p>
-          </div>
-          <button
-            onClick={() => navigate(`/${currentLang}/${getLocalizedSlug('listings', currentLang)}`)}
-            className="hidden sm:flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
-          >
-            {t('common.viewAll')}
-            <ChevronRight className="h-4 w-4" />
-          </button>
+        <div className="flex items-center gap-3 mb-6">
+          <Trophy className="h-6 w-6 text-accent" />
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+            {t('home.topBestsellers') || 'Top Bestsellers'}
+          </h2>
+          <span className="text-sm text-muted-foreground">
+            ({products.length} {t('common.products') || 'products'})
+          </span>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product, index) => (
-            <BestsellerCard
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-1">
+          {products.map((product) => (
+            <BestsellerLink
               key={product.id}
               product={product}
-              rank={product.bestseller_rank || index + 1}
-              onClick={() => handleProductClick(product.id)}
+              lang={currentLang}
+              listingSlug={listingSlug}
             />
           ))}
-        </div>
-
-        {/* Mobile View All Button */}
-        <div className="flex sm:hidden justify-center mt-8">
-          <button
-            onClick={() => navigate(`/${currentLang}/${getLocalizedSlug('listings', currentLang)}`)}
-            className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-semibold"
-          >
-            {t('common.viewAll')}
-            <ChevronRight className="h-4 w-4" />
-          </button>
         </div>
       </div>
     </section>
   );
 };
 
-interface BestsellerCardProps {
+interface BestsellerLinkProps {
   product: any;
-  rank: number;
-  onClick: () => void;
+  lang: SupportedLanguage;
+  listingSlug: string;
 }
 
-const BestsellerCard = ({ product, rank, onClick }: BestsellerCardProps) => {
+const BestsellerLink = ({ product, lang, listingSlug }: BestsellerLinkProps) => {
   const { title } = useTranslatedProduct(product);
-  const image = product.merchant_safe_image_url || product.images?.[0];
 
   return (
-    <Card
-      onClick={onClick}
-      className="group cursor-pointer overflow-hidden transition-all hover:shadow-lg hover:border-primary/50"
+    <Link
+      to={`/${lang}/${listingSlug}/${product.id}`}
+      className="flex items-baseline gap-2 py-1.5 text-sm hover:text-primary transition-colors group"
     >
-      {/* Image Container with Rank Badge */}
-      <div className="relative overflow-hidden bg-secondary/30 aspect-square">
-        {image && (
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        )}
-        {/* Rank Badge */}
-        <Badge
-          variant="default"
-          className="absolute top-3 left-3 text-lg font-bold bg-accent text-accent-foreground"
-        >
-          #{rank}
-        </Badge>
-      </div>
-
-      {/* Content */}
-      <div className="p-4">
-        <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
-          {title}
-        </h3>
-        <p className="text-primary font-bold text-lg mt-2">
-          €{product.price.toFixed(2)}
-        </p>
-        <span className="block w-full mt-3 text-sm font-medium text-primary group-hover:text-primary/80 transition-colors">
-          {useTranslation().t('common.viewDetails') || 'View Details'} →
-        </span>
-      </div>
-    </Card>
+      <span className="text-xs font-bold text-accent shrink-0">
+        #{product.bestseller_rank}
+      </span>
+      <span className="text-foreground/80 group-hover:text-primary truncate">
+        {title}
+      </span>
+      <span className="text-muted-foreground text-xs shrink-0">
+        €{Number(product.price).toLocaleString()}
+      </span>
+    </Link>
   );
 };
 
