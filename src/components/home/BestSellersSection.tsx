@@ -66,6 +66,14 @@ const BestSellersSection = () => {
     return null;
   }
 
+  // Group by subcategory for the pills
+  const subcategoryCounts = bestSellers.reduce((acc, p) => {
+    const sub = p.subcategory || p.category || 'other';
+    acc[sub] = (acc[sub] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+  const subcategoryCount = Object.keys(subcategoryCounts).length;
+
   return (
     <section className="py-12 bg-gradient-to-b from-amber-50/50 to-background dark:from-amber-950/20">
       <div className="container-custom">
@@ -79,7 +87,7 @@ const BestSellersSection = () => {
                 {t('home.bestsellers', 'Top 100 Meilleures Ventes')}
               </h2>
               <p className="text-sm text-muted-foreground">
-                {t('home.bestsellersSubtitle', 'Les équipements les plus populaires sélectionnés pour vous')}
+                {bestSellers.length} {t('common.products', 'products')} · {subcategoryCount} {t('home.subcategories', 'subcategories')}
               </p>
             </div>
           </div>
@@ -108,6 +116,20 @@ const BestSellersSection = () => {
           </div>
         </div>
 
+        {/* Subcategory pills */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {Object.entries(subcategoryCounts)
+            .sort((a, b) => b[1] - a[1])
+            .map(([slug, count]) => (
+              <span
+                key={slug}
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20"
+              >
+                {t(`categoryNames.${slug}`, slug)} ({count})
+              </span>
+            ))}
+        </div>
+
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {currentProducts.map((product, index) => (
             <div key={product.id} className="relative">
@@ -122,7 +144,7 @@ const BestSellersSection = () => {
 
         {totalPages > 1 && (
           <div className="flex justify-center mt-6 gap-1">
-            {Array.from({ length: totalPages }).map((_, index) => (
+            {Array.from({ length: Math.min(totalPages, 15) }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentPage(index)}
