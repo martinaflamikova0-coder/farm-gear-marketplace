@@ -205,7 +205,21 @@
     "divers": "Miscellaneous",
     "tondeuse": "Lawn mowers",
     "debroussailleuses": "Brush cutters",
-    "taille-haies": "Hedge trimmers"
+    "taille-haies": "Hedge trimmers",
+    "marteaux-hydrauliques": "Hydraulic hammers",
+    "grappins": "Grippers",
+    "foreuses": "Drills",
+    "grenailleuses": "Shot blasters",
+    "scies-chantier": "Construction saws",
+    "fendeurs-buches": "Log splitters",
+    "anti-poussiere": "Dust suppression systems",
+    "aspirateurs-industriels": "Industrial vacuums",
+    "separateurs-godets": "Bucket separators",
+    "carotteuses": "Core drills",
+    "pinces-demolition": "Demolition crushers",
+    "betonnieres-godet": "Bucket mixers",
+    "broyeurs-forestiers": "Forestry mulchers",
+    "compacteurs-hydrauliques": "Hydraulic compactors"
   },
   "filters": {
     "title": "Filters",

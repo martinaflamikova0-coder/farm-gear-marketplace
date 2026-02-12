@@ -222,7 +222,21 @@
     "divers": "Vari",
     "tondeuse": "Tosaerba",
     "debroussailleuses": "Decespugliatori",
-    "taille-haies": "Tagliasiepi"
+    "taille-haies": "Tagliasiepi",
+    "marteaux-hydrauliques": "Martelli idraulici",
+    "grappins": "Pinze",
+    "foreuses": "Trivelle",
+    "grenailleuses": "Granigliatrici",
+    "scies-chantier": "Seghe da cantiere",
+    "fendeurs-buches": "Spaccalegna",
+    "anti-poussiere": "Sistemi antipolvere",
+    "aspirateurs-industriels": "Aspiratori industriali",
+    "separateurs-godets": "Separatori a benna",
+    "carotteuses": "Carotatrici",
+    "pinces-demolition": "Pinze da demolizione",
+    "betonnieres-godet": "Mescolatrici a benna",
+    "broyeurs-forestiers": "Trituratori forestali",
+    "compacteurs-hydrauliques": "Compattatori idraulici"
   },
   "filters": {
     "title": "Filtri",

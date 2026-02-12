@@ -222,7 +222,21 @@
     "divers": "Varios",
     "tondeuse": "Cortacéspedes",
     "debroussailleuses": "Desbrozadoras",
-    "taille-haies": "Cortasetos"
+    "taille-haies": "Cortasetos",
+    "marteaux-hydrauliques": "Martillos hidráulicos",
+    "grappins": "Pinzas",
+    "foreuses": "Perforadoras",
+    "grenailleuses": "Granalladoras",
+    "scies-chantier": "Sierras de obra",
+    "fendeurs-buches": "Rajaduores de leña",
+    "anti-poussiere": "Sistemas antipolvo",
+    "aspirateurs-industriels": "Aspiradoras industriales",
+    "separateurs-godets": "Separadores de cucharón",
+    "carotteuses": "Perforadoras de diamante",
+    "pinces-demolition": "Cizallas de demolición",
+    "betonnieres-godet": "Mezcladoras de cucharón",
+    "broyeurs-forestiers": "Trituradoras forestales",
+    "compacteurs-hydrauliques": "Compactadores hidráulicos"
   },
   "filters": {
     "title": "Filtros",

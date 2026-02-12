@@ -205,7 +205,21 @@
     "divers": "Divers",
     "tondeuse": "Tondeuses",
     "debroussailleuses": "Débroussailleuses",
-    "taille-haies": "Taille-haies"
+    "taille-haies": "Taille-haies",
+    "marteaux-hydrauliques": "Marteaux hydrauliques",
+    "grappins": "Grappins",
+    "foreuses": "Foreuses",
+    "grenailleuses": "Grenailleuses",
+    "scies-chantier": "Scies de chantier",
+    "fendeurs-buches": "Fendeurs de bûches",
+    "anti-poussiere": "Systèmes anti-poussière",
+    "aspirateurs-industriels": "Aspirateurs industriels",
+    "separateurs-godets": "Séparateurs à godets",
+    "carotteuses": "Carotteuses",
+    "pinces-demolition": "Pinces de démolition",
+    "betonnieres-godet": "Bétonnières à godet",
+    "broyeurs-forestiers": "Broyeurs forestiers",
+    "compacteurs-hydrauliques": "Compacteurs hydrauliques"
   },
   "filters": {
     "title": "Filtres",

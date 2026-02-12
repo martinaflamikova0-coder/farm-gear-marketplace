@@ -222,7 +222,21 @@
     "divers": "Verschiedenes",
     "tondeuse": "Rasenmäher",
     "debroussailleuses": "Freischneider",
-    "taille-haies": "Heckenscheren"
+    "taille-haies": "Heckenscheren",
+    "marteaux-hydrauliques": "Hydraulikhämmer",
+    "grappins": "Greifer",
+    "foreuses": "Erdbohrgeräte",
+    "grenailleuses": "Kugelstrahlmaschinen",
+    "scies-chantier": "Baukreissägen",
+    "fendeurs-buches": "Holzspalter",
+    "anti-poussiere": "Staubbindesysteme",
+    "aspirateurs-industriels": "Industriesauger",
+    "separateurs-godets": "Schaufelseparatoren",
+    "carotteuses": "Kernbohrgeräte",
+    "pinces-demolition": "Abbruchzangen",
+    "betonnieres-godet": "Betonmischschaufeln",
+    "broyeurs-forestiers": "Forstmulcher",
+    "compacteurs-hydrauliques": "Anbauverdichter"
   },
   "filters": {
     "title": "Filter",
