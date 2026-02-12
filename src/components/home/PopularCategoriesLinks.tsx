@@ -32,7 +32,7 @@ const PopularCategoriesLinks = () => {
   };
 
   const handleViewAll = () => {
-    navigate(`/${currentLang}/${listingsSlug}`);
+    navigate(`/${currentLang}/categories`);
   };
 
   return (
