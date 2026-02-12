@@ -52,7 +52,7 @@ const FeaturedProducts = () => {
             </p>
           </div>
           <Button variant="outline" asChild>
-            <Link to={`/${currentLang}/${listingsSlug}`} className="flex items-center gap-2">
+            <Link to={`/${currentLang}/${listingsSlug}?featured=true`} className="flex items-center gap-2">
               {t('common.viewAll')}
               <ArrowRight className="h-4 w-4" />
             </Link>

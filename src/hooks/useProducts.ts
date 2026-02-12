@@ -140,6 +140,7 @@ export const usePaginatedProducts = (options: {
   yearMin?: number;
   yearMax?: number;
   conditions?: string[];
+  featured?: boolean;
   sortBy?: string;
   page: number;
   pageSize: number;
@@ -147,7 +148,7 @@ export const usePaginatedProducts = (options: {
   return useQuery({
     queryKey: ['products-paginated', options],
     queryFn: async (): Promise<PaginatedProducts> => {
-      const { page, pageSize, category, search, brands, priceMin, priceMax, yearMin, yearMax, conditions, sortBy } = options;
+      const { page, pageSize, category, search, brands, priceMin, priceMax, yearMin, yearMax, conditions, featured, sortBy } = options;
       
       // First, get total count with filters
       let countQuery = supabase
@@ -155,6 +156,7 @@ export const usePaginatedProducts = (options: {
         .select('*', { count: 'exact', head: true })
         .eq('status', 'active');
 
+      if (featured) countQuery = countQuery.eq('featured', true);
       if (category) countQuery = countQuery.eq('category', category);
       if (brands && brands.length > 0) countQuery = countQuery.in('brand', brands);
       if (priceMin) countQuery = countQuery.gte('price', priceMin);
@@ -190,6 +192,7 @@ export const usePaginatedProducts = (options: {
         .select('*')
         .eq('status', 'active');
 
+      if (featured) dataQuery = dataQuery.eq('featured', true);
       if (category) dataQuery = dataQuery.eq('category', category);
       if (brands && brands.length > 0) dataQuery = dataQuery.in('brand', brands);
       if (priceMin) dataQuery = dataQuery.gte('price', priceMin);

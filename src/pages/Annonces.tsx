@@ -30,10 +30,11 @@ const Annonces = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   
-  // Get initial values from URL params
+   // Get initial values from URL params
   const initialPage = parseInt(searchParams.get('page') || '1', 10);
   const initialSort = searchParams.get('sort') || 'date-desc';
   const initialCategory = searchParams.get('category') || '';
+  const initialFeatured = searchParams.get('featured') === 'true';
   
   const [sortBy, setSortBy] = useState(initialSort);
   const [currentPage, setCurrentPage] = useState(initialPage);
@@ -43,6 +44,7 @@ const Annonces = () => {
   
   // Filters state - sync with URL params
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+  const [isFeatured, setIsFeatured] = useState(initialFeatured);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [priceMin, setPriceMin] = useState('');
   const [priceMax, setPriceMax] = useState('');
@@ -76,11 +78,12 @@ const Annonces = () => {
     setSearchParams(newParams, { replace: true });
   };
 
-  // Sync state with URL when URL changes (browser back/forward)
+   // Sync state with URL when URL changes (browser back/forward)
   useEffect(() => {
     const pageFromUrl = parseInt(searchParams.get('page') || '1', 10);
     const sortFromUrl = searchParams.get('sort') || 'date-desc';
     const categoryFromUrl = searchParams.get('category') || '';
+    const featuredFromUrl = searchParams.get('featured') === 'true';
     
     if (pageFromUrl !== currentPage) {
       setCurrentPage(pageFromUrl);
@@ -90,6 +93,9 @@ const Annonces = () => {
     }
     if (categoryFromUrl !== selectedCategory) {
       setSelectedCategory(categoryFromUrl);
+    }
+    if (featuredFromUrl !== isFeatured) {
+      setIsFeatured(featuredFromUrl);
     }
   }, [searchParams]);
 
@@ -103,6 +109,7 @@ const Annonces = () => {
     yearMin: yearMin ? parseInt(yearMin) : undefined,
     yearMax: yearMax ? parseInt(yearMax) : undefined,
     conditions: selectedConditions.length > 0 ? selectedConditions : undefined,
+    featured: isFeatured ? true : undefined,
     sortBy,
     page: currentPage,
     pageSize: ITEMS_PER_PAGE,
