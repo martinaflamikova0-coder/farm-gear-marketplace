@@ -35,6 +35,53 @@ function getGoogleProductCategory(category: string | null, subcategory: string |
   return catMap[category || ""] || "2878";
 }
 
+// Translate French category/subcategory slugs to English for product_type
+function translateCategory(slug: string | null): string {
+  const map: Record<string, string> = {
+    "tracteurs": "Tractors",
+    "tracteurs-agricoles": "Agricultural Tractors",
+    "recolte": "Harvesting Equipment",
+    "travail-sol": "Soil Working Equipment",
+    "manutention": "Material Handling",
+    "chantier": "Construction Equipment",
+    "pieces": "Parts & Accessories",
+    "clotures": "Fencing & Livestock",
+    "distributeurs": "Feed Distributors",
+    "melangeuses": "Feed Mixers",
+    "traite": "Milking Equipment",
+    "autres": "Other Equipment",
+    "tondeuse": "Lawn Mowers",
+    "mini-pelle": "Mini Excavators",
+    "chargeuse": "Loaders",
+    "broyeur": "Shredders",
+  };
+  return map[slug || ""] || slug || "";
+}
+
+// Normalize title casing: convert ALL CAPS titles to Title Case, preserving brand acronyms ≤4 chars
+function normalizeTitle(title: string): string {
+  // If more than 60% of alphabetic chars are uppercase, convert to Title Case
+  const alphaChars = title.replace(/[^a-zA-ZÀ-ÿ]/g, "");
+  const upperCount = (title.match(/[A-ZÀ-Ý]/g) || []).length;
+  if (alphaChars.length > 0 && upperCount / alphaChars.length > 0.6) {
+    return title
+      .split(/(\s+|[-–—])/)
+      .map(word => {
+        // Keep short uppercase words (brands/acronyms like "JCB", "CAT", "4WD")
+        if (/^[A-Z0-9]{1,5}$/.test(word)) return word;
+        // Keep words with numbers mixed (like "GX390", "400V")
+        if (/\d/.test(word) && /[A-Z]/.test(word)) return word;
+        // Convert to title case
+        if (word.length > 1) {
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        }
+        return word;
+      })
+      .join("");
+  }
+  return title;
+}
+
 function escapeXml(str: string | null | undefined): string {
   if (!str) return "";
   return str
@@ -77,11 +124,13 @@ function buildProductEntry(product: any): string {
   const link = `${SITE_URL}/en/listing/${product.id}`;
   const refNumber = `REFEQUITRAD${String(product.reference_number).padStart(5, "0")}`;
 
-  // Use English translations if available, fallback to French
+  // Use English translations if available, fallback to French title (never French description)
   const titleTranslations = product.title_translations;
   const descTranslations = product.description_translations;
-  const enTitle = titleTranslations?.en || product.title;
-  const enDescription = descTranslations?.en || product.description || product.title;
+  const rawEnTitle = titleTranslations?.en || product.title;
+  const enTitle = normalizeTitle(rawEnTitle);
+  // IMPORTANT: Only use English description, never fall back to French description (causes "wrong language" error)
+  const enDescription = descTranslations?.en || enTitle;
 
   // Additional images (merchant-safe first, then regular)
   const additionalImages: string[] = [];
@@ -108,6 +157,10 @@ function buildProductEntry(product: any): string {
   // Google Product Category to avoid "Vehicles" classification
   const googleCategory = getGoogleProductCategory(product.category, product.subcategory);
 
+  // Translate product_type to English
+  const productType = translateCategory(product.category) + 
+    (product.subcategory ? ` > ${translateCategory(product.subcategory)}` : "");
+
   return `
     <item>
       <g:id>${escapeXml(product.id)}</g:id>
@@ -120,11 +173,12 @@ function buildProductEntry(product: any): string {
       <g:availability>${availability}</g:availability>
       <g:condition>${condition}</g:condition>
       <g:content_language>${CONTENT_LANGUAGE}</g:content_language>
+      <g:target_country>GB</g:target_country>
       <g:google_product_category>${escapeXml(googleCategory)}</g:google_product_category>
       ${product.brand ? `<g:brand>${escapeXml(product.brand)}</g:brand>` : ""}
       <g:mpn>${escapeXml(refNumber)}</g:mpn>
       <g:identifier_exists>false</g:identifier_exists>
-      <g:product_type>${escapeXml(product.category)}${product.subcategory ? ` &gt; ${escapeXml(product.subcategory)}` : ""}</g:product_type>
+      <g:product_type>${escapeXml(productType)}</g:product_type>
       ${product.model ? `<g:custom_label_0>${escapeXml(product.model)}</g:custom_label_0>` : ""}
       ${product.year ? `<g:custom_label_1>${product.year}</g:custom_label_1>` : ""}
       ${product.hours ? `<g:custom_label_2>${product.hours}h</g:custom_label_2>` : ""}
