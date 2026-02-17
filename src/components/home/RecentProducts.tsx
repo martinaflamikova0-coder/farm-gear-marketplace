@@ -53,7 +53,7 @@ const RecentProducts = () => {
             </h2>
           </div>
           <Button variant="default" asChild>
-            <Link to={`/${currentLang}/${listingsSlug}`} className="flex items-center gap-2">
+            <Link to={`/${currentLang}/${listingsSlug}?sort=date-desc`} className="flex items-center gap-2">
               {t('common.viewAll')}
               <ArrowRight className="h-4 w-4" />
             </Link>
