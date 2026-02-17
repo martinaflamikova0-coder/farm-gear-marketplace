@@ -29,8 +29,15 @@ function getGoogleProductCategory(category: string | null, subcategory: string |
     "autres": "2878",          // Business & Industrial > Industrial Equipment
   };
   
-  // Special subcategory handling
-  if (subcategory === "tondeuse") return "3602"; // Lawn Mowers
+  // Special subcategory handling to avoid "Vehicles" classification
+  const subCatMap: Record<string, string> = {
+    "tondeuse": "3602",                // Lawn Mowers
+    "tracteurs-agricoles": "4351",     // Agricultural Machinery (NOT Vehicles)
+    "moissonneuses-batteuses": "4351", // Agricultural Machinery (NOT Vehicles)
+    "mini-pelle": "2047",              // Construction
+    "chargeuse": "2047",               // Construction
+  };
+  if (subcategory && subCatMap[subcategory]) return subCatMap[subcategory];
   
   return catMap[category || ""] || "2878";
 }
