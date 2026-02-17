@@ -9,6 +9,30 @@ const corsHeaders = {
 const SITE_URL = "https://ekiptrade.com";
 const CURRENCY = "EUR";
 const TVA_RATE = 0.20;
+const CONTENT_LANGUAGE = "en";
+
+// Map French category slugs to Google Product Category IDs
+// Using specific categories to avoid "Vehicles" classification
+function getGoogleProductCategory(category: string | null, subcategory: string | null): string {
+  const catMap: Record<string, string> = {
+    "tracteurs": "Agriculture > Agricultural Machinery",
+    "recolte": "Agriculture > Agricultural Machinery",
+    "travail-sol": "Agriculture > Agricultural Machinery",
+    "manutention": "Business & Industrial > Material Handling > Forklifts & Loaders",
+    "chantier": "Business & Industrial > Construction",
+    "pieces": "Business & Industrial > Industrial Equipment & Supplies",
+    "clotures": "Agriculture > Livestock Supplies > Fencing",
+    "distributeurs": "Agriculture > Agricultural Machinery",
+    "melangeuses": "Agriculture > Agricultural Machinery",
+    "traite": "Agriculture > Agricultural Machinery",
+    "autres": "Business & Industrial > Industrial Equipment & Supplies",
+  };
+  
+  // Special subcategory handling
+  if (subcategory === "tondeuse") return "Garden & Outdoor > Lawn Mowers";
+  
+  return catMap[category || ""] || "Business & Industrial > Industrial Equipment & Supplies";
+}
 
 function escapeXml(str: string | null | undefined): string {
   if (!str) return "";
@@ -49,8 +73,14 @@ function buildProductEntry(product: any): string {
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
-  const link = `${SITE_URL}/annonce/${product.id}/${slug}`;
+  const link = `${SITE_URL}/en/listing/${product.id}`;
   const refNumber = `REFEQUITRAD${String(product.reference_number).padStart(5, "0")}`;
+
+  // Use English translations if available, fallback to French
+  const titleTranslations = product.title_translations;
+  const descTranslations = product.description_translations;
+  const enTitle = titleTranslations?.en || product.title;
+  const enDescription = descTranslations?.en || product.description || product.title;
 
   // Additional images (merchant-safe first, then regular)
   const additionalImages: string[] = [];
@@ -70,14 +100,17 @@ function buildProductEntry(product: any): string {
   }
 
   // Description - strip HTML, limit to 5000 chars
-  let description = (product.description || product.title || "")
+  let description = (enDescription || enTitle || "")
     .replace(/<[^>]*>/g, "")
     .substring(0, 5000);
+
+  // Google Product Category to avoid "Vehicles" classification
+  const googleCategory = getGoogleProductCategory(product.category, product.subcategory);
 
   return `
     <item>
       <g:id>${escapeXml(product.id)}</g:id>
-      <g:title>${escapeXml(product.title)}</g:title>
+      <g:title>${escapeXml(enTitle)}</g:title>
       <g:description>${escapeXml(description)}</g:description>
       <g:link>${escapeXml(link)}</g:link>
       <g:image_link>${escapeXml(imageUrl)}</g:image_link>
@@ -85,6 +118,8 @@ function buildProductEntry(product: any): string {
       ${salePriceXml || `<g:price>${priceTTC} ${CURRENCY}</g:price>`}
       <g:availability>${availability}</g:availability>
       <g:condition>${condition}</g:condition>
+      <g:content_language>${CONTENT_LANGUAGE}</g:content_language>
+      <g:google_product_category>${escapeXml(googleCategory)}</g:google_product_category>
       ${product.brand ? `<g:brand>${escapeXml(product.brand)}</g:brand>` : ""}
       <g:mpn>${escapeXml(refNumber)}</g:mpn>
       <g:identifier_exists>false</g:identifier_exists>
@@ -93,7 +128,27 @@ function buildProductEntry(product: any): string {
       ${product.year ? `<g:custom_label_1>${product.year}</g:custom_label_1>` : ""}
       ${product.hours ? `<g:custom_label_2>${product.hours}h</g:custom_label_2>` : ""}
       <g:shipping>
+        <g:country>GB</g:country>
+        <g:service>Standard</g:service>
+        <g:price>0.00 GBP</g:price>
+      </g:shipping>
+      <g:shipping>
         <g:country>FR</g:country>
+        <g:service>Standard</g:service>
+        <g:price>0.00 ${CURRENCY}</g:price>
+      </g:shipping>
+      <g:shipping>
+        <g:country>DE</g:country>
+        <g:service>Standard</g:service>
+        <g:price>0.00 ${CURRENCY}</g:price>
+      </g:shipping>
+      <g:shipping>
+        <g:country>IE</g:country>
+        <g:service>Standard</g:service>
+        <g:price>0.00 GBP</g:price>
+      </g:shipping>
+      <g:shipping>
+        <g:country>AT</g:country>
         <g:service>Standard</g:service>
         <g:price>0.00 ${CURRENCY}</g:price>
       </g:shipping>
@@ -115,7 +170,7 @@ Deno.serve(async (req) => {
     // Fetch all active products
     const { data: products, error } = await supabase
       .from("products")
-      .select("id, title, description, price, original_price, discount_percentage, category, subcategory, brand, model, condition, year, hours, kilometers, images, merchant_safe_image_url, merchant_safe_additional_images, stock, status, reference_number, location")
+      .select("id, title, description, price, original_price, discount_percentage, category, subcategory, brand, model, condition, year, hours, kilometers, images, merchant_safe_image_url, merchant_safe_additional_images, stock, status, reference_number, location, title_translations, description_translations")
       .eq("status", "active")
       .order("created_at", { ascending: false });
 
@@ -131,9 +186,9 @@ Deno.serve(async (req) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
   <channel>
-    <title>EkipTrade - Matériel Agricole et Industriel</title>
+    <title>EkipTrade - Agricultural &amp; Industrial Equipment</title>
     <link>${SITE_URL}</link>
-    <description>Achetez du matériel agricole et industriel d'occasion et neuf sur EkipTrade</description>
+    <description>Buy new and used agricultural and industrial equipment on EkipTrade</description>
     ${items}
   </channel>
 </rss>`;
