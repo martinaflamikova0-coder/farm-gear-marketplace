@@ -14,24 +14,25 @@ const CONTENT_LANGUAGE = "en";
 // Map French category slugs to Google Product Category IDs
 // Using specific categories to avoid "Vehicles" classification
 function getGoogleProductCategory(category: string | null, subcategory: string | null): string {
+  // Use official Google Product Category numeric IDs to avoid "Vehicles" misclassification
   const catMap: Record<string, string> = {
-    "tracteurs": "Agriculture > Agricultural Machinery",
-    "recolte": "Agriculture > Agricultural Machinery",
-    "travail-sol": "Agriculture > Agricultural Machinery",
-    "manutention": "Business & Industrial > Material Handling > Forklifts & Loaders",
-    "chantier": "Business & Industrial > Construction",
-    "pieces": "Business & Industrial > Industrial Equipment & Supplies",
-    "clotures": "Agriculture > Livestock Supplies > Fencing",
-    "distributeurs": "Agriculture > Agricultural Machinery",
-    "melangeuses": "Agriculture > Agricultural Machinery",
-    "traite": "Agriculture > Agricultural Machinery",
-    "autres": "Business & Industrial > Industrial Equipment & Supplies",
+    "tracteurs": "4351",       // Business & Industrial > Agriculture > Agricultural Machinery
+    "recolte": "4351",         // Business & Industrial > Agriculture > Agricultural Machinery
+    "travail-sol": "4351",     // Business & Industrial > Agriculture > Agricultural Machinery
+    "manutention": "2272",     // Business & Industrial > Material Handling > Forklifts
+    "chantier": "2047",        // Business & Industrial > Construction
+    "pieces": "2878",          // Business & Industrial > Industrial Equipment
+    "clotures": "4352",        // Business & Industrial > Agriculture > Livestock Supplies
+    "distributeurs": "4351",   // Business & Industrial > Agriculture > Agricultural Machinery
+    "melangeuses": "4351",     // Business & Industrial > Agriculture > Agricultural Machinery
+    "traite": "4351",          // Business & Industrial > Agriculture > Agricultural Machinery
+    "autres": "2878",          // Business & Industrial > Industrial Equipment
   };
   
   // Special subcategory handling
-  if (subcategory === "tondeuse") return "Garden & Outdoor > Lawn Mowers";
+  if (subcategory === "tondeuse") return "3602"; // Lawn Mowers
   
-  return catMap[category || ""] || "Business & Industrial > Industrial Equipment & Supplies";
+  return catMap[category || ""] || "2878";
 }
 
 function escapeXml(str: string | null | undefined): string {
@@ -145,10 +146,35 @@ function buildProductEntry(product: any): string {
       <g:shipping>
         <g:country>IE</g:country>
         <g:service>Standard</g:service>
-        <g:price>0.00 GBP</g:price>
+        <g:price>0.00 ${CURRENCY}</g:price>
       </g:shipping>
       <g:shipping>
         <g:country>AT</g:country>
+        <g:service>Standard</g:service>
+        <g:price>0.00 ${CURRENCY}</g:price>
+      </g:shipping>
+      <g:shipping>
+        <g:country>ES</g:country>
+        <g:service>Standard</g:service>
+        <g:price>0.00 ${CURRENCY}</g:price>
+      </g:shipping>
+      <g:shipping>
+        <g:country>IT</g:country>
+        <g:service>Standard</g:service>
+        <g:price>0.00 ${CURRENCY}</g:price>
+      </g:shipping>
+      <g:shipping>
+        <g:country>PT</g:country>
+        <g:service>Standard</g:service>
+        <g:price>0.00 ${CURRENCY}</g:price>
+      </g:shipping>
+      <g:shipping>
+        <g:country>BE</g:country>
+        <g:service>Standard</g:service>
+        <g:price>0.00 ${CURRENCY}</g:price>
+      </g:shipping>
+      <g:shipping>
+        <g:country>NL</g:country>
         <g:service>Standard</g:service>
         <g:price>0.00 ${CURRENCY}</g:price>
       </g:shipping>
