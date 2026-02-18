@@ -36,6 +36,8 @@ function getGoogleProductCategory(category: string | null, subcategory: string |
     "moissonneuses-batteuses": "4351", // Agricultural Machinery (NOT Vehicles)
     "mini-pelle": "2047",              // Construction
     "chargeuse": "2047",               // Construction
+    "micro-tracteurs": "3602",         // Lawn Mowers (ride-on mowers, NOT Vehicles)
+    "tracteurs-vignerons": "4351",     // Agricultural Machinery (vineyard tractors)
   };
   if (subcategory && subCatMap[subcategory]) return subCatMap[subcategory];
   
@@ -192,7 +194,7 @@ function buildProductEntry(product: any): string {
       <g:shipping>
         <g:country>GB</g:country>
         <g:service>Standard</g:service>
-        <g:price>0.00 GBP</g:price>
+        <g:price>0.00 ${CURRENCY}</g:price>
       </g:shipping>
       <g:shipping>
         <g:country>FR</g:country>
