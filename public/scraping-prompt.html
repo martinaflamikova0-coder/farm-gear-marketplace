@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Scraping - EkipTrade</title>
+<style>
+body { font-family: system-ui, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f5f5f5; }
+.container { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+h1 { color: #333; margin-bottom: 10px; }
+.copy-btn { background: #2563eb; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 16px; margin-bottom: 20px; }
+.copy-btn:hover { background: #1d4ed8; }
+.copy-btn.copied { background: #16a34a; }
+pre { background: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 8px; white-space: pre-wrap; word-wrap: break-word; font-size: 13px; line-height: 1.6; max-height: 600px; overflow-y: auto; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>📋 Prompt Scraping Lovable</h1>
+<p>Cliquez sur le bouton pour copier le prompt complet :</p>
+<button class="copy-btn" onclick="copyPrompt(this)">📋 Copier le prompt</button>
+
+<pre id="prompt-text">Crée un système complet d'import de produits par scraping web avec les éléments suivants :
+
+Prérequis :
+1. Connecte le connecteur Firecrawl (connector_id: firecrawl) au projet pour obtenir la clé API.
+2. Lovable Cloud activé avec une table "products" contenant au minimum les colonnes : title, description, price (number), category (text), brand (text), images (text[]), status (text, default 'active'), stock (number, default 5), condition (text), title_translations (jsonb), description_translations (jsonb).
+3. Table "categories" avec id, name, slug.
+4. Table "user_roles" avec user_id, role (enum 'admin'/'user') et une fonction RPC has_role(_user_id uuid, _role app_role).
+5. Un hook useCategories qui récupère les catégories depuis la base.
+
+3 Edge Functions à créer :
+
+1. scrape-product (verify_jwt = false)
+- Authentification JWT + vérification rôle admin via has_role
+- Reçoit { url: string } en body
+- Utilise Firecrawl API (https://api.firecrawl.dev/v1/scrape) avec formats ["markdown", "html", "links"] et waitFor: 3000
+- Extrait du HTML/Markdown : titre (via classes product_title, entry-title, ou H1 markdown), prix (WooCommerce price elements, patterns X,XX euros, gestion des séparateurs milliers allemands), images (galerie WooCommerce data-large_image, wp-post-image, filtrage des icônes/logos/placeholders/miniatures), description (section Produktbeschreibung ou tab-description), marque (matching dans le titre contre une liste de marques connues), spécifications (bullet points), catégorie (mapping de slugs URL source vers slugs internes)
+- Retourne { success: true, product: ScrapedProduct }
+
+2. scrape-category (verify_jwt = false)
+- Authentification JWT + vérification rôle admin
+- Reçoit { url: string, limit?: number } en body
+- Utilise Firecrawl scrape pour obtenir les liens de la page catégorie
+- Filtre les URLs contenant /product/ (exclut /product-category/, ?add-to-cart=, ancres #)
+- Fallback vers Firecrawl Map API si aucun produit trouvé
+- Déduplique et limite les résultats
+- Retourne { success: true, productUrls: string[], totalFound: number }
+
+3. generate-product-content (verify_jwt = false)
+- Authentification JWT + vérification rôle admin
+- Reçoit { product: ProductInput, sourceLang?: string } en body
+- Utilise Lovable AI Gateway (https://ai.gateway.lovable.dev/v1/chat/completions) avec le modèle google/gemini-3-flash-preview et le secret LOVABLE_API_KEY
+- Prompt spécialisé copywriting e-commerce : génère titre SEO optimisé + description 2-3 paragraphes + traductions en 6 langues (FR, EN, DE, ES, IT, PT)
+- Gestion des erreurs 429 (rate limit) et 402 (crédits épuisés)
+- Retourne { success: true, content: { title, description, title_translations, description_translations } }
+
+Page Admin /admin/import :
+- Onglet "Produit unique" : Input URL, bouton Scraper, affichage des données extraites (titre, prix, marque, images, description, sélecteur de catégorie), bouton "Générer avec IA", affichage du contenu IA avec traductions, bouton "Importer"
+- Onglet "Import en masse" : Input URL catégorie, bouton Scanner, liste des produits trouvés avec checkboxes, images miniatures, statuts (En attente/Scraping/Génération IA/Prêt/Importé/Erreur), bouton "Traiter sélectionnés" (scrape + IA séquentiel avec délai 1.5s entre chaque), barre de progression, bouton "Importer prêts"
+- Déduplication 3 niveaux : dans le batch en cours, dans la base de données (titre + prix), et dans l'interface
+- Produits importés avec stock: 5, condition: 'new', status: 'active'
+- UI avec shadcn/ui (Card, Tabs, Badge, Progress, Checkbox, ScrollArea, Select, Input, Textarea, Button)
+
+Adaptations nécessaires pour ton projet :
+- La liste des marques dans scrape-product selon ton secteur
+- Le categoryMapping dans scrape-product selon tes catégories internes
+- La langue source (sourceLang) si le site cible n'est pas en allemand
+- Les patterns d'extraction HTML si le site cible n'utilise pas WooCommerce
+- Les filtres d'images selon les patterns du site cible
+- Les patterns d'URL dans scrape-category (actuellement /product/ pour WooCommerce)
+- Le placeholder d'URL dans l'interface admin</pre>
+</div>
+
+<script>
+function copyPrompt(btn) {
+  const text = document.getElementById('prompt-text').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✅ Copié !';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '📋 Copier le prompt';
+      btn.classList.remove('copied');
+    }, 3000);
+  });
+}
+</script>
+</body>
+</html>
