@@ -650,7 +650,7 @@ const Checkout = () => {
                     {(isBankAccountsLoading || isPaypalLoading) ? (
                       <div className="space-y-3">
                         <Skeleton className="h-5 w-32" />
-                        <div className="grid grid-cols-4 gap-3">
+                        <div className="grid grid-cols-5 gap-3">
                           <Skeleton className="h-20 w-full rounded-lg" />
                           <Skeleton className="h-20 w-full rounded-lg" />
                           <Skeleton className="h-20 w-full rounded-lg" />
@@ -660,7 +660,7 @@ const Checkout = () => {
                     ) : (
                       <div className="space-y-4">
                         <Label className="text-base font-medium">{t('checkout.payment.methodTitle')}</Label>
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
                           {/* Mastercard - non-functional */}
                           <button
                             type="button"
@@ -725,6 +725,27 @@ const Checkout = () => {
                               <text x="38" y="22" textAnchor="end" fontSize="5.5" fontWeight="bold" fontFamily="Arial" fill="#333">Bancaire</text>
                             </svg>
                             <span className="text-xs font-medium text-foreground">{t('checkout.payment.bankTransfer')}</span>
+                          </button>
+
+                          {/* PayPal - functional when configured */}
+                          <button
+                            type="button"
+                            onClick={() => isPaypalConfigured && setPaymentMethod('paypal')}
+                            disabled={!isPaypalConfigured}
+                            className={`flex flex-col items-center justify-center gap-2 rounded-lg border p-4 h-24 transition-all ${
+                              paymentMethod === 'paypal'
+                                ? 'border-primary bg-primary/10 ring-2 ring-primary/30 shadow-md'
+                                : isPaypalConfigured 
+                                  ? 'border-border bg-card hover:border-primary/50 hover:bg-primary/5 cursor-pointer'
+                                  : 'border-border bg-muted/30 opacity-50 cursor-not-allowed'
+                            }`}
+                          >
+                            <svg viewBox="0 0 48 32" className="h-8 w-auto">
+                              <rect width="48" height="32" rx="4" fill="#f5f5f5"/>
+                              <path d="M15.5 8h5.2c2.8 0 4.3 1.4 4 3.8-.4 3.4-2.6 5.2-5.3 5.2h-1.4c-.4 0-.7.3-.8.7l-.7 4.3c0 .2-.2.4-.4.4h-2.7c-.3 0-.5-.2-.4-.5l2.2-13.5c.1-.3.3-.4.6-.4z" fill="#003087"/>
+                              <path d="M32 8h5.2c2.8 0 4.3 1.4 4 3.8-.4 3.4-2.6 5.2-5.3 5.2h-1.4c-.4 0-.7.3-.8.7l-.7 4.3c0 .2-.2.4-.4.4h-2.7c-.3 0-.5-.2-.4-.5l2.2-13.5c.1-.3.3-.4.6-.4z" fill="#0070E0"/>
+                            </svg>
+                            <span className="text-xs font-medium text-foreground">PayPal</span>
                           </button>
                         </div>
                         <p className="text-xs text-muted-foreground italic">
