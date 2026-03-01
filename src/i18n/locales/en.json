@@ -435,6 +435,8 @@
       "description": "Choose your preferred payment method",
       "methodTitle": "Payment method",
       "bankTransfer": "Bank transfer",
+      "comingSoon": "Coming soon",
+      "cardComingSoon": "Card payments will be available soon. Only bank transfer is currently accepted.",
       "paypal": "PayPal",
       "accountHolder": "Account holder",
       "amountToTransfer": "Amount to transfer",

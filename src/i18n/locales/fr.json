@@ -435,6 +435,8 @@
       "description": "Choisissez votre méthode de paiement préférée",
       "methodTitle": "Mode de paiement",
       "bankTransfer": "Virement bancaire",
+      "comingSoon": "Bientôt disponible",
+      "cardComingSoon": "Les paiements par carte seront bientôt disponibles. Seul le virement bancaire est actuellement accepté.",
       "paypal": "PayPal",
       "accountHolder": "Titulaire",
       "amountToTransfer": "Montant à virer",

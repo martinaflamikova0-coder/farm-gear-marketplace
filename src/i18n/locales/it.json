@@ -431,6 +431,8 @@
       "description": "Scegli il tuo metodo di pagamento preferito",
       "methodTitle": "Metodo di pagamento",
       "bankTransfer": "Bonifico bancario",
+      "comingSoon": "Prossimamente",
+      "cardComingSoon": "I pagamenti con carta saranno presto disponibili. Attualmente è accettato solo il bonifico bancario.",
       "paypal": "PayPal",
       "accountHolder": "Intestatario",
       "amountToTransfer": "Importo da trasferire",

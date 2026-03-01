@@ -431,6 +431,8 @@
       "description": "Wählen Sie Ihre bevorzugte Zahlungsmethode",
       "methodTitle": "Zahlungsmethode",
       "bankTransfer": "Banküberweisung",
+      "comingSoon": "Demnächst verfügbar",
+      "cardComingSoon": "Kartenzahlungen werden bald verfügbar sein. Derzeit wird nur Banküberweisung akzeptiert.",
       "paypal": "PayPal",
       "accountHolder": "Kontoinhaber",
       "amountToTransfer": "Zu überweisender Betrag",
