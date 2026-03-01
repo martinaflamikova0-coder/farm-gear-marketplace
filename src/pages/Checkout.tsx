@@ -650,66 +650,86 @@ const Checkout = () => {
                     {(isBankAccountsLoading || isPaypalLoading) ? (
                       <div className="space-y-3">
                         <Skeleton className="h-5 w-32" />
-                        <Skeleton className="h-16 w-full" />
-                        <Skeleton className="h-16 w-full" />
+                        <div className="grid grid-cols-4 gap-3">
+                          <Skeleton className="h-20 w-full rounded-lg" />
+                          <Skeleton className="h-20 w-full rounded-lg" />
+                          <Skeleton className="h-20 w-full rounded-lg" />
+                          <Skeleton className="h-20 w-full rounded-lg" />
+                        </div>
                       </div>
                     ) : (
-                      <div className="space-y-3">
+                      <div className="space-y-4">
                         <Label className="text-base font-medium">{t('checkout.payment.methodTitle')}</Label>
-                        <RadioGroup
-                          value={paymentMethod}
-                          onValueChange={(value: PaymentMethod) => setPaymentMethod(value)}
-                          className="grid gap-3"
-                        >
-                          {/* Bank Transfer - always available if configured */}
-                          <div 
-                            className={`flex items-center space-x-3 rounded-lg border p-4 cursor-pointer transition-colors ${
-                              paymentMethod === 'bank_transfer' 
-                                ? 'border-primary bg-primary/5' 
-                                : 'border-border hover:border-primary/50'
-                            } ${!hasBankAccounts ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                          {/* Mastercard - non-functional */}
+                          <button
+                            type="button"
+                            disabled
+                            className="flex flex-col items-center justify-center gap-2 rounded-lg border border-border bg-muted/30 p-4 h-24 opacity-50 cursor-not-allowed transition-colors"
+                            title={t('checkout.payment.comingSoon', { defaultValue: 'Bientôt disponible' })}
                           >
-                            <RadioGroupItem value="bank_transfer" id="bank_transfer" disabled={!hasBankAccounts} />
-                            <Label htmlFor="bank_transfer" className="flex items-center gap-2 cursor-pointer flex-1">
-                              <Building2 className="h-5 w-5 text-muted-foreground" />
-                              <span className="flex-1">{t('checkout.payment.bankTransfer')}</span>
-                              {hasBankAccounts && (
-                                <span className="text-xs text-success bg-success/10 px-2 py-1 rounded">
-                                  {t('checkout.payment.available', { defaultValue: 'Disponible' })}
-                                </span>
-                              )}
-                            </Label>
-                          </div>
+                            <svg viewBox="0 0 48 32" className="h-8 w-auto">
+                              <rect width="48" height="32" rx="4" fill="#f5f5f5"/>
+                              <circle cx="18" cy="16" r="10" fill="#EB001B"/>
+                              <circle cx="30" cy="16" r="10" fill="#F79E1B"/>
+                              <path d="M24 8.8a10 10 0 0 1 0 14.4 10 10 0 0 1 0-14.4z" fill="#FF5F00"/>
+                            </svg>
+                            <span className="text-xs font-medium text-muted-foreground">Mastercard</span>
+                          </button>
 
-                          {/* PayPal - show with status */}
-                          <div 
-                            className={`flex items-center space-x-3 rounded-lg border p-4 transition-colors ${
-                              isPaypalConfigured 
-                                ? paymentMethod === 'paypal' 
-                                  ? 'border-primary bg-primary/5 cursor-pointer' 
-                                  : 'border-border hover:border-primary/50 cursor-pointer'
-                                : 'border-border opacity-50 cursor-not-allowed'
+                          {/* Visa - non-functional */}
+                          <button
+                            type="button"
+                            disabled
+                            className="flex flex-col items-center justify-center gap-2 rounded-lg border border-border bg-muted/30 p-4 h-24 opacity-50 cursor-not-allowed transition-colors"
+                            title={t('checkout.payment.comingSoon', { defaultValue: 'Bientôt disponible' })}
+                          >
+                            <svg viewBox="0 0 48 32" className="h-8 w-auto">
+                              <rect width="48" height="32" rx="4" fill="#f5f5f5"/>
+                              <text x="24" y="20" textAnchor="middle" fontSize="14" fontWeight="bold" fontFamily="Arial" fill="#1A1F71">VISA</text>
+                            </svg>
+                            <span className="text-xs font-medium text-muted-foreground">Visa</span>
+                          </button>
+
+                          {/* CB - non-functional */}
+                          <button
+                            type="button"
+                            disabled
+                            className="flex flex-col items-center justify-center gap-2 rounded-lg border border-border bg-muted/30 p-4 h-24 opacity-50 cursor-not-allowed transition-colors"
+                            title={t('checkout.payment.comingSoon', { defaultValue: 'Bientôt disponible' })}
+                          >
+                            <svg viewBox="0 0 48 32" className="h-8 w-auto">
+                              <rect width="48" height="32" rx="4" fill="#1D4999"/>
+                              <text x="24" y="21" textAnchor="middle" fontSize="16" fontWeight="bold" fontFamily="Arial" fill="white">CB</text>
+                            </svg>
+                            <span className="text-xs font-medium text-muted-foreground">CB</span>
+                          </button>
+
+                          {/* Virement Bancaire - functional */}
+                          <button
+                            type="button"
+                            onClick={() => setPaymentMethod('bank_transfer')}
+                            disabled={!hasBankAccounts}
+                            className={`flex flex-col items-center justify-center gap-2 rounded-lg border p-4 h-24 transition-all ${
+                              paymentMethod === 'bank_transfer'
+                                ? 'border-primary bg-primary/10 ring-2 ring-primary/30 shadow-md'
+                                : hasBankAccounts 
+                                  ? 'border-border bg-card hover:border-primary/50 hover:bg-primary/5 cursor-pointer'
+                                  : 'border-border bg-muted/30 opacity-50 cursor-not-allowed'
                             }`}
                           >
-                            <RadioGroupItem value="paypal" id="paypal" disabled={!isPaypalConfigured} />
-                            <Label htmlFor="paypal" className={`flex items-center gap-2 flex-1 ${isPaypalConfigured ? 'cursor-pointer' : 'cursor-not-allowed'}`}>
-                              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.384c.046-.257.268-.45.53-.45h6.94c2.392 0 4.074.788 5.003 2.344.467.783.706 1.706.706 2.742 0 1.24-.377 2.284-1.122 3.104-.733.806-1.797 1.32-3.168 1.527l.02.025a4.51 4.51 0 0 1 .973 1.32c.294.59.44 1.23.44 1.907 0 1.087-.296 2.047-.881 2.855-.602.832-1.46 1.454-2.553 1.851-.784.285-1.716.428-2.774.428H7.076zM9.674 8.34l-.693 4.054h1.296c1.204 0 2.12-.21 2.723-.623.612-.42.92-1.062.92-1.908 0-.616-.198-1.08-.594-1.386-.392-.304-1.002-.457-1.83-.457l-1.822.32z" fill="#003087"/>
-                                <path d="M18.126 8.377c-.106.654-.321 1.262-.64 1.817-.562.979-1.429 1.678-2.579 2.08-.812.283-1.764.425-2.837.425h-1.21l-.633 3.692a.53.53 0 0 1-.525.442H7.076l.257-1.5h1.369a.53.53 0 0 0 .524-.442l.634-3.692h1.846c1.087 0 2.049-.135 2.867-.404 1.093-.36 1.958-.954 2.575-1.767.566-.744.87-1.598.904-2.546l.074-.105z" fill="#0070E0"/>
-                              </svg>
-                              <span className="flex-1">PayPal</span>
-                              {isPaypalConfigured ? (
-                                <span className="text-xs text-success bg-success/10 px-2 py-1 rounded">
-                                  {t('checkout.payment.available', { defaultValue: 'Disponible' })}
-                                </span>
-                              ) : (
-                                <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
-                                  {t('checkout.payment.notConfigured', { defaultValue: 'Non configuré' })}
-                                </span>
-                              )}
-                            </Label>
-                          </div>
-                        </RadioGroup>
+                            <svg viewBox="0 0 48 32" className="h-8 w-auto">
+                              <rect width="48" height="32" rx="4" fill="#f5f5f5"/>
+                              <path d="M10 18h12M22 14l5 4-5 4" stroke="#F97316" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                              <text x="38" y="14" textAnchor="end" fontSize="5.5" fontWeight="bold" fontFamily="Arial" fill="#333">Virement</text>
+                              <text x="38" y="22" textAnchor="end" fontSize="5.5" fontWeight="bold" fontFamily="Arial" fill="#333">Bancaire</text>
+                            </svg>
+                            <span className="text-xs font-medium text-foreground">{t('checkout.payment.bankTransfer')}</span>
+                          </button>
+                        </div>
+                        <p className="text-xs text-muted-foreground italic">
+                          {t('checkout.payment.cardComingSoon', { defaultValue: 'Les paiements par carte seront bientôt disponibles. Seul le virement bancaire est actuellement accepté.' })}
+                        </p>
                       </div>
                     )}
 
