@@ -431,6 +431,8 @@
       "description": "Elige tu método de pago preferido",
       "methodTitle": "Método de pago",
       "bankTransfer": "Transferencia bancaria",
+      "comingSoon": "Próximamente",
+      "cardComingSoon": "Los pagos con tarjeta estarán disponibles pronto. Solo se acepta transferencia bancaria actualmente.",
       "paypal": "PayPal",
       "accountHolder": "Titular",
       "amountToTransfer": "Importe a transferir",
