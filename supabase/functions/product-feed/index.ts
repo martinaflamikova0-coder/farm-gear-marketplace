@@ -181,8 +181,7 @@ function buildProductEntry(product: any): string {
       ${salePriceXml || `<g:price>${priceTTC} ${CURRENCY}</g:price>`}
       <g:availability>${availability}</g:availability>
       <g:condition>${condition}</g:condition>
-      <g:content_language>${CONTENT_LANGUAGE}</g:content_language>
-      <g:target_country>GB</g:target_country>
+      
       <g:google_product_category>${escapeXml(googleCategory)}</g:google_product_category>
       ${product.brand ? `<g:brand>${escapeXml(product.brand)}</g:brand>` : ""}
       <g:mpn>${escapeXml(refNumber)}</g:mpn>
