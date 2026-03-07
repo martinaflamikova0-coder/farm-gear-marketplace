@@ -161,7 +161,7 @@ const ChatWidget = () => {
                   <ArrowLeft className="h-4 w-4" />
                 </button>
               )}
-              <img src={logoEkiptrade} alt="EkipTrade" className="h-8 w-auto rounded-full bg-white p-0.5" />
+              <img src={logoEkiptrade} alt="EkipTrade" className="h-8 w-8 max-h-8 max-w-8 rounded-full bg-white p-0.5 object-contain flex-shrink-0" />
               <div>
                 <p className="text-primary-foreground font-semibold text-sm">EkipTrade</p>
                 <p className="text-primary-foreground/60 text-xs">
