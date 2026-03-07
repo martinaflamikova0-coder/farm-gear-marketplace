@@ -152,7 +152,7 @@ const ChatWidget = () => {
   return (
     <>
       {isOpen && (
-        <div className="fixed bottom-24 right-4 z-50 w-[360px] max-w-[calc(100vw-2rem)] rounded-2xl shadow-2xl overflow-hidden animate-scale-in flex flex-col" style={{ maxHeight: 'min(520px, calc(100vh - 8rem))' }}>
+        <div className="fixed bottom-24 right-4 z-[60] w-[360px] max-w-[calc(100vw-2rem)] rounded-2xl shadow-2xl overflow-hidden animate-scale-in flex flex-col bg-background" style={{ maxHeight: 'min(520px, calc(100vh - 8rem))' }}>
           {/* Header */}
           <div className="bg-foreground px-4 py-3 flex items-center justify-between flex-shrink-0">
             <div className="flex items-center gap-3">
