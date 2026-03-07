@@ -192,36 +192,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Social media buttons */}
-          <div className="flex items-center justify-center gap-3">
-            <a 
-              href="https://facebook.com/ekiptrade" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="border border-primary-foreground/30 rounded-lg p-3 hover:border-primary-foreground/60 hover:bg-primary-foreground/10 transition-all"
-              aria-label="Facebook"
-            >
-              <Facebook className="h-5 w-5 text-primary-foreground/70" />
-            </a>
-            <a 
-              href="https://twitter.com/ekiptrade" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="border border-primary-foreground/30 rounded-lg p-3 hover:border-primary-foreground/60 hover:bg-primary-foreground/10 transition-all"
-              aria-label="Twitter"
-            >
-              <Twitter className="h-5 w-5 text-primary-foreground/70" />
-            </a>
-            <a 
-              href="https://instagram.com/ekiptrade" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="border border-primary-foreground/30 rounded-lg p-3 hover:border-primary-foreground/60 hover:bg-primary-foreground/10 transition-all"
-              aria-label="Instagram"
-            >
-              <Instagram className="h-5 w-5 text-primary-foreground/70" />
-            </a>
-          </div>
         </div>
       </div>
     </footer>
