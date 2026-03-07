@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Twitter, Instagram } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useCategoriesWithCounts } from '@/hooks/useCategories';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
@@ -40,9 +40,9 @@ const Footer = () => {
               {t('footer.description')}
             </p>
             <div className="space-y-2 text-sm">
-              <a href="tel:+447883782699" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+              <a href="tel:+393773890872" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                 <Phone className="h-4 w-4" />
-                +44 7883 782699
+                +39 377 389 0872
               </a>
               <a href="mailto:infos@ekiptrade.com" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                 <Mail className="h-4 w-4" />
@@ -50,11 +50,8 @@ const Footer = () => {
               </a>
               <div className="flex items-start gap-2 text-primary-foreground/70">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <span>Wednesbury Trading Estate, Block P,<br />Wednesbury WS10 7JN, UK</span>
+                <span>Via Vittorio Veneto 118,<br />28040 Oleggio Castello,<br />Piémont, Italie</span>
               </div>
-              <p className="text-primary-foreground/70 text-xs mt-2">
-                Company No. 54456764
-              </p>
             </div>
           </div>
 
@@ -143,10 +140,88 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-primary-foreground/60">
-            © {new Date().getFullYear()} EkipTrade. {t('footer.rights')}. Company No. 54456764
+        {/* Bottom section */}
+        <div className="border-t border-primary-foreground/20 mt-8 pt-8">
+          {/* Copyright */}
+          <p className="text-sm text-primary-foreground/60 text-center mb-6">
+            © {new Date().getFullYear()} EkipTrade. {t('footer.rights')}
           </p>
+
+          {/* Payment methods */}
+          <div className="flex items-center justify-center gap-3 mb-6">
+            {/* Visa */}
+            <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center h-10 w-16">
+              <svg viewBox="0 0 48 32" className="h-6 w-auto" aria-label="Visa">
+                <rect width="48" height="32" rx="4" fill="#1A1F71"/>
+                <text x="24" y="20" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold" fontFamily="Arial, sans-serif">VISA</text>
+              </svg>
+            </div>
+            {/* Mastercard */}
+            <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center h-10 w-16">
+              <svg viewBox="0 0 48 32" className="h-6 w-auto" aria-label="Mastercard">
+                <circle cx="18" cy="16" r="10" fill="#EB001B"/>
+                <circle cx="30" cy="16" r="10" fill="#F79E1B"/>
+                <path d="M24 8.5a10 10 0 0 1 0 15" fill="#FF5F00"/>
+              </svg>
+            </div>
+            {/* PayPal */}
+            <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center h-10 w-16">
+              <svg viewBox="0 0 48 32" className="h-6 w-auto" aria-label="PayPal">
+                <text x="24" y="14" textAnchor="middle" fill="#003087" fontSize="8" fontWeight="bold" fontFamily="Arial, sans-serif">Pay</text>
+                <text x="24" y="24" textAnchor="middle" fill="#009CDE" fontSize="8" fontWeight="bold" fontFamily="Arial, sans-serif">Pal</text>
+              </svg>
+            </div>
+            {/* CB */}
+            <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center h-10 w-16">
+              <svg viewBox="0 0 48 32" className="h-6 w-auto" aria-label="CB">
+                <rect width="48" height="32" rx="4" fill="#005CA9"/>
+                <text x="24" y="20" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold" fontFamily="Arial, sans-serif">CB</text>
+              </svg>
+            </div>
+            {/* Bank Transfer */}
+            <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center h-10 w-16">
+              <svg viewBox="0 0 48 32" className="h-6 w-auto" aria-label="Bank Transfer">
+                <rect width="48" height="32" rx="4" fill="#2E7D32"/>
+                <path d="M24 6L10 14h28L24 6z" fill="white"/>
+                <rect x="14" y="15" width="3" height="8" fill="white"/>
+                <rect x="20" y="15" width="3" height="8" fill="white"/>
+                <rect x="26" y="15" width="3" height="8" fill="white"/>
+                <rect x="32" y="15" width="3" height="8" fill="white"/>
+                <rect x="10" y="24" width="28" height="3" fill="white"/>
+              </svg>
+            </div>
+          </div>
+
+          {/* Social media buttons */}
+          <div className="flex items-center justify-center gap-3">
+            <a 
+              href="https://facebook.com/ekiptrade" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="border border-primary-foreground/30 rounded-lg p-3 hover:border-primary-foreground/60 hover:bg-primary-foreground/10 transition-all"
+              aria-label="Facebook"
+            >
+              <Facebook className="h-5 w-5 text-primary-foreground/70" />
+            </a>
+            <a 
+              href="https://twitter.com/ekiptrade" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="border border-primary-foreground/30 rounded-lg p-3 hover:border-primary-foreground/60 hover:bg-primary-foreground/10 transition-all"
+              aria-label="Twitter"
+            >
+              <Twitter className="h-5 w-5 text-primary-foreground/70" />
+            </a>
+            <a 
+              href="https://instagram.com/ekiptrade" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="border border-primary-foreground/30 rounded-lg p-3 hover:border-primary-foreground/60 hover:bg-primary-foreground/10 transition-all"
+              aria-label="Instagram"
+            >
+              <Instagram className="h-5 w-5 text-primary-foreground/70" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
