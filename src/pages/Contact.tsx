@@ -81,6 +81,7 @@ const Contact = () => {
             email: 'infos@ekiptrade.com',
             contactPoint: {
               '@type': 'ContactPoint',
+              telephone: '+39 377 389 0872',
               contactType: 'customer service',
               email: 'infos@ekiptrade.com',
               availableLanguage: ['English', 'French', 'German', 'Spanish', 'Italian', 'Portuguese'],
