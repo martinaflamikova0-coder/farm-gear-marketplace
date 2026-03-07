@@ -1,7 +1,11 @@
-import { useState } from 'react';
-import { MessageCircle, X } from 'lucide-react';
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { MessageCircle, X, Send, ArrowLeft, Bot, Loader2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import logoEkiptrade from '@/assets/logo-ekiptrade.png';
+
+const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
+
+type Msg = { role: 'user' | 'assistant'; content: string };
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" className="h-6 w-6" fill="#25D366">
@@ -15,83 +19,280 @@ const ChatBubbleIcon = () => (
   </svg>
 );
 
+async function streamChat({
+  messages,
+  onDelta,
+  onDone,
+  onError,
+}: {
+  messages: Msg[];
+  onDelta: (text: string) => void;
+  onDone: () => void;
+  onError: (err: string) => void;
+}) {
+  try {
+    const resp = await fetch(CHAT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+      },
+      body: JSON.stringify({ messages }),
+    });
+
+    if (!resp.ok) {
+      const data = await resp.json().catch(() => ({}));
+      onError(data.error || 'Erreur du service');
+      return;
+    }
+
+    if (!resp.body) { onError('Pas de réponse'); return; }
+
+    const reader = resp.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    let streamDone = false;
+
+    while (!streamDone) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+
+      let idx: number;
+      while ((idx = buffer.indexOf('\n')) !== -1) {
+        let line = buffer.slice(0, idx);
+        buffer = buffer.slice(idx + 1);
+        if (line.endsWith('\r')) line = line.slice(0, -1);
+        if (line.startsWith(':') || line.trim() === '') continue;
+        if (!line.startsWith('data: ')) continue;
+        const json = line.slice(6).trim();
+        if (json === '[DONE]') { streamDone = true; break; }
+        try {
+          const parsed = JSON.parse(json);
+          const content = parsed.choices?.[0]?.delta?.content;
+          if (content) onDelta(content);
+        } catch {
+          buffer = line + '\n' + buffer;
+          break;
+        }
+      }
+    }
+    onDone();
+  } catch {
+    onError('Erreur de connexion');
+  }
+}
+
+type View = 'menu' | 'ai-chat';
+
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [view, setView] = useState<View>('menu');
+  const [messages, setMessages] = useState<Msg[]>([]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
 
   const whatsappNumber = '393773890872';
   const whatsappUrl = `https://wa.me/${whatsappNumber}`;
 
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  useEffect(() => {
+    if (view === 'ai-chat') inputRef.current?.focus();
+  }, [view]);
+
+  const sendMessage = useCallback(async () => {
+    const text = input.trim();
+    if (!text || isLoading) return;
+    setInput('');
+    const userMsg: Msg = { role: 'user', content: text };
+    setMessages(prev => [...prev, userMsg]);
+    setIsLoading(true);
+
+    let assistantSoFar = '';
+    const upsert = (chunk: string) => {
+      assistantSoFar += chunk;
+      setMessages(prev => {
+        const last = prev[prev.length - 1];
+        if (last?.role === 'assistant') {
+          return prev.map((m, i) => i === prev.length - 1 ? { ...m, content: assistantSoFar } : m);
+        }
+        return [...prev, { role: 'assistant', content: assistantSoFar }];
+      });
+    };
+
+    await streamChat({
+      messages: [...messages, userMsg],
+      onDelta: upsert,
+      onDone: () => setIsLoading(false),
+      onError: (err) => {
+        setMessages(prev => [...prev, { role: 'assistant', content: err }]);
+        setIsLoading(false);
+      },
+    });
+  }, [input, isLoading, messages]);
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setView('menu');
+  };
+
+  const openAiChat = () => {
+    setView('ai-chat');
+    if (messages.length === 0) {
+      setMessages([{ role: 'assistant', content: t('chat.aiWelcome', 'Bonjour ! 👋 Comment puis-je vous aider ?') }]);
+    }
+  };
+
   return (
     <>
-      {/* Popup */}
       {isOpen && (
-        <div className="fixed bottom-24 right-4 z-50 w-[340px] max-w-[calc(100vw-2rem)] rounded-2xl shadow-2xl overflow-hidden animate-scale-in">
+        <div className="fixed bottom-24 right-4 z-50 w-[360px] max-w-[calc(100vw-2rem)] rounded-2xl shadow-2xl overflow-hidden animate-scale-in flex flex-col" style={{ maxHeight: 'min(520px, calc(100vh - 8rem))' }}>
           {/* Header */}
-          <div className="bg-foreground px-5 py-4 flex items-center justify-between">
+          <div className="bg-foreground px-4 py-3 flex items-center justify-between flex-shrink-0">
             <div className="flex items-center gap-3">
+              {view === 'ai-chat' && (
+                <button onClick={() => setView('menu')} className="text-primary-foreground/60 hover:text-primary-foreground transition-colors mr-1">
+                  <ArrowLeft className="h-4 w-4" />
+                </button>
+              )}
               <img src={logoEkiptrade} alt="EkipTrade" className="h-8 w-auto rounded-full bg-white p-0.5" />
               <div>
                 <p className="text-primary-foreground font-semibold text-sm">EkipTrade</p>
-                <p className="text-primary-foreground/60 text-xs">{t('chat.subtitle', 'Comment pouvons-nous vous aider ?')}</p>
+                <p className="text-primary-foreground/60 text-xs">
+                  {view === 'ai-chat' 
+                    ? t('chat.aiSubtitle', 'Assistant IA · 24/7') 
+                    : t('chat.subtitle', 'Comment pouvons-nous vous aider ?')}
+                </p>
               </div>
             </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="text-primary-foreground/60 hover:text-primary-foreground transition-colors"
-              aria-label="Fermer"
-            >
+            <button onClick={handleClose} className="text-primary-foreground/60 hover:text-primary-foreground transition-colors" aria-label="Fermer">
               <X className="h-5 w-5" />
             </button>
           </div>
 
-          {/* Body */}
-          <div className="bg-background p-5 space-y-3">
-            <h3 className="text-center font-semibold text-foreground text-base mb-4">
-              {t('chat.title', 'Comment pouvons-nous vous aider ?')}
-            </h3>
+          {view === 'menu' ? (
+            <>
+              {/* Menu body */}
+              <div className="bg-background p-5 space-y-3 flex-1">
+                <h3 className="text-center font-semibold text-foreground text-base mb-4">
+                  {t('chat.title', 'Comment pouvons-nous vous aider ?')}
+                </h3>
 
-            {/* Chat option */}
-            <a
-              href={`mailto:infos@ekiptrade.com?subject=${encodeURIComponent(t('chat.emailSubject', 'Demande depuis le site'))}`}
-              className="flex items-center gap-4 bg-muted hover:bg-muted/80 rounded-xl p-4 transition-colors group"
-            >
-              <div className="bg-primary/10 rounded-full p-2.5 flex-shrink-0">
-                <ChatBubbleIcon />
-              </div>
-              <div>
-                <p className="font-medium text-foreground text-sm group-hover:text-primary transition-colors">
-                  {t('chat.emailOption', 'Envoyez-nous un email')}
-                </p>
-                <p className="text-muted-foreground text-xs">infos@ekiptrade.com</p>
-              </div>
-            </a>
+                {/* AI Chat option */}
+                <button
+                  onClick={openAiChat}
+                  className="w-full flex items-center gap-4 bg-muted hover:bg-muted/80 rounded-xl p-4 transition-colors group text-left"
+                >
+                  <div className="bg-primary/10 rounded-full p-2.5 flex-shrink-0">
+                    <Bot className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground text-sm group-hover:text-primary transition-colors">
+                      {t('chat.aiOption', 'Discuter avec notre assistant')}
+                    </p>
+                    <p className="text-muted-foreground text-xs">{t('chat.aiLabel', 'IA · 24/7')}</p>
+                  </div>
+                </button>
 
-            {/* WhatsApp option */}
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 bg-muted hover:bg-muted/80 rounded-xl p-4 transition-colors group"
-            >
-              <div className="bg-[#25D366]/10 rounded-full p-2.5 flex-shrink-0">
-                <WhatsAppIcon />
-              </div>
-              <div>
-                <p className="font-medium text-foreground text-sm group-hover:text-primary transition-colors">
-                  {t('chat.whatsappOption', 'Contacter via WhatsApp')}
-                </p>
-                <p className="text-muted-foreground text-xs">WhatsApp</p>
-              </div>
-            </a>
-          </div>
+                {/* Email option */}
+                <a
+                  href={`mailto:infos@ekiptrade.com?subject=${encodeURIComponent(t('chat.emailSubject', 'Demande depuis le site'))}`}
+                  className="flex items-center gap-4 bg-muted hover:bg-muted/80 rounded-xl p-4 transition-colors group"
+                >
+                  <div className="bg-primary/10 rounded-full p-2.5 flex-shrink-0">
+                    <ChatBubbleIcon />
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground text-sm group-hover:text-primary transition-colors">
+                      {t('chat.emailOption', 'Envoyez-nous un email')}
+                    </p>
+                    <p className="text-muted-foreground text-xs">infos@ekiptrade.com</p>
+                  </div>
+                </a>
 
-          {/* Footer */}
-          <div className="bg-background border-t border-border px-5 py-3">
-            <p className="text-center text-muted-foreground text-xs">
-              Powered by EkipTrade
-            </p>
-          </div>
+                {/* WhatsApp option */}
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 bg-muted hover:bg-muted/80 rounded-xl p-4 transition-colors group"
+                >
+                  <div className="bg-[#25D366]/10 rounded-full p-2.5 flex-shrink-0">
+                    <WhatsAppIcon />
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground text-sm group-hover:text-primary transition-colors">
+                      {t('chat.whatsappOption', 'Contacter via WhatsApp')}
+                    </p>
+                    <p className="text-muted-foreground text-xs">WhatsApp</p>
+                  </div>
+                </a>
+              </div>
+
+              {/* Footer */}
+              <div className="bg-background border-t border-border px-5 py-3 flex-shrink-0">
+                <p className="text-center text-muted-foreground text-xs">Powered by EkipTrade</p>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* AI Chat messages */}
+              <div className="bg-background flex-1 overflow-y-auto p-4 space-y-3" style={{ minHeight: 0 }}>
+                {messages.map((msg, i) => (
+                  <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                    <div
+                      className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap ${
+                        msg.role === 'user'
+                          ? 'bg-primary text-primary-foreground rounded-br-md'
+                          : 'bg-muted text-foreground rounded-bl-md'
+                      }`}
+                    >
+                      {msg.content}
+                    </div>
+                  </div>
+                ))}
+                {isLoading && messages[messages.length - 1]?.role === 'user' && (
+                  <div className="flex justify-start">
+                    <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3">
+                      <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+                    </div>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+
+              {/* Input */}
+              <div className="bg-background border-t border-border p-3 flex-shrink-0">
+                <form
+                  onSubmit={(e) => { e.preventDefault(); sendMessage(); }}
+                  className="flex items-center gap-2"
+                >
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    placeholder={t('chat.placeholder', 'Écrivez votre message...')}
+                    className="flex-1 bg-muted rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-primary/30"
+                    disabled={isLoading}
+                  />
+                  <button
+                    type="submit"
+                    disabled={!input.trim() || isLoading}
+                    className="bg-primary text-primary-foreground rounded-xl p-2.5 hover:bg-primary/90 transition-colors disabled:opacity-40"
+                  >
+                    <Send className="h-4 w-4" />
+                  </button>
+                </form>
+              </div>
+            </>
+          )}
         </div>
       )}
 
