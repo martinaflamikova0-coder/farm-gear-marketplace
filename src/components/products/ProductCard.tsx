@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { MapPin, Clock, Calendar, CreditCard, AlertTriangle, Star, Percent, Sparkles } from 'lucide-react';
+import { getImageUrl, handleImageError } from '@/lib/imageProxy';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
