@@ -152,7 +152,8 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   // Use merchant-safe image if MC mode is enabled
   const normalImageUrl = product.images?.[0] || '/placeholder.svg';
   const merchantSafeImageUrl = (product as any).merchant_safe_image_url;
-  const imageUrl = getMerchantSafeImage(mcSettings, normalImageUrl, merchantSafeImageUrl);
+  const rawImageUrl = getMerchantSafeImage(mcSettings, normalImageUrl, merchantSafeImageUrl);
+  const imageUrl = getImageUrl(rawImageUrl);
   
   const basePrice = Number(product.price) || 0;
   const originalPrice = product.original_price ? Number(product.original_price) : null;
