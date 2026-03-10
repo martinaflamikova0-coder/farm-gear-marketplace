@@ -420,6 +420,9 @@ const AdminImport = () => {
           continue;
         }
 
+        // Download images to our storage
+        const storedImages = await downloadImagesToStorage(product.images);
+
         const { error } = await supabase.from('products').insert({
           title: content.title,
           description: content.description,
@@ -428,7 +431,9 @@ const AdminImport = () => {
           price: product.price,
           category: selectedCategory || product.category,
           brand: product.brand,
-          images: product.images,
+          images: storedImages,
+          merchant_safe_image_url: storedImages[0] || null,
+          merchant_safe_additional_images: storedImages.slice(1),
           status: 'active',
           stock: 5,
           condition: 'new'
