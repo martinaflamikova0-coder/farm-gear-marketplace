@@ -338,7 +338,7 @@ const AnnonceDetail = () => {
                           index === currentImageIndex ? 'border-primary' : 'border-transparent hover:border-border'
                         }`}
                       >
-                        <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" />
+                        <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" onError={handleImageError} />
                       </button>
                     ))}
                   </div>
