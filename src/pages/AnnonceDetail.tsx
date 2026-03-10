@@ -408,6 +408,7 @@ const AnnonceDetail = () => {
                       className="max-w-full max-h-full object-contain transition-transform duration-200"
                       style={{ transform: `scale(${zoomLevel})` }}
                       onClick={(e) => e.stopPropagation()}
+                      onError={handleImageError}
                     />
                   </div>
 
