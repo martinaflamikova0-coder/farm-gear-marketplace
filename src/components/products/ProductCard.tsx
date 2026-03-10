@@ -238,6 +238,7 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                 alt={translatedTitle}
                 className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
+                onError={handleImageError}
               />
               {!hideBadges && <ProductGiftsBadge gifts={gifts} variant="card" />}
               {!hideBadges && product.condition && (
