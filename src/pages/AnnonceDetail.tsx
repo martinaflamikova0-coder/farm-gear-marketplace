@@ -130,8 +130,8 @@ const AnnonceDetail = () => {
     'refurbished': 'bg-warning text-warning-foreground',
   };
 
-  const images = product.images || [];
-  const customerImages = product.customer_images || [];
+  const images = (product.images || []).map(getImageUrl);
+  const customerImages = (product.customer_images || []).map(getImageUrl);
   const price = Number(product.price) || 0;
   const priceHT = Math.round(price / 1.2);
 
