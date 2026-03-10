@@ -281,6 +281,7 @@ const AnnonceDetail = () => {
                       draggable={false}
                       loading="eager"
                       fetchPriority="high"
+                      onError={handleImageError}
                     />
                   </AspectRatio>
                   {images.length > 1 && (
