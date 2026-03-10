@@ -143,6 +143,30 @@ const AdminImport = () => {
     }
   };
 
+  // Download external images to our storage
+  const downloadImagesToStorage = async (imageUrls: string[]): Promise<string[]> => {
+    if (!imageUrls || imageUrls.length === 0) return [];
+    
+    // If all images are already in our storage, skip
+    if (imageUrls.every(url => url.includes('supabase.co/storage'))) return imageUrls;
+
+    try {
+      const { data, error } = await supabase.functions.invoke('download-image', {
+        body: { imageUrls }
+      });
+
+      if (error) {
+        console.error('Image download error:', error);
+        return imageUrls; // Fallback to originals
+      }
+
+      return data.storedUrls || imageUrls;
+    } catch (err) {
+      console.error('Image download failed:', err);
+      return imageUrls;
+    }
+  };
+
   // Import single product to database
   const importSingleProduct = async () => {
     if (!scrapedProduct) return;
@@ -155,6 +179,9 @@ const AdminImport = () => {
     };
 
     try {
+      toast({ title: "Téléchargement des images...", description: "Les images sont en cours de téléchargement dans votre stockage" });
+      const storedImages = await downloadImagesToStorage(scrapedProduct.images);
+
       const { error } = await supabase.from('products').insert({
         title: content.title,
         description: content.description,
@@ -163,7 +190,9 @@ const AdminImport = () => {
         price: scrapedProduct.price,
         category: selectedCategory || scrapedProduct.category,
         brand: scrapedProduct.brand,
-        images: scrapedProduct.images,
+        images: storedImages,
+        merchant_safe_image_url: storedImages[0] || null,
+        merchant_safe_additional_images: storedImages.slice(1),
         status: 'active',
         stock: 5,
         condition: 'new'
@@ -171,7 +200,7 @@ const AdminImport = () => {
 
       if (error) throw error;
 
-      toast({ title: "Produit importé", description: "Le produit a été ajouté à votre catalogue" });
+      toast({ title: "Produit importé", description: "Le produit et ses images ont été sauvegardés" });
       setScrapedProduct(null);
       setGeneratedContent(null);
       setSingleUrl('');
