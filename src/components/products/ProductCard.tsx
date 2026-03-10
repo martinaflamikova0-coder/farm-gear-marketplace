@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { MapPin, Clock, Calendar, CreditCard, AlertTriangle, Star, Percent, Sparkles } from 'lucide-react';
+import { getImageUrl, handleImageError } from '@/lib/imageProxy';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -151,7 +152,8 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   // Use merchant-safe image if MC mode is enabled
   const normalImageUrl = product.images?.[0] || '/placeholder.svg';
   const merchantSafeImageUrl = (product as any).merchant_safe_image_url;
-  const imageUrl = getMerchantSafeImage(mcSettings, normalImageUrl, merchantSafeImageUrl);
+  const rawImageUrl = getMerchantSafeImage(mcSettings, normalImageUrl, merchantSafeImageUrl);
+  const imageUrl = getImageUrl(rawImageUrl);
   
   const basePrice = Number(product.price) || 0;
   const originalPrice = product.original_price ? Number(product.original_price) : null;
@@ -236,6 +238,7 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                 alt={translatedTitle}
                 className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
+                onError={handleImageError}
               />
               {!hideBadges && <ProductGiftsBadge gifts={gifts} variant="card" />}
               {!hideBadges && product.condition && (
@@ -361,6 +364,7 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
             alt={translatedTitle}
             className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
+            onError={handleImageError}
           />
           {!hideBadges && <ProductGiftsBadge gifts={gifts} variant="card" />}
           {!hideBadges && product.condition && (

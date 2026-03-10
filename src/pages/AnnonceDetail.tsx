@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getImageUrl, handleImageError } from '@/lib/imageProxy';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, MapPin, Clock, Calendar, Phone, Mail, Check, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, X, FileText, Package, AlertTriangle } from 'lucide-react';
@@ -129,8 +130,8 @@ const AnnonceDetail = () => {
     'refurbished': 'bg-warning text-warning-foreground',
   };
 
-  const images = product.images || [];
-  const customerImages = product.customer_images || [];
+  const images = (product.images || []).map(getImageUrl);
+  const customerImages = (product.customer_images || []).map(getImageUrl);
   const price = Number(product.price) || 0;
   const priceHT = Math.round(price / 1.2);
 
@@ -280,6 +281,7 @@ const AnnonceDetail = () => {
                       draggable={false}
                       loading="eager"
                       fetchPriority="high"
+                      onError={handleImageError}
                     />
                   </AspectRatio>
                   {images.length > 1 && (
@@ -336,7 +338,7 @@ const AnnonceDetail = () => {
                           index === currentImageIndex ? 'border-primary' : 'border-transparent hover:border-border'
                         }`}
                       >
-                        <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" />
+                        <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" onError={handleImageError} />
                       </button>
                     ))}
                   </div>
@@ -406,6 +408,7 @@ const AnnonceDetail = () => {
                       className="max-w-full max-h-full object-contain transition-transform duration-200"
                       style={{ transform: `scale(${zoomLevel})` }}
                       onClick={(e) => e.stopPropagation()}
+                      onError={handleImageError}
                     />
                   </div>
 
@@ -438,7 +441,7 @@ const AnnonceDetail = () => {
                             index === currentImageIndex ? 'border-primary' : 'border-transparent hover:border-white/50'
                           }`}
                         >
-                          <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" />
+                          <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" onError={handleImageError} />
                         </button>
                       ))}
                     </div>
