@@ -1,0 +1,1 @@
+UPDATE products SET status = 'draft' WHERE images[1] LIKE '%werkzeug-und-maschinen.com%';
