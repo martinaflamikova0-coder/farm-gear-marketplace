@@ -50,8 +50,11 @@ const Footer = () => {
               </a>
               <div className="flex items-start gap-2 text-primary-foreground/70">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <span>Via Vittorio Veneto 118,<br />28040 Oleggio Castello,<br />Piémont, Italie</span>
+                <span>Via Vittorio Veneto 118,<br />28040 Oleggio Castello (NO),<br />Piemonte, Italia</span>
               </div>
+              <p className="text-primary-foreground/50 text-xs mt-2">
+                P.IVA: IT10992060011
+              </p>
             </div>
           </div>
 
