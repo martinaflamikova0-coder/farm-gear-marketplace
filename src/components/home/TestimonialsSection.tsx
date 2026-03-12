@@ -1,15 +1,24 @@
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Star, Quote, MapPin, Building2 } from 'lucide-react';
+import { Star, Quote, MapPin, Building2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
 import { useTestimonials } from '@/hooks/useTestimonials';
 
 const TestimonialsSection = () => {
   const { t } = useTranslation();
   const { data: testimonials = [], isLoading } = useTestimonials();
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (!scrollRef.current) return;
+    scrollRef.current.scrollBy({
+      left: direction === 'left' ? -360 : 360,
+      behavior: 'smooth',
+    });
+  };
 
   if (isLoading) {
     return (
@@ -34,13 +43,23 @@ const TestimonialsSection = () => {
   return (
     <section className="py-16 bg-gradient-to-b from-primary/5 to-transparent">
       <div className="container-custom">
-        <div className="text-center mb-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            {t('testimonials.title')}
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            {t('testimonials.subtitle')}
-          </p>
+        <div className="flex items-center justify-between mb-12">
+          <div className="text-center flex-1">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              {t('testimonials.title')}
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              {t('testimonials.subtitle')}
+            </p>
+          </div>
+          <div className="hidden sm:flex items-center gap-2 ml-4">
+            <Button variant="outline" size="icon" className="h-9 w-9 rounded-full" onClick={() => scroll('left')}>
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+            <Button variant="outline" size="icon" className="h-9 w-9 rounded-full" onClick={() => scroll('right')}>
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
 
         <div
