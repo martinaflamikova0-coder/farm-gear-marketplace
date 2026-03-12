@@ -566,6 +566,16 @@
       "description": "Read EkipTrade's terms of use. Platform access conditions, user rights and obligations, listing rules, and responsibilities.",
       "keywords": "terms, conditions, platform, rules, usage"
     },
+    "purchaseTerms": {
+      "title": "Purchase Terms",
+      "description": "Read EkipTrade's general purchase terms. Pricing, orders, payment, delivery, warranties and responsibilities for agricultural equipment purchases.",
+      "keywords": "purchase terms, order, payment, delivery, warranty"
+    },
+    "refundPolicy": {
+      "title": "Refund Policy",
+      "description": "Learn about EkipTrade's refund policy. Eligibility conditions, timelines, and refund methods for agricultural and industrial equipment.",
+      "keywords": "refund, policy, timeline, conditions, agricultural equipment"
+    },
     "privacy": {
       "title": "Privacy Policy",
       "description": "Learn about how EkipTrade collects, uses, and protects your personal data. Your GDPR rights and our data security practices.",
@@ -717,6 +727,50 @@
       "section6Content": "EkipTrade reserves the right to modify these Terms at any time. Users will be informed of any substantial modification.",
       "section7Title": "7. Contact",
       "section7Content": "For any questions regarding these Terms, you can contact us at:"
+    },
+    "purchaseTerms": {
+      "title": "General Purchase Terms",
+      "lastUpdate": "Last update: March 2026",
+      "section1Title": "1. Scope",
+      "section1Content": "These General Purchase Terms apply to all orders placed on the EkipTrade platform. By placing an order, the buyer accepts these terms without reservation.",
+      "section2Title": "2. Orders",
+      "section2Content": "Any order placed on EkipTrade constitutes a firm commitment to purchase. The buyer agrees to provide accurate information when ordering (identity, delivery address, contact details). Order confirmation is sent by email.",
+      "section3Title": "3. Pricing and Payment",
+      "section3Content": "Prices displayed are in euros, excluding taxes and shipping costs unless otherwise stated. Payment is made by bank transfer or PayPal. The order is only processed upon effective receipt of payment.",
+      "section4Title": "4. Delivery",
+      "section4Content": "EkipTrade offers up to €150 in shipping costs on all orders. If the delivery cost exceeds this amount, the surplus is communicated to the buyer after payment verification, before shipment. Delivery times are indicative and vary by destination.",
+      "section5Title": "5. Receipt and Compliance",
+      "section5Content": "The buyer must check the condition of the equipment upon receipt. Any anomaly (damaged package, non-conforming equipment) must be reported within 48 hours of delivery by email to our customer service, with supporting photos.",
+      "section6Title": "6. Warranties",
+      "section6Content": "New equipment benefits from the 2-year legal warranty of conformity. Used equipment benefits from a minimum 6-month warranty in accordance with European legislation. These warranties cover defects of conformity existing at the time of delivery.",
+      "section7Title": "7. Liability",
+      "section7Content": "EkipTrade shall not be held liable for indirect damages resulting from the use of purchased equipment. EkipTrade's liability is limited to the amount of the order concerned.",
+      "section8Title": "8. Contact",
+      "section8Content": "For any questions regarding these Purchase Terms, you can contact us at:"
+    },
+    "refundPolicy": {
+      "title": "Refund Policy",
+      "lastUpdate": "Last update: March 2026",
+      "subtitle": "We are committed to processing your refund requests quickly and transparently.",
+      "eligibilityTitle": "Eligibility Conditions",
+      "eligibilityContent": "A refund may be requested in the following cases:",
+      "eligible1": "Exercise of the right of withdrawal within 14 days of receipt",
+      "eligible2": "Equipment received not matching the listing description",
+      "eligible3": "Defective or damaged equipment upon receipt",
+      "eligible4": "Non-delivery of equipment within the agreed timeframe",
+      "timelineTitle": "Refund Timeline",
+      "timelineContent": "The refund is made within a maximum of 14 days from the date of receipt of the returned equipment or proof of return shipment. In case of non-delivery, the refund is processed within 14 days of notification.",
+      "methodTitle": "Refund Methods",
+      "methodContent": "The refund is made via the same payment method used for the initial transaction:",
+      "method1": "Bank transfer: refund to the original account within 3 to 5 business days",
+      "method2": "PayPal: immediate refund to the buyer's PayPal account",
+      "deductionsTitle": "Possible Deductions",
+      "deductionsContent": "The refunded amount may be reduced in the following cases:",
+      "deduction1": "Initial shipping costs: not refunded except in case of our error or defective equipment",
+      "deduction2": "Equipment depreciation: if the returned equipment shows signs of use or damage",
+      "deduction3": "Missing parts or accessories: proportional deduction based on the value of missing items",
+      "contactTitle": "Request a Refund",
+      "contactContent": "For any refund request, contact our customer service with your order number and the reason for your request:"
     },
     "privacy": {
       "title": "Privacy Policy",
