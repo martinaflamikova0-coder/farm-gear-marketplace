@@ -417,7 +417,9 @@
     "cookies": "Politica dei cookie",
     "contact": "Contattaci",
     "howItWorks": "Come funziona",
-    "rights": "Tutti i diritti riservati"
+    "rights": "Tutti i diritti riservati",
+    "paymentMethods": "Metodi di pagamento",
+    "bankTransfer": "Bonifico bancario"
   },
 "errors": {
     "notFound": "Pagina non trovata",

@@ -400,7 +400,9 @@
     "cookies": "Cookie Policy",
     "contact": "Contact Us",
     "howItWorks": "How It Works",
-    "rights": "All rights reserved"
+    "rights": "All rights reserved",
+    "paymentMethods": "Payment methods",
+    "bankTransfer": "Bank transfer"
   },
 "errors": {
     "notFound": "Page not found",

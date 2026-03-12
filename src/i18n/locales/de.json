@@ -396,7 +396,9 @@
     "cookies": "Cookie-Richtlinie",
     "contact": "Kontakt",
     "howItWorks": "So funktioniert's",
-    "rights": "Alle Rechte vorbehalten"
+    "rights": "Alle Rechte vorbehalten",
+    "paymentMethods": "Zahlungsmethoden",
+    "bankTransfer": "Banküberweisung"
   },
 "errors": {
     "notFound": "Seite nicht gefunden",
