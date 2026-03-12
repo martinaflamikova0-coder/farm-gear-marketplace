@@ -21,16 +21,10 @@ const HeroBanner = () => {
   return (
     <section className="relative w-full overflow-hidden">
       {/* Background image */}
-      <div className="absolute inset-0">
-        <img
-          src={heroBg}
-          alt=""
-          className="w-full h-full object-cover"
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-        />
-      </div>
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      />
 
       {/* Dark gradient overlay for premium feel */}
       <div className="absolute inset-0 bg-gradient-to-br from-[hsl(145_45%_12%/0.92)] via-[hsl(145_40%_18%/0.88)] to-[hsl(150_35%_10%/0.94)]" />
