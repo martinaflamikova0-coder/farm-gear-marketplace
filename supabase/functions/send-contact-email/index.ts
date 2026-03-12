@@ -111,8 +111,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to the team
     const teamEmail = await resend.emails.send({
-      from: "EkipTrade Contact <infos@ekiptrade.com>",
-      to: ["infos@ekiptrade.com"],
+      from: "EkipTrade Contact <infos@ekip-trade.com>",
+      to: ["infos@ekip-trade.com"],
       reply_to: email,
       subject: `${localizedContent.teamSubject}: ${subject}`,
       html: `
