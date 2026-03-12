@@ -15,7 +15,7 @@ Tu es aussi capable de répondre intelligemment à toute question, même hors du
 ═══════════════════════════════════════
 - Nom : EkipTrade (UK Company No: 54456764)
 - Site : ekiptrade.com
-- Email : infos@ekiptrade.com
+- Email : infos@ekip-trade.com
 - Téléphone / WhatsApp : +39 377 389 0872
 - Adresse opérationnelle : Via Vittorio Veneto 118, 28040 Oleggio Castello, Piémont, Italie
 - Horaires : Lun-Ven 9h-18h, Sam 9h-12h
