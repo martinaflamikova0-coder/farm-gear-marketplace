@@ -78,12 +78,12 @@ const Contact = () => {
           mainEntity: {
             '@type': 'Organization',
             name: 'EkipTrade',
-            email: 'infos@ekiptrade.com',
+            email: 'infos@ekip-trade.com',
             contactPoint: {
               '@type': 'ContactPoint',
               telephone: '+39 377 389 0872',
               contactType: 'customer service',
-              email: 'infos@ekiptrade.com',
+              email: 'infos@ekip-trade.com',
               availableLanguage: ['English', 'French', 'German', 'Spanish', 'Italian', 'Portuguese'],
             },
           },

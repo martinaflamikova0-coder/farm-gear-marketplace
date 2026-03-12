@@ -44,9 +44,9 @@ const Footer = () => {
                 <Phone className="h-4 w-4" />
                 +39 377 389 0872
               </a>
-              <a href="mailto:infos@ekiptrade.com" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+              <a href="mailto:infos@ekip-trade.com" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                 <Mail className="h-4 w-4" />
-                infos@ekiptrade.com
+                infos@ekip-trade.com
               </a>
               <div className="flex items-start gap-2 text-primary-foreground/70">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
