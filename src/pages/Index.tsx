@@ -38,22 +38,28 @@ const Index = () => {
       <HeroBanner />
       
       <main className="flex-1">
+        {/* 1. Featured / mise en avant */}
         <FeaturedProducts />
         <PopularCategoriesLinks />
+
+        {/* 2. Best-sellers & nouveautés — fort engagement */}
         <BestSellersSection />
         <LatestProductsSection />
-        
-        <PremiumProducts />
-        <div className="bg-card">
-          <RecentProducts />
-        </div>
-        <LawnMowersSection />
-        <RobotMowersSection />
+
+        {/* 3. Catégories phares — gros volumes */}
         <ProductsGrid titleKey="home.tractors" category="tracteurs" limit={10} />
-        <PromoVideoSection />
         <div className="bg-card">
           <ProductsGrid titleKey="home.harvestEquipment" category="recolte" limit={10} />
         </div>
+        <ProductsGrid titleKey="home.constructionEquipment" category="chantier" limit={10} />
+        <div className="bg-card">
+          <ProductsGrid titleKey="home.soilWork" category="travail-sol" limit={10} />
+        </div>
+
+        {/* 4. Vidéo promo — pause visuelle */}
+        <PromoVideoSection />
+
+        {/* 5. Sections spécialisées — niches à forte valeur */}
         <SpecialProductSection
           titleKey="home.miniExcavators"
           subtitleKey="home.miniExcavatorsSubtitle"
@@ -62,6 +68,10 @@ const Index = () => {
           iconColorClass="text-accent"
           bgClass=""
         />
+        <div className="bg-card">
+          <LawnMowersSection />
+        </div>
+        <RobotMowersSection />
         <div className="bg-card">
           <SpecialProductSection
             titleKey="home.brushcutters"
@@ -80,10 +90,6 @@ const Index = () => {
           iconColorClass="text-primary"
           bgClass=""
         />
-        <ProductsGrid titleKey="home.constructionEquipment" category="chantier" limit={10} />
-        <div className="bg-card">
-          <ProductsGrid titleKey="home.soilWork" category="travail-sol" limit={10} />
-        </div>
         <div className="bg-card">
           <SpecialProductSection
             titleKey="home.blowers"
@@ -94,10 +100,20 @@ const Index = () => {
             bgClass=""
           />
         </div>
+
+        {/* 6. Catégories restantes */}
         <ProductsGrid titleKey="home.handling" category="manutention" limit={10} />
         <div className="bg-card">
           <ProductsGrid titleKey="home.partsAccessories" category="pieces" limit={10} />
         </div>
+
+        {/* 7. Premium & récents — découverte complémentaire */}
+        <PremiumProducts />
+        <div className="bg-card">
+          <RecentProducts />
+        </div>
+
+        {/* 8. Preuve sociale */}
         <TestimonialsSection />
       </main>
       
