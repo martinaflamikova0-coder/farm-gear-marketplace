@@ -428,21 +428,19 @@ serve(async (req) => {
       color: primaryColor,
     });
     yPos -= 18;
-    page.drawText("EkipTrade Ltd", { x: 50, y: yPos, size: 11, font: helveticaBold, color: textColor });
+    page.drawText("EkipTrade", { x: 50, y: yPos, size: 11, font: helveticaBold, color: textColor });
     yPos -= 15;
     page.drawText(t.marketplace, { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText("Wednesbury Trading Estate, Block P", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText("Via Vittorio Veneto 118", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText("Wednesbury WS10 7JN, United Kingdom", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText("28040 Oleggio Castello (NO), Italia", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText("Tel: +44 7883 782699", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText("Tel: +39 377 389 0872", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
     page.drawText("infos@ekip-trade.com", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText(`${t.companyReg}12345678`, { x: 50, y: yPos, size: 9, font: helvetica, color: mutedColor });
-    yPos -= 12;
-    page.drawText(`${t.vatNumber}GB123456789`, { x: 50, y: yPos, size: 9, font: helvetica, color: mutedColor });
+    page.drawText(`${t.vatNumber}IT10992060011`, { x: 50, y: yPos, size: 9, font: helvetica, color: mutedColor });
 
     // Client address (right side)
     let clientY = yPos + 93;
