@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import ProductCard from '@/components/products/ProductCard';
 import { useProducts } from '@/hooks/useProducts';
+import CarouselScrollButtons from './CarouselScrollButtons';
 
 interface ProductsGridProps {
   titleKey: string;
@@ -37,13 +38,16 @@ const ProductsGrid = ({ titleKey, subtitleKey, category, limit = 8 }: ProductsGr
   return (
     <section className="py-8">
       <div className="container-custom">
-        <div className="mb-6">
-          <h2 className="font-display text-xl md:text-2xl font-bold text-foreground">
-            {t(titleKey)}
-          </h2>
-          {subtitleKey && (
-            <p className="text-sm text-muted-foreground mt-1">{t(subtitleKey)}</p>
-          )}
+        <div className="mb-6 flex items-end justify-between">
+          <div>
+            <h2 className="font-display text-xl md:text-2xl font-bold text-foreground">
+              {t(titleKey)}
+            </h2>
+            {subtitleKey && (
+              <p className="text-sm text-muted-foreground mt-1">{t(subtitleKey)}</p>
+            )}
+          </div>
+          <CarouselScrollButtons scrollRef={scrollRef} />
         </div>
 
         <div

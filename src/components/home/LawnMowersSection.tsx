@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import ProductCard from '@/components/products/ProductCard';
 import { useProducts } from '@/hooks/useProducts';
+import CarouselScrollButtons from './CarouselScrollButtons';
 
 const LawnMowersSection = () => {
   const { t } = useTranslation();
@@ -30,16 +31,19 @@ const LawnMowersSection = () => {
   return (
     <section className="py-16 bg-gradient-to-b from-success/5 to-transparent">
       <div className="container-custom">
-        <div className="mb-10">
-          <div className="flex items-center gap-2 mb-2">
-            <Leaf className="h-6 w-6 text-success" />
-            <span className="text-sm font-semibold text-success uppercase tracking-wide">
-              {t('home.lawnMowersSubtitle')}
-            </span>
+        <div className="mb-10 flex items-end justify-between">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <Leaf className="h-6 w-6 text-success" />
+              <span className="text-sm font-semibold text-success uppercase tracking-wide">
+                {t('home.lawnMowersSubtitle')}
+              </span>
+            </div>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+              {t('home.lawnMowers')}
+            </h2>
           </div>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
-            {t('home.lawnMowers')}
-          </h2>
+          <CarouselScrollButtons scrollRef={scrollRef} />
         </div>
 
         <div

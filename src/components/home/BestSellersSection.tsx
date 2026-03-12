@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import ProductCard from '@/components/products/ProductCard';
 import { useBestSellers } from '@/hooks/useProducts';
+import CarouselScrollButtons from './CarouselScrollButtons';
 
 const BestSellersSection = () => {
   const { t } = useTranslation();
@@ -35,13 +36,16 @@ const BestSellersSection = () => {
   return (
     <section className="py-12 bg-gradient-to-b from-amber-50/50 to-background dark:from-amber-950/20">
       <div className="container-custom">
-        <div className="flex items-center gap-3 mb-8">
-          <div className="p-2 bg-amber-500/10 rounded-lg">
-            <Trophy className="h-6 w-6 text-amber-600" />
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-amber-500/10 rounded-lg">
+              <Trophy className="h-6 w-6 text-amber-600" />
+            </div>
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
+              {t('home.bestsellers', 'Top 100 Meilleures Ventes')}
+            </h2>
           </div>
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
-            {t('home.bestsellers', 'Top 100 Meilleures Ventes')}
-          </h2>
+          <CarouselScrollButtons scrollRef={scrollRef} />
         </div>
 
         <div

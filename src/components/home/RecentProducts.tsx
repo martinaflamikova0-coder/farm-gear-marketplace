@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import ProductCard from '@/components/products/ProductCard';
 import { useRecentProducts } from '@/hooks/useProducts';
+import CarouselScrollButtons from './CarouselScrollButtons';
 
 const RecentProducts = () => {
   const { t } = useTranslation();
@@ -30,14 +31,17 @@ const RecentProducts = () => {
   return (
     <section className="py-16">
       <div className="container-custom">
-        <div className="mb-10">
-          <div className="flex items-center gap-2 mb-2">
-            <Clock className="h-5 w-5 text-accent" />
-            <span className="text-sm font-medium text-accent">{t('home.recentSubtitle')}</span>
+        <div className="mb-10 flex items-end justify-between">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <Clock className="h-5 w-5 text-accent" />
+              <span className="text-sm font-medium text-accent">{t('home.recentSubtitle')}</span>
+            </div>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+              {t('home.recentListings')}
+            </h2>
           </div>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
-            {t('home.recentListings')}
-          </h2>
+          <CarouselScrollButtons scrollRef={scrollRef} />
         </div>
 
         <div
