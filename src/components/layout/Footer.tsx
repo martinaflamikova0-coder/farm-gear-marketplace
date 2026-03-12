@@ -53,13 +53,14 @@ const Footer = () => {
 
           {/* Company Info */}
           <div className="space-y-6">
-            <div>
+            <div className="flex items-center gap-3">
               <img 
                 src={logoEkiptrade} 
                 alt="EkipTrade" 
-                className="h-12 w-auto object-contain"
+                className="h-10 w-auto object-contain"
                 loading="lazy"
               />
+              <span className="font-display font-bold text-xl text-primary-foreground">EkipTrade</span>
             </div>
             <p className="text-primary-foreground/60 text-sm leading-relaxed max-w-md">
               {t('footer.description')}
