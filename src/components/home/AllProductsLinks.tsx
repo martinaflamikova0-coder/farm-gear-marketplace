@@ -7,6 +7,7 @@ import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import { useCategories } from '@/hooks/useCategories';
 import { ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Link2, ArrowRight } from 'lucide-react';
+import CategoryIcon from '@/components/CategoryIcon';
 import ProductCard from '@/components/products/ProductCard';
 import { Button } from '@/components/ui/button';
 
