@@ -77,17 +77,15 @@ const Header = () => {
           {/* Logo */}
           <Link
             to={getLocalizedLink('')}
-            className="flex items-center gap-2 flex-shrink-0"
+            className="flex items-center gap-1.5 flex-shrink-0"
             aria-label="EkipTrade"
           >
-            <div className="flex items-center gap-2">
-              <img
-                src={logoEkiptrade}
-                alt="EkipTrade"
-                className="h-10 md:h-12 w-auto object-contain"
-              />
-              <span className="font-display font-bold text-lg md:text-xl text-foreground">EkipTrade</span>
-            </div>
+            <img
+              src={logoEkiptrade}
+              alt="EkipTrade"
+              className="h-8 md:h-10 w-8 md:w-10 object-contain rounded-full"
+            />
+            <span className="font-display font-bold text-base md:text-xl text-foreground leading-tight">EkipTrade</span>
           </Link>
 
           {/* Search bar - Desktop */}
