@@ -438,7 +438,7 @@ serve(async (req) => {
     yPos -= 15;
     page.drawText("Tel: +44 7883 782699", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText("infos@ekiptrade.com", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText("infos@ekip-trade.com", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
     page.drawText(`${t.companyReg}12345678`, { x: 50, y: yPos, size: 9, font: helvetica, color: mutedColor });
     yPos -= 12;

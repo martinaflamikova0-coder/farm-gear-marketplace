@@ -663,7 +663,7 @@
       "phoneValue": "+39 377 389 0872",
       "phoneHours": "Lunes a viernes, 9h-18h",
       "email": "Email",
-      "emailValue": "infos@ekiptrade.com",
+      "emailValue": "infos@ekip-trade.com",
       "emailResponse": "Respuesta en 24h",
       "address": "Dirección",
       "addressValue": "Via Vittorio Veneto 118",
@@ -796,7 +796,7 @@
       "title": "Proceso de devolución",
       "step1": {
         "title": "Contacte con nuestro servicio de atención al cliente",
-        "description": "Envíe una solicitud de devolución por correo electrónico a infos@ekiptrade.com o por correo postal. Incluya su número de pedido, el motivo de la devolución y sus datos de contacto."
+        "description": "Envíe una solicitud de devolución por correo electrónico a infos@ekip-trade.com o por correo postal. Incluya su número de pedido, el motivo de la devolución y sus datos de contacto."
       },
       "step2": {
         "title": "Reciba la autorización de devolución",

@@ -111,8 +111,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to the team
     const teamEmail = await resend.emails.send({
-      from: "EkipTrade Contact <infos@ekiptrade.com>",
-      to: ["infos@ekiptrade.com"],
+      from: "EkipTrade Contact <infos@ekip-trade.com>",
+      to: ["infos@ekip-trade.com"],
       reply_to: email,
       subject: `${localizedContent.teamSubject}: ${subject}`,
       html: `
@@ -142,7 +142,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send auto-reply to customer
     const customerEmail = await resend.emails.send({
-      from: "EkipTrade <infos@ekiptrade.com>",
+      from: "EkipTrade <infos@ekip-trade.com>",
       to: [email],
       subject: localizedContent.autoReplySubject,
       html: `
@@ -161,7 +161,7 @@ const handler = async (req: Request): Promise<Response> => {
           </div>
           <div style="padding: 20px; background: #f9f9f9; text-align: center; font-size: 12px; color: #666;">
             <p>EkipTrade - Wednesbury Trading Estate, Block P, Wednesbury WS10 7JN, UK</p>
-            <p>+44 7883 782699 | infos@ekiptrade.com</p>
+            <p>+44 7883 782699 | infos@ekip-trade.com</p>
           </div>
         </div>
       `,

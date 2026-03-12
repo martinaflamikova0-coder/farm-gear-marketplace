@@ -689,7 +689,7 @@
       "phoneValue": "+39 377 389 0872",
       "phoneHours": "Lunedì a venerdì, 9-18",
       "email": "Email",
-      "emailValue": "infos@ekiptrade.com",
+      "emailValue": "infos@ekip-trade.com",
       "emailResponse": "Risposta entro 24h",
       "address": "Indirizzo",
       "addressValue": "Via Vittorio Veneto 118",
@@ -822,7 +822,7 @@
       "title": "Processo di reso",
       "step1": {
         "title": "Contatta il nostro servizio clienti",
-        "description": "Invia una richiesta di reso via email a infos@ekiptrade.com o per posta. Includi il numero d'ordine, il motivo del reso e i tuoi dati di contatto."
+        "description": "Invia una richiesta di reso via email a infos@ekip-trade.com o per posta. Includi il numero d'ordine, il motivo del reso e i tuoi dati di contatto."
       },
       "step2": {
         "title": "Ricevi l'autorizzazione al reso",

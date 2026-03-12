@@ -672,7 +672,7 @@
       "phoneValue": "+39 377 389 0872",
       "phoneHours": "Monday to Friday, 9am-6pm",
       "email": "Email",
-      "emailValue": "infos@ekiptrade.com",
+      "emailValue": "infos@ekip-trade.com",
       "emailResponse": "Response within 24h",
       "address": "Address",
       "addressValue": "Via Vittorio Veneto 118",
@@ -805,7 +805,7 @@
       "title": "Return Process",
       "step1": {
         "title": "Contact our customer service",
-        "description": "Send a return request by email to infos@ekiptrade.com or by post. Include your order number, the reason for the return, and your contact details."
+        "description": "Send a return request by email to infos@ekip-trade.com or by post. Include your order number, the reason for the return, and your contact details."
       },
       "step2": {
         "title": "Receive return authorization",

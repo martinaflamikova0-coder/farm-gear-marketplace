@@ -57,8 +57,8 @@ const Privacy = () => {
             <h2 className="font-display text-2xl font-semibold text-foreground mt-8">{t('pages.privacy.section7Title')}</h2>
             <p className="text-muted-foreground leading-relaxed">
               {t('pages.privacy.section7Content')}
-              <a href="mailto:infos@ekiptrade.com" className="text-primary hover:underline ml-1">
-                infos@ekiptrade.com
+              <a href="mailto:infos@ekip-trade.com" className="text-primary hover:underline ml-1">
+                infos@ekip-trade.com
               </a>
             </p>
           </div>
