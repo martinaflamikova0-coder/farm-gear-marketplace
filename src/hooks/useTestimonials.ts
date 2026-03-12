@@ -43,7 +43,7 @@ export const useTestimonials = (featured?: boolean) => {
       if (error) throw error;
 
       // Apply translations based on current language
-      const testimonials = (data || []).map((testimonial: Testimonial): TranslatedTestimonial => {
+      const testimonials = (data || []).map((testimonial: any): TranslatedTestimonial => {
         const translations = testimonial.content_translations as Record<string, string> | null;
         const translatedContent = translations?.[currentLang] || testimonial.content;
         
