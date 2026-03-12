@@ -8,14 +8,9 @@ import FeaturedProducts from '@/components/home/FeaturedProducts';
 import RecentProducts from '@/components/home/RecentProducts';
 import PremiumProducts from '@/components/home/PremiumProducts';
 import BestSellersSection from '@/components/home/BestSellersSection';
-
 import LatestProductsSection from '@/components/home/LatestProductsSection';
-
 import PopularCategoriesLinks from '@/components/home/PopularCategoriesLinks';
 import VerifiedQualityBanner from '@/components/home/VerifiedQualityBanner';
-import FastDealsBanner from '@/components/home/FastDealsBanner';
-import GlobalNetworkBanner from '@/components/home/GlobalNetworkBanner';
-import ShopPremiumBanner from '@/components/home/ShopPremiumBanner';
 import PromoVideoSection from '@/components/home/PromoVideoSection';
 import LawnMowersSection from '@/components/home/LawnMowersSection';
 import ProductsGrid from '@/components/home/ProductsGrid';
@@ -37,78 +32,33 @@ const Index = () => {
       <HeaderSpacer />
       <BrandsMarquee />
       
-      {/* Hero Banner - Full width impact */}
       <HeroBanner />
       
-      
       <main className="flex-1">
-        {/* Featured Products */}
         <FeaturedProducts />
-        
-        {/* Popular Categories Links - Internal SEO */}
         <PopularCategoriesLinks />
-        
-        {/* Best Sellers - Top 100 */}
         <BestSellersSection />
-        
-        {/* BestSellersLinks removed - BestSellersSection already shows cards */}
-        
-        {/* Latest 200 Products */}
         <LatestProductsSection />
-        
-        {/* Verified Quality Banner - Build trust early */}
         <VerifiedQualityBanner />
-        
-        {/* Premium Products */}
         <PremiumProducts />
-        
-        {/* Recent Products */}
         <div className="bg-card">
           <RecentProducts />
         </div>
-        
-        {/* Fast Deals Banner - Show speed advantage */}
-        <FastDealsBanner />
-        
-        {/* Lawn Mowers Section */}
         <LawnMowersSection />
-        
-        {/* Tractors */}
         <ProductsGrid titleKey="home.tractors" category="tracteurs" limit={4} />
-        
-        {/* Promo Video - Engagement section */}
         <PromoVideoSection />
-        
-        {/* Harvest Equipment */}
         <div className="bg-card">
           <ProductsGrid titleKey="home.harvestEquipment" category="recolte" limit={4} />
         </div>
-        
-        {/* Global Network Banner - International credibility */}
-        <GlobalNetworkBanner />
-        
-        {/* Construction Equipment */}
         <ProductsGrid titleKey="home.constructionEquipment" category="chantier" limit={4} />
-        
-        {/* Soil Work */}
         <div className="bg-card">
           <ProductsGrid titleKey="home.soilWork" category="travail-sol" limit={4} />
         </div>
-        
-        {/* Shop Premium Banner - Category showcase */}
-        <ShopPremiumBanner />
-        
-        {/* Handling */}
         <ProductsGrid titleKey="home.handling" category="manutention" limit={4} />
-        
-        {/* Parts & Accessories */}
         <div className="bg-card">
           <ProductsGrid titleKey="home.partsAccessories" category="pieces" limit={4} />
         </div>
-        
-        {/* Testimonials */}
         <TestimonialsSection />
-        
       </main>
       
       <TrustBar />
