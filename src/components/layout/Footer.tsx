@@ -146,8 +146,11 @@ const Footer = () => {
         {/* Bottom section */}
         <div className="border-t border-primary-foreground/20 mt-8 pt-8">
           {/* Copyright */}
-          <p className="text-sm text-primary-foreground/60 text-center mb-6">
+          <p className="text-sm text-primary-foreground/60 text-center mb-4">
             © {new Date().getFullYear()} EkipTrade. {t('footer.rights')}
+          </p>
+          <p className="text-xs text-primary-foreground/40 text-center mb-6">
+            P.IVA: IT10992060011 — Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia
           </p>
 
           {/* Payment methods */}

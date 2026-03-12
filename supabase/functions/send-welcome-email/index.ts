@@ -222,7 +222,7 @@ const handler = async (req: Request): Promise<Response> => {
           <tr>
             <td style="background-color: #f8f9fa; padding: 20px 30px; text-align: center; border-top: 1px solid #e5e7eb;">
               <p style="margin: 0 0 10px 0; color: #666666; font-size: 12px;">
-                Wednesbury Trading Estate, Block P, Wednesbury WS10 7JN, UK
+                EkipTrade — Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia — P.IVA: IT10992060011
               </p>
               <p style="margin: 0; color: #9ca3af; font-size: 12px;">
                 © ${new Date().getFullYear()} EkipTrade. All rights reserved.

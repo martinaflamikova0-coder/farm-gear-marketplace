@@ -627,7 +627,7 @@ serve(async (req) => {
       color: rgb(0.85, 0.85, 0.85),
     });
 
-    page.drawText(`EkipTrade Ltd - ${t.marketplace}`, {
+    page.drawText(`EkipTrade - P.IVA IT10992060011 - ${t.marketplace}`, {
       x: 160,
       y: footerY + 15,
       size: 9,

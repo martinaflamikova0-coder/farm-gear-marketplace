@@ -160,8 +160,8 @@ const handler = async (req: Request): Promise<Response> => {
             </div>
           </div>
           <div style="padding: 20px; background: #f9f9f9; text-align: center; font-size: 12px; color: #666;">
-            <p>EkipTrade - Wednesbury Trading Estate, Block P, Wednesbury WS10 7JN, UK</p>
-            <p>+44 7883 782699 | infos@ekip-trade.com</p>
+            <p>EkipTrade — Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia</p>
+            <p>P.IVA: IT10992060011 | +39 377 389 0872 | infos@ekip-trade.com</p>
           </div>
         </div>
       `,
