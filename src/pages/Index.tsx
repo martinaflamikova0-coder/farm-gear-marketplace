@@ -46,6 +46,7 @@ const Index = () => {
           <RecentProducts />
         </div>
         <LawnMowersSection />
+        <RobotMowersSection />
         <ProductsGrid titleKey="home.tractors" category="tracteurs" limit={10} />
         <PromoVideoSection />
         <div className="bg-card">
