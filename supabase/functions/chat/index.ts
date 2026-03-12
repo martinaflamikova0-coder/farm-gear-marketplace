@@ -72,7 +72,7 @@ Droit de rétractation (Directive UE 2011/83/UE) :
 - Exclusions : matériel personnalisé, biens périssables, biens scellés, matériel utilisé/endommagé
 
 Procédure :
-1. Contacter infos@ekiptrade.com avec n° de commande + motif
+1. Contacter infos@ekip-trade.com avec n° de commande + motif
 2. Recevoir autorisation de retour (AR) sous 48h ouvrées
 3. Emballer et expédier avec numéro AR visible
 4. Vérification + remboursement sous 14 jours après réception
