@@ -75,7 +75,7 @@ const PopularCategoriesLinks = () => {
                     <div className="text-3xl">{category?.icon || '📦'}</div>
                   )}
                   <div>
-                    <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                    <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 text-sm">
                       {translateCategory(category?.slug || '') || category?.name}
                     </h3>
                   </div>
