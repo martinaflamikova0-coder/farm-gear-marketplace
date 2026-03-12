@@ -5,14 +5,10 @@ import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import BrandsMarquee from '@/components/home/BrandsMarquee';
 import HeroBanner from '@/components/home/HeroBanner';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
-import RecentProducts from '@/components/home/RecentProducts';
 import PremiumProducts from '@/components/home/PremiumProducts';
-import BestSellersSection from '@/components/home/BestSellersSection';
-import LatestProductsSection from '@/components/home/LatestProductsSection';
 import PopularCategoriesLinks from '@/components/home/PopularCategoriesLinks';
 
 import PromoVideoSection from '@/components/home/PromoVideoSection';
-import LawnMowersSection from '@/components/home/LawnMowersSection';
 import RobotMowersSection from '@/components/home/RobotMowersSection';
 import SpecialProductSection from '@/components/home/SpecialProductSection';
 import ProductsGrid from '@/components/home/ProductsGrid';
@@ -42,11 +38,7 @@ const Index = () => {
         <FeaturedProducts />
         <PopularCategoriesLinks />
 
-        {/* 2. Best-sellers & nouveautés — fort engagement */}
-        <BestSellersSection />
-        <LatestProductsSection />
-
-        {/* 3. Catégories phares — gros volumes */}
+        {/* 2. Catégories phares — gros volumes */}
         <ProductsGrid titleKey="home.tractors" category="tracteurs" limit={10} />
         <div className="bg-card">
           <ProductsGrid titleKey="home.harvestEquipment" category="recolte" limit={10} />
@@ -56,10 +48,10 @@ const Index = () => {
           <ProductsGrid titleKey="home.soilWork" category="travail-sol" limit={10} />
         </div>
 
-        {/* 4. Vidéo promo — pause visuelle */}
+        {/* 3. Vidéo promo — pause visuelle */}
         <PromoVideoSection />
 
-        {/* 5. Sections spécialisées — niches à forte valeur */}
+        {/* 4. Sections spécialisées — niches à forte valeur */}
         <SpecialProductSection
           titleKey="home.miniExcavators"
           subtitleKey="home.miniExcavatorsSubtitle"
@@ -69,51 +61,47 @@ const Index = () => {
           bgClass=""
         />
         <div className="bg-card">
-          <LawnMowersSection />
-        </div>
-        <RobotMowersSection />
-        <div className="bg-card">
-          <SpecialProductSection
-            titleKey="home.brushcutters"
-            subtitleKey="home.brushcuttersSubtitle"
-            searchTerm="débroussailleuse"
-            icon={TreePine}
-            iconColorClass="text-success"
-            bgClass=""
-          />
+          <RobotMowersSection />
         </div>
         <SpecialProductSection
-          titleKey="home.tillers"
-          subtitleKey="home.tillersSubtitle"
-          searchTerm="motoculteur"
-          icon={Axe}
-          iconColorClass="text-primary"
+          titleKey="home.brushcutters"
+          subtitleKey="home.brushcuttersSubtitle"
+          searchTerm="débroussailleuse"
+          icon={TreePine}
+          iconColorClass="text-success"
           bgClass=""
         />
         <div className="bg-card">
           <SpecialProductSection
-            titleKey="home.blowers"
-            subtitleKey="home.blowersSubtitle"
-            searchTerm="souffleur"
-            icon={Wind}
-            iconColorClass="text-accent"
+            titleKey="home.tillers"
+            subtitleKey="home.tillersSubtitle"
+            searchTerm="motoculteur"
+            icon={Axe}
+            iconColorClass="text-primary"
             bgClass=""
           />
         </div>
+        <SpecialProductSection
+          titleKey="home.blowers"
+          subtitleKey="home.blowersSubtitle"
+          searchTerm="souffleur"
+          icon={Wind}
+          iconColorClass="text-accent"
+          bgClass=""
+        />
 
-        {/* 6. Catégories restantes */}
-        <ProductsGrid titleKey="home.handling" category="manutention" limit={10} />
+        {/* 5. Catégories restantes */}
         <div className="bg-card">
-          <ProductsGrid titleKey="home.partsAccessories" category="pieces" limit={10} />
+          <ProductsGrid titleKey="home.handling" category="manutention" limit={10} />
+        </div>
+        <ProductsGrid titleKey="home.partsAccessories" category="pieces" limit={10} />
+
+        {/* 6. Premium — les plus chers */}
+        <div className="bg-card">
+          <PremiumProducts />
         </div>
 
-        {/* 7. Premium & récents — découverte complémentaire */}
-        <PremiumProducts />
-        <div className="bg-card">
-          <RecentProducts />
-        </div>
-
-        {/* 8. Preuve sociale */}
+        {/* 7. Preuve sociale */}
         <TestimonialsSection />
       </main>
       
