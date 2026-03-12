@@ -780,6 +780,32 @@
       "browserContent": "Puoi anche gestire i cookie direttamente dalle impostazioni del tuo browser. Consulta la guida del tuo browser per sapere come eliminare o bloccare i cookie.",
       "contactTitle": "Contatto",
       "contactContent": "Per qualsiasi domanda sull'uso dei cookie, contattaci a:"
+    },
+    "legalNotice": {
+      "title": "Note Legali",
+      "editorTitle": "1. Editore del sito",
+      "companyName": "Ragione sociale",
+      "legalForm": "Forma giuridica",
+      "legalFormValue": "Impresa individuale",
+      "vatLabel": "Partita IVA",
+      "registeredOffice": "Sede legale",
+      "phone": "Telefono",
+      "email": "Email",
+      "website": "Sito web",
+      "directorTitle": "2. Responsabile della pubblicazione",
+      "directorContent": "Il responsabile della pubblicazione del sito ekiptrade.com è il rappresentante legale di EkipTrade.",
+      "hostingTitle": "3. Hosting",
+      "hostName": "Hosting provider",
+      "hostWebsite": "Sito web",
+      "ipTitle": "4. Proprietà intellettuale",
+      "ipContent": "L'intero contenuto del sito ekiptrade.com (testi, immagini, grafiche, logo, icone, ecc.) è di proprietà esclusiva di EkipTrade o dei suoi partner. Qualsiasi riproduzione, rappresentazione, modifica, pubblicazione o adattamento di tutto o parte degli elementi del sito, qualunque sia il mezzo o il processo utilizzato, è vietata senza previa autorizzazione scritta.",
+      "liabilityTitle": "5. Limitazione di responsabilità",
+      "liabilityContent": "EkipTrade si impegna a garantire l'accuratezza delle informazioni pubblicate sul sito. Tuttavia, non può essere ritenuta responsabile per omissioni, inesattezze o mancati aggiornamenti. EkipTrade declina ogni responsabilità per eventuali danni derivanti dall'accesso o dall'uso del sito.",
+      "dataTitle": "6. Protezione dei dati personali",
+      "dataContent": "Conformemente al GDPR (Regolamento UE 2016/679), hai il diritto di accesso, rettifica, cancellazione e portabilità dei tuoi dati personali. Per esercitare tali diritti, contattaci all'indirizzo:",
+      "lawTitle": "7. Legge applicabile",
+      "lawContent": "Le presenti note legali sono disciplinate dalla legge italiana. Qualsiasi controversia relativa all'uso del sito ekiptrade.com sarà di competenza dei tribunali italiani.",
+      "lastUpdate": "Ultimo aggiornamento: Marzo 2026"
     }
   },
   "language": {
