@@ -7,6 +7,7 @@ export interface Testimonial {
   author_name: string;
   author_location: string | null;
   author_company: string | null;
+  author_avatar_url: string | null;
   content: string;
   content_translations: Record<string, string> | null;
   rating: number;
