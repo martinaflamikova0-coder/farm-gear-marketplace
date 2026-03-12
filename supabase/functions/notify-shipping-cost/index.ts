@@ -381,8 +381,8 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "EkipTrade <infos@ekiptrade.com>",
-        to: ["infos@ekiptrade.com"],
+        from: "EkipTrade <infos@ekip-trade.com>",
+        to: ["infos@ekip-trade.com"],
         subject: `[Admin] Notification frais de port envoyée - Commande #${orderId.slice(0, 8).toUpperCase()}`,
         html: `
           <h2>Notification de frais de port envoyée</h2>
