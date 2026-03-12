@@ -212,7 +212,7 @@ const ChatWidget = () => {
                     <p className="font-medium text-foreground text-sm group-hover:text-primary transition-colors">
                       {t('chat.emailOption', 'Envoyez-nous un email')}
                     </p>
-                    <p className="text-muted-foreground text-xs">infos@ekiptrade.com</p>
+                    <p className="text-muted-foreground text-xs">infos@ekip-trade.com</p>
                   </div>
                 </a>
 
