@@ -13,11 +13,12 @@ Tu es aussi capable de répondre intelligemment à toute question, même hors du
 ═══════════════════════════════════════
 🏢 IDENTITÉ DE L'ENTREPRISE
 ═══════════════════════════════════════
-- Nom : EkipTrade (UK Company No: 54456764)
+- Nom : EkipTrade
+- P.IVA : IT10992060011
 - Site : ekiptrade.com
 - Email : infos@ekip-trade.com
 - Téléphone / WhatsApp : +39 377 389 0872
-- Adresse opérationnelle : Via Vittorio Veneto 118, 28040 Oleggio Castello, Piémont, Italie
+- Siège : Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Piemonte, Italia
 - Horaires : Lun-Ven 9h-18h, Sam 9h-12h
 - Description : Marketplace de référence pour l'achat de matériel agricole et industriel neuf et d'occasion en Europe.
 - Communauté : +5 000 utilisateurs, +10 000 annonces, 95% de satisfaction client.

@@ -428,21 +428,19 @@ serve(async (req) => {
       color: primaryColor,
     });
     yPos -= 18;
-    page.drawText("EkipTrade Ltd", { x: 50, y: yPos, size: 11, font: helveticaBold, color: textColor });
+    page.drawText("EkipTrade", { x: 50, y: yPos, size: 11, font: helveticaBold, color: textColor });
     yPos -= 15;
     page.drawText(t.marketplace, { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText("Wednesbury Trading Estate, Block P", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText("Via Vittorio Veneto 118", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText("Wednesbury WS10 7JN, United Kingdom", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText("28040 Oleggio Castello (NO), Italia", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText("Tel: +44 7883 782699", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText("Tel: +39 377 389 0872", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
     page.drawText("infos@ekip-trade.com", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText(`${t.companyReg}12345678`, { x: 50, y: yPos, size: 9, font: helvetica, color: mutedColor });
-    yPos -= 12;
-    page.drawText(`${t.vatNumber}GB123456789`, { x: 50, y: yPos, size: 9, font: helvetica, color: mutedColor });
+    page.drawText(`${t.vatNumber}IT10992060011`, { x: 50, y: yPos, size: 9, font: helvetica, color: mutedColor });
 
     // Client address (right side)
     let clientY = yPos + 93;
@@ -585,13 +583,13 @@ serve(async (req) => {
     page.drawText(t.paymentMethod, { x: 60, y: yPos - 25, size: 10, font: helvetica, color: mutedColor });
     
     // Get bank details from database or use defaults
-    let bankDetails = { iban: "GB82 WEST 1234 5698 7654 32", bic: "WESTGB2L", holder: "EkipTrade Ltd" };
+    let bankDetails = { iban: "", bic: "", holder: "EkipTrade" };
     if (bankAccounts && bankAccounts.length > 0) {
       const selectedAccount = bankAccounts.find(acc => 
         totalTTC >= (acc.threshold_min || 0) && 
         (acc.threshold_max === null || totalTTC <= acc.threshold_max)
       ) || bankAccounts[0];
-      bankDetails = { iban: selectedAccount.iban, bic: selectedAccount.bic, holder: selectedAccount.holder || "EkipTrade Ltd" };
+      bankDetails = { iban: selectedAccount.iban, bic: selectedAccount.bic, holder: selectedAccount.holder || "EkipTrade" };
     }
     
     page.drawText(`${t.bankDetails}:`, { x: 60, y: yPos - 42, size: 10, font: helveticaBold, color: textColor });
@@ -629,7 +627,7 @@ serve(async (req) => {
       color: rgb(0.85, 0.85, 0.85),
     });
 
-    page.drawText(`EkipTrade Ltd - ${t.marketplace}`, {
+    page.drawText(`EkipTrade - P.IVA IT10992060011 - ${t.marketplace}`, {
       x: 160,
       y: footerY + 15,
       size: 9,

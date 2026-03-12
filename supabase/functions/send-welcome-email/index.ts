@@ -40,7 +40,7 @@ const translations: Record<string, {
     benefit4: "Bénéficier de nos offres exclusives",
     cta: "Commencez à explorer notre catalogue dès maintenant :",
     ctaButton: "Voir les annonces",
-    questions: "Si vous avez des questions, n'hésitez pas à nous contacter à infos@ekip-trade.com ou au +44 7883 782699.",
+    questions: "Si vous avez des questions, n'hésitez pas à nous contacter à infos@ekip-trade.com ou au +39 377 389 0872.",
     thanks: "Merci pour votre confiance.",
     team: "L'équipe EkipTrade",
   },
@@ -56,7 +56,7 @@ const translations: Record<string, {
     benefit4: "Benefit from our exclusive offers",
     cta: "Start exploring our catalog now:",
     ctaButton: "View listings",
-    questions: "If you have any questions, feel free to contact us at infos@ekip-trade.com or +44 7883 782699.",
+    questions: "If you have any questions, feel free to contact us at infos@ekip-trade.com or +39 377 389 0872.",
     thanks: "Thank you for your trust.",
     team: "The EkipTrade Team",
   },
@@ -72,7 +72,7 @@ const translations: Record<string, {
     benefit4: "Von unseren exklusiven Angeboten profitieren",
     cta: "Beginnen Sie jetzt mit der Erkundung unseres Katalogs:",
     ctaButton: "Anzeigen ansehen",
-    questions: "Bei Fragen kontaktieren Sie uns gerne unter infos@ekip-trade.com oder +44 7883 782699.",
+    questions: "Bei Fragen kontaktieren Sie uns gerne unter infos@ekip-trade.com oder +39 377 389 0872.",
     thanks: "Vielen Dank für Ihr Vertrauen.",
     team: "Das EkipTrade-Team",
   },
@@ -88,7 +88,7 @@ const translations: Record<string, {
     benefit4: "Beneficiarse de nuestras ofertas exclusivas",
     cta: "Comience a explorar nuestro catálogo ahora:",
     ctaButton: "Ver anuncios",
-    questions: "Si tiene preguntas, no dude en contactarnos en infos@ekip-trade.com o al +44 7883 782699.",
+    questions: "Si tiene preguntas, no dude en contactarnos en infos@ekip-trade.com o al +39 377 389 0872.",
     thanks: "Gracias por su confianza.",
     team: "El equipo EkipTrade",
   },
@@ -104,7 +104,7 @@ const translations: Record<string, {
     benefit4: "Beneficiare delle nostre offerte esclusive",
     cta: "Inizia a esplorare il nostro catalogo ora:",
     ctaButton: "Vedi annunci",
-    questions: "Per qualsiasi domanda, contattaci a infos@ekip-trade.com o al +44 7883 782699.",
+    questions: "Per qualsiasi domanda, contattaci a infos@ekip-trade.com o al +39 377 389 0872.",
     thanks: "Grazie per la tua fiducia.",
     team: "Il team EkipTrade",
   },
@@ -120,7 +120,7 @@ const translations: Record<string, {
     benefit4: "Beneficiar das nossas ofertas exclusivas",
     cta: "Comece a explorar o nosso catálogo agora:",
     ctaButton: "Ver anúncios",
-    questions: "Se tiver dúvidas, contacte-nos em infos@ekip-trade.com ou +44 7883 782699.",
+    questions: "Se tiver dúvidas, contacte-nos em infos@ekip-trade.com ou +39 377 389 0872.",
     thanks: "Obrigado pela sua confiança.",
     team: "A equipa EkipTrade",
   },
@@ -222,7 +222,7 @@ const handler = async (req: Request): Promise<Response> => {
           <tr>
             <td style="background-color: #f8f9fa; padding: 20px 30px; text-align: center; border-top: 1px solid #e5e7eb;">
               <p style="margin: 0 0 10px 0; color: #666666; font-size: 12px;">
-                Wednesbury Trading Estate, Block P, Wednesbury WS10 7JN, UK
+                EkipTrade — Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia — P.IVA: IT10992060011
               </p>
               <p style="margin: 0; color: #9ca3af; font-size: 12px;">
                 © ${new Date().getFullYear()} EkipTrade. All rights reserved.

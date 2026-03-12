@@ -47,7 +47,7 @@ const translations: Record<string, {
     bankStep1: "Votre paiement est en cours de vérification.",
     bankStep2: "Nous vous contacterons dès réception pour confirmer l'expédition.",
     paypalStep: "Votre paiement a été confirmé. Votre commande sera préparée dans les plus brefs délais.",
-    questions: "Pour toute question, n'hésitez pas à nous contacter à infos@ekip-trade.com ou au +44 7883 782699.",
+    questions: "Pour toute question, n'hésitez pas à nous contacter à infos@ekip-trade.com ou au +39 377 389 0872.",
     thanks: "Merci pour votre confiance !",
     team: "L'équipe EkipTrade",
   },
@@ -65,7 +65,7 @@ const translations: Record<string, {
     bankStep1: "Your payment is being verified.",
     bankStep2: "We will contact you upon receipt to confirm shipment.",
     paypalStep: "Your payment has been confirmed. Your order will be prepared as soon as possible.",
-    questions: "For any questions, feel free to contact us at infos@ekip-trade.com or +44 7883 782699.",
+    questions: "For any questions, feel free to contact us at infos@ekip-trade.com or +39 377 389 0872.",
     thanks: "Thank you for your trust!",
     team: "The EkipTrade Team",
   },
@@ -83,7 +83,7 @@ const translations: Record<string, {
     bankStep1: "Ihre Zahlung wird überprüft.",
     bankStep2: "Wir werden Sie nach Eingang kontaktieren, um den Versand zu bestätigen.",
     paypalStep: "Ihre Zahlung wurde bestätigt. Ihre Bestellung wird so schnell wie möglich vorbereitet.",
-    questions: "Bei Fragen können Sie uns gerne unter infos@ekip-trade.com oder +44 7883 782699 kontaktieren.",
+    questions: "Bei Fragen können Sie uns gerne unter infos@ekip-trade.com oder +39 377 389 0872 kontaktieren.",
     thanks: "Vielen Dank für Ihr Vertrauen!",
     team: "Das EkipTrade-Team",
   },
@@ -101,7 +101,7 @@ const translations: Record<string, {
     bankStep1: "Su pago está siendo verificado.",
     bankStep2: "Le contactaremos a la recepción para confirmar el envío.",
     paypalStep: "Su pago ha sido confirmado. Su pedido será preparado lo antes posible.",
-    questions: "Para cualquier pregunta, no dude en contactarnos en infos@ekip-trade.com o +44 7883 782699.",
+    questions: "Para cualquier pregunta, no dude en contactarnos en infos@ekip-trade.com o +39 377 389 0872.",
     thanks: "¡Gracias por su confianza!",
     team: "El equipo EkipTrade",
   },
@@ -119,7 +119,7 @@ const translations: Record<string, {
     bankStep1: "Il tuo pagamento è in fase di verifica.",
     bankStep2: "Ti contatteremo al ricevimento per confermare la spedizione.",
     paypalStep: "Il tuo pagamento è stato confermato. Il tuo ordine sarà preparato il prima possibile.",
-    questions: "Per qualsiasi domanda, non esitare a contattarci a infos@ekip-trade.com o +44 7883 782699.",
+    questions: "Per qualsiasi domanda, non esitare a contattarci a infos@ekip-trade.com o +39 377 389 0872.",
     thanks: "Grazie per la tua fiducia!",
     team: "Il team EkipTrade",
   },
@@ -137,7 +137,7 @@ const translations: Record<string, {
     bankStep1: "O seu pagamento está a ser verificado.",
     bankStep2: "Contactá-lo-emos após a receção para confirmar o envio.",
     paypalStep: "O seu pagamento foi confirmado. A sua encomenda será preparada o mais rapidamente possível.",
-    questions: "Para qualquer questão, não hesite em contactar-nos em infos@ekip-trade.com ou +44 7883 782699.",
+    questions: "Para qualquer questão, não hesite em contactar-nos em infos@ekip-trade.com ou +39 377 389 0872.",
     thanks: "Obrigado pela sua confiança!",
     team: "A equipa EkipTrade",
   },
@@ -297,10 +297,10 @@ const handler = async (req: Request): Promise<Response> => {
           <tr>
             <td style="background-color: #f8f9fa; padding: 20px 30px; text-align: center; border-top: 1px solid #e5e7eb;">
               <p style="margin: 0 0 5px 0; color: #666666; font-size: 12px;">
-                EkipTrade Ltd - Wednesbury Trading Estate, Block P
+                EkipTrade — Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia
               </p>
               <p style="margin: 0 0 5px 0; color: #666666; font-size: 12px;">
-                Wednesbury WS10 7JN, United Kingdom
+                P.IVA: IT10992060011 | infos@ekip-trade.com | +39 377 389 0872
               </p>
               <p style="margin: 0; color: #9ca3af; font-size: 12px;">
                 © ${new Date().getFullYear()} EkipTrade. All rights reserved.
