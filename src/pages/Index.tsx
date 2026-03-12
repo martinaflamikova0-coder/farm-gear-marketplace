@@ -109,8 +109,6 @@ const Index = () => {
         {/* Testimonials */}
         <TestimonialsSection />
         
-        {/* All Products Links - Dense SEO internal linking */}
-        <AllProductsLinks />
       </main>
       
       <TrustBar />
