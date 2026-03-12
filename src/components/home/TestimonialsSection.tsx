@@ -8,7 +8,7 @@ import { useRef } from 'react';
 
 const TestimonialsSection = () => {
   const { t } = useTranslation();
-  const { data: testimonials = [], isLoading } = useFeaturedTestimonials();
+  const { data: testimonials = [], isLoading } = useTestimonials();
   const scrollRef = useRef<HTMLDivElement>(null);
 
   if (isLoading) {
