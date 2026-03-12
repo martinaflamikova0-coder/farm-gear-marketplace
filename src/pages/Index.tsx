@@ -1,8 +1,6 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeaderSpacer from '@/components/layout/HeaderSpacer';
-import SearchBar from '@/components/home/SearchBar';
-import QuickCategories from '@/components/home/QuickCategories';
 
 import BrandsMarquee from '@/components/home/BrandsMarquee';
 import HeroBanner from '@/components/home/HeroBanner';
