@@ -7,6 +7,7 @@ export interface Testimonial {
   author_name: string;
   author_location: string | null;
   author_company: string | null;
+  author_avatar_url: string | null;
   content: string;
   content_translations: Record<string, string> | null;
   rating: number;
@@ -42,7 +43,7 @@ export const useTestimonials = (featured?: boolean) => {
       if (error) throw error;
 
       // Apply translations based on current language
-      const testimonials = (data || []).map((testimonial: Testimonial): TranslatedTestimonial => {
+      const testimonials = (data || []).map((testimonial: any): TranslatedTestimonial => {
         const translations = testimonial.content_translations as Record<string, string> | null;
         const translatedContent = translations?.[currentLang] || testimonial.content;
         
