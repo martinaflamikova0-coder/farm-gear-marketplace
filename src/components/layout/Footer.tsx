@@ -84,6 +84,17 @@ const Footer = () => {
                 <span>Via Vittorio Veneto 118,<br />28040 Oleggio Castello (NO),<br />Piemonte, Italia</span>
               </div>
             </div>
+
+            {/* Payment methods */}
+            <div className="pt-4 border-t border-primary-foreground/10">
+              <p className="text-xs text-primary-foreground/40 mb-3 uppercase tracking-wider">{t('footer.paymentMethods')}</p>
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 px-4 py-2 rounded-md bg-primary-foreground/10 border border-primary-foreground/15">
+                  <Landmark className="h-5 w-5 text-primary-foreground/70" />
+                  <span className="text-xs font-medium text-primary-foreground/70">{t('footer.bankTransfer')}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
