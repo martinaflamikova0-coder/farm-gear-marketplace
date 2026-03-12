@@ -137,7 +137,7 @@ const translations: Record<string, {
     bankStep1: "O seu pagamento está a ser verificado.",
     bankStep2: "Contactá-lo-emos após a receção para confirmar o envio.",
     paypalStep: "O seu pagamento foi confirmado. A sua encomenda será preparada o mais rapidamente possível.",
-    questions: "Para qualquer questão, não hesite em contactar-nos em infos@ekiptrade.com ou +44 7883 782699.",
+    questions: "Para qualquer questão, não hesite em contactar-nos em infos@ekip-trade.com ou +44 7883 782699.",
     thanks: "Obrigado pela sua confiança!",
     team: "A equipa EkipTrade",
   },
