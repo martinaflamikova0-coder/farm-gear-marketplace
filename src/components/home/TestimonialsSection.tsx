@@ -113,31 +113,6 @@ const TestimonialsSection = () => {
           ))}
         </div>
 
-        {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-4 mt-8">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={prevPage}
-              disabled={page === 0}
-              className="rounded-full"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-            <span className="text-sm text-muted-foreground">
-              {page + 1} / {totalPages}
-            </span>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={nextPage}
-              disabled={page === totalPages - 1}
-              className="rounded-full"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          </div>
-        )}
       </div>
     </section>
   );
