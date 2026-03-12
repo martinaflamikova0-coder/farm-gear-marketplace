@@ -20,10 +20,11 @@ const PopularCategoriesLinks = () => {
     'tracteurs',
     'recolte',
     'travail-sol',
-    'elevage',
     'manutention',
     'chantier',
     'pieces',
+    'distributeurs',
+    'autres',
   ];
 
   const sortedCategories = mainCategoryOrder
