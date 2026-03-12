@@ -14,11 +14,13 @@ import PopularCategoriesLinks from '@/components/home/PopularCategoriesLinks';
 import PromoVideoSection from '@/components/home/PromoVideoSection';
 import LawnMowersSection from '@/components/home/LawnMowersSection';
 import RobotMowersSection from '@/components/home/RobotMowersSection';
+import SpecialProductSection from '@/components/home/SpecialProductSection';
 import ProductsGrid from '@/components/home/ProductsGrid';
 import TrustBar from '@/components/home/TrustBar';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import SEOHead from '@/components/SEOHead';
 import HomeJsonLd from '@/components/HomeJsonLd';
+import { Shovel, TreePine, Axe, Wind } from 'lucide-react';
 
 const Index = () => {
   return (
@@ -52,9 +54,45 @@ const Index = () => {
         <div className="bg-card">
           <ProductsGrid titleKey="home.harvestEquipment" category="recolte" limit={10} />
         </div>
+        <SpecialProductSection
+          titleKey="home.miniExcavators"
+          subtitleKey="home.miniExcavatorsSubtitle"
+          searchTerm="mini pelle"
+          icon={Shovel}
+          iconColorClass="text-accent"
+          bgClass=""
+        />
+        <div className="bg-card">
+          <SpecialProductSection
+            titleKey="home.brushcutters"
+            subtitleKey="home.brushcuttersSubtitle"
+            searchTerm="débroussailleuse"
+            icon={TreePine}
+            iconColorClass="text-success"
+            bgClass=""
+          />
+        </div>
+        <SpecialProductSection
+          titleKey="home.tillers"
+          subtitleKey="home.tillersSubtitle"
+          searchTerm="motoculteur"
+          icon={Axe}
+          iconColorClass="text-primary"
+          bgClass=""
+        />
         <ProductsGrid titleKey="home.constructionEquipment" category="chantier" limit={10} />
         <div className="bg-card">
           <ProductsGrid titleKey="home.soilWork" category="travail-sol" limit={10} />
+        </div>
+        <div className="bg-card">
+          <SpecialProductSection
+            titleKey="home.blowers"
+            subtitleKey="home.blowersSubtitle"
+            searchTerm="souffleur"
+            icon={Wind}
+            iconColorClass="text-accent"
+            bgClass=""
+          />
         </div>
         <ProductsGrid titleKey="home.handling" category="manutention" limit={10} />
         <div className="bg-card">
