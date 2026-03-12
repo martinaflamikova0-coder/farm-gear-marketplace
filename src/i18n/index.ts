@@ -50,10 +50,9 @@ i18n
       escapeValue: false
     },
     detection: {
-      order: ['path', 'localStorage', 'navigator', 'htmlTag'],
+      order: ['path', 'navigator', 'htmlTag'],
       lookupFromPathIndex: 0,
-      caches: ['localStorage'],
-      cookieMinutes: 525600 // 1 year
+      caches: [],
     }
   });
 
