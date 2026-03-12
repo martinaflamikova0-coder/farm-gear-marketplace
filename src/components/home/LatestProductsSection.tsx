@@ -102,12 +102,8 @@ const LatestProductsSection = () => {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {currentProducts.map((product, index) => (
-            <div key={product.id} className="relative">
-              {/* Rank badge - same style as BestSellersSection */}
-              <div className="absolute -top-2 -left-2 z-10 flex items-center justify-center w-8 h-8 bg-amber-500 text-white text-xs font-bold rounded-full shadow-lg">
-                #{currentPage * ITEMS_PER_PAGE + index + 1}
-              </div>
+          {currentProducts.map((product) => (
+            <div key={product.id}>
               <ProductCard product={product} />
             </div>
           ))}
