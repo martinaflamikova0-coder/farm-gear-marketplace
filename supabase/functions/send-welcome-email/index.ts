@@ -120,7 +120,7 @@ const translations: Record<string, {
     benefit4: "Beneficiar das nossas ofertas exclusivas",
     cta: "Comece a explorar o nosso catálogo agora:",
     ctaButton: "Ver anúncios",
-    questions: "Se tiver dúvidas, contacte-nos em infos@ekiptrade.com ou +44 7883 782699.",
+    questions: "Se tiver dúvidas, contacte-nos em infos@ekip-trade.com ou +44 7883 782699.",
     thanks: "Obrigado pela sua confiança.",
     team: "A equipa EkipTrade",
   },
