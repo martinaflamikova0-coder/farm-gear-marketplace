@@ -345,7 +345,7 @@ export const useLatestProducts = (excludeIds: string[] = [], limit: number = 100
         .eq('status', 'active')
         .eq('category', 'chantier')
         .not('subcategory', 'is', null)
-        .order('created_at', { ascending: false })
+        .order('price', { ascending: true })
         .limit(limit + excludeIds.length); // fetch extra to compensate for exclusions
 
       const { data, error } = await query;
