@@ -394,6 +394,7 @@
     "privacy": "Política de privacidade",
     "cookies": "Cookies",
     "returns": "Devoluções e reembolsos",
+    "legalNotice": "Aviso legal",
     "rights": "Todos os direitos reservados"
   },
 "errors": {
@@ -569,6 +570,11 @@
       "title": "Política de Cookies",
       "description": "Gerencie as suas preferências de cookies na EkipTrade. Conheça os tipos de cookies que usamos e como controlá-los.",
       "keywords": "cookies, preferências, navegação, consentimento"
+    },
+    "legalNotice": {
+      "title": "Aviso Legal",
+      "description": "Informações legais sobre a EkipTrade. Razão social, número de IVA, sede social, alojamento e propriedade intelectual.",
+      "keywords": "aviso legal, IVA, sede social, informações empresa, EkipTrade"
     },
     "categories": {
       "title": "Todas as Categorias - Máquinas Agrícolas e Industriais",
@@ -748,6 +754,32 @@
       "browserContent": "Também pode gerir os cookies diretamente nas definições do seu navegador. Consulte a ajuda do seu navegador para saber como eliminar ou bloquear cookies.",
       "contactTitle": "Contacto",
       "contactContent": "Para qualquer questão sobre a nossa utilização de cookies, contacte-nos em:"
+    },
+    "legalNotice": {
+      "title": "Aviso Legal",
+      "editorTitle": "1. Editor do site",
+      "companyName": "Razão social",
+      "legalForm": "Forma jurídica",
+      "legalFormValue": "Empresa individual",
+      "vatLabel": "Número de IVA",
+      "registeredOffice": "Sede social",
+      "phone": "Telefone",
+      "email": "Email",
+      "website": "Site web",
+      "directorTitle": "2. Diretor da publicação",
+      "directorContent": "O diretor da publicação do site ekiptrade.com é o representante legal da EkipTrade.",
+      "hostingTitle": "3. Alojamento",
+      "hostName": "Fornecedor de alojamento",
+      "hostWebsite": "Site web",
+      "ipTitle": "4. Propriedade intelectual",
+      "ipContent": "Todo o conteúdo do site ekiptrade.com (textos, imagens, gráficos, logótipo, ícones, etc.) é propriedade exclusiva da EkipTrade ou dos seus parceiros. Qualquer reprodução, representação, modificação, publicação ou adaptação de todo ou parte dos elementos do site, por qualquer meio ou processo, é proibida sem autorização prévia por escrito.",
+      "liabilityTitle": "5. Limitação de responsabilidade",
+      "liabilityContent": "A EkipTrade esforça-se por garantir a exatidão das informações publicadas no site. No entanto, não pode ser responsabilizada por omissões, inexatidões ou falta de atualização. A EkipTrade declina toda a responsabilidade por danos resultantes do acesso ou utilização do site.",
+      "dataTitle": "6. Proteção de dados pessoais",
+      "dataContent": "Em conformidade com o RGPD (Regulamento UE 2016/679), tem o direito de acesso, retificação, eliminação e portabilidade dos seus dados pessoais. Para exercer estes direitos, contacte-nos em:",
+      "lawTitle": "7. Lei aplicável",
+      "lawContent": "O presente aviso legal é regido pela lei italiana. Qualquer litígio relativo à utilização do site ekiptrade.com será da competência dos tribunais italianos.",
+      "lastUpdate": "Última atualização: Março 2026"
     }
   },
   "language": {
