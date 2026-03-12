@@ -562,6 +562,16 @@
       "description": "Leia os termos de uso da EkipTrade. Condições de acesso, direitos e obrigações dos utilizadores, regras de anúncios e responsabilidades.",
       "keywords": "termos, condições, uso, plataforma, regras"
     },
+    "purchaseTerms": {
+      "title": "Condições Gerais de Compra",
+      "description": "Consulte as condições gerais de compra da EkipTrade. Preços, encomendas, pagamento, entrega, garantias e responsabilidades.",
+      "keywords": "CGC, condições compra, encomenda, pagamento, entrega, garantia"
+    },
+    "refundPolicy": {
+      "title": "Política de Reembolso",
+      "description": "Conheça a política de reembolso da EkipTrade. Condições de elegibilidade, prazos e métodos de reembolso.",
+      "keywords": "reembolso, política, prazo, condições, máquinas agrícolas"
+    },
     "privacy": {
       "title": "Política de Privacidade",
       "description": "Saiba como a EkipTrade recolhe, utiliza e protege os seus dados pessoais. Os seus direitos RGPD e as nossas práticas de segurança.",
