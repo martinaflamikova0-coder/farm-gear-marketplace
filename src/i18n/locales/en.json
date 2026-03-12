@@ -566,6 +566,16 @@
       "description": "Read EkipTrade's terms of use. Platform access conditions, user rights and obligations, listing rules, and responsibilities.",
       "keywords": "terms, conditions, platform, rules, usage"
     },
+    "purchaseTerms": {
+      "title": "Purchase Terms",
+      "description": "Read EkipTrade's general purchase terms. Pricing, orders, payment, delivery, warranties and responsibilities for agricultural equipment purchases.",
+      "keywords": "purchase terms, order, payment, delivery, warranty"
+    },
+    "refundPolicy": {
+      "title": "Refund Policy",
+      "description": "Learn about EkipTrade's refund policy. Eligibility conditions, timelines, and refund methods for agricultural and industrial equipment.",
+      "keywords": "refund, policy, timeline, conditions, agricultural equipment"
+    },
     "privacy": {
       "title": "Privacy Policy",
       "description": "Learn about how EkipTrade collects, uses, and protects your personal data. Your GDPR rights and our data security practices.",
