@@ -142,7 +142,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send auto-reply to customer
     const customerEmail = await resend.emails.send({
-      from: "EkipTrade <infos@ekiptrade.com>",
+      from: "EkipTrade <infos@ekip-trade.com>",
       to: [email],
       subject: localizedContent.autoReplySubject,
       html: `
