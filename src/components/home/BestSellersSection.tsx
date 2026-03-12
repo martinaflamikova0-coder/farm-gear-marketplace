@@ -86,9 +86,6 @@ const BestSellersSection = () => {
               <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
                 {t('home.bestsellers', 'Top 100 Meilleures Ventes')}
               </h2>
-              <p className="text-sm text-muted-foreground">
-                {bestSellers.length} {t('common.products', 'products')} · {subcategoryCount} {t('home.subcategories', 'subcategories')}
-              </p>
             </div>
           </div>
         </div>
