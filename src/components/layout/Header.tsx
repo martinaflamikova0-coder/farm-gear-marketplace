@@ -156,7 +156,7 @@ const Header = () => {
                       to={getCategoryLink(category.slug)}
                       className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-secondary transition-colors"
                     >
-                      <span className="text-xl">{category.icon}</span>
+                      <CategoryIcon name={category.icon} className="h-5 w-5 text-muted-foreground" />
                       <div className="flex-1">
                         <span className="text-sm font-medium">{getCategoryName(category)}</span>
                         <span className="text-xs text-muted-foreground ml-2">({category.count})</span>
