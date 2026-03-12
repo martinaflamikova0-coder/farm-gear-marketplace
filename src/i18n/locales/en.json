@@ -103,7 +103,8 @@
     "topBestsellers": "Top Bestsellers",
     "topBestsellersDesc": "Most popular items right now",
     "seeInAction": "See Our Marketplace in Action",
-    "videoSubtitle": "Discover how easy it is to find your next equipment"
+    "videoSubtitle": "Discover how easy it is to find your next equipment",
+    "moreCategories": "more categories"
   },
   "gifts": {
     "count": "{{count}} gift",

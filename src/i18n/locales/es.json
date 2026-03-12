@@ -120,7 +120,8 @@
     "topBestsellers": "Más Vendidos",
     "topBestsellersDesc": "Los artículos más populares en este momento",
     "seeInAction": "Vea nuestro marketplace en acción",
-    "videoSubtitle": "Descubra lo fácil que es encontrar su próximo equipo"
+    "videoSubtitle": "Descubra lo fácil que es encontrar su próximo equipo",
+    "moreCategories": "más categorías"
   },
   "gifts": {
     "count": "{{count}} regalo",

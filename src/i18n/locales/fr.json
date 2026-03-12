@@ -103,7 +103,8 @@
     "topBestsellers": "Meilleures Ventes",
     "topBestsellersDesc": "Les articles les plus populaires en ce moment",
     "seeInAction": "Découvrez notre marketplace en action",
-    "videoSubtitle": "Voyez à quel point il est facile de trouver votre prochain équipement"
+    "videoSubtitle": "Voyez à quel point il est facile de trouver votre prochain équipement",
+    "moreCategories": "autres catégories"
   },
   "gifts": {
     "count": "{{count}} cadeau",

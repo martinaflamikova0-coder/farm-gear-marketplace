@@ -120,7 +120,8 @@
     "topBestsellers": "Bestseller",
     "topBestsellersDesc": "Die beliebtesten Artikel im Moment",
     "seeInAction": "Erleben Sie unseren Marktplatz in Aktion",
-    "videoSubtitle": "Entdecken Sie, wie einfach es ist, Ihr nächstes Gerät zu finden"
+    "videoSubtitle": "Entdecken Sie, wie einfach es ist, Ihr nächstes Gerät zu finden",
+    "moreCategories": "weitere Kategorien"
   },
   "gifts": {
     "count": "{{count}} Geschenk",
