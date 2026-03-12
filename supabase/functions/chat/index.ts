@@ -123,7 +123,7 @@ R: Virement bancaire et PayPal. Carte bancaire bientôt disponible. Financement 
 - Paiements sécurisés et traçables
 - Conformité RGPD (droits d'accès, rectification, effacement, portabilité, opposition)
 - Données conservées pendant l'inscription + 3 ans après suppression du compte
-- Contact DPO : infos@ekiptrade.com
+- Contact DPO : infos@ekip-trade.com
 
 ═══════════════════════════════════════
 🏷️ MARQUES PRINCIPALES
