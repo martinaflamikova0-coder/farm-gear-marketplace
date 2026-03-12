@@ -119,7 +119,7 @@ const translations: Record<string, {
     bankStep1: "Il tuo pagamento è in fase di verifica.",
     bankStep2: "Ti contatteremo al ricevimento per confermare la spedizione.",
     paypalStep: "Il tuo pagamento è stato confermato. Il tuo ordine sarà preparato il prima possibile.",
-    questions: "Per qualsiasi domanda, non esitare a contattarci a infos@ekip-trade.com o +44 7883 782699.",
+    questions: "Per qualsiasi domanda, non esitare a contattarci a infos@ekip-trade.com o +39 377 389 0872.",
     thanks: "Grazie per la tua fiducia!",
     team: "Il team EkipTrade",
   },
