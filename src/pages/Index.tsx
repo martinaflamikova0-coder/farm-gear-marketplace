@@ -14,11 +14,13 @@ import PopularCategoriesLinks from '@/components/home/PopularCategoriesLinks';
 import PromoVideoSection from '@/components/home/PromoVideoSection';
 import LawnMowersSection from '@/components/home/LawnMowersSection';
 import RobotMowersSection from '@/components/home/RobotMowersSection';
+import SpecialProductSection from '@/components/home/SpecialProductSection';
 import ProductsGrid from '@/components/home/ProductsGrid';
 import TrustBar from '@/components/home/TrustBar';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import SEOHead from '@/components/SEOHead';
 import HomeJsonLd from '@/components/HomeJsonLd';
+import { Shovel, TreePine, Axe, Wind } from 'lucide-react';
 
 const Index = () => {
   return (
