@@ -1,23 +1,15 @@
 import { useTranslation } from 'react-i18next';
-import { Star, Quote, MapPin, Building2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, Quote, MapPin, Building2 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
 import { useFeaturedTestimonials } from '@/hooks/useTestimonials';
-import { useState, useCallback } from 'react';
+import { useRef } from 'react';
 
 const TestimonialsSection = () => {
   const { t } = useTranslation();
   const { data: testimonials = [], isLoading } = useFeaturedTestimonials();
-  const [page, setPage] = useState(0);
-  const perPage = 6;
-  const totalPages = Math.ceil(testimonials.length / perPage);
-
-  const nextPage = useCallback(() => setPage(p => Math.min(p + 1, totalPages - 1)), [totalPages]);
-  const prevPage = useCallback(() => setPage(p => Math.max(p - 1, 0)), []);
-
-  const visibleTestimonials = testimonials.slice(page * perPage, (page + 1) * perPage);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   if (isLoading) {
     return (
@@ -27,9 +19,9 @@ const TestimonialsSection = () => {
             <Skeleton className="h-10 w-64 mx-auto mb-4" />
             <Skeleton className="h-6 w-96 mx-auto" />
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <Skeleton key={i} className="h-64 rounded-xl" />
+          <div className="flex gap-6">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <Skeleton key={i} className="min-w-[300px] h-64 rounded-xl shrink-0" />
             ))}
           </div>
         </div>
@@ -37,9 +29,7 @@ const TestimonialsSection = () => {
     );
   }
 
-  if (testimonials.length === 0) {
-    return null;
-  }
+  if (testimonials.length === 0) return null;
 
   return (
     <section className="py-16 bg-gradient-to-b from-primary/5 to-transparent">
@@ -53,12 +43,15 @@ const TestimonialsSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {visibleTestimonials.map((testimonial, index) => (
+        <div
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {testimonials.map((testimonial) => (
             <Card 
               key={testimonial.id} 
-              className="hover-lift border-border bg-card overflow-hidden"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="hover-lift border-border bg-card overflow-hidden min-w-[300px] w-[300px] sm:min-w-[340px] sm:w-[340px] snap-start shrink-0"
             >
               <CardContent className="p-6 flex flex-col h-full">
                 <div className="flex items-center gap-1 mb-4">
@@ -112,7 +105,6 @@ const TestimonialsSection = () => {
             </Card>
           ))}
         </div>
-
       </div>
     </section>
   );
