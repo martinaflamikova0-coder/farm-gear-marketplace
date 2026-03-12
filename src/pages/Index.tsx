@@ -10,7 +10,7 @@ import PremiumProducts from '@/components/home/PremiumProducts';
 import BestSellersSection from '@/components/home/BestSellersSection';
 import LatestProductsSection from '@/components/home/LatestProductsSection';
 import PopularCategoriesLinks from '@/components/home/PopularCategoriesLinks';
-import VerifiedQualityBanner from '@/components/home/VerifiedQualityBanner';
+
 import PromoVideoSection from '@/components/home/PromoVideoSection';
 import LawnMowersSection from '@/components/home/LawnMowersSection';
 import ProductsGrid from '@/components/home/ProductsGrid';
@@ -39,7 +39,7 @@ const Index = () => {
         <PopularCategoriesLinks />
         <BestSellersSection />
         <LatestProductsSection />
-        <VerifiedQualityBanner />
+        
         <PremiumProducts />
         <div className="bg-card">
           <RecentProducts />
