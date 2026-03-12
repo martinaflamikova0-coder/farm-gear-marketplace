@@ -263,7 +263,7 @@ export const useRecentProducts = (limit: number = 4) => {
         .select('*')
         .eq('status', 'active')
         .eq('featured', false)
-        .order('created_at', { ascending: false })
+        .order('price', { ascending: true })
         .limit(limit);
 
       if (error) throw error;
