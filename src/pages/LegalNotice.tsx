@@ -29,17 +29,11 @@ const LegalNotice = () => {
               <li><strong>{t('pages.legalNotice.registeredOffice')}:</strong> Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia</li>
               <li><strong>{t('pages.legalNotice.phone')}:</strong> <a href="tel:+393773890872" className="text-primary hover:underline">+39 377 389 0872</a></li>
               <li><strong>{t('pages.legalNotice.email')}:</strong> <a href="mailto:infos@ekip-trade.com" className="text-primary hover:underline">infos@ekip-trade.com</a></li>
-              <li><strong>{t('pages.legalNotice.website')}:</strong> <a href="https://ekiptrade.com" className="text-primary hover:underline">ekiptrade.com</a></li>
+              <li><strong>{t('pages.legalNotice.website')}:</strong> <a href="https://www.ekip-trade.com" className="text-primary hover:underline">www.ekip-trade.com</a></li>
             </ul>
 
             <h2 className="font-display text-2xl font-semibold text-foreground mt-8">{t('pages.legalNotice.directorTitle')}</h2>
             <p className="text-muted-foreground leading-relaxed">{t('pages.legalNotice.directorContent')}</p>
-
-            <h2 className="font-display text-2xl font-semibold text-foreground mt-8">{t('pages.legalNotice.hostingTitle')}</h2>
-            <ul className="text-muted-foreground space-y-2 list-none pl-0">
-              <li><strong>{t('pages.legalNotice.hostName')}:</strong> Lovable (via Supabase)</li>
-              <li><strong>{t('pages.legalNotice.hostWebsite')}:</strong> <a href="https://lovable.dev" className="text-primary hover:underline">lovable.dev</a></li>
-            </ul>
 
             <h2 className="font-display text-2xl font-semibold text-foreground mt-8">{t('pages.legalNotice.ipTitle')}</h2>
             <p className="text-muted-foreground leading-relaxed">{t('pages.legalNotice.ipContent')}</p>
