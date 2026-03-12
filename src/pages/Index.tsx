@@ -39,7 +39,7 @@ const Index = () => {
         <PopularCategoriesLinks />
         <BestSellersSection />
         <LatestProductsSection />
-        <VerifiedQualityBanner />
+        
         <PremiumProducts />
         <div className="bg-card">
           <RecentProducts />
