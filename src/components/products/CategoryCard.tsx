@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import CategoryIcon from '@/components/CategoryIcon';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent } from '@/components/ui/card';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
