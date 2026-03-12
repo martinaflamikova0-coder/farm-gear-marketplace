@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import ProductCard from '@/components/products/ProductCard';
 import { useFeaturedProducts } from '@/hooks/useProducts';
+import CarouselScrollButtons from './CarouselScrollButtons';
 
 const FeaturedProducts = () => {
   const { t } = useTranslation();
@@ -29,13 +30,16 @@ const FeaturedProducts = () => {
   return (
     <section className="py-16 bg-secondary/30">
       <div className="container-custom">
-        <div className="mb-10">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
-            {t('home.featuredListings')}
-          </h2>
-          <p className="text-muted-foreground">
-            {t('home.featuredSubtitle')}
-          </p>
+        <div className="mb-10 flex items-end justify-between">
+          <div>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
+              {t('home.featuredListings')}
+            </h2>
+            <p className="text-muted-foreground">
+              {t('home.featuredSubtitle')}
+            </p>
+          </div>
+          <CarouselScrollButtons scrollRef={scrollRef} />
         </div>
 
         <div
