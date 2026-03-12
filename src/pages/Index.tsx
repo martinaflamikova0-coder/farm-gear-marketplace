@@ -40,8 +40,6 @@ const Index = () => {
       {/* Hero Banner - Full width impact */}
       <HeroBanner />
       
-      <SearchBar />
-      <QuickCategories />
       
       <main className="flex-1">
         {/* Featured Products */}

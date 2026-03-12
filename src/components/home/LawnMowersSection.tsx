@@ -58,12 +58,6 @@ const LawnMowersSection = () => {
               {t('home.lawnMowers')}
             </h2>
           </div>
-          <Button variant="default" asChild className="bg-success hover:bg-success/90">
-            <Link to={`/${currentLang}/${listingsSlug}?search=tondeuse`} className="flex items-center gap-2">
-              {t('common.viewAll')}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Button>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

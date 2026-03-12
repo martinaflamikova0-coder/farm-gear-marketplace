@@ -89,18 +89,6 @@ const PopularCategoriesLinks = () => {
           })}
         </div>
 
-        {/* View All Categories Button */}
-        <div className="flex justify-center">
-          <Button
-            onClick={handleViewAll}
-            variant="outline"
-            size="lg"
-            className="group"
-          >
-            {t('home.viewAllCategories') || 'View All Categories'}
-            <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </div>
       </div>
     </section>
   );
