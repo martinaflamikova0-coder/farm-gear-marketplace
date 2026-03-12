@@ -612,6 +612,7 @@ export type Database = {
       }
       testimonials: {
         Row: {
+          author_avatar_url: string | null
           author_company: string | null
           author_location: string | null
           author_name: string
@@ -625,6 +626,7 @@ export type Database = {
           updated_at: string | null
         }
         Insert: {
+          author_avatar_url?: string | null
           author_company?: string | null
           author_location?: string | null
           author_name: string
@@ -638,6 +640,7 @@ export type Database = {
           updated_at?: string | null
         }
         Update: {
+          author_avatar_url?: string | null
           author_company?: string | null
           author_location?: string | null
           author_name?: string
