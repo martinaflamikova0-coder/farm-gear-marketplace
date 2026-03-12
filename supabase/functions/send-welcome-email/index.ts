@@ -268,8 +268,8 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "EkipTrade <infos@ekiptrade.com>",
-        to: ["infos@ekiptrade.com"],
+        from: "EkipTrade <infos@ekip-trade.com>",
+        to: ["infos@ekip-trade.com"],
         subject: `[Admin] Nouveau compte créé - ${firstName} ${lastName}`,
         html: `
           <h2>Nouveau compte client créé</h2>
