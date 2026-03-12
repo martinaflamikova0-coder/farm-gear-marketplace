@@ -90,19 +90,6 @@ const BestSellersSection = () => {
           </div>
         </div>
 
-        {/* Subcategory pills */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {Object.entries(subcategoryCounts)
-            .sort((a, b) => b[1] - a[1])
-            .map(([slug, count]) => (
-              <span
-                key={slug}
-                className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20"
-              >
-                {t(`categoryNames.${slug}`, slug)} ({count})
-              </span>
-            ))}
-        </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {currentProducts.map((product) => (
@@ -112,21 +99,6 @@ const BestSellersSection = () => {
           ))}
         </div>
 
-        {totalPages > 1 && (
-          <div className="flex justify-center mt-6 gap-1">
-            {Array.from({ length: Math.min(totalPages, 15) }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentPage(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentPage
-                    ? 'bg-amber-500 w-6'
-                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                }`}
-              />
-            ))}
-          </div>
-        )}
 
       </div>
     </section>

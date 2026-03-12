@@ -145,12 +145,6 @@ const CategoryCarousel = ({ categorySlug, products, lang, listingsSlug, categori
           >
             <ChevronRight className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="sm" asChild className="ml-2 hidden sm:flex">
-            <Link to={`/${lang}/${listingsSlug}?category=${categorySlug}`} className="flex items-center gap-1">
-              {t('common.viewAll', 'Vedi tutto')}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Button>
         </div>
       </div>
       <div

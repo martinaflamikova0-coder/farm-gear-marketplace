@@ -78,9 +78,6 @@ const PopularCategoriesLinks = () => {
                     <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                       {translateCategory(category?.slug || '') || category?.name}
                     </h3>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      {t('common.viewAll')}
-                    </p>
                   </div>
                 </div>
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none bg-gradient-to-t from-primary/10 to-transparent" />
