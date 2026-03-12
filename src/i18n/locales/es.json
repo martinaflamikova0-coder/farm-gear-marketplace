@@ -754,6 +754,32 @@
       "browserContent": "También puede gestionar las cookies directamente desde la configuración de su navegador. Consulte la ayuda de su navegador para saber cómo eliminar o bloquear cookies.",
       "contactTitle": "Contacto",
       "contactContent": "Para cualquier pregunta sobre nuestro uso de cookies, contáctenos en:"
+    },
+    "legalNotice": {
+      "title": "Aviso Legal",
+      "editorTitle": "1. Editor del sitio",
+      "companyName": "Razón social",
+      "legalForm": "Forma jurídica",
+      "legalFormValue": "Empresa individual",
+      "vatLabel": "Número de IVA",
+      "registeredOffice": "Domicilio social",
+      "phone": "Teléfono",
+      "email": "Email",
+      "website": "Sitio web",
+      "directorTitle": "2. Director de la publicación",
+      "directorContent": "El director de la publicación de ekiptrade.com es el representante legal de EkipTrade.",
+      "hostingTitle": "3. Alojamiento",
+      "hostName": "Proveedor de alojamiento",
+      "hostWebsite": "Sitio web",
+      "ipTitle": "4. Propiedad intelectual",
+      "ipContent": "Todo el contenido del sitio ekiptrade.com (textos, imágenes, gráficos, logotipo, iconos, etc.) es propiedad exclusiva de EkipTrade o de sus socios. Queda prohibida cualquier reproducción, representación, modificación, publicación o adaptación de la totalidad o parte de los elementos del sitio, por cualquier medio o procedimiento, sin autorización previa por escrito.",
+      "liabilityTitle": "5. Limitación de responsabilidad",
+      "liabilityContent": "EkipTrade se esfuerza por garantizar la exactitud de la información publicada en el sitio. Sin embargo, no puede ser considerada responsable de omisiones, inexactitudes o falta de actualización. EkipTrade declina toda responsabilidad por daños derivados del acceso o uso del sitio.",
+      "dataTitle": "6. Protección de datos personales",
+      "dataContent": "De conformidad con el RGPD (Reglamento UE 2016/679), usted tiene derecho de acceso, rectificación, supresión y portabilidad de sus datos personales. Para ejercer estos derechos, contáctenos en:",
+      "lawTitle": "7. Ley aplicable",
+      "lawContent": "El presente aviso legal se rige por la ley italiana. Cualquier litigio relativo al uso del sitio ekiptrade.com será competencia de los tribunales italianos.",
+      "lastUpdate": "Última actualización: Marzo 2026"
     }
   },
   "language": {
