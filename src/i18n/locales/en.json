@@ -575,6 +575,11 @@
       "description": "Manage your cookie preferences on EkipTrade. Learn about the types of cookies we use and how to control them.",
       "keywords": "cookies, preferences, browsing, consent"
     },
+    "legalNotice": {
+      "title": "Legal Notice",
+      "description": "Legal information about EkipTrade. Company name, VAT number, registered office, hosting and intellectual property.",
+      "keywords": "legal notice, VAT, registered office, company information, EkipTrade"
+    },
     "categories": {
       "title": "All Categories - Agricultural & Industrial Equipment",
       "description": "Browse all categories of agricultural and industrial equipment on EkipTrade. Tractors, harvesters, tillage, handling, construction machinery, spare parts and more.",
