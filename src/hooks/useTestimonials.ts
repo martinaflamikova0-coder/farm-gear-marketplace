@@ -42,16 +42,11 @@ export const useTestimonials = (featured?: boolean) => {
 
       if (error) throw error;
 
-      // Apply translations based on current language
-      const testimonials = (data || []).map((testimonial: any): TranslatedTestimonial => {
-        const translations = testimonial.content_translations as Record<string, string> | null;
-        const translatedContent = translations?.[currentLang] || testimonial.content;
-        
-        return {
-          ...testimonial,
-          content: translatedContent,
-        };
-      });
+      // Keep original content in the author's native language
+      const testimonials = (data || []).map((testimonial: any): TranslatedTestimonial => ({
+        ...testimonial,
+        content: testimonial.content,
+      }));
 
       return testimonials;
     },
