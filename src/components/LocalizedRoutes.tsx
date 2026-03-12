@@ -106,7 +106,7 @@ const LocalizedRoutes = () => {
       return browserLang as SupportedLanguage;
     }
     
-    return 'en';
+    return 'it';
   };
 
   const defaultLang = getDefaultLanguage();

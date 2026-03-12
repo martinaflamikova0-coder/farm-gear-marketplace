@@ -1,13 +1,14 @@
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, Shield, TrendingUp, Truck } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 
 const HeroBanner = () => {
   const { t, i18n } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
-  const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
+  const currentLang = (lang || i18n.language || 'it') as SupportedLanguage;
   const listingsSlug = getLocalizedSlug('listings', currentLang);
 
   const stats = [
@@ -27,18 +28,39 @@ const HeroBanner = () => {
       <div className="container-custom relative py-12 md:py-20 lg:py-24">
         <div className="max-w-3xl mx-auto text-center space-y-8">
           {/* Headline */}
-          <div className="space-y-4 animate-fade-in">
+          <motion.div
+            className="space-y-4"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold leading-tight text-primary-foreground tracking-tight">
               {t('hero.title')}{' '}
-              <span className="text-accent">{t('hero.titleAccent')}</span>
+              <motion.span
+                className="text-accent inline-block"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.3, ease: 'easeOut' }}
+              >
+                {t('hero.titleAccent')}
+              </motion.span>
             </h1>
-            <p className="text-base md:text-lg text-primary-foreground/70 max-w-2xl mx-auto leading-relaxed">
+            <motion.p
+              className="text-base md:text-lg text-primary-foreground/70 max-w-2xl mx-auto leading-relaxed"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               {t('hero.subtitle')}
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* CTA */}
-          <div className="animate-fade-in" style={{ animationDelay: '0.15s' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4, ease: 'easeOut' }}
+          >
             <Button
               variant="default"
               size="lg"
@@ -50,12 +72,18 @@ const HeroBanner = () => {
                 <ArrowRight className="h-5 w-5" />
               </Link>
             </Button>
-          </div>
+          </motion.div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 md:gap-10 pt-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <div className="grid grid-cols-3 gap-6 md:gap-10 pt-4">
             {stats.map((stat, i) => (
-              <div key={i} className="flex flex-col items-center gap-1.5">
+              <motion.div
+                key={i}
+                className="flex flex-col items-center gap-1.5"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.5 + i * 0.1, ease: 'easeOut' }}
+              >
                 <stat.icon className="h-5 w-5 text-accent mb-1 hidden sm:block" />
                 <span className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">
                   {stat.value}
@@ -63,7 +91,7 @@ const HeroBanner = () => {
                 <span className="text-xs md:text-sm text-primary-foreground/50 leading-tight text-center">
                   {t(stat.labelKey)}
                 </span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
