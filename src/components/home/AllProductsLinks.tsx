@@ -125,7 +125,7 @@ const CategoryCarousel = ({ categorySlug, products, lang, listingsSlug, categori
           to={`/${lang}/${listingsSlug}?category=${categorySlug}`}
           className="inline-flex items-center gap-2 text-lg font-semibold text-foreground hover:text-primary transition-colors"
         >
-          {category?.icon && <span>{category.icon}</span>}
+          {category?.icon && <CategoryIcon name={category.icon} className="h-5 w-5 text-primary" />}
           {translatedName || categorySlug}
           <span className="text-xs text-muted-foreground font-normal">({products.length})</span>
         </Link>
