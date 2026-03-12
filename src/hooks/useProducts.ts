@@ -263,7 +263,7 @@ export const useRecentProducts = (limit: number = 4) => {
         .select('*')
         .eq('status', 'active')
         .eq('featured', false)
-        .order('created_at', { ascending: false })
+        .order('price', { ascending: true })
         .limit(limit);
 
       if (error) throw error;
@@ -325,7 +325,7 @@ export const useBestSellers = (limit: number = 100) => {
         .from('products_public')
         .select('*')
         .eq('status', 'active')
-        .order('created_at', { ascending: false })
+        .order('price', { ascending: true })
         .limit(limit);
 
       if (error) throw error;
@@ -345,7 +345,7 @@ export const useLatestProducts = (excludeIds: string[] = [], limit: number = 100
         .eq('status', 'active')
         .eq('category', 'chantier')
         .not('subcategory', 'is', null)
-        .order('created_at', { ascending: false })
+        .order('price', { ascending: true })
         .limit(limit + excludeIds.length); // fetch extra to compensate for exclusions
 
       const { data, error } = await query;
