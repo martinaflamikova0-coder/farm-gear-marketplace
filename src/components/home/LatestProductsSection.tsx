@@ -1,45 +1,17 @@
-import { Link, useParams } from 'react-router-dom';
-import { ArrowRight, Wrench, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Wrench } from 'lucide-react';
+import { useRef } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import ProductCard from '@/components/products/ProductCard';
 import { useBestSellers, useLatestProducts } from '@/hooks/useProducts';
-import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
-
-const ITEMS_PER_PAGE = 8;
 
 const LatestProductsSection = () => {
-  const { t, i18n } = useTranslation();
-  const { lang } = useParams<{ lang: string }>();
-  const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
-  const listingsSlug = getLocalizedSlug('listings', currentLang);
-  const [currentPage, setCurrentPage] = useState(0);
+  const { t } = useTranslation();
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Get best-seller IDs to exclude them
   const { data: bestSellers = [] } = useBestSellers(100);
   const bestSellerIds = bestSellers.map(p => p.id);
-  
   const { data: latestProducts = [], isLoading } = useLatestProducts(bestSellerIds, 100);
-
-  const totalPages = Math.ceil(latestProducts.length / ITEMS_PER_PAGE);
-  const currentProducts = latestProducts.slice(
-    currentPage * ITEMS_PER_PAGE,
-    (currentPage + 1) * ITEMS_PER_PAGE
-  );
-
-  const goToNextPage = () => {
-    if (currentPage < totalPages - 1) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const goToPrevPage = () => {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
 
   if (isLoading) {
     return (
@@ -51,9 +23,9 @@ const LatestProductsSection = () => {
             </div>
             <Skeleton className="h-8 w-48" />
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <Skeleton key={i} className="h-72 rounded-lg" />
+          <div className="flex gap-4">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Skeleton key={i} className="min-w-[200px] h-72 rounded-lg shrink-0" />
             ))}
           </div>
         </div>
@@ -63,40 +35,29 @@ const LatestProductsSection = () => {
 
   if (latestProducts.length === 0) return null;
 
-  // Group by subcategory for the pills
-  const subcategoryCounts = latestProducts.reduce((acc, p) => {
-    const sub = p.subcategory || 'other';
-    acc[sub] = (acc[sub] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
-  const subcategoryCount = Object.keys(subcategoryCounts).length;
-
   return (
     <section className="py-12 bg-gradient-to-b from-amber-50/50 to-background dark:from-amber-950/20">
       <div className="container-custom">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-amber-500/10 rounded-lg">
-              <Wrench className="h-6 w-6 text-amber-600" />
-            </div>
-            <div>
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
-                {t('home.latestProducts', 'Construction Equipment')}
-              </h2>
-            </div>
+        <div className="flex items-center gap-3 mb-8">
+          <div className="p-2 bg-amber-500/10 rounded-lg">
+            <Wrench className="h-6 w-6 text-amber-600" />
           </div>
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
+            {t('home.latestProducts', 'Construction Equipment')}
+          </h2>
         </div>
 
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {currentProducts.map((product) => (
-            <div key={product.id}>
+        <div
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {latestProducts.map((product) => (
+            <div key={product.id} className="min-w-[200px] w-[200px] sm:min-w-[220px] sm:w-[220px] snap-start shrink-0">
               <ProductCard product={product} />
             </div>
           ))}
         </div>
-
-
       </div>
     </section>
   );

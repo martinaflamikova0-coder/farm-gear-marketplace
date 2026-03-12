@@ -1,37 +1,23 @@
-import { Link, useParams } from 'react-router-dom';
-import { ArrowRight, Leaf } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/ui/button';
+import { Leaf } from 'lucide-react';
+import { useRef } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import ProductCard from '@/components/products/ProductCard';
 import { useProducts } from '@/hooks/useProducts';
-import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 
 const LawnMowersSection = () => {
-  const { t, i18n } = useTranslation();
-  const { lang } = useParams<{ lang: string }>();
-  const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
-  const listingsSlug = getLocalizedSlug('listings', currentLang);
-  
-  // Search for lawn mowers in products (category or title/description containing "tondeuse")
-  const { data: products = [], isLoading } = useProducts({ 
-    search: 'tondeuse',
-    limit: 8 
-  });
+  const { t } = useTranslation();
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const { data: products = [], isLoading } = useProducts({ search: 'tondeuse', limit: 8 });
 
   if (isLoading) {
     return (
       <section className="py-16 bg-gradient-to-b from-success/5 to-transparent">
         <div className="container-custom">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10">
-            <div>
-              <Skeleton className="h-10 w-64 mb-2" />
-              <Skeleton className="h-5 w-96" />
-            </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Skeleton className="h-10 w-64 mb-8" />
+          <div className="flex gap-4">
             {Array.from({ length: 4 }).map((_, i) => (
-              <Skeleton key={i} className="h-80 rounded-lg" />
+              <Skeleton key={i} className="min-w-[200px] h-80 rounded-lg shrink-0" />
             ))}
           </div>
         </div>
@@ -39,34 +25,30 @@ const LawnMowersSection = () => {
     );
   }
 
-  if (products.length === 0) {
-    return null;
-  }
+  if (products.length === 0) return null;
 
   return (
     <section className="py-16 bg-gradient-to-b from-success/5 to-transparent">
       <div className="container-custom">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <Leaf className="h-6 w-6 text-success" />
-              <span className="text-sm font-semibold text-success uppercase tracking-wide">
-                {t('home.lawnMowersSubtitle')}
-              </span>
-            </div>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
-              {t('home.lawnMowers')}
-            </h2>
+        <div className="mb-10">
+          <div className="flex items-center gap-2 mb-2">
+            <Leaf className="h-6 w-6 text-success" />
+            <span className="text-sm font-semibold text-success uppercase tracking-wide">
+              {t('home.lawnMowersSubtitle')}
+            </span>
           </div>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+            {t('home.lawnMowers')}
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.slice(0, 8).map((product, index) => (
-            <div
-              key={product.id}
-              className="animate-slide-up"
-              style={{ animationDelay: `${index * 0.05}s` }}
-            >
+        <div
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {products.slice(0, 8).map((product) => (
+            <div key={product.id} className="min-w-[200px] w-[200px] sm:min-w-[220px] sm:w-[220px] snap-start shrink-0">
               <ProductCard product={product} />
             </div>
           ))}
