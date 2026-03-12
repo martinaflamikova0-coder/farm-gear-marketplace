@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Search, Menu, X, ChevronDown, Phone, User } from 'lucide-react';
+import CategoryIcon from '@/components/CategoryIcon';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
