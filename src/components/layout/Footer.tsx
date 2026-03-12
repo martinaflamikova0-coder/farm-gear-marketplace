@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
+import { Phone, Mail, MapPin, ChevronRight, Landmark } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { type SupportedLanguage } from '@/i18n';
 import logoEkiptrade from '@/assets/logo-ekiptrade.png';
