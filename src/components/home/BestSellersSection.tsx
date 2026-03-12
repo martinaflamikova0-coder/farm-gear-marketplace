@@ -91,29 +91,6 @@ const BestSellersSection = () => {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">
-              {currentPage * ITEMS_PER_PAGE + 1}-{Math.min((currentPage + 1) * ITEMS_PER_PAGE, bestSellers.length)} / {bestSellers.length}
-            </span>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={goToPrevPage}
-              disabled={currentPage === 0}
-              className="h-8 w-8"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={goToNextPage}
-              disabled={currentPage >= totalPages - 1}
-              className="h-8 w-8"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          </div>
         </div>
 
         {/* Subcategory pills */}
