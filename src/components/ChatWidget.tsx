@@ -202,7 +202,7 @@ const ChatWidget = () => {
 
                 {/* Email option */}
                 <a
-                  href={`mailto:infos@ekiptrade.com?subject=${encodeURIComponent(t('chat.emailSubject', 'Demande depuis le site'))}`}
+                  href={`mailto:infos@ekip-trade.com?subject=${encodeURIComponent(t('chat.emailSubject', 'Demande depuis le site'))}`}
                   className="flex items-center gap-4 bg-muted hover:bg-muted/80 rounded-xl p-4 transition-colors group"
                 >
                   <div className="bg-primary/10 rounded-full p-2.5 flex-shrink-0">
