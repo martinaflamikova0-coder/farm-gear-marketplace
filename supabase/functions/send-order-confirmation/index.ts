@@ -332,7 +332,7 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "EkipTrade <infos@ekiptrade.com>",
+        from: "EkipTrade <infos@ekip-trade.com>",
         to: [customerEmail],
         subject: `${t.subject} #${shortOrderId}`,
         html: emailHtml,
