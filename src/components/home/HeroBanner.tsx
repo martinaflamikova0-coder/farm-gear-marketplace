@@ -26,6 +26,9 @@ const HeroBanner = () => {
           src={heroBg}
           alt=""
           className="w-full h-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
       </div>
 
