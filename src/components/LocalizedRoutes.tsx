@@ -101,11 +101,6 @@ const LocalizedRoutes = () => {
       return stored as SupportedLanguage;
     }
     
-    const browserLang = navigator.language.split('-')[0];
-    if (SUPPORTED_LANGUAGES.includes(browserLang as SupportedLanguage)) {
-      return browserLang as SupportedLanguage;
-    }
-    
     return 'it';
   };
 
