@@ -80,12 +80,13 @@ const Header = () => {
             className="flex items-center gap-2 flex-shrink-0"
             aria-label="EkipTrade"
           >
-            <div className="h-12 md:h-14 w-[160px] md:w-[200px] overflow-hidden flex items-center">
+            <div className="flex items-center gap-2">
               <img
                 src={logoEkiptrade}
                 alt="EkipTrade"
-                className="max-h-full max-w-full object-contain"
+                className="h-10 md:h-12 w-auto object-contain"
               />
+              <span className="font-display font-bold text-lg md:text-xl text-foreground">EkipTrade</span>
             </div>
           </Link>
 
