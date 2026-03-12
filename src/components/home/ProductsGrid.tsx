@@ -62,14 +62,6 @@ const ProductsGrid = ({
               <p className="text-sm text-muted-foreground mt-1">{t(subtitleKey)}</p>
             )}
           </div>
-          {showViewAll && (
-            <Button variant="ghost" size="sm" asChild>
-              <Link to={`/${currentLang}/${listingsSlug}${category ? `?category=${category}` : ''}`} className="flex items-center gap-1">
-                {t('common.viewAll')}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-          )}
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">

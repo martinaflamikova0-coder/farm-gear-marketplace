@@ -158,51 +158,6 @@ const Footer = () => {
             P.IVA: IT10992060011 — Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia
           </p>
 
-          {/* Payment methods */}
-          <div className="flex items-center justify-center gap-3 mb-6">
-            {/* Visa */}
-            <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center h-10 w-16">
-              <svg viewBox="0 0 48 32" className="h-6 w-auto" aria-label="Visa">
-                <rect width="48" height="32" rx="4" fill="#1A1F71"/>
-                <text x="24" y="20" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold" fontFamily="Arial, sans-serif">VISA</text>
-              </svg>
-            </div>
-            {/* Mastercard */}
-            <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center h-10 w-16">
-              <svg viewBox="0 0 48 32" className="h-6 w-auto" aria-label="Mastercard">
-                <circle cx="18" cy="16" r="10" fill="#EB001B"/>
-                <circle cx="30" cy="16" r="10" fill="#F79E1B"/>
-                <path d="M24 8.5a10 10 0 0 1 0 15" fill="#FF5F00"/>
-              </svg>
-            </div>
-            {/* PayPal */}
-            <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center h-10 w-16">
-              <svg viewBox="0 0 48 32" className="h-6 w-auto" aria-label="PayPal">
-                <text x="24" y="14" textAnchor="middle" fill="#003087" fontSize="8" fontWeight="bold" fontFamily="Arial, sans-serif">Pay</text>
-                <text x="24" y="24" textAnchor="middle" fill="#009CDE" fontSize="8" fontWeight="bold" fontFamily="Arial, sans-serif">Pal</text>
-              </svg>
-            </div>
-            {/* CB */}
-            <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center h-10 w-16">
-              <svg viewBox="0 0 48 32" className="h-6 w-auto" aria-label="CB">
-                <rect width="48" height="32" rx="4" fill="#005CA9"/>
-                <text x="24" y="20" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold" fontFamily="Arial, sans-serif">CB</text>
-              </svg>
-            </div>
-            {/* Bank Transfer */}
-            <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center h-10 w-16">
-              <svg viewBox="0 0 48 32" className="h-6 w-auto" aria-label="Bank Transfer">
-                <rect width="48" height="32" rx="4" fill="#2E7D32"/>
-                <path d="M24 6L10 14h28L24 6z" fill="white"/>
-                <rect x="14" y="15" width="3" height="8" fill="white"/>
-                <rect x="20" y="15" width="3" height="8" fill="white"/>
-                <rect x="26" y="15" width="3" height="8" fill="white"/>
-                <rect x="32" y="15" width="3" height="8" fill="white"/>
-                <rect x="10" y="24" width="28" height="3" fill="white"/>
-              </svg>
-            </div>
-          </div>
-
         </div>
       </div>
     </footer>

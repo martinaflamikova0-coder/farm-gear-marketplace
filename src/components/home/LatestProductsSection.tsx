@@ -83,33 +83,7 @@ const LatestProductsSection = () => {
               <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
                 {t('home.latestProducts', 'Construction Equipment')}
               </h2>
-              <p className="text-sm text-muted-foreground">
-                {latestProducts.length} {t('common.products', 'products')} · {subcategoryCount} {t('home.subcategories', 'subcategories')}
-              </p>
             </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">
-              {currentPage * ITEMS_PER_PAGE + 1}-{Math.min((currentPage + 1) * ITEMS_PER_PAGE, latestProducts.length)} / {latestProducts.length}
-            </span>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={goToPrevPage}
-              disabled={currentPage === 0}
-              className="h-8 w-8"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={goToNextPage}
-              disabled={currentPage >= totalPages - 1}
-              className="h-8 w-8"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
           </div>
         </div>
 
@@ -128,12 +102,8 @@ const LatestProductsSection = () => {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {currentProducts.map((product, index) => (
-            <div key={product.id} className="relative">
-              {/* Rank badge - same style as BestSellersSection */}
-              <div className="absolute -top-2 -left-2 z-10 flex items-center justify-center w-8 h-8 bg-amber-500 text-white text-xs font-bold rounded-full shadow-lg">
-                #{currentPage * ITEMS_PER_PAGE + index + 1}
-              </div>
+          {currentProducts.map((product) => (
+            <div key={product.id}>
               <ProductCard product={product} />
             </div>
           ))}
@@ -155,14 +125,6 @@ const LatestProductsSection = () => {
           </div>
         )}
 
-        <div className="flex justify-center mt-6">
-          <Button variant="outline" asChild>
-            <Link to={`/${currentLang}/${listingsSlug}?category=chantier`} className="flex items-center gap-2">
-              {t('common.viewAll')}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
       </div>
     </section>
   );

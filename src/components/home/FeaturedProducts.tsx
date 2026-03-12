@@ -51,12 +51,6 @@ const FeaturedProducts = () => {
               {t('home.featuredSubtitle')}
             </p>
           </div>
-          <Button variant="outline" asChild>
-            <Link to={`/${currentLang}/${listingsSlug}?featured=true`} className="flex items-center gap-2">
-              {t('common.viewAll')}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Button>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
