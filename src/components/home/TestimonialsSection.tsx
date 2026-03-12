@@ -1,15 +1,24 @@
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Star, Quote, MapPin, Building2 } from 'lucide-react';
+import { Star, Quote, MapPin, Building2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
 import { useTestimonials } from '@/hooks/useTestimonials';
 
 const TestimonialsSection = () => {
   const { t } = useTranslation();
   const { data: testimonials = [], isLoading } = useTestimonials();
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (!scrollRef.current) return;
+    scrollRef.current.scrollBy({
+      left: direction === 'left' ? -360 : 360,
+      behavior: 'smooth',
+    });
+  };
 
   if (isLoading) {
     return (
