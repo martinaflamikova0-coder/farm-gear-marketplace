@@ -562,6 +562,16 @@
       "description": "Lesen Sie die Nutzungsbedingungen von EkipTrade. Plattformzugang, Benutzerrechte und -pflichten, Anzeigenregeln und Verantwortlichkeiten.",
       "keywords": "AGB, Bedingungen, Nutzung, Plattform, Regeln"
     },
+    "purchaseTerms": {
+      "title": "Allgemeine Kaufbedingungen",
+      "description": "Lesen Sie die allgemeinen Kaufbedingungen von EkipTrade. Preise, Bestellungen, Zahlung, Lieferung, Garantien und Verantwortlichkeiten.",
+      "keywords": "AKB, Kaufbedingungen, Bestellung, Zahlung, Lieferung, Garantie"
+    },
+    "refundPolicy": {
+      "title": "Erstattungsrichtlinie",
+      "description": "Erfahren Sie mehr über die Erstattungsrichtlinie von EkipTrade. Berechtigungsbedingungen, Fristen und Erstattungsmethoden.",
+      "keywords": "Erstattung, Richtlinie, Frist, Bedingungen, Landmaschinen"
+    },
     "privacy": {
       "title": "Datenschutzrichtlinie",
       "description": "Erfahren Sie, wie EkipTrade Ihre persönlichen Daten sammelt, nutzt und schützt. Ihre DSGVO-Rechte und unsere Datensicherheitspraktiken.",
