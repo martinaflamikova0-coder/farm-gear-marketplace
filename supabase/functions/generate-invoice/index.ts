@@ -583,13 +583,13 @@ serve(async (req) => {
     page.drawText(t.paymentMethod, { x: 60, y: yPos - 25, size: 10, font: helvetica, color: mutedColor });
     
     // Get bank details from database or use defaults
-    let bankDetails = { iban: "GB82 WEST 1234 5698 7654 32", bic: "WESTGB2L", holder: "EkipTrade Ltd" };
+    let bankDetails = { iban: "", bic: "", holder: "EkipTrade" };
     if (bankAccounts && bankAccounts.length > 0) {
       const selectedAccount = bankAccounts.find(acc => 
         totalTTC >= (acc.threshold_min || 0) && 
         (acc.threshold_max === null || totalTTC <= acc.threshold_max)
       ) || bankAccounts[0];
-      bankDetails = { iban: selectedAccount.iban, bic: selectedAccount.bic, holder: selectedAccount.holder || "EkipTrade Ltd" };
+      bankDetails = { iban: selectedAccount.iban, bic: selectedAccount.bic, holder: selectedAccount.holder || "EkipTrade" };
     }
     
     page.drawText(`${t.bankDetails}:`, { x: 60, y: yPos - 42, size: 10, font: helveticaBold, color: textColor });
