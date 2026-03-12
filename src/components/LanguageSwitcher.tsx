@@ -25,6 +25,7 @@ const LanguageSwitcher = () => {
 
   const handleLanguageChange = (lang: SupportedLanguage) => {
     i18n.changeLanguage(lang);
+    localStorage.setItem('ekiptrade-lang', lang);
     const newPath = getLocalizedPath(location.pathname, lang);
     navigate(newPath + location.search, { replace: true });
   };

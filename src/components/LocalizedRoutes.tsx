@@ -96,7 +96,7 @@ const LocalizedRoutes = () => {
   
   // Get default language (browser detection or fallback to 'en')
   const getDefaultLanguage = (): SupportedLanguage => {
-    const stored = localStorage.getItem('i18nextLng');
+    const stored = localStorage.getItem('ekiptrade-lang');
     if (stored && SUPPORTED_LANGUAGES.includes(stored as SupportedLanguage)) {
       return stored as SupportedLanguage;
     }
