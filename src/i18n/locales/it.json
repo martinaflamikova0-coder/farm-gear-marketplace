@@ -242,9 +242,12 @@
   "filters": {
     "title": "Filtri",
     "category": "Categoria",
+    "allCategories": "Tutte le categorie",
     "brand": "Marca",
+    "brands": "Marche",
     "allBrands": "Tutte le marche",
     "priceRange": "Fascia di prezzo",
+    "priceTTC": "Prezzo IVA inclusa (€)",
     "priceMin": "Prezzo min",
     "priceMax": "Prezzo max",
     "year": "Anno",
@@ -254,11 +257,29 @@
     "allConditions": "Tutte le condizioni",
     "location": "Località",
     "allLocations": "Tutte le località",
-    "reset": "Reimposta",
+    "reset": "Reimposta filtri",
     "apply": "Applica",
-    "advancedFilters": "Filtri avanzati"
+    "advancedFilters": "Filtri avanzati",
+    "clearFilters": "Cancella filtri",
+    "search": "Cerca",
+    "sortBy": "Ordina per",
+    "mostRecent": "Più recente",
+    "priceAsc": "Prezzo: crescente",
+    "priceDesc": "Prezzo: decrescente",
+    "yearDesc": "Anno: più recente"
+  },
+  "listings": {
+    "allListings": "Tutti gli annunci",
+    "resultsFor": "Risultati per",
+    "found": "annuncio/i trovato/i",
+    "foundCount": "{{count}} annuncio/i trovato/i",
+    "noResults": "Nessun risultato trovato",
+    "tryDifferentFilters": "Prova a modificare i tuoi criteri di ricerca"
   },
   "conditions": {
+    "new": "Nuovo",
+    "used": "Usato",
+    "refurbished": "Ricondizionato",
     "excellent": "Eccellente",
     "veryGood": "Ottimo",
     "good": "Buono",
@@ -594,6 +615,11 @@
       "description": "Visualizza il tuo carrello su EkipTrade. Completa il tuo ordine di macchine agricole e industriali in sicurezza.",
       "keywords": "carrello, ordine, acquisto, macchine agricole"
     }
+    "orderConfirmation": {
+      "title": "Conferma Ordine",
+      "description": "Il tuo ordine è stato confermato. Visualizza i dettagli e monitora la consegna su EkipTrade.",
+      "keywords": "conferma ordine, tracciamento, consegna, fattura"
+    }
   },
   "pages": {
     "categories": {
@@ -896,5 +922,26 @@
     "accountCreated": "Account creato!",
     "accountCreatedDesc": "Il tuo account è stato creato con successo. Controlla la tua email per il messaggio di benvenuto. Se non lo ricevi, controlla la cartella spam.",
     "signupError": "Si è verificato un errore durante la registrazione"
+  },
+  "orderConfirmation": {
+    "title": "Ordine Confermato!",
+    "subtitle": "Grazie per il tuo acquisto",
+    "orderDetails": "Dettagli dell'ordine",
+    "orderId": "ID Ordine",
+    "orderDate": "Data Ordine",
+    "customerName": "Nome Cliente",
+    "items": "Articoli",
+    "quantity": "Quantità",
+    "total": "Totale",
+    "whatNext": "Cosa succede dopo?",
+    "confirmationEmail": "Un'email di conferma è stata inviata alla tua casella",
+    "invoiceAvailable": "La tua fattura è disponibile nel tuo account e via email",
+    "trackOrder": "Puoi seguire lo stato del tuo ordine nel tuo account",
+    "supportContact": "Per domande, contatta il nostro team di supporto",
+    "viewAccount": "Visualizza il tuo account",
+    "continueShopping": "Continua lo shopping",
+    "noOrderId": "Nessun ID ordine fornito",
+    "orderNotFound": "Ordine non trovato",
+    "unexpectedError": "Si è verificato un errore imprevisto"
   }
 }
