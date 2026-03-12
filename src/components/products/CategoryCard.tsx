@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import CategoryIcon from '@/components/CategoryIcon';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent } from '@/components/ui/card';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
@@ -34,8 +35,8 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
               />
             </div>
           ) : (
-            <div className="w-24 h-24 rounded-2xl bg-primary/10 flex items-center justify-center text-4xl mb-4 group-hover:bg-primary/20 transition-colors">
-              {category.icon}
+            <div className="w-24 h-24 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+              <CategoryIcon name={category.icon} className="h-10 w-10 text-primary" />
             </div>
           )}
           <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors">

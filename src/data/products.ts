@@ -38,7 +38,7 @@ export const categories: Category[] = [
     id: '1',
     name: 'Tracteurs',
     slug: 'tracteurs',
-    icon: '🚜',
+    icon: 'Tractor',
     count: 245,
     subcategories: ['Tracteurs agricoles', 'Tracteurs vignerons', 'Tracteurs forestiers', 'Micro-tracteurs']
   },
@@ -46,7 +46,7 @@ export const categories: Category[] = [
     id: '2',
     name: 'Matériel de récolte',
     slug: 'recolte',
-    icon: '🌾',
+    icon: 'Wheat',
     count: 89,
     subcategories: ['Moissonneuses-batteuses', 'Ensileuses', 'Presses à balles', 'Faucheuses']
   },
@@ -54,7 +54,7 @@ export const categories: Category[] = [
     id: '3',
     name: 'Travail du sol',
     slug: 'travail-sol',
-    icon: '⚙️',
+    icon: 'Cog',
     count: 156,
     subcategories: ['Charrues', 'Cultivateurs', 'Herses', 'Semoirs']
   },
@@ -62,7 +62,7 @@ export const categories: Category[] = [
     id: '4',
     name: 'Matériel d\'élevage',
     slug: 'elevage',
-    icon: '🐄',
+    icon: 'Fence',
     count: 78,
     subcategories: ['Mélangeuses', 'Distributeurs', 'Traite', 'Clôtures']
   },
@@ -70,7 +70,7 @@ export const categories: Category[] = [
     id: '5',
     name: 'Manutention',
     slug: 'manutention',
-    icon: '🏗️',
+    icon: 'Container',
     count: 112,
     subcategories: ['Chargeurs télescopiques', 'Chariots élévateurs', 'Remorques', 'Bennes']
   },
@@ -78,7 +78,7 @@ export const categories: Category[] = [
     id: '6',
     name: 'Matériel de chantier',
     slug: 'chantier',
-    icon: '🔧',
+    icon: 'Wrench',
     count: 67,
     subcategories: ['Pelles', 'Mini-pelles', 'Compacteurs', 'Groupes électrogènes']
   },
@@ -86,7 +86,7 @@ export const categories: Category[] = [
     id: '7',
     name: 'Pièces et accessoires',
     slug: 'pieces',
-    icon: '🔩',
+    icon: 'Settings',
     count: 203,
     subcategories: ['Pneumatiques', 'Hydraulique', 'Électrique', 'Carrosserie']
   },
@@ -94,7 +94,7 @@ export const categories: Category[] = [
     id: '8',
     name: 'Autres matériels',
     slug: 'autres',
-    icon: '📦',
+    icon: 'Package',
     count: 45,
     subcategories: ['Pulvérisateurs', 'Épandeurs', 'Irrigation', 'Divers']
   }

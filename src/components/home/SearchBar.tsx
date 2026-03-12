@@ -56,7 +56,7 @@ const SearchBar = () => {
               <SelectItem value="all">{t('common.allCategories')}</SelectItem>
               {categories.map((category) => (
                 <SelectItem key={category.id} value={category.slug}>
-                  {category.icon} {translateCategory(category.slug)}
+                  {translateCategory(category.slug)}
                 </SelectItem>
               ))}
             </SelectContent>

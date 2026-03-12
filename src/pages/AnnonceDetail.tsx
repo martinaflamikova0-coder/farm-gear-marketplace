@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { getImageUrl, handleImageError } from '@/lib/imageProxy';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, MapPin, Clock, Calendar, Phone, Mail, Check, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, X, FileText, Package, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, MapPin, Clock, Calendar, Phone, Mail, Check, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, X, FileText, Package, AlertTriangle, Store } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeaderSpacer from '@/components/layout/HeaderSpacer';
@@ -854,7 +854,7 @@ const AnnonceDetail = () => {
                 <CardContent>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="text-xl">🏪</span>
+                      <Store className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                       <p className="font-semibold text-foreground">{product.seller.name || t('product.sellerDefault')}</p>

@@ -345,7 +345,7 @@ const AdminBrands = () => {
                   <SelectItem value="all">Toutes catégories</SelectItem>
                   {categories?.map((category) => (
                     <SelectItem key={category.id} value={category.id}>
-                      {category.icon} {category.name}
+                      {category.name}
                     </SelectItem>
                   ))}
                 </SelectContent>

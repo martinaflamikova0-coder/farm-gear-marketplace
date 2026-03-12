@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Search, Menu, X, ChevronDown, Phone, User } from 'lucide-react';
+import CategoryIcon from '@/components/CategoryIcon';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -155,7 +156,7 @@ const Header = () => {
                       to={getCategoryLink(category.slug)}
                       className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-secondary transition-colors"
                     >
-                      <span className="text-xl">{category.icon}</span>
+                      <CategoryIcon name={category.icon} className="h-5 w-5 text-muted-foreground" />
                       <div className="flex-1">
                         <span className="text-sm font-medium">{getCategoryName(category)}</span>
                         <span className="text-xs text-muted-foreground ml-2">({category.count})</span>
@@ -209,7 +210,7 @@ const Header = () => {
                   className="flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-secondary transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <span className="text-lg">{category.icon}</span>
+                  <CategoryIcon name={category.icon} className="h-5 w-5 text-muted-foreground" />
                   <span className="text-sm font-medium">{getCategoryName(category)}</span>
                 </Link>
               ))}
