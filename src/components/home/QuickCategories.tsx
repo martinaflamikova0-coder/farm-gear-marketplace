@@ -45,7 +45,6 @@ const QuickCategories = () => {
               className="flex-shrink-0 px-4 py-2 rounded-full bg-card border border-border text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
             >
               {translateCategory(category.slug)}
-              {translateCategory(category.slug)}
               <span className="ml-1.5 text-muted-foreground">({category.count})</span>
             </Link>
           ))}
