@@ -120,6 +120,11 @@ const Footer = () => {
             <h3 className="font-display font-semibold text-lg mb-4">{t('footer.legal')}</h3>
             <ul className="space-y-2">
               <li>
+                <Link to={getLocalizedLink('/legal-notice')} className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+                  {t('footer.legalNotice')}
+                </Link>
+              </li>
+              <li>
                 <Link to={getLocalizedLink('/terms')} className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                   {t('footer.terms')}
                 </Link>
