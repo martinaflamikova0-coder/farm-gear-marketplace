@@ -3,7 +3,7 @@ import { Star, Quote, MapPin, Building2 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { useFeaturedTestimonials } from '@/hooks/useTestimonials';
+import { useTestimonials } from '@/hooks/useTestimonials';
 import { useRef } from 'react';
 
 const TestimonialsSection = () => {
