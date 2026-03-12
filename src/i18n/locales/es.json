@@ -396,7 +396,9 @@
     "cookies": "Política de cookies",
     "contact": "Contáctenos",
     "howItWorks": "Cómo funciona",
-    "rights": "Todos los derechos reservados"
+    "rights": "Todos los derechos reservados",
+    "paymentMethods": "Métodos de pago",
+    "bankTransfer": "Transferencia bancaria"
   },
 "errors": {
     "notFound": "Página no encontrada",
