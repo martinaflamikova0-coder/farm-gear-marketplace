@@ -571,6 +571,11 @@
       "description": "Gestione sus preferencias de cookies en EkipTrade. Conozca los tipos de cookies que usamos y cómo controlarlas.",
       "keywords": "cookies, preferencias, navegación, consentimiento"
     },
+    "legalNotice": {
+      "title": "Aviso Legal",
+      "description": "Información legal sobre EkipTrade. Razón social, número de IVA, domicilio social, alojamiento y propiedad intelectual.",
+      "keywords": "aviso legal, IVA, domicilio social, información empresa, EkipTrade"
+    },
     "categories": {
       "title": "Todas las Categorías - Maquinaria Agrícola e Industrial",
       "description": "Explore todas las categorías de maquinaria agrícola e industrial en EkipTrade. Tractores, cosechadoras, labranza, manipulación, construcción, repuestos y más.",
