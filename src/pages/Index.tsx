@@ -13,6 +13,7 @@ import PopularCategoriesLinks from '@/components/home/PopularCategoriesLinks';
 
 import PromoVideoSection from '@/components/home/PromoVideoSection';
 import LawnMowersSection from '@/components/home/LawnMowersSection';
+import RobotMowersSection from '@/components/home/RobotMowersSection';
 import ProductsGrid from '@/components/home/ProductsGrid';
 import TrustBar from '@/components/home/TrustBar';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
