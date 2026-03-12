@@ -325,7 +325,7 @@ export const useBestSellers = (limit: number = 100) => {
         .from('products_public')
         .select('*')
         .eq('status', 'active')
-        .order('created_at', { ascending: false })
+        .order('price', { ascending: true })
         .limit(limit);
 
       if (error) throw error;
