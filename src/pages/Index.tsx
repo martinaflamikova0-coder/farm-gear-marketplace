@@ -45,18 +45,18 @@ const Index = () => {
           <RecentProducts />
         </div>
         <LawnMowersSection />
-        <ProductsGrid titleKey="home.tractors" category="tracteurs" limit={4} />
+        <ProductsGrid titleKey="home.tractors" category="tracteurs" limit={10} />
         <PromoVideoSection />
         <div className="bg-card">
-          <ProductsGrid titleKey="home.harvestEquipment" category="recolte" limit={4} />
+          <ProductsGrid titleKey="home.harvestEquipment" category="recolte" limit={10} />
         </div>
-        <ProductsGrid titleKey="home.constructionEquipment" category="chantier" limit={4} />
+        <ProductsGrid titleKey="home.constructionEquipment" category="chantier" limit={10} />
         <div className="bg-card">
-          <ProductsGrid titleKey="home.soilWork" category="travail-sol" limit={4} />
+          <ProductsGrid titleKey="home.soilWork" category="travail-sol" limit={10} />
         </div>
-        <ProductsGrid titleKey="home.handling" category="manutention" limit={4} />
+        <ProductsGrid titleKey="home.handling" category="manutention" limit={10} />
         <div className="bg-card">
-          <ProductsGrid titleKey="home.partsAccessories" category="pieces" limit={4} />
+          <ProductsGrid titleKey="home.partsAccessories" category="pieces" limit={10} />
         </div>
         <TestimonialsSection />
       </main>

@@ -8,7 +8,7 @@ import { useRecentProducts } from '@/hooks/useProducts';
 const RecentProducts = () => {
   const { t } = useTranslation();
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { data: recentProducts = [], isLoading } = useRecentProducts(4);
+  const { data: recentProducts = [], isLoading } = useRecentProducts(10);
 
   if (isLoading) {
     return (
