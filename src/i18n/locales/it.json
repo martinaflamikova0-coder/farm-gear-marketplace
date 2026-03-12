@@ -922,5 +922,26 @@
     "accountCreated": "Account creato!",
     "accountCreatedDesc": "Il tuo account è stato creato con successo. Controlla la tua email per il messaggio di benvenuto. Se non lo ricevi, controlla la cartella spam.",
     "signupError": "Si è verificato un errore durante la registrazione"
+  },
+  "orderConfirmation": {
+    "title": "Ordine Confermato!",
+    "subtitle": "Grazie per il tuo acquisto",
+    "orderDetails": "Dettagli dell'ordine",
+    "orderId": "ID Ordine",
+    "orderDate": "Data Ordine",
+    "customerName": "Nome Cliente",
+    "items": "Articoli",
+    "quantity": "Quantità",
+    "total": "Totale",
+    "whatNext": "Cosa succede dopo?",
+    "confirmationEmail": "Un'email di conferma è stata inviata alla tua casella",
+    "invoiceAvailable": "La tua fattura è disponibile nel tuo account e via email",
+    "trackOrder": "Puoi seguire lo stato del tuo ordine nel tuo account",
+    "supportContact": "Per domande, contatta il nostro team di supporto",
+    "viewAccount": "Visualizza il tuo account",
+    "continueShopping": "Continua lo shopping",
+    "noOrderId": "Nessun ID ordine fornito",
+    "orderNotFound": "Ordine non trovato",
+    "unexpectedError": "Si è verificato un errore imprevisto"
   }
 }
