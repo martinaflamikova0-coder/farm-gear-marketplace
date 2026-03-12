@@ -592,6 +592,11 @@
       "description": "Gestisci le tue preferenze sui cookie su EkipTrade. Scopri i tipi di cookie che usiamo e come controllarli.",
       "keywords": "cookie, preferenze, navigazione, consenso"
     },
+    "legalNotice": {
+      "title": "Note Legali",
+      "description": "Informazioni legali su EkipTrade. Ragione sociale, P.IVA, sede legale, hosting e proprietà intellettuale.",
+      "keywords": "note legali, P.IVA, sede legale, informazioni aziendali, EkipTrade"
+    },
     "categories": {
       "title": "Tutte le Categorie - Macchine Agricole e Industriali",
       "description": "Sfoglia tutte le categorie di macchine agricole e industriali su EkipTrade. Trattori, mietitrebbie, lavorazione del terreno, movimentazione, edilizia, ricambi e altro.",
