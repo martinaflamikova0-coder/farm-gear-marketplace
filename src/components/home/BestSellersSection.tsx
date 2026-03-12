@@ -99,21 +99,6 @@ const BestSellersSection = () => {
           ))}
         </div>
 
-        {totalPages > 1 && (
-          <div className="flex justify-center mt-6 gap-1">
-            {Array.from({ length: Math.min(totalPages, 15) }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentPage(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentPage
-                    ? 'bg-amber-500 w-6'
-                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                }`}
-              />
-            ))}
-          </div>
-        )}
 
       </div>
     </section>
