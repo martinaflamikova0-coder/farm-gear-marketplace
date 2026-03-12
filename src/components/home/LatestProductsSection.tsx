@@ -83,9 +83,6 @@ const LatestProductsSection = () => {
               <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
                 {t('home.latestProducts', 'Construction Equipment')}
               </h2>
-              <p className="text-sm text-muted-foreground">
-                {latestProducts.length} {t('common.products', 'products')} · {subcategoryCount} {t('home.subcategories', 'subcategories')}
-              </p>
             </div>
           </div>
         </div>
