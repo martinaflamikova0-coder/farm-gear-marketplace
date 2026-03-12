@@ -13,6 +13,7 @@ import Terms from '@/pages/Terms';
 import Privacy from '@/pages/Privacy';
 import Cookies from '@/pages/Cookies';
 import Returns from '@/pages/Returns';
+import LegalNotice from '@/pages/LegalNotice';
 import NotFound from '@/pages/NotFound';
 import Auth from '@/pages/Auth';
 import Cart from '@/pages/Cart';
