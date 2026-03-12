@@ -1,27 +1,28 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
-import { useTranslatedProduct } from '@/hooks/useTranslatedProduct';
 import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import { useCategories } from '@/hooks/useCategories';
-import { ChevronDown, ChevronUp, Link2 } from 'lucide-react';
+import { ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Link2, ArrowRight } from 'lucide-react';
+import ProductCard from '@/components/products/ProductCard';
+import { Button } from '@/components/ui/button';
 
 const AllProductsLinks = () => {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language as SupportedLanguage;
-  const listingSlug = getLocalizedSlug('listing', currentLang);
+  const listingsSlug = getLocalizedSlug('listings', currentLang);
   const { data: categories = [] } = useCategories();
   const [expanded, setExpanded] = useState(false);
 
   const { data: products = [] } = useQuery({
-    queryKey: ['all-products-seo-links'],
+    queryKey: ['all-products-seo-carousel'],
     queryFn: async () => {
       const { data, error } = await supabase
         .from('products_public')
-        .select('id, title, title_translations, category, brand, price')
+        .select('*')
         .eq('status', 'active')
         .order('created_at', { ascending: false });
       
@@ -48,43 +49,42 @@ const AllProductsLinks = () => {
     return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
   });
 
-  // Show first 2 categories collapsed, all when expanded
-  const visibleKeys = expanded ? sortedKeys : sortedKeys.slice(0, 2);
+  const visibleKeys = expanded ? sortedKeys : sortedKeys.slice(0, 3);
 
   return (
     <section className="py-10 md:py-14 border-t border-border/50">
       <div className="container-custom">
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex items-center gap-3 mb-8">
           <Link2 className="h-5 w-5 text-primary" />
           <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-            {t('home.allListings') || 'All Listings'}
+            {t('listings.allListings', 'Tutti gli annunci')}
           </h2>
           <span className="text-sm text-muted-foreground">
-            ({products.length} {t('common.products') || 'products'})
+            ({products.length} {t('common.products', 'prodotti')})
           </span>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-10">
           {visibleKeys.map((catSlug) => (
-            <CategoryProductLinks
+            <CategoryCarousel
               key={catSlug}
               categorySlug={catSlug}
               products={grouped[catSlug]}
               lang={currentLang}
-              listingSlug={listingSlug}
+              listingsSlug={listingsSlug}
               categories={categories}
             />
           ))}
         </div>
 
-        {sortedKeys.length > 2 && (
+        {sortedKeys.length > 3 && (
           <button
             onClick={() => setExpanded(!expanded)}
-            className="mt-6 flex items-center gap-2 mx-auto text-primary hover:text-primary/80 transition-colors font-medium"
+            className="mt-8 flex items-center gap-2 mx-auto text-primary hover:text-primary/80 transition-colors font-medium"
           >
             {expanded
-              ? t('common.showLess') || 'Show Less'
-              : `${t('common.showAll') || 'Show All'} (${sortedKeys.length - 2} ${t('common.moreCategories') || 'more categories'})`}
+              ? t('common.showLess', 'Mostra di meno')
+              : `${t('common.viewAll', 'Vedi tutto')} (${sortedKeys.length - 3} ${t('home.moreCategories', 'altre categorie')})`}
             {expanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
           </button>
         )}
@@ -93,54 +93,78 @@ const AllProductsLinks = () => {
   );
 };
 
-interface CategoryProductLinksProps {
+interface CategoryCarouselProps {
   categorySlug: string;
   products: any[];
   lang: SupportedLanguage;
-  listingSlug: string;
+  listingsSlug: string;
   categories: any[];
 }
 
-const CategoryProductLinks = ({ categorySlug, products, lang, listingSlug, categories }: CategoryProductLinksProps) => {
+const CategoryCarousel = ({ categorySlug, products, lang, listingsSlug, categories }: CategoryCarouselProps) => {
+  const { t } = useTranslation();
   const { translateCategory } = useTranslatedCategory();
-  const listingsSlug = getLocalizedSlug('listings', lang);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const category = categories.find((c) => c.slug === categorySlug);
   const translatedName = translateCategory(categorySlug);
 
+  const scroll = (direction: 'left' | 'right') => {
+    if (!scrollRef.current) return;
+    const scrollAmount = 300;
+    scrollRef.current.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div>
-      <Link
-        to={`/${lang}/${listingsSlug}?category=${categorySlug}`}
-        className="inline-flex items-center gap-2 mb-2 text-lg font-semibold text-foreground hover:text-primary transition-colors"
+      <div className="flex items-center justify-between mb-4">
+        <Link
+          to={`/${lang}/${listingsSlug}?category=${categorySlug}`}
+          className="inline-flex items-center gap-2 text-lg font-semibold text-foreground hover:text-primary transition-colors"
+        >
+          {category?.icon && <span>{category.icon}</span>}
+          {translatedName || categorySlug}
+          <span className="text-xs text-muted-foreground font-normal">({products.length})</span>
+        </Link>
+        <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-8 w-8 rounded-full"
+            onClick={() => scroll('left')}
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-8 w-8 rounded-full"
+            onClick={() => scroll('right')}
+          >
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+          <Button variant="ghost" size="sm" asChild className="ml-2 hidden sm:flex">
+            <Link to={`/${lang}/${listingsSlug}?category=${categorySlug}`} className="flex items-center gap-1">
+              {t('common.viewAll', 'Vedi tutto')}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
+      </div>
+      <div
+        ref={scrollRef}
+        className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        {category?.icon && <span>{category.icon}</span>}
-        {translatedName || categorySlug}
-        <span className="text-xs text-muted-foreground font-normal">({products.length})</span>
-      </Link>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-0.5">
-        {products.map((product) => (
-          <ProductLink key={product.id} product={product} lang={lang} listingSlug={listingSlug} />
+        {products.slice(0, 20).map((product) => (
+          <div key={product.id} className="min-w-[200px] w-[200px] sm:min-w-[220px] sm:w-[220px] snap-start shrink-0">
+            <ProductCard product={product} />
+          </div>
         ))}
       </div>
     </div>
-  );
-};
-
-const ProductLink = ({ product, lang, listingSlug }: { product: any; lang: SupportedLanguage; listingSlug: string }) => {
-  const { title } = useTranslatedProduct(product);
-
-  return (
-    <Link
-      to={`/${lang}/${listingSlug}/${product.id}`}
-      className="flex items-baseline gap-2 py-1 text-sm hover:text-primary transition-colors group"
-    >
-      <span className="text-foreground/70 group-hover:text-primary truncate flex-1">
-        {title}
-      </span>
-      <span className="text-primary font-semibold shrink-0 whitespace-nowrap">
-        €{Number(product.price).toLocaleString()}
-      </span>
-    </Link>
   );
 };
 
