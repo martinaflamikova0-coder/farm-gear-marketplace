@@ -615,6 +615,11 @@
       "description": "Visualizza il tuo carrello su EkipTrade. Completa il tuo ordine di macchine agricole e industriali in sicurezza.",
       "keywords": "carrello, ordine, acquisto, macchine agricole"
     }
+    "orderConfirmation": {
+      "title": "Conferma Ordine",
+      "description": "Il tuo ordine è stato confermato. Visualizza i dettagli e monitora la consegna su EkipTrade.",
+      "keywords": "conferma ordine, tracciamento, consegna, fattura"
+    }
   },
   "pages": {
     "categories": {
