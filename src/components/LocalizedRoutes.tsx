@@ -125,6 +125,7 @@ const LocalizedRoutes = () => {
       <Route path="/:lang/privacy" element={<LanguageWrapper><Privacy /></LanguageWrapper>} />
       <Route path="/:lang/cookies" element={<LanguageWrapper><Cookies /></LanguageWrapper>} />
       <Route path="/:lang/returns" element={<LanguageWrapper><Returns /></LanguageWrapper>} />
+      <Route path="/:lang/legal-notice" element={<LanguageWrapper><LegalNotice /></LanguageWrapper>} />
       
       {/* Auth & Cart routes */}
       <Route path="/:lang/auth" element={<LanguageWrapper><Auth /></LanguageWrapper>} />
