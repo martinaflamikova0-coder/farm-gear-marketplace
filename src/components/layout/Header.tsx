@@ -210,7 +210,7 @@ const Header = () => {
                   className="flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-secondary transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <span className="text-lg">{category.icon}</span>
+                  <CategoryIcon name={category.icon} className="h-5 w-5 text-muted-foreground" />
                   <span className="text-sm font-medium">{getCategoryName(category)}</span>
                 </Link>
               ))}
