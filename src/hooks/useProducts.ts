@@ -285,6 +285,7 @@ export const usePremiumProducts = (limit: number = 10) => {
         .from('products_public')
         .select('*')
         .eq('status', 'active')
+        .lte('price', 50000)
         .order('price', { ascending: false })
         .limit(limit);
 
