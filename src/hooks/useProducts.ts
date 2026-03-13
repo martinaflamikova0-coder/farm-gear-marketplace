@@ -192,7 +192,8 @@ export const usePaginatedProducts = (options: {
       let dataQuery = supabase
         .from('products_public')
         .select('*')
-        .eq('status', 'active');
+        .eq('status', 'active')
+        .lte('price', 50000);
 
       if (featured) dataQuery = dataQuery.eq('featured', true);
       if (category) dataQuery = dataQuery.eq('category', category);
