@@ -90,6 +90,7 @@ export const useProducts = (options?: ProductsQueryOptions) => {
         .from('products_public')
         .select('*')
         .eq('status', 'active')
+        .lte('price', 50000)
         .order('price', { ascending: true });
 
       if (options?.category) {

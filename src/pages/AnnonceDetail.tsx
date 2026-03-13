@@ -620,63 +620,6 @@ const AnnonceDetail = () => {
               {/* Financing Simulator */}
               <FinancingSimulator price={price} productTitle={translatedTitle} productId={id || ''} />
 
-              {/* Quote request form */}
-              <Card id="request-quote">
-                <CardHeader>
-                  <CardTitle className="font-display">{t('product.requestQuote')}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <Label htmlFor="name">{t('contact.name')} *</Label>
-                      <Input
-                        id="name"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder={t('contact.namePlaceholder')}
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="email">{t('contact.email')} *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder={t('contact.emailPlaceholder')}
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="phone">{t('contact.phone')}</Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder={t('contact.phonePlaceholder')}
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="message">{t('contact.message')} *</Label>
-                      <Textarea
-                        id="message"
-                        required
-                        rows={4}
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        placeholder={t('contact.messagePlaceholder')}
-                      />
-                    </div>
-                    <Button type="submit" className="w-full" variant="accent" size="lg">
-                      <FileText className="h-4 w-4 mr-2" />
-                      {t('product.requestQuote')}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-
               {/* Seller info */}
               <Card>
                 <CardHeader>
