@@ -484,25 +484,16 @@ const AnnonceDetail = () => {
                   {t('product.vatDisclaimer')}
                 </p>
                 
-                {/* Mobile CTA: Cart button for <= 8000€, Quote for > 8000€ */}
+                {/* Mobile CTA: Always show cart button */}
                 <div className="mt-4">
-                  {price <= CART_MAX_PRICE ? (
-                    <AddToCartButton
-                      productId={product.id}
-                      price={price}
-                      condition={product.condition}
-                      stock={product.stock}
-                      className="w-full"
-                      size="lg"
-                    />
-                  ) : (
-                    <Button variant="accent" className="w-full" size="lg" asChild>
-                      <a href="#request-quote">
-                        <FileText className="h-4 w-4 mr-2" />
-                        {t('product.requestQuote')}
-                      </a>
-                    </Button>
-                  )}
+                  <AddToCartButton
+                    productId={product.id}
+                    price={price}
+                    condition={product.condition}
+                    stock={product.stock}
+                    className="w-full"
+                    size="lg"
+                  />
                 </div>
               </div>
 
