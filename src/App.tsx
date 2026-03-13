@@ -24,7 +24,7 @@ const App = () => (
             <ScrollToTop />
             <LocalizedRoutes />
             <CookieConsentBanner />
-            <ChatWidget />
+            
           </BrowserRouter>
         </TooltipProvider>
       </CartProvider>
