@@ -3,8 +3,8 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import type { User } from '@supabase/supabase-js';
 
-// Price threshold: items <= this go to cart, above go to quote request
-export const CART_MAX_PRICE = 8000;
+// No price limit - all products go to cart
+export const CART_MAX_PRICE = Infinity;
 
 interface CartItem {
   id: string;
