@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import LocalizedRoutes from "@/components/LocalizedRoutes";
 import ScrollToTop from "@/components/ScrollToTop";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
-import ChatWidget from "@/components/ChatWidget";
+
 import { AuthProvider } from "@/hooks/useAuth";
 import { CartProvider } from "@/contexts/CartContext";
 import '@/i18n';
@@ -24,7 +24,7 @@ const App = () => (
             <ScrollToTop />
             <LocalizedRoutes />
             <CookieConsentBanner />
-            <ChatWidget />
+            
           </BrowserRouter>
         </TooltipProvider>
       </CartProvider>

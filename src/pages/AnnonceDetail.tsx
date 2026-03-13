@@ -289,13 +289,6 @@ const AnnonceDetail = () => {
                       {getConditionLabel(product.condition)}
                     </Badge>
                   )}
-                  {/* Out of stock badge for new items */}
-                  {product.condition === 'new' && product.stock !== null && product.stock === 0 && (
-                    <Badge className="absolute top-10 sm:top-12 left-2 sm:left-4 bg-destructive text-destructive-foreground text-xs sm:text-sm">
-                      <AlertTriangle className="h-3 w-3 mr-1" />
-                      {t('product.outOfStock')}
-                    </Badge>
-                  )}
                   {/* Zoom hint */}
                   <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 bg-card/90 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm flex items-center gap-1">
                     <ZoomIn className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -446,24 +439,6 @@ const AnnonceDetail = () => {
                     ({formatPrice(priceHT)} {t('product.priceHT')})
                   </span>
                 </div>
-                {/* Stock indicator for mobile - new items only */}
-                {product.condition === 'new' && product.stock !== null && (
-                  <div className={`flex items-center gap-2 text-sm mb-2 ${product.stock === 0 ? 'text-destructive' : product.stock <= (product.low_stock_threshold || 5) ? 'text-warning' : 'text-success'}`}>
-                    {product.stock === 0 ? (
-                      <>
-                        <AlertTriangle className="h-4 w-4" />
-                        <span className="font-medium">{t('product.outOfStock')}</span>
-                      </>
-                    ) : (
-                      <>
-                        <Package className="h-4 w-4" />
-                        <span>
-                          <strong>{product.stock}</strong> {t('product.inStock')}
-                        </span>
-                      </>
-                    )}
-                  </div>
-                )}
                 <p className="text-xs text-muted-foreground italic mb-4">
                   {t('product.vatDisclaimer')}
                 </p>
@@ -565,24 +540,6 @@ const AnnonceDetail = () => {
                       <div className="flex items-center gap-2 text-muted-foreground">
                         <MapPin className="h-4 w-4" />
                         <span>{product.location} {product.department && `(${product.department})`}</span>
-                      </div>
-                    )}
-                    {/* Stock indicator for new items */}
-                    {product.condition === 'new' && product.stock !== null && (
-                      <div className={`flex items-center gap-2 ${product.stock === 0 ? 'text-destructive' : product.stock <= (product.low_stock_threshold || 5) ? 'text-warning' : 'text-success'}`}>
-                        {product.stock === 0 ? (
-                          <>
-                            <AlertTriangle className="h-4 w-4" />
-                            <span className="font-medium">{t('product.outOfStock')}</span>
-                          </>
-                        ) : (
-                          <>
-                            <Package className="h-4 w-4" />
-                            <span>
-                              <strong>{product.stock}</strong> {t('product.inStock')}
-                            </span>
-                          </>
-                        )}
                       </div>
                     )}
                   </div>

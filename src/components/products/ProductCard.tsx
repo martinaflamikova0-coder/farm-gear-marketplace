@@ -246,12 +246,6 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                   {getConditionTranslation(product.condition)}
                 </Badge>
               )}
-              {!hideBadges && isOutOfStock(product) && (
-                <Badge className="absolute top-10 right-2 bg-destructive text-destructive-foreground">
-                  <AlertTriangle className="h-3 w-3 mr-1" />
-                  {t('product.outOfStock')}
-                </Badge>
-              )}
               {!hideDiscounts && hasActivePromotion && (
                 <Badge className="absolute top-2 left-2 bg-gradient-to-r from-accent to-primary text-primary-foreground gap-1 animate-pulse shadow-lg">
                   <Sparkles className="h-3 w-3" />
@@ -365,12 +359,6 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
           {!hideBadges && product.condition && (
             <Badge className={`absolute top-2 right-2 ${conditionColors[product.condition] || 'bg-muted'}`}>
               {getConditionTranslation(product.condition)}
-            </Badge>
-          )}
-          {!hideBadges && isOutOfStock(product) && (
-            <Badge className="absolute top-10 right-2 bg-destructive text-destructive-foreground">
-              <AlertTriangle className="h-3 w-3 mr-1" />
-              {t('product.outOfStock')}
             </Badge>
           )}
           {!hideDiscounts && hasActivePromotion && (
