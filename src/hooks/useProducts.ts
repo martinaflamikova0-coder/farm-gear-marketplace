@@ -349,6 +349,7 @@ export const useLatestProducts = (excludeIds: string[] = [], limit: number = 100
         .from('products_public')
         .select('*')
         .eq('status', 'active')
+        .lte('price', 50000)
         .eq('category', 'chantier')
         .not('subcategory', 'is', null)
         .order('price', { ascending: true })
