@@ -603,25 +603,16 @@ const AnnonceDetail = () => {
                     )}
                   </div>
 
-                  {/* Conditional CTA: Cart button for <= 8000€, Quote for > 8000€ */}
+                  {/* Always show cart button */}
                   <div className="space-y-2">
-                    {price <= CART_MAX_PRICE ? (
-                      <AddToCartButton
-                        productId={product.id}
-                        price={price}
-                        condition={product.condition}
-                        stock={product.stock}
-                        className="w-full"
-                        size="lg"
-                      />
-                    ) : (
-                      <Button variant="accent" className="w-full" size="lg" asChild>
-                        <a href="#request-quote">
-                          <FileText className="h-4 w-4 mr-2" />
-                          {t('product.requestQuote')}
-                        </a>
-                      </Button>
-                    )}
+                    <AddToCartButton
+                      productId={product.id}
+                      price={price}
+                      condition={product.condition}
+                      stock={product.stock}
+                      className="w-full"
+                      size="lg"
+                    />
                   </div>
                 </CardContent>
               </Card>
