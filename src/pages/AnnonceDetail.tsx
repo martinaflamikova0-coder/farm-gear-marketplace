@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { getImageUrl, handleImageError } from '@/lib/imageProxy';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, MapPin, Clock, Calendar, Phone, Mail, Check, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, X, FileText, Package, AlertTriangle, Store } from 'lucide-react';
+import { ArrowLeft, MapPin, Clock, Calendar, Phone, Check, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, X, Package, AlertTriangle, Store } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeaderSpacer from '@/components/layout/HeaderSpacer';
