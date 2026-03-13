@@ -330,6 +330,7 @@ export const useBestSellers = (limit: number = 100) => {
         .from('products_public')
         .select('*')
         .eq('status', 'active')
+        .lte('price', 50000)
         .order('price', { ascending: true })
         .limit(limit);
 
