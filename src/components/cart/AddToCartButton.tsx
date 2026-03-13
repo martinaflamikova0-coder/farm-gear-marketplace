@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ShoppingCart, FileText, Check, Loader2, AlertTriangle } from 'lucide-react';
+import { ShoppingCart, Check, Loader2, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useCart, CART_MAX_PRICE } from '@/contexts/CartContext';
+import { useCart } from '@/contexts/CartContext';
 
 interface AddToCartButtonProps {
   productId: string;
