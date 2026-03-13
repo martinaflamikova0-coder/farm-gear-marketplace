@@ -385,11 +385,6 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
               -{displayDiscountPercentage}%
             </Badge>
           )}
-          {!hideBadges && product.featured && (
-            <Badge className="absolute bottom-2 right-2 bg-accent text-accent-foreground">
-              <Star className="h-3 w-3 fill-current" />
-            </Badge>
-          )}
         </div>
         <CardContent className="p-4">
           <p className="text-xs text-muted-foreground mb-1">

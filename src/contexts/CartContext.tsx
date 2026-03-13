@@ -53,11 +53,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   // Check if product can be added to cart
   const canAddToCart = useCallback((price: number, condition: string | null, stock: number | null): { allowed: boolean; reason?: string } => {
-    // Price must be <= CART_MAX_PRICE
-    if (price > CART_MAX_PRICE) {
-      return { allowed: false, reason: 'price_too_high' };
-    }
-    
     // Check stock for new items
     if (condition === 'new' && stock !== null && stock === 0) {
       return { allowed: false, reason: 'out_of_stock' };
