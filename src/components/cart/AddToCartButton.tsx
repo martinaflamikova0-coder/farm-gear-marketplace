@@ -34,20 +34,6 @@ const AddToCartButton = ({
   const { allowed, reason } = canAddToCart(price, condition, stock);
   
 
-  // Out of stock
-  if (reason === 'out_of_stock') {
-    return (
-      <Button
-        variant="secondary"
-        size={size}
-        className={className}
-        disabled
-      >
-        <AlertTriangle className="h-4 w-4" />
-        {showLabel && <span className="ml-2">{t('product.outOfStock')}</span>}
-      </Button>
-    );
-  }
 
   // Already in cart
   if (alreadyInCart) {
