@@ -20,7 +20,7 @@ import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
 import ProductCard from '@/components/products/ProductCard';
 import FinancingSimulator from '@/components/products/FinancingSimulator';
 import AddToCartButton from '@/components/cart/AddToCartButton';
-import { CART_MAX_PRICE } from '@/contexts/CartContext';
+import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import { useProductGifts } from '@/hooks/useProductGifts';
 import ProductGiftsList from '@/components/products/ProductGiftsList';
