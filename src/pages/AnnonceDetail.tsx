@@ -153,10 +153,6 @@ const AnnonceDetail = () => {
     setZoomLevel((prev) => Math.max(prev - 0.5, 0.5));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(t('contact.success'));
-  };
 
   const specifications = [
     { label: t('product.brand'), value: product.brand },
