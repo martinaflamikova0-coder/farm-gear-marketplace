@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { getImageUrl, handleImageError } from '@/lib/imageProxy';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, MapPin, Clock, Calendar, Phone, Mail, Check, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, X, FileText, Package, AlertTriangle, Store } from 'lucide-react';
+import { ArrowLeft, MapPin, Clock, Calendar, Phone, Check, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, X, Package, AlertTriangle, Store } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeaderSpacer from '@/components/layout/HeaderSpacer';
@@ -12,9 +12,6 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useProductById, useRecentProducts } from '@/hooks/useProducts';
 import { useTranslatedProduct } from '@/hooks/useTranslatedProduct';
@@ -22,7 +19,6 @@ import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
 import ProductCard from '@/components/products/ProductCard';
 import FinancingSimulator from '@/components/products/FinancingSimulator';
 import AddToCartButton from '@/components/cart/AddToCartButton';
-import { CART_MAX_PRICE } from '@/contexts/CartContext';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import { useProductGifts } from '@/hooks/useProductGifts';
 import ProductGiftsList from '@/components/products/ProductGiftsList';
@@ -43,14 +39,6 @@ const AnnonceDetail = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
-  const [customerPhotoZoomIndex, setCustomerPhotoZoomIndex] = useState<number | null>(null);
-  const [customerPhotoZoomLevel, setCustomerPhotoZoomLevel] = useState(1);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
 
   const similarProducts = recentProducts.filter(p => p.id !== id);
   
@@ -131,7 +119,7 @@ const AnnonceDetail = () => {
   };
 
   const images = (product.images || []).map(getImageUrl);
-  const customerImages = (product.customer_images || []).map(getImageUrl);
+  
   const price = Number(product.price) || 0;
   const priceHT = Math.round(price / 1.2);
 
@@ -165,10 +153,6 @@ const AnnonceDetail = () => {
     setZoomLevel((prev) => Math.max(prev - 0.5, 0.5));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(t('contact.success'));
-  };
 
   const specifications = [
     { label: t('product.brand'), value: product.brand },
@@ -310,11 +294,6 @@ const AnnonceDetail = () => {
                     <Badge className="absolute top-10 sm:top-12 left-2 sm:left-4 bg-destructive text-destructive-foreground text-xs sm:text-sm">
                       <AlertTriangle className="h-3 w-3 mr-1" />
                       {t('product.outOfStock')}
-                    </Badge>
-                  )}
-                  {product.featured && (
-                    <Badge className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-accent text-accent-foreground text-xs sm:text-sm">
-                      ⭐ {t('home.featuredListings').replace('⭐ ', '')}
                     </Badge>
                   )}
                   {/* Zoom hint */}
@@ -489,25 +468,16 @@ const AnnonceDetail = () => {
                   {t('product.vatDisclaimer')}
                 </p>
                 
-                {/* Mobile CTA: Cart button for <= 8000€, Quote for > 8000€ */}
+                {/* Mobile CTA: Always show cart button */}
                 <div className="mt-4">
-                  {price <= CART_MAX_PRICE ? (
-                    <AddToCartButton
-                      productId={product.id}
-                      price={price}
-                      condition={product.condition}
-                      stock={product.stock}
-                      className="w-full"
-                      size="lg"
-                    />
-                  ) : (
-                    <Button variant="accent" className="w-full" size="lg" asChild>
-                      <a href="#request-quote">
-                        <FileText className="h-4 w-4 mr-2" />
-                        {t('product.requestQuote')}
-                      </a>
-                    </Button>
-                  )}
+                  <AddToCartButton
+                    productId={product.id}
+                    price={price}
+                    condition={product.condition}
+                    stock={product.stock}
+                    className="w-full"
+                    size="lg"
+                  />
                 </div>
               </div>
 
@@ -548,152 +518,6 @@ const AnnonceDetail = () => {
                 </CardContent>
               </Card>
 
-              {/* Customer Photos Section */}
-              {customerImages.length > 0 && (
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="font-display">{t('product.customerPhotos')}</CardTitle>
-                    <p className="text-sm text-muted-foreground">{t('product.customerPhotosDesc')}</p>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                      {customerImages.map((img: string, index: number) => (
-                        <button
-                          key={index}
-                          onClick={() => {
-                            setCustomerPhotoZoomIndex(index);
-                            setCustomerPhotoZoomLevel(1);
-                          }}
-                          className="aspect-square rounded-lg overflow-hidden border border-border hover:border-primary transition-colors group relative"
-                        >
-                          <img 
-                            src={img} 
-                            alt={`${t('product.customerPhotos')} ${index + 1}`} 
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                            <ZoomIn className="h-6 w-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              )}
-
-              {/* Customer Photos Zoom Modal */}
-              {customerPhotoZoomIndex !== null && customerImages[customerPhotoZoomIndex] && (
-                <div 
-                  className="fixed inset-0 z-50 bg-black/95 flex flex-col"
-                  onClick={(e) => {
-                    if (e.target === e.currentTarget) {
-                      setCustomerPhotoZoomIndex(null);
-                      setCustomerPhotoZoomLevel(1);
-                    }
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Escape') {
-                      setCustomerPhotoZoomIndex(null);
-                      setCustomerPhotoZoomLevel(1);
-                    }
-                    if (e.key === 'ArrowLeft') setCustomerPhotoZoomIndex((prev) => (prev! - 1 + customerImages.length) % customerImages.length);
-                    if (e.key === 'ArrowRight') setCustomerPhotoZoomIndex((prev) => (prev! + 1) % customerImages.length);
-                  }}
-                  tabIndex={0}
-                  ref={(el) => el?.focus()}
-                >
-                  {/* Close button - prominent top right */}
-                  <button
-                    onClick={() => {
-                      setCustomerPhotoZoomIndex(null);
-                      setCustomerPhotoZoomLevel(1);
-                    }}
-                    className="absolute top-4 right-4 z-10 w-12 h-12 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
-                    aria-label={t('common.close')}
-                  >
-                    <X className="h-6 w-6 text-white" />
-                  </button>
-
-                  {/* Zoom controls */}
-                  <div className="flex justify-between items-center p-4 bg-black/50">
-                    <div className="text-white text-sm">
-                      {t('product.customerPhotos')} - {customerPhotoZoomIndex + 1} / {customerImages.length}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => setCustomerPhotoZoomLevel((prev) => Math.max(prev - 0.5, 0.5))}
-                        disabled={customerPhotoZoomLevel <= 0.5}
-                        className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors disabled:opacity-50"
-                      >
-                        <ZoomOut className="h-5 w-5 text-white" />
-                      </button>
-                      <span className="text-white text-sm w-16 text-center">{Math.round(customerPhotoZoomLevel * 100)}%</span>
-                      <button
-                        onClick={() => setCustomerPhotoZoomLevel((prev) => Math.min(prev + 0.5, 3))}
-                        disabled={customerPhotoZoomLevel >= 3}
-                        className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors disabled:opacity-50"
-                      >
-                        <ZoomIn className="h-5 w-5 text-white" />
-                      </button>
-                    </div>
-                  </div>
-                  
-                  {/* Main image */}
-                  <div 
-                    className="flex-1 overflow-auto flex items-center justify-center p-4"
-                    onClick={(e) => {
-                      if (e.target === e.currentTarget) {
-                        setCustomerPhotoZoomIndex(null);
-                        setCustomerPhotoZoomLevel(1);
-                      }
-                    }}
-                  >
-                    <img
-                      src={customerImages[customerPhotoZoomIndex]}
-                      alt={`${t('product.customerPhotos')} ${customerPhotoZoomIndex + 1}`}
-                      className="max-w-full max-h-[70vh] object-contain transition-transform duration-200"
-                      style={{ transform: `scale(${customerPhotoZoomLevel})` }}
-                      onClick={(e) => e.stopPropagation()}
-                    />
-                  </div>
-
-                  {/* Navigation */}
-                  {customerImages.length > 1 && (
-                    <>
-                      <button
-                        onClick={() => setCustomerPhotoZoomIndex((prev) => (prev! - 1 + customerImages.length) % customerImages.length)}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
-                      >
-                        <ChevronLeft className="h-6 w-6 text-white" />
-                      </button>
-                      <button
-                        onClick={() => setCustomerPhotoZoomIndex((prev) => (prev! + 1) % customerImages.length)}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
-                      >
-                        <ChevronRight className="h-6 w-6 text-white" />
-                      </button>
-                    </>
-                  )}
-
-                  {/* Thumbnails */}
-                  {customerImages.length > 1 && (
-                    <div className="p-4 bg-black/50 flex justify-center gap-2 overflow-x-auto">
-                      {customerImages.map((img: string, index: number) => (
-                        <button
-                          key={index}
-                          onClick={() => setCustomerPhotoZoomIndex(index)}
-                          className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
-                            index === customerPhotoZoomIndex ? 'border-primary' : 'border-transparent hover:border-white/50'
-                          }`}
-                        >
-                          <img src={img} alt="" className="w-full h-full object-cover" />
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
-              
               {/* Gifts Section */}
               <ProductGiftsList gifts={gifts} />
             </div>
@@ -763,88 +587,22 @@ const AnnonceDetail = () => {
                     )}
                   </div>
 
-                  {/* Conditional CTA: Cart button for <= 8000€, Quote for > 8000€ */}
+                  {/* Always show cart button */}
                   <div className="space-y-2">
-                    {price <= CART_MAX_PRICE ? (
-                      <AddToCartButton
-                        productId={product.id}
-                        price={price}
-                        condition={product.condition}
-                        stock={product.stock}
-                        className="w-full"
-                        size="lg"
-                      />
-                    ) : (
-                      <Button variant="accent" className="w-full" size="lg" asChild>
-                        <a href="#request-quote">
-                          <FileText className="h-4 w-4 mr-2" />
-                          {t('product.requestQuote')}
-                        </a>
-                      </Button>
-                    )}
+                    <AddToCartButton
+                      productId={product.id}
+                      price={price}
+                      condition={product.condition}
+                      stock={product.stock}
+                      className="w-full"
+                      size="lg"
+                    />
                   </div>
                 </CardContent>
               </Card>
 
               {/* Financing Simulator */}
               <FinancingSimulator price={price} productTitle={translatedTitle} productId={id || ''} />
-
-              {/* Quote request form */}
-              <Card id="request-quote">
-                <CardHeader>
-                  <CardTitle className="font-display">{t('product.requestQuote')}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <Label htmlFor="name">{t('contact.name')} *</Label>
-                      <Input
-                        id="name"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder={t('contact.namePlaceholder')}
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="email">{t('contact.email')} *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder={t('contact.emailPlaceholder')}
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="phone">{t('contact.phone')}</Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder={t('contact.phonePlaceholder')}
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="message">{t('contact.message')} *</Label>
-                      <Textarea
-                        id="message"
-                        required
-                        rows={4}
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        placeholder={t('contact.messagePlaceholder')}
-                      />
-                    </div>
-                    <Button type="submit" className="w-full" variant="accent" size="lg">
-                      <FileText className="h-4 w-4 mr-2" />
-                      {t('product.requestQuote')}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
 
               {/* Seller info */}
               <Card>

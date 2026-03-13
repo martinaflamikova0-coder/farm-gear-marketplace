@@ -252,11 +252,6 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                   {t('product.outOfStock')}
                 </Badge>
               )}
-              {!hideBadges && product.featured && (
-                <Badge className="absolute bottom-2 right-2 bg-accent text-accent-foreground">
-                  <Star className="h-3 w-3 fill-current" />
-                </Badge>
-              )}
               {!hideDiscounts && hasActivePromotion && (
                 <Badge className="absolute top-2 left-2 bg-gradient-to-r from-accent to-primary text-primary-foreground gap-1 animate-pulse shadow-lg">
                   <Sparkles className="h-3 w-3" />
@@ -388,11 +383,6 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
             <Badge className="absolute top-2 left-2 bg-destructive text-destructive-foreground gap-1">
               <Percent className="h-3 w-3" />
               -{displayDiscountPercentage}%
-            </Badge>
-          )}
-          {!hideBadges && product.featured && (
-            <Badge className="absolute bottom-2 right-2 bg-accent text-accent-foreground">
-              <Star className="h-3 w-3 fill-current" />
             </Badge>
           )}
         </div>

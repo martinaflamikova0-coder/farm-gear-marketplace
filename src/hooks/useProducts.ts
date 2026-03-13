@@ -90,6 +90,7 @@ export const useProducts = (options?: ProductsQueryOptions) => {
         .from('products_public')
         .select('*')
         .eq('status', 'active')
+        .lte('price', 50000)
         .order('price', { ascending: true });
 
       if (options?.category) {
@@ -154,7 +155,8 @@ export const usePaginatedProducts = (options: {
       let countQuery = supabase
         .from('products_public')
         .select('*', { count: 'exact', head: true })
-        .eq('status', 'active');
+        .eq('status', 'active')
+        .lte('price', 50000);
 
       if (featured) countQuery = countQuery.eq('featured', true);
       if (category) countQuery = countQuery.eq('category', category);
@@ -190,7 +192,8 @@ export const usePaginatedProducts = (options: {
       let dataQuery = supabase
         .from('products_public')
         .select('*')
-        .eq('status', 'active');
+        .eq('status', 'active')
+        .lte('price', 50000);
 
       if (featured) dataQuery = dataQuery.eq('featured', true);
       if (category) dataQuery = dataQuery.eq('category', category);
@@ -262,6 +265,7 @@ export const useRecentProducts = (limit: number = 4) => {
         .from('products_public')
         .select('*')
         .eq('status', 'active')
+        .lte('price', 50000)
         .eq('featured', false)
         .order('price', { ascending: true })
         .limit(limit);
@@ -281,6 +285,7 @@ export const usePremiumProducts = (limit: number = 10) => {
         .from('products_public')
         .select('*')
         .eq('status', 'active')
+        .lte('price', 50000)
         .order('price', { ascending: false })
         .limit(limit);
 
@@ -325,6 +330,7 @@ export const useBestSellers = (limit: number = 100) => {
         .from('products_public')
         .select('*')
         .eq('status', 'active')
+        .lte('price', 50000)
         .order('price', { ascending: true })
         .limit(limit);
 
@@ -343,6 +349,7 @@ export const useLatestProducts = (excludeIds: string[] = [], limit: number = 100
         .from('products_public')
         .select('*')
         .eq('status', 'active')
+        .lte('price', 50000)
         .eq('category', 'chantier')
         .not('subcategory', 'is', null)
         .order('price', { ascending: true })

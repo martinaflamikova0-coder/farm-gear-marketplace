@@ -3,8 +3,8 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import type { User } from '@supabase/supabase-js';
 
-// Price threshold: items <= this go to cart, above go to quote request
-export const CART_MAX_PRICE = 8000;
+// No price limit - all products go to cart
+export const CART_MAX_PRICE = Infinity;
 
 interface CartItem {
   id: string;
@@ -53,11 +53,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   // Check if product can be added to cart
   const canAddToCart = useCallback((price: number, condition: string | null, stock: number | null): { allowed: boolean; reason?: string } => {
-    // Price must be <= CART_MAX_PRICE
-    if (price > CART_MAX_PRICE) {
-      return { allowed: false, reason: 'price_too_high' };
-    }
-    
     // Check stock for new items
     if (condition === 'new' && stock !== null && stock === 0) {
       return { allowed: false, reason: 'out_of_stock' };

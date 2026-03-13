@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ShoppingCart, FileText, Check, Loader2, AlertTriangle } from 'lucide-react';
+import { ShoppingCart, Check, Loader2, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useCart, CART_MAX_PRICE } from '@/contexts/CartContext';
+import { useCart } from '@/contexts/CartContext';
 
 interface AddToCartButtonProps {
   productId: string;
@@ -33,26 +33,6 @@ const AddToCartButton = ({
   const alreadyInCart = isInCart(productId);
   const { allowed, reason } = canAddToCart(price, condition, stock);
   
-  // If price > CART_MAX_PRICE, show quote request button
-  if (price > CART_MAX_PRICE) {
-    return (
-      <Button
-        variant="accent"
-        size={size}
-        className={className}
-        onClick={() => {
-          // Scroll to quote form
-          const quoteForm = document.getElementById('request-quote');
-          if (quoteForm) {
-            quoteForm.scrollIntoView({ behavior: 'smooth' });
-          }
-        }}
-      >
-        <FileText className="h-4 w-4" />
-        {showLabel && <span className="ml-2">{t('product.requestQuote')}</span>}
-      </Button>
-    );
-  }
 
   // Out of stock
   if (reason === 'out_of_stock') {
