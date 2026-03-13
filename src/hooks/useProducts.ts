@@ -155,7 +155,8 @@ export const usePaginatedProducts = (options: {
       let countQuery = supabase
         .from('products_public')
         .select('*', { count: 'exact', head: true })
-        .eq('status', 'active');
+        .eq('status', 'active')
+        .lte('price', 50000);
 
       if (featured) countQuery = countQuery.eq('featured', true);
       if (category) countQuery = countQuery.eq('category', category);
