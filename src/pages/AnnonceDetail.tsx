@@ -312,11 +312,6 @@ const AnnonceDetail = () => {
                       {t('product.outOfStock')}
                     </Badge>
                   )}
-                  {product.featured && (
-                    <Badge className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-accent text-accent-foreground text-xs sm:text-sm">
-                      ⭐ {t('home.featuredListings').replace('⭐ ', '')}
-                    </Badge>
-                  )}
                   {/* Zoom hint */}
                   <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 bg-card/90 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm flex items-center gap-1">
                     <ZoomIn className="h-3 w-3 sm:h-4 sm:w-4" />
