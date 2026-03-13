@@ -265,6 +265,7 @@ export const useRecentProducts = (limit: number = 4) => {
         .from('products_public')
         .select('*')
         .eq('status', 'active')
+        .lte('price', 50000)
         .eq('featured', false)
         .order('price', { ascending: true })
         .limit(limit);
