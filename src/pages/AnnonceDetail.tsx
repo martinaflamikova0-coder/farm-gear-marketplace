@@ -41,14 +41,6 @@ const AnnonceDetail = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
-  const [customerPhotoZoomIndex, setCustomerPhotoZoomIndex] = useState<number | null>(null);
-  const [customerPhotoZoomLevel, setCustomerPhotoZoomLevel] = useState(1);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
 
   const similarProducts = recentProducts.filter(p => p.id !== id);
   
