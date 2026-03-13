@@ -13,7 +13,6 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Skeleton } from '@/components/ui/skeleton';
 import { useProductById, useRecentProducts } from '@/hooks/useProducts';
 import { useTranslatedProduct } from '@/hooks/useTranslatedProduct';
 import { useTranslatedCategory } from '@/hooks/useTranslatedCategory';
