@@ -165,9 +165,10 @@ function buildProductEntry(product: any): string {
   const titleTranslations = product.title_translations;
   const descTranslations = product.description_translations;
   const rawTitle = titleTranslations?.it || product.title;
-  const itTitle = normalizeTitle(rawTitle);
+  const itTitle = sanitizeVehicleTerms(normalizeTitle(rawTitle));
   // Use Italian description, fallback to title
-  const itDescription = descTranslations?.it || product.description || itTitle;
+  const rawDescription = descTranslations?.it || product.description || itTitle;
+  const itDescription = sanitizeVehicleTerms(rawDescription);
 
   // Additional images (merchant-safe first, then regular)
   const additionalImages: string[] = [];
