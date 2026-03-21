@@ -49,6 +49,11 @@ function translateCategory(slug: string | null): string {
   const map: Record<string, string> = {
     "tracteurs": "Agricultural Machinery",
     "tracteurs-agricoles": "Agricultural Machinery",
+    "micro-tracteurs": "Ride-On Lawn Mowers",
+    "tracteurs-vignerons": "Vineyard Equipment",
+    "moissonneuses-batteuses": "Harvesting Machinery",
+    "broyeurs": "Shredders",
+    "chariots-elevateurs": "Pallet Forks",
     "recolte": "Harvesting Equipment",
     "travail-sol": "Soil Working Equipment",
     "manutention": "Material Handling",
