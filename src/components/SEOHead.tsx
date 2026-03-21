@@ -29,7 +29,7 @@ interface SEOHeadProps {
 }
 
 // Base URL for canonical and hreflang - use production domain
-const BASE_URL = 'https://ekiptrade.com';
+const BASE_URL = 'https://ekip-trade.com';
 
 const SEOHead = ({ 
   titleKey, 
