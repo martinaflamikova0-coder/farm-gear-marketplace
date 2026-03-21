@@ -362,7 +362,7 @@ const Annonces = () => {
               itemListElement: products.slice(0, 10).map((product, index) => ({
                 '@type': 'ListItem',
                 position: index + 1,
-                url: `https://ekiptrade.com/${currentLang}/${listingSlug}/${product.id}`,
+                url: `https://ekip-trade.com/${currentLang}/${listingSlug}/${product.id}`,
                 name: product.title,
               })),
             })

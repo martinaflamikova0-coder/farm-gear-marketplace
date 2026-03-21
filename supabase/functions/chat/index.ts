@@ -15,7 +15,7 @@ Tu es aussi capable de répondre intelligemment à toute question, même hors du
 ═══════════════════════════════════════
 - Nom : EkipTrade
 - P.IVA : IT10992060011
-- Site : ekiptrade.com
+- Site : ekip-trade.com
 - Email : infos@ekip-trade.com
 - Téléphone / WhatsApp : +39 377 389 0872
 - Siège : Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Piemonte, Italia

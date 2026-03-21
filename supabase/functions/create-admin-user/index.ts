@@ -106,7 +106,7 @@ serve(async (req: Request) => {
       type: "recovery",
       email,
       options: {
-        redirectTo: "https://ekiptrade.com/admin/reset-password",
+        redirectTo: "https://ekip-trade.com/admin/reset-password",
       },
     });
 
