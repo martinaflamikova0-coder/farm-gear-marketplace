@@ -92,9 +92,9 @@ const Index = () => {
 
         {/* 5. Catégories restantes */}
         <div className="bg-card">
-          <ProductsGrid titleKey="home.handling" category="manutention" limit={10} />
+          <ProductsGrid titleKey="home.handling" category="manutention" limit={12} />
         </div>
-        <ProductsGrid titleKey="home.partsAccessories" category="pieces" limit={10} />
+        <ProductsGrid titleKey="home.partsAccessories" category="pieces" limit={12} />
 
         {/* 6. Premium — les plus chers */}
         <div className="bg-card">
