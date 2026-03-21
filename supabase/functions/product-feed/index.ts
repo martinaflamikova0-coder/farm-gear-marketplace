@@ -274,9 +274,9 @@ Deno.serve(async (req) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
   <channel>
-    <title>EkipTrade - Agricultural &amp; Industrial Equipment</title>
+    <title>EkipTrade - Marketplace di Macchinari Agricoli e Industriali</title>
     <link>${SITE_URL}</link>
-    <description>Buy new and used agricultural and industrial equipment on EkipTrade</description>
+    <description>Acquista macchinari agricoli e industriali nuovi e usati su EkipTrade</description>
     ${items}
   </channel>
 </rss>`;
