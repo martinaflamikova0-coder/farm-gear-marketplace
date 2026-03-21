@@ -412,15 +412,15 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
             <div className="flex items-start justify-between gap-2">
               <div className="flex-1 min-w-0">
                 {!hideCompareAtPrice && hasDiscount && displayOriginalPrice && (
-                  <p className="text-sm text-muted-foreground line-through">
+                  <p className="text-xs text-muted-foreground line-through whitespace-nowrap truncate">
                     {formatPrice(displayOriginalPrice)}
                   </p>
                 )}
-                <p className="text-xl font-display font-bold text-primary">
+                <p className="text-base sm:text-lg font-display font-bold text-primary whitespace-nowrap truncate">
                   {formatPrice(displayPrice)}
                 </p>
                 {!hideVatMentions && !singlePriceOnly && priceMode !== 'HT_only' && (
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-[10px] text-muted-foreground whitespace-nowrap truncate">
                     {formatPrice(priceHT)} {t('product.priceHT')}
                   </p>
                 )}
