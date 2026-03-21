@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { type SupportedLanguage } from '@/i18n';
 
-const BASE_URL = 'https://ekiptrade.com';
+const BASE_URL = 'https://ekip-trade.com';
 
 interface BreadcrumbItem {
   name: string;

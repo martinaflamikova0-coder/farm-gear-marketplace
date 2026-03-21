@@ -74,7 +74,7 @@ const Contact = () => {
           '@type': 'ContactPage',
           name: t('pages.contact.title'),
           description: t('seo.contact.description'),
-          url: 'https://ekiptrade.com/en/contact',
+          url: 'https://ekip-trade.com/en/contact',
           mainEntity: {
             '@type': 'Organization',
             name: 'EkipTrade',

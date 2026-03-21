@@ -7,7 +7,7 @@ const corsHeaders = {
 };
 
 const SUPPORTED_LANGUAGES = ['en', 'fr', 'de', 'es', 'it', 'pt'];
-const BASE_URL = 'https://ekiptrade.com';
+const BASE_URL = 'https://ekip-trade.com';
 
 // Localized slugs for listings
 const LISTING_SLUGS: Record<string, string> = {
