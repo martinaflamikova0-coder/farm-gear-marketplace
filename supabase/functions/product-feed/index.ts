@@ -9,7 +9,7 @@ const corsHeaders = {
 const SITE_URL = "https://ekip-trade.com";
 const CURRENCY = "EUR";
 const TVA_RATE = 0.20;
-const CONTENT_LANGUAGE = "en";
+const CONTENT_LANGUAGE = "it";
 
 // Map French category slugs to Google Product Category IDs
 // Using specific categories to avoid "Vehicles" classification
