@@ -420,7 +420,7 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                   {formatPrice(displayPrice)}
                 </p>
                 {!hideVatMentions && !singlePriceOnly && priceMode !== 'HT_only' && (
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-[10px] text-muted-foreground whitespace-nowrap truncate">
                     {formatPrice(priceHT)} {t('product.priceHT')}
                   </p>
                 )}
