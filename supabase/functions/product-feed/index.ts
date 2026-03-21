@@ -9,7 +9,7 @@ const corsHeaders = {
 const SITE_URL = "https://ekip-trade.com";
 const CURRENCY = "EUR";
 const TVA_RATE = 0.20;
-const CONTENT_LANGUAGE = "en";
+const CONTENT_LANGUAGE = "it";
 
 // Map French category slugs to Google Product Category IDs
 // Using specific categories to avoid "Vehicles" classification
@@ -130,16 +130,16 @@ function buildProductEntry(product: any): string {
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
-  const link = `${SITE_URL}/en/listing/${product.id}`;
+  const link = `${SITE_URL}/it/annuncio/${product.id}`;
   const refNumber = `REFEQUITRAD${String(product.reference_number).padStart(5, "0")}`;
 
-  // Use English translations if available, fallback to French title (never French description)
+  // Use Italian (site's primary language) for title and description
   const titleTranslations = product.title_translations;
   const descTranslations = product.description_translations;
-  const rawEnTitle = titleTranslations?.en || product.title;
-  const enTitle = normalizeTitle(rawEnTitle);
-  // IMPORTANT: Only use English description, never fall back to French description (causes "wrong language" error)
-  const enDescription = descTranslations?.en || enTitle;
+  const rawTitle = titleTranslations?.it || product.title;
+  const itTitle = normalizeTitle(rawTitle);
+  // Use Italian description, fallback to title
+  const itDescription = descTranslations?.it || product.description || itTitle;
 
   // Additional images (merchant-safe first, then regular)
   const additionalImages: string[] = [];
@@ -159,7 +159,7 @@ function buildProductEntry(product: any): string {
   }
 
   // Description - strip HTML, limit to 5000 chars
-  let description = (enDescription || enTitle || "")
+  let description = (itDescription || itTitle || "")
     .replace(/<[^>]*>/g, "")
     .substring(0, 5000);
 
@@ -173,7 +173,7 @@ function buildProductEntry(product: any): string {
   return `
     <item>
       <g:id>${escapeXml(product.id)}</g:id>
-      <g:title>${escapeXml(enTitle)}</g:title>
+      <g:title>${escapeXml(itTitle)}</g:title>
       <g:description>${escapeXml(description)}</g:description>
       <g:link>${escapeXml(link)}</g:link>
       <g:image_link>${escapeXml(imageUrl)}</g:image_link>
@@ -274,9 +274,9 @@ Deno.serve(async (req) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
   <channel>
-    <title>EkipTrade - Agricultural &amp; Industrial Equipment</title>
+    <title>EkipTrade - Marketplace di Macchinari Agricoli e Industriali</title>
     <link>${SITE_URL}</link>
-    <description>Buy new and used agricultural and industrial equipment on EkipTrade</description>
+    <description>Acquista macchinari agricoli e industriali nuovi e usati su EkipTrade</description>
     ${items}
   </channel>
 </rss>`;
