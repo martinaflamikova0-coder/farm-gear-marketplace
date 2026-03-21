@@ -173,7 +173,7 @@ function buildProductEntry(product: any): string {
   return `
     <item>
       <g:id>${escapeXml(product.id)}</g:id>
-      <g:title>${escapeXml(enTitle)}</g:title>
+      <g:title>${escapeXml(itTitle)}</g:title>
       <g:description>${escapeXml(description)}</g:description>
       <g:link>${escapeXml(link)}</g:link>
       <g:image_link>${escapeXml(imageUrl)}</g:image_link>
