@@ -47,8 +47,8 @@ function getGoogleProductCategory(category: string | null, subcategory: string |
 // Translate French category/subcategory slugs to English for product_type
 function translateCategory(slug: string | null): string {
   const map: Record<string, string> = {
-    "tracteurs": "Tractors",
-    "tracteurs-agricoles": "Agricultural Tractors",
+    "tracteurs": "Agricultural Machinery",
+    "tracteurs-agricoles": "Agricultural Machinery",
     "recolte": "Harvesting Equipment",
     "travail-sol": "Soil Working Equipment",
     "manutention": "Material Handling",
