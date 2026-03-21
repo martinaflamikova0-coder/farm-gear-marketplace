@@ -130,16 +130,16 @@ function buildProductEntry(product: any): string {
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
-  const link = `${SITE_URL}/en/listing/${product.id}`;
+  const link = `${SITE_URL}/it/annuncio/${product.id}`;
   const refNumber = `REFEQUITRAD${String(product.reference_number).padStart(5, "0")}`;
 
-  // Use English translations if available, fallback to French title (never French description)
+  // Use Italian (site's primary language) for title and description
   const titleTranslations = product.title_translations;
   const descTranslations = product.description_translations;
-  const rawEnTitle = titleTranslations?.en || product.title;
-  const enTitle = normalizeTitle(rawEnTitle);
-  // IMPORTANT: Only use English description, never fall back to French description (causes "wrong language" error)
-  const enDescription = descTranslations?.en || enTitle;
+  const rawTitle = titleTranslations?.it || product.title;
+  const itTitle = normalizeTitle(rawTitle);
+  // Use Italian description, fallback to title
+  const itDescription = descTranslations?.it || product.description || itTitle;
 
   // Additional images (merchant-safe first, then regular)
   const additionalImages: string[] = [];
