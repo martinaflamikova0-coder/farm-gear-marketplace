@@ -374,58 +374,58 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
             </Badge>
           )}
         </div>
-        <CardContent className="p-4">
-          <p className="text-xs text-muted-foreground mb-1">
-            <span className="font-mono font-medium">{formatReferenceNumber(product.reference_number)}</span> • {translatedCategory} • {product.brand}
+        <CardContent className="p-2 sm:p-4">
+          <p className="text-[9px] sm:text-xs text-muted-foreground mb-0.5 sm:mb-1 truncate">
+            <span className="font-mono font-medium hidden sm:inline">{formatReferenceNumber(product.reference_number)} • </span>{translatedCategory} • {product.brand}
           </p>
-          <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-3 sm:line-clamp-2 min-h-[2.5rem]">
+          <h3 className="font-display font-semibold text-[11px] sm:text-sm text-foreground group-hover:text-primary transition-colors line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem]">
             {translatedTitle}
           </h3>
           {showRating && (
-            <div className="mt-1">
+            <div className="mt-0.5 sm:mt-1 hidden sm:block">
               <StarRating rating={rating} reviews={reviews} />
             </div>
           )}
-          <div className="flex flex-wrap gap-2 mt-2 text-xs text-muted-foreground">
+          <div className="flex flex-wrap gap-1 sm:gap-2 mt-1 sm:mt-2 text-[9px] sm:text-xs text-muted-foreground">
             {product.year && (
-              <span className="flex items-center gap-1">
-                <Calendar className="h-3 w-3" />
+              <span className="flex items-center gap-0.5">
+                <Calendar className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                 {product.year}
               </span>
             )}
             {product.hours && (
-              <span className="flex items-center gap-1">
-                <Clock className="h-3 w-3" />
+              <span className="flex items-center gap-0.5">
+                <Clock className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                 {formatNumber(product.hours)} h
               </span>
             )}
           </div>
           
           {product.location && (
-            <div className="flex items-center gap-1 mt-2 text-xs text-muted-foreground">
-              <MapPin className="h-3 w-3" />
-              <span>{product.location}</span>
+            <div className="flex items-center gap-0.5 mt-1 sm:mt-2 text-[9px] sm:text-xs text-muted-foreground">
+              <MapPin className="h-2.5 w-2.5 sm:h-3 sm:w-3 flex-shrink-0" />
+              <span className="truncate">{product.location}</span>
             </div>
           )}
           
-          <div className="mt-3 pt-3 border-t border-border">
-            <div className="flex items-start justify-between gap-2">
+          <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-border">
+            <div className="flex items-start justify-between gap-1">
               <div className="flex-1 min-w-0">
                 {!hideCompareAtPrice && hasDiscount && displayOriginalPrice && (
-                  <p className="text-xs text-muted-foreground line-through whitespace-nowrap truncate">
+                  <p className="text-[9px] sm:text-xs text-muted-foreground line-through whitespace-nowrap truncate">
                     {formatPrice(displayOriginalPrice)}
                   </p>
                 )}
-                <p className="text-base sm:text-lg font-display font-bold text-primary whitespace-nowrap truncate">
+                <p className="text-xs sm:text-lg font-display font-bold text-primary whitespace-nowrap truncate">
                   {formatPrice(displayPrice)}
                 </p>
                 {!hideVatMentions && !singlePriceOnly && priceMode !== 'HT_only' && (
-                  <p className="text-[10px] text-muted-foreground whitespace-nowrap truncate">
+                  <p className="text-[8px] sm:text-[10px] text-muted-foreground whitespace-nowrap truncate">
                     {formatPrice(priceHT)} {t('product.priceHT')}
                   </p>
                 )}
                 {hasFinancing && (
-                  <div className="flex items-center gap-1 mt-1 text-xs text-success">
+                  <div className="hidden sm:flex items-center gap-1 mt-1 text-xs text-success">
                     <CreditCard className="h-3 w-3" />
                     <span>{t('product.financing', { amount: formatPrice(monthlyPayment) })}</span>
                   </div>
