@@ -267,3 +267,10 @@
     animation: pulseGentle 2s ease-in-out infinite;
   }
 }
+
+/* 2 columns on very small screens (<360px) */
+@media (max-width: 359px) {
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
