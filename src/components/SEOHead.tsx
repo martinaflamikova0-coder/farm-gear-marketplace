@@ -38,7 +38,7 @@ const SEOHead = ({
   dynamicTitle,
   dynamicDescription,
   dynamicKeywords,
-  ogImage = '/og-image.jpg',
+  ogImage = 'https://storage.googleapis.com/gpt-engineer-file-uploads/0sb04V8FYeeMY4UlB4rvr37FtHo2/social-images/social-1773316728088-IMG_3297.webp',
   pageType = 'website',
   productData
 }: SEOHeadProps) => {
