@@ -39,13 +39,13 @@ const Index = () => {
         <PopularCategoriesLinks />
 
         {/* 2. Catégories phares — gros volumes */}
-        <ProductsGrid titleKey="home.tractors" category="tracteurs" limit={10} />
+        <ProductsGrid titleKey="home.tractors" category="tracteurs" limit={12} />
         <div className="bg-card">
-          <ProductsGrid titleKey="home.harvestEquipment" category="recolte" limit={10} />
+          <ProductsGrid titleKey="home.harvestEquipment" category="recolte" limit={12} />
         </div>
-        <ProductsGrid titleKey="home.constructionEquipment" category="chantier" limit={10} />
+        <ProductsGrid titleKey="home.constructionEquipment" category="chantier" limit={12} />
         <div className="bg-card">
-          <ProductsGrid titleKey="home.soilWork" category="travail-sol" limit={10} />
+          <ProductsGrid titleKey="home.soilWork" category="travail-sol" limit={12} />
         </div>
 
         {/* 3. Vidéo promo — pause visuelle */}
