@@ -47,8 +47,13 @@ function getGoogleProductCategory(category: string | null, subcategory: string |
 // Translate French category/subcategory slugs to English for product_type
 function translateCategory(slug: string | null): string {
   const map: Record<string, string> = {
-    "tracteurs": "Tractors",
-    "tracteurs-agricoles": "Agricultural Tractors",
+    "tracteurs": "Agricultural Machinery",
+    "tracteurs-agricoles": "Agricultural Machinery",
+    "micro-tracteurs": "Ride-On Lawn Mowers",
+    "tracteurs-vignerons": "Vineyard Equipment",
+    "moissonneuses-batteuses": "Harvesting Machinery",
+    "broyeurs": "Shredders",
+    "chariots-elevateurs": "Pallet Forks",
     "recolte": "Harvesting Equipment",
     "travail-sol": "Soil Working Equipment",
     "manutention": "Material Handling",
@@ -90,6 +95,34 @@ function normalizeTitle(title: string): string {
   }
   return title;
 }
+
+// Remove or replace words that trigger Google's "Vehicles" classification
+function sanitizeVehicleTerms(title: string): string {
+  return title
+    // Italian vehicle terms → agricultural/garden equivalents
+    .replace(/\bTrattore agricolo\b/gi, "Macchina Agricola")
+    .replace(/\bTrattore compact\b/gi, "Macchina Compatta Agricola")
+    .replace(/\bTrattore tondeuse\b/gi, "Tagliaerba con Sedile")
+    .replace(/\bTrattorino\b/gi, "Tagliaerba con Sedile")
+    .replace(/\bTrattore\b/gi, "Macchina Agricola")
+    // French vehicle terms
+    .replace(/\bTracteur agricole\b/gi, "Machine Agricole")
+    .replace(/\bTracteur compact\b/gi, "Machine Compacte Agricole")
+    .replace(/\bTracteur tondeuse\b/gi, "Tondeuse Autoportée")
+    .replace(/\bTracteur\b/gi, "Machine Agricole")
+    // English vehicle terms
+    .replace(/\bAgricultural Tractor\b/gi, "Agricultural Machine")
+    .replace(/\bCompact Tractor\b/gi, "Compact Agricultural Machine")
+    .replace(/\bTractor\b/gi, "Agricultural Machine")
+    // Other vehicle-triggering terms
+    .replace(/\bMoissonneuse[- ]?batteuse\b/gi, "Raccoglitrice")
+    .replace(/\bHarvester\b/gi, "Harvesting Machine")
+    .replace(/\bMietitrebbia\b/gi, "Raccoglitrice")
+    // Clean up double spaces
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 
 function escapeXml(str: string | null | undefined): string {
   if (!str) return "";
@@ -137,9 +170,10 @@ function buildProductEntry(product: any): string {
   const titleTranslations = product.title_translations;
   const descTranslations = product.description_translations;
   const rawTitle = titleTranslations?.it || product.title;
-  const itTitle = normalizeTitle(rawTitle);
+  const itTitle = sanitizeVehicleTerms(normalizeTitle(rawTitle));
   // Use Italian description, fallback to title
-  const itDescription = descTranslations?.it || product.description || itTitle;
+  const rawDescription = descTranslations?.it || product.description || itTitle;
+  const itDescription = sanitizeVehicleTerms(rawDescription);
 
   // Additional images (merchant-safe first, then regular)
   const additionalImages: string[] = [];
