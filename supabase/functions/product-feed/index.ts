@@ -159,7 +159,7 @@ function buildProductEntry(product: any): string {
   }
 
   // Description - strip HTML, limit to 5000 chars
-  let description = (enDescription || enTitle || "")
+  let description = (itDescription || itTitle || "")
     .replace(/<[^>]*>/g, "")
     .substring(0, 5000);
 
