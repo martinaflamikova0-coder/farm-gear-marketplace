@@ -91,6 +91,34 @@ function normalizeTitle(title: string): string {
   return title;
 }
 
+// Remove or replace words that trigger Google's "Vehicles" classification
+function sanitizeVehicleTerms(title: string): string {
+  return title
+    // Italian vehicle terms → agricultural/garden equivalents
+    .replace(/\bTrattore agricolo\b/gi, "Macchina Agricola")
+    .replace(/\bTrattore compact\b/gi, "Macchina Compatta Agricola")
+    .replace(/\bTrattore tondeuse\b/gi, "Tagliaerba con Sedile")
+    .replace(/\bTrattorino\b/gi, "Tagliaerba con Sedile")
+    .replace(/\bTrattore\b/gi, "Macchina Agricola")
+    // French vehicle terms
+    .replace(/\bTracteur agricole\b/gi, "Machine Agricole")
+    .replace(/\bTracteur compact\b/gi, "Machine Compacte Agricole")
+    .replace(/\bTracteur tondeuse\b/gi, "Tondeuse Autoportée")
+    .replace(/\bTracteur\b/gi, "Machine Agricole")
+    // English vehicle terms
+    .replace(/\bAgricultural Tractor\b/gi, "Agricultural Machine")
+    .replace(/\bCompact Tractor\b/gi, "Compact Agricultural Machine")
+    .replace(/\bTractor\b/gi, "Agricultural Machine")
+    // Other vehicle-triggering terms
+    .replace(/\bMoissonneuse[- ]?batteuse\b/gi, "Raccoglitrice")
+    .replace(/\bHarvester\b/gi, "Harvesting Machine")
+    .replace(/\bMietitrebbia\b/gi, "Raccoglitrice")
+    // Clean up double spaces
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
+
 function escapeXml(str: string | null | undefined): string {
   if (!str) return "";
   return str
