@@ -16,7 +16,7 @@ interface FinancingSimulatorProps {
 }
 
 const DURATION_OPTIONS = [12, 24, 36, 48, 60, 72];
-const FINANCING_THRESHOLD = 5000;
+const FINANCING_THRESHOLD = 20000;
 
 const FinancingSimulator = ({ price, productTitle, productId, className }: FinancingSimulatorProps) => {
   const { t, i18n } = useTranslation();
