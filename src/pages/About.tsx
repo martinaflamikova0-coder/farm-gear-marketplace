@@ -72,16 +72,16 @@ const About = () => {
                 </p>
                 <div className="flex justify-center gap-8 text-center">
                   <div>
-                    <div className="text-3xl font-bold">5 000+</div>
-                    <div className="text-sm text-primary-foreground/70">{t('pages.about.users')}</div>
+                    <div className="text-3xl font-bold">10+</div>
+                    <div className="text-sm text-primary-foreground/70">{t('pages.about.countriesServed')}</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold">10 000+</div>
+                    <div className="text-3xl font-bold">200+</div>
                     <div className="text-sm text-primary-foreground/70">{t('pages.about.listings')}</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold">95%</div>
-                    <div className="text-sm text-primary-foreground/70">{t('pages.about.satisfaction')}</div>
+                    <div className="text-3xl font-bold">24/7</div>
+                    <div className="text-sm text-primary-foreground/70">{t('pages.about.onlineSupport')}</div>
                   </div>
                 </div>
               </CardContent>
