@@ -148,8 +148,8 @@
   },
   "stats": {
     "listings": "annonces",
-    "sellers": "vendeurs",
-    "departments": "départements"
+    "countries": "pays",
+    "support": "assistance en ligne"
   },
   "trust": {
     "securePayment": "Paiement sécurisé",
@@ -414,7 +414,7 @@
     "paymentMethods": "Moyens de paiement",
     "bankTransfer": "Virement bancaire"
   },
-"errors": {
+  "errors": {
     "notFound": "Page non trouvée",
     "notFoundDesc": "La page que vous recherchez n'existe pas.",
     "backHome": "Retour à l'accueil"
@@ -654,9 +654,9 @@
       "qualityDesc": "Une sélection rigoureuse de matériel pour répondre aux exigences des professionnels.",
       "joinTitle": "Rejoignez notre communauté",
       "joinDesc": "Plus de 1 000 annonces publiées chaque mois par des professionnels vérifiés.",
-      "users": "Utilisateurs",
       "listings": "Annonces",
-      "satisfaction": "Satisfaction"
+      "countriesServed": "Pays desservis",
+      "onlineSupport": "Assistance en ligne"
     },
     "howItWorks": {
       "title": "Comment ça marche ?",
