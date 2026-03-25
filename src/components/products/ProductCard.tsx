@@ -220,9 +220,8 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   const hasFinancing = price >= FINANCING_THRESHOLD && !hideFinancing;
   const monthlyPayment = hasFinancing ? Math.round(price / FINANCING_MONTHS) : 0;
   
-  // Generate consistent rating for this product (hidden in MC mode)
-  const { rating, reviews } = generateRating(product.id);
-  const showRating = !hideReviewStars;
+   // Fake ratings removed — Google flags them as deceptive
+  const showRating = false;
   
   // Get automatic gifts for this product
   const gifts = useProductGifts(product);

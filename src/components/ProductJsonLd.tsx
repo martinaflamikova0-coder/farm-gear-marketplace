@@ -187,14 +187,6 @@ const ProductJsonLd = ({
         },
       }),
     },
-    // Aggregate rating placeholder (can be enhanced with real reviews)
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '127',
-      bestRating: '5',
-      worstRating: '1'
-    },
     // Business information
     isRelatedTo: {
       '@type': 'WebSite',
