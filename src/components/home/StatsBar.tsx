@@ -5,9 +5,9 @@ const StatsBar = () => {
   const { t } = useTranslation();
 
   const stats = [
-    { icon: Package, value: '995', label: t('stats.listings') },
-    { icon: Users, value: '200+', label: t('stats.sellers') },
-    { icon: MapPin, value: '95', label: t('stats.departments') },
+    { icon: Package, value: '200+', label: t('stats.listings') },
+    { icon: Users, value: '10+', label: t('stats.countries') },
+    { icon: MapPin, value: '24/7', label: t('stats.support') },
   ];
 
   return (

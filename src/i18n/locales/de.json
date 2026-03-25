@@ -165,8 +165,8 @@
   },
   "stats": {
     "listings": "Anzeigen",
-    "sellers": "Verkäufer",
-    "departments": "Regionen"
+    "countries": "Länder",
+    "support": "Online-Support"
   },
   "trust": {
     "securePayment": "Sichere Zahlung",
@@ -410,7 +410,7 @@
     "paymentMethods": "Zahlungsmethoden",
     "bankTransfer": "Banküberweisung"
   },
-"errors": {
+  "errors": {
     "notFound": "Seite nicht gefunden",
     "notFoundDesc": "Die gesuchte Seite existiert nicht.",
     "backHome": "Zurück zur Startseite"
@@ -645,9 +645,9 @@
       "qualityDesc": "Eine sorgfältige Auswahl an Geräten, um professionellen Anforderungen gerecht zu werden.",
       "joinTitle": "Treten Sie unserer Community bei",
       "joinDesc": "Mehr als 1.000 Anzeigen werden jeden Monat von verifizierten Fachleuten veröffentlicht.",
-      "users": "Benutzer",
       "listings": "Anzeigen",
-      "satisfaction": "Zufriedenheit"
+      "countriesServed": "Bediente Länder",
+      "onlineSupport": "Online-Support"
     },
     "howItWorks": {
       "title": "Wie funktioniert es?",

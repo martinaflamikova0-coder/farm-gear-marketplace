@@ -165,8 +165,8 @@
   },
   "stats": {
     "listings": "anuncios",
-    "sellers": "vendedores",
-    "departments": "regiones"
+    "countries": "países",
+    "support": "soporte en línea"
   },
   "trust": {
     "securePayment": "Pago seguro",
@@ -410,7 +410,7 @@
     "paymentMethods": "Métodos de pago",
     "bankTransfer": "Transferencia bancaria"
   },
-"errors": {
+  "errors": {
     "notFound": "Página no encontrada",
     "notFoundDesc": "La página que busca no existe.",
     "backHome": "Volver al inicio"
@@ -645,9 +645,9 @@
       "qualityDesc": "Una selección rigurosa de equipos para satisfacer las exigencias profesionales.",
       "joinTitle": "Únase a nuestra comunidad",
       "joinDesc": "Más de 1.000 anuncios publicados cada mes por profesionales verificados.",
-      "users": "Usuarios",
       "listings": "Anuncios",
-      "satisfaction": "Satisfacción"
+      "countriesServed": "Países atendidos",
+      "onlineSupport": "Soporte en línea"
     },
     "howItWorks": {
       "title": "¿Cómo funciona?",

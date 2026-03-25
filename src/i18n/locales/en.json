@@ -148,8 +148,8 @@
   },
   "stats": {
     "listings": "listings",
-    "sellers": "sellers",
-    "departments": "departments"
+    "countries": "countries",
+    "support": "online support"
   },
   "trust": {
     "securePayment": "Secure payment",
@@ -414,7 +414,7 @@
     "paymentMethods": "Payment methods",
     "bankTransfer": "Bank transfer"
   },
-"errors": {
+  "errors": {
     "notFound": "Page not found",
     "notFoundDesc": "The page you are looking for does not exist.",
     "backHome": "Back to home"
@@ -654,9 +654,9 @@
       "qualityDesc": "A rigorous selection of equipment to meet professional requirements.",
       "joinTitle": "Join our community",
       "joinDesc": "More than 1,000 listings published every month by verified professionals.",
-      "users": "Users",
       "listings": "Listings",
-      "satisfaction": "Satisfaction"
+      "countriesServed": "Countries served",
+      "onlineSupport": "Online support"
     },
     "howItWorks": {
       "title": "How does it work?",

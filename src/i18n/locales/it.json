@@ -46,21 +46,25 @@
     "login": "Accedi"
   },
   "orderConfirmation": {
-    "title": "Ordine confermato",
-    "description": "Grazie per il tuo acquisto!",
-    "orderNumber": "Numero ordine",
-    "orderDate": "Data ordine",
-    "total": "Totale",
-    "status": "Stato",
+    "title": "Ordine Confermato!",
+    "subtitle": "Grazie per il tuo acquisto",
+    "orderDetails": "Dettagli dell'ordine",
+    "orderId": "ID Ordine",
+    "orderDate": "Data Ordine",
+    "customerName": "Nome Cliente",
     "items": "Articoli",
-    "shippingAddress": "Indirizzo di spedizione",
-    "estimatedDelivery": "Data di consegna stimata",
-    "thankYou": "Ti ringraziamo per il tuo acquisto. Riceverai presto un'email di conferma.",
-    "accountPage": "Vai al mio account",
-    "seO": {
-      "title": "Ordine confermato | EquipTrade",
-      "description": "Grazie per il tuo acquisto. Il tuo ordine è stato confermato."
-    }
+    "quantity": "Quantità",
+    "total": "Totale",
+    "whatNext": "Cosa succede dopo?",
+    "confirmationEmail": "Un'email di conferma è stata inviata alla tua casella",
+    "invoiceAvailable": "La tua fattura è disponibile nel tuo account e via email",
+    "trackOrder": "Puoi seguire lo stato del tuo ordine nel tuo account",
+    "supportContact": "Per domande, contatta il nostro team di supporto",
+    "viewAccount": "Visualizza il tuo account",
+    "continueShopping": "Continua lo shopping",
+    "noOrderId": "Nessun ID ordine fornito",
+    "orderNotFound": "Ordine non trovato",
+    "unexpectedError": "Si è verificato un errore imprevisto"
   },
   "account": {
     "title": "Il mio account",
@@ -165,8 +169,8 @@
   },
   "stats": {
     "listings": "annunci",
-    "sellers": "venditori",
-    "departments": "regioni"
+    "countries": "paesi",
+    "support": "assistenza online"
   },
   "trust": {
     "securePayment": "Pagamento sicuro",
@@ -431,7 +435,7 @@
     "paymentMethods": "Metodi di pagamento",
     "bankTransfer": "Bonifico bancario"
   },
-"errors": {
+  "errors": {
     "notFound": "Pagina non trovata",
     "notFoundDesc": "La pagina che stai cercando non esiste.",
     "backHome": "Torna alla home"
@@ -671,9 +675,9 @@
       "qualityDesc": "Una selezione rigorosa di attrezzature per soddisfare le esigenze professionali.",
       "joinTitle": "Unisciti alla nostra comunità",
       "joinDesc": "Più di 1.000 annunci pubblicati ogni mese da professionisti verificati.",
-      "users": "Utenti",
       "listings": "Annunci",
-      "satisfaction": "Soddisfazione"
+      "countriesServed": "Paesi serviti",
+      "onlineSupport": "Assistenza online"
     },
     "howItWorks": {
       "title": "Come funziona?",
@@ -1022,26 +1026,5 @@
     "accountCreated": "Account creato!",
     "accountCreatedDesc": "Il tuo account è stato creato con successo. Controlla la tua email per il messaggio di benvenuto. Se non lo ricevi, controlla la cartella spam.",
     "signupError": "Si è verificato un errore durante la registrazione"
-  },
-  "orderConfirmation": {
-    "title": "Ordine Confermato!",
-    "subtitle": "Grazie per il tuo acquisto",
-    "orderDetails": "Dettagli dell'ordine",
-    "orderId": "ID Ordine",
-    "orderDate": "Data Ordine",
-    "customerName": "Nome Cliente",
-    "items": "Articoli",
-    "quantity": "Quantità",
-    "total": "Totale",
-    "whatNext": "Cosa succede dopo?",
-    "confirmationEmail": "Un'email di conferma è stata inviata alla tua casella",
-    "invoiceAvailable": "La tua fattura è disponibile nel tuo account e via email",
-    "trackOrder": "Puoi seguire lo stato del tuo ordine nel tuo account",
-    "supportContact": "Per domande, contatta il nostro team di supporto",
-    "viewAccount": "Visualizza il tuo account",
-    "continueShopping": "Continua lo shopping",
-    "noOrderId": "Nessun ID ordine fornito",
-    "orderNotFound": "Ordine non trovato",
-    "unexpectedError": "Si è verificato un errore imprevisto"
   }
 }
