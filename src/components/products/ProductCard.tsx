@@ -375,11 +375,6 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
           <h3 className="font-display font-semibold text-[11px] sm:text-sm text-foreground group-hover:text-primary transition-colors line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem]">
             {translatedTitle}
           </h3>
-          {showRating && (
-            <div className="mt-0.5 sm:mt-1 hidden sm:block">
-              <StarRating rating={rating} reviews={reviews} />
-            </div>
-          )}
           <div className="flex flex-wrap gap-1 sm:gap-2 mt-1 sm:mt-2 text-[9px] sm:text-xs text-muted-foreground">
             {product.year && (
               <span className="flex items-center gap-0.5">
