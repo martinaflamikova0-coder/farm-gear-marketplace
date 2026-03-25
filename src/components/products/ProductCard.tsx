@@ -267,11 +267,6 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                   <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors line-clamp-3 sm:line-clamp-2">
                     {translatedTitle}
                   </h3>
-                  {showRating && (
-                    <div className="mt-1">
-                      <StarRating rating={rating} reviews={reviews} />
-                    </div>
-                  )}
                   <p className="text-sm text-muted-foreground mt-2 line-clamp-3 sm:line-clamp-2">
                     {translatedDescription}
                   </p>
