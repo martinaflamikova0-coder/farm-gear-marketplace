@@ -182,7 +182,7 @@ const ProductJsonLd = ({
           address: {
             '@type': 'PostalAddress',
             addressLocality: product.location,
-            addressCountry: 'FR',
+            addressCountry: 'IT',
           },
         },
       }),
