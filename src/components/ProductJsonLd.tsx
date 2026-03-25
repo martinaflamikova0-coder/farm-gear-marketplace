@@ -170,7 +170,7 @@ const ProductJsonLd = ({
       // Return policy - required for Merchant Center
       hasMerchantReturnPolicy: {
         '@type': 'MerchantReturnPolicy',
-        applicableCountry: 'FR',
+        applicableCountry: ['IT', 'FR', 'DE', 'ES', 'PT', 'AT', 'BE', 'NL', 'IE', 'GB'],
         returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
         merchantReturnDays: 14,
         returnMethod: 'https://schema.org/ReturnByMail',
