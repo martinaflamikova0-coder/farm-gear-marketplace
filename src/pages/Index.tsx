@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, Component, type ReactNode } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeaderSpacer from '@/components/layout/HeaderSpacer';
@@ -10,14 +10,35 @@ import SEOHead from '@/components/SEOHead';
 import HomeJsonLd from '@/components/HomeJsonLd';
 import { Skeleton } from '@/components/ui/skeleton';
 
+// Retry wrapper for lazy imports (handles transient fetch failures)
+function lazyRetry(fn: () => Promise<any>, retries = 3): ReturnType<typeof lazy> {
+  return lazy(() =>
+    fn().catch((err: any) => {
+      if (retries > 0) {
+        return new Promise(resolve => setTimeout(resolve, 500)).then(() =>
+          lazyRetry(fn, retries - 1) as any
+        );
+      }
+      throw err;
+    })
+  );
+}
+
+// Error boundary to prevent lazy load failures from crashing the page
+class LazyErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+  state = { hasError: false };
+  static getDerivedStateFromError() { return { hasError: true }; }
+  render() { return this.state.hasError ? null : this.props.children; }
+}
+
 // Lazy load below-fold sections
-const PremiumProducts = lazy(() => import('@/components/home/PremiumProducts'));
-const PromoVideoSection = lazy(() => import('@/components/home/PromoVideoSection'));
-const RobotMowersSection = lazy(() => import('@/components/home/RobotMowersSection'));
-const SpecialProductSection = lazy(() => import('@/components/home/SpecialProductSection'));
-const ProductsGrid = lazy(() => import('@/components/home/ProductsGrid'));
-const TrustBar = lazy(() => import('@/components/home/TrustBar'));
-const TestimonialsSection = lazy(() => import('@/components/home/TestimonialsSection'));
+const PremiumProducts = lazyRetry(() => import('@/components/home/PremiumProducts'));
+const PromoVideoSection = lazyRetry(() => import('@/components/home/PromoVideoSection'));
+const RobotMowersSection = lazyRetry(() => import('@/components/home/RobotMowersSection'));
+const SpecialProductSection = lazyRetry(() => import('@/components/home/SpecialProductSection'));
+const ProductsGrid = lazyRetry(() => import('@/components/home/ProductsGrid'));
+const TrustBar = lazyRetry(() => import('@/components/home/TrustBar'));
+const TestimonialsSection = lazyRetry(() => import('@/components/home/TestimonialsSection'));
 
 // Lazy load icons used only in below-fold sections
 const LazyIcons = {
