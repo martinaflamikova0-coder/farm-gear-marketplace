@@ -171,9 +171,11 @@ const Index = () => {
         </div>
 
         {/* 7. Preuve sociale */}
-        <Suspense fallback={null}>
-          <TestimonialsSection />
-        </Suspense>
+        <LazyErrorBoundary>
+          <Suspense fallback={null}>
+            <TestimonialsSection />
+          </Suspense>
+        </LazyErrorBoundary>
       </main>
       
       <Suspense fallback={null}>
