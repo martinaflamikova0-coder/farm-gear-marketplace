@@ -170,7 +170,7 @@ const ProductJsonLd = ({
       // Return policy - required for Merchant Center
       hasMerchantReturnPolicy: {
         '@type': 'MerchantReturnPolicy',
-        applicableCountry: 'FR',
+        applicableCountry: ['IT', 'FR', 'DE', 'ES', 'PT', 'AT', 'BE', 'NL', 'IE', 'GB'],
         returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
         merchantReturnDays: 14,
         returnMethod: 'https://schema.org/ReturnByMail',
@@ -182,18 +182,10 @@ const ProductJsonLd = ({
           address: {
             '@type': 'PostalAddress',
             addressLocality: product.location,
-            addressCountry: 'FR',
+            addressCountry: 'IT',
           },
         },
       }),
-    },
-    // Aggregate rating placeholder (can be enhanced with real reviews)
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '127',
-      bestRating: '5',
-      worstRating: '1'
     },
     // Business information
     isRelatedTo: {

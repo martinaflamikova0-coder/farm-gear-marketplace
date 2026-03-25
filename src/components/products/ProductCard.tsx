@@ -220,9 +220,8 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
   const hasFinancing = price >= FINANCING_THRESHOLD && !hideFinancing;
   const monthlyPayment = hasFinancing ? Math.round(price / FINANCING_MONTHS) : 0;
   
-  // Generate consistent rating for this product (hidden in MC mode)
-  const { rating, reviews } = generateRating(product.id);
-  const showRating = !hideReviewStars;
+   // Fake ratings removed — Google flags them as deceptive
+  const showRating = false;
   
   // Get automatic gifts for this product
   const gifts = useProductGifts(product);
@@ -268,11 +267,6 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
                   <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors line-clamp-3 sm:line-clamp-2">
                     {translatedTitle}
                   </h3>
-                  {showRating && (
-                    <div className="mt-1">
-                      <StarRating rating={rating} reviews={reviews} />
-                    </div>
-                  )}
                   <p className="text-sm text-muted-foreground mt-2 line-clamp-3 sm:line-clamp-2">
                     {translatedDescription}
                   </p>
@@ -381,11 +375,6 @@ const ProductCard = ({ product, variant = 'default' }: ProductCardProps) => {
           <h3 className="font-display font-semibold text-[11px] sm:text-sm text-foreground group-hover:text-primary transition-colors line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem]">
             {translatedTitle}
           </h3>
-          {showRating && (
-            <div className="mt-0.5 sm:mt-1 hidden sm:block">
-              <StarRating rating={rating} reviews={reviews} />
-            </div>
-          )}
           <div className="flex flex-wrap gap-1 sm:gap-2 mt-1 sm:mt-2 text-[9px] sm:text-xs text-muted-foreground">
             {product.year && (
               <span className="flex items-center gap-0.5">
