@@ -31,7 +31,7 @@ const LegalNotice = () => {
               <li><strong>{t('pages.legalNotice.registeredOffice')}:</strong> Via G. Abbate 151, 14054 Castagnole delle Lanze (AT), Italia</li>
               <li><strong>{t('pages.legalNotice.phone')}:</strong> <a href="tel:+390141877368" className="text-primary hover:underline">+39 0141 877 368</a></li>
               <li><strong>Fax:</strong> 0141 875 819</li>
-              <li><strong>{t('pages.legalNotice.email')}:</strong> <a href="mailto:infos@ekip-trade.com" className="text-primary hover:underline">infos@ekip-trade.com</a></li>
+              <li><strong>{t('pages.legalNotice.email')}:</strong> <a href="mailto:info@geoitalyagro.com" className="text-primary hover:underline">info@geoitalyagro.com</a></li>
               <li><strong>{t('pages.legalNotice.website')}:</strong> <a href="https://www.ekip-trade.com" className="text-primary hover:underline">www.ekip-trade.com</a></li>
             </ul>
 
@@ -47,8 +47,8 @@ const LegalNotice = () => {
             <h2 className="font-display text-2xl font-semibold text-foreground mt-8">{t('pages.legalNotice.dataTitle')}</h2>
             <p className="text-muted-foreground leading-relaxed">
               {t('pages.legalNotice.dataContent')}
-              <a href="mailto:infos@ekip-trade.com" className="text-primary hover:underline ml-1">
-                infos@ekip-trade.com
+              <a href="mailto:info@geoitalyagro.com" className="text-primary hover:underline ml-1">
+                info@geoitalyagro.com
               </a>
             </p>
 
