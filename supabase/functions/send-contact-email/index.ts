@@ -111,6 +111,10 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const localizedContent = getLocalizedContent(language);
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeSubject = escapeHtml(subject);
+    const safeMessage = escapeHtml(message);
 
     // Send email to the team
     const teamEmail = await resend.emails.send({
