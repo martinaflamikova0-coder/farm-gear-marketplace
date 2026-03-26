@@ -1,9 +1,13 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
+
+const escapeHtml = (str: string): string =>
+  str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 
 interface WelcomeEmailRequest {
   email: string;
@@ -132,9 +136,42 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
+    const authHeader = req.headers.get('Authorization');
+    if (!authHeader?.startsWith('Bearer ')) {
+      return new Response(
+        JSON.stringify({ error: 'Unauthorized' }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const supabaseClient = createClient(
+      Deno.env.get('SUPABASE_URL')!,
+      Deno.env.get('SUPABASE_ANON_KEY')!,
+      { global: { headers: { Authorization: authHeader } } }
+    );
+
+    const token = authHeader.replace('Bearer ', '');
+    const { data: claimsData, error: claimsError } = await supabaseClient.auth.getClaims(token);
+    if (claimsError || !claimsData?.claims) {
+      return new Response(
+        JSON.stringify({ error: 'Unauthorized' }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
     const requestBody = await req.json();
     const { email, firstName, lastName, language = 'en' }: WelcomeEmailRequest = requestBody;
+
+    // Validate that the email matches the authenticated user
+    const userId = claimsData.claims.sub;
+    const userEmail = claimsData.claims.email;
+    if (email !== userEmail) {
+      return new Response(
+        JSON.stringify({ error: 'Email mismatch' }),
+        { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
 
     if (!email || !firstName) {
       throw new Error("Missing required fields: email, firstName");
@@ -151,6 +188,9 @@ const handler = async (req: Request): Promise<Response> => {
 
     const t = translations[language] || translations.en;
     const siteUrl = "https://field-trader-net.lovable.app";
+    const safeFirstName = escapeHtml(firstName);
+    const safeLastName = escapeHtml(lastName);
+    const safeEmail = escapeHtml(email);
 
     const emailHtml = `
 <!DOCTYPE html>
@@ -174,7 +214,7 @@ const handler = async (req: Request): Promise<Response> => {
           <!-- Content -->
           <tr>
             <td style="padding: 40px 30px;">
-              <h2 style="color: #16a34a; margin: 0 0 20px 0; font-size: 24px;">${t.greeting} ${firstName},</h2>
+              <h2 style="color: #16a34a; margin: 0 0 20px 0; font-size: 24px;">${t.greeting} ${safeFirstName},</h2>
               
               <h3 style="color: #333333; margin: 0 0 15px 0;">${t.welcome}</h3>
               
@@ -270,13 +310,13 @@ const handler = async (req: Request): Promise<Response> => {
       body: JSON.stringify({
         from: "EkipTrade <infos@ekip-trade.com>",
         to: ["infos@ekip-trade.com"],
-        subject: `[Admin] Nouveau compte créé - ${firstName} ${lastName}`,
+        subject: `[Admin] Nouveau compte créé - ${safeFirstName} ${safeLastName}`,
         html: `
           <h2>Nouveau compte client créé</h2>
           <p>Un nouveau client s'est inscrit sur EkipTrade :</p>
           <ul>
-            <li><strong>Nom :</strong> ${firstName} ${lastName}</li>
-            <li><strong>Email :</strong> ${email}</li>
+            <li><strong>Nom :</strong> ${safeFirstName} ${safeLastName}</li>
+            <li><strong>Email :</strong> ${safeEmail}</li>
             <li><strong>Langue :</strong> ${language}</li>
             <li><strong>Date :</strong> ${new Date().toLocaleString('fr-FR')}</li>
           </ul>
