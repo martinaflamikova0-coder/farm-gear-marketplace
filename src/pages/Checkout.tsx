@@ -15,7 +15,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
 import { useCart } from '@/contexts/CartContext';
-import { useBankAccounts, getBankAccountForAmount } from '@/hooks/useBankAccounts';
+import { useBankAccountForAmount } from '@/hooks/useBankAccounts';
 import { usePaypalSettings } from '@/hooks/usePaypalSettings';
 import PayPalButton from '@/components/checkout/PayPalButton';
 import DeliveryEstimate from '@/components/checkout/DeliveryEstimate';
@@ -63,7 +63,7 @@ const Checkout = () => {
   const cartSlug = 'panier';
   
   const { items, total, user, clearCart } = useCart();
-  const { data: bankAccounts, isLoading: isBankAccountsLoading } = useBankAccounts();
+  const { data: selectedBankAccount, isLoading: isBankAccountsLoading } = useBankAccountForAmount(total);
   const { data: paypalSettings, isLoading: isPaypalLoading } = usePaypalSettings();
   
   const [step, setStep] = useState<'shipping' | 'payment' | 'confirmation'>('shipping');
@@ -90,8 +90,7 @@ const Checkout = () => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  // Select bank account based on total amount from database
-  const selectedBankAccount = bankAccounts ? getBankAccountForAmount(bankAccounts, total) : null;
+  // selectedBankAccount is now fetched directly via RPC based on total amount
 
   const formatPrice = (price: number) => {
     const locale = currentLang === 'en' ? 'en-GB' : 
@@ -443,7 +442,7 @@ const Checkout = () => {
   };
 
   const isPaypalConfigured = paypalSettings?.is_active && paypalSettings?.client_id;
-  const hasBankAccounts = bankAccounts && bankAccounts.length > 0;
+  const hasBankAccounts = !!selectedBankAccount;
 
   // Redirect if cart is empty (except on confirmation step)
   if (items.length === 0 && step !== 'confirmation') {

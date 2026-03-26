@@ -16,19 +16,17 @@ export interface BankAccount {
   updated_at: string;
 }
 
-export const useBankAccounts = () => {
+export const useBankAccountForAmount = (amount: number) => {
   return useQuery({
-    queryKey: ['bank_accounts'],
+    queryKey: ['bank_account_for_amount', amount],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from('bank_accounts')
-        .select('*')
-        .eq('is_active', true)
-        .order('threshold_min', { ascending: true });
+        .rpc('get_bank_account_for_amount', { order_amount: amount });
 
       if (error) throw error;
-      return data as BankAccount[];
+      return (data?.[0] as BankAccount) || null;
     },
+    enabled: amount > 0,
   });
 };
 
