@@ -184,7 +184,9 @@ const handler = async (req: Request): Promise<Response> => {
       console.log(`Order confirmation request by user ${userId}`);
     }
 
-    const { orderId, customerEmail, customerName, orderTotal, paymentMethod, language = 'fr' }: OrderConfirmationRequest = await req.json();
+    const { orderId, customerEmail, customerName: rawCustomerName, orderTotal, paymentMethod, language = 'fr' }: OrderConfirmationRequest = await req.json();
+    const customerName = escapeHtml(rawCustomerName || '');
+    const safeCustomerEmail = escapeHtml(customerEmail || '');
 
     if (!orderId || !customerEmail) {
       throw new Error("Missing required fields: orderId, customerEmail");
