@@ -84,7 +84,7 @@ const Header = () => {
             <img
               src={logoGeoItalyAgro}
               alt="GeoItalyAgro"
-              className="h-8 md:h-10 w-8 md:w-10 object-contain rounded-full"
+              className="h-12 md:h-14 w-12 md:w-14 object-contain rounded-full"
             />
             <span className="font-display font-bold text-base md:text-xl text-foreground leading-tight">GeoItalyAgro</span>
           </Link>

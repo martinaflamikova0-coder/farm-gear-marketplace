@@ -57,7 +57,7 @@ const Footer = () => {
               <img 
                 src={logoGeoItalyAgro} 
                 alt="GeoItalyAgro" 
-                className="h-10 w-auto object-contain"
+                className="h-14 w-auto object-contain"
                 loading="lazy"
               />
               <span className="font-display font-bold text-xl text-primary-foreground">GeoItalyAgro</span>
