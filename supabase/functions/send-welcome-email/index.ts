@@ -188,6 +188,9 @@ const handler = async (req: Request): Promise<Response> => {
 
     const t = translations[language] || translations.en;
     const siteUrl = "https://field-trader-net.lovable.app";
+    const safeFirstName = escapeHtml(firstName);
+    const safeLastName = escapeHtml(lastName);
+    const safeEmail = escapeHtml(email);
 
     const emailHtml = `
 <!DOCTYPE html>
