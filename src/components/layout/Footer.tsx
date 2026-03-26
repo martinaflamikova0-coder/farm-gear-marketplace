@@ -3,6 +3,9 @@ import { Phone, Mail, MapPin, ChevronRight, Landmark } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { type SupportedLanguage } from '@/i18n';
 import logoGeoItalyAgro from '@/assets/logo-geoitalyagro.png';
+import isoLogo from '@/assets/certifications/iso-9001.png';
+import iqnetLogo from '@/assets/certifications/iqnet.png';
+import aenorLogo from '@/assets/certifications/aenor.png';
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
