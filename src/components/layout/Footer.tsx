@@ -82,7 +82,7 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-full bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <MapPin className="h-3.5 w-3.5" />
                 </div>
-                <span>Via Vittorio Veneto 118,<br />28040 Oleggio Castello (NO),<br />Piemonte, Italia</span>
+                <span>Via G. Abbate 151,<br />14054 Castagnole delle Lanze (AT),<br />Piemonte, Italia</span>
               </div>
             </div>
 
