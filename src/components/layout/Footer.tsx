@@ -104,10 +104,10 @@ const Footer = () => {
       <div className="border-t border-primary-foreground/10">
         <div className="container-custom py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-primary-foreground/50">
-            © {new Date().getFullYear()} GeoItalyAgro. {t('footer.rights')}
+            © 2012–{new Date().getFullYear()} GEO ITALY s.r.l. {t('footer.rights')}
           </p>
           <p className="text-xs text-primary-foreground/40">
-            P.IVA: IT10992060011
+            P.IVA: IT01540910054 | REA: AT - 123564
           </p>
         </div>
       </div>
