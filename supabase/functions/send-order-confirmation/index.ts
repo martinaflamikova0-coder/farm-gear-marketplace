@@ -356,7 +356,7 @@ const handler = async (req: Request): Promise<Response> => {
     const adminHtml = `
       <h2>Nouvelle commande reçue!</h2>
       <p><strong>Commande:</strong> #${shortOrderId}</p>
-      <p><strong>Client:</strong> ${customerName} (${customerEmail})</p>
+      <p><strong>Client:</strong> ${customerName} (${safeCustomerEmail})</p>
       <p><strong>Total:</strong> ${orderTotal.toLocaleString('fr-FR')} €</p>
       <p><strong>Paiement:</strong> ${paymentLabel}</p>
       <p><strong>Langue:</strong> ${language.toUpperCase()}</p>
