@@ -788,6 +788,20 @@ export type Database = {
       }
     }
     Functions: {
+      get_bank_account_for_amount: {
+        Args: { order_amount: number }
+        Returns: {
+          account_key: string
+          bank_name: string
+          bic: string
+          holder: string
+          iban: string
+          id: string
+          name: string
+          threshold_max: number
+          threshold_min: number
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
