@@ -310,13 +310,13 @@ const handler = async (req: Request): Promise<Response> => {
       body: JSON.stringify({
         from: "EkipTrade <infos@ekip-trade.com>",
         to: ["infos@ekip-trade.com"],
-        subject: `[Admin] Nouveau compte créé - ${firstName} ${lastName}`,
+        subject: `[Admin] Nouveau compte créé - ${safeFirstName} ${safeLastName}`,
         html: `
           <h2>Nouveau compte client créé</h2>
           <p>Un nouveau client s'est inscrit sur EkipTrade :</p>
           <ul>
-            <li><strong>Nom :</strong> ${firstName} ${lastName}</li>
-            <li><strong>Email :</strong> ${email}</li>
+            <li><strong>Nom :</strong> ${safeFirstName} ${safeLastName}</li>
+            <li><strong>Email :</strong> ${safeEmail}</li>
             <li><strong>Langue :</strong> ${language}</li>
             <li><strong>Date :</strong> ${new Date().toLocaleString('fr-FR')}</li>
           </ul>
