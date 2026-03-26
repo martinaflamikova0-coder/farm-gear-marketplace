@@ -83,7 +83,7 @@ const translations: Record<string, {
     bankStep1: "Ihre Zahlung wird überprüft.",
     bankStep2: "Wir werden Sie nach Eingang kontaktieren, um den Versand zu bestätigen.",
     paypalStep: "Ihre Zahlung wurde bestätigt. Ihre Bestellung wird so schnell wie möglich vorbereitet.",
-    questions: "Bei Fragen können Sie uns gerne unter infos@ekip-trade.com oder +39 377 389 0872 kontaktieren.",
+    questions: "Bei Fragen können Sie uns gerne unter infos@ekip-trade.com oder +39 0141 877 368 kontaktieren.",
     thanks: "Vielen Dank für Ihr Vertrauen!",
     team: "Das GeoItalyAgro-Team",
   },
