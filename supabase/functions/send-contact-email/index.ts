@@ -162,8 +162,8 @@ const handler = async (req: Request): Promise<Response> => {
             <hr style="border: 1px solid #eee; margin: 25px 0;">
             <p style="color: #666; font-size: 14px;"><strong>Votre message:</strong></p>
             <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; color: #333; font-size: 14px;">
-              <p><strong>Sujet:</strong> ${subject}</p>
-              <p>${message.replace(/\n/g, '<br>')}</p>
+              <p><strong>Sujet:</strong> ${safeSubject}</p>
+              <p>${safeMessage.replace(/\n/g, '<br>')}</p>
             </div>
           </div>
           <div style="padding: 20px; background: #f9f9f9; text-align: center; font-size: 12px; color: #666;">
