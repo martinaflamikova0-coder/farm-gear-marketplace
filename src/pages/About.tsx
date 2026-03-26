@@ -6,6 +6,9 @@ import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd';
 import HeaderSpacer from '@/components/layout/HeaderSpacer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, Users, Truck, Award } from 'lucide-react';
+import isoLogo from '@/assets/certifications/iso-9001.png';
+import iqnetLogo from '@/assets/certifications/iqnet.png';
+import aenorLogo from '@/assets/certifications/aenor.png';
 
 const About = () => {
   const { t } = useTranslation();
