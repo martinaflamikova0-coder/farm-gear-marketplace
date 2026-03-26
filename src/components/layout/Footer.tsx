@@ -66,11 +66,11 @@ const Footer = () => {
               {t('footer.description')}
             </p>
             <div className="space-y-3">
-              <a href="tel:+393773890872" className="flex items-center gap-3 text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors group">
+              <a href="tel:+390141877368" className="flex items-center gap-3 text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors group">
                 <div className="w-8 h-8 rounded-full bg-primary-foreground/10 flex items-center justify-center group-hover:bg-primary-foreground/20 transition-colors">
                   <Phone className="h-3.5 w-3.5" />
                 </div>
-                +39 377 389 0872
+                +39 0141 877 368
               </a>
               <a href="mailto:infos@ekip-trade.com" className="flex items-center gap-3 text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors group">
                 <div className="w-8 h-8 rounded-full bg-primary-foreground/10 flex items-center justify-center group-hover:bg-primary-foreground/20 transition-colors">
@@ -82,7 +82,7 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-full bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <MapPin className="h-3.5 w-3.5" />
                 </div>
-                <span>Via Vittorio Veneto 118,<br />28040 Oleggio Castello (NO),<br />Piemonte, Italia</span>
+                <span>Via G. Abbate 151,<br />14054 Castagnole delle Lanze (AT),<br />Piemonte, Italia</span>
               </div>
             </div>
 
@@ -104,10 +104,10 @@ const Footer = () => {
       <div className="border-t border-primary-foreground/10">
         <div className="container-custom py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-primary-foreground/50">
-            © {new Date().getFullYear()} GeoItalyAgro. {t('footer.rights')}
+            © 2012–{new Date().getFullYear()} GEO ITALY s.r.l. {t('footer.rights')}
           </p>
           <p className="text-xs text-primary-foreground/40">
-            P.IVA: IT10992060011
+            P.IVA: IT01540910054 | REA: AT - 123564
           </p>
         </div>
       </div>

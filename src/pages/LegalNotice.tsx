@@ -23,11 +23,14 @@ const LegalNotice = () => {
 
             <h2 className="font-display text-2xl font-semibold text-foreground mt-8">{t('pages.legalNotice.editorTitle')}</h2>
             <ul className="text-muted-foreground space-y-2 list-none pl-0">
-              <li><strong>{t('pages.legalNotice.companyName')}:</strong> GeoItalyAgro</li>
+              <li><strong>{t('pages.legalNotice.companyName')}:</strong> GEO ITALY s.r.l. (GeoItalyAgro)</li>
               <li><strong>{t('pages.legalNotice.legalForm')}:</strong> {t('pages.legalNotice.legalFormValue')}</li>
-              <li><strong>{t('pages.legalNotice.vatLabel')}:</strong> IT10992060011</li>
-              <li><strong>{t('pages.legalNotice.registeredOffice')}:</strong> Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia</li>
-              <li><strong>{t('pages.legalNotice.phone')}:</strong> <a href="tel:+393773890872" className="text-primary hover:underline">+39 377 389 0872</a></li>
+              <li><strong>{t('pages.legalNotice.vatLabel')}:</strong> IT01540910054</li>
+              <li><strong>REA:</strong> AT - 123564</li>
+              <li><strong>{t('pages.legalNotice.capitalLabel', 'Capital social')}:</strong> 750 000 €</li>
+              <li><strong>{t('pages.legalNotice.registeredOffice')}:</strong> Via G. Abbate 151, 14054 Castagnole delle Lanze (AT), Italia</li>
+              <li><strong>{t('pages.legalNotice.phone')}:</strong> <a href="tel:+390141877368" className="text-primary hover:underline">+39 0141 877 368</a></li>
+              <li><strong>Fax:</strong> 0141 875 819</li>
               <li><strong>{t('pages.legalNotice.email')}:</strong> <a href="mailto:infos@ekip-trade.com" className="text-primary hover:underline">infos@ekip-trade.com</a></li>
               <li><strong>{t('pages.legalNotice.website')}:</strong> <a href="https://www.ekip-trade.com" className="text-primary hover:underline">www.ekip-trade.com</a></li>
             </ul>

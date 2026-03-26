@@ -160,8 +160,8 @@ const handler = async (req: Request): Promise<Response> => {
             </div>
           </div>
           <div style="padding: 20px; background: #f9f9f9; text-align: center; font-size: 12px; color: #666;">
-            <p>GeoItalyAgro — Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia</p>
-            <p>P.IVA: IT10992060011 | +39 377 389 0872 | infos@ekip-trade.com</p>
+            <p>GEO ITALY s.r.l. — Via G. Abbate 151, 14054 Castagnole delle Lanze (AT), Italia</p>
+            <p>P.IVA: IT01540910054 | +39 0141 877 368 | infos@ekip-trade.com</p>
           </div>
         </div>
       `,

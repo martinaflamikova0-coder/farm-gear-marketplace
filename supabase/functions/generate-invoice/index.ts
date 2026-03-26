@@ -432,15 +432,17 @@ serve(async (req) => {
     yPos -= 15;
     page.drawText(t.marketplace, { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText("Via Vittorio Veneto 118", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText("GEO ITALY s.r.l.", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText("28040 Oleggio Castello (NO), Italia", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText("Via G. Abbate 151", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText("Tel: +39 377 389 0872", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText("14054 Castagnole delle Lanze (AT), Italia", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    yPos -= 15;
+    page.drawText("Tel: +39 0141 877 368 | Fax: 0141 875 819", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
     page.drawText("infos@ekip-trade.com", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText(`${t.vatNumber}IT10992060011`, { x: 50, y: yPos, size: 9, font: helvetica, color: mutedColor });
+    page.drawText(`${t.vatNumber}IT01540910054 | REA: AT - 123564`, { x: 50, y: yPos, size: 9, font: helvetica, color: mutedColor });
 
     // Client address (right side)
     let clientY = yPos + 93;
@@ -627,7 +629,7 @@ serve(async (req) => {
       color: rgb(0.85, 0.85, 0.85),
     });
 
-    page.drawText(`GeoItalyAgro - P.IVA IT10992060011 - ${t.marketplace}`, {
+    page.drawText(`GEO ITALY s.r.l. - P.IVA IT01540910054 - ${t.marketplace}`, {
       x: 160,
       y: footerY + 15,
       size: 9,
