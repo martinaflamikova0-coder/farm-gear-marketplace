@@ -26,7 +26,7 @@ interface ProductJsonLdProps {
 }
 
 // Base URL for the site - used for canonical URLs
-const BASE_URL = 'https://ekip-trade.com';
+const BASE_URL = 'https://geoitalyagro.com';
 
 const ProductJsonLd = ({ 
   product, 
