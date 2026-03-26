@@ -77,7 +77,7 @@ const Contact = () => {
           url: 'https://ekip-trade.com/en/contact',
           mainEntity: {
             '@type': 'Organization',
-            name: 'EkipTrade',
+            name: 'GeoItalyAgro',
             email: 'infos@ekip-trade.com',
             contactPoint: {
               '@type': 'ContactPoint',

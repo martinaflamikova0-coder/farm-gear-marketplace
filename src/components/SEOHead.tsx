@@ -51,7 +51,7 @@ const SEOHead = ({
     const title = dynamicTitle || t(titleKey);
     const description = dynamicDescription || t(descriptionKey);
     const keywords = dynamicKeywords || (keywordsKey ? t(keywordsKey) : '');
-    const fullTitle = `${title} | EkipTrade`;
+    const fullTitle = `${title} | GeoItalyAgro`;
 
     // Set document title
     document.title = fullTitle;
@@ -109,7 +109,7 @@ const SEOHead = ({
     setMetaTag('meta[property="og:url"]', 'content', `${BASE_URL}${location.pathname}`, { property: 'og:url' });
     setMetaTag('meta[property="og:image"]', 'content', ogImage.startsWith('http') ? ogImage : `${BASE_URL}${ogImage}`, { property: 'og:image' });
     setMetaTag('meta[property="og:locale"]', 'content', getLocale(currentLang), { property: 'og:locale' });
-    setMetaTag('meta[property="og:site_name"]', 'content', 'EkipTrade', { property: 'og:site_name' });
+    setMetaTag('meta[property="og:site_name"]', 'content', 'GeoItalyAgro', { property: 'og:site_name' });
 
     // Set Twitter Card tags
     setMetaTag('meta[name="twitter:card"]', 'content', 'summary_large_image', { name: 'twitter:card' });

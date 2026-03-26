@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
-import logoEkiptrade from '@/assets/logo-ekiptrade.png';
+import logoGeoItalyAgro from '@/assets/logo-geoitalyagro.png';
 
 const AdminLayout = () => {
   const { user, isAdmin, isLoading, signOut } = useAuth();
@@ -77,8 +77,8 @@ const AdminLayout = () => {
       <div className="lg:hidden bg-card border-b border-border px-3 py-2 flex items-center justify-between gap-3">
         <div className="h-8 w-[120px] overflow-hidden flex items-center">
           <img
-            src={logoEkiptrade}
-            alt="EkipTrade"
+            src={logoGeoItalyAgro}
+            alt="GeoItalyAgro"
             className="max-h-full max-w-full object-contain"
           />
         </div>
@@ -98,7 +98,7 @@ const AdminLayout = () => {
           <div className="flex flex-col h-full">
             {/* Logo */}
             <div className="p-6 border-b border-border hidden lg:block">
-              <img src={logoEkiptrade} alt="EkipTrade" className="h-12 w-auto" />
+              <img src={logoGeoItalyAgro} alt="GeoItalyAgro" className="h-12 w-auto" />
               <p className="text-xs text-muted-foreground mt-2">Administration</p>
             </div>
 

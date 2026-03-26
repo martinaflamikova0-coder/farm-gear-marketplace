@@ -1,6 +1,6 @@
-# Guide de Migration des Données - Ekiptrade
+# Guide de Migration des Données - GeoItalyAgro
 
-Ce guide explique comment migrer toutes les données de votre projet Ekiptrade vers un projet remixé.
+Ce guide explique comment migrer toutes les données de votre projet GeoItalyAgro vers un projet remixé.
 
 ## Prérequis
 

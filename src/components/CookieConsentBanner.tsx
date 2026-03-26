@@ -11,7 +11,7 @@ declare global {
   }
 }
 
-const CONSENT_KEY = 'ekiptrade_cookie_consent';
+const CONSENT_KEY = 'geoitalyagro_cookie_consent';
 
 type ConsentChoice = 'accepted' | 'rejected' | 'custom';
 

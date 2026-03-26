@@ -33,11 +33,11 @@ const translations: Record<string, {
   team: string;
 }> = {
   fr: {
-    subject: "Bienvenue chez EkipTrade !",
+    subject: "Bienvenue chez GeoItalyAgro !",
     greeting: "Bonjour",
-    welcome: "Bienvenue chez EkipTrade !",
+    welcome: "Bienvenue chez GeoItalyAgro !",
     intro: "Votre compte a été créé avec succès. Vous faites désormais partie de notre communauté de professionnels du matériel agricole.",
-    benefits: "Avec votre compte EkipTrade, vous pouvez :",
+    benefits: "Avec votre compte GeoItalyAgro, vous pouvez :",
     benefit1: "Parcourir notre catalogue de matériel agricole neuf et d'occasion",
     benefit2: "Ajouter des articles à votre panier et passer commande",
     benefit3: "Suivre vos commandes et accéder à vos factures",
@@ -46,14 +46,14 @@ const translations: Record<string, {
     ctaButton: "Voir les annonces",
     questions: "Si vous avez des questions, n'hésitez pas à nous contacter à infos@ekip-trade.com ou au +39 377 389 0872.",
     thanks: "Merci pour votre confiance.",
-    team: "L'équipe EkipTrade",
+    team: "L'équipe GeoItalyAgro",
   },
   en: {
-    subject: "Welcome to EkipTrade!",
+    subject: "Welcome to GeoItalyAgro!",
     greeting: "Hello",
-    welcome: "Welcome to EkipTrade!",
+    welcome: "Welcome to GeoItalyAgro!",
     intro: "Your account has been successfully created. You are now part of our community of agricultural equipment professionals.",
-    benefits: "With your EkipTrade account, you can:",
+    benefits: "With your GeoItalyAgro account, you can:",
     benefit1: "Browse our catalog of new and used agricultural equipment",
     benefit2: "Add items to your cart and place orders",
     benefit3: "Track your orders and access your invoices",
@@ -62,14 +62,14 @@ const translations: Record<string, {
     ctaButton: "View listings",
     questions: "If you have any questions, feel free to contact us at infos@ekip-trade.com or +39 377 389 0872.",
     thanks: "Thank you for your trust.",
-    team: "The EkipTrade Team",
+    team: "The GeoItalyAgro Team",
   },
   de: {
-    subject: "Willkommen bei EkipTrade!",
+    subject: "Willkommen bei GeoItalyAgro!",
     greeting: "Hallo",
-    welcome: "Willkommen bei EkipTrade!",
+    welcome: "Willkommen bei GeoItalyAgro!",
     intro: "Ihr Konto wurde erfolgreich erstellt. Sie sind jetzt Teil unserer Gemeinschaft von Landtechnik-Profis.",
-    benefits: "Mit Ihrem EkipTrade-Konto können Sie:",
+    benefits: "Mit Ihrem GeoItalyAgro-Konto können Sie:",
     benefit1: "Unseren Katalog mit neuen und gebrauchten Landmaschinen durchsuchen",
     benefit2: "Artikel in den Warenkorb legen und bestellen",
     benefit3: "Ihre Bestellungen verfolgen und auf Ihre Rechnungen zugreifen",
@@ -78,14 +78,14 @@ const translations: Record<string, {
     ctaButton: "Anzeigen ansehen",
     questions: "Bei Fragen kontaktieren Sie uns gerne unter infos@ekip-trade.com oder +39 377 389 0872.",
     thanks: "Vielen Dank für Ihr Vertrauen.",
-    team: "Das EkipTrade-Team",
+    team: "Das GeoItalyAgro-Team",
   },
   es: {
-    subject: "¡Bienvenido a EkipTrade!",
+    subject: "¡Bienvenido a GeoItalyAgro!",
     greeting: "Hola",
-    welcome: "¡Bienvenido a EkipTrade!",
+    welcome: "¡Bienvenido a GeoItalyAgro!",
     intro: "Su cuenta ha sido creada con éxito. Ahora forma parte de nuestra comunidad de profesionales de maquinaria agrícola.",
-    benefits: "Con su cuenta EkipTrade, puede:",
+    benefits: "Con su cuenta GeoItalyAgro, puede:",
     benefit1: "Explorar nuestro catálogo de maquinaria agrícola nueva y usada",
     benefit2: "Añadir artículos a su carrito y realizar pedidos",
     benefit3: "Seguir sus pedidos y acceder a sus facturas",
@@ -94,14 +94,14 @@ const translations: Record<string, {
     ctaButton: "Ver anuncios",
     questions: "Si tiene preguntas, no dude en contactarnos en infos@ekip-trade.com o al +39 377 389 0872.",
     thanks: "Gracias por su confianza.",
-    team: "El equipo EkipTrade",
+    team: "El equipo GeoItalyAgro",
   },
   it: {
-    subject: "Benvenuto su EkipTrade!",
+    subject: "Benvenuto su GeoItalyAgro!",
     greeting: "Ciao",
-    welcome: "Benvenuto su EkipTrade!",
+    welcome: "Benvenuto su GeoItalyAgro!",
     intro: "Il tuo account è stato creato con successo. Ora fai parte della nostra comunità di professionisti delle macchine agricole.",
-    benefits: "Con il tuo account EkipTrade, puoi:",
+    benefits: "Con il tuo account GeoItalyAgro, puoi:",
     benefit1: "Sfogliare il nostro catalogo di macchine agricole nuove e usate",
     benefit2: "Aggiungere articoli al carrello e effettuare ordini",
     benefit3: "Seguire i tuoi ordini e accedere alle tue fatture",
@@ -110,14 +110,14 @@ const translations: Record<string, {
     ctaButton: "Vedi annunci",
     questions: "Per qualsiasi domanda, contattaci a infos@ekip-trade.com o al +39 377 389 0872.",
     thanks: "Grazie per la tua fiducia.",
-    team: "Il team EkipTrade",
+    team: "Il team GeoItalyAgro",
   },
   pt: {
-    subject: "Bem-vindo à EkipTrade!",
+    subject: "Bem-vindo à GeoItalyAgro!",
     greeting: "Olá",
-    welcome: "Bem-vindo à EkipTrade!",
+    welcome: "Bem-vindo à GeoItalyAgro!",
     intro: "A sua conta foi criada com sucesso. Agora faz parte da nossa comunidade de profissionais de máquinas agrícolas.",
-    benefits: "Com a sua conta EkipTrade, pode:",
+    benefits: "Com a sua conta GeoItalyAgro, pode:",
     benefit1: "Explorar o nosso catálogo de máquinas agrícolas novas e usadas",
     benefit2: "Adicionar artigos ao carrinho e fazer encomendas",
     benefit3: "Acompanhar as suas encomendas e aceder às suas faturas",
@@ -126,7 +126,7 @@ const translations: Record<string, {
     ctaButton: "Ver anúncios",
     questions: "Se tiver dúvidas, contacte-nos em infos@ekip-trade.com ou +39 377 389 0872.",
     thanks: "Obrigado pela sua confiança.",
-    team: "A equipa EkipTrade",
+    team: "A equipa GeoItalyAgro",
   },
 };
 
@@ -207,7 +207,7 @@ const handler = async (req: Request): Promise<Response> => {
           <!-- Header -->
           <tr>
             <td style="background-color: #16a34a; padding: 30px; text-align: center;">
-              <h1 style="color: #ffffff; margin: 0; font-size: 28px;">EkipTrade</h1>
+              <h1 style="color: #ffffff; margin: 0; font-size: 28px;">GeoItalyAgro</h1>
             </td>
           </tr>
           
@@ -262,10 +262,10 @@ const handler = async (req: Request): Promise<Response> => {
           <tr>
             <td style="background-color: #f8f9fa; padding: 20px 30px; text-align: center; border-top: 1px solid #e5e7eb;">
               <p style="margin: 0 0 10px 0; color: #666666; font-size: 12px;">
-                EkipTrade — Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia — P.IVA: IT10992060011
+                GeoItalyAgro — Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia — P.IVA: IT10992060011
               </p>
               <p style="margin: 0; color: #9ca3af; font-size: 12px;">
-                © ${new Date().getFullYear()} EkipTrade. All rights reserved.
+                © ${new Date().getFullYear()} GeoItalyAgro. All rights reserved.
               </p>
             </td>
           </tr>
@@ -285,7 +285,7 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "EkipTrade <infos@ekip-trade.com>",
+        from: "GeoItalyAgro <infos@ekip-trade.com>",
         to: [email],
         subject: t.subject,
         html: emailHtml,
@@ -308,12 +308,12 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "EkipTrade <infos@ekip-trade.com>",
+        from: "GeoItalyAgro <infos@ekip-trade.com>",
         to: ["infos@ekip-trade.com"],
         subject: `[Admin] Nouveau compte créé - ${safeFirstName} ${safeLastName}`,
         html: `
           <h2>Nouveau compte client créé</h2>
-          <p>Un nouveau client s'est inscrit sur EkipTrade :</p>
+          <p>Un nouveau client s'est inscrit sur GeoItalyAgro :</p>
           <ul>
             <li><strong>Nom :</strong> ${safeFirstName} ${safeLastName}</li>
             <li><strong>Email :</strong> ${safeEmail}</li>

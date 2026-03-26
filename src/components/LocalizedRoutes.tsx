@@ -109,7 +109,7 @@ const LocalizedRoutes = () => {
   const { i18n } = useTranslation();
   
   const getDefaultLanguage = (): SupportedLanguage => {
-    const stored = localStorage.getItem('ekiptrade-lang');
+    const stored = localStorage.getItem('geoitalyagro-lang');
     if (stored && SUPPORTED_LANGUAGES.includes(stored as SupportedLanguage)) {
       return stored as SupportedLanguage;
     }

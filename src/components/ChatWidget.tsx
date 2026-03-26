@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { MessageCircle, X, Send, ArrowLeft, Bot, Loader2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import logoEkiptrade from '@/assets/logo-ekiptrade.png';
+import logoGeoItalyAgro from '@/assets/logo-geoitalyagro.png';
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 
@@ -161,9 +161,9 @@ const ChatWidget = () => {
                   <ArrowLeft className="h-4 w-4" />
                 </button>
               )}
-              <img src={logoEkiptrade} alt="EkipTrade" className="h-8 w-8 max-h-8 max-w-8 rounded-full bg-white p-0.5 object-contain flex-shrink-0" />
+              <img src={logoGeoItalyAgro} alt="GeoItalyAgro" className="h-8 w-8 max-h-8 max-w-8 rounded-full bg-white p-0.5 object-contain flex-shrink-0" />
               <div>
-                <p className="text-primary-foreground font-semibold text-sm">EkipTrade</p>
+                <p className="text-primary-foreground font-semibold text-sm">GeoItalyAgro</p>
                 <p className="text-primary-foreground/60 text-xs">
                   {view === 'ai-chat' 
                     ? t('chat.aiSubtitle', 'Assistant IA · 24/7') 
@@ -237,7 +237,7 @@ const ChatWidget = () => {
 
               {/* Footer */}
               <div className="bg-background border-t border-border px-5 py-3 flex-shrink-0">
-                <p className="text-center text-muted-foreground text-xs">Powered by EkipTrade</p>
+                <p className="text-center text-muted-foreground text-xs">Powered by GeoItalyAgro</p>
               </div>
             </>
           ) : (
