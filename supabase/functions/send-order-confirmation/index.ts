@@ -356,7 +356,7 @@ const handler = async (req: Request): Promise<Response> => {
       <p><strong>Paiement:</strong> ${paymentLabel}</p>
       <p><strong>Langue:</strong> ${language.toUpperCase()}</p>
       <hr>
-      <p><a href="https://ekip-trade.com/admin/orders">Voir dans l'admin</a></p>
+      <p><a href="https://geoitalyagro.com/admin/orders">Voir dans l'admin</a></p>
     `;
 
     const adminEmailResponse = await fetch("https://api.resend.com/emails", {

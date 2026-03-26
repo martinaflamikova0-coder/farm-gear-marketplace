@@ -17,7 +17,7 @@ Tu es aussi capable de répondre intelligemment à toute question, même hors du
 - P.IVA : IT01540910054
 - REA : AT - 123564
 - Capital social : 750 000 €
-- Site : ekip-trade.com
+- Site : geoitalyagro.com
 - Email : info@geoitalyagro.com
 - Téléphone : +39 0141 877 368 | Fax : 0141 875 819
 - Siège : Via G. Abbate 151, 14054 Castagnole delle Lanze (AT), Piemonte, Italia

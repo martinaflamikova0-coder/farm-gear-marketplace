@@ -32,7 +32,7 @@ const LegalNotice = () => {
               <li><strong>{t('pages.legalNotice.phone')}:</strong> <a href="tel:+390141877368" className="text-primary hover:underline">+39 0141 877 368</a></li>
               <li><strong>Fax:</strong> 0141 875 819</li>
               <li><strong>{t('pages.legalNotice.email')}:</strong> <a href="mailto:info@geoitalyagro.com" className="text-primary hover:underline">info@geoitalyagro.com</a></li>
-              <li><strong>{t('pages.legalNotice.website')}:</strong> <a href="https://www.ekip-trade.com" className="text-primary hover:underline">www.ekip-trade.com</a></li>
+              <li><strong>{t('pages.legalNotice.website')}:</strong> <a href="https://www.geoitalyagro.com" className="text-primary hover:underline">www.geoitalyagro.com</a></li>
             </ul>
 
             <h2 className="font-display text-2xl font-semibold text-foreground mt-8">{t('pages.legalNotice.directorTitle')}</h2>
