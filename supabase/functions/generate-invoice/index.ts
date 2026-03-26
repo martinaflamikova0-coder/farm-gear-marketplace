@@ -355,15 +355,15 @@ serve(async (req) => {
     let yPos = height - 50;
 
     // Header - Logo
-    page.drawText("Ekip", {
+    page.drawText("GeoItaly", {
       x: 50,
       y: yPos,
       size: 28,
       font: helveticaBold,
       color: primaryColor,
     });
-    page.drawText("Trade", {
-      x: 50 + helveticaBold.widthOfTextAtSize("Ekip", 28),
+    page.drawText("Agro", {
+      x: 50 + helveticaBold.widthOfTextAtSize("GeoItaly", 28),
       y: yPos,
       size: 28,
       font: helveticaBold,
