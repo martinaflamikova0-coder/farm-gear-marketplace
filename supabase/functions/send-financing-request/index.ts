@@ -162,7 +162,7 @@ const handler = async (req: Request): Promise<Response> => {
     const adminEmailResponse = await resend.emails.send({
       from: "GeoItalyAgro <info@geoitalyagro.com>",
       to: ["info@geoitalyagro.com"],
-      subject: `🚜 Nouvelle demande de financement - ${data.productTitle}`,
+      subject: `🚜 Nouvelle demande de financement - ${safe.productTitle}`,
       html: emailHtml,
     });
 
