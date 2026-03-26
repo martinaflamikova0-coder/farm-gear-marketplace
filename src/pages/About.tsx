@@ -65,6 +65,18 @@ const About = () => {
               ))}
             </div>
 
+            {/* Certifications */}
+            <div className="mb-12">
+              <h2 className="font-display text-2xl font-bold text-foreground mb-6">
+                {t('pages.about.certificationsTitle', 'Nos certifications')}
+              </h2>
+              <div className="flex flex-wrap items-center justify-center gap-8 p-8 rounded-xl bg-muted/50 border border-border">
+                <img src={isoLogo} alt="ISO 9001" className="h-20 w-auto object-contain" loading="lazy" width={512} height={512} />
+                <img src={iqnetLogo} alt="IQNet Certified Management System" className="h-20 w-auto object-contain" loading="lazy" width={512} height={512} />
+                <img src={aenorLogo} alt="AENOR" className="h-20 w-auto object-contain" loading="lazy" width={512} height={512} />
+              </div>
+            </div>
+
             <Card className="bg-primary text-primary-foreground">
               <CardContent className="p-8 text-center">
                 <h3 className="font-display text-2xl font-bold mb-4">
