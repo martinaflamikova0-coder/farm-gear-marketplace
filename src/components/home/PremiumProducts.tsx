@@ -3,18 +3,19 @@ import { Crown } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import ProductCard from '@/components/products/ProductCard';
 import { usePremiumProducts } from '@/hooks/useProducts';
+import { trimToCompleteRows, PRODUCT_GRID_CLASSES } from '@/lib/gridUtils';
 
 const PremiumProducts = () => {
   const { t } = useTranslation();
-  const { data: premiumProducts = [], isLoading } = usePremiumProducts(10);
+  const { data: premiumProducts = [], isLoading } = usePremiumProducts(12);
 
   if (isLoading) {
     return (
       <section className="py-16 bg-gradient-to-b from-primary/5 to-transparent">
         <div className="container-custom">
           <Skeleton className="h-10 w-64 mb-8" />
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-            {Array.from({ length: 10 }).map((_, i) => (
+          <div className={PRODUCT_GRID_CLASSES}>
+            {Array.from({ length: 12 }).map((_, i) => (
               <Skeleton key={i} className="h-80 rounded-lg" />
             ))}
           </div>
@@ -23,7 +24,8 @@ const PremiumProducts = () => {
     );
   }
 
-  if (premiumProducts.length === 0) return null;
+  const displayProducts = trimToCompleteRows(premiumProducts);
+  if (displayProducts.length === 0) return null;
 
   return (
     <section className="py-16 bg-gradient-to-b from-primary/5 to-transparent">
@@ -40,8 +42,8 @@ const PremiumProducts = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-          {premiumProducts.map((product) => (
+        <div className={PRODUCT_GRID_CLASSES}>
+          {displayProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

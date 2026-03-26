@@ -3,6 +3,7 @@ import { type LucideIcon } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import ProductCard from '@/components/products/ProductCard';
 import { useProducts } from '@/hooks/useProducts';
+import { trimToCompleteRows, PRODUCT_GRID_CLASSES } from '@/lib/gridUtils';
 
 interface SpecialProductSectionProps {
   titleKey: string;
@@ -18,7 +19,7 @@ const SpecialProductSection = ({
   titleKey,
   subtitleKey,
   searchTerm,
-  limit = 25,
+  limit = 24,
   icon: Icon,
   iconColorClass = 'text-primary',
   bgClass = 'bg-gradient-to-b from-primary/5 to-transparent',
@@ -31,8 +32,8 @@ const SpecialProductSection = ({
       <section className={`py-12 ${bgClass}`}>
         <div className="container-custom">
           <Skeleton className="h-10 w-64 mb-8" />
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-            {Array.from({ length: 8 }).map((_, i) => (
+          <div className={PRODUCT_GRID_CLASSES}>
+            {Array.from({ length: 12 }).map((_, i) => (
               <Skeleton key={i} className="h-80 rounded-lg" />
             ))}
           </div>
@@ -41,7 +42,8 @@ const SpecialProductSection = ({
     );
   }
 
-  if (products.length === 0) return null;
+  const displayProducts = trimToCompleteRows(products);
+  if (displayProducts.length === 0) return null;
 
   return (
     <section className={`py-12 ${bgClass}`}>
@@ -58,8 +60,8 @@ const SpecialProductSection = ({
           </h2>
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-          {products.map((product) => (
+        <div className={PRODUCT_GRID_CLASSES}>
+          {displayProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

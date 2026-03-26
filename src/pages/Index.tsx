@@ -52,7 +52,7 @@ const SectionLoader = () => (
   <div className="py-8">
     <div className="container-custom">
       <Skeleton className="h-8 w-48 mb-6" />
-      <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+      <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-3">
         {Array.from({ length: 6 }).map((_, i) => (
           <Skeleton key={i} className="h-48 rounded-lg" />
         ))}
