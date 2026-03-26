@@ -15,7 +15,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
 import { useCart } from '@/contexts/CartContext';
-import { useBankAccounts, getBankAccountForAmount } from '@/hooks/useBankAccounts';
+import { useBankAccountForAmount } from '@/hooks/useBankAccounts';
 import { usePaypalSettings } from '@/hooks/usePaypalSettings';
 import PayPalButton from '@/components/checkout/PayPalButton';
 import DeliveryEstimate from '@/components/checkout/DeliveryEstimate';
