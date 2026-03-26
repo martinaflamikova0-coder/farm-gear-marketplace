@@ -6,7 +6,7 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
-const SITE_URL = "https://ekip-trade.com";
+const SITE_URL = "https://geoitalyagro.com";
 const CURRENCY = "EUR";
 const TVA_RATE = 0.20;
 const CONTENT_LANGUAGE = "it";

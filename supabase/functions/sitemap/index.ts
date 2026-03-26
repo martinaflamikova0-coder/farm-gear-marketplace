@@ -7,7 +7,7 @@ const corsHeaders = {
 };
 
 const SUPPORTED_LANGUAGES = ['en', 'fr', 'de', 'es', 'it', 'pt'];
-const BASE_URL = 'https://ekip-trade.com';
+const BASE_URL = 'https://geoitalyagro.com';
 
 // Localized slugs for listings
 const LISTING_SLUGS: Record<string, string> = {

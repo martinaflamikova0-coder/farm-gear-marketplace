@@ -74,7 +74,7 @@ const Contact = () => {
           '@type': 'ContactPage',
           name: t('pages.contact.title'),
           description: t('seo.contact.description'),
-          url: 'https://ekip-trade.com/en/contact',
+          url: 'https://geoitalyagro.com/en/contact',
           mainEntity: {
             '@type': 'Organization',
             name: 'GeoItalyAgro',

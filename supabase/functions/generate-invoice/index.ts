@@ -602,7 +602,7 @@ serve(async (req) => {
     // Stamp/Signature section - positioned BELOW the payment info box
     const stampY = bankBoxY - 20; // Below the bank box
     try {
-      const stampUrl = "https://ekip-trade.com/invoice-stamp.png";
+      const stampUrl = "https://geoitalyagro.com/invoice-stamp.png";
       const stampResponse = await fetch(stampUrl);
       if (stampResponse.ok) {
         const stampBytes = new Uint8Array(await stampResponse.arrayBuffer());

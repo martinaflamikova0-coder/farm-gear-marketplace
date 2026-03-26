@@ -68,7 +68,7 @@ const ProductJsonLd = ({
   const productUrl = `${BASE_URL}/${currentLang}/${listingSlug}/${product.id}`;
 
   // Generate MPN (Manufacturer Part Number) from reference
-  const mpn = product.reference_number ? `EKIP${product.reference_number.toString().padStart(5, '0')}` : undefined;
+  const mpn = product.reference_number ? `GIA${product.reference_number.toString().padStart(5, '0')}` : undefined;
 
   // Build additional product properties for Google Merchant Center
   const additionalProperties = [];

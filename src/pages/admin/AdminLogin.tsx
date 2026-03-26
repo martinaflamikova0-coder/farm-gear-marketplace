@@ -176,7 +176,7 @@ const AdminLogin = () => {
                   <Input
                     id="email"
                     type="email"
-                    placeholder="admin@ekip-trade.com"
+                    placeholder="admin@geoitalyagro.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="pl-10"
