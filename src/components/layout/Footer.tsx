@@ -56,15 +56,15 @@ const Footer = () => {
 
           {/* Company Info */}
           <div className="space-y-6">
-            <div className="flex items-center gap-3">
+            <Link to={getLocalizedLink('')} className="flex items-center gap-3 group">
               <img 
                 src={logoGeoItalyAgro} 
                 alt="GeoItalyAgro" 
-                className="h-14 w-auto object-contain"
+                className="h-14 w-auto object-contain group-hover:opacity-80 transition-opacity"
                 loading="lazy"
               />
-              <span className="font-display font-bold text-xl text-primary-foreground">GeoItalyAgro</span>
-            </div>
+              <span className="font-display font-bold text-xl text-primary-foreground group-hover:opacity-80 transition-opacity">GeoItalyAgro</span>
+            </Link>
             <p className="text-primary-foreground/60 text-sm leading-relaxed max-w-md">
               {t('footer.description')}
             </p>
