@@ -60,7 +60,7 @@ const Footer = () => {
               <img 
                 src={logoGeoItalyAgro} 
                 alt="GeoItalyAgro" 
-                className="h-11 md:h-14 w-auto object-contain group-hover:opacity-80 transition-opacity"
+                className="h-9 md:h-14 w-auto object-contain group-hover:opacity-80 transition-opacity"
                 loading="lazy"
               />
               <span className="font-display font-bold text-lg md:text-xl text-primary-foreground group-hover:opacity-80 transition-opacity">GeoItalyAgro</span>
@@ -96,9 +96,9 @@ const Footer = () => {
                 <span className="text-[10px] md:text-xs font-medium text-primary-foreground/70">{t('footer.bankTransfer')}</span>
               </div>
               <div className="flex items-center gap-3">
-                <img src={isoLogo} alt="ISO 9001" className="h-7 md:h-10 w-auto object-contain brightness-0 invert opacity-70" loading="lazy" />
-                <img src={iqnetLogo} alt="IQNet" className="h-7 md:h-10 w-auto object-contain brightness-0 invert opacity-70" loading="lazy" />
-                <img src={aenorLogo} alt="AENOR" className="h-7 md:h-10 w-auto object-contain brightness-0 invert opacity-70" loading="lazy" />
+                <img src={isoLogo} alt="ISO 9001" className="h-5 md:h-10 w-auto object-contain brightness-0 invert opacity-70" loading="lazy" />
+                <img src={iqnetLogo} alt="IQNet" className="h-5 md:h-10 w-auto object-contain brightness-0 invert opacity-70" loading="lazy" />
+                <img src={aenorLogo} alt="AENOR" className="h-5 md:h-10 w-auto object-contain brightness-0 invert opacity-70" loading="lazy" />
               </div>
             </div>
           </div>
