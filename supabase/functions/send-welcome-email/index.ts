@@ -214,7 +214,7 @@ const handler = async (req: Request): Promise<Response> => {
           <!-- Content -->
           <tr>
             <td style="padding: 40px 30px;">
-              <h2 style="color: #16a34a; margin: 0 0 20px 0; font-size: 24px;">${t.greeting} ${firstName},</h2>
+              <h2 style="color: #16a34a; margin: 0 0 20px 0; font-size: 24px;">${t.greeting} ${safeFirstName},</h2>
               
               <h3 style="color: #333333; margin: 0 0 15px 0;">${t.welcome}</h3>
               
