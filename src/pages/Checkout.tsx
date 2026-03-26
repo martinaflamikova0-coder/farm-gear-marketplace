@@ -63,7 +63,7 @@ const Checkout = () => {
   const cartSlug = 'panier';
   
   const { items, total, user, clearCart } = useCart();
-  const { data: bankAccounts, isLoading: isBankAccountsLoading } = useBankAccounts();
+  const { data: selectedBankAccount, isLoading: isBankAccountsLoading } = useBankAccountForAmount(total);
   const { data: paypalSettings, isLoading: isPaypalLoading } = usePaypalSettings();
   
   const [step, setStep] = useState<'shipping' | 'payment' | 'confirmation'>('shipping');
