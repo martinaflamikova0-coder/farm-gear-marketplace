@@ -121,21 +121,21 @@ const handler = async (req: Request): Promise<Response> => {
       from: "GeoItalyAgro Contact <info@geoitalyagro.com>",
       to: ["info@geoitalyagro.com"],
       reply_to: email,
-      subject: `${localizedContent.teamSubject}: ${subject}`,
+      subject: `${localizedContent.teamSubject}: ${safeSubject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: #166534; color: white; padding: 20px; text-align: center;">
             <h1 style="margin: 0;">Nouveau Message de Contact</h1>
           </div>
           <div style="padding: 20px; background: #f9f9f9;">
-            <p><strong>Nom:</strong> ${name}</p>
-            <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-            <p><strong>Sujet:</strong> ${subject}</p>
-            <p><strong>Langue:</strong> ${language.toUpperCase()}</p>
+            <p><strong>Nom:</strong> ${safeName}</p>
+            <p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
+            <p><strong>Sujet:</strong> ${safeSubject}</p>
+            <p><strong>Langue:</strong> ${escapeHtml(language).toUpperCase()}</p>
             <hr style="border: 1px solid #ddd; margin: 20px 0;">
             <p><strong>Message:</strong></p>
             <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #ddd;">
-              ${message.replace(/\n/g, '<br>')}
+              ${safeMessage.replace(/\n/g, '<br>')}
             </div>
           </div>
           <div style="padding: 15px; background: #166534; color: white; text-align: center; font-size: 12px;">
