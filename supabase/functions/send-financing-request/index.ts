@@ -84,6 +84,19 @@ const handler = async (req: Request): Promise<Response> => {
     const Resend = resendModule.Resend;
     const resend = new Resend(resendApiKey);
 
+    // Escape all user-supplied fields
+    const safe = {
+      productTitle: escapeHtml(data.productTitle),
+      firstName: escapeHtml(data.firstName),
+      lastName: escapeHtml(data.lastName),
+      email: escapeHtml(data.email),
+      phone: escapeHtml(data.phone),
+      company: data.company ? escapeHtml(data.company) : '',
+      siret: data.siret ? escapeHtml(data.siret) : '',
+      downPayment: data.downPayment ? escapeHtml(data.downPayment) : '',
+      additionalInfo: data.additionalInfo ? escapeHtml(data.additionalInfo) : '',
+    };
+
     // Build email HTML
     const emailHtml = `
       <!DOCTYPE html>
