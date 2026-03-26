@@ -119,7 +119,7 @@ const translations: Record<string, {
     bankStep1: "Il tuo pagamento è in fase di verifica.",
     bankStep2: "Ti contatteremo al ricevimento per confermare la spedizione.",
     paypalStep: "Il tuo pagamento è stato confermato. Il tuo ordine sarà preparato il prima possibile.",
-    questions: "Per qualsiasi domanda, non esitare a contattarci a infos@ekip-trade.com o +39 377 389 0872.",
+    questions: "Per qualsiasi domanda, non esitare a contattarci a infos@ekip-trade.com o +39 0141 877 368.",
     thanks: "Grazie per la tua fiducia!",
     team: "Il team GeoItalyAgro",
   },
