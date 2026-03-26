@@ -3,6 +3,9 @@ import { Phone, Mail, MapPin, ChevronRight, Landmark } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { type SupportedLanguage } from '@/i18n';
 import logoGeoItalyAgro from '@/assets/logo-geoitalyagro.png';
+import isoLogo from '@/assets/certifications/iso-9001.png';
+import iqnetLogo from '@/assets/certifications/iqnet.png';
+import aenorLogo from '@/assets/certifications/aenor.png';
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
@@ -94,6 +97,16 @@ const Footer = () => {
                   <Landmark className="h-5 w-5 text-primary-foreground/70" />
                   <span className="text-xs font-medium text-primary-foreground/70">{t('footer.bankTransfer')}</span>
                 </div>
+              </div>
+            </div>
+
+            {/* Certifications */}
+            <div className="pt-4 border-t border-primary-foreground/10">
+              <p className="text-xs text-primary-foreground/40 mb-3 uppercase tracking-wider">{t('footer.certifications', 'Certifications')}</p>
+              <div className="flex items-center gap-4">
+                <img src={isoLogo} alt="ISO 9001" className="h-10 w-auto object-contain brightness-0 invert opacity-70" loading="lazy" />
+                <img src={iqnetLogo} alt="IQNet" className="h-10 w-auto object-contain brightness-0 invert opacity-70" loading="lazy" />
+                <img src={aenorLogo} alt="AENOR" className="h-10 w-auto object-contain brightness-0 invert opacity-70" loading="lazy" />
               </div>
             </div>
           </div>
