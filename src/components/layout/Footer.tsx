@@ -2,7 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Phone, Mail, MapPin, ChevronRight, Landmark } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { type SupportedLanguage } from '@/i18n';
-import logoEkiptrade from '@/assets/logo-ekiptrade.png';
+import logoGeoItalyAgro from '@/assets/logo-geoitalyagro.png';
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
@@ -55,12 +55,12 @@ const Footer = () => {
           <div className="space-y-6">
             <div className="flex items-center gap-3">
               <img 
-                src={logoEkiptrade} 
-                alt="EkipTrade" 
+                src={logoGeoItalyAgro} 
+                alt="GeoItalyAgro" 
                 className="h-10 w-auto object-contain"
                 loading="lazy"
               />
-              <span className="font-display font-bold text-xl text-primary-foreground">EkipTrade</span>
+              <span className="font-display font-bold text-xl text-primary-foreground">GeoItalyAgro</span>
             </div>
             <p className="text-primary-foreground/60 text-sm leading-relaxed max-w-md">
               {t('footer.description')}
@@ -104,7 +104,7 @@ const Footer = () => {
       <div className="border-t border-primary-foreground/10">
         <div className="container-custom py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-primary-foreground/50">
-            © {new Date().getFullYear()} EkipTrade. {t('footer.rights')}
+            © {new Date().getFullYear()} GeoItalyAgro. {t('footer.rights')}
           </p>
           <p className="text-xs text-primary-foreground/40">
             P.IVA: IT10992060011

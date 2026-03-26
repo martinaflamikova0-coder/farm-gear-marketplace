@@ -144,7 +144,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to admin
     const adminEmailResponse = await resend.emails.send({
-      from: "EkipTrade <infos@ekip-trade.com>",
+      from: "GeoItalyAgro <infos@ekip-trade.com>",
       to: ["infos@ekip-trade.com"],
       subject: `🚜 Nouvelle demande de financement - ${data.productTitle}`,
       html: emailHtml,
@@ -189,7 +189,7 @@ const handler = async (req: Request): Promise<Response> => {
             
             <p>Si vous avez des questions, n'hésitez pas à nous contacter.</p>
             
-            <p>Cordialement,<br>L'équipe EkipTrade</p>
+            <p>Cordialement,<br>L'équipe GeoItalyAgro</p>
           </div>
         </div>
       </body>
@@ -197,9 +197,9 @@ const handler = async (req: Request): Promise<Response> => {
     `;
 
     const customerEmailResponse = await resend.emails.send({
-      from: "EkipTrade <infos@ekip-trade.com>",
+      from: "GeoItalyAgro <infos@ekip-trade.com>",
       to: [data.email],
-      subject: "✅ Votre demande de financement a été reçue - EkipTrade",
+      subject: "✅ Votre demande de financement a été reçue - GeoItalyAgro",
       html: customerEmailHtml,
     });
 

@@ -141,7 +141,7 @@ const ProductJsonLd = ({
       // Seller information
       seller: {
         '@type': 'Organization',
-        name: product.seller_name || 'EkipTrade',
+        name: product.seller_name || 'GeoItalyAgro',
         url: BASE_URL,
       },
       // Shipping details - required for Merchant Center
@@ -190,7 +190,7 @@ const ProductJsonLd = ({
     // Business information
     isRelatedTo: {
       '@type': 'WebSite',
-      name: 'EkipTrade',
+      name: 'GeoItalyAgro',
       url: BASE_URL,
     }
   };
@@ -203,7 +203,7 @@ const ProductJsonLd = ({
       {
         '@type': 'ListItem',
         position: 1,
-        name: 'EkipTrade',
+        name: 'GeoItalyAgro',
         item: BASE_URL
       },
       {

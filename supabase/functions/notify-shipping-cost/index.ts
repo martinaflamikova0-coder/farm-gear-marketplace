@@ -43,7 +43,7 @@ const translations: Record<string, {
     greeting: "Bonjour",
     intro: "Les frais de livraison pour votre commande ont été calculés.",
     details: "Détails de la livraison",
-    covered: "Frais pris en charge par EkipTrade (offerts)",
+    covered: "Frais pris en charge par GeoItalyAgro (offerts)",
     supplement: "Supplément à votre charge",
     newTotal: "Nouveau total de votre commande",
     paymentInstruction: "Veuillez régler ce supplément sur le compte bancaire ci-dessous (le même que pour votre commande).",
@@ -51,14 +51,14 @@ const translations: Record<string, {
     bankDetails: "Coordonnées bancaires",
     accountHolder: "Titulaire",
     thanks: "Merci pour votre confiance.",
-    team: "L'équipe EkipTrade",
+    team: "L'équipe GeoItalyAgro",
   },
   en: {
     subject: "Shipping costs for your order",
     greeting: "Hello",
     intro: "The shipping costs for your order have been calculated.",
     details: "Shipping details",
-    covered: "Shipping covered by EkipTrade (free)",
+    covered: "Shipping covered by GeoItalyAgro (free)",
     supplement: "Additional charge",
     newTotal: "New order total",
     paymentInstruction: "Please pay this supplement to the bank account below (same as for your order).",
@@ -66,14 +66,14 @@ const translations: Record<string, {
     bankDetails: "Bank details",
     accountHolder: "Account holder",
     thanks: "Thank you for your trust.",
-    team: "The EkipTrade Team",
+    team: "The GeoItalyAgro Team",
   },
   de: {
     subject: "Versandkosten für Ihre Bestellung",
     greeting: "Hallo",
     intro: "Die Versandkosten für Ihre Bestellung wurden berechnet.",
     details: "Versanddetails",
-    covered: "Von EkipTrade übernommene Versandkosten (kostenlos)",
+    covered: "Von GeoItalyAgro übernommene Versandkosten (kostenlos)",
     supplement: "Zusätzliche Gebühr",
     newTotal: "Neuer Bestellbetrag",
     paymentInstruction: "Bitte überweisen Sie diesen Aufpreis auf das unten angegebene Bankkonto (dasselbe wie für Ihre Bestellung).",
@@ -81,14 +81,14 @@ const translations: Record<string, {
     bankDetails: "Bankverbindung",
     accountHolder: "Kontoinhaber",
     thanks: "Vielen Dank für Ihr Vertrauen.",
-    team: "Das EkipTrade-Team",
+    team: "Das GeoItalyAgro-Team",
   },
   es: {
     subject: "Gastos de envío de su pedido",
     greeting: "Hola",
     intro: "Los gastos de envío de su pedido han sido calculados.",
     details: "Detalles del envío",
-    covered: "Envío cubierto por EkipTrade (gratis)",
+    covered: "Envío cubierto por GeoItalyAgro (gratis)",
     supplement: "Cargo adicional",
     newTotal: "Nuevo total del pedido",
     paymentInstruction: "Por favor, realice el pago de este suplemento en la cuenta bancaria indicada abajo (la misma de su pedido).",
@@ -96,14 +96,14 @@ const translations: Record<string, {
     bankDetails: "Datos bancarios",
     accountHolder: "Titular",
     thanks: "Gracias por su confianza.",
-    team: "El equipo EkipTrade",
+    team: "El equipo GeoItalyAgro",
   },
   it: {
     subject: "Spese di spedizione per il tuo ordine",
     greeting: "Ciao",
     intro: "Le spese di spedizione per il tuo ordine sono state calcolate.",
     details: "Dettagli della spedizione",
-    covered: "Spedizione coperta da EkipTrade (gratuita)",
+    covered: "Spedizione coperta da GeoItalyAgro (gratuita)",
     supplement: "Supplemento a tuo carico",
     newTotal: "Nuovo totale ordine",
     paymentInstruction: "Ti preghiamo di effettuare il pagamento di questo supplemento sul conto bancario indicato sotto (lo stesso dell'ordine).",
@@ -111,14 +111,14 @@ const translations: Record<string, {
     bankDetails: "Coordinate bancarie",
     accountHolder: "Intestatario",
     thanks: "Grazie per la tua fiducia.",
-    team: "Il team EkipTrade",
+    team: "Il team GeoItalyAgro",
   },
   pt: {
     subject: "Custos de envio da sua encomenda",
     greeting: "Olá",
     intro: "Os custos de envio da sua encomenda foram calculados.",
     details: "Detalhes do envio",
-    covered: "Envio coberto pela EkipTrade (grátis)",
+    covered: "Envio coberto pela GeoItalyAgro (grátis)",
     supplement: "Suplemento a seu cargo",
     newTotal: "Novo total da encomenda",
     paymentInstruction: "Por favor, efetue o pagamento deste suplemento na conta bancária indicada abaixo (a mesma da sua encomenda).",
@@ -126,7 +126,7 @@ const translations: Record<string, {
     bankDetails: "Dados bancários",
     accountHolder: "Titular",
     thanks: "Obrigado pela sua confiança.",
-    team: "A equipa EkipTrade",
+    team: "A equipa GeoItalyAgro",
   },
 };
 
@@ -266,7 +266,7 @@ const handler = async (req: Request): Promise<Response> => {
           <!-- Header -->
           <tr>
             <td style="background-color: #16a34a; padding: 30px; text-align: center;">
-              <h1 style="color: #ffffff; margin: 0; font-size: 24px;">EkipTrade</h1>
+              <h1 style="color: #ffffff; margin: 0; font-size: 24px;">GeoItalyAgro</h1>
             </td>
           </tr>
           
@@ -338,13 +338,13 @@ const handler = async (req: Request): Promise<Response> => {
           <tr>
             <td style="background-color: #f8f9fa; padding: 20px 30px; text-align: center; border-top: 1px solid #e5e7eb;">
               <p style="margin: 0 0 5px 0; color: #666666; font-size: 12px;">
-                EkipTrade — Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia
+                GeoItalyAgro — Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia
               </p>
               <p style="margin: 0 0 5px 0; color: #666666; font-size: 12px;">
                 P.IVA: IT10992060011 | infos@ekip-trade.com | +39 377 389 0872
               </p>
               <p style="margin: 0; color: #9ca3af; font-size: 12px;">
-                © ${new Date().getFullYear()} EkipTrade. All rights reserved.
+                © ${new Date().getFullYear()} GeoItalyAgro. All rights reserved.
               </p>
             </td>
           </tr>
@@ -364,7 +364,7 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "EkipTrade <infos@ekip-trade.com>",
+        from: "GeoItalyAgro <infos@ekip-trade.com>",
         to: [customerEmail],
         subject: `${t.subject} #${orderId.slice(0, 8).toUpperCase()}`,
         html: emailHtml,
@@ -387,7 +387,7 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "EkipTrade <infos@ekip-trade.com>",
+        from: "GeoItalyAgro <infos@ekip-trade.com>",
         to: ["infos@ekip-trade.com"],
         subject: `[Admin] Notification frais de port envoyée - Commande #${orderId.slice(0, 8).toUpperCase()}`,
         html: `

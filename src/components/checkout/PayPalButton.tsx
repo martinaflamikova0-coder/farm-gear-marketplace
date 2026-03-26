@@ -163,7 +163,7 @@ const PayPalButton = ({
                   value: amount.toFixed(2),
                   currency_code: currency,
                 },
-                description: 'EkipTrade Order',
+                description: 'GeoItalyAgro Order',
               },
             ],
           });

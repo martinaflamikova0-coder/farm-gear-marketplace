@@ -20,62 +20,62 @@ interface ContactRequest {
 const getLocalizedContent = (language: string) => {
   const content: Record<string, { autoReplySubject: string; autoReplyBody: string; teamSubject: string }> = {
     fr: {
-      autoReplySubject: "Nous avons bien reçu votre message - EkipTrade",
+      autoReplySubject: "Nous avons bien reçu votre message - GeoItalyAgro",
       autoReplyBody: `
         <p>Bonjour,</p>
         <p>Nous avons bien reçu votre message et nous vous remercions de nous avoir contactés.</p>
         <p>Notre équipe vous répondra dans les plus brefs délais, généralement sous 24 à 48 heures ouvrées.</p>
-        <p>Cordialement,<br>L'équipe EkipTrade</p>
+        <p>Cordialement,<br>L'équipe GeoItalyAgro</p>
       `,
       teamSubject: "Nouveau message de contact",
     },
     en: {
-      autoReplySubject: "We received your message - EkipTrade",
+      autoReplySubject: "We received your message - GeoItalyAgro",
       autoReplyBody: `
         <p>Hello,</p>
         <p>We have received your message and thank you for contacting us.</p>
         <p>Our team will get back to you as soon as possible, usually within 24-48 business hours.</p>
-        <p>Best regards,<br>The EkipTrade Team</p>
+        <p>Best regards,<br>The GeoItalyAgro Team</p>
       `,
       teamSubject: "New contact message",
     },
     de: {
-      autoReplySubject: "Wir haben Ihre Nachricht erhalten - EkipTrade",
+      autoReplySubject: "Wir haben Ihre Nachricht erhalten - GeoItalyAgro",
       autoReplyBody: `
         <p>Hallo,</p>
         <p>Wir haben Ihre Nachricht erhalten und danken Ihnen für Ihre Kontaktaufnahme.</p>
         <p>Unser Team wird sich so schnell wie möglich bei Ihnen melden, in der Regel innerhalb von 24-48 Geschäftsstunden.</p>
-        <p>Mit freundlichen Grüßen,<br>Das EkipTrade-Team</p>
+        <p>Mit freundlichen Grüßen,<br>Das GeoItalyAgro-Team</p>
       `,
       teamSubject: "Neue Kontaktanfrage",
     },
     es: {
-      autoReplySubject: "Hemos recibido su mensaje - EkipTrade",
+      autoReplySubject: "Hemos recibido su mensaje - GeoItalyAgro",
       autoReplyBody: `
         <p>Hola,</p>
         <p>Hemos recibido su mensaje y le agradecemos por contactarnos.</p>
         <p>Nuestro equipo le responderá lo antes posible, normalmente en 24-48 horas hábiles.</p>
-        <p>Saludos cordiales,<br>El equipo de EkipTrade</p>
+        <p>Saludos cordiales,<br>El equipo de GeoItalyAgro</p>
       `,
       teamSubject: "Nuevo mensaje de contacto",
     },
     it: {
-      autoReplySubject: "Abbiamo ricevuto il tuo messaggio - EkipTrade",
+      autoReplySubject: "Abbiamo ricevuto il tuo messaggio - GeoItalyAgro",
       autoReplyBody: `
         <p>Ciao,</p>
         <p>Abbiamo ricevuto il tuo messaggio e ti ringraziamo per averci contattato.</p>
         <p>Il nostro team ti risponderà il prima possibile, di solito entro 24-48 ore lavorative.</p>
-        <p>Cordiali saluti,<br>Il team EkipTrade</p>
+        <p>Cordiali saluti,<br>Il team GeoItalyAgro</p>
       `,
       teamSubject: "Nuovo messaggio di contatto",
     },
     pt: {
-      autoReplySubject: "Recebemos sua mensagem - EkipTrade",
+      autoReplySubject: "Recebemos sua mensagem - GeoItalyAgro",
       autoReplyBody: `
         <p>Olá,</p>
         <p>Recebemos sua mensagem e agradecemos por entrar em contato.</p>
         <p>Nossa equipe responderá o mais breve possível, geralmente em 24-48 horas úteis.</p>
-        <p>Atenciosamente,<br>Equipe EkipTrade</p>
+        <p>Atenciosamente,<br>Equipe GeoItalyAgro</p>
       `,
       teamSubject: "Nova mensagem de contato",
     },
@@ -111,7 +111,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to the team
     const teamEmail = await resend.emails.send({
-      from: "EkipTrade Contact <infos@ekip-trade.com>",
+      from: "GeoItalyAgro Contact <infos@ekip-trade.com>",
       to: ["infos@ekip-trade.com"],
       reply_to: email,
       subject: `${localizedContent.teamSubject}: ${subject}`,
@@ -132,7 +132,7 @@ const handler = async (req: Request): Promise<Response> => {
             </div>
           </div>
           <div style="padding: 15px; background: #166534; color: white; text-align: center; font-size: 12px;">
-            <p style="margin: 0;">EkipTrade - Global Marketplace for Agricultural Equipment</p>
+            <p style="margin: 0;">GeoItalyAgro - Global Marketplace for Agricultural Equipment</p>
           </div>
         </div>
       `,
@@ -142,13 +142,13 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send auto-reply to customer
     const customerEmail = await resend.emails.send({
-      from: "EkipTrade <infos@ekip-trade.com>",
+      from: "GeoItalyAgro <infos@ekip-trade.com>",
       to: [email],
       subject: localizedContent.autoReplySubject,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: #166534; color: white; padding: 20px; text-align: center;">
-            <h1 style="margin: 0; font-size: 24px;">EkipTrade</h1>
+            <h1 style="margin: 0; font-size: 24px;">GeoItalyAgro</h1>
           </div>
           <div style="padding: 30px; background: #ffffff;">
             ${localizedContent.autoReplyBody}
@@ -160,7 +160,7 @@ const handler = async (req: Request): Promise<Response> => {
             </div>
           </div>
           <div style="padding: 20px; background: #f9f9f9; text-align: center; font-size: 12px; color: #666;">
-            <p>EkipTrade — Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia</p>
+            <p>GeoItalyAgro — Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia</p>
             <p>P.IVA: IT10992060011 | +39 377 389 0872 | infos@ekip-trade.com</p>
           </div>
         </div>

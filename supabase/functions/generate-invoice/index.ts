@@ -355,15 +355,15 @@ serve(async (req) => {
     let yPos = height - 50;
 
     // Header - Logo
-    page.drawText("Ekip", {
+    page.drawText("GeoItaly", {
       x: 50,
       y: yPos,
       size: 28,
       font: helveticaBold,
       color: primaryColor,
     });
-    page.drawText("Trade", {
-      x: 50 + helveticaBold.widthOfTextAtSize("Ekip", 28),
+    page.drawText("Agro", {
+      x: 50 + helveticaBold.widthOfTextAtSize("GeoItaly", 28),
       y: yPos,
       size: 28,
       font: helveticaBold,
@@ -428,7 +428,7 @@ serve(async (req) => {
       color: primaryColor,
     });
     yPos -= 18;
-    page.drawText("EkipTrade", { x: 50, y: yPos, size: 11, font: helveticaBold, color: textColor });
+    page.drawText("GeoItalyAgro", { x: 50, y: yPos, size: 11, font: helveticaBold, color: textColor });
     yPos -= 15;
     page.drawText(t.marketplace, { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
@@ -583,13 +583,13 @@ serve(async (req) => {
     page.drawText(t.paymentMethod, { x: 60, y: yPos - 25, size: 10, font: helvetica, color: mutedColor });
     
     // Get bank details from database or use defaults
-    let bankDetails = { iban: "", bic: "", holder: "EkipTrade" };
+    let bankDetails = { iban: "", bic: "", holder: "GeoItalyAgro" };
     if (bankAccounts && bankAccounts.length > 0) {
       const selectedAccount = bankAccounts.find(acc => 
         totalTTC >= (acc.threshold_min || 0) && 
         (acc.threshold_max === null || totalTTC <= acc.threshold_max)
       ) || bankAccounts[0];
-      bankDetails = { iban: selectedAccount.iban, bic: selectedAccount.bic, holder: selectedAccount.holder || "EkipTrade" };
+      bankDetails = { iban: selectedAccount.iban, bic: selectedAccount.bic, holder: selectedAccount.holder || "GeoItalyAgro" };
     }
     
     page.drawText(`${t.bankDetails}:`, { x: 60, y: yPos - 42, size: 10, font: helveticaBold, color: textColor });
@@ -627,7 +627,7 @@ serve(async (req) => {
       color: rgb(0.85, 0.85, 0.85),
     });
 
-    page.drawText(`EkipTrade - P.IVA IT10992060011 - ${t.marketplace}`, {
+    page.drawText(`GeoItalyAgro - P.IVA IT10992060011 - ${t.marketplace}`, {
       x: 160,
       y: footerY + 15,
       size: 9,

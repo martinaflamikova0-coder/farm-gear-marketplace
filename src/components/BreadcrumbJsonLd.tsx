@@ -25,7 +25,7 @@ const BreadcrumbJsonLd = ({ items }: BreadcrumbJsonLdProps) => {
       {
         '@type': 'ListItem',
         position: 1,
-        name: 'EkipTrade',
+        name: 'GeoItalyAgro',
         item: `${BASE_URL}/${currentLang}`,
       },
       ...items.map((item, index) => ({

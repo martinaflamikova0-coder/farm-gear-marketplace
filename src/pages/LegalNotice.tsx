@@ -23,7 +23,7 @@ const LegalNotice = () => {
 
             <h2 className="font-display text-2xl font-semibold text-foreground mt-8">{t('pages.legalNotice.editorTitle')}</h2>
             <ul className="text-muted-foreground space-y-2 list-none pl-0">
-              <li><strong>{t('pages.legalNotice.companyName')}:</strong> EkipTrade</li>
+              <li><strong>{t('pages.legalNotice.companyName')}:</strong> GeoItalyAgro</li>
               <li><strong>{t('pages.legalNotice.legalForm')}:</strong> {t('pages.legalNotice.legalFormValue')}</li>
               <li><strong>{t('pages.legalNotice.vatLabel')}:</strong> IT10992060011</li>
               <li><strong>{t('pages.legalNotice.registeredOffice')}:</strong> Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia</li>

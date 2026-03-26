@@ -70,7 +70,7 @@ Deno.serve(async (req) => {
         // Download the image
         const response = await fetch(imageUrl, {
           headers: {
-            'User-Agent': 'Mozilla/5.0 (compatible; EkipTrade/1.0)',
+            'User-Agent': 'Mozilla/5.0 (compatible; GeoItalyAgro/1.0)',
             'Accept': 'image/*',
           },
         });

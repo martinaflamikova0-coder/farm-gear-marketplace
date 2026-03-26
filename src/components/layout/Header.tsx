@@ -10,7 +10,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import CartIcon from '@/components/cart/CartIcon';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
 import { useCart } from '@/contexts/CartContext';
-import logoEkiptrade from '@/assets/logo-ekiptrade.png';
+import logoGeoItalyAgro from '@/assets/logo-geoitalyagro.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -79,14 +79,14 @@ const Header = () => {
           <Link
             to={getLocalizedLink('')}
             className="flex items-center gap-1.5 flex-shrink-0"
-            aria-label="EkipTrade"
+            aria-label="GeoItalyAgro"
           >
             <img
-              src={logoEkiptrade}
-              alt="EkipTrade"
+              src={logoGeoItalyAgro}
+              alt="GeoItalyAgro"
               className="h-8 md:h-10 w-8 md:w-10 object-contain rounded-full"
             />
-            <span className="font-display font-bold text-base md:text-xl text-foreground leading-tight">EkipTrade</span>
+            <span className="font-display font-bold text-base md:text-xl text-foreground leading-tight">GeoItalyAgro</span>
           </Link>
 
           {/* Search bar - Desktop */}

@@ -49,7 +49,7 @@ const translations: Record<string, {
     paypalStep: "Votre paiement a été confirmé. Votre commande sera préparée dans les plus brefs délais.",
     questions: "Pour toute question, n'hésitez pas à nous contacter à infos@ekip-trade.com ou au +39 377 389 0872.",
     thanks: "Merci pour votre confiance !",
-    team: "L'équipe EkipTrade",
+    team: "L'équipe GeoItalyAgro",
   },
   en: {
     subject: "Order Confirmation",
@@ -67,7 +67,7 @@ const translations: Record<string, {
     paypalStep: "Your payment has been confirmed. Your order will be prepared as soon as possible.",
     questions: "For any questions, feel free to contact us at infos@ekip-trade.com or +39 377 389 0872.",
     thanks: "Thank you for your trust!",
-    team: "The EkipTrade Team",
+    team: "The GeoItalyAgro Team",
   },
   de: {
     subject: "Bestellbestätigung",
@@ -85,7 +85,7 @@ const translations: Record<string, {
     paypalStep: "Ihre Zahlung wurde bestätigt. Ihre Bestellung wird so schnell wie möglich vorbereitet.",
     questions: "Bei Fragen können Sie uns gerne unter infos@ekip-trade.com oder +39 377 389 0872 kontaktieren.",
     thanks: "Vielen Dank für Ihr Vertrauen!",
-    team: "Das EkipTrade-Team",
+    team: "Das GeoItalyAgro-Team",
   },
   es: {
     subject: "Confirmación de pedido",
@@ -103,7 +103,7 @@ const translations: Record<string, {
     paypalStep: "Su pago ha sido confirmado. Su pedido será preparado lo antes posible.",
     questions: "Para cualquier pregunta, no dude en contactarnos en infos@ekip-trade.com o +39 377 389 0872.",
     thanks: "¡Gracias por su confianza!",
-    team: "El equipo EkipTrade",
+    team: "El equipo GeoItalyAgro",
   },
   it: {
     subject: "Conferma ordine",
@@ -121,7 +121,7 @@ const translations: Record<string, {
     paypalStep: "Il tuo pagamento è stato confermato. Il tuo ordine sarà preparato il prima possibile.",
     questions: "Per qualsiasi domanda, non esitare a contattarci a infos@ekip-trade.com o +39 377 389 0872.",
     thanks: "Grazie per la tua fiducia!",
-    team: "Il team EkipTrade",
+    team: "Il team GeoItalyAgro",
   },
   pt: {
     subject: "Confirmação de encomenda",
@@ -139,7 +139,7 @@ const translations: Record<string, {
     paypalStep: "O seu pagamento foi confirmado. A sua encomenda será preparada o mais rapidamente possível.",
     questions: "Para qualquer questão, não hesite em contactar-nos em infos@ekip-trade.com ou +39 377 389 0872.",
     thanks: "Obrigado pela sua confiança!",
-    team: "A equipa EkipTrade",
+    team: "A equipa GeoItalyAgro",
   },
 };
 
@@ -230,7 +230,7 @@ const handler = async (req: Request): Promise<Response> => {
           <!-- Header -->
           <tr>
             <td style="background-color: #16a34a; padding: 30px; text-align: center;">
-              <h1 style="color: #ffffff; margin: 0; font-size: 24px;">EkipTrade</h1>
+              <h1 style="color: #ffffff; margin: 0; font-size: 24px;">GeoItalyAgro</h1>
               <p style="color: #ffffff; margin: 10px 0 0 0; font-size: 14px; opacity: 0.9;">✓ ${t.orderConfirmed}</p>
             </td>
           </tr>
@@ -297,13 +297,13 @@ const handler = async (req: Request): Promise<Response> => {
           <tr>
             <td style="background-color: #f8f9fa; padding: 20px 30px; text-align: center; border-top: 1px solid #e5e7eb;">
               <p style="margin: 0 0 5px 0; color: #666666; font-size: 12px;">
-                EkipTrade — Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia
+                GeoItalyAgro — Via Vittorio Veneto 118, 28040 Oleggio Castello (NO), Italia
               </p>
               <p style="margin: 0 0 5px 0; color: #666666; font-size: 12px;">
                 P.IVA: IT10992060011 | infos@ekip-trade.com | +39 377 389 0872
               </p>
               <p style="margin: 0; color: #9ca3af; font-size: 12px;">
-                © ${new Date().getFullYear()} EkipTrade. All rights reserved.
+                © ${new Date().getFullYear()} GeoItalyAgro. All rights reserved.
               </p>
             </td>
           </tr>
@@ -332,7 +332,7 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "EkipTrade <infos@ekip-trade.com>",
+        from: "GeoItalyAgro <infos@ekip-trade.com>",
         to: [customerEmail],
         subject: `${t.subject} #${shortOrderId}`,
         html: emailHtml,
@@ -366,7 +366,7 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "EkipTrade <infos@ekip-trade.com>",
+        from: "GeoItalyAgro <infos@ekip-trade.com>",
         to: ["infos@ekip-trade.com"],
         subject: `🛒 Nouvelle commande #${shortOrderId} - ${orderTotal.toLocaleString('fr-FR')} €`,
         html: adminHtml,

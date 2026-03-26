@@ -13,7 +13,7 @@ const HomeJsonLd = () => {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'EkipTrade',
+    name: 'GeoItalyAgro',
     url: BASE_URL,
     logo: `${BASE_URL}/favicon.png`,
     description: t('seo.home.description'),
@@ -39,7 +39,7 @@ const HomeJsonLd = () => {
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'EkipTrade',
+    name: 'GeoItalyAgro',
     url: BASE_URL,
     description: t('seo.home.description'),
     inLanguage: currentLang,

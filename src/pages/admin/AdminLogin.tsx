@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Lock, Mail, AlertCircle, CheckCircle } from 'lucide-react';
 import { z } from 'zod';
-import logoEkiptrade from '@/assets/logo-ekiptrade.png';
+import logoGeoItalyAgro from '@/assets/logo-geoitalyagro.png';
 
 const loginSchema = z.object({
   email: z.string().trim().email('Adresse email invalide').max(255, 'Email trop long'),
@@ -95,8 +95,8 @@ const AdminLogin = () => {
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
             <img 
-              src={logoEkiptrade} 
-              alt="EkipTrade" 
+              src={logoGeoItalyAgro} 
+              alt="GeoItalyAgro" 
               className="h-16 w-auto object-contain"
             />
           </div>

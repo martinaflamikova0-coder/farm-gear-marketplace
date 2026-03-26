@@ -328,7 +328,7 @@
     "activeListings": "Anúncios ativos",
     "verifiedListings": "Anúncios verificados",
     "partnerSellers": "Vendedores parceiros",
-    "bannerAlt": "Máquinas agrícolas e industriais novas e usadas - EkipTrade"
+    "bannerAlt": "Máquinas agrícolas e industriais novas e usadas - GeoItalyAgro"
   },
   "banners": {
     "verifiedQualityAlt": "Qualidade verificada - Cada máquina inspecionada e certificada",
@@ -490,7 +490,7 @@
       "description": "A sua encomenda foi registada com sucesso",
       "orderReference": "Referência da encomenda",
       "invoiceTitle": "A sua fatura está disponível",
-      "invoiceDescription": "A sua fatura está disponível na sua conta EkipTrade e também será enviada para o seu email.",
+      "invoiceDescription": "A sua fatura está disponível na sua conta GeoItalyAgro e também será enviada para o seu email.",
       "nextSteps": "Próximos passos:",
       "step1": "Faça a transferência bancária com os dados fornecidos",
       "step2": "Receberá um email de confirmação em",
@@ -546,82 +546,82 @@
   "seo": {
     "home": {
       "title": "Marketplace de Máquinas Agrícolas e Industriais Novas e Usadas",
-      "description": "EkipTrade - Compre e venda máquinas agrícolas e industriais novas e usadas. Milhares de tratores, ceifeiras e máquinas de vendedores profissionais verificados.",
+      "description": "GeoItalyAgro - Compre e venda máquinas agrícolas e industriais novas e usadas. Milhares de tratores, ceifeiras e máquinas de vendedores profissionais verificados.",
       "keywords": "trator, ceifeira, máquinas agrícolas, máquinas de construção, peças sobressalentes, movimentação, arado, semeador, pulverizador, reboque, usado, novo, Europa"
     },
     "about": {
       "title": "Sobre Nós",
-      "description": "Descubra a EkipTrade, o marketplace líder de máquinas agrícolas e industriais usadas na Europa. A nossa missão, valores e comunidade de mais de 5.000 profissionais.",
+      "description": "Descubra a GeoItalyAgro, o marketplace líder de máquinas agrícolas e industriais usadas na Europa. A nossa missão, valores e comunidade de mais de 5.000 profissionais.",
       "keywords": "marketplace, máquinas agrícolas, usado, Europa, vendedores verificados, profissional"
     },
     "howItWorks": {
       "title": "Como Funciona",
-      "description": "Saiba como comprar ou vender máquinas agrícolas e industriais na EkipTrade. Processo simples em 4 passos: pesquise, contacte, negoceie e finalize.",
+      "description": "Saiba como comprar ou vender máquinas agrícolas e industriais na GeoItalyAgro. Processo simples em 4 passos: pesquise, contacte, negoceie e finalize.",
       "keywords": "comprar, vender, máquinas agrícolas, processo, transação, seguro"
     },
     "faq": {
       "title": "FAQ - Perguntas Frequentes",
-      "description": "Encontre respostas às suas perguntas sobre a EkipTrade. Como publicar um anúncio, contactar vendedores, métodos de pagamento, garantias e mais.",
+      "description": "Encontre respostas às suas perguntas sobre a GeoItalyAgro. Como publicar um anúncio, contactar vendedores, métodos de pagamento, garantias e mais.",
       "keywords": "FAQ, perguntas, pagamento, garantia, anúncio, vendedor, entrega"
     },
     "contact": {
       "title": "Contacte-nos",
-      "description": "Contacte a equipa EkipTrade. Estamos aqui para responder às suas perguntas e ajudá-lo nas suas compras ou vendas de máquinas agrícolas e industriais.",
+      "description": "Contacte a equipa GeoItalyAgro. Estamos aqui para responder às suas perguntas e ajudá-lo nas suas compras ou vendas de máquinas agrícolas e industriais.",
       "keywords": "contacto, suporte, ajuda, máquinas agrícolas, serviço ao cliente"
     },
     "terms": {
       "title": "Termos de Uso",
-      "description": "Leia os termos de uso da EkipTrade. Condições de acesso, direitos e obrigações dos utilizadores, regras de anúncios e responsabilidades.",
+      "description": "Leia os termos de uso da GeoItalyAgro. Condições de acesso, direitos e obrigações dos utilizadores, regras de anúncios e responsabilidades.",
       "keywords": "termos, condições, uso, plataforma, regras"
     },
     "purchaseTerms": {
       "title": "Condições Gerais de Compra",
-      "description": "Consulte as condições gerais de compra da EkipTrade. Preços, encomendas, pagamento, entrega, garantias e responsabilidades.",
+      "description": "Consulte as condições gerais de compra da GeoItalyAgro. Preços, encomendas, pagamento, entrega, garantias e responsabilidades.",
       "keywords": "CGC, condições compra, encomenda, pagamento, entrega, garantia"
     },
     "refundPolicy": {
       "title": "Política de Reembolso",
-      "description": "Conheça a política de reembolso da EkipTrade. Condições de elegibilidade, prazos e métodos de reembolso.",
+      "description": "Conheça a política de reembolso da GeoItalyAgro. Condições de elegibilidade, prazos e métodos de reembolso.",
       "keywords": "reembolso, política, prazo, condições, máquinas agrícolas"
     },
     "privacy": {
       "title": "Política de Privacidade",
-      "description": "Saiba como a EkipTrade recolhe, utiliza e protege os seus dados pessoais. Os seus direitos RGPD e as nossas práticas de segurança.",
+      "description": "Saiba como a GeoItalyAgro recolhe, utiliza e protege os seus dados pessoais. Os seus direitos RGPD e as nossas práticas de segurança.",
       "keywords": "privacidade, RGPD, dados pessoais, segurança, proteção"
     },
     "cookies": {
       "title": "Política de Cookies",
-      "description": "Gerencie as suas preferências de cookies na EkipTrade. Conheça os tipos de cookies que usamos e como controlá-los.",
+      "description": "Gerencie as suas preferências de cookies na GeoItalyAgro. Conheça os tipos de cookies que usamos e como controlá-los.",
       "keywords": "cookies, preferências, navegação, consentimento"
     },
     "legalNotice": {
       "title": "Aviso Legal",
-      "description": "Informações legais sobre a EkipTrade. Razão social, número de IVA, sede social, alojamento e propriedade intelectual.",
-      "keywords": "aviso legal, IVA, sede social, informações empresa, EkipTrade"
+      "description": "Informações legais sobre a GeoItalyAgro. Razão social, número de IVA, sede social, alojamento e propriedade intelectual.",
+      "keywords": "aviso legal, IVA, sede social, informações empresa, GeoItalyAgro"
     },
     "categories": {
       "title": "Todas as Categorias - Máquinas Agrícolas e Industriais",
-      "description": "Navegue por todas as categorias de máquinas agrícolas e industriais na EkipTrade. Tratores, ceifeiras, preparação do solo, movimentação, construção, peças e mais.",
+      "description": "Navegue por todas as categorias de máquinas agrícolas e industriais na GeoItalyAgro. Tratores, ceifeiras, preparação do solo, movimentação, construção, peças e mais.",
       "keywords": "categorias, tratores, ceifeiras, preparação do solo, movimentação, construção, peças, máquinas agrícolas"
     },
     "listings": {
       "title": "Todos os Anúncios",
-      "description": "Navegue por todos os anúncios de máquinas agrícolas e industriais na EkipTrade. Tratores, ceifeiras, equipamentos de preparação do solo e mais.",
+      "description": "Navegue por todos os anúncios de máquinas agrícolas e industriais na GeoItalyAgro. Tratores, ceifeiras, equipamentos de preparação do solo e mais.",
       "keywords": "anúncios, trator, ceifeira, arado, semeador, usado, novo, peças sobressalentes, máquinas de construção, movimentação"
     },
     "listingDetail": {
       "title": "Máquina Agrícola e Industrial à Venda",
-      "description": "Veja informações detalhadas sobre este anúncio de máquinas agrícolas e industriais na EkipTrade. Contacte diretamente o vendedor para mais informações.",
+      "description": "Veja informações detalhadas sobre este anúncio de máquinas agrícolas e industriais na GeoItalyAgro. Contacte diretamente o vendedor para mais informações.",
       "keywords": "anúncio, venda, máquinas agrícolas, industrial, usado, preço, vendedor"
     },
     "checkout": {
       "title": "Finalizar Encomenda",
-      "description": "Complete a sua compra de máquinas agrícolas e industriais na EkipTrade. Pagamento seguro por transferência bancária.",
+      "description": "Complete a sua compra de máquinas agrícolas e industriais na GeoItalyAgro. Pagamento seguro por transferência bancária.",
       "keywords": "encomenda, pagamento, transferência, seguro, compra"
     },
     "cart": {
       "title": "O Meu Carrinho",
-      "description": "Consulte o seu carrinho de compras na EkipTrade. Complete a sua encomenda de máquinas agrícolas e industriais em segurança.",
+      "description": "Consulte o seu carrinho de compras na GeoItalyAgro. Complete a sua encomenda de máquinas agrícolas e industriais em segurança.",
       "keywords": "carrinho, encomenda, compra, máquinas agrícolas"
     }
   },
@@ -631,8 +631,8 @@
       "description": "Navegue por todas as nossas categorias de máquinas agrícolas e industriais disponíveis"
     },
     "about": {
-      "title": "Sobre a EkipTrade",
-      "intro1": "A EkipTrade é o marketplace líder para compra e venda de máquinas agrícolas e industriais usadas na Europa. Desde a nossa criação, conectamos milhares de profissionais para facilitar as suas transações.",
+      "title": "Sobre a GeoItalyAgro",
+      "intro1": "A GeoItalyAgro é o marketplace líder para compra e venda de máquinas agrícolas e industriais usadas na Europa. Desde a nossa criação, conectamos milhares de profissionais para facilitar as suas transações.",
       "intro2": "A nossa missão é simples: oferecer uma plataforma fiável, transparente e eficiente para ajudar agricultores, concessionários e empresas a encontrar o equipamento de que precisam ao melhor preço.",
       "valuesTitle": "Os nossos valores",
       "trust": "Confiança",
@@ -717,17 +717,17 @@
       "title": "Termos de Uso",
       "lastUpdate": "Última atualização: Janeiro 2026",
       "section1Title": "1. Objeto",
-      "section1Content": "Estes Termos de Uso definem as condições de utilização da plataforma EkipTrade, bem como os direitos e obrigações dos utilizadores.",
+      "section1Content": "Estes Termos de Uso definem as condições de utilização da plataforma GeoItalyAgro, bem como os direitos e obrigações dos utilizadores.",
       "section2Title": "2. Acesso à plataforma",
       "section2Content": "O acesso à plataforma é gratuito para compradores. A publicação de anúncios requer a criação de uma conta de vendedor. O utilizador compromete-se a fornecer informações precisas e a mantê-las atualizadas.",
       "section3Title": "3. Anúncios",
       "section3Content": "Os vendedores comprometem-se a publicar anúncios precisos e não enganosos. As fotos devem representar fielmente o equipamento oferecido. Qualquer anúncio fraudulento será removido e pode resultar na suspensão da conta.",
       "section4Title": "4. Responsabilidades",
-      "section4Content": "A EkipTrade atua como intermediária e não pode ser responsabilizada por transações realizadas entre utilizadores. Cada utilizador é responsável por verificar as informações do anúncio e a qualidade do equipamento.",
+      "section4Content": "A GeoItalyAgro atua como intermediária e não pode ser responsabilizada por transações realizadas entre utilizadores. Cada utilizador é responsável por verificar as informações do anúncio e a qualidade do equipamento.",
       "section5Title": "5. Propriedade intelectual",
       "section5Content": "Todos os elementos da plataforma (logotipos, textos, imagens) são protegidos por direitos de propriedade intelectual. Qualquer reprodução sem autorização é proibida.",
       "section6Title": "6. Modificação dos termos",
-      "section6Content": "A EkipTrade reserva-se o direito de modificar estes Termos a qualquer momento. Os utilizadores serão informados de qualquer modificação substancial.",
+      "section6Content": "A GeoItalyAgro reserva-se o direito de modificar estes Termos a qualquer momento. Os utilizadores serão informados de qualquer modificação substancial.",
       "section7Title": "7. Contacto",
       "section7Content": "Para qualquer questão sobre estes Termos, pode contactar-nos em:"
     },
@@ -735,19 +735,19 @@
       "title": "Condições Gerais de Compra",
       "lastUpdate": "Última atualização: Março 2026",
       "section1Title": "1. Âmbito de aplicação",
-      "section1Content": "As presentes Condições Gerais de Compra (CGC) aplicam-se a todas as encomendas realizadas na plataforma EkipTrade. Ao efetuar uma encomenda, o comprador aceita sem reservas estas condições.",
+      "section1Content": "As presentes Condições Gerais de Compra (CGC) aplicam-se a todas as encomendas realizadas na plataforma GeoItalyAgro. Ao efetuar uma encomenda, o comprador aceita sem reservas estas condições.",
       "section2Title": "2. Encomendas",
-      "section2Content": "Qualquer encomenda efetuada na EkipTrade constitui um compromisso firme de compra. O comprador compromete-se a fornecer informações precisas ao encomendar. A confirmação da encomenda é enviada por email.",
+      "section2Content": "Qualquer encomenda efetuada na GeoItalyAgro constitui um compromisso firme de compra. O comprador compromete-se a fornecer informações precisas ao encomendar. A confirmação da encomenda é enviada por email.",
       "section3Title": "3. Preços e pagamento",
       "section3Content": "Os preços indicados são em euros, sem impostos e custos de envio, salvo indicação contrária. O pagamento é efetuado por transferência bancária ou PayPal. A encomenda só é processada após receção efetiva do pagamento.",
       "section4Title": "4. Entrega",
-      "section4Content": "A EkipTrade oferece até 150€ em custos de envio em todas as encomendas. Se o custo de entrega ultrapassar este valor, o suplemento é comunicado ao comprador após verificação do pagamento, antes do envio.",
+      "section4Content": "A GeoItalyAgro oferece até 150€ em custos de envio em todas as encomendas. Se o custo de entrega ultrapassar este valor, o suplemento é comunicado ao comprador após verificação do pagamento, antes do envio.",
       "section5Title": "5. Receção e conformidade",
       "section5Content": "O comprador deve verificar o estado do equipamento na receção. Qualquer anomalia deve ser comunicada nas 48 horas seguintes à entrega por email com fotos de suporte.",
       "section6Title": "6. Garantias",
       "section6Content": "Os equipamentos novos beneficiam da garantia legal de conformidade de 2 anos. Os equipamentos usados beneficiam de uma garantia mínima de 6 meses conforme a legislação europeia.",
       "section7Title": "7. Responsabilidade",
-      "section7Content": "A EkipTrade não será responsável por danos indiretos resultantes da utilização do equipamento adquirido. A responsabilidade limita-se ao valor da encomenda.",
+      "section7Content": "A GeoItalyAgro não será responsável por danos indiretos resultantes da utilização do equipamento adquirido. A responsabilidade limita-se ao valor da encomenda.",
       "section8Title": "8. Contacto",
       "section8Content": "Para qualquer questão sobre as presentes CGC, pode contactar-nos em:"
     },
@@ -834,14 +834,14 @@
       "email": "Email",
       "website": "Site web",
       "directorTitle": "2. Diretor da publicação",
-      "directorContent": "O diretor da publicação do site ekip-trade.com é o representante legal da EkipTrade.",
+      "directorContent": "O diretor da publicação do site ekip-trade.com é o representante legal da GeoItalyAgro.",
       "hostingTitle": "3. Alojamento",
       "hostName": "Fornecedor de alojamento",
       "hostWebsite": "Site web",
       "ipTitle": "3. Propriedade intelectual",
-      "ipContent": "Todo o conteúdo do site ekip-trade.com (textos, imagens, gráficos, logótipo, ícones, etc.) é propriedade exclusiva da EkipTrade ou dos seus parceiros. Qualquer reprodução, representação, modificação, publicação ou adaptação de todo ou parte dos elementos do site, por qualquer meio ou processo, é proibida sem autorização prévia por escrito.",
+      "ipContent": "Todo o conteúdo do site ekip-trade.com (textos, imagens, gráficos, logótipo, ícones, etc.) é propriedade exclusiva da GeoItalyAgro ou dos seus parceiros. Qualquer reprodução, representação, modificação, publicação ou adaptação de todo ou parte dos elementos do site, por qualquer meio ou processo, é proibida sem autorização prévia por escrito.",
       "liabilityTitle": "4. Limitação de responsabilidade",
-      "liabilityContent": "A EkipTrade esforça-se por garantir a exatidão das informações publicadas no site. No entanto, não pode ser responsabilizada por omissões, inexatidões ou falta de atualização. A EkipTrade declina toda a responsabilidade por danos resultantes do acesso ou utilização do site.",
+      "liabilityContent": "A GeoItalyAgro esforça-se por garantir a exatidão das informações publicadas no site. No entanto, não pode ser responsabilizada por omissões, inexatidões ou falta de atualização. A GeoItalyAgro declina toda a responsabilidade por danos resultantes do acesso ou utilização do site.",
       "dataTitle": "5. Proteção de dados pessoais",
       "dataContent": "Em conformidade com o RGPD (Regulamento UE 2016/679), tem o direito de acesso, retificação, eliminação e portabilidade dos seus dados pessoais. Para exercer estes direitos, contacte-nos em:",
       "lawTitle": "6. Lei aplicável",
@@ -932,7 +932,7 @@
       },
       "defective": {
         "title": "Produto defeituoso ou não conforme",
-        "description": "Se o produto for defeituoso ou não corresponder à descrição, os custos de devolução são cobertos pela EkipTrade. Organizaremos a recolha ou reembolsaremos os custos de envio."
+        "description": "Se o produto for defeituoso ou não corresponder à descrição, os custos de devolução são cobertos pela GeoItalyAgro. Organizaremos a recolha ou reembolsaremos os custos de envio."
       },
       "note": {
         "title": "Nota:",

@@ -332,7 +332,7 @@
     "activeListings": "Active listings",
     "verifiedListings": "Verified listings",
     "partnerSellers": "Partner sellers",
-    "bannerAlt": "New and used agricultural and industrial equipment - EkipTrade"
+    "bannerAlt": "New and used agricultural and industrial equipment - GeoItalyAgro"
   },
   "banners": {
     "verifiedQualityAlt": "Verified quality - Every machine inspected and certified",
@@ -494,7 +494,7 @@
       "description": "Your order has been successfully registered",
       "orderReference": "Order reference",
       "invoiceTitle": "Your invoice is available",
-      "invoiceDescription": "Your invoice is available in your EkipTrade account and will also be sent to your email address.",
+      "invoiceDescription": "Your invoice is available in your GeoItalyAgro account and will also be sent to your email address.",
       "nextSteps": "Next steps:",
       "step1": "Make your bank transfer with the provided details",
       "step2": "You will receive a confirmation email at",
@@ -550,87 +550,87 @@
   "seo": {
     "home": {
       "title": "New and Used Agricultural and Industrial Equipment Marketplace",
-      "description": "EkipTrade - Buy and sell new and used agricultural and industrial equipment. Thousands of tractors, harvesters, and machinery from verified professional sellers.",
+      "description": "GeoItalyAgro - Buy and sell new and used agricultural and industrial equipment. Thousands of tractors, harvesters, and machinery from verified professional sellers.",
       "keywords": "tractor, harvester, farm equipment, construction machinery, spare parts, handling, plough, seeder, sprayer, trailer, used, new, Europe"
     },
     "about": {
       "title": "About Us",
-      "description": "Discover EkipTrade, the leading marketplace for used agricultural and industrial equipment in Europe. Our mission, values, and community of over 5,000 professionals.",
+      "description": "Discover GeoItalyAgro, the leading marketplace for used agricultural and industrial equipment in Europe. Our mission, values, and community of over 5,000 professionals.",
       "keywords": "marketplace, farm equipment, used, Europe, verified sellers, professional"
     },
     "howItWorks": {
       "title": "How It Works",
-      "description": "Learn how to buy or sell agricultural and industrial equipment on EkipTrade. Simple 4-step process: search, contact, negotiate, and finalize your transaction.",
+      "description": "Learn how to buy or sell agricultural and industrial equipment on GeoItalyAgro. Simple 4-step process: search, contact, negotiate, and finalize your transaction.",
       "keywords": "buy, sell, farm equipment, process, transaction, secure"
     },
     "faq": {
       "title": "FAQ - Frequently Asked Questions",
-      "description": "Find answers to your questions about EkipTrade. How to post a listing, contact sellers, payment methods, warranties, and more.",
+      "description": "Find answers to your questions about GeoItalyAgro. How to post a listing, contact sellers, payment methods, warranties, and more.",
       "keywords": "FAQ, questions, payment, warranty, listing, seller, delivery"
     },
     "contact": {
       "title": "Contact Us",
-      "description": "Contact the EkipTrade team. We're here to answer your questions and help you with your agricultural and industrial equipment purchases or sales.",
+      "description": "Contact the GeoItalyAgro team. We're here to answer your questions and help you with your agricultural and industrial equipment purchases or sales.",
       "keywords": "contact, support, help, farm equipment, customer service"
     },
     "terms": {
       "title": "Terms of Use",
-      "description": "Read EkipTrade's terms of use. Platform access conditions, user rights and obligations, listing rules, and responsibilities.",
+      "description": "Read GeoItalyAgro's terms of use. Platform access conditions, user rights and obligations, listing rules, and responsibilities.",
       "keywords": "terms, conditions, platform, rules, usage"
     },
     "purchaseTerms": {
       "title": "Purchase Terms",
-      "description": "Read EkipTrade's general purchase terms. Pricing, orders, payment, delivery, warranties and responsibilities for agricultural equipment purchases.",
+      "description": "Read GeoItalyAgro's general purchase terms. Pricing, orders, payment, delivery, warranties and responsibilities for agricultural equipment purchases.",
       "keywords": "purchase terms, order, payment, delivery, warranty"
     },
     "refundPolicy": {
       "title": "Refund Policy",
-      "description": "Learn about EkipTrade's refund policy. Eligibility conditions, timelines, and refund methods for agricultural and industrial equipment.",
+      "description": "Learn about GeoItalyAgro's refund policy. Eligibility conditions, timelines, and refund methods for agricultural and industrial equipment.",
       "keywords": "refund, policy, timeline, conditions, agricultural equipment"
     },
     "privacy": {
       "title": "Privacy Policy",
-      "description": "Learn about how EkipTrade collects, uses, and protects your personal data. Your GDPR rights and our data security practices.",
+      "description": "Learn about how GeoItalyAgro collects, uses, and protects your personal data. Your GDPR rights and our data security practices.",
       "keywords": "privacy, GDPR, personal data, security, protection"
     },
     "cookies": {
       "title": "Cookie Policy",
-      "description": "Manage your cookie preferences on EkipTrade. Learn about the types of cookies we use and how to control them.",
+      "description": "Manage your cookie preferences on GeoItalyAgro. Learn about the types of cookies we use and how to control them.",
       "keywords": "cookies, preferences, browsing, consent"
     },
     "legalNotice": {
       "title": "Legal Notice",
-      "description": "Legal information about EkipTrade. Company name, VAT number, registered office, hosting and intellectual property.",
-      "keywords": "legal notice, VAT, registered office, company information, EkipTrade"
+      "description": "Legal information about GeoItalyAgro. Company name, VAT number, registered office, hosting and intellectual property.",
+      "keywords": "legal notice, VAT, registered office, company information, GeoItalyAgro"
     },
     "categories": {
       "title": "All Categories - Agricultural & Industrial Equipment",
-      "description": "Browse all categories of agricultural and industrial equipment on EkipTrade. Tractors, harvesters, tillage, handling, construction machinery, spare parts and more.",
+      "description": "Browse all categories of agricultural and industrial equipment on GeoItalyAgro. Tractors, harvesters, tillage, handling, construction machinery, spare parts and more.",
       "keywords": "categories, tractors, harvesters, tillage, handling, construction, spare parts, agricultural equipment"
     },
     "listings": {
       "title": "All Listings",
-      "description": "Browse all agricultural and industrial equipment listings on EkipTrade. Tractors, harvesters, tillage equipment, and more from verified sellers.",
+      "description": "Browse all agricultural and industrial equipment listings on GeoItalyAgro. Tractors, harvesters, tillage equipment, and more from verified sellers.",
       "keywords": "listings, tractor, harvester, plough, seeder, used, new, spare parts, construction machinery, handling"
     },
     "listingDetail": {
       "title": "Agricultural and Industrial Equipment for Sale",
-      "description": "View detailed information about this agricultural and industrial equipment listing on EkipTrade. Contact the seller directly for more information.",
+      "description": "View detailed information about this agricultural and industrial equipment listing on GeoItalyAgro. Contact the seller directly for more information.",
       "keywords": "listing, sale, farm equipment, industrial, used, price, seller"
     },
     "checkout": {
       "title": "Checkout",
-      "description": "Complete your agricultural and industrial equipment purchase on EkipTrade. Secure payment via bank transfer.",
+      "description": "Complete your agricultural and industrial equipment purchase on GeoItalyAgro. Secure payment via bank transfer.",
       "keywords": "checkout, payment, bank transfer, secure, purchase"
     },
     "cart": {
       "title": "My Cart",
-      "description": "View your shopping cart on EkipTrade. Securely complete your agricultural and industrial equipment order.",
+      "description": "View your shopping cart on GeoItalyAgro. Securely complete your agricultural and industrial equipment order.",
       "keywords": "cart, order, purchase, farm equipment"
     },
     "orderConfirmation": {
       "title": "Order Confirmation",
-      "description": "Your order has been confirmed. View your order details and track your delivery on EkipTrade.",
+      "description": "Your order has been confirmed. View your order details and track your delivery on GeoItalyAgro.",
       "keywords": "order confirmation, order tracking, delivery, invoice"
     }
   },
@@ -640,8 +640,8 @@
       "description": "Browse all our available categories of agricultural and industrial equipment"
     },
     "about": {
-      "title": "About EkipTrade",
-      "intro1": "EkipTrade is the leading marketplace for buying and selling used agricultural and industrial equipment in Europe. Since our creation, we connect thousands of professionals to facilitate their transactions.",
+      "title": "About GeoItalyAgro",
+      "intro1": "GeoItalyAgro is the leading marketplace for buying and selling used agricultural and industrial equipment in Europe. Since our creation, we connect thousands of professionals to facilitate their transactions.",
       "intro2": "Our mission is simple: to offer a reliable, transparent and efficient platform to help farmers, dealers and companies find the equipment they need at the best price.",
       "valuesTitle": "Our values",
       "trust": "Trust",
@@ -726,17 +726,17 @@
       "title": "Terms of Use",
       "lastUpdate": "Last update: January 2026",
       "section1Title": "1. Purpose",
-      "section1Content": "These Terms of Use define the terms and conditions of use of the EkipTrade platform, as well as the rights and obligations of users.",
+      "section1Content": "These Terms of Use define the terms and conditions of use of the GeoItalyAgro platform, as well as the rights and obligations of users.",
       "section2Title": "2. Platform Access",
       "section2Content": "Access to the platform is free for buyers. Posting listings requires creating a seller account. The user agrees to provide accurate information and keep it up to date.",
       "section3Title": "3. Listings",
       "section3Content": "Sellers agree to publish accurate and non-misleading listings. Photos must accurately represent the equipment offered. Any fraudulent listing will be removed and may result in account suspension.",
       "section4Title": "4. Responsibilities",
-      "section4Content": "EkipTrade acts as an intermediary and cannot be held responsible for transactions made between users. Each user is responsible for verifying listing information and equipment quality.",
+      "section4Content": "GeoItalyAgro acts as an intermediary and cannot be held responsible for transactions made between users. Each user is responsible for verifying listing information and equipment quality.",
       "section5Title": "5. Intellectual Property",
       "section5Content": "All elements of the platform (logos, texts, images) are protected by intellectual property law. Any reproduction without authorization is prohibited.",
       "section6Title": "6. Terms Modification",
-      "section6Content": "EkipTrade reserves the right to modify these Terms at any time. Users will be informed of any substantial modification.",
+      "section6Content": "GeoItalyAgro reserves the right to modify these Terms at any time. Users will be informed of any substantial modification.",
       "section7Title": "7. Contact",
       "section7Content": "For any questions regarding these Terms, you can contact us at:"
     },
@@ -744,19 +744,19 @@
       "title": "General Purchase Terms",
       "lastUpdate": "Last update: March 2026",
       "section1Title": "1. Scope",
-      "section1Content": "These General Purchase Terms apply to all orders placed on the EkipTrade platform. By placing an order, the buyer accepts these terms without reservation.",
+      "section1Content": "These General Purchase Terms apply to all orders placed on the GeoItalyAgro platform. By placing an order, the buyer accepts these terms without reservation.",
       "section2Title": "2. Orders",
-      "section2Content": "Any order placed on EkipTrade constitutes a firm commitment to purchase. The buyer agrees to provide accurate information when ordering (identity, delivery address, contact details). Order confirmation is sent by email.",
+      "section2Content": "Any order placed on GeoItalyAgro constitutes a firm commitment to purchase. The buyer agrees to provide accurate information when ordering (identity, delivery address, contact details). Order confirmation is sent by email.",
       "section3Title": "3. Pricing and Payment",
       "section3Content": "Prices displayed are in euros, excluding taxes and shipping costs unless otherwise stated. Payment is made by bank transfer or PayPal. The order is only processed upon effective receipt of payment.",
       "section4Title": "4. Delivery",
-      "section4Content": "EkipTrade offers up to €150 in shipping costs on all orders. If the delivery cost exceeds this amount, the surplus is communicated to the buyer after payment verification, before shipment. Delivery times are indicative and vary by destination.",
+      "section4Content": "GeoItalyAgro offers up to €150 in shipping costs on all orders. If the delivery cost exceeds this amount, the surplus is communicated to the buyer after payment verification, before shipment. Delivery times are indicative and vary by destination.",
       "section5Title": "5. Receipt and Compliance",
       "section5Content": "The buyer must check the condition of the equipment upon receipt. Any anomaly (damaged package, non-conforming equipment) must be reported within 48 hours of delivery by email to our customer service, with supporting photos.",
       "section6Title": "6. Warranties",
       "section6Content": "New equipment benefits from the 2-year legal warranty of conformity. Used equipment benefits from a minimum 6-month warranty in accordance with European legislation. These warranties cover defects of conformity existing at the time of delivery.",
       "section7Title": "7. Liability",
-      "section7Content": "EkipTrade shall not be held liable for indirect damages resulting from the use of purchased equipment. EkipTrade's liability is limited to the amount of the order concerned.",
+      "section7Content": "GeoItalyAgro shall not be held liable for indirect damages resulting from the use of purchased equipment. GeoItalyAgro's liability is limited to the amount of the order concerned.",
       "section8Title": "8. Contact",
       "section8Content": "For any questions regarding these Purchase Terms, you can contact us at:"
     },
@@ -843,14 +843,14 @@
       "email": "Email",
       "website": "Website",
       "directorTitle": "2. Publication Director",
-      "directorContent": "The publication director of ekip-trade.com is the legal representative of EkipTrade.",
+      "directorContent": "The publication director of ekip-trade.com is the legal representative of GeoItalyAgro.",
       "hostingTitle": "3. Hosting",
       "hostName": "Hosting provider",
       "hostWebsite": "Website",
       "ipTitle": "3. Intellectual Property",
-      "ipContent": "All content on ekip-trade.com (texts, images, graphics, logo, icons, etc.) is the exclusive property of EkipTrade or its partners. Any reproduction, representation, modification, publication or adaptation of all or part of the site elements, by any means or process, is prohibited without prior written authorisation.",
+      "ipContent": "All content on ekip-trade.com (texts, images, graphics, logo, icons, etc.) is the exclusive property of GeoItalyAgro or its partners. Any reproduction, representation, modification, publication or adaptation of all or part of the site elements, by any means or process, is prohibited without prior written authorisation.",
       "liabilityTitle": "4. Limitation of Liability",
-      "liabilityContent": "EkipTrade endeavours to ensure the accuracy of information published on the site. However, it cannot be held responsible for omissions, inaccuracies or failures to update. EkipTrade disclaims all liability for any damage resulting from access to or use of the site.",
+      "liabilityContent": "GeoItalyAgro endeavours to ensure the accuracy of information published on the site. However, it cannot be held responsible for omissions, inaccuracies or failures to update. GeoItalyAgro disclaims all liability for any damage resulting from access to or use of the site.",
       "dataTitle": "5. Personal Data Protection",
       "dataContent": "In accordance with the GDPR (EU Regulation 2016/679), you have the right to access, rectify, delete and port your personal data. To exercise these rights, contact us at:",
       "lawTitle": "6. Applicable Law",
@@ -941,7 +941,7 @@
       },
       "defective": {
         "title": "Defective or non-conforming product",
-        "description": "If the product is defective or does not match the description, return shipping costs are covered by EkipTrade. We will arrange collection or reimburse you for shipping costs."
+        "description": "If the product is defective or does not match the description, return shipping costs are covered by GeoItalyAgro. We will arrange collection or reimburse you for shipping costs."
       },
       "note": {
         "title": "Note:",
