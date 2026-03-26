@@ -126,7 +126,7 @@ const handler = async (req: Request): Promise<Response> => {
           <div class="content">
             <div class="section">
               <div class="section-title">📦 Produit concerné</div>
-              <div class="row"><span class="label">Produit :</span><span class="value">${data.productTitle}</span></div>
+              <div class="row"><span class="label">Produit :</span><span class="value">${safe.productTitle}</span></div>
               <div class="row"><span class="label">Prix total :</span><span class="value">${formatPrice(data.productPrice)}</span></div>
               <div class="row"><span class="label">Durée souhaitée :</span><span class="value">${data.selectedDuration} mois</span></div>
               <div class="row"><span class="label">Mensualité estimée :</span><span class="value price">${formatPrice(data.monthlyPayment)}/mois</span></div>
@@ -135,17 +135,17 @@ const handler = async (req: Request): Promise<Response> => {
             
             <div class="section">
               <div class="section-title">👤 Informations client</div>
-              <div class="row"><span class="label">Nom :</span><span class="value">${data.firstName} ${data.lastName}</span></div>
-              <div class="row"><span class="label">Email :</span><span class="value"><a href="mailto:${data.email}">${data.email}</a></span></div>
-              <div class="row"><span class="label">Téléphone :</span><span class="value"><a href="tel:${data.phone}">${data.phone}</a></span></div>
-              ${data.company ? `<div class="row"><span class="label">Entreprise :</span><span class="value">${data.company}</span></div>` : ''}
-              ${data.siret ? `<div class="row"><span class="label">SIRET :</span><span class="value">${data.siret}</span></div>` : ''}
+              <div class="row"><span class="label">Nom :</span><span class="value">${safe.firstName} ${safe.lastName}</span></div>
+              <div class="row"><span class="label">Email :</span><span class="value"><a href="mailto:${safe.email}">${safe.email}</a></span></div>
+              <div class="row"><span class="label">Téléphone :</span><span class="value"><a href="tel:${safe.phone}">${safe.phone}</a></span></div>
+              ${data.company ? `<div class="row"><span class="label">Entreprise :</span><span class="value">${safe.company}</span></div>` : ''}
+              ${data.siret ? `<div class="row"><span class="label">SIRET :</span><span class="value">${safe.siret}</span></div>` : ''}
             </div>
             
             ${data.additionalInfo ? `
             <div class="section">
               <div class="section-title">💬 Informations complémentaires</div>
-              <p>${data.additionalInfo}</p>
+              <p>${safe.additionalInfo}</p>
             </div>
             ` : ''}
             
