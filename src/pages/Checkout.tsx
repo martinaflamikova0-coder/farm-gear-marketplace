@@ -90,8 +90,7 @@ const Checkout = () => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  // Select bank account based on total amount from database
-  const selectedBankAccount = bankAccounts ? getBankAccountForAmount(bankAccounts, total) : null;
+  // selectedBankAccount is now fetched directly via RPC based on total amount
 
   const formatPrice = (price: number) => {
     const locale = currentLang === 'en' ? 'en-GB' : 
