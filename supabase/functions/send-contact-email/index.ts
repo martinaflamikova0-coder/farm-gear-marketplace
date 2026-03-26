@@ -111,8 +111,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to the team
     const teamEmail = await resend.emails.send({
-      from: "GeoItalyAgro Contact <infos@ekip-trade.com>",
-      to: ["infos@ekip-trade.com"],
+      from: "GeoItalyAgro Contact <info@geoitalyagro.com>",
+      to: ["info@geoitalyagro.com"],
       reply_to: email,
       subject: `${localizedContent.teamSubject}: ${subject}`,
       html: `
@@ -142,7 +142,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send auto-reply to customer
     const customerEmail = await resend.emails.send({
-      from: "GeoItalyAgro <infos@ekip-trade.com>",
+      from: "GeoItalyAgro <info@geoitalyagro.com>",
       to: [email],
       subject: localizedContent.autoReplySubject,
       html: `
@@ -161,7 +161,7 @@ const handler = async (req: Request): Promise<Response> => {
           </div>
           <div style="padding: 20px; background: #f9f9f9; text-align: center; font-size: 12px; color: #666;">
             <p>GEO ITALY s.r.l. — Via G. Abbate 151, 14054 Castagnole delle Lanze (AT), Italia</p>
-            <p>P.IVA: IT01540910054 | +39 0141 877 368 | infos@ekip-trade.com</p>
+            <p>P.IVA: IT01540910054 | +39 0141 877 368 | info@geoitalyagro.com</p>
           </div>
         </div>
       `,

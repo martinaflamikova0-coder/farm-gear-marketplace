@@ -110,8 +110,8 @@ const RefundPolicy = () => {
                 </CardHeader>
                 <CardContent className="text-muted-foreground">
                   <p>{t('pages.refundPolicy.contactContent')}</p>
-                  <a href="mailto:infos@ekip-trade.com" className="text-primary hover:underline font-medium">
-                    infos@ekip-trade.com
+                  <a href="mailto:info@geoitalyagro.com" className="text-primary hover:underline font-medium">
+                    info@geoitalyagro.com
                   </a>
                 </CardContent>
               </Card>

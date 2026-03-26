@@ -341,7 +341,7 @@ const handler = async (req: Request): Promise<Response> => {
                 GEO ITALY s.r.l. — Via G. Abbate 151, 14054 Castagnole delle Lanze (AT), Italia
               </p>
               <p style="margin: 0 0 5px 0; color: #666666; font-size: 12px;">
-                P.IVA: IT01540910054 | infos@ekip-trade.com | +39 0141 877 368
+                P.IVA: IT01540910054 | info@geoitalyagro.com | +39 0141 877 368
               </p>
               <p style="margin: 0; color: #9ca3af; font-size: 12px;">
                 © ${new Date().getFullYear()} GeoItalyAgro. All rights reserved.
@@ -364,7 +364,7 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "GeoItalyAgro <infos@ekip-trade.com>",
+        from: "GeoItalyAgro <info@geoitalyagro.com>",
         to: [customerEmail],
         subject: `${t.subject} #${orderId.slice(0, 8).toUpperCase()}`,
         html: emailHtml,
@@ -387,8 +387,8 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "GeoItalyAgro <infos@ekip-trade.com>",
-        to: ["infos@ekip-trade.com"],
+        from: "GeoItalyAgro <info@geoitalyagro.com>",
+        to: ["info@geoitalyagro.com"],
         subject: `[Admin] Notification frais de port envoyée - Commande #${orderId.slice(0, 8).toUpperCase()}`,
         html: `
           <h2>Notification de frais de port envoyée</h2>

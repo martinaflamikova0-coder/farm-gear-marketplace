@@ -202,7 +202,7 @@ const ChatWidget = () => {
 
                 {/* Email option */}
                 <a
-                  href={`mailto:infos@ekip-trade.com?subject=${encodeURIComponent(t('chat.emailSubject', 'Demande depuis le site'))}`}
+                  href={`mailto:info@geoitalyagro.com?subject=${encodeURIComponent(t('chat.emailSubject', 'Demande depuis le site'))}`}
                   className="flex items-center gap-4 bg-muted hover:bg-muted/80 rounded-xl p-4 transition-colors group"
                 >
                   <div className="bg-primary/10 rounded-full p-2.5 flex-shrink-0">
@@ -212,7 +212,7 @@ const ChatWidget = () => {
                     <p className="font-medium text-foreground text-sm group-hover:text-primary transition-colors">
                       {t('chat.emailOption', 'Envoyez-nous un email')}
                     </p>
-                    <p className="text-muted-foreground text-xs">infos@ekip-trade.com</p>
+                    <p className="text-muted-foreground text-xs">info@geoitalyagro.com</p>
                   </div>
                 </a>
 

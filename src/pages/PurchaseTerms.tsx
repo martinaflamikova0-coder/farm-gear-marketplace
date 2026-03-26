@@ -33,8 +33,8 @@ const PurchaseTerms = () => {
                 <p className="text-muted-foreground leading-relaxed">
                   {t(`pages.purchaseTerms.${section}Content`)}
                   {section === 'section8' && (
-                    <a href="mailto:infos@ekip-trade.com" className="text-primary hover:underline ml-1">
-                      infos@ekip-trade.com
+                    <a href="mailto:info@geoitalyagro.com" className="text-primary hover:underline ml-1">
+                      info@geoitalyagro.com
                     </a>
                   )}
                 </p>

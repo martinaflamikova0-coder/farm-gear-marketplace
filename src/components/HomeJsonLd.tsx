@@ -30,7 +30,7 @@ const HomeJsonLd = () => {
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+39-0141-877368',
-      email: 'infos@ekip-trade.com',
+      email: 'info@geoitalyagro.com',
       contactType: 'customer service',
       availableLanguage: ['French', 'English', 'German', 'Spanish', 'Italian', 'Portuguese'],
     },

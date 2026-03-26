@@ -78,12 +78,12 @@ const Contact = () => {
           mainEntity: {
             '@type': 'Organization',
             name: 'GeoItalyAgro',
-            email: 'infos@ekip-trade.com',
+            email: 'info@geoitalyagro.com',
             contactPoint: {
               '@type': 'ContactPoint',
               telephone: '+39 0141 877 368',
               contactType: 'customer service',
-              email: 'infos@ekip-trade.com',
+              email: 'info@geoitalyagro.com',
               availableLanguage: ['English', 'French', 'German', 'Spanish', 'Italian', 'Portuguese'],
             },
           },
