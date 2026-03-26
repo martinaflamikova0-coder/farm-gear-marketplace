@@ -1,6 +1,9 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
+const escapeHtml = (str: string): string =>
+  str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
@@ -181,7 +184,9 @@ const handler = async (req: Request): Promise<Response> => {
       console.log(`Order confirmation request by user ${userId}`);
     }
 
-    const { orderId, customerEmail, customerName, orderTotal, paymentMethod, language = 'fr' }: OrderConfirmationRequest = await req.json();
+    const { orderId, customerEmail, customerName: rawCustomerName, orderTotal, paymentMethod, language = 'fr' }: OrderConfirmationRequest = await req.json();
+    const customerName = escapeHtml(rawCustomerName || '');
+    const safeCustomerEmail = escapeHtml(customerEmail || '');
 
     if (!orderId || !customerEmail) {
       throw new Error("Missing required fields: orderId, customerEmail");
@@ -351,7 +356,7 @@ const handler = async (req: Request): Promise<Response> => {
     const adminHtml = `
       <h2>Nouvelle commande reçue!</h2>
       <p><strong>Commande:</strong> #${shortOrderId}</p>
-      <p><strong>Client:</strong> ${customerName} (${customerEmail})</p>
+      <p><strong>Client:</strong> ${customerName} (${safeCustomerEmail})</p>
       <p><strong>Total:</strong> ${orderTotal.toLocaleString('fr-FR')} €</p>
       <p><strong>Paiement:</strong> ${paymentLabel}</p>
       <p><strong>Langue:</strong> ${language.toUpperCase()}</p>

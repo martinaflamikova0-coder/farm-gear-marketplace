@@ -3,6 +3,9 @@ import { Resend } from "https://esm.sh/resend@2.0.0";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
+const escapeHtml = (str: string): string =>
+  str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
@@ -108,27 +111,31 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const localizedContent = getLocalizedContent(language);
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeSubject = escapeHtml(subject);
+    const safeMessage = escapeHtml(message);
 
     // Send email to the team
     const teamEmail = await resend.emails.send({
       from: "GeoItalyAgro Contact <info@geoitalyagro.com>",
       to: ["info@geoitalyagro.com"],
       reply_to: email,
-      subject: `${localizedContent.teamSubject}: ${subject}`,
+      subject: `${localizedContent.teamSubject}: ${safeSubject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: #166534; color: white; padding: 20px; text-align: center;">
             <h1 style="margin: 0;">Nouveau Message de Contact</h1>
           </div>
           <div style="padding: 20px; background: #f9f9f9;">
-            <p><strong>Nom:</strong> ${name}</p>
-            <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-            <p><strong>Sujet:</strong> ${subject}</p>
-            <p><strong>Langue:</strong> ${language.toUpperCase()}</p>
+            <p><strong>Nom:</strong> ${safeName}</p>
+            <p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
+            <p><strong>Sujet:</strong> ${safeSubject}</p>
+            <p><strong>Langue:</strong> ${escapeHtml(language).toUpperCase()}</p>
             <hr style="border: 1px solid #ddd; margin: 20px 0;">
             <p><strong>Message:</strong></p>
             <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #ddd;">
-              ${message.replace(/\n/g, '<br>')}
+              ${safeMessage.replace(/\n/g, '<br>')}
             </div>
           </div>
           <div style="padding: 15px; background: #166534; color: white; text-align: center; font-size: 12px;">
@@ -155,8 +162,8 @@ const handler = async (req: Request): Promise<Response> => {
             <hr style="border: 1px solid #eee; margin: 25px 0;">
             <p style="color: #666; font-size: 14px;"><strong>Votre message:</strong></p>
             <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; color: #333; font-size: 14px;">
-              <p><strong>Sujet:</strong> ${subject}</p>
-              <p>${message.replace(/\n/g, '<br>')}</p>
+              <p><strong>Sujet:</strong> ${safeSubject}</p>
+              <p>${safeMessage.replace(/\n/g, '<br>')}</p>
             </div>
           </div>
           <div style="padding: 20px; background: #f9f9f9; text-align: center; font-size: 12px; color: #666;">
