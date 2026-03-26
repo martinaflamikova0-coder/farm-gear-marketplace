@@ -35,7 +35,7 @@ const Footer = () => {
       <div className="container-custom py-8 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
           {/* Information Links */}
-          <div>
+          <div className="order-last md:order-first">
             <h3 className="font-display font-bold text-base md:text-xl mb-4 md:mb-6 tracking-wide uppercase text-primary-foreground">
               {t('footer.informations')}
             </h3>
