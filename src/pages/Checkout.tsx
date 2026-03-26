@@ -442,7 +442,7 @@ const Checkout = () => {
   };
 
   const isPaypalConfigured = paypalSettings?.is_active && paypalSettings?.client_id;
-  const hasBankAccounts = bankAccounts && bankAccounts.length > 0;
+  const hasBankAccounts = !!selectedBankAccount;
 
   // Redirect if cart is empty (except on confirmation step)
   if (items.length === 0 && step !== 'confirmation') {
