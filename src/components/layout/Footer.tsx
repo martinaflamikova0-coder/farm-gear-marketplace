@@ -60,7 +60,7 @@ const Footer = () => {
               <img 
                 src={logoGeoItalyAgro} 
                 alt="GeoItalyAgro" 
-                className="h-11 md:h-14 w-auto object-contain group-hover:opacity-80 transition-opacity"
+                className="h-9 md:h-14 w-auto object-contain group-hover:opacity-80 transition-opacity"
                 loading="lazy"
               />
               <span className="font-display font-bold text-lg md:text-xl text-primary-foreground group-hover:opacity-80 transition-opacity">GeoItalyAgro</span>
