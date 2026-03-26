@@ -190,12 +190,12 @@ const handler = async (req: Request): Promise<Response> => {
             <h1>✅ Demande de financement reçue</h1>
           </div>
           <div class="content">
-            <p>Bonjour ${data.firstName},</p>
+            <p>Bonjour ${safe.firstName},</p>
             
             <p>Nous avons bien reçu votre demande de financement pour :</p>
             
             <div class="highlight">
-              <strong>${data.productTitle}</strong><br>
+              <strong>${safe.productTitle}</strong><br>
               Prix : ${formatPrice(data.productPrice)}<br>
               Durée : ${data.selectedDuration} mois<br>
               Mensualité estimée : <span class="price">${formatPrice(data.monthlyPayment)}/mois</span>
