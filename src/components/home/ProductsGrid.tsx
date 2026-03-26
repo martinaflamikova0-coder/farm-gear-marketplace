@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Skeleton } from '@/components/ui/skeleton';
 import ProductCard from '@/components/products/ProductCard';
 import { useProducts } from '@/hooks/useProducts';
+import { trimToCompleteRows, PRODUCT_GRID_CLASSES } from '@/lib/gridUtils';
 
 interface ProductsGridProps {
   titleKey: string;
@@ -11,7 +12,7 @@ interface ProductsGridProps {
   showViewAll?: boolean;
 }
 
-const ProductsGrid = ({ titleKey, subtitleKey, category, limit = 8 }: ProductsGridProps) => {
+const ProductsGrid = ({ titleKey, subtitleKey, category, limit = 12 }: ProductsGridProps) => {
   const { t } = useTranslation();
   const { data: products = [], isLoading } = useProducts({ category, limit });
 
@@ -20,8 +21,8 @@ const ProductsGrid = ({ titleKey, subtitleKey, category, limit = 8 }: ProductsGr
       <section className="py-8">
         <div className="container-custom">
           <Skeleton className="h-8 w-48 mb-6" />
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-            {Array.from({ length: 8 }).map((_, i) => (
+          <div className={PRODUCT_GRID_CLASSES}>
+            {Array.from({ length: 12 }).map((_, i) => (
               <Skeleton key={i} className="h-64 rounded-lg" />
             ))}
           </div>
@@ -30,7 +31,8 @@ const ProductsGrid = ({ titleKey, subtitleKey, category, limit = 8 }: ProductsGr
     );
   }
 
-  if (products.length === 0) return null;
+  const displayProducts = trimToCompleteRows(products);
+  if (displayProducts.length === 0) return null;
 
   return (
     <section className="py-8">
@@ -44,8 +46,8 @@ const ProductsGrid = ({ titleKey, subtitleKey, category, limit = 8 }: ProductsGr
           )}
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-          {products.map((product) => (
+        <div className={PRODUCT_GRID_CLASSES}>
+          {displayProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

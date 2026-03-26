@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Skeleton } from '@/components/ui/skeleton';
 import ProductCard from '@/components/products/ProductCard';
 import { useFeaturedProducts } from '@/hooks/useProducts';
+import { trimToCompleteRows, PRODUCT_GRID_CLASSES } from '@/lib/gridUtils';
 
 const FeaturedProducts = () => {
   const { t } = useTranslation();
@@ -12,8 +13,8 @@ const FeaturedProducts = () => {
       <section className="py-16 bg-secondary/30">
         <div className="container-custom">
           <Skeleton className="h-10 w-64 mb-8" />
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-            {Array.from({ length: 10 }).map((_, i) => (
+          <div className={PRODUCT_GRID_CLASSES}>
+            {Array.from({ length: 12 }).map((_, i) => (
               <Skeleton key={i} className="h-80 rounded-lg" />
             ))}
           </div>
@@ -22,7 +23,8 @@ const FeaturedProducts = () => {
     );
   }
 
-  if (featuredProducts.length === 0) return null;
+  const displayProducts = trimToCompleteRows(featuredProducts);
+  if (displayProducts.length === 0) return null;
 
   return (
     <section className="py-16 bg-secondary/30">
@@ -36,8 +38,8 @@ const FeaturedProducts = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-          {featuredProducts.map((product) => (
+        <div className={PRODUCT_GRID_CLASSES}>
+          {displayProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
