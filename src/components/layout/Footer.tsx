@@ -90,15 +90,15 @@ const Footer = () => {
             </div>
 
             {/* Payment & Certifications — compact row on mobile */}
-            <div className="flex flex-wrap items-center gap-4 pt-3 md:pt-4 border-t border-primary-foreground/10">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-primary-foreground/10 border border-primary-foreground/15">
-                <Landmark className="h-4 w-4 text-primary-foreground/70" />
+            <div className="flex items-center gap-3 md:gap-4 pt-3 md:pt-4 border-t border-primary-foreground/10">
+              <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-primary-foreground/10 border border-primary-foreground/15 flex-shrink-0">
+                <Landmark className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary-foreground/70" />
                 <span className="text-[10px] md:text-xs font-medium text-primary-foreground/70">{t('footer.bankTransfer')}</span>
               </div>
-              <div className="flex items-center gap-3">
-                <img src={isoLogo} alt="ISO 9001" className="h-5 md:h-10 w-auto object-contain brightness-0 invert opacity-70" loading="lazy" />
-                <img src={iqnetLogo} alt="IQNet" className="h-5 md:h-10 w-auto object-contain brightness-0 invert opacity-70" loading="lazy" />
-                <img src={aenorLogo} alt="AENOR" className="h-5 md:h-10 w-auto object-contain brightness-0 invert opacity-70" loading="lazy" />
+              <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
+                <img src={isoLogo} alt="ISO 9001" className="h-6 md:h-10 w-6 md:w-10 object-contain brightness-0 invert opacity-70" loading="lazy" />
+                <img src={iqnetLogo} alt="IQNet" className="h-6 md:h-10 w-6 md:w-10 object-contain brightness-0 invert opacity-70" loading="lazy" />
+                <img src={aenorLogo} alt="AENOR" className="h-6 md:h-10 w-6 md:w-10 object-contain brightness-0 invert opacity-70" loading="lazy" />
               </div>
             </div>
           </div>
