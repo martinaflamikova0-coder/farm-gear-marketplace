@@ -341,7 +341,7 @@ const handler = async (req: Request): Promise<Response> => {
                 GEO ITALY s.r.l. — Via G. Abbate 151, 14054 Castagnole delle Lanze (AT), Italia
               </p>
               <p style="margin: 0 0 5px 0; color: #666666; font-size: 12px;">
-                P.IVA: IT01540910054 | info@geoitalyagro.com | +39 0141 877 368
+                P.IVA: IT01540910054 | info@geoitalyagro.com | +39 377 389 0872
               </p>
               <p style="margin: 0; color: #9ca3af; font-size: 12px;">
                 © ${new Date().getFullYear()} GeoItalyAgro. All rights reserved.

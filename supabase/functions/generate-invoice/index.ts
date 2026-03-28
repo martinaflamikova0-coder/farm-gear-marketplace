@@ -438,7 +438,7 @@ serve(async (req) => {
     yPos -= 15;
     page.drawText("14054 Castagnole delle Lanze (AT), Italia", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
-    page.drawText("Tel: +39 0141 877 368 | Fax: 0141 875 819", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
+    page.drawText("Tel: +39 377 389 0872 | Fax: 0141 875 819", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;
     page.drawText("info@geoitalyagro.com", { x: 50, y: yPos, size: 10, font: helvetica, color: mutedColor });
     yPos -= 15;

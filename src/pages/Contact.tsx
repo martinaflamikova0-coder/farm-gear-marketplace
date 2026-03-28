@@ -81,7 +81,7 @@ const Contact = () => {
             email: 'info@geoitalyagro.com',
             contactPoint: {
               '@type': 'ContactPoint',
-              telephone: '+39 0141 877 368',
+              telephone: '+39 377 389 0872',
               contactType: 'customer service',
               email: 'info@geoitalyagro.com',
               availableLanguage: ['English', 'French', 'German', 'Spanish', 'Italian', 'Portuguese'],

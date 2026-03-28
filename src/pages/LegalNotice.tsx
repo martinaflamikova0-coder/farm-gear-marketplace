@@ -57,7 +57,7 @@ const LegalNotice = () => {
                   <div><span className="font-semibold text-foreground">REA:</span> <span className="text-muted-foreground">AT - 123564</span></div>
                   <div><span className="font-semibold text-foreground">{t('pages.legalNotice.capitalLabel', 'Capital social')}:</span> <span className="text-muted-foreground">750 000 €</span></div>
                   <div><span className="font-semibold text-foreground">{t('pages.legalNotice.registeredOffice')}:</span> <span className="text-muted-foreground">Via G. Abbate 151, 14054 Castagnole delle Lanze (AT)</span></div>
-                  <div><span className="font-semibold text-foreground">{t('pages.legalNotice.phone')}:</span> <a href="tel:+390141877368" className="text-primary hover:underline">+39 0141 877 368</a></div>
+                  <div><span className="font-semibold text-foreground">{t('pages.legalNotice.phone')}:</span> <a href="tel:+393773890872" className="text-primary hover:underline">+39 377 389 0872</a></div>
                   <div><span className="font-semibold text-foreground">Fax:</span> <span className="text-muted-foreground">0141 875 819</span></div>
                   <div><span className="font-semibold text-foreground">{t('pages.legalNotice.email')}:</span> <a href="mailto:info@geoitalyagro.com" className="text-primary hover:underline">info@geoitalyagro.com</a></div>
                   <div><span className="font-semibold text-foreground">{t('pages.legalNotice.website')}:</span> <a href="https://www.geoitalyagro.com" className="text-primary hover:underline">www.geoitalyagro.com</a></div>
