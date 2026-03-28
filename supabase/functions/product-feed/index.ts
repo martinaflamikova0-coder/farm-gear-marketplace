@@ -219,7 +219,6 @@ function buildProductEntry(product: any): string {
       ${additionalImages.map((img) => `<g:additional_image_link>${escapeXml(img)}</g:additional_image_link>`).join("\n      ")}
       ${salePriceXml || `<g:price>${priceTTC} ${CURRENCY}</g:price>`}
       <g:availability>${availability}</g:availability>
-      <g:quantity>${product.stock !== null && product.stock !== undefined ? product.stock : 1}</g:quantity>
       <g:condition>${condition}</g:condition>
       
       <g:google_product_category>${escapeXml(googleCategory)}</g:google_product_category>
