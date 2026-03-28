@@ -38,6 +38,8 @@ function getGoogleProductCategory(category: string | null, subcategory: string |
     "chargeuse": "2047",               // Construction
     "micro-tracteurs": "3602",         // Lawn Mowers (ride-on mowers, NOT Vehicles)
     "tracteurs-vignerons": "4351",     // Agricultural Machinery (vineyard tractors)
+    "falciatrice": "4351",             // Agricultural Machinery (mowers/cutters)
+    "faucheuse": "4351",               // Agricultural Machinery (mowers)
   };
   if (subcategory && subCatMap[subcategory]) return subCatMap[subcategory];
   
