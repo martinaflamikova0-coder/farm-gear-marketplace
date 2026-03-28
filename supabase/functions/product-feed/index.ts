@@ -118,6 +118,11 @@ function sanitizeVehicleTerms(title: string): string {
     .replace(/\bMoissonneuse[- ]?batteuse\b/gi, "Raccoglitrice")
     .replace(/\bHarvester\b/gi, "Harvesting Machine")
     .replace(/\bMietitrebbia\b/gi, "Raccoglitrice")
+    // Falciatrice / mower terms that can trigger vehicle classification
+    .replace(/\bFalciatrice\b/gi, "Attrezzatura da Taglio")
+    .replace(/\bFalciacondizionatrice\b/gi, "Attrezzatura da Taglio Condizionata")
+    .replace(/\bMower\b/gi, "Cutting Equipment")
+    .replace(/\bFaucheuse\b/gi, "Équipement de Coupe")
     // Clean up double spaces
     .replace(/\s{2,}/g, " ")
     .trim();
