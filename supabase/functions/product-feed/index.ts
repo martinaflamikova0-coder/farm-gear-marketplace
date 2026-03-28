@@ -38,6 +38,8 @@ function getGoogleProductCategory(category: string | null, subcategory: string |
     "chargeuse": "2047",               // Construction
     "micro-tracteurs": "3602",         // Lawn Mowers (ride-on mowers, NOT Vehicles)
     "tracteurs-vignerons": "4351",     // Agricultural Machinery (vineyard tractors)
+    "falciatrice": "4351",             // Agricultural Machinery (mowers/cutters)
+    "faucheuse": "4351",               // Agricultural Machinery (mowers)
   };
   if (subcategory && subCatMap[subcategory]) return subCatMap[subcategory];
   
@@ -118,6 +120,11 @@ function sanitizeVehicleTerms(title: string): string {
     .replace(/\bMoissonneuse[- ]?batteuse\b/gi, "Raccoglitrice")
     .replace(/\bHarvester\b/gi, "Harvesting Machine")
     .replace(/\bMietitrebbia\b/gi, "Raccoglitrice")
+    // Falciatrice / mower terms that can trigger vehicle classification
+    .replace(/\bFalciatrice\b/gi, "Attrezzatura da Taglio")
+    .replace(/\bFalciacondizionatrice\b/gi, "Attrezzatura da Taglio Condizionata")
+    .replace(/\bMower\b/gi, "Cutting Equipment")
+    .replace(/\bFaucheuse\b/gi, "Équipement de Coupe")
     // Clean up double spaces
     .replace(/\s{2,}/g, " ")
     .trim();
@@ -214,7 +221,6 @@ function buildProductEntry(product: any): string {
       ${additionalImages.map((img) => `<g:additional_image_link>${escapeXml(img)}</g:additional_image_link>`).join("\n      ")}
       ${salePriceXml || `<g:price>${priceTTC} ${CURRENCY}</g:price>`}
       <g:availability>${availability}</g:availability>
-      <g:quantity>${product.stock !== null && product.stock !== undefined ? product.stock : 1}</g:quantity>
       <g:condition>${condition}</g:condition>
       
       <g:google_product_category>${escapeXml(googleCategory)}</g:google_product_category>
