@@ -168,7 +168,7 @@ const handler = async (req: Request): Promise<Response> => {
           </div>
           <div style="padding: 20px; background: #f9f9f9; text-align: center; font-size: 12px; color: #666;">
             <p>GEO ITALY s.r.l. — Via G. Abbate 151, 14054 Castagnole delle Lanze (AT), Italia</p>
-            <p>P.IVA: IT01540910054 | +39 0141 877 368 | info@geoitalyagro.com</p>
+            <p>P.IVA: IT01540910054 | +39 377 389 0872 | info@geoitalyagro.com</p>
           </div>
         </div>
       `,

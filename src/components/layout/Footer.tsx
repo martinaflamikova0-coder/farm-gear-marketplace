@@ -87,11 +87,11 @@ const Footer = () => {
             <h3 className="font-display font-bold text-base md:text-xl mb-4 md:mb-6 tracking-wide uppercase text-primary-foreground">
               {t('footer.contact', 'Contact')}
             </h3>
-            <a href="tel:+390141877368" className="flex items-center gap-2.5 text-xs md:text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors group">
+            <a href="tel:+393773890872" className="flex items-center gap-2.5 text-xs md:text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors group">
               <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-primary-foreground/10 flex items-center justify-center group-hover:bg-primary-foreground/20 transition-colors flex-shrink-0">
                 <Phone className="h-3 w-3 md:h-3.5 md:w-3.5" />
               </div>
-              +39 0141 877 368
+              +39 377 389 0872
             </a>
             <a href="mailto:info@geoitalyagro.com" className="flex items-center gap-2.5 text-xs md:text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors group">
               <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-primary-foreground/10 flex items-center justify-center group-hover:bg-primary-foreground/20 transition-colors flex-shrink-0">
@@ -113,7 +113,7 @@ const Footer = () => {
       <div className="border-t border-primary-foreground/10">
         <div className="container-custom py-4 md:py-5 flex flex-col items-center gap-1.5 text-center">
           <p className="text-[10px] md:text-xs text-primary-foreground/50">
-            © 2012–{new Date().getFullYear()} GEO ITALY s.r.l. {t('footer.rights')}
+            © 2016–{new Date().getFullYear()} GEO ITALY s.r.l. {t('footer.rights')}
           </p>
           <p className="text-[10px] md:text-xs text-primary-foreground/40">
             P.IVA: IT01540910054 | REA: AT - 123564

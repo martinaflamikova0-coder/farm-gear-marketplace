@@ -50,7 +50,7 @@ const translations: Record<string, {
     bankStep1: "Votre paiement est en cours de vérification.",
     bankStep2: "Nous vous contacterons dès réception pour confirmer l'expédition.",
     paypalStep: "Votre paiement a été confirmé. Votre commande sera préparée dans les plus brefs délais.",
-    questions: "Pour toute question, n'hésitez pas à nous contacter à info@geoitalyagro.com ou au +39 0141 877 368.",
+    questions: "Pour toute question, n'hésitez pas à nous contacter à info@geoitalyagro.com ou au +39 377 389 0872.",
     thanks: "Merci pour votre confiance !",
     team: "L'équipe GeoItalyAgro",
   },
@@ -68,7 +68,7 @@ const translations: Record<string, {
     bankStep1: "Your payment is being verified.",
     bankStep2: "We will contact you upon receipt to confirm shipment.",
     paypalStep: "Your payment has been confirmed. Your order will be prepared as soon as possible.",
-    questions: "For any questions, feel free to contact us at info@geoitalyagro.com or +39 0141 877 368.",
+    questions: "For any questions, feel free to contact us at info@geoitalyagro.com or +39 377 389 0872.",
     thanks: "Thank you for your trust!",
     team: "The GeoItalyAgro Team",
   },
@@ -86,7 +86,7 @@ const translations: Record<string, {
     bankStep1: "Ihre Zahlung wird überprüft.",
     bankStep2: "Wir werden Sie nach Eingang kontaktieren, um den Versand zu bestätigen.",
     paypalStep: "Ihre Zahlung wurde bestätigt. Ihre Bestellung wird so schnell wie möglich vorbereitet.",
-    questions: "Bei Fragen können Sie uns gerne unter info@geoitalyagro.com oder +39 0141 877 368 kontaktieren.",
+    questions: "Bei Fragen können Sie uns gerne unter info@geoitalyagro.com oder +39 377 389 0872 kontaktieren.",
     thanks: "Vielen Dank für Ihr Vertrauen!",
     team: "Das GeoItalyAgro-Team",
   },
@@ -104,7 +104,7 @@ const translations: Record<string, {
     bankStep1: "Su pago está siendo verificado.",
     bankStep2: "Le contactaremos a la recepción para confirmar el envío.",
     paypalStep: "Su pago ha sido confirmado. Su pedido será preparado lo antes posible.",
-    questions: "Para cualquier pregunta, no dude en contactarnos en info@geoitalyagro.com o +39 0141 877 368.",
+    questions: "Para cualquier pregunta, no dude en contactarnos en info@geoitalyagro.com o +39 377 389 0872.",
     thanks: "¡Gracias por su confianza!",
     team: "El equipo GeoItalyAgro",
   },
@@ -122,7 +122,7 @@ const translations: Record<string, {
     bankStep1: "Il tuo pagamento è in fase di verifica.",
     bankStep2: "Ti contatteremo al ricevimento per confermare la spedizione.",
     paypalStep: "Il tuo pagamento è stato confermato. Il tuo ordine sarà preparato il prima possibile.",
-    questions: "Per qualsiasi domanda, non esitare a contattarci a info@geoitalyagro.com o +39 0141 877 368.",
+    questions: "Per qualsiasi domanda, non esitare a contattarci a info@geoitalyagro.com o +39 377 389 0872.",
     thanks: "Grazie per la tua fiducia!",
     team: "Il team GeoItalyAgro",
   },
@@ -140,7 +140,7 @@ const translations: Record<string, {
     bankStep1: "O seu pagamento está a ser verificado.",
     bankStep2: "Contactá-lo-emos após a receção para confirmar o envio.",
     paypalStep: "O seu pagamento foi confirmado. A sua encomenda será preparada o mais rapidamente possível.",
-    questions: "Para qualquer questão, não hesite em contactar-nos em info@geoitalyagro.com ou +39 0141 877 368.",
+    questions: "Para qualquer questão, não hesite em contactar-nos em info@geoitalyagro.com ou +39 377 389 0872.",
     thanks: "Obrigado pela sua confiança!",
     team: "A equipa GeoItalyAgro",
   },
@@ -305,7 +305,7 @@ const handler = async (req: Request): Promise<Response> => {
                 GEO ITALY s.r.l. — Via G. Abbate 151, 14054 Castagnole delle Lanze (AT), Italia
               </p>
               <p style="margin: 0 0 5px 0; color: #666666; font-size: 12px;">
-                P.IVA: IT01540910054 | info@geoitalyagro.com | +39 0141 877 368
+                P.IVA: IT01540910054 | info@geoitalyagro.com | +39 377 389 0872
               </p>
               <p style="margin: 0; color: #9ca3af; font-size: 12px;">
                 © ${new Date().getFullYear()} GeoItalyAgro. All rights reserved.
