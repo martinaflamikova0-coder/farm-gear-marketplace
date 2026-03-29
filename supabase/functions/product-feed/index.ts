@@ -10,6 +10,7 @@ const SITE_URL = "https://geoitalyagro.com";
 const CURRENCY = "EUR";
 const TVA_RATE = 0.20;
 const CONTENT_LANGUAGE = "it";
+const LISTING_SLUG_IT = "annuncio";
 
 // Map French category slugs to Google Product Category IDs
 // Using specific categories to avoid "Vehicles" classification
@@ -46,30 +47,30 @@ function getGoogleProductCategory(category: string | null, subcategory: string |
   return catMap[category || ""] || "2878";
 }
 
-// Translate French category/subcategory slugs to English for product_type
+// Translate category/subcategory slugs to Italian for product_type
 function translateCategory(slug: string | null): string {
   const map: Record<string, string> = {
-    "tracteurs": "Agricultural Machinery",
-    "tracteurs-agricoles": "Agricultural Machinery",
-    "micro-tracteurs": "Ride-On Lawn Mowers",
-    "tracteurs-vignerons": "Vineyard Equipment",
-    "moissonneuses-batteuses": "Harvesting Machinery",
-    "broyeurs": "Shredders",
-    "chariots-elevateurs": "Pallet Forks",
-    "recolte": "Harvesting Equipment",
-    "travail-sol": "Soil Working Equipment",
-    "manutention": "Material Handling",
-    "chantier": "Construction Equipment",
-    "pieces": "Parts & Accessories",
-    "clotures": "Fencing & Livestock",
-    "distributeurs": "Feed Distributors",
-    "melangeuses": "Feed Mixers",
-    "traite": "Milking Equipment",
-    "autres": "Other Equipment",
-    "tondeuse": "Lawn Mowers",
-    "mini-pelle": "Mini Excavators",
-    "chargeuse": "Loaders",
-    "broyeur": "Shredders",
+    "tracteurs": "Macchinari Agricoli",
+    "tracteurs-agricoles": "Macchinari Agricoli",
+    "micro-tracteurs": "Tagliaerba con Sedile",
+    "tracteurs-vignerons": "Attrezzature per Vigneto",
+    "moissonneuses-batteuses": "Macchine da Raccolta",
+    "broyeurs": "Trituratori",
+    "chariots-elevateurs": "Forche e Sollevatori",
+    "recolte": "Attrezzature da Raccolta",
+    "travail-sol": "Attrezzature Lavorazione Suolo",
+    "manutention": "Movimentazione Materiali",
+    "chantier": "Attrezzature da Cantiere",
+    "pieces": "Ricambi e Accessori",
+    "clotures": "Recinzioni e Allevamento",
+    "distributeurs": "Distributori di Mangime",
+    "melangeuses": "Miscelatori di Mangime",
+    "traite": "Attrezzature per Mungitura",
+    "autres": "Altre Attrezzature",
+    "tondeuse": "Tagliaerba",
+    "mini-pelle": "Mini Escavatori",
+    "chargeuse": "Pale Caricatrici",
+    "broyeur": "Trituratori",
   };
   return map[slug || ""] || slug || "";
 }
@@ -113,18 +114,18 @@ function sanitizeVehicleTerms(title: string): string {
     .replace(/\bTracteur tondeuse\b/gi, "Tondeuse Autoportée")
     .replace(/\bTracteur\b/gi, "Machine Agricole")
     // English vehicle terms
-    .replace(/\bAgricultural Tractor\b/gi, "Agricultural Machine")
-    .replace(/\bCompact Tractor\b/gi, "Compact Agricultural Machine")
-    .replace(/\bTractor\b/gi, "Agricultural Machine")
+    .replace(/\bAgricultural Tractor\b/gi, "Macchina Agricola")
+    .replace(/\bCompact Tractor\b/gi, "Macchina Agricola Compatta")
+    .replace(/\bTractor\b/gi, "Macchina Agricola")
     // Other vehicle-triggering terms
     .replace(/\bMoissonneuse[- ]?batteuse\b/gi, "Raccoglitrice")
-    .replace(/\bHarvester\b/gi, "Harvesting Machine")
+    .replace(/\bHarvester\b/gi, "Macchina da Raccolta")
     .replace(/\bMietitrebbia\b/gi, "Raccoglitrice")
     // Falciatrice / mower terms that can trigger vehicle classification
     .replace(/\bFalciatrice\b/gi, "Attrezzatura da Taglio")
     .replace(/\bFalciacondizionatrice\b/gi, "Attrezzatura da Taglio Condizionata")
-    .replace(/\bMower\b/gi, "Cutting Equipment")
-    .replace(/\bFaucheuse\b/gi, "Équipement de Coupe")
+    .replace(/\bMower\b/gi, "Attrezzatura da Taglio")
+    .replace(/\bFaucheuse\b/gi, "Attrezzatura da Taglio")
     // Clean up double spaces
     .replace(/\s{2,}/g, " ")
     .trim();
@@ -153,24 +154,36 @@ function getCondition(condition: string | null): string {
 }
 
 function getAvailability(stock: number | null, status: string | null): string {
-  if (status !== "active") return "out_of_stock";
-  if (stock === null) return "in_stock"; // unique pieces without stock tracking
-  if (stock <= 0) return "out_of_stock";
-  return "in_stock";
+  if (status !== "active") return "out of stock";
+  if (stock === null) return "in stock"; // unique pieces without stock tracking
+  if (stock <= 0) return "out of stock";
+  return "in stock";
+}
+
+function toAbsolutePublicUrl(url: string | null | undefined): string {
+  if (!url) return "";
+
+  if (url.startsWith("http://") || url.startsWith("https://")) {
+    return url;
+  }
+
+  if (url.startsWith("//")) {
+    return `https:${url}`;
+  }
+
+  if (url.startsWith("/")) {
+    return `${SITE_URL}${url}`;
+  }
+
+  return `${SITE_URL}/${url}`;
 }
 
 function buildProductEntry(product: any): string {
   const priceTTC = (product.price * (1 + TVA_RATE)).toFixed(2);
-  const imageUrl = product.merchant_safe_image_url || product.images?.[0] || "";
+  const imageUrl = toAbsolutePublicUrl(product.merchant_safe_image_url || product.images?.[0]) || `${SITE_URL}/placeholder.svg`;
   const availability = getAvailability(product.stock, product.status);
   const condition = getCondition(product.condition);
-  const slug = product.title
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-  const link = `${SITE_URL}/it/annuncio/${product.id}`;
+  const link = `${SITE_URL}/${CONTENT_LANGUAGE}/${LISTING_SLUG_IT}/${product.id}`;
   const refNumber = `REFEQUITRAD${String(product.reference_number).padStart(5, "0")}`;
 
   // Use Italian (site's primary language) for title and description
@@ -190,6 +203,11 @@ function buildProductEntry(product: any): string {
     additionalImages.push(...product.images.slice(1, 10));
   }
 
+  const normalizedAdditionalImages = additionalImages
+    .map((img) => toAbsolutePublicUrl(img))
+    .filter((img) => !!img && img !== imageUrl)
+    .slice(0, 10);
+
   // Sale price if discount
   let salePriceXml = "";
   if (product.original_price && product.discount_percentage && product.discount_percentage > 0) {
@@ -207,7 +225,7 @@ function buildProductEntry(product: any): string {
   // Google Product Category to avoid "Vehicles" classification
   const googleCategory = getGoogleProductCategory(product.category, product.subcategory);
 
-  // Translate product_type to English
+  // Translate product_type to Italian
   const productType = translateCategory(product.category) + 
     (product.subcategory ? ` > ${translateCategory(product.subcategory)}` : "");
 
@@ -218,7 +236,7 @@ function buildProductEntry(product: any): string {
       <g:description>${escapeXml(description)}</g:description>
       <g:link>${escapeXml(link)}</g:link>
       <g:image_link>${escapeXml(imageUrl)}</g:image_link>
-      ${additionalImages.map((img) => `<g:additional_image_link>${escapeXml(img)}</g:additional_image_link>`).join("\n      ")}
+      ${normalizedAdditionalImages.map((img) => `<g:additional_image_link>${escapeXml(img)}</g:additional_image_link>`).join("\n      ")}
       ${salePriceXml || `<g:price>${priceTTC} ${CURRENCY}</g:price>`}
       <g:availability>${availability}</g:availability>
       <g:condition>${condition}</g:condition>
