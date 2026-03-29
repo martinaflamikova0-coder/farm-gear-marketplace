@@ -113,7 +113,7 @@ const Footer = () => {
       <div className="border-t border-primary-foreground/10">
         <div className="container-custom py-4 md:py-5 flex flex-col items-center gap-1.5 text-center">
           <p className="text-[10px] md:text-xs text-primary-foreground/50">
-            © 2016–{new Date().getFullYear()} GEO ITALY s.r.l. {t('footer.rights')}
+            © 2016 GEO ITALY s.r.l. {t('footer.rights')}
           </p>
           <p className="text-[10px] md:text-xs text-primary-foreground/40">
             P.IVA: IT01540910054 | REA: AT - 123564
