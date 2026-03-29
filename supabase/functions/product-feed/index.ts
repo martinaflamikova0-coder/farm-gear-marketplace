@@ -213,7 +213,7 @@ function buildProductEntry(product: any): string {
   const availability = getAvailability(product.stock, product.status);
   const condition = getCondition(product.condition);
   const link = `${SITE_URL}/${CONTENT_LANGUAGE}/${LISTING_SLUG_IT}/${product.id}`;
-  const refNumber = `REFEQUITRAD${String(product.reference_number).padStart(5, "0")}`;
+  const refNumber = `GIA${String(product.reference_number).padStart(5, "0")}`;
 
   // Use Italian (site's primary language) for title and description
   const titleTranslations = product.title_translations;
