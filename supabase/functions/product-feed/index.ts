@@ -47,30 +47,30 @@ function getGoogleProductCategory(category: string | null, subcategory: string |
   return catMap[category || ""] || "2878";
 }
 
-// Translate French category/subcategory slugs to English for product_type
+// Translate category/subcategory slugs to Italian for product_type
 function translateCategory(slug: string | null): string {
   const map: Record<string, string> = {
-    "tracteurs": "Agricultural Machinery",
-    "tracteurs-agricoles": "Agricultural Machinery",
-    "micro-tracteurs": "Ride-On Lawn Mowers",
-    "tracteurs-vignerons": "Vineyard Equipment",
-    "moissonneuses-batteuses": "Harvesting Machinery",
-    "broyeurs": "Shredders",
-    "chariots-elevateurs": "Pallet Forks",
-    "recolte": "Harvesting Equipment",
-    "travail-sol": "Soil Working Equipment",
-    "manutention": "Material Handling",
-    "chantier": "Construction Equipment",
-    "pieces": "Parts & Accessories",
-    "clotures": "Fencing & Livestock",
-    "distributeurs": "Feed Distributors",
-    "melangeuses": "Feed Mixers",
-    "traite": "Milking Equipment",
-    "autres": "Other Equipment",
-    "tondeuse": "Lawn Mowers",
-    "mini-pelle": "Mini Excavators",
-    "chargeuse": "Loaders",
-    "broyeur": "Shredders",
+    "tracteurs": "Macchinari Agricoli",
+    "tracteurs-agricoles": "Macchinari Agricoli",
+    "micro-tracteurs": "Tagliaerba con Sedile",
+    "tracteurs-vignerons": "Attrezzature per Vigneto",
+    "moissonneuses-batteuses": "Macchine da Raccolta",
+    "broyeurs": "Trituratori",
+    "chariots-elevateurs": "Forche e Sollevatori",
+    "recolte": "Attrezzature da Raccolta",
+    "travail-sol": "Attrezzature Lavorazione Suolo",
+    "manutention": "Movimentazione Materiali",
+    "chantier": "Attrezzature da Cantiere",
+    "pieces": "Ricambi e Accessori",
+    "clotures": "Recinzioni e Allevamento",
+    "distributeurs": "Distributori di Mangime",
+    "melangeuses": "Miscelatori di Mangime",
+    "traite": "Attrezzature per Mungitura",
+    "autres": "Altre Attrezzature",
+    "tondeuse": "Tagliaerba",
+    "mini-pelle": "Mini Escavatori",
+    "chargeuse": "Pale Caricatrici",
+    "broyeur": "Trituratori",
   };
   return map[slug || ""] || slug || "";
 }
@@ -114,18 +114,18 @@ function sanitizeVehicleTerms(title: string): string {
     .replace(/\bTracteur tondeuse\b/gi, "Tondeuse Autoportée")
     .replace(/\bTracteur\b/gi, "Machine Agricole")
     // English vehicle terms
-    .replace(/\bAgricultural Tractor\b/gi, "Agricultural Machine")
-    .replace(/\bCompact Tractor\b/gi, "Compact Agricultural Machine")
-    .replace(/\bTractor\b/gi, "Agricultural Machine")
+    .replace(/\bAgricultural Tractor\b/gi, "Macchina Agricola")
+    .replace(/\bCompact Tractor\b/gi, "Macchina Agricola Compatta")
+    .replace(/\bTractor\b/gi, "Macchina Agricola")
     // Other vehicle-triggering terms
     .replace(/\bMoissonneuse[- ]?batteuse\b/gi, "Raccoglitrice")
-    .replace(/\bHarvester\b/gi, "Harvesting Machine")
+    .replace(/\bHarvester\b/gi, "Macchina da Raccolta")
     .replace(/\bMietitrebbia\b/gi, "Raccoglitrice")
     // Falciatrice / mower terms that can trigger vehicle classification
     .replace(/\bFalciatrice\b/gi, "Attrezzatura da Taglio")
     .replace(/\bFalciacondizionatrice\b/gi, "Attrezzatura da Taglio Condizionata")
-    .replace(/\bMower\b/gi, "Cutting Equipment")
-    .replace(/\bFaucheuse\b/gi, "Équipement de Coupe")
+    .replace(/\bMower\b/gi, "Attrezzatura da Taglio")
+    .replace(/\bFaucheuse\b/gi, "Attrezzatura da Taglio")
     // Clean up double spaces
     .replace(/\s{2,}/g, " ")
     .trim();
@@ -225,7 +225,7 @@ function buildProductEntry(product: any): string {
   // Google Product Category to avoid "Vehicles" classification
   const googleCategory = getGoogleProductCategory(product.category, product.subcategory);
 
-  // Translate product_type to English
+  // Translate product_type to Italian
   const productType = translateCategory(product.category) + 
     (product.subcategory ? ` > ${translateCategory(product.subcategory)}` : "");
 
