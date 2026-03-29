@@ -124,9 +124,8 @@ const SEOHead = ({
         setMetaTag('meta[property="product:price:amount"]', 'content', productData.price.toFixed(2), { property: 'product:price:amount' });
         setMetaTag('meta[property="product:price:currency"]', 'content', productData.currency || 'EUR', { property: 'product:price:currency' });
       }
-      if (productData.availability) {
-        setMetaTag('meta[property="product:availability"]', 'content', productData.availability, { property: 'product:availability' });
-      }
+      // Always set availability - required by Google Merchant Center
+      setMetaTag('meta[property="product:availability"]', 'content', productData.availability || 'in stock', { property: 'product:availability' });
       if (productData.condition) {
         setMetaTag('meta[property="product:condition"]', 'content', productData.condition, { property: 'product:condition' });
       }
