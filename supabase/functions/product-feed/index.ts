@@ -10,6 +10,7 @@ const SITE_URL = "https://geoitalyagro.com";
 const CURRENCY = "EUR";
 const TVA_RATE = 0.20;
 const CONTENT_LANGUAGE = "it";
+const TARGET_COUNTRY = "IT";
 const LISTING_SLUG_IT = "annuncio";
 
 // Map French category slugs to Google Product Category IDs
@@ -77,11 +78,26 @@ function translateCategory(slug: string | null): string {
 
 // Normalize title casing: convert ALL CAPS titles to Title Case, preserving brand acronyms ≤4 chars
 function normalizeTitle(title: string): string {
+  const normalizeWord = (word: string): string => {
+    // Keep short uppercase tokens (acronyms/series codes)
+    if (/^[A-Z0-9]{1,4}$/.test(word)) return word;
+    // Convert long uppercase words to Title Case to avoid GMC uppercase warnings
+    if (/^[A-ZÀ-Ý]{5,}$/.test(word)) {
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }
+    return word;
+  };
+
+  const normalizedByWord = title
+    .split(/(\s+|[-–—])/)
+    .map(normalizeWord)
+    .join("");
+
   // If more than 60% of alphabetic chars are uppercase, convert to Title Case
-  const alphaChars = title.replace(/[^a-zA-ZÀ-ÿ]/g, "");
-  const upperCount = (title.match(/[A-ZÀ-Ý]/g) || []).length;
+  const alphaChars = normalizedByWord.replace(/[^a-zA-ZÀ-ÿ]/g, "");
+  const upperCount = (normalizedByWord.match(/[A-ZÀ-Ý]/g) || []).length;
   if (alphaChars.length > 0 && upperCount / alphaChars.length > 0.6) {
-    return title
+    return normalizedByWord
       .split(/(\s+|[-–—])/)
       .map(word => {
         // Keep short uppercase words (brands/acronyms like "JCB", "CAT", "4WD")
@@ -96,7 +112,7 @@ function normalizeTitle(title: string): string {
       })
       .join("");
   }
-  return title;
+  return normalizedByWord;
 }
 
 // Remove or replace words that trigger Google's "Vehicles" classification
@@ -178,6 +194,19 @@ function toAbsolutePublicUrl(url: string | null | undefined): string {
   return `${SITE_URL}/${url}`;
 }
 
+function getUnitPricingXml(product: any): string {
+  // Add unit price measure for spare parts/accessories where GMC often expects it
+  if (product.category !== "pieces") return "";
+
+  const sourceTitle = (product.title_translations?.it || product.title || "").toLowerCase();
+  const qtyMatch = sourceTitle.match(/(?:lot de|lot da|confezione da|pack de|pack da|x)\s*(\d{1,3})/i);
+  const quantity = qtyMatch ? Math.max(1, Number(qtyMatch[1])) : 1;
+
+  return `
+      <g:unit_pricing_measure>${quantity} ct</g:unit_pricing_measure>
+      <g:unit_pricing_base_measure>1 ct</g:unit_pricing_base_measure>`;
+}
+
 function buildProductEntry(product: any): string {
   const priceTTC = (product.price * (1 + TVA_RATE)).toFixed(2);
   const imageUrl = toAbsolutePublicUrl(product.merchant_safe_image_url || product.images?.[0]) || `${SITE_URL}/placeholder.svg`;
@@ -229,6 +258,8 @@ function buildProductEntry(product: any): string {
   const productType = translateCategory(product.category) + 
     (product.subcategory ? ` > ${translateCategory(product.subcategory)}` : "");
 
+  const unitPricingXml = getUnitPricingXml(product);
+
   return `
     <item>
       <g:id>${escapeXml(product.id)}</g:id>
@@ -239,6 +270,8 @@ function buildProductEntry(product: any): string {
       ${normalizedAdditionalImages.map((img) => `<g:additional_image_link>${escapeXml(img)}</g:additional_image_link>`).join("\n      ")}
       ${salePriceXml || `<g:price>${priceTTC} ${CURRENCY}</g:price>`}
       <g:availability>${availability}</g:availability>
+      <g:content_language>${CONTENT_LANGUAGE}</g:content_language>
+      <g:target_country>${TARGET_COUNTRY}</g:target_country>
       <g:condition>${condition}</g:condition>
       
       <g:google_product_category>${escapeXml(googleCategory)}</g:google_product_category>
@@ -246,6 +279,7 @@ function buildProductEntry(product: any): string {
       <g:mpn>${escapeXml(refNumber)}</g:mpn>
       <g:identifier_exists>false</g:identifier_exists>
       <g:product_type>${escapeXml(productType)}</g:product_type>
+      ${unitPricingXml}
       ${product.model ? `<g:custom_label_0>${escapeXml(product.model)}</g:custom_label_0>` : ""}
       ${product.year ? `<g:custom_label_1>${product.year}</g:custom_label_1>` : ""}
       ${product.hours ? `<g:custom_label_2>${product.hours}h</g:custom_label_2>` : ""}
@@ -336,8 +370,8 @@ Deno.serve(async (req) => {
     <title>GeoItalyAgro - Marketplace di Macchinari Agricoli e Industriali</title>
     <link>${SITE_URL}</link>
     <description>Acquista macchinari agricoli e industriali nuovi e usati su GeoItalyAgro</description>
-    <g:content_language>it</g:content_language>
-    <g:target_country>IT</g:target_country>
+    <g:content_language>${CONTENT_LANGUAGE}</g:content_language>
+    <g:target_country>${TARGET_COUNTRY}</g:target_country>
     ${items}
   </channel>
 </rss>`;
