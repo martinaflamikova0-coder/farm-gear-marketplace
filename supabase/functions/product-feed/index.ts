@@ -10,6 +10,7 @@ const SITE_URL = "https://geoitalyagro.com";
 const CURRENCY = "EUR";
 const TVA_RATE = 0.20;
 const CONTENT_LANGUAGE = "it";
+const LISTING_SLUG_IT = "annuncio";
 
 // Map French category slugs to Google Product Category IDs
 // Using specific categories to avoid "Vehicles" classification
@@ -153,24 +154,36 @@ function getCondition(condition: string | null): string {
 }
 
 function getAvailability(stock: number | null, status: string | null): string {
-  if (status !== "active") return "out_of_stock";
-  if (stock === null) return "in_stock"; // unique pieces without stock tracking
-  if (stock <= 0) return "out_of_stock";
-  return "in_stock";
+  if (status !== "active") return "out of stock";
+  if (stock === null) return "in stock"; // unique pieces without stock tracking
+  if (stock <= 0) return "out of stock";
+  return "in stock";
+}
+
+function toAbsolutePublicUrl(url: string | null | undefined): string {
+  if (!url) return "";
+
+  if (url.startsWith("http://") || url.startsWith("https://")) {
+    return url;
+  }
+
+  if (url.startsWith("//")) {
+    return `https:${url}`;
+  }
+
+  if (url.startsWith("/")) {
+    return `${SITE_URL}${url}`;
+  }
+
+  return `${SITE_URL}/${url}`;
 }
 
 function buildProductEntry(product: any): string {
   const priceTTC = (product.price * (1 + TVA_RATE)).toFixed(2);
-  const imageUrl = product.merchant_safe_image_url || product.images?.[0] || "";
+  const imageUrl = toAbsolutePublicUrl(product.merchant_safe_image_url || product.images?.[0]) || `${SITE_URL}/placeholder.svg`;
   const availability = getAvailability(product.stock, product.status);
   const condition = getCondition(product.condition);
-  const slug = product.title
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-  const link = `${SITE_URL}/it/annuncio/${product.id}`;
+  const link = `${SITE_URL}/${CONTENT_LANGUAGE}/${LISTING_SLUG_IT}/${product.id}`;
   const refNumber = `REFEQUITRAD${String(product.reference_number).padStart(5, "0")}`;
 
   // Use Italian (site's primary language) for title and description
@@ -189,6 +202,11 @@ function buildProductEntry(product: any): string {
   } else if (product.images?.length > 1) {
     additionalImages.push(...product.images.slice(1, 10));
   }
+
+  const normalizedAdditionalImages = additionalImages
+    .map((img) => toAbsolutePublicUrl(img))
+    .filter((img) => !!img && img !== imageUrl)
+    .slice(0, 10);
 
   // Sale price if discount
   let salePriceXml = "";
@@ -218,7 +236,7 @@ function buildProductEntry(product: any): string {
       <g:description>${escapeXml(description)}</g:description>
       <g:link>${escapeXml(link)}</g:link>
       <g:image_link>${escapeXml(imageUrl)}</g:image_link>
-      ${additionalImages.map((img) => `<g:additional_image_link>${escapeXml(img)}</g:additional_image_link>`).join("\n      ")}
+      ${normalizedAdditionalImages.map((img) => `<g:additional_image_link>${escapeXml(img)}</g:additional_image_link>`).join("\n      ")}
       ${salePriceXml || `<g:price>${priceTTC} ${CURRENCY}</g:price>`}
       <g:availability>${availability}</g:availability>
       <g:condition>${condition}</g:condition>
