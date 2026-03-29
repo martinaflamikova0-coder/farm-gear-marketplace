@@ -108,7 +108,13 @@ const OrderConfirmation = () => {
             items: items,
           });
 
-          console.log('Purchase event fired for Google Merchant Center', {
+          // Google Ads conversion event (AW-18047739682)
+          window.gtag('event', 'conversion', {
+            send_to: 'AW-18047739682/ikWnCNW4hJIcEKLO6p1D',
+            transaction_id: data.id,
+          });
+
+          console.log('Purchase + conversion events fired', {
             transaction_id: data.id,
             value: data.total_amount,
             currency: 'EUR',
