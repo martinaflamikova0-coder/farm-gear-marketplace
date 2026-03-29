@@ -336,6 +336,8 @@ Deno.serve(async (req) => {
     <title>GeoItalyAgro - Marketplace di Macchinari Agricoli e Industriali</title>
     <link>${SITE_URL}</link>
     <description>Acquista macchinari agricoli e industriali nuovi e usati su GeoItalyAgro</description>
+    <g:content_language>it</g:content_language>
+    <g:target_country>IT</g:target_country>
     ${items}
   </channel>
 </rss>`;
