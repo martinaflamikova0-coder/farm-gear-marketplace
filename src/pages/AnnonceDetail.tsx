@@ -439,8 +439,14 @@ const AnnonceDetail = () => {
                     ({formatPrice(priceHT)} {t('product.priceHT')})
                   </span>
                 </div>
-                <p className="text-xs text-muted-foreground italic mb-4">
+                <p className="text-xs text-muted-foreground italic mb-2">
                   {t('product.vatDisclaimer')}
+                </p>
+                
+                {/* Availability - visible for Google Merchant Center crawling */}
+                <p data-gmc-availability className="flex items-center gap-1.5 text-sm text-success mb-4">
+                  <Package className="h-4 w-4" />
+                  {getAvailability() === 'in stock' ? 'Disponibile - In stock' : 'Non disponibile - Out of stock'}
                 </p>
                 
                 {/* Mobile CTA: Always show cart button */}
