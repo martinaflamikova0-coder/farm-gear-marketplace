@@ -500,6 +500,7 @@
     },
     "summary": "Zusammenfassung",
     "errors": {
+      "noBankAccount": "Kein Bankkonto für diesen Betrag konfiguriert. Bitte kontaktieren Sie uns.",
       "receiptMissing": "Beleg fehlt",
       "receiptMissingDescription": "Bitte fügen Sie Ihren Überweisungsbeleg bei",
       "unsupportedFormat": "Nicht unterstütztes Format",

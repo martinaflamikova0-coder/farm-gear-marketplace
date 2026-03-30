@@ -1,0 +1,1 @@
+UPDATE bank_accounts SET threshold_max = NULL WHERE id = 'cfc5f63c-9cc6-464a-913c-980018308768' AND threshold_max = 0;

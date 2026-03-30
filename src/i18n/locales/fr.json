@@ -504,6 +504,7 @@
     },
     "summary": "Récapitulatif",
     "errors": {
+      "noBankAccount": "Aucun compte bancaire configuré pour ce montant. Veuillez nous contacter.",
       "receiptMissing": "Reçu manquant",
       "receiptMissingDescription": "Veuillez joindre votre reçu de virement",
       "unsupportedFormat": "Format non supporté",
