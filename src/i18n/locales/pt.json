@@ -500,6 +500,7 @@
     },
     "summary": "Resumo",
     "errors": {
+      "noBankAccount": "Nenhuma conta bancária configurada para este valor. Contacte-nos.",
       "receiptMissing": "Comprovativo em falta",
       "receiptMissingDescription": "Por favor anexe o seu comprovativo de transferência",
       "unsupportedFormat": "Formato não suportado",

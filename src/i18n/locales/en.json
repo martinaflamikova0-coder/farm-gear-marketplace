@@ -504,6 +504,7 @@
     },
     "summary": "Summary",
     "errors": {
+      "noBankAccount": "No bank account configured for this amount. Please contact us.",
       "receiptMissing": "Receipt missing",
       "receiptMissingDescription": "Please attach your transfer receipt",
       "unsupportedFormat": "Unsupported format",

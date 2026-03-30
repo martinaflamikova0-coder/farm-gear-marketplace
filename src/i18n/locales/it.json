@@ -525,6 +525,7 @@
     },
     "summary": "Riepilogo",
     "errors": {
+      "noBankAccount": "Nessun conto bancario configurato per questo importo. Contattaci.",
       "receiptMissing": "Ricevuta mancante",
       "receiptMissingDescription": "Allega la ricevuta del bonifico",
       "unsupportedFormat": "Formato non supportato",

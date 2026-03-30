@@ -500,6 +500,7 @@
     },
     "summary": "Resumen",
     "errors": {
+      "noBankAccount": "No hay cuenta bancaria configurada para este importe. Contáctenos.",
       "receiptMissing": "Falta el recibo",
       "receiptMissingDescription": "Por favor adjunta tu recibo de transferencia",
       "unsupportedFormat": "Formato no soportado",
