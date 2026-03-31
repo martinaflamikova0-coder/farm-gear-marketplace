@@ -19,7 +19,7 @@ const Header = () => {
   const { t, i18n } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
-  const { user } = useCart();
+  
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();

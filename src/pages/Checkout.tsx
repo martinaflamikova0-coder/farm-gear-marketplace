@@ -62,7 +62,7 @@ const Checkout = () => {
   const currentLang = (i18n.language || 'fr') as SupportedLanguage;
   const cartSlug = 'panier';
   
-  const { items, total, user, clearCart } = useCart();
+  const { items, total, clearCart } = useCart();
   const { data: selectedBankAccount, isLoading: isBankAccountsLoading } = useBankAccountForAmount(total);
   const { data: paypalSettings, isLoading: isPaypalLoading } = usePaypalSettings();
   
