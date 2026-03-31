@@ -9,7 +9,6 @@ import { categories } from '@/data/products';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import CartIcon from '@/components/cart/CartIcon';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
-import { useCart } from '@/contexts/CartContext';
 import logoGeoItalyAgro from '@/assets/logo-geoitalyagro.png';
 
 const Header = () => {
@@ -20,7 +19,7 @@ const Header = () => {
   const { t, i18n } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
   const currentLang = (lang || i18n.language || 'en') as SupportedLanguage;
-  const { user } = useCart();
+  
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -113,9 +112,9 @@ const Header = () => {
             
             {/* User account */}
             <Button variant="ghost" size="icon" asChild>
-              <Link to={user ? `/${currentLang}/compte` : `/${currentLang}/auth`}>
+              <Link to={`/${currentLang}/compte`}>
                 <User className="h-5 w-5" />
-                <span className="sr-only">{user ? t('nav.account') : t('nav.login')}</span>
+                <span className="sr-only">{t('nav.account')}</span>
               </Link>
             </Button>
             

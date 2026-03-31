@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ShoppingCart, Check, Loader2, AlertTriangle } from 'lucide-react';
+import { ShoppingCart, Check, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/contexts/CartContext';
 
@@ -26,16 +26,13 @@ const AddToCartButton = ({
 }: AddToCartButtonProps) => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-  const { addToCart, isInCart, canAddToCart, user } = useCart();
+  const { addToCart, isInCart, canAddToCart } = useCart();
   const [isAdding, setIsAdding] = useState(false);
   
   const currentLang = i18n.language || 'fr';
   const alreadyInCart = isInCart(productId);
-  const { allowed, reason } = canAddToCart(price, condition, stock);
-  
+  const { allowed } = canAddToCart(price, condition, stock);
 
-
-  // Already in cart
   if (alreadyInCart) {
     return (
       <Button
@@ -51,12 +48,6 @@ const AddToCartButton = ({
   }
 
   const handleAddToCart = async () => {
-    if (!user) {
-      // Redirect to login with return URL
-      navigate(`/${currentLang}/auth?redirect=${encodeURIComponent(window.location.pathname)}`);
-      return;
-    }
-
     setIsAdding(true);
     await addToCart(productId);
     setIsAdding(false);

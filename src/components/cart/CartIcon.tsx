@@ -6,13 +6,13 @@ import { useCart } from '@/contexts/CartContext';
 import { useTranslation } from 'react-i18next';
 
 const CartIcon = () => {
-  const { itemCount, user } = useCart();
+  const { itemCount } = useCart();
   const { i18n } = useTranslation();
   const currentLang = i18n.language || 'fr';
 
   return (
     <Button variant="ghost" size="icon" className="relative" asChild>
-      <Link to={user ? `/${currentLang}/panier` : `/${currentLang}/auth?redirect=/${currentLang}/panier`}>
+      <Link to={`/${currentLang}/panier`}>
         <ShoppingCart className="h-5 w-5" />
         {itemCount > 0 && (
           <Badge 

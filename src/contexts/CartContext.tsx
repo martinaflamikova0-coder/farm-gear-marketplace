@@ -1,24 +1,32 @@
 import { createContext, useContext, useEffect, useState, useCallback, ReactNode } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import type { User } from '@supabase/supabase-js';
 
 // No price limit - all products go to cart
 export const CART_MAX_PRICE = Infinity;
 
-interface CartItem {
+const CART_STORAGE_KEY = 'geoitalyagro-cart';
+
+interface LocalCartItem {
+  product_id: string;
+  quantity: number;
+}
+
+interface CartProduct {
+  id: string;
+  title: string;
+  price: number;
+  images: string[] | null;
+  brand: string | null;
+  condition: string | null;
+  stock: number | null;
+}
+
+export interface CartItem {
   id: string;
   product_id: string;
   quantity: number;
-  product: {
-    id: string;
-    title: string;
-    price: number;
-    images: string[] | null;
-    brand: string | null;
-    condition: string | null;
-    stock: number | null;
-  };
+  product: CartProduct;
 }
 
 interface CartContextType {
@@ -26,7 +34,6 @@ interface CartContextType {
   itemCount: number;
   total: number;
   isLoading: boolean;
-  user: User | null;
   addToCart: (productId: string, quantity?: number) => Promise<boolean>;
   removeFromCart: (productId: string) => Promise<void>;
   updateQuantity: (productId: string, quantity: number) => Promise<void>;
@@ -45,119 +52,98 @@ export const useCart = () => {
   return context;
 };
 
+// localStorage helpers
+const getStoredCart = (): LocalCartItem[] => {
+  try {
+    const raw = localStorage.getItem(CART_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+};
+
+const setStoredCart = (items: LocalCartItem[]) => {
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
+};
+
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<CartItem[]>([]);
-  const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
 
-  // Check if product can be added to cart
   const canAddToCart = useCallback((price: number, condition: string | null, stock: number | null): { allowed: boolean; reason?: string } => {
-    // Check stock for new items
     if (condition === 'new' && stock !== null && stock === 0) {
       return { allowed: false, reason: 'out_of_stock' };
     }
-    
-    // Used/refurbished items are unique, so quantity is always 1
-    if (condition !== 'new') {
-      return { allowed: true };
-    }
-    
     return { allowed: true };
   }, []);
 
-  // Fetch cart items from database
-  const fetchCart = useCallback(async () => {
-    if (!user) {
+  // Fetch product details for local cart items
+  const hydrateCart = useCallback(async () => {
+    const localItems = getStoredCart();
+    if (localItems.length === 0) {
       setItems([]);
       setIsLoading(false);
       return;
     }
 
     try {
-      const { data, error } = await supabase
-        .from('cart_items')
-        .select(`
-          id,
-          product_id,
-          quantity,
-          products:product_id (
-            id,
-            title,
-            price,
-            images,
-            brand,
-            condition,
-            stock
-          )
-        `)
-        .eq('user_id', user.id);
+      const productIds = localItems.map(i => i.product_id);
+      const { data: products, error } = await supabase
+        .from('products')
+        .select('id, title, price, images, brand, condition, stock')
+        .in('id', productIds)
+        .eq('status', 'active');
 
       if (error) throw error;
 
-      const cartItems: CartItem[] = (data || [])
-        .filter((item: any) => item.products) // Filter out items with deleted products
-        .map((item: any) => ({
-          id: item.id,
-          product_id: item.product_id,
-          quantity: item.quantity,
-          product: {
-            id: item.products.id,
-            title: item.products.title,
-            price: Number(item.products.price),
-            images: item.products.images,
-            brand: item.products.brand,
-            condition: item.products.condition,
-            stock: item.products.stock,
-          },
-        }));
+      const productMap = new Map((products || []).map(p => [p.id, p]));
 
-      setItems(cartItems);
+      const hydrated: CartItem[] = localItems
+        .filter(item => productMap.has(item.product_id))
+        .map(item => {
+          const p = productMap.get(item.product_id)!;
+          return {
+            id: item.product_id, // use product_id as id for local cart
+            product_id: item.product_id,
+            quantity: item.quantity,
+            product: {
+              id: p.id,
+              title: p.title,
+              price: Number(p.price),
+              images: p.images,
+              brand: p.brand,
+              condition: p.condition,
+              stock: p.stock,
+            },
+          };
+        });
+
+      // Clean up localStorage if some products no longer exist
+      if (hydrated.length !== localItems.length) {
+        setStoredCart(hydrated.map(i => ({ product_id: i.product_id, quantity: i.quantity })));
+      }
+
+      setItems(hydrated);
     } catch (error) {
-      console.error('Error fetching cart:', error);
+      console.error('Error hydrating cart:', error);
     } finally {
       setIsLoading(false);
     }
-  }, [user]);
-
-  // Auth state listener
-  useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        setUser(session?.user ?? null);
-      }
-    );
-
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-    });
-
-    return () => subscription.unsubscribe();
   }, []);
 
-  // Fetch cart when user changes
   useEffect(() => {
-    fetchCart();
-  }, [fetchCart]);
+    hydrateCart();
+  }, [hydrateCart]);
 
-  // Add item to cart
   const addToCart = useCallback(async (productId: string, quantity: number = 1): Promise<boolean> => {
-    if (!user) {
-      toast({
-        title: 'Connexion requise',
-        description: 'Veuillez vous connecter pour ajouter des articles au panier',
-        variant: 'destructive',
-      });
-      return false;
-    }
-
     try {
-      // Check if item already in cart
-      const existingItem = items.find(item => item.product_id === productId);
+      const localItems = getStoredCart();
+      const existing = localItems.find(i => i.product_id === productId);
+      const existingCartItem = items.find(i => i.product_id === productId);
 
-      if (existingItem) {
-        // For used/refurbished items, quantity is always 1
-        if (existingItem.product.condition !== 'new') {
+      if (existing && existingCartItem) {
+        if (existingCartItem.product.condition !== 'new') {
           toast({
             title: 'Déjà dans le panier',
             description: 'Cet article unique est déjà dans votre panier',
@@ -165,91 +151,58 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           return true;
         }
 
-        // Update quantity for new items
-        const newQuantity = existingItem.quantity + quantity;
-        
-        // Check stock
-        if (existingItem.product.stock !== null && newQuantity > existingItem.product.stock) {
+        const newQty = existing.quantity + quantity;
+        if (existingCartItem.product.stock !== null && newQty > existingCartItem.product.stock) {
           toast({
             title: 'Stock insuffisant',
-            description: `Seulement ${existingItem.product.stock} unité(s) disponible(s)`,
+            description: `Seulement ${existingCartItem.product.stock} unité(s) disponible(s)`,
             variant: 'destructive',
           });
           return false;
         }
 
-        const { error } = await supabase
-          .from('cart_items')
-          .update({ quantity: newQuantity })
-          .eq('id', existingItem.id);
-
-        if (error) throw error;
+        const updated = localItems.map(i =>
+          i.product_id === productId ? { ...i, quantity: newQty } : i
+        );
+        setStoredCart(updated);
       } else {
-        // Add new item
-        const { error } = await supabase
-          .from('cart_items')
-          .insert({
-            user_id: user.id,
-            product_id: productId,
-            quantity,
-          });
-
-        if (error) throw error;
+        localItems.push({ product_id: productId, quantity });
+        setStoredCart(localItems);
       }
 
-      await fetchCart();
+      await hydrateCart();
       toast({
         title: 'Ajouté au panier',
-        description: 'L\'article a été ajouté à votre panier',
+        description: "L'article a été ajouté à votre panier",
       });
       return true;
     } catch (error) {
       console.error('Error adding to cart:', error);
       toast({
         title: 'Erreur',
-        description: 'Impossible d\'ajouter l\'article au panier',
+        description: "Impossible d'ajouter l'article au panier",
         variant: 'destructive',
       });
       return false;
     }
-  }, [user, items, fetchCart, toast]);
+  }, [items, hydrateCart, toast]);
 
-  // Remove item from cart
   const removeFromCart = useCallback(async (productId: string) => {
-    if (!user) return;
+    const updated = getStoredCart().filter(i => i.product_id !== productId);
+    setStoredCart(updated);
+    setItems(prev => prev.filter(i => i.product_id !== productId));
+    toast({
+      title: 'Article retiré',
+      description: "L'article a été retiré de votre panier",
+    });
+  }, [toast]);
 
-    try {
-      const { error } = await supabase
-        .from('cart_items')
-        .delete()
-        .eq('user_id', user.id)
-        .eq('product_id', productId);
-
-      if (error) throw error;
-
-      setItems(prev => prev.filter(item => item.product_id !== productId));
-      toast({
-        title: 'Article retiré',
-        description: 'L\'article a été retiré de votre panier',
-      });
-    } catch (error) {
-      console.error('Error removing from cart:', error);
-      toast({
-        title: 'Erreur',
-        description: 'Impossible de retirer l\'article',
-        variant: 'destructive',
-      });
-    }
-  }, [user, toast]);
-
-  // Update item quantity
   const updateQuantity = useCallback(async (productId: string, quantity: number) => {
-    if (!user || quantity < 1) return;
+    if (quantity < 1) return;
 
     const item = items.find(i => i.product_id === productId);
     if (!item) return;
 
-    // Check stock for new items
     if (item.product.condition === 'new' && item.product.stock !== null && quantity > item.product.stock) {
       toast({
         title: 'Stock insuffisant',
@@ -259,49 +212,22 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       return;
     }
 
-    try {
-      const { error } = await supabase
-        .from('cart_items')
-        .update({ quantity })
-        .eq('user_id', user.id)
-        .eq('product_id', productId);
+    const updated = getStoredCart().map(i =>
+      i.product_id === productId ? { ...i, quantity } : i
+    );
+    setStoredCart(updated);
+    setItems(prev => prev.map(i =>
+      i.product_id === productId ? { ...i, quantity } : i
+    ));
+  }, [items, toast]);
 
-      if (error) throw error;
-
-      setItems(prev => prev.map(item =>
-        item.product_id === productId ? { ...item, quantity } : item
-      ));
-    } catch (error) {
-      console.error('Error updating quantity:', error);
-      toast({
-        title: 'Erreur',
-        description: 'Impossible de mettre à jour la quantité',
-        variant: 'destructive',
-      });
-    }
-  }, [user, items, toast]);
-
-  // Clear cart
   const clearCart = useCallback(async () => {
-    if (!user) return;
+    localStorage.removeItem(CART_STORAGE_KEY);
+    setItems([]);
+  }, []);
 
-    try {
-      const { error } = await supabase
-        .from('cart_items')
-        .delete()
-        .eq('user_id', user.id);
-
-      if (error) throw error;
-
-      setItems([]);
-    } catch (error) {
-      console.error('Error clearing cart:', error);
-    }
-  }, [user]);
-
-  // Check if product is in cart
   const isInCart = useCallback((productId: string) => {
-    return items.some(item => item.product_id === productId);
+    return items.some(i => i.product_id === productId);
   }, [items]);
 
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
@@ -314,7 +240,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         itemCount,
         total,
         isLoading,
-        user,
         addToCart,
         removeFromCart,
         updateQuantity,
