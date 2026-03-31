@@ -1,0 +1,1 @@
+ALTER TABLE public.bank_accounts ALTER COLUMN holder SET DEFAULT 'Geo Italy s.r.l.';
