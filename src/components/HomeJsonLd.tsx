@@ -14,7 +14,7 @@ const HomeJsonLd = () => {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Geo Italy Agro',
-    legalName: 'Geo Italy SRL',
+    legalName: 'Geo Italy s.r.l.',
     alternateName: 'GeoItalyAgro',
     url: BASE_URL,
     logo: `${BASE_URL}/favicon.png`,

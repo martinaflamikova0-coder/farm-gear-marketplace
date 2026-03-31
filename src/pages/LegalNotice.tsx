@@ -51,7 +51,7 @@ const LegalNotice = () => {
               <CardContent className="p-6 md:p-8">
                 <h2 className="font-display text-xl font-bold text-foreground mb-4">{t('pages.legalNotice.editorTitle')}</h2>
                 <div className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm">
-                  <div><span className="font-semibold text-foreground">Ragione Legale:</span> <span className="text-muted-foreground">Geo Italy SRL</span></div>
+                  <div><span className="font-semibold text-foreground">Ragione Legale:</span> <span className="text-muted-foreground">Geo Italy s.r.l.</span></div>
                   <div><span className="font-semibold text-foreground">Nome Commerciale:</span> <span className="text-muted-foreground">Geo Italy Agro</span></div>
                   <div><span className="font-semibold text-foreground">{t('pages.legalNotice.legalForm')}:</span> <span className="text-muted-foreground">{t('pages.legalNotice.legalFormValue')}</span></div>
                   <div><span className="font-semibold text-foreground">{t('pages.legalNotice.vatLabel')}:</span> <span className="text-muted-foreground">IT01540910054</span></div>
