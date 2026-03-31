@@ -188,9 +188,10 @@ const handler = async (req: Request): Promise<Response> => {
     }
     
     const requestBody = await req.json();
-    const { orderId, customerEmail, shippingCost, supplement, orderTotal, language = 'fr' }: NotifyShippingCostRequest = requestBody;
+    const { orderId: rawOrderId, customerEmail, shippingCost, supplement, orderTotal, language = 'fr' }: NotifyShippingCostRequest = requestBody;
+    const orderId = escapeHtml(rawOrderId || '');
 
-    if (!orderId || !customerEmail || shippingCost === undefined) {
+    if (!rawOrderId || !customerEmail || shippingCost === undefined) {
       throw new Error("Missing required fields: orderId, customerEmail, shippingCost");
     }
     
