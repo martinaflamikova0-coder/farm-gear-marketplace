@@ -6,6 +6,9 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+const escapeHtml = (str: string): string =>
+  str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+
 interface NotifyShippingCostRequest {
   orderId: string;
   customerEmail: string;
@@ -185,9 +188,10 @@ const handler = async (req: Request): Promise<Response> => {
     }
     
     const requestBody = await req.json();
-    const { orderId, customerEmail, shippingCost, supplement, orderTotal, language = 'fr' }: NotifyShippingCostRequest = requestBody;
+    const { orderId: rawOrderId, customerEmail, shippingCost, supplement, orderTotal, language = 'fr' }: NotifyShippingCostRequest = requestBody;
+    const orderId = escapeHtml(rawOrderId || '');
 
-    if (!orderId || !customerEmail || shippingCost === undefined) {
+    if (!rawOrderId || !customerEmail || shippingCost === undefined) {
       throw new Error("Missing required fields: orderId, customerEmail, shippingCost");
     }
     
