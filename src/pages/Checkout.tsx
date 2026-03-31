@@ -236,7 +236,7 @@ const Checkout = () => {
         setIsUploadingReceipt(false);
       }
 
-      // Step 4: Create order items
+      // Step 3: Create order items
       const orderItems = items.map(item => ({
         order_id: order.id,
         product_id: item.product_id,

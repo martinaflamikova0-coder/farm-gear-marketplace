@@ -114,7 +114,7 @@ const Header = () => {
             <Button variant="ghost" size="icon" asChild>
               <Link to={`/${currentLang}/compte`}>
                 <User className="h-5 w-5" />
-                <span className="sr-only">{user ? t('nav.account') : t('nav.login')}</span>
+                <span className="sr-only">{t('nav.account')}</span>
               </Link>
             </Button>
             
