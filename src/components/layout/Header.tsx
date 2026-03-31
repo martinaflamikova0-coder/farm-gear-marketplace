@@ -9,7 +9,6 @@ import { categories } from '@/data/products';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import CartIcon from '@/components/cart/CartIcon';
 import { getLocalizedSlug, type SupportedLanguage } from '@/i18n';
-import { useCart } from '@/contexts/CartContext';
 import logoGeoItalyAgro from '@/assets/logo-geoitalyagro.png';
 
 const Header = () => {
