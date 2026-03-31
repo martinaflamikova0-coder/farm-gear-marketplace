@@ -51,14 +51,14 @@ const LegalNotice = () => {
               <CardContent className="p-6 md:p-8">
                 <h2 className="font-display text-xl font-bold text-foreground mb-4">{t('pages.legalNotice.editorTitle')}</h2>
                 <div className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm">
-                  <div><span className="font-semibold text-foreground">Ragione Legale:</span> <span className="text-muted-foreground">Geo Italy s.r.l.</span></div>
-                  <div><span className="font-semibold text-foreground">Nome Commerciale:</span> <span className="text-muted-foreground">Geo Italy Agro</span></div>
+                  <div><span className="font-semibold text-foreground">{t('pages.legalNotice.legalName')}:</span> <span className="text-muted-foreground">Geo Italy s.r.l.</span></div>
+                  <div><span className="font-semibold text-foreground">{t('pages.legalNotice.tradeName')}:</span> <span className="text-muted-foreground">Geo Italy Agro</span></div>
                   <div><span className="font-semibold text-foreground">{t('pages.legalNotice.legalForm')}:</span> <span className="text-muted-foreground">{t('pages.legalNotice.legalFormValue')}</span></div>
                   <div><span className="font-semibold text-foreground">{t('pages.legalNotice.vatLabel')}:</span> <span className="text-muted-foreground">IT01540910054</span></div>
                   <div><span className="font-semibold text-foreground">REA:</span> <span className="text-muted-foreground">AT - 123564</span></div>
-                  <div><span className="font-semibold text-foreground">{t('pages.legalNotice.capitalLabel', 'Capital social')}:</span> <span className="text-muted-foreground">750 000 €</span></div>
-                  <div><span className="font-semibold text-foreground">Sede Legale:</span> <span className="text-muted-foreground">Vicolo Santa Maria alla Porta 1, 20123 Milano (MI)</span></div>
-                  <div><span className="font-semibold text-foreground">{t('pages.legalNotice.registeredOffice')}:</span> <span className="text-muted-foreground">Via G. Abbate 151, 14054 Castagnole delle Lanze (AT)</span></div>
+                  <div><span className="font-semibold text-foreground">{t('pages.legalNotice.capitalLabel')}:</span> <span className="text-muted-foreground">750 000 €</span></div>
+                  <div><span className="font-semibold text-foreground">{t('pages.legalNotice.registeredOffice')}:</span> <span className="text-muted-foreground">Vicolo Santa Maria alla Porta 1, 20123 Milano (MI)</span></div>
+                  <div><span className="font-semibold text-foreground">{t('pages.legalNotice.operationalOffice')}:</span> <span className="text-muted-foreground">Via G. Abbate 151, 14054 Castagnole delle Lanze (AT)</span></div>
                   <div><span className="font-semibold text-foreground">{t('pages.legalNotice.phone')}:</span> <a href="tel:+393773890872" className="text-primary hover:underline">+39 377 389 0872</a></div>
                   <div><span className="font-semibold text-foreground">Fax:</span> <span className="text-muted-foreground">0141 875 819</span></div>
                   <div><span className="font-semibold text-foreground">{t('pages.legalNotice.email')}:</span> <a href="mailto:info@geoitalyagro.com" className="text-primary hover:underline">info@geoitalyagro.com</a></div>
