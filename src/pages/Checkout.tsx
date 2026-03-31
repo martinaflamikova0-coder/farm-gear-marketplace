@@ -194,49 +194,12 @@ const Checkout = () => {
     setIsUploadingReceipt(true);
     
     try {
-      // Step 1: Upload receipt FIRST to ensure it succeeds before creating order
-      let receiptPath: string | null = null;
-      
-      if (receiptFile) {
-        const fileExt = receiptFile.name.split('.').pop() || 'png';
-        const tempFileName = `${user.id}/temp-${Date.now()}-receipt.${fileExt}`;
-
-        const { data: uploadData, error: uploadError } = await supabase.storage
-          .from('payment-receipts')
-          .upload(tempFileName, receiptFile, {
-            // Avoid upsert here to keep RLS simple (INSERT only).
-            upsert: false,
-            contentType: receiptFile.type || undefined,
-            cacheControl: '3600',
-          });
-
-        if (uploadError) {
-          console.error('Receipt upload error:', uploadError);
-          const backendMsg = formatBackendError(uploadError);
-          toast({
-            title: t('checkout.errors.uploadError'),
-            // Show the backend-provided error message to unblock debugging in production.
-            description: `${t('checkout.errors.uploadErrorDescription')}${backendMsg ? ` (${backendMsg})` : ''}`,
-            variant: 'destructive',
-          });
-          setIsLoading(false);
-          setIsUploadingReceipt(false);
-          return;
-        }
-        
-        receiptPath = uploadData.path;
-      }
-
-      setIsUploadingReceipt(false);
-
-      // Step 2: Create order with receipt already uploaded
+      // Step 1: Create order first
       const { data: order, error: orderError } = await supabase
         .from('orders')
         .insert({
-          user_id: user.id,
           total_amount: total,
-          status: receiptPath ? 'payment_uploaded' : 'pending',
-          payment_receipt_url: receiptPath,
+          status: 'pending',
           shipping_name: `${shippingData.firstName} ${shippingData.lastName}`,
           shipping_email: shippingData.email,
           shipping_phone: shippingData.phone,
@@ -244,7 +207,7 @@ const Checkout = () => {
           shipping_city: shippingData.city,
           shipping_postal_code: shippingData.postalCode,
           shipping_country: shippingData.country,
-          language: currentLang, // Store customer's language preference
+          language: currentLang,
           notes: `Paiement par virement bancaire - Compte: ${selectedBankAccount?.name || 'N/A'}`,
         })
         .select('id')
@@ -255,23 +218,22 @@ const Checkout = () => {
         throw orderError;
       }
 
-      // Step 3: Rename the receipt file to include the order ID
-      if (receiptPath) {
-        const fileExt = receiptFile!.name.split('.').pop();
-        const finalFileName = `${user.id}/${order.id}-receipt.${fileExt}`;
-        
-        // Move the file to the correct name
-        const { error: moveError } = await supabase.storage
-          .from('payment-receipts')
-          .move(receiptPath, finalFileName);
-        
-        if (!moveError) {
-          // Update order with the new file path
-          await supabase
-            .from('orders')
-            .update({ payment_receipt_url: finalFileName })
-            .eq('id', order.id);
+      // Step 2: Upload receipt via edge function
+      if (receiptFile) {
+        setIsUploadingReceipt(true);
+        const formData = new FormData();
+        formData.append('file', receiptFile);
+        formData.append('orderId', order.id);
+
+        const { error: uploadError } = await supabase.functions.invoke('upload-receipt', {
+          body: formData,
+        });
+
+        if (uploadError) {
+          console.error('Receipt upload error:', uploadError);
+          // Order is created but receipt failed - still proceed
         }
+        setIsUploadingReceipt(false);
       }
 
       // Step 4: Create order items
