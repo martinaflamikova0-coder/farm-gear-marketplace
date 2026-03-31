@@ -34,38 +34,6 @@ const Cart = () => {
     }).format(price);
   };
 
-  // Redirect to login if not authenticated - check this BEFORE loading state
-  if (!user) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <SEOHead titleKey="seo.cart.title" descriptionKey="seo.cart.description" />
-        <Header />
-        <HeaderSpacer />
-        <main className="flex-1 bg-background flex items-center justify-center py-12">
-          <Card className="max-w-md w-full mx-4">
-            <CardHeader className="text-center">
-              <ShoppingBag className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
-              <CardTitle className="font-display text-2xl">
-                {t('cart.loginRequired')}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="text-center text-muted-foreground">
-              <p>{t('cart.loginDescription')}</p>
-            </CardContent>
-            <CardFooter className="flex justify-center">
-              <Button asChild>
-                <Link to={`/${currentLang}/auth?redirect=/${currentLang}/panier`}>
-                  {t('cart.login')}
-                </Link>
-              </Button>
-            </CardFooter>
-          </Card>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
-
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col">

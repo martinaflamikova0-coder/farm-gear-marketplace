@@ -112,7 +112,7 @@ const Header = () => {
             
             {/* User account */}
             <Button variant="ghost" size="icon" asChild>
-              <Link to={user ? `/${currentLang}/compte` : `/${currentLang}/auth`}>
+              <Link to={`/${currentLang}/compte`}>
                 <User className="h-5 w-5" />
                 <span className="sr-only">{user ? t('nav.account') : t('nav.login')}</span>
               </Link>
