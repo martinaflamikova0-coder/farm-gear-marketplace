@@ -19,7 +19,7 @@ const Cart = () => {
   const currentLang = (i18n.language || 'fr') as SupportedLanguage;
   const listingsSlug = getLocalizedSlug('listings', currentLang);
   
-  const { items, itemCount, total, isLoading, user, removeFromCart, updateQuantity } = useCart();
+  const { items, itemCount, total, isLoading, removeFromCart, updateQuantity } = useCart();
 
   const formatPrice = (price: number) => {
     const locale = currentLang === 'en' ? 'en-GB' : 
