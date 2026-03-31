@@ -180,21 +180,6 @@ const Checkout = () => {
   // Receipt upload is now handled directly in handleConfirmOrder
 
   const handleConfirmOrder = async () => {
-    if (!user) return;
-
-    // Extra safety: ensure we have a valid authenticated session before touching storage.
-    // (If the session is missing/expired, storage upload will fail on a private bucket.)
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) {
-      toast({
-        title: t('checkout.errors.authRequired', { defaultValue: 'Connexion requise' }),
-        description: t('checkout.errors.authRequiredDescription', { defaultValue: 'Veuillez vous reconnecter pour finaliser votre commande.' }),
-        variant: 'destructive',
-      });
-      navigate(`/${currentLang}/auth`);
-      return;
-    }
-
     // Validate receipt is uploaded for bank transfer
     if (paymentMethod === 'bank_transfer' && !receiptFile) {
       toast({
