@@ -302,7 +302,6 @@ const Checkout = () => {
 
   // Handle successful PayPal payment
   const handlePayPalSuccess = async (details: { id: string; payer: { email_address: string } }) => {
-    if (!user) return;
 
     setIsLoading(true);
     try {
@@ -310,7 +309,6 @@ const Checkout = () => {
       const { data: order, error: orderError } = await supabase
         .from('orders')
         .insert({
-          user_id: user.id,
           total_amount: total,
           status: 'confirmed', // PayPal payments are immediately confirmed
           shipping_name: `${shippingData.firstName} ${shippingData.lastName}`,
