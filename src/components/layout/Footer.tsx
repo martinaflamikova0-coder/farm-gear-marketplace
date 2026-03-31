@@ -118,6 +118,9 @@ const Footer = () => {
           <p className="text-[10px] md:text-xs text-primary-foreground/40">
             {t('footer.registeredOffice')}: Vicolo Santa Maria alla Porta 1, 20123 Milano (MI) | P.IVA: IT01540910054 | REA: AT - 123564
           </p>
+          <p className="text-[10px] md:text-xs text-primary-foreground/40">
+            Ragione Sociale: Geo Italy Agro
+          </p>
         </div>
       </div>
     </footer>
