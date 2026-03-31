@@ -90,7 +90,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     try {
       const productIds = localItems.map(i => i.product_id);
       const { data: products, error } = await supabase
-        .from('products')
+        .from('products_public')
         .select('id, title, price, images, brand, condition, stock')
         .in('id', productIds)
         .eq('status', 'active');
