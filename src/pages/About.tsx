@@ -99,6 +99,21 @@ const About = () => {
               </div>
             </div>
 
+            {/* Company identity */}
+            <Card className="mb-16 border-primary/20 shadow-md">
+              <CardContent className="p-6 md:p-8">
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  GeoItalyAgro è un marchio commerciale di <span className="font-semibold text-foreground">GEO ITALY SRL</span>, società italiana con sede legale a Milano. L'azienda opera anche tramite una sede operativa situata a Castagnole delle Lanze (AT), specializzata nella vendita di macchinari agricoli.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2 text-sm text-muted-foreground mt-4">
+                  <div><span className="font-semibold text-foreground">Sede legale:</span> Vicolo Santa Maria alla Porta 1, 20123 Milano (MI), Italia</div>
+                  <div><span className="font-semibold text-foreground">Sede operativa:</span> Via G. Abbate 151, 14054 Castagnole delle Lanze (AT), Italia</div>
+                  <div><span className="font-semibold text-foreground">PIVA:</span> IT01540910054</div>
+                  <div><span className="font-semibold text-foreground">REA:</span> AT - 123564</div>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* CTA Card */}
             <Card className="bg-gradient-to-br from-primary to-primary/85 text-primary-foreground border-0 overflow-hidden relative">
               <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 50%, white 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
