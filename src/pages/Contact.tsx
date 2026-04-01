@@ -127,6 +127,22 @@ const Contact = () => {
               ))}
             </div>
 
+            {/* Company details */}
+            <Card className="mb-12 border-primary/20 shadow-md">
+              <CardContent className="p-6 md:p-8">
+                <h2 className="font-display text-lg font-bold text-foreground mb-4">GEO ITALY SRL</h2>
+                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2 text-sm text-muted-foreground">
+                  <div><span className="font-semibold text-foreground">Sede legale:</span> Vicolo Santa Maria alla Porta 1, 20123 Milano (MI), Italia</div>
+                  <div><span className="font-semibold text-foreground">Sede operativa:</span> Via G. Abbate 151, 14054 Castagnole delle Lanze (AT), Italia</div>
+                  <div><span className="font-semibold text-foreground">PIVA:</span> IT01540910054</div>
+                  <div><span className="font-semibold text-foreground">REA:</span> AT - 123564</div>
+                  <div><span className="font-semibold text-foreground">Email:</span> <a href="mailto:info@geoitalyagro.com" className="text-primary hover:underline">info@geoitalyagro.com</a></div>
+                  <div><span className="font-semibold text-foreground">{t('pages.legalNotice.phone')}:</span> <a href="tel:+393773890872" className="text-primary hover:underline">+39 377 389 0872</a></div>
+                </div>
+                <p className="text-xs text-muted-foreground mt-4">GeoItalyAgro est une marque commerciale de GEO ITALY SRL</p>
+              </CardContent>
+            </Card>
+
             {/* Form */}
             <Card className="border-border/50 shadow-lg">
               <CardHeader className="pb-2">
