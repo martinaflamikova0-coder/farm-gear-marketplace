@@ -103,11 +103,11 @@ const About = () => {
             <Card className="mb-16 border-primary/20 shadow-md">
               <CardContent className="p-6 md:p-8">
                 <p className="text-muted-foreground leading-relaxed text-sm">
-                  GeoItalyAgro è un marchio commerciale di <span className="font-semibold text-foreground">GEO ITALY SRL</span>, società italiana con sede legale a Milano. L'azienda opera anche tramite una sede operativa situata a Castagnole delle Lanze (AT), specializzata nella vendita di macchinari agricoli.
+                  {t('common.companyIdentity')}
                 </p>
                 <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2 text-sm text-muted-foreground mt-4">
-                  <div><span className="font-semibold text-foreground">Sede legale:</span> Vicolo Santa Maria alla Porta 1, 20123 Milano (MI), Italia</div>
-                  <div><span className="font-semibold text-foreground">Sede operativa:</span> Via G. Abbate 151, 14054 Castagnole delle Lanze (AT), Italia</div>
+                  <div><span className="font-semibold text-foreground">{t('common.sedeLabel')}:</span> Vicolo Santa Maria alla Porta 1, 20123 Milano (MI), Italia</div>
+                  <div><span className="font-semibold text-foreground">{t('common.sedeOperativaLabel')}:</span> Via G. Abbate 151, 14054 Castagnole delle Lanze (AT), Italia</div>
                   <div><span className="font-semibold text-foreground">PIVA:</span> IT01540910054</div>
                   <div><span className="font-semibold text-foreground">REA:</span> AT - 123564</div>
                 </div>
