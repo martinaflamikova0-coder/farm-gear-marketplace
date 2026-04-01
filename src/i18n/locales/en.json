@@ -14,7 +14,11 @@
     "showMore": "Show more",
     "showLess": "Show less",
     "listings": "listings",
-    "products": "products"
+    "products": "products",
+    "brandNotice": "GeoItalyAgro is a trademark of GEO ITALY SRL",
+    "companyIdentity": "GeoItalyAgro is a trademark of GEO ITALY SRL, an Italian company with its registered office in Milan. The company also operates through an operational headquarters located in Castagnole delle Lanze (AT), specialising in the sale of agricultural machinery.",
+    "sedeLabel": "Registered office",
+    "sedeOperativaLabel": "Operational office"
   },
   "nav": {
     "home": "Home",

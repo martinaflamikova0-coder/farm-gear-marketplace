@@ -14,7 +14,11 @@
     "showMore": "Ver mais",
     "showLess": "Ver menos",
     "listings": "anúncios",
-    "products": "produtos"
+    "products": "produtos",
+    "brandNotice": "GeoItalyAgro é uma marca comercial da GEO ITALY SRL",
+    "companyIdentity": "GeoItalyAgro é uma marca comercial da GEO ITALY SRL, uma empresa italiana com sede legal em Milão. A empresa também opera através de uma sede operacional localizada em Castagnole delle Lanze (AT), especializada na venda de máquinas agrícolas.",
+    "sedeLabel": "Sede legal",
+    "sedeOperativaLabel": "Sede operacional"
   },
   "nav": {
     "home": "Início",
